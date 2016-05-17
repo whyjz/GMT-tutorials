@@ -1,0 +1,12 @@
+# GMT 5 Session common arguments shelf
+BEGIN GMT 5.2.1
+B	xg60yg30
+J	A
+JA	A106:55/47:55/13c
+JM	M13c
+JX	X1c
+R	g
+X	4c
+Y	12c
+L	14
+END
