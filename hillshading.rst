@@ -45,6 +45,11 @@
 
 前置作業
 --------------------------------------
+本次所使用的資料，是從衛星數據中分析製作而成的全球海洋重力地圖 [#]_。資料的下載和預覽可以從\
+`這個網站 <http://topex.ucsd.edu/grav_outreach/>`_\ 取得。網站中的「Gridded Data for Research Use」\
+一欄提供了三種不同資料，在本教學中，我們需要的是「Free-Air Marine Gravity Anomaly」(自由空間重力異常)。\
+
+ftp://topex.ucsd.edu/pub/global_grav_1min/grav.img.23.1
 
 
 操作流程
@@ -119,3 +124,8 @@
 
 .. [#] 進一步的解釋與說明，可參閱 A. B. Watts (2001) 所著之 *Isostasy and Flexure of the Lithosphere*
        的第 4.3 節 (pp. 125-150)。
+
+.. [#] Sandwell, D. T., R. D. Müller, W. H. F. Smith, E. Garcia, R. Francis,
+       `New global marine gravity model from CryoSat-2 and Jason-1 reveals buried tectonic structure <http://www.sciencemag.org/content/346/6205/65>`_,
+       Science, Vol. 346, no. 6205, pp. 65-67, 
+       `doi: 10.1126/science.1258213 <http://dx.doi.org/10.1126/science.1258213>`, 2014.
