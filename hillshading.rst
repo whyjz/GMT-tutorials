@@ -45,12 +45,19 @@
 
 前置作業
 --------------------------------------
-本次所使用的資料，是從衛星數據中分析製作而成的全球海洋重力地圖 [#]_。資料的下載和預覽可以從\
+本次所使用的資料，是從衛星數據中分析製作而成的全球海洋重力地圖\ [#]_。資料的下載和預覽可以從\
 `這個網站 <http://topex.ucsd.edu/grav_outreach/>`_\ 取得。網站中的「Gridded Data for Research Use」\
 一欄提供了三種不同資料，在本教學中，我們需要的是「Free-Air Marine Gravity Anomaly」(自由空間重力異常)。\
+檔案除了從網站上下載之外，也可以從\
+`此 ftp 網址 <ftp://topex.ucsd.edu/pub/global_grav_1min/grav.img.23.1>`_\ 直接下載。\
 
-ftp://topex.ucsd.edu/pub/global_grav_1min/grav.img.23.1
+這個檔案與我們之前使用的 `ETOPO`_ 不太一樣：首先，它不是以 NetCDF 格式編碼的檔案，因此副檔名也就不是 ``.grd`` 或
+``.nc``。事實上，這是一種特殊的格式，專為海床地形與重力的資料量身打造。在 GMT 的官方範例中，稱為\
+「Sandwell/Smith Mercator img grids」\ [#]_。此外，數值資料的地理座標也不是經緯度，而是
+`Web Mercator 投影 <https://en.wikipedia.org/wiki/Web_Mercator>`_\ [#]_。
 
+
+.. _ETOPO: https://www.ngdc.noaa.gov/mgg/global/global.html
 
 操作流程
 --------------------------------------
@@ -128,4 +135,8 @@ ftp://topex.ucsd.edu/pub/global_grav_1min/grav.img.23.1
 .. [#] Sandwell, D. T., R. D. Müller, W. H. F. Smith, E. Garcia, R. Francis,
        `New global marine gravity model from CryoSat-2 and Jason-1 reveals buried tectonic structure <http://www.sciencemag.org/content/346/6205/65>`_,
        Science, Vol. 346, no. 6205, pp. 65-67, 
-       `doi: 10.1126/science.1258213 <http://dx.doi.org/10.1126/science.1258213>`, 2014.
+       `doi: 10.1126/science.1258213 <http://dx.doi.org/10.1126/science.1258213>`_, 2014.
+
+.. [#] `GMT 官方範例 #27 <http://gmtrac.soest.hawaii.edu/doc/5.1.0/gallery/ex27.html>`_
+
+.. [#] 事實上這個投影很常見，由於計算速度較快，它是許多線上地圖如 Google Maps 或開放街圖 (OSM) 採用的投影座標。
