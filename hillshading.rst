@@ -56,6 +56,7 @@
 「Sandwell/Smith Mercator img grids」\ [#]_。此外，數值資料的地理座標也不是經緯度，而是
 `Web Mercator 投影 <https://en.wikipedia.org/wiki/Web_Mercator>`_\ [#]_。
 
+由於
 
 .. _ETOPO: https://www.ngdc.noaa.gov/mgg/global/global.html
 

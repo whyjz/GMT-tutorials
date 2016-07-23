@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016, 鄭懷傑 (Whyjay Zheng)
+# This file is distributed under the same license as the GMT 教學手冊 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: GMT 教學手冊 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-07-12 15:09-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.2.0\n"
+
+#: ../../contour_and_profile.rst:3
+msgid "等高線地圖及地形剖面"
+msgstr ""
+
+#: ../../contour_and_profile.rst:5
+msgid ""
+"在本章中，我們要使用 GMT 繪製等高線圖與地形剖面圖，這兩種地圖非常適合用來表示地形的\\ "
+"升降起伏，以及不同地點的陡峭程度。如果你是個登山客，想必它們會是你最愛用的地圖類型。"
+msgstr ""
+
+#: ../../contour_and_profile.rst:9
+msgid "目標"
+msgstr ""
+
+#: ../../contour_and_profile.rst:13
+msgid "使用的指令與概念"
+msgstr ""
+
+#: ../../contour_and_profile.rst:17
+msgid "前置作業"
+msgstr ""
+
+#: ../../contour_and_profile.rst:21
+msgid "操作流程"
+msgstr ""
+
+#: ../../contour_and_profile.rst:25
+msgid "指令稿"
+msgstr ""
+
+#: ../../contour_and_profile.rst:29
+msgid "習題"
+msgstr ""
+

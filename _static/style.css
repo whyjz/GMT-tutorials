@@ -77,3 +77,91 @@ h3 {
     font-family: "xingothic-tc";
     font-weight: 700;
 }
+
+/*--------I18n (Languages)--------*/
+
+.clearfix:after {
+    display:block;
+    clear:both;
+}
+ 
+/*----- Menu Outline -----*/
+.menu {
+    width:100%;
+    margin:0px auto;
+}
+ 
+.menu li {
+    margin:0px;
+    list-style:none;
+}
+ 
+.menu a {
+    transition:all linear 0.15s;
+    color:#b3b3b3;
+}
+ 
+.menu li:hover > a, .menu .current-item > a {
+    text-decoration:none;
+    color:#fcfcfc;
+}
+ 
+.menu .arrow {
+    font-size:0.8em;
+    line-height:0%;
+}
+ 
+/*----- Top Level -----*/
+.menu > ul > li {
+    float:center;
+    display:inline-block;
+    position:relative;
+    font-size:1em;
+    left:0%;
+}
+ 
+.menu > ul > li > a {
+    padding:1em 2em 0.5em 2em;
+    display:inline-block;
+    left:0%;
+}
+
+.langcenter {
+    width: 100%;
+    text-align: center;
+}
+
+
+/*----- Bottom Level -----*/
+.menu li:hover .sub-menu {
+    z-index:1;
+    opacity:1;
+}
+ 
+.sub-menu {
+    width:160%;
+    padding:0.2em 0em;
+    position:absolute;
+    top:100%;
+    left:-30%;
+    z-index:-1;
+    opacity:0;
+    transition:opacity linear 0.15s;
+    box-shadow:0px 2px 3px rgba(0,0,0,0.2);
+    background:#343131;
+}
+ 
+.sub-menu li {
+    display:block;
+    font-size:0.95em;
+}
+ 
+.sub-menu li a {
+    padding:0.5em;
+    display:block;
+}
+ 
+.sub-menu li a:hover, .sub-menu .current-item a {
+    background:#404040;
+}
+

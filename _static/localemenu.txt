@@ -1,0 +1,1 @@
+<div class="langcenter"> <nav class="menu"> <ul class="clearfix"> <li class="current-item"> <a href="#" class="clicker">Languages <span class="arrow">&#9660;</span></a> <ul class="sub-menu"> <li><a href="LinkToChinese">中文 (台灣)</a></li> <li><a href="LinkToEnglish">English</a></li> </ul> </li> </ul> </nav> </div>

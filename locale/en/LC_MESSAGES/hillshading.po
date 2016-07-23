@@ -1,0 +1,191 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016, 鄭懷傑 (Whyjay Zheng)
+# This file is distributed under the same license as the GMT 教學手冊 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: GMT 教學手冊 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-07-13 01:20-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.2.0\n"
+
+#: ../../hillshading.rst:3
+msgid "暈渲地圖"
+msgstr ""
+
+#: ../../hillshading.rst:5
+msgid ""
+"暈渲 (Hillshading) 是一種視覺化呈現地理數值資料的高低起伏的方式。其概念為把資料想成類似地形的起伏狀態，\\ "
+"再假設有某個光源投射在此起伏的平面上，有些地方會被照亮，而有些地方則會有陰影出現。把光照與陰影區域一同描繪在\\ "
+"地圖上，就是所謂的暈渲地圖。GMT 當然也支援如此重要的地圖繪製技術，其細節將在以下內容中一一描述。"
+msgstr ""
+
+#: ../../hillshading.rst:10
+msgid "目標"
+msgstr ""
+
+#: ../../hillshading.rst:11
+#, python-format
+msgid ""
+"我們要使用全球海洋的\\ `重力異常 "
+"<https://zh.wikipedia.org/wiki/%E9%87%8D%E5%8A%9B%E5%BC%82%E5%B8%B8>`_ "
+"(gravity anomaly) 資料，繪製\\ `夏威夷-天皇海山鏈 "
+"<https://zh.wikipedia.org/wiki/%E5%A4%8F%E5%A8%81%E5%A4%B7-%E5%A4%A9%E7%9A%87%E6%B5%B7%E5%B1%B1%E9%93%BE>`_"
+" (Hawaiian–Emperor seamount chain) 週邊區域的\\ `自由空間重力異常 "
+"<https://en.wikipedia.org/wiki/Free-air_gravity_anomaly>`_ (free-air "
+"gravity anomaly) 地圖。圖中標示了幾個重要的地點，包括夏威夷島鏈 (Hawaiian Chain)、天皇島鏈 (Emperor "
+"Chain)、\\ 夏威夷 (Hawaii)、堪察加 (Kamchatka) 以及阿留申群島 (Aleutian "
+"Islands)。在阿留申群島與堪察加半島附近的低重力異常 (藍紫色) 區域，\\ "
+"直接與板塊隱沒帶海溝的地形相關；但有趣的是，夏威夷-天皇海山鏈的島嶼兩側，竟然也出現了與島嶼平行的低重力異常條帶。這條島鏈目前認為是由\\ "
+"太平洋板塊上的熱點持續的噴發岩漿所形成，所以島鏈兩側不應該會有任何像是海溝般的地形起伏才對。此處的低重力異常，較有可能的解釋是\\ "
+"火山島的巨大質量，把此處的地殼壓成凹陷的表面，就像拿一個很重的砝碼壓在軟墊上，軟墊也會向下凹陷一樣。這裡的低重力異常條帶，能夠讓我們\\ "
+"藉由壓彎量 (負重力異常值) 的計算，推知地殼與部份岩石圈的物理特性\\ [#]_\\ 。"
+msgstr ""
+
+#: ../../hillshading.rst:27
+msgid "直接觀看\\ `指令稿`_"
+msgstr ""
+
+#: ../../hillshading.rst:30
+msgid "使用的指令與概念"
+msgstr ""
+
+#: ../../hillshading.rst:31
+msgid "``img2grd`` - **把 Sandwell/Smith 麥卡托 .img 檔轉成 NetCDF 格式**"
+msgstr ""
+
+#: ../../hillshading.rst:32
+msgid "``grdgradient`` - **計算網格檔的梯度與照明值**"
+msgstr ""
+
+#: ../../hillshading.rst:33
+msgid "``grd2cpt`` - **使用網格檔的資訊建立離散色階檔**"
+msgstr ""
+
+#: ../../hillshading.rst:34
+msgid "``gmtset`` - **更改 GMT 的預設作圖參數**"
+msgstr ""
+
+#: ../../hillshading.rst:35
+msgid "``psxy`` - 輸出檔頭與檔尾"
+msgstr ""
+
+#: ../../hillshading.rst:36
+msgid "``grdimage`` - **繪製暈渲圖**"
+msgstr ""
+
+#: ../../hillshading.rst:37
+msgid "``pscoast`` - 繪製海岸線與陸域填色"
+msgstr ""
+
+#: ../../hillshading.rst:38
+msgid "``psbasemap`` - 設定繪圖區、座標軸與邊框"
+msgstr ""
+
+#: ../../hillshading.rst:39
+msgid "``pstext`` - **在圖上標記不同類型的文字**"
+msgstr ""
+
+#: ../../hillshading.rst:40
+msgid "``psscale`` - 繪製色階條"
+msgstr ""
+
+#: ../../hillshading.rst:41
+msgid "外部指令 ``rm`` - 刪除檔案 (Windows 為 ``del``)"
+msgstr ""
+
+#: ../../hillshading.rst:42
+msgid "如何混用海岸線的經緯度資料與 Web Mercator 投影的網格檔"
+msgstr ""
+
+#: ../../hillshading.rst:43
+msgid "進階文字風格設定"
+msgstr ""
+
+#: ../../hillshading.rst:44
+msgid "移動繪圖區起始點的影響"
+msgstr ""
+
+#: ../../hillshading.rst:47
+msgid "前置作業"
+msgstr ""
+
+#: ../../hillshading.rst:48
+msgid ""
+"本次所使用的資料，是從衛星數據中分析製作而成的全球海洋重力地圖\\ [#]_。資料的下載和預覽可以從\\ `這個網站 "
+"<http://topex.ucsd.edu/grav_outreach/>`_\\ 取得。網站中的「Gridded Data for "
+"Research Use」\\ 一欄提供了三種不同資料，在本教學中，我們需要的是「Free-Air Marine Gravity "
+"Anomaly」(自由空間重力異常)。\\ 檔案除了從網站上下載之外，也可以從\\ `此 ftp 網址 "
+"<ftp://topex.ucsd.edu/pub/global_grav_1min/grav.img.23.1>`_\\ 直接下載。\\"
+msgstr ""
+
+#: ../../hillshading.rst:54
+msgid ""
+"這個檔案與我們之前使用的 `ETOPO`_ 不太一樣：首先，它不是以 NetCDF 格式編碼的檔案，因此副檔名也就不是 ``.grd`` 或 "
+"``.nc``。事實上，這是一種特殊的格式，專為海床地形與重力的資料量身打造。在 GMT 的官方範例中，稱為\\ 「Sandwell/Smith "
+"Mercator img grids」\\ [#]_。此外，數值資料的地理座標也不是經緯度，而是 `Web Mercator 投影 "
+"<https://en.wikipedia.org/wiki/Web_Mercator>`_\\ [#]_。"
+msgstr ""
+
+#: ../../hillshading.rst:59
+msgid "由於"
+msgstr ""
+
+#: ../../hillshading.rst:64
+msgid "操作流程"
+msgstr ""
+
+#: ../../hillshading.rst:68
+msgid "指令稿"
+msgstr ""
+
+#: ../../hillshading.rst:69
+msgid "本地圖的最終指令稿如下："
+msgstr ""
+
+#: ../../hillshading.rst:125
+msgid "「」"
+msgstr ""
+
+#: ../../hillshading.rst:127
+msgid "觀看\\ `最終版地圖`_"
+msgstr ""
+
+#: ../../hillshading.rst:130
+msgid "習題"
+msgstr ""
+
+#: ../../hillshading.rst:133
+msgid ""
+"進一步的解釋與說明，可參閱 A. B. Watts (2001) 所著之 *Isostasy and Flexure of the "
+"Lithosphere* 的第 4.3 節 (pp. 125-150)。"
+msgstr ""
+
+#: ../../hillshading.rst:136
+msgid ""
+"Sandwell, D. T., R. D. Müller, W. H. F. Smith, E. Garcia, R. Francis, "
+"`New global marine gravity model from CryoSat-2 and Jason-1 reveals "
+"buried tectonic structure "
+"<http://www.sciencemag.org/content/346/6205/65>`_, Science, Vol. 346, no."
+" 6205, pp. 65-67, `doi: 10.1126/science.1258213 "
+"<http://dx.doi.org/10.1126/science.1258213>`_, 2014."
+msgstr ""
+
+#: ../../hillshading.rst:141
+msgid ""
+"`GMT 官方範例 #27 "
+"<http://gmtrac.soest.hawaii.edu/doc/5.1.0/gallery/ex27.html>`_"
+msgstr ""
+
+#: ../../hillshading.rst:143
+msgid "事實上這個投影很常見，由於計算速度較快，它是許多線上地圖如 Google Maps 或開放街圖 (OSM) 採用的投影座標。"
+msgstr ""
+
