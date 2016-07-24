@@ -5,6 +5,10 @@ GMT 教學手冊 (GMT Tutorials)
 
 `Website (English) <http://gmt-tutorials.org/en/>`_
 
+.. figure:: by.png
+    :scale: 30
+    :align: center
+
 有關於此儲存庫 (About This Repository)
 ========================================
 

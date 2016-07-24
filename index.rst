@@ -37,7 +37,7 @@ GMT 4 在某些地方，尤其是預設屬性的設定上，與 GMT 5 較為不�
     本著作係採用\ `創用 CC 姓名標示 4.0 國際 授權條款 <http://creativecommons.org/licenses/by/4.0/>`_\ 授權。\
     在此授權條款下，您可以在任何目的下自由分享或修改本作品，並包含商業性質之使用。您只需給予原作者適當表彰（姓名標示）。
 
-本網站中大部分用以繪圖的資料皆屬公領域，或以 GNU 通用公共授權條款發行。資料來源請參閱「\ :doc:`data_credit`\ 」。
+本網站中大部分用以繪圖的資料皆屬公領域，或以 GNU 通用公共授權條款發行。詳細說明請參閱「\ :doc:`data_credit`\ 」。
 
 Copyright © 2016 鄭懷傑 (Whyjay Zheng). All rights reserved.
 

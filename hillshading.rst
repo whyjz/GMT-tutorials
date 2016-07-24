@@ -54,14 +54,55 @@
 這個檔案與我們之前使用的 `ETOPO`_ 不太一樣：首先，它不是以 NetCDF 格式編碼的檔案，因此副檔名也就不是 ``.grd`` 或
 ``.nc``。事實上，這是一種特殊的格式，專為海床地形與重力的資料量身打造。在 GMT 的官方範例中，稱為\
 「Sandwell/Smith Mercator img grids」\ [#]_。此外，數值資料的地理座標也不是經緯度，而是
-`Web Mercator 投影 <https://en.wikipedia.org/wiki/Web_Mercator>`_\ [#]_。
+`Web Mercator 投影 <https://en.wikipedia.org/wiki/Web_Mercator>`_\ [#]_。這種投影基本上是麥卡托投影法，\
+只是投影模型中地球的形狀從一般麥卡托投影的「橢球形」變成了「正球形」。不管如何，GMT 很貼心的為這種檔案格式提供了轉檔的指令
+``img2grd``，用法大致如下：
 
-由於
+.. code-block:: bash
+
+    $ img2grd 輸入img檔名 -G輸出grd檔名 -R欲轉換的區域 [-M]
+
+如果不加 ``-M`` 選項，程式會進行座標轉換，使輸出檔以經緯度表示；如果加上 ``-M`` 選項，程式不會進行座標轉換，\
+輸出檔仍然是 Web Mercator 投影座標。由於 Web Mercator 投影和一般的麥卡托投影只差在地球的形狀不同，如果我們\
+**最終的地圖要採用任何一種麥卡托投影法的話，可以加上** ``-M`` **以節省運算時間和避免網格重新取樣產生的誤差**\ 。\
+考慮我們要用的投影是 ``-JM`` (麥卡托投影)，這裡我們選擇加上 ``-M``。完整的轉檔及簡略的繪圖指令大概就如下所示：
+
+.. code-block:: bash
+
+    # ==== 設定變數 ====
+    out_ps="hawaiian-emperor.ps"
+    in_img="grav.img.23.1"              # 重力資料的來源
+    in_grd="grav_hawaiian.grd"          # 重力資料的 grd 轉檔
+
+    # ==== 轉檔 ====
+    img2grd $in_img -M -G$in_grd -R150/210/15/60
+        # 150/210/15/60 為本次的製圖區域，我們只需要此區域的 grd 檔即可
+
+    # ==== 繪圖 ====
+    grdimage $in_grd -JX6i -P > $out_ps
+        # 注意：1. 因為已經是麥卡托投影的網格了，不用再投影一次，所以使用 -JX (直角座標) 即可。
+        #      2. 注意這裡我們沒有加上 -R 指令，這樣會以網格檔本身的四邊區域進行繪圖
+        #         (也就是繪製整個網格)。
+
+.. image:: hillshading/hillshading_fig1.png
+
+``grdimage`` 預設的色階是 ``rainbow``，地圖會一片藍的原因是網格檔中有幾個地方的數值特別高。\
+因此，我們要換上從 `cpt-city`_ 找來的色階檔 ``Spectral``，並且調整色階讓地圖能夠傳達更多資訊。``Spectral`` 色階檔可以\
+`由此 <http://soliton.vm.bytemark.co.uk/pub/cpt-city/jjg/polarity/tn/Spectral.png.index.html>`_\
+或是以下連結下載：
+
+:download:`Spectral.cpt <hillshading/Spectral.cpt>`
+
+.. image:: hillshading/hillshading_fig2.png
 
 .. _ETOPO: https://www.ngdc.noaa.gov/mgg/global/global.html
 
+.. _cpt-city: http://soliton.vm.bytemark.co.uk/pub/cpt-city
+
 操作流程
 --------------------------------------
+我們先使用 ``grd2cpt`` 製作合適的色階檔，再重畫一次網格：
+
 
 
 指令稿
