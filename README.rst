@@ -1,26 +1,39 @@
 GMT 教學手冊 (GMT Tutorials)
-======================================
+========================================
 
 `網站 (中文) <http://gmt-tutorials.org>`_
 
 `Website (English) <http://gmt-tutorials.org/en/>`_
 
 有關於此儲存庫 (About This Repository)
-======================================
+========================================
 
-本儲存庫為「GMT 教學手冊」網站的文本檔，以 *re*\ **Structured**\ :sup:`Text` 格式撰寫而成，\
+這裡為「GMT 教學手冊」網站的文本檔，以 *re*\ **Structured**\ :sup:`Text` 格式撰寫而成，\
 再以 `Sphinx <http://www.sphinx-doc.org/en/stable/index.html>`_ 建立。
 
-``Sphinx`` 與相關的 ``Python`` 模組均建立在 `Anaconda 4.0.0 <https://www.continuum.io/downloads>` 之下。
+Sphinx 與相關的 Python 模組均透過 `Anaconda 4.0.0 <https://www.continuum.io/downloads>`_ 安裝。
 
 - ``xxx.rst``: 各章節文檔
-- ``xxx/``: 各章節所需的圖片以及最終的 bash 腳本
+- ``xxx/``: 各章節所需的圖片、輸入檔以及最終的 bash 腳本
 - ``_template/``: favicon 放在這
 - ``_static/``: 在 sphinx 標準構築之外額外的 html、javascript 以及 css 程式碼片段
 - ``locale/en/``: 英文翻譯檔
 
+Here are the source and text files for the website "GMT Tutorials". All the text is written
+in *re*\ **Structured**\ :sup:`Text` format. The website is built using
+`Sphinx <http://www.sphinx-doc.org/en/stable/index.html>`_.
+
+Sphinx itself and all related Python modules are installed through
+`Anaconda 4.0.0 <https://www.continuum.io/downloads>`_.
+
+- ``xxx.rst``: text file for each chapter (webpage)
+- ``xxx/``: figures, sources for plotting, and the final bash script for each chapter
+- ``_template/``: favicons are right there
+- ``_static/``: additional html, javascript and css snippets after the Sphinx standard build
+- ``locale/en/``: English translation files
+
 簡介 (Introduction)
-======================================
+========================================
 
 **GMT** (**Generic Mapping Tools**, 通常譯成「**通用製圖工具**」) 是一套開放的地理繪圖軟體。與一般\
 的地理繪圖軟體如 QGIS、ArcGIS 最大的不同是，GMT 完全可以在命令列介面底下運行。對於有大量\
@@ -33,23 +46,48 @@ GMT 的命令列風格令上手曲線顯得相當陡峭，使得許多想接觸�
 如果有什麼想分享的評論或使用秘訣，非常歡迎在各章節中留言或直接與\ `我 <https://www.facebook.com/whyjz>`_\ 聯繫。\
 祝各位都能在閱讀的過程中，享受到使用 GMT 畫地圖的樂趣！
 
-編譯文本
-======================================
+**Generic Mapping Tools** (**GMT**) is a set of open-source software for
+mapping and plotting geographic data. It features a command-line
+interface, which makes it completely different from the common GIS
+software like QGIS or ArcGIS. For those who need to deal with a lot of
+plotting tasks, or want to write a script for handling all these jobs,
+GMT is extremely worth learning; however, The command-line style of GMT
+syntax would be very challenging and makes the learning curve very steep,
+especially for beginners who are not familiar with manipulating
+geographic data and mapping.
+
+In this tutorials, we will introduce the basic GMT knowledge and many useful
+tips from numerous exmaples. The final goal for each chapter is always to finish
+a well-designated map or figure. The tutorials are basically written from introductory
+level to more advanced techniques, but the materials for each chapeter is also
+independent. If you have never heard what the GMT is, it would be a good start 
+from the most beginning of this tutorials; but if you are already a seasoned GMT
+user, please jump to the chapter you're interested to save your time. If you have any
+comments and tips and want to share with everybody, please feel free to leave a message
+below any chapters, or send it to `me <https://www.facebook.com/whyjz>`_ at any time.
+I hope you guys could enjoy the fun plotting using GMT from this tutorials!
+
+編譯文本 (How to build the files to html)
+========================================
 
 .. code-block:: bash
 
-    # 編譯中文文本
+    # 編譯中文文本 (build Chinese html)
     make html
-        # 文本會產生在 ``_build/html/`` 底下
+        # 文本會產生在 _build/html/ 底下
+        # html would be put under _build/html/
 
-    # 編譯英文文本
+    # 編譯英文文本 (make English html)
     make gettext
     sphinx-intl update -p _build/locale -l en
         # (前往 locale/en/ 翻譯文檔)
+        # (Go to locate/en/ and translate them)
     make -e SPHINXOPTS="-D language='en'" BUILDSURFIX="/en" html
-        # 文本會產生在 ``_build/html/en/`` 底下
+        # 文本會產生在 _build/html/en/ 底下
+        # html would be put under _build/html/en/
 
-    # 修改 CSS 與為添加額外的欄位
+    # 修改 CSS 與添加額外的網頁設計 (Modify CSS and add more web design)
     bash decorate.bash
 
     # 完成！
+    # Finished!!
