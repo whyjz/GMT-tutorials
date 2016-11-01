@@ -1,5 +1,5 @@
 GMT 教學手冊 (GMT Tutorials)
-========================================
+==========================================
 
 `網站 (中文) <http://gmt-tutorials.org>`_
 
@@ -7,10 +7,10 @@ GMT 教學手冊 (GMT Tutorials)
 
 .. figure:: by.png
     :scale: 30
-    :align: center
+    :align: left
 
 有關於此儲存庫 (About This Repository)
-========================================
+==========================================
 
 這裡為「GMT 教學手冊」網站的文本檔，以 *re*\ **Structured**\ :sup:`Text` 格式撰寫而成，\
 再以 `Sphinx <http://www.sphinx-doc.org/en/stable/index.html>`_ 建立。
@@ -37,7 +37,7 @@ Sphinx itself and all related Python modules are installed through
 - ``locale/en/``: English translation files
 
 簡介 (Introduction)
-========================================
+==========================================
 
 **GMT** (**Generic Mapping Tools**, 通常譯成「**通用製圖工具**」) 是一套開放的地理繪圖軟體。與一般\
 的地理繪圖軟體如 QGIS、ArcGIS 最大的不同是，GMT 完全可以在命令列介面底下運行。對於有大量\
@@ -72,7 +72,7 @@ below any chapters, or send it to `me <https://www.facebook.com/whyjz>`_ at any 
 I hope you guys could enjoy the fun plotting using GMT from this tutorials!
 
 編譯文本 (How to build the files to html)
-========================================
+==========================================
 
 .. code-block:: bash
 

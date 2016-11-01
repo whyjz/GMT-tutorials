@@ -19,15 +19,16 @@ gmtset MAP_FRAME_TYPE=plain \
        MAP_TICK_PEN_PRIMARY=$pen \
        FONT_ANNOT_PRIMARY=$font \
        FONT_LABEL=$font \
-       FORMAT_GEO_MAP=dddF
+       FORMAT_GEO_MAP=dddF \
+       PROJ_ELLIPSOID=Sphere
 
 # ==== Open Door ====
 psxy -R0/1/0/1 -JX1c -T -K -P > $out_ps
 
 # ==== Hillshade Map ====
-grdimage $in_grd -JX6i -O -K -C$in_cpt -I$in_shadow -Y3c >> $out_ps
-pscoast -R150/210/14.9925850705/60.0052682687 -Dh -A50 -JM6i -O -K -G100 -Wthin \
-        --PROJ_ELLIPSOID=Sphere >> $out_ps
+grdimage $in_grd -Jx0.25c -O -K -C$in_cpt -I$in_shadow -Y3c >> $out_ps
+pscoast -R150/210/14.9925850705/60.0052682687 -Dh -A50 -Jm0.25c -O -K -G100 -Wthin \
+        >> $out_ps
 psbasemap -R -J -O -K -Bxa20g180 -Bya20g40 >> $out_ps
 pstext -R -J -O -K -F+a+jCM+f20p,15,black=0.5p,white >> $out_ps << TEXT1END
 166 40 -81 Emperor Chain     
