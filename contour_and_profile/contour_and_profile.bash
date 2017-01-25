@@ -15,11 +15,11 @@ font_text="14p,25,darkred"
 font_contour="8p,25,darkred"
 
 # ==== Transfer ====
-gdal_translate $in_tif -of NetCDF $in_grd
+# gdal_translate $in_tif -of NetCDF $in_grd
 
 # ==== Make input files ====
-grdgradient $in_grd -G$in_shadow -A280 -Nt0.5
-grd2cpt $in_grd -C$master_cpt -Z > $in_cpt
+# grdgradient $in_grd -G$in_shadow -A280 -Nt0.5
+# grd2cpt $in_grd -C$master_cpt -Z > $in_cpt
 
 # ==== Configuration ====
 gmtset MAP_FRAME_TYPE=plain \
@@ -37,7 +37,7 @@ psxy -R0/1/0/1 -JX1c -T -K -P > $out_ps
 # ==== Contour Map ====
 grdimage $in_grd -R123:30E/123:50E/13:10N/13:21N -JM15c -O -K -C$in_cpt -I$in_shadow -Y10c >> $out_ps
 pscoast -R -J -O -K -Df -Sgray -Wthin >> $out_ps
-grdcontour $in_grd -R -J -O -K -C100 -Q100 -A500+f$font_contour+o >> $out_ps
+grdcontour $in_grd -R -J -O -K -C100 -Q50 -A500+f$font_contour+o >> $out_ps
 
 project -C123.613/13.2236 -E123.756/13.2862 -G0.1 -Q |\
 grdtrack -G$in_grd > $in_track

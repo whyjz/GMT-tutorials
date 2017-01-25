@@ -17,7 +17,9 @@
 
 .. _最終版地圖:
 
-.. image:: editing_cpt_colorbar/greenland.png
+.. image:: editing_cpt_colorbar/greenland_s.png
+    :target: _images/greenland.png
+
 
 直接觀看\ `指令稿`_
 
@@ -81,9 +83,10 @@ grid-registered: netCDF)，或是使用如下快速連結下載：
 
 以上腳本出圖如下
 
-.. image:: editing_cpt_colorbar/editing_cpt_colorbar_fig2.png
-    :scale: 35
+.. image:: editing_cpt_colorbar/editing_cpt_colorbar_fig2_s.png
+    :scale: 70
     :align: center
+    :target: _images/editing_cpt_colorbar_fig2.png
 
 值得注意的是，``-R座標r`` 的語法規範的地圖左下角和右上角的經緯度為 ``(-60, 57)`` 和
 ``(20, 80)``，但因為地圖本身投影位置在高緯度的因素，實際顯示在地圖上的並不會是沿著 60W、20E、57N 和 80N 四條\
@@ -135,9 +138,10 @@ GMT 剛才畫的地圖是用來填補剪下的陸地部份的。因此，腳本�
 
 由於我們使用的是兩個完全不同的色階檔，產生的影像會在陸域與海域有極大的顏色差異，如下圖所示。
 
-.. image:: editing_cpt_colorbar/editing_cpt_colorbar_fig3.png
-    :scale: 35
+.. image:: editing_cpt_colorbar/editing_cpt_colorbar_fig3_s.png
+    :scale: 70
     :align: center
+    :target: _images/editing_cpt_colorbar_fig3.png
 
 .. tip::
 

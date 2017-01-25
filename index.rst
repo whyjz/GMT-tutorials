@@ -61,5 +61,10 @@ Copyright © 2016 鄭懷傑 (Whyjay Zheng). All rights reserved.
    layout_design
    hillshading
    contour_and_profile
+   plot_vector_data
+   map_elements
+   view3d
+   raster_calculator
    data_credit
+   gallery
 
