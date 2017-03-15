@@ -47,8 +47,35 @@ Copyright © 2016 鄭懷傑 (Whyjay Zheng). All rights reserved.
 目錄
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+如果你想快速瀏覽各章的目標與地圖，請前往\ :doc:`gallery`。
+
+* 新手入門
+   - :doc:`intro_install`
+   - :doc:`software`
+   - :doc:`basic_concept`
+* 繪圖的基本技巧
+   - :doc:`making_first_map`
+   - :doc:`coloring_topography`
+   - :doc:`pen_and_painting`
+   - :doc:`scatter_plot`
+* 繪製與編修各種常見的地圖
+   - :doc:`editing_cpt_colorbar`
+   - :doc:`layout_design`
+   - :doc:`hillshading`
+   - :doc:`contour_and_profile`
+   - :doc:`plot_vector_data`
+   - :doc:`map_elements`
+   - :doc:`view3d`
+* 網格資料處理
+   - :doc:`raster_calculator`
+* 附錄
+   - :doc:`data_credit`
+   - :doc:`gallery`
+
 .. toctree::
    :maxdepth: 1
+   :numbered:
+   :hidden:
 
    intro_install
    software
@@ -56,8 +83,8 @@ Copyright © 2016 鄭懷傑 (Whyjay Zheng). All rights reserved.
    making_first_map
    coloring_topography
    pen_and_painting
-   editing_cpt_colorbar
    scatter_plot
+   editing_cpt_colorbar
    layout_design
    hillshading
    contour_and_profile
