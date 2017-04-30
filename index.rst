@@ -44,6 +44,11 @@ Copyright © 2016 鄭懷傑 (Whyjay Zheng). All rights reserved.
 教學內文與圖片的原始碼也公開在 `Github <https://github.com/whyjz/GMT-tutorials>`_ 上，以 
 `reStructuredText <https://en.wikipedia.org/wiki/ReStructuredText>`_ 格式編寫。歡迎隨時動叉！
 
+致謝
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
 目錄
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

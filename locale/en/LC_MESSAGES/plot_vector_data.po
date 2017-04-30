@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-25 00:36-0500\n"
+"POT-Creation-Date: 2017-04-30 18:14-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,27 +21,74 @@ msgstr ""
 msgid "繪製向量式資料"
 msgstr ""
 
-#: ../../plot_vector_data.rst:7
-msgid "目標"
+#: ../../plot_vector_data.rst:5
+msgid ""
+"地理空間資料通常會以網格形式或向量形式儲存。所謂的向量式資料，其實就是描述「點、線、面」位置與形狀的資料。\\ "
+"有關於如何繪製點資料的技巧，我們已經在「\\ :doc:`scatter_plot`\\ 」一章中提及，因此在本章中，將會\\ 說明如何利用 "
+"GMT 繪製線段以及多邊形、簡介與 GMT 相容的向量式資料檔案格式，以及透明度的設定--這種填色技巧\\ "
+"非常適合用在常常需要疊在一起呈現的向量式資料上。"
 msgstr ""
 
 #: ../../plot_vector_data.rst:11
-msgid "使用的指令與概念"
+msgid "目標"
 msgstr ""
 
-#: ../../plot_vector_data.rst:15
-msgid "前置作業"
+#: ../../plot_vector_data.rst:12
+#, python-format
+msgid ""
+"繪製一張\\ `七巧板 "
+"<https://zh.wikipedia.org/wiki/%E4%B8%83%E5%B7%A7%E6%9D%BF>`_\\ "
+"的盤面，如下所示。\\ 七巧板是一種類似拼圖的玩具，遊玩目標通常是利用 7 個多邊形拼出指定的圖案。這邊拼出的是正方形，也是所有的圖案裡最基本\\"
+" 的一種。"
 msgstr ""
 
-#: ../../plot_vector_data.rst:19
-msgid "操作流程"
+#: ../../plot_vector_data.rst:16
+msgid ""
+"在此圖中，七個多邊形顏色均不相同，但都有黑色邊緣，而且在盤面上還有淡色的棋盤式格子，可以幫助你計算每個多邊形的\\ "
+"大小。要讓這些線條與多邊形的顏色同時呈現，我們必須要在色階檔中加上透明度的設定，並且使用不同的出圖指令。"
 msgstr ""
 
 #: ../../plot_vector_data.rst:23
-msgid "指令稿"
+msgid "直接觀看\\ `指令稿`_"
 msgstr ""
 
 #: ../../plot_vector_data.rst:27
+msgid "使用的指令與概念"
+msgstr ""
+
+#: ../../plot_vector_data.rst:31
+msgid "前置作業"
+msgstr ""
+
+#: ../../plot_vector_data.rst:35
+msgid "操作流程"
+msgstr ""
+
+#: ../../plot_vector_data.rst:39
+msgid "指令稿"
+msgstr ""
+
+#: ../../plot_vector_data.rst:40
+msgid "本地圖的最終指令稿如下："
+msgstr ""
+
+#: ../../plot_vector_data.rst:65
+msgid "線段資料 ``lines.txt``："
+msgstr ""
+
+#: ../../plot_vector_data.rst:109
+msgid "多邊形資料 ``pieces.txt``："
+msgstr ""
+
+#: ../../plot_vector_data.rst:146
+msgid "「」"
+msgstr ""
+
+#: ../../plot_vector_data.rst:148
+msgid "觀看\\ `最終版圖片`_"
+msgstr ""
+
+#: ../../plot_vector_data.rst:151
 msgid "習題"
 msgstr ""
 

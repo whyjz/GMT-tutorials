@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-25 00:36-0500\n"
+"POT-Creation-Date: 2017-04-30 18:14-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -89,11 +89,105 @@ msgid ""
 msgstr ""
 
 #: ../../index.rst:48
+msgid "致謝"
+msgstr ""
+
+#: ../../index.rst:53
 msgid "目錄"
 msgstr ""
 
+#: ../../index.rst:55
+msgid "如果你想快速瀏覽各章的目標與地圖，請前往\\ :doc:`gallery`。"
+msgstr ""
+
+#: ../../index.rst:59
+msgid "新手入門"
+msgstr ""
+
+#: ../../index.rst:58
+msgid ":doc:`intro_install`"
+msgstr ""
+
+#: ../../index.rst:59
+msgid ":doc:`software`"
+msgstr ""
+
+#: ../../index.rst:60
+msgid ":doc:`basic_concept`"
+msgstr ""
+
+#: ../../index.rst:64
+msgid "繪圖的基本技巧"
+msgstr ""
+
+#: ../../index.rst:62
+msgid ":doc:`making_first_map`"
+msgstr ""
+
+#: ../../index.rst:63
+msgid ":doc:`coloring_topography`"
+msgstr ""
+
+#: ../../index.rst:64
+msgid ":doc:`pen_and_painting`"
+msgstr ""
+
+#: ../../index.rst:65
+msgid ":doc:`scatter_plot`"
+msgstr ""
+
+#: ../../index.rst:72
+msgid "繪製與編修各種常見的地圖"
+msgstr ""
+
+#: ../../index.rst:67
+msgid ":doc:`editing_cpt_colorbar`"
+msgstr ""
+
+#: ../../index.rst:68
+msgid ":doc:`layout_design`"
+msgstr ""
+
+#: ../../index.rst:69
+msgid ":doc:`hillshading`"
+msgstr ""
+
+#: ../../index.rst:70
+msgid ":doc:`contour_and_profile`"
+msgstr ""
+
+#: ../../index.rst:71
+msgid ":doc:`plot_vector_data`"
+msgstr ""
+
+#: ../../index.rst:72
+msgid ":doc:`map_elements`"
+msgstr ""
+
+#: ../../index.rst:73
+msgid ":doc:`view3d`"
+msgstr ""
+
+#: ../../index.rst:74
+msgid "網格資料處理"
+msgstr ""
+
+#: ../../index.rst:75
+msgid ":doc:`raster_calculator`"
+msgstr ""
+
+#: ../../index.rst:78
+msgid "附錄"
+msgstr ""
+
+#: ../../index.rst:77
+msgid ":doc:`data_credit`"
+msgstr ""
+
+#: ../../index.rst:78
+msgid ":doc:`gallery`"
+msgstr ""
+
 #~ msgid ""
-#~ "本網站中大部分用以繪圖的資料皆屬公領域，或以 GNU 通用公共授權條款發行。資料來源請參閱「\\ "
-#~ ":doc:`data_credit`\\ 」。"
 #~ msgstr ""
 
