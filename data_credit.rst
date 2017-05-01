@@ -15,6 +15,8 @@
 - :doc:`pen_and_painting`
 - :doc:`editing_cpt_colorbar`
 - :doc:`hillshading`
+- :doc:`contour_and_profile`
+- :doc:`plot_vector_data`
 
   `Cpt-city <http://soliton.vm.bytemark.co.uk/pub/cpt-city/index.html>`_
 
@@ -29,3 +31,8 @@
   Science, Vol. 346, no. 6205, pp. 65-67, 
   `doi: 10.1126/science.1258213 <http://dx.doi.org/10.1126/science.1258213>`, 2014.
   [`Website <http://topex.ucsd.edu/grav_outreach/>`_, accessed on 2016/5/16].
+
+- :doc:`plot_vector_data`
+
+  USGS (2006), Shuttle Radar Topography Mission, 1 Arc Second scene n13_e123_1arc_v3, Filled Finished 3.0, Global 
+  Land Cover Facility, University of Maryland, College Park, Maryland, February 2000.
