@@ -34,8 +34,8 @@ msgstr ""
 "software like QGIS or ArcGIS. For those who need to deal with a lot of "
 "plotting tasks, or want to write a script for handling all these jobs, "
 "GMT is extremely worth learning; however, The command-line style of GMT "
-"syntax would be very challenging and makes the learning curve very steep,"
-" especially for beginners who are not familiar with manipulating "
+"syntax would be very challenging and makes the learning curve very steep, "
+"especially for beginners who are not familiar with manipulating "
 "geographic data and mapping."
 
 #: ../../index.rst:12
@@ -45,6 +45,12 @@ msgid ""
 "中組織這些指令。除此之外，本教學也會在適當的地方，解說與\\ GMT 相關的格式、軟體像是 shapefile、GDAL "
 "之間的銜接，它們在實作上總是非常的有用。"
 msgstr ""
+"In these tutorials, we will explore some basic knowldge of GMT and useful plotting skills from "
+"numerous examples. The final goal of each chapter is to design a goog-looking map from very beginning. "
+"You will be learning many GMT commands and how to organize them in a command line or Shell script. "
+"In addition, the tutorials will also explain anything that is associated with GMT at right time, "
+"such as geospatial data format and tools, like shapefiles and GDAL. These stuff can usually "
+"expedite your mapping tasks."
 
 #: ../../index.rst:17
 msgid ""
@@ -54,6 +60,13 @@ msgid ""
 "GMT 4 的程式碼，在指令選項的細節上，請以 `GMT 4 官方說明手冊 "
 "<https://www.soest.hawaii.edu/gmt/gmt/html/gmt_services.html>`_\\ 為準。"
 msgstr ""
+"GMT has 2 main versions so far: **GMT** 4 and **GMT 5**. They are really similar to each other, especially "
+"for basic commands, but GMT 5 is furthur developed and has more completed functions. "
+"Here we use `GMT 5 <http://gmt.soest.hawaii.edu/>`_ as our primary GMT version in all tutorials. "
+"If it's your first time using GMT, I would also recommend sticking with GMT 5. As the old version, "
+"Some syntax details in GMT 4, such as setting up default parameters, differs from GMT 5. "
+"Thus, if you already have some codes written in GMT 4, please see "
+"`GMT 4 Online Services <https://www.soest.hawaii.edu/gmt/gmt/html/gmt_services.html>`_ for the most accurate support."
 
 #: ../../index.rst:25
 msgid ""
@@ -61,10 +74,17 @@ msgid ""
 "有相當程度的了解，更請隨時跳至你想查閱的部份以節省時間。如果有什麼想分\\ 享的評論或使用秘訣，非常歡迎在各章節中留言或直接與\\ `我 "
 "<https://www.facebook.com/whyjz>`_\\ 聯繫。\\ 祝各位都能在閱讀的過程中，享受到使用 GMT 畫地圖的樂趣！"
 msgstr ""
+"The tutorials are basically written step-by-step, from beginner level to more advanced tricks, but "
+"the content in each chapter is well independent. You can start over if you are a GMT rookie, or "
+"you can jump to whichever chapter you want to check it up to save your time if you've been using GMT "
+"for a while. Please feel free to leave any messages below any chapters, or contact "
+"`me <https://www.facebook.com/whyjz>`_ at any time for any questions, comments, and ideas/tips "
+"to be shared. I hope you enjoy the fun of mapping from reading these tutorials!"
+
 
 #: ../../index.rst:31
 msgid "授權"
-msgstr ""
+msgstr "License"
 
 #: ../../index.rst:37
 msgid ""
@@ -72,14 +92,17 @@ msgid ""
 "<http://creativecommons.org/licenses/by/4.0/>`_\\ 授權。\\ "
 "在此授權條款下，您可以在任何目的下自由分享或修改本作品，並包含商業性質之使用。您只需給予原作者適當表彰（姓名標示）。"
 msgstr ""
+"The work is licensed under a `Creative Commons Attribution 4.0 International License <http://creativecommons.org/licenses/by/4.0/>`_. "
+"You may use, share, or adapt the document in any medium or format for any purpose, even commercially. You must give appropriate credit "
+"to the author, provide a link to the license, and indicate if changes were made."
 
 #: ../../index.rst:40
 msgid "本網站中大部分用以繪圖的資料皆屬公領域，或以 GNU 通用公共授權條款發行。詳細說明請參閱「\\ :doc:`data_credit`\\ 」。"
-msgstr ""
+msgstr "Most data used for plotting in the work are under public domain or licensed under GNU General Public License. Please see :doc:`data_credit` for more information."
 
 #: ../../index.rst:42
 msgid "Copyright © 2016 鄭懷傑 (Whyjay Zheng). All rights reserved."
-msgstr ""
+msgstr "Copyright © 2016-17 Whyjay Zheng. All rights reserved."
 
 #: ../../index.rst:44
 msgid ""
@@ -87,22 +110,25 @@ msgid ""
 "`reStructuredText <https://en.wikipedia.org/wiki/ReStructuredText>`_ "
 "格式編寫。歡迎隨時動叉！"
 msgstr ""
+"The source codes of all the text and pictures are accessible on `Github <https://github.com/whyjz/GMT-tutorials>`_, "
+"and are written in the format of `reStructuredText <https://en.wikipedia.org/wiki/ReStructuredText>`_. "
+"Feel free to fork me at any time!"
 
 #: ../../index.rst:48
 msgid "致謝"
-msgstr ""
+msgstr "Acknowledgement"
 
 #: ../../index.rst:53
 msgid "目錄"
-msgstr ""
+msgstr "Table of Contents"
 
 #: ../../index.rst:55
 msgid "如果你想快速瀏覽各章的目標與地圖，請前往\\ :doc:`gallery`。"
-msgstr ""
+msgstr "If you would like to skim goals and maps for each chapter, please go to :doc:`gallery`."
 
 #: ../../index.rst:59
 msgid "新手入門"
-msgstr ""
+msgstr "Beginner's GMT Course"
 
 #: ../../index.rst:58
 msgid ":doc:`intro_install`"
@@ -118,7 +144,7 @@ msgstr ""
 
 #: ../../index.rst:64
 msgid "繪圖的基本技巧"
-msgstr ""
+msgstr "Basic Mapping Skills"
 
 #: ../../index.rst:62
 msgid ":doc:`making_first_map`"
@@ -138,7 +164,7 @@ msgstr ""
 
 #: ../../index.rst:72
 msgid "繪製與編修各種常見的地圖"
-msgstr ""
+msgstr "Plot and Edit Different Kinds of Maps"
 
 #: ../../index.rst:67
 msgid ":doc:`editing_cpt_colorbar`"
@@ -170,7 +196,7 @@ msgstr ""
 
 #: ../../index.rst:74
 msgid "網格資料處理"
-msgstr ""
+msgstr "Processing Grid Data"
 
 #: ../../index.rst:75
 msgid ":doc:`raster_calculator`"
@@ -178,7 +204,7 @@ msgstr ""
 
 #: ../../index.rst:78
 msgid "附錄"
-msgstr ""
+msgstr "Appendix"
 
 #: ../../index.rst:77
 msgid ":doc:`data_credit`"

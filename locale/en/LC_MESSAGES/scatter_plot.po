@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../scatter_plot.rst:3
 msgid "XY 點散佈圖"
-msgstr ""
+msgstr "Scatter Plot"
 
 #: ../../scatter_plot.rst:5
 msgid ""

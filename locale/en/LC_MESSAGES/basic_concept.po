@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../basic_concept.rst:3
 msgid "基本概念與名詞"
-msgstr ""
+msgstr "Basic Concepts and Terms"
 
 #: ../../basic_concept.rst:5
 msgid ""

@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../pen_and_painting.rst:3
 msgid "畫筆與調色技巧"
-msgstr ""
+msgstr "Line and Painting"
 
 #: ../../pen_and_painting.rst:5
 msgid ""

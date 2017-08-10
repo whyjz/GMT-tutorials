@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../layout_design.rst:3
 msgid "版面設計與地圖的幾何布局"
-msgstr ""
+msgstr "Design Map Layout"
 
 #: ../../layout_design.rst:5
 msgid ""

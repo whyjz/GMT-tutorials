@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../contour_and_profile.rst:3
 msgid "等高線地圖及地形剖面"
-msgstr ""
+msgstr "Contours and Profiles"
 
 #: ../../contour_and_profile.rst:5
 msgid ""

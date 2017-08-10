@@ -19,5 +19,5 @@ msgstr ""
 
 #: ../../gallery.rst:3
 msgid "章節地圖索引"
-msgstr ""
+msgstr "Gallery (Chapter Index)"
 

@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../hillshading.rst:3
 msgid "暈渲地圖"
-msgstr ""
+msgstr "Hillshade Map"
 
 #: ../../hillshading.rst:5
 msgid ""

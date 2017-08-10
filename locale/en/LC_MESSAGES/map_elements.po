@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../map_elements.rst:3
 msgid "加入地圖元素"
-msgstr ""
+msgstr "Add Map Elements"
 
 #: ../../map_elements.rst:7
 msgid "目標"

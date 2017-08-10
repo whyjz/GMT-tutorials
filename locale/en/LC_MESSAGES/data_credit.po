@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../data_credit.rst:3
 msgid "資料來源"
-msgstr ""
+msgstr "Data Credit"
 
 #: ../../data_credit.rst:5 ../../data_credit.rst:14
 msgid ":doc:`coloring_topography`"

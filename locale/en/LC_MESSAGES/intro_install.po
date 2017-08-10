@@ -19,11 +19,11 @@ msgstr ""
 
 #: ../../intro_install.rst:3
 msgid "GMT 簡介與安裝"
-msgstr ""
+msgstr "Introduction and Installing GMT"
 
 #: ../../intro_install.rst:6
 msgid "`GMT`_ 是什麼？"
-msgstr ""
+msgstr "What is `GMT`_?"
 
 #: ../../intro_install.rst:7
 msgid ""

@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../view3d.rst:3
 msgid "3D 視圖"
-msgstr ""
+msgstr "3D Map"
 
 #: ../../view3d.rst:7
 msgid "目標"

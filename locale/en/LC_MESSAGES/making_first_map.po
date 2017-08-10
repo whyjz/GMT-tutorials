@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../making_first_map.rst:3
 msgid "製作第一張地圖"
-msgstr ""
+msgstr "Make Your First Map"
 
 #: ../../making_first_map.rst:5
 msgid ""

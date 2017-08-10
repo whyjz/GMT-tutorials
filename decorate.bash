@@ -144,3 +144,22 @@ COMMANDEND
         sed -i "/wy-menu wy-menu-vertical/i\ <\/div>" $html_f
     fi
 done
+
+# ==== Replace project name in Chinese with English ====
+
+en_html_files=$(ls _build/html/en/*.html)
+
+for html_f in $en_html_files
+do
+    echo ----- Finalizing English Locale of ${html_f##*/} ...
+    sed -i -e 's/GMT 教學手冊/GMT Tutorials /g' $html_f
+    sed -i -e 's/zzz_replace_token/English/g' $html_f
+done
+
+zhtw_html_files=$(ls _build/html/*.html)
+
+for html_f in $zhtw_html_files
+do
+    echo ----- Finalizing Zhtw Locale of ${html_f##*/} ...
+    sed -i -e 's/zzz_replace_token/中文 (台灣)/g' $html_f
+done

@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../software.rst:3
 msgid "推薦搭配的軟體或套件"
-msgstr ""
+msgstr "Software and Packages"
 
 #: ../../software.rst:5
 msgid ""

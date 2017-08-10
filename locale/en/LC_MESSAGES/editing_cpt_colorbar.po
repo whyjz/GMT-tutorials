@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../editing_cpt_colorbar.rst:3
 msgid "色階檔的編修與呈現"
-msgstr ""
+msgstr "Edit CPT and Colorbar"
 
 #: ../../editing_cpt_colorbar.rst:5
 msgid ""

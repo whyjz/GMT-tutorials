@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../raster_calculator.rst:3
 msgid "網格計算機"
-msgstr ""
+msgstr "Raster Calculator"
 
 #: ../../raster_calculator.rst:7
 msgid "目標"

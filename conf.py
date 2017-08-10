@@ -51,7 +51,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'GMT 教學手冊'
-copyright = u'2016, 鄭懷傑 (Whyjay Zheng)'
+copyright = u'2016-17, 鄭懷傑 (Whyjay Zheng)'
 author = u'鄭懷傑'
 
 # The version info for the project you're documenting, acts as replacement for

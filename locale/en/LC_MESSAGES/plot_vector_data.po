@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../plot_vector_data.rst:3
 msgid "繪製向量式資料"
-msgstr ""
+msgstr "Plot Vector Data"
 
 #: ../../plot_vector_data.rst:5
 msgid ""

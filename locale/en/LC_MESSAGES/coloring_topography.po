@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../coloring_topography.rst:3
 msgid "為地形圖上色"
-msgstr ""
+msgstr "Color the Topography"
 
 #: ../../coloring_topography.rst:5
 msgid ""
