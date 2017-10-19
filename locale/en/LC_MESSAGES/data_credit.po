@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) 2016, 鄭懷傑 (Whyjay Zheng)
+# Copyright (C) 2016-17, 鄭懷傑 (Whyjay Zheng)
 # This file is distributed under the same license as the GMT 教學手冊 package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-12 15:09-0400\n"
+"POT-Creation-Date: 2017-08-11 16:01-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,25 +41,33 @@ msgid ""
 "doi:10.7289/V5C8276M [accessed on 2016/1/21]."
 msgstr ""
 
-#: ../../data_credit.rst:17 ../../data_credit.rst:25
+#: ../../data_credit.rst:17 ../../data_credit.rst:27
 msgid ":doc:`hillshading`"
 msgstr ""
 
-#: ../../data_credit.rst:19
-msgid "`Cpt-city <http://soliton.vm.bytemark.co.uk/pub/cpt-city/index.html>`_"
+#: ../../data_credit.rst:18
+msgid ":doc:`contour_and_profile`"
+msgstr ""
+
+#: ../../data_credit.rst:19 ../../data_credit.rst:35
+msgid ":doc:`plot_vector_data`"
 msgstr ""
 
 #: ../../data_credit.rst:21
-msgid ":doc:`scatter_plot`"
+msgid "`Cpt-city <http://soliton.vm.bytemark.co.uk/pub/cpt-city/index.html>`_"
 msgstr ""
 
 #: ../../data_credit.rst:23
+msgid ":doc:`scatter_plot`"
+msgstr ""
+
+#: ../../data_credit.rst:25
 msgid ""
 "中央氣象局觀測資料。`CODiS 觀測資料查詢系統 "
 "<http://e-service.cwb.gov.tw/HistoryDataQuery/index.jsp>`_"
 msgstr ""
 
-#: ../../data_credit.rst:27
+#: ../../data_credit.rst:29
 msgid ""
 "Sandwell, D. T., R. D. Müller, W. H. F. Smith, E. Garcia, R. Francis, "
 "`New global marine gravity model from CryoSat-2 and Jason-1 reveals "
@@ -68,5 +76,12 @@ msgid ""
 " 6205, pp. 65-67, `doi: 10.1126/science.1258213 "
 "<http://dx.doi.org/10.1126/science.1258213>`, 2014. [`Website "
 "<http://topex.ucsd.edu/grav_outreach/>`_, accessed on 2016/5/16]."
+msgstr ""
+
+#: ../../data_credit.rst:37
+msgid ""
+"USGS (2006), Shuttle Radar Topography Mission, 1 Arc Second scene "
+"n13_e123_1arc_v3, Filled Finished 3.0, Global Land Cover Facility, "
+"University of Maryland, College Park, Maryland, February 2000."
 msgstr ""
 

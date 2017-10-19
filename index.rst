@@ -4,6 +4,10 @@
 GMT 教學手冊
 ======================================
 
+.. image:: index_banner_text.png
+    :scale: 25
+    :align: center
+
 **GMT** (**Generic Mapping Tools**, 通常譯成「**通用製圖工具**」) 是一套開放的地理繪圖軟體。與一般\
 的地理繪圖軟體如 QGIS、ArcGIS 最大的不同是，GMT 完全可以在命令列介面底下運行。對於有大量\
 繪圖需求，想用程式語言或腳本批次檔處理這些繪圖工作的人而言，GMT 非常值得一學，但也正因為\
@@ -39,7 +43,7 @@ GMT 4 在某些地方，尤其是預設屬性的設定上，與 GMT 5 較為不�
 
 本網站中大部分用以繪圖的資料皆屬公領域，或以 GNU 通用公共授權條款發行。詳細說明請參閱「\ :doc:`data_credit`\ 」。
 
-Copyright © 2016 鄭懷傑 (Whyjay Zheng). All rights reserved.
+Copyright © 2016-17 鄭懷傑 (Whyjay Zheng). All rights reserved.
 
 教學內文與圖片的原始碼也公開在 `Github <https://github.com/whyjz/GMT-tutorials>`_ 上，以 
 `reStructuredText <https://en.wikipedia.org/wiki/ReStructuredText>`_ 格式編寫。歡迎隨時動叉！

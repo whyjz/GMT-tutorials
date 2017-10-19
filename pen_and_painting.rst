@@ -18,7 +18,8 @@
 
 .. _最終版地圖:
 
-.. image:: pen_and_painting/central_america.png
+.. image:: pen_and_painting/central_america_s.png
+    :target: _images/central_america.png
 
 直接觀看\ `指令稿`_
 
@@ -316,7 +317,8 @@ grid-registered: netCDF)，或是使用如下快速連結下載：
 
 會得到如下的地圖
 
-.. image:: pen_and_painting/pen_and_painting_fig5.png
+.. image:: pen_and_painting/pen_and_painting_fig5_s.png
+    :target: _images/pen_and_painting_fig5.png
 
 如果你覺得海床的部份著色很奇怪 (很少見到海是用綠色著色的)，那就是自己動手修改的時候了。\
 第一步當然是從已經建立好的色階表搜尋，所以我們就再用一次 `cpt-city`_ 的 ``mby`` 色階\
@@ -335,7 +337,8 @@ grid-registered: netCDF)，或是使用如下快速連結下載：
 
 這次海的顏色看起來比較「像海」了：
 
-.. image:: pen_and_painting/pen_and_painting_fig6.png
+.. image:: pen_and_painting/pen_and_painting_fig6_s.png
+    :target: _images/pen_and_painting_fig6.png
 
 當然這張地圖還是有些小問題，你會發現有些海域被塗上綠色，而非傳統所見的藍色。我們接下來的目標，\
 就是\ **微調色階檔，讓這些綠色的區域以更淺的藍色代替**。要作到這件事，我們必須先了解色階檔\
@@ -491,7 +494,8 @@ grid-registered: netCDF)，或是使用如下快速連結下載：
              -R-100/1/-50/34r -P -K Cocean_new.cpt > central_america.ps
     # (後略)
 
-.. image:: pen_and_painting/pen_and_painting_fig8.png
+.. image:: pen_and_painting/pen_and_painting_fig8_s.png
+    :target: _images/pen_and_painting_fig8.png
 
 畫出來會發現，怎麼綠色的區塊比剛才還多？先別緊張，這是因為我們的 ``-T`` 選項還沒調整好的\
 緣故。注意 ``-T`` 選項中的間距是 ``1000``，這表示新的色階檔中，每 ``1000`` 公尺才會取一個\
