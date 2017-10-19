@@ -22,22 +22,18 @@ gmtset MAP_FRAME_TYPE=plain
 R=$(grdinfo $in_grd_r -I1/1)
 grdimage $in_grd_r $in_grd_g $in_grd_b -R$in_grd_r -JX15c/0 -P -K > $out_ps
 psbasemap -R -J -O -K -B0 >> $out_ps
+# GMT 5.2
+# psbasemap -R -JU40Q/15c -O -K -TdjRT+w2c+f+l\ ,\ ,\ ,N+o1c/1.8c -F+c0.2c/0.2c/0.2c/1c+gwhite@50+r0.5c --FONT=15p >> $out_ps
+# GMT 5.4
 psbasemap -R -JU40Q/15c -O -K -TdjRT+w2c+f+l,,,N+o1c/1.8c -F+c0.2c/0.2c/0.2c/1c+gwhite@50+r0.5c --FONT=15p >> $out_ps
 psbasemap -R -J         -O -K -LjRB+c22+w10k+f+o2c/2c+u -F+gwhite@50  >> $out_ps
 
-pscoast -R43/62/17/29 -JM5c -O -K -Di -Wthinner -Gwhite -Sgray -B0 -N1/thinnest >> $out_ps
 
-cat > extent.txt << EOF
-190000 2410000
-190000 2460000
-250000 2460000
-250000 2410000
-EOF
+pscoast -R-700000/1100000/1920000/3180000 -JU40Q/5c -O -K -Di -Wthinner -Gwhite -Sgray -B0 -N1/thinnest >> $out_ps
 
-psbasemap -R -J -O -K -Du53.99/54.58/21.76/22.22 >> $out_ps
+psbasemap -R -JX5c/0 -O -K -D${R#*-R} -F >> $out_ps
 
-# mapproject extent.txt -Ju40Q/1:1 -C -I -F | psxy -R -J -O -K -L -Wthinner,red >> $out_ps
-echo 47 22 Saudi Arabia | pstext -R -J -O -K -F+f8p+jMC >> $out_ps
+echo -300000 2300000 Saudi Arabia | pstext -R -J -O -K -F+f8p+jMC >> $out_ps
 
 
 psxy -R -J -O -T >> $out_ps
