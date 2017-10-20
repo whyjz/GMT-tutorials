@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>http://gmt-tutorials.org/</loc>
+    <xhtml:link 
+                 rel="alternate"
+                 hreflang="zh-tw"
+                 href="http://gmt-tutorials.org/"
+                 />
+    <xhtml:link 
+                 rel="alternate"
+                 hreflang="en-us"
+                 href="http://gmt-tutorials.org/en/"
+                 />
+  </url>
+  
+  <url>
+    <loc>http://gmt-tutorials.org/en/</loc>
+    <xhtml:link 
+                 rel="alternate"
+                 hreflang="zh-tw"
+                 href="http://gmt-tutorials.org/"
+                 />
+    <xhtml:link 
+                 rel="alternate"
+                 hreflang="en-us"
+                 href="http://gmt-tutorials.org/en/"
+                 />
+  </url>
+ 
+</urlset>
