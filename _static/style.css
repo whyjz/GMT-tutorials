@@ -43,38 +43,38 @@ div.highlight pre {
 }
 
 form.wy-form input {
-    font-family: "cwtexqyuan";
+    font-family: "Varela Round", "cwtexqyuan";
     font-weight: 500;
 }
 
 .wy-side-scroll {
-    font-family: "cwtexqyuan";
+    font-family: "Varela Round", "cwtexqyuan";
     font-weight: 500;
 }
 
 .rst-content {
-    font-family: "sourcehansans-tc";
+    font-family: "Varela Round", "sourcehansans-tc";
     font-weight: 200;
 }
 
 li {
-    font-family: "sourcehansans-tc";
+    font-family: "Varela Round", "sourcehansans-tc";
     font-weight: 200;
     font-size: 1em;
 }
 
 h1 {
-    font-family: "xingothic-tc";
+    font-family: "Varela Round", "xingothic-tc";
     font-weight: 700;
 }
 
 h2 {
-    font-family: "xingothic-tc";
+    font-family: "Varela Round", "xingothic-tc";
     font-weight: 700;
 }
 
 h3 {
-    font-family: "xingothic-tc";
+    font-family: "Varela Round", "xingothic-tc";
     font-weight: 700;
 }
 

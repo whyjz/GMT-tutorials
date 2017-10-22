@@ -4,10 +4,11 @@
 # 2. a disqus javascript before the <div role="contentinfo"> tag
 # 3. a github ribbon image, replacing "View page source" (at the upper-right corner)
 # 4. a favicon before the </head> tag (only in index.html)
-# by Whyjay Zheng, first edition on 2016/1/12, last edited on 2016/7/11 (added favicon)
+# by Whyjay Zheng, first edition on 2016/1/12, last edited on 2017/10/22 (added google fonts for english)
 
 html_files=$(ls _build/html/*.html _build/html/en/*.html)
 
+google_fonts=$(cat _static/google_fonts.txt)
 jf_string=$(cat _static/jf_code.txt)
 disqus_string=$(cat _static/disqus_code.txt)
 github_ribbon=$(cat _static/github_ribbon.txt)
@@ -16,6 +17,16 @@ localemenu=$(cat _static/localemenu.txt)
 
 # refer to the escape characters...
 # http://unix.stackexchange.com/questions/32907/what-characters-do-i-need-to-escape-when-using-sed-in-a-sh-script
+google_fonts=${google_fonts//\\/\\\\}     # changes all "\" to "\\"
+google_fonts=${google_fonts//\[/\\\[}     # changes all "[" to "\["
+google_fonts=${google_fonts//\]/\\\]}     # changes all "]" to "\]"
+google_fonts=${google_fonts//\$/\\\$}     # changes all "$" to "\$"
+google_fonts=${google_fonts//\./\\\.}     # changes all "." to "\."
+google_fonts=${google_fonts//\*/\\\*}     # changes all "*" to "\*"
+google_fonts=${google_fonts//\^/\\\^}     # changes all "^" to "\^"
+google_fonts=${google_fonts//\//\\\/}     # changes all "/" to "\/"
+google_fonts=${google_fonts//\"/\\\"}     # changes all '"' to '\"'
+
 jf_string=${jf_string//\\/\\\\}     # changes all "\" to "\\"
 jf_string=${jf_string//\[/\\\[}     # changes all "[" to "\["
 jf_string=${jf_string//\]/\\\]}     # changes all "]" to "\]"
@@ -70,6 +81,14 @@ localemenu=${localemenu//\"/\\\"}     # changes all '"' to '\"'
 
 for html_f in $html_files
 do
+    # ==== Attaching google fonts code ====
+    if grep -q 'googleapis' $html_f; then
+        echo skip ${html_f##*/} - already attached the google fonts code
+    else
+        echo ----- Attaching google fonts code to ${html_f##*/} ...
+        # insert a new line after theme.css line
+        sed -i "/theme.css/a\ $google_fonts" $html_f
+    fi
     # ==== Attaching jf code ====
     if grep -q '^ <script' $html_f; then
         echo skip ${html_f##*/} - already attached the jf code
