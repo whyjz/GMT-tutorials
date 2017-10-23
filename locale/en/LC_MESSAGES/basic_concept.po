@@ -26,18 +26,24 @@ msgid ""
 "GMT 是建立在擬 UNIX 環境之下的軟體，對於曾經接觸過 shell 或 cmd 的人，\\ "
 "它的操作方法應該不陌生。如果你之前完全沒有用過以上所述的東西也沒有關係，\\ 以下將提供一些必要的基本概念，稍微熟悉後，就可以快速上手。"
 msgstr ""
+"GMT inherits the way of how UNIX system manipulates data. For those who have some experience using "
+"Unix shell or cmd, GMT is easy to get started; however, it is also totally fine if you haven't been using "
+"anything like that. This section will introduce some essential concepts for using GMT, "
+"which makes you get into the swing of it."
+
 
 #: ../../basic_concept.rst:9
 msgid "另外，這裡也會簡單介紹 GMT 相關的一些檔案格式與操作，如果你是第一次接觸\\ 地理空間的資料，也歡迎在此查閱相關的術語。"
-msgstr ""
+msgstr "In addition, we will also introduce file formats that are associated with GMT. "
+"If it's your first time using geospatial data, there should be some terms worth to look up at any time. "
 
 #: ../../basic_concept.rst:13
 msgid "UNIX 環境"
-msgstr ""
+msgstr "UNIX environment"
 
 #: ../../basic_concept.rst:18
 msgid "終端機"
-msgstr ""
+msgstr "Terminal"
 
 #: ../../basic_concept.rst:19
 msgid ""
@@ -48,14 +54,24 @@ msgid ""
 "之後的版本，有兩種「終端機」可以選擇，一個就是 cmd，另一個稱為「PowerShell」，\\ 簡單的說就是讓使用者可以在 Windows "
 "的介面之下使用 UNIX 殼程式 (shell) 的一些語法。\\ 在本教學中，所有要在終端機下輸入的指令，最前方都會有個提示符號"
 msgstr ""
+"Even though all the system platforms adopt a graphic interface (desktop) as the default user interface, "
+"You still can use command-line tools to get control over your computer. The easiest way to do this is to open "
+"a built-in program on the desktop environment. The program is called **cmd** on Windows, or **terminal** on Mac "
+"or most Linux systems. In this tutorial, \"open terminal\" means to control your computer using any command-line tool. "
+"On Windows XP or later versions, there are actually two terminals on a single platform: cmd and \"PowerShell\". "
+"The latter enables the usage of Unix shell's syntax. In this tutorial, we always put a prompt sign at every command "
+"you need to type on the terminal:"
+
 
 #: ../../basic_concept.rst:31
 msgid "接在 ``$`` 之後的文字，才是使用者真正要輸入的指令。有關如何開啟作業系統的指令模式，\\ 請參考相關的專書或網頁，於此不再贅述。"
-msgstr ""
+msgstr "The words after the ``$`` symbol are what users actually type. If you got any questions on "
+"how to open the terminal on your system platform, please check up related textbooks and webpages for "
+"the detailed step-by-step."
 
 #: ../../basic_concept.rst:35
 msgid "殼層 (Shell)"
-msgstr ""
+msgstr "Shell"
 
 #: ../../basic_concept.rst:36
 msgid ""
@@ -67,6 +83,7 @@ msgid ""
 "指令操作的一部分來學習。有關於殼層的基本語法，許多資訊科學的專書或網頁均有詳細介紹，\\ 例如\\ `鳥哥的Linux 私房菜 "
 "<http://linux.vbird.org/>`_。會一點殼層的指令，絕對對操作 GMT 有\\ 莫大的助益。"
 msgstr ""
+
 
 #: ../../basic_concept.rst:47
 msgid "有一個語法倒是非常值得一記，那就是註解符號 ``#``，例如以下指令："
