@@ -214,7 +214,7 @@ msgid ""
 "大地座標系統，就是一批用以描述地球形狀的參數，以及運用這些參數計算出來的地球表面的三維座標。\\ 目前全世界最通用的大地座標系統為 "
 "**WGS84** (又稱之為 **EPSG:4326**)，它也是 GPS 衛星\\ 所採用的大地座標系統。"
 msgstr ""
-"A datum is actually a set of parameters for describing the shape of the Earth and calculaing the coordinates of any "
+"A geodetic datum is actually a set of parameters for describing the shape of the Earth and calculaing the coordinates of any "
 "place on the Earth. The most common geodetic datum now is **WGS84** (aka **EPSG:4326**), "
 "which is also adopted by GPS satellites."
 
@@ -233,6 +233,8 @@ msgid ""
 "簡而言之，大地座標系統就是一整套幫地表設定三維座標 **(經度，緯度，高度)** 的參數集合。GMT 預設的\\ 大地座標系統也是 "
 "WGS84，你也可以使用以下指令查看現在 GMT 的座標系統："
 msgstr ""
+"In a nutshell, we use geodetic datum to set up coordinates **(Latitude, Longitude, Height)** at any location on the Earth. "
+"The default datum of GMT is WGS84, and you can also check the current datum by this command"
 
 #: ../../basic_concept.rst:144
 #, python-format
@@ -241,14 +243,18 @@ msgid ""
 "<https://zh.wikipedia.org/wiki/%E5%A4%A7%E5%9C%B0%E6%B0%B4%E5%87%86%E9%9D%A2>`_\\"
 " 的差距。目前 WGS84 使用 **EGM96** 這個地球的重力模型來設定地球的大地水準面。"
 msgstr ""
+"WGS84 uses the difference between the surface and the `geoid <https://en.wikipedia.org/wiki/Geoid>`_ "
+"as the altitude of the surface. Currently WGS84 adopts **EGM96**, a gravitational model, as the "
+"standard of geoid."
 
 #: ../../basic_concept.rst:150
 msgid "大地座標系統基本上是不會定義垂直高度的參考基準的，它必須要由使用者自己決定。目前常用的基準有兩個："
-msgstr ""
+msgstr "It's not necessary for a geodetic datum to define the basis of vertical elevation, and it means "
+"users have to determine how to measure the altitude of topography. There are 2 commonly used standards:"
 
 #: ../../basic_concept.rst:152
 msgid "直接用參考橢球的表面當基準測量高度，稱之為\\ **橢球高**。"
-msgstr ""
+msgstr "Measure the vertical difference between topography and the reference ellipsoid. This is called **Ellipsoidal Height**."
 
 #: ../../basic_concept.rst:153
 #, python-format
@@ -257,12 +263,18 @@ msgid ""
 "<https://zh.wikipedia.org/wiki/%E5%A4%A7%E5%9C%B0%E6%B0%B4%E5%87%86%E9%9D%A2>`_\\)"
 " 當基準測量高度，稱之為\\ **正高**。目前常用的標準為 **EGM96** 這個地球的重力模型。"
 msgstr ""
+"Measure the vertical difference between topography and sea surface (`geoid <https://en.wikipedia.org/wiki/Geoid>`_). "
+"This is called **Orthometric Height** or **Geoid Height**. **EGM96** is the most commonly used gravitational model "
+"for deriving geoid location."
 
 #: ../../basic_concept.rst:157
 msgid ""
 "慣例上，以 WGS84 做基準的資料都會採用\\ **正高**\\ 來表示高度，但並非所有的資料都會遵循這條規則。\\ "
 "如果你對高度有精細的要求，例如誤差須在數十公尺內，最好確認一下你的資料是使用哪種高度參考基準。"
 msgstr ""
+"Data based on WGS84 usually use **Orthometric Height** for representing elevation, but not all data follow "
+"this convention. If it is required to have a small uncertainty on elevation, like within 10 meters, it would "
+"be better to check which way the height was measured."
 
 #: ../../basic_concept.rst:161
 msgid "投影法與投影座標系統 (Projected Coordinate System)"
@@ -275,6 +287,12 @@ msgid ""
 "弧面依照某種幾何公式拓展成平面，這樣地圖上一個點的座標，就可以用 **(二維 X 座標，二維 Y 座標，高度)** "
 "來表示。這種座標表示法，就稱作投影座標系統。"
 msgstr ""
+"Unlike the curved surface of the Earth, most of maps are flat. Moreover, it would be awkward to use "
+"Lat/Long for a local map because 1 degree is usually around 110 km; which is way larger than the size of "
+"many cities and towns. Therefore, in many cases we would stretch and flatten "
+"the Earth's surface using a specific projection (which is actually a set of geometric formulae). "
+"Any location on a map can thus be written as a 3-D coordinates **(X, Y, Height)**. This way to "
+"represent geographical locations is called Projected Coordinate System."
 
 #: ../../basic_concept.rst:167
 msgid ""
@@ -284,6 +302,11 @@ msgid ""
 "<https://en.wikipedia.org/wiki/Transverse_Mercator_projection>`_\\ 來製作\\ "
 "地圖的二維座標。"
 msgstr ""
+"We need both the shape of Earth (aka reference ellipsoid in the geodetic datum) and a projection to "
+"make a projection coordinate system. The most popular projection coordinate system is **UTM**, or "
+"Universal Transverse Mercator, which uses WGS84 ellipsoid. It cuts the Earth into 60 zones (except the polar region), "
+"and apply the `Transverse Mercator projection <https://en.wikipedia.org/wiki/Transverse_Mercator_projection>`_ "
+"to each zone with different coordinate origin."
 
 #: ../../basic_concept.rst:173
 msgid ""
@@ -291,6 +314,10 @@ msgid ""
 "<http://hep.ccic.ntnu.edu.tw/browse2.php?s=237>`_\\ 或\\ `上河文化的解說網頁 "
 "<http://www.sunriver.com.tw/grid_tm2.htm>`_。"
 msgstr ""
+"For more introductions on projections and projected coordinate systems, "
+"`ArcGIS online webpages <http://desktop.arcgis.com/en/arcmap/10.3/guide-books/map-projections/about-projected-coordinate-systems.htm>`_ "
+"provide good explanations over these topics."
+
 
 #: ../../basic_concept.rst:179
 msgid ""
@@ -299,10 +326,16 @@ msgid ""
 "的差距較大，導致算出來的座標會與 WGS84 有數百公尺至一公里的差距；而 TWD97 就非常的接近 "
 "WGS84，在台灣地區的座標差距大致上只有數十公分。\\ [#]_"
 msgstr ""
+"In addition to WGS84, there are other 2 widely-used sets of geodetic datum called **TWD67** and **TWD97**. "
+"The corresponding projected coordinate systems are TWD67-TM2 and TWD97-TM2 respectively. "
+"Both 2 sets adopt a different reference ellipsoid from WGS84. but TWD87 has a greater offset which often results "
+"in a distance of 0.1-1 km from WGS84 Lat/Long. TWD97, on the other hand, is fairly close to WGS84 with only a "
+"distance of several tens of centimeters."
+
 
 #: ../../basic_concept.rst:185
 msgid "GMT 4 與 GMT 5 語法上的差別"
-msgstr ""
+msgstr "The difference between GMT4 and GMT5 in terms of syntax"
 
 #: ../../basic_concept.rst:186
 msgid ""
@@ -310,10 +343,14 @@ msgid ""
 "這個版本最主要的更動，是把所有的 GMT 指令濃縮到了一個指令：\\ ``gmt``\\ 。\\ 以常用的指令 ``pscoast`` 與 "
 "``gmtset`` 為例，GMT 4 的語法是"
 msgstr ""
+"GMT 5 is released in 2013 and is the latest major version of GMT [#]_ . It is also the version "
+"this tutorial is based. The major change of GMT 5 from GMT 4 is to \"concentrate\" all the commands into "
+"a single command ``gmt``. Let's take 2 basic commands ``pscoast`` and ``gmtset`` as examples: on GMT 4, "
+"the syntax is "
 
 #: ../../basic_concept.rst:195
 msgid "GMT 5 的語法則是"
-msgstr ""
+msgstr "on GMT 5, the syntax has changed:"
 
 #: ../../basic_concept.rst:203
 msgid ""
@@ -322,6 +359,12 @@ msgid ""
 "程式都可以順利的讀取。在本教學手冊中，為了程式碼的簡潔，將\\ **一律採用 GMT 4 的語法表示模式**\\ ，而你則可以\\ "
 "自由選擇自己喜歡的語法格式撰寫你的 GMT 腳本。"
 msgstr ""
+"According to the development team, the change is to aviod the name conflict between GMT commands and "
+"commands from other software. However, to make GMT 5 compatible with old scripts, you can opt to "
+"install the \"soft links\" of all commands, which means GMT 5 can actually run any scripts, "
+"no matter the syntax they are based on. In this tutorial, we will use the **style of GMT 4**, i.e. "
+"without `gmt` in front of any commands, for greater code clearity. However, please feel free to choose "
+"the syntax you like to write your own GMT scripts."
 
 #: ../../basic_concept.rst:209
 msgid "`Taiwan datums <https://wiki.osgeo.org/wiki/Taiwan_datums>`_, OSGeo Wiki."
