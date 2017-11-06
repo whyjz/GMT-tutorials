@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-12 15:09-0400\n"
+"POT-Creation-Date: 2017-11-06 15:45-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.2.0\n"
+"Generated-By: Babel 2.3.3\n"
 
 #: ../../coloring_topography.rst:3
 msgid "為地形圖上色"
@@ -108,6 +108,24 @@ msgid ""
 "指令來達成。執行畫面會像如下所示："
 msgstr ""
 
+#: ../../coloring_topography.rst:63
+msgid ""
+"$ grdinfo ETOPO1_Bed_g_gmt4.grd\n"
+"ETOPO1_Bed_g_gmt4.grd: Title: ETOPO1_Bed_g_gmt4.grd\n"
+"ETOPO1_Bed_g_gmt4.grd: Command:\n"
+"ETOPO1_Bed_g_gmt4.grd: Remark:\n"
+"ETOPO1_Bed_g_gmt4.grd: Gridline node registration used [Geographic grid]\n"
+"ETOPO1_Bed_g_gmt4.grd: Grid file format: ni = GMT netCDF format (32-bit "
+"integer), COARDS, CF-1.5\n"
+"ETOPO1_Bed_g_gmt4.grd: x_min: -180 x_max: 180 x_inc: 0.0166666666667 "
+"name: Longitude [degrees_east] nx: 21601\n"
+"ETOPO1_Bed_g_gmt4.grd: y_min: -90 y_max: 90 y_inc: 0.0166666666667 name: "
+"Latitude [degrees_north] ny: 10801\n"
+"ETOPO1_Bed_g_gmt4.grd: z_min: -10898 z_max: 8271 name: z\n"
+"ETOPO1_Bed_g_gmt4.grd: scale_factor: 1 add_offset: 0\n"
+"ETOPO1_Bed_g_gmt4.grd: format: classic"
+msgstr ""
+
 #: ../../coloring_topography.rst:77
 msgid "從輸出文字中你可以看到一些基本資訊，像是"
 msgstr ""
@@ -156,6 +174,12 @@ msgid ""
 ":ref:`終端機`\\ 模式下前往 ``ETOPO1_Bed_g_gmt4.grd`` 所在的資料夾， 然後輸入以下指令："
 msgstr ""
 
+#: ../../coloring_topography.rst:103
+msgid ""
+"$ grdimage ETOPO1_Bed_g_gmt4.grd -R-70.8/-17.17/-66.56/-14.42r \\\n"
+"           -JM6i -P > titicaca.ps"
+msgstr ""
+
 #: ../../coloring_topography.rst:108
 msgid ""
 "這邊順便加了 ``-P``，方便輸出圖檔的觀看。如需以上指令的語法說明，請至\\ 「\\ :doc:`making_first_map`\\ "
@@ -202,6 +226,12 @@ msgid ""
 "就行了。所以我們更新版的指令為："
 msgstr ""
 
+#: ../../coloring_topography.rst:143
+msgid ""
+"$ grdimage ETOPO1_Bed_g_gmt4.grd -R-70.8/-17.17/-66.56/-14.42r \\\n"
+"           -JM6i -P -Cmby.cpt > titicaca.ps"
+msgstr ""
+
 #: ../../coloring_topography.rst:148
 msgid "這次地圖會變成這樣"
 msgstr ""
@@ -231,6 +261,14 @@ msgid ""
 "指令給電腦。請建立新文字檔，檔名可以為 ``titicaca.bash`` 或任何你喜歡、\\ 且符合作業系統格式慣例的名字。請在檔案中輸入："
 msgstr ""
 
+#: ../../coloring_topography.rst:169
+msgid ""
+"grdimage ETOPO1_Bed_g_gmt4.grd -R-70.8/-17.17/-66.56/-14.42r \\\n"
+"         -JM6i -P -Cmby.cpt > titicaca.ps\n"
+"pscoast  -R-70.8/-17.17/-66.56/-14.42r -JM6i -P -Scornflowerblue \\\n"
+"         -Df -Baf -B+t\"Lago Titicaca\" > titicaca.ps"
+msgstr ""
+
 #: ../../coloring_topography.rst:178
 msgid ""
 "關於 ``pscoast`` 的指令解說，請至「\\ :doc:`making_first_map`\\ 」查看。\\ "
@@ -258,6 +296,14 @@ msgid ""
 "``grdimage`` 的輸出地圖上方。\\ 所以我們來把第二個 ``>`` 改成 ``>>`` 看看："
 msgstr ""
 
+#: ../../coloring_topography.rst:200
+msgid ""
+"grdimage ETOPO1_Bed_g_gmt4.grd -R-70.8/-17.17/-66.56/-14.42r \\\n"
+"         -JM6i -P -Cmby.cpt > titicaca.ps\n"
+"pscoast  -R-70.8/-17.17/-66.56/-14.42r -JM6i -P -Scornflowerblue \\\n"
+"         -Df -Baf -B+t\"Lago Titicaca\" >> titicaca.ps"
+msgstr ""
+
 #: ../../coloring_topography.rst:207
 msgid "這次的腳本也能成功執行，但輸出結果會變這樣："
 msgstr ""
@@ -270,6 +316,14 @@ msgid ""
 " 時，就不會再往下讀了。這就是為什麼 ``pscoast`` 看起來有成功執行，卻沒有顯示在輸出地圖\\ 上的原因。GMT 中有一個固定的選項 "
 "``-K``，是專門處理這種情況的，它可以把指令輸出的 EOF 字符移除。在我們的例子中，``-K`` 必須要加在 ``grdimage`` "
 "內，這樣子檔案就不會在中段出現 EOF 字符，像這樣："
+msgstr ""
+
+#: ../../coloring_topography.rst:220
+msgid ""
+"grdimage ETOPO1_Bed_g_gmt4.grd -R-70.8/-17.17/-66.56/-14.42r \\\n"
+"         -JM6i -P -Cmby.cpt -K > titicaca.ps\n"
+"pscoast  -R-70.8/-17.17/-66.56/-14.42r -JM6i -P -Scornflowerblue \\\n"
+"         -Df -Baf -B+t\"Lago Titicaca\" >> titicaca.ps"
 msgstr ""
 
 #: ../../coloring_topography.rst:227
@@ -285,6 +339,14 @@ msgid ""
 "。如果一個檔案中\\ 有兩個檔頭，看圖軟體就會以不正確的方式讀取 ``.ps`` 檔案。因此，GMT 中還有一個固定的\\ 選項 "
 "``-O``，加上了這個選項，指令就不會輸出檔頭。在我們的例子中，``-O`` 必須要加在 ``pscoast`` "
 "內，這樣才不會在檔案的中段突然出現奇怪的檔頭，像這樣："
+msgstr ""
+
+#: ../../coloring_topography.rst:240
+msgid ""
+"grdimage ETOPO1_Bed_g_gmt4.grd -R-70.8/-17.17/-66.56/-14.42r \\\n"
+"         -JM6i -P -Cmby.cpt -K > titicaca.ps\n"
+"pscoast  -R-70.8/-17.17/-66.56/-14.42r -JM6i -P -Scornflowerblue \\\n"
+"         -Df -Baf -B+t\"Lago Titicaca\" -O >> titicaca.ps"
 msgstr ""
 
 #: ../../coloring_topography.rst:247
@@ -314,6 +376,14 @@ msgid ""
 "繼續使用直幅的紙張格式來疊圖。因此，簡化後但具有相同功能的腳本就如下所示："
 msgstr ""
 
+#: ../../coloring_topography.rst:275
+msgid ""
+"grdimage ETOPO1_Bed_g_gmt4.grd -R-70.8/-17.17/-66.56/-14.42r \\\n"
+"         -JM6i -P -Cmby.cpt -K > titicaca.ps\n"
+"pscoast  -R -J -O -Scornflowerblue \\\n"
+"         -Df -Baf -B+t\"Lago Titicaca\" >> titicaca.ps"
+msgstr ""
+
 #: ../../coloring_topography.rst:282
 msgid "我順便把 -O 調換了一下位置，因為它是很常出現的選項，所以個人習慣把它放前面以供辨別。"
 msgstr ""
@@ -331,6 +401,10 @@ msgstr ""
 msgid "接下來，我們還可以利用 ``pscoast`` 的其餘功能來美化這張地圖。首先是 ``-I``，它可以\\ 幫我們標上河流，語法為"
 msgstr ""
 
+#: ../../coloring_topography.rst:298
+msgid "-I編號/畫筆"
+msgstr ""
+
 #: ../../coloring_topography.rst:302
 msgid ""
 "其中的\\ ``編號``\\ 可以為不同的英數字，對應到不同等級的河流；而\\ :ref:`畫筆 <畫筆>`\\ "
@@ -340,6 +414,10 @@ msgstr ""
 
 #: ../../coloring_topography.rst:306
 msgid "另外一個 ``pscoast`` 的選項是 ``-N``，它可以在地圖上標上政治性的邊界。語法同樣為"
+msgstr ""
+
+#: ../../coloring_topography.rst:308
+msgid "-N編號/畫筆"
 msgstr ""
 
 #: ../../coloring_topography.rst:312
@@ -363,6 +441,14 @@ msgstr ""
 
 #: ../../coloring_topography.rst:326
 msgid "本地圖的最終指令稿如下："
+msgstr ""
+
+#: ../../coloring_topography.rst:328
+msgid ""
+"grdimage ETOPO1_Bed_g_gmt4.grd -R-70.8/-17.17/-66.56/-14.42r \\\n"
+"         -JM6i -P -Cmby.cpt -K > titicaca.ps\n"
+"pscoast  -R -J -O -Ir/0.7p,cornflowerblue -N1/0.7p,,-- \\\n"
+"         -Scornflowerblue -Df -Baf -B+t\"Lago Titicaca\" >> titicaca.ps"
 msgstr ""
 
 #: ../../coloring_topography.rst:337

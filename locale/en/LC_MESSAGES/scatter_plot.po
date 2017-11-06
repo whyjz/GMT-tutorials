@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-30 18:14-0400\n"
+"POT-Creation-Date: 2017-11-06 15:45-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.2.0\n"
+"Generated-By: Babel 2.3.3\n"
 
 #: ../../scatter_plot.rst:3
 msgid "XY 點散佈圖"
@@ -135,12 +135,27 @@ msgid ""
 "例如在大部分的 Linux shell 下，可以使用"
 msgstr ""
 
+#: ../../scatter_plot.rst:58
+msgid "$ cut -d ',' -f 8,17 你的檔案.csv > 新檔案.csv"
+msgstr ""
+
 #: ../../scatter_plot.rst:62
 msgid "其中第 8 欄和第 17 欄分別就是「氣溫」與「風速」的資料。"
 msgstr ""
 
 #: ../../scatter_plot.rst:64
 msgid "處理完的 ``.csv`` 檔可以直接使用文字編輯器打開，以竹子湖的資料為例，前幾欄應該會是這樣"
+msgstr ""
+
+#: ../../scatter_plot.rst:66
+msgid ""
+"14.6,3.6\n"
+"15.7,0.2\n"
+"16,0.3\n"
+"17.7,0.3\n"
+"17.8,0.7\n"
+"# ....以下略....\n"
+"# 第 1 欄：氣溫 (攝氏)；第 2 欄：風速 (秒/公尺)"
 msgstr ""
 
 #: ../../scatter_plot.rst:76
@@ -180,11 +195,19 @@ msgid ""
 "值，第二欄則會被解讀成 Y 值，因此，所有的資料都會落在 ``-1/20/0/8`` 這個區間內。馬上來畫畫看我們的資料："
 msgstr ""
 
+#: ../../scatter_plot.rst:99
+msgid "$ psxy zzh.txt -R-1/20/0/8 -JX15c -P -Bafg > zzh.ps"
+msgstr ""
+
 #: ../../scatter_plot.rst:105
 msgid ""
 "雖然資料是畫上去了，不過這並不是我們想要的樣子...這是因為 ``psxy`` 的預設繪圖模式為\\ **折線圖**\\ ，\\ "
 "會把所有的點以線連接起來，如果我們只想要 ``psxy`` 畫點，必須要加上 ``-S`` 選項。此選項除了使 ``psxy`` 轉換\\ 成\\"
 " **散佈圖**\\ 模式外，還可以使用以下語法設定資料點的樣式："
+msgstr ""
+
+#: ../../scatter_plot.rst:109
+msgid "-S代號[尺寸]"
 msgstr ""
 
 #: ../../scatter_plot.rst:113
@@ -203,6 +226,14 @@ msgid ""
 "後分開指定，\\ 如 ``-JX15c/10c`` 會把 X 軸設成 15cm，Y 軸設成 10cm。讓我們使用以上新增的選項，重畫一次看看："
 msgstr ""
 
+#: ../../scatter_plot.rst:123
+msgid ""
+"$ psxy zzh.txt -R-1/20/0/8 -JX15c/10c -Sc0.35d \\\n"
+"               -G#58C73A -W0.03c,black -P -Baf > zzh.ps\n"
+"# -G: 標記填色\n"
+"# -W: 標記外框畫筆"
+msgstr ""
+
 #: ../../scatter_plot.rst:132
 msgid "選擇了適當的標記樣式與填色，與粗一點的標記框線，看起來就會美觀許多。"
 msgstr ""
@@ -217,12 +248,23 @@ msgstr ""
 msgid "使用管線命令，把前一個指令的輸出傳給 ``psxy``。例如在各種作業系統終端機都有的 ``echo`` 指令："
 msgstr ""
 
+#: ../../scatter_plot.rst:139
+msgid "$ echo \"10.2 3.2\" | psxy -選項們 > out.ps"
+msgstr ""
+
 #: ../../scatter_plot.rst:143
 msgid "如此一來，(10.2, 3.2) 就會被當成座標點畫在圖上。"
 msgstr ""
 
 #: ../../scatter_plot.rst:145
 msgid "使用標準輸入重導向搭配結束的輸入字元 (``<<`` 符號)："
+msgstr ""
+
+#: ../../scatter_plot.rst:147
+msgid ""
+"$ psxy -選項們 > out.ps << END\n"
+"...任意的多行資料...\n"
+"END"
 msgstr ""
 
 #: ../../scatter_plot.rst:153
@@ -235,6 +277,24 @@ msgstr ""
 msgid ""
 "為了完成本章目標，我們需要在 *x = 0* 之處畫一條灰色的垂直虛線，以表明有一個點溫度低於零度。運用 ``psxy`` "
 "預設的繪線模式與上述的第二種作法，就可以簡單的畫出。在以下的腳本中，我們順便把第二組數據也\\ 畫上去了，使用標記是藍色的菱形："
+msgstr ""
+
+#: ../../scatter_plot.rst:160
+msgid ""
+"# ==== 設定變數 ====\n"
+"zzh='zzh.txt'\n"
+"suao='suao.txt'\n"
+"zzh_style='-Sc0.35c -G#58C73A -W0.03c,black'\n"
+"suao_style='-Sd0.35c -G#3A6BC7 -W0.03c,black'\n"
+"out_ps='windspeed_vs_temperature.ps'\n"
+"# ==== 繪點 ====\n"
+"psxy $zzh  -R-1/23/0/7 -JX15c/10c -P -K $zzh_style -Baf > $out_ps\n"
+"psxy $suao -R -J -O -K $suao_style >> $out_ps\n"
+"# ==== 灰色垂直虛線 ====\n"
+"psxy       -R -J -O -W0.03c,100,-- >> $out_ps << LINEEND\n"
+"0 0\n"
+"0 7\n"
+"LINEEND"
 msgstr ""
 
 #: ../../scatter_plot.rst:177
@@ -261,8 +321,21 @@ msgid ""
 " 或是當你想要調整許多有關的預設選項時，使用 ``psbasemap`` 可以讓你的腳本看起來更清晰易懂。\\ 讓我們再次回到這兩行指令"
 msgstr ""
 
+#: ../../scatter_plot.rst:197
+msgid ""
+"psxy $zzh  -R-1/23/0/7 -JX15c/10c -P -K $zzh_style -Baf > $out_ps\n"
+"psxy $suao -R -J -O -K $suao_style >> $out_ps"
+msgstr ""
+
 #: ../../scatter_plot.rst:202
 msgid "我們可以把地圖的通用選項移到 ``psbasmap`` 中，因此以上指令也可以寫成這樣"
+msgstr ""
+
+#: ../../scatter_plot.rst:204
+msgid ""
+"psbasemap -R-1/23/0/7 -JX15c/10c -P -K -Baf > $out_ps\n"
+"psxy $zzh  -R -J -O -K $zzh_style  >> $out_ps\n"
+"psxy $suao -R -J -O -K $suao_style >> $out_ps"
 msgstr ""
 
 #: ../../scatter_plot.rst:210
@@ -280,11 +353,28 @@ msgid ""
 "結尾，讓我們再看看這個指令："
 msgstr ""
 
+#: ../../scatter_plot.rst:219
+msgid ""
+"psxy       -R -J -O -W0.03c,100,-- >> $out_ps << LINEEND\n"
+"0 0\n"
+"0 7\n"
+"LINEEND"
+msgstr ""
+
 #: ../../scatter_plot.rst:226
 msgid ""
 "如果你還想在這個指令後方加入新的繪圖指令，這個指令就必須新增 ``-K`` 選項以取消結尾符 (EOF) 的寫入。\\ "
 "在腳本很長然後又時常更動時，檢查 ``-O -K`` 有沒有加對位置會耗上許多時間。幸好，``psxy`` 指令\\ 提供了一個方便的選項 "
 "``-T``，專門用來設定腳本結尾："
+msgstr ""
+
+#: ../../scatter_plot.rst:230
+msgid ""
+"psxy       -R -J -O -K -W0.03c,100,-- >> $out_ps << LINEEND\n"
+"0 0\n"
+"0 7\n"
+"LINEEND\n"
+"psxy -R -J -O -T >> $out_ps"
 msgstr ""
 
 #: ../../scatter_plot.rst:238
@@ -300,6 +390,33 @@ msgid ""
 ":doc:`making_first_map`\\ 」中，我們有提到標題可以使用 ``-B+t`` 添加，而在「\\ "
 ":doc:`editing_cpt_colorbar`\\ 」\\ 中，我們也提到了要使用 ``-B[x或y]+l`` "
 "添加座標軸的標籤。因此，我們就來添加一些文字說明吧："
+msgstr ""
+
+#: ../../scatter_plot.rst:246
+msgid ""
+"# ==== 設定變數 ====\n"
+"zzh='zzh.txt'\n"
+"suao='suao.txt'\n"
+"zzh_style='-Sc0.35c -G#58C73A -W0.03c,black'\n"
+"suao_style='-Sd0.35c -G#3A6BC7 -W0.03c,black'\n"
+"out_ps='windspeed_vs_temperature.ps'\n"
+"# ==== 版面與作圖區設定 ====\n"
+"# -Baf 現在拆成了 -Bxaf 與 -Bya2f，\n"
+"# 你可以分開給定 x 軸與 y 軸的 a、f、g 選項！\n"
+"psbasemap -R-1/23/0/7 -JX15c/10c -P -K \\\n"
+"          -B+t\"January 2016\" \\\n"
+"          -Bxaf+l\"Temperature (degree C)\" \\\n"
+"          -Bya2f+l\"Wind Speed (m s-1)\" > $out_ps\n"
+"# ==== 繪點 ====\n"
+"psxy $zzh  -R -J -O -K $zzh_style  >> $out_ps\n"
+"psxy $suao -R -J -O -K $suao_style >> $out_ps\n"
+"# ==== 灰色垂直虛線 ====\n"
+"psxy       -R -J -O -K -W0.03c,100,-- >> $out_ps << LINEEND\n"
+"0 0\n"
+"0 7\n"
+"LINEEND\n"
+"# ==== 關門 (寫入 EOF) ====\n"
+"psxy -R -J -O -T >> $out_ps"
 msgstr ""
 
 #: ../../scatter_plot.rst:272
@@ -345,6 +462,19 @@ msgstr ""
 msgid "把以上更動整理到腳本中，「版面與作圖區設定」的部份就會變成這樣："
 msgstr ""
 
+#: ../../scatter_plot.rst:304
+msgid ""
+"# ==== 版面與作圖區設定 ====\n"
+"# 注意第一個 psbasemap 只畫 -BWS！\n"
+"# 第二個 psbasemap 則是 -Bne，只標座標軸，不顯示數值與標籤\n"
+"psbasemap -R-1/23/0/7 -JX15c/10c -P -K \\\n"
+"          -BWS+t\"January 2016\" \\\n"
+"          -Bxaf+l\"Temperature (\\260C)\" \\\n"
+"          -Bya2f+l\"Wind Speed (m s@+-1@+)\" \\\n"
+"          --PS_CHAR_ENCODING=ISOLatin1+ > $out_ps\n"
+"psbasemap  -R -J -O -K -Bne -Bxaf -Bya2f >> $out_ps"
+msgstr ""
+
 #: ../../scatter_plot.rst:316
 msgid "修改後的座標軸看起來就清爽多了！"
 msgstr ""
@@ -359,10 +489,27 @@ msgid ""
 "``#E6F4F2`` 的矩形。你可以把此片段插在「灰色垂直線」後，「關門指令」之前："
 msgstr ""
 
+#: ../../scatter_plot.rst:327
+msgid ""
+"# ==== 圖例框與圖例內容 ====\n"
+"psxy       -R -J -O -K -W0.05c,black -G#E6F4F2 >> $out_ps << BOXEND\n"
+"16 5\n"
+"22 5\n"
+"22 6.5\n"
+"16 6.5\n"
+"BOXEND"
+msgstr ""
+
 #: ../../scatter_plot.rst:337
 msgid ""
 "接下來，圖例框中需要放入之前使用過的符號與相對應的文字說明。符號同樣可以透過 ``psxy`` 繪製，\\ 這次我們使用 ``echo`` "
 "指令與管線命令，來把前面用的符號畫到圖例框中。當然，你必須要自己決定\\ 符號出現的座標，如下所示："
+msgstr ""
+
+#: ../../scatter_plot.rst:341
+msgid ""
+"echo \"17 6.05\" | psxy -R -J -O -K $zzh_style  >> $out_ps\n"
+"echo \"17 5.45\" | psxy -R -J -O -K $suao_style >> $out_ps"
 msgstr ""
 
 #: ../../scatter_plot.rst:346
@@ -370,6 +517,10 @@ msgid ""
 "畫完符號後，只要再標上文字說明，本章目標就大功告成。GMT 具有 ``pstext`` 指令，可以在指定的座標\\ "
 "擺上給定的文字。``pstext`` 的用法與 ``psxy`` 極為相似，只不過至少要有三欄輸入資料，\\ **前兩欄為 xy "
 "座標，第三欄為欲顯示的文字**。另外，``pstext`` 還具有專有的文字格式調整選項 ``-F``。``-F`` 下比較重要的選項為"
+msgstr ""
+
+#: ../../scatter_plot.rst:351
+msgid "-F+f[字體大小,字體名稱,顏色]+j[對齊選項]    # 實際上不只這些，但其餘暫略"
 msgstr ""
 
 #: ../../scatter_plot.rst:355
@@ -394,8 +545,22 @@ msgid ""
 "文字出現的地方，圖例到此就設計完成！"
 msgstr ""
 
+#: ../../scatter_plot.rst:366
+msgid ""
+"echo \"18 6.05 Zhuzihu\" | pstext -R -J -O -K -F+f14p+jML >> $out_ps\n"
+"echo \"18 5.45 Su'ao\"   | pstext -R -J -O -K -F+f14p+jML >> $out_ps"
+msgstr ""
+
 #: ../../scatter_plot.rst:373
 msgid "``pstext`` 也可以讓使用者一次輸入多個字串，所以其實這兩行 ``pstext`` 指令也可以寫成"
+msgstr ""
+
+#: ../../scatter_plot.rst:375
+msgid ""
+"pstext -R -J -O -K -F+f14p+jML >> $out_ps << TEXTEND\n"
+"18 6.05 Zhuzihu\n"
+"18 5.45 Su'ao\n"
+"TEXTEND"
 msgstr ""
 
 #: ../../scatter_plot.rst:382
@@ -410,6 +575,49 @@ msgstr ""
 
 #: ../../scatter_plot.rst:388
 msgid "本地圖的最終指令稿如下："
+msgstr ""
+
+#: ../../scatter_plot.rst:390
+msgid ""
+"# ==== 設定變數 ====\n"
+"zzh='zzh.txt'\n"
+"suao='suao.txt'\n"
+"out_ps='windspeed_vs_temperature.ps'\n"
+"zzh_style='-Sc0.35c -G#58C73A -W0.03c,black'\n"
+"suao_style='-Sd0.35c -G#3A6BC7 -W0.03c,black'\n"
+"\n"
+"# ==== 版面與作圖區設定 ====\n"
+"psbasemap -R-1/23/0/7 -JX15c/10c -P -K \\\n"
+"          -BWS+t\"January 2016\" \\\n"
+"          -Bxaf+l\"Temperature (\\260C)\" \\\n"
+"          -Bya2f+l\"Wind Speed (m s@+-1@+)\" \\\n"
+"          --PS_CHAR_ENCODING=ISOLatin1+ > $out_ps\n"
+"psbasemap  -R -J -O -K -Bne -Bxaf -Bya2f >> $out_ps\n"
+"\n"
+"# ==== 點散佈圖 ====\n"
+"psxy $zzh  -R -J -O -K $zzh_style  >> $out_ps\n"
+"psxy $suao -R -J -O -K $suao_style >> $out_ps\n"
+"\n"
+"# ==== 灰色垂直線 ====\n"
+"psxy       -R -J -O -K -W0.03c,100,-- >> $out_ps << LINEEND\n"
+"0 0\n"
+"0 7\n"
+"LINEEND\n"
+"\n"
+"# ==== 圖例框與圖例內容 ====\n"
+"psxy       -R -J -O -K -W0.05c,black -G#E6F4F2 >> $out_ps << BOXEND\n"
+"16 5\n"
+"22 5\n"
+"22 6.5\n"
+"16 6.5\n"
+"BOXEND\n"
+"echo \"17 6.05\" | psxy -R -J -O -K $zzh_style  >> $out_ps\n"
+"echo \"17 5.45\" | psxy -R -J -O -K $suao_style >> $out_ps\n"
+"echo \"18 6.05 Zhuzihu\" | pstext -R -J -O -K -F+f14p+jML >> $out_ps\n"
+"echo \"18 5.45 Su'ao\"   | pstext -R -J -O -K -F+f14p+jML >> $out_ps\n"
+"\n"
+"# ==== 關門 (寫入 EOF) ====\n"
+"psxy -R -J -O -T >> $out_ps"
 msgstr ""
 
 #: ../../scatter_plot.rst:435

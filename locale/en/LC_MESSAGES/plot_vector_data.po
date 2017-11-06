@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-11 16:01-0400\n"
+"POT-Creation-Date: 2017-11-06 15:45-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.2.0\n"
+"Generated-By: Babel 2.3.3\n"
 
 #: ../../plot_vector_data.rst:3
 msgid "繪製向量式資料"
@@ -78,8 +78,26 @@ msgid ""
 "``psxy`` 來讀取他們，像是如下的示意語法："
 msgstr ""
 
+#: ../../plot_vector_data.rst:38
+msgid "$ psxy 輸入檔名稱 [選項...] > 輸出的 ps 檔"
+msgstr ""
+
 #: ../../plot_vector_data.rst:42
 msgid "線段顧名思義，就是很多個頂點連起來的線條。GMT 可接受的線段檔案格式，如下所示："
+msgstr ""
+
+#: ../../plot_vector_data.rst:44
+msgid ""
+"> [線段 1 的設定]\n"
+"線段 1 的頂點 1\n"
+"線段 1 的頂點 2\n"
+"...\n"
+"> [線段 2 的設定]\n"
+"線段 2 的頂點 1\n"
+"線段 2 的頂點 2\n"
+"...\n"
+"> [線段 3 的設定]\n"
+"..."
 msgstr ""
 
 #: ../../plot_vector_data.rst:57
@@ -102,6 +120,28 @@ msgid ""
 "header-parsing>`_\\ 。\\ 我們就來研究一下，如果要畫出七巧板的背景網格，需要怎麼樣的線段檔案："
 msgstr ""
 
+#: ../../plot_vector_data.rst:66
+msgid ""
+"> -W3p,black,.\n"
+"1 0\n"
+"1 4\n"
+">\n"
+"2 0\n"
+"2 4\n"
+">\n"
+"3 0\n"
+"3 4\n"
+">\n"
+"0 1\n"
+"4 1\n"
+">\n"
+"0 2\n"
+"4 2\n"
+">\n"
+"0 3\n"
+"4 3"
+msgstr ""
+
 #: ../../plot_vector_data.rst:87
 msgid ""
 "在此檔案中，總共有 6 條線段，前三條是直線，後三條是橫線。以第 1 條為例，它是從座標 (1, 0) 到 (1, 4) 的線段。\\ "
@@ -110,10 +150,25 @@ msgid ""
 "，因此後五條線畫出來的外觀會與第一條相同。把檔案存為 ``lines.txt``，\\ 然後使用如下指令，就可以畫出背景網格。"
 msgstr ""
 
+#: ../../plot_vector_data.rst:92 ../../plot_vector_data.rst:228
+msgid "$ psxy lines.txt -R0/4/0/4 -JX15c -P > lines.ps"
+msgstr ""
+
 #: ../../plot_vector_data.rst:98
 msgid ""
 "看起來還不錯！接下來讓我們看一下要怎麼畫多邊形。其實多邊形資料與線段大同小異，就是把所有的頂點座標紀錄在檔案內而已；\\ "
 "不過，多邊形的頂點數目最少要有 3 個。GMT 可接受的多邊形檔案格式，如下所示："
+msgstr ""
+
+#: ../../plot_vector_data.rst:101
+msgid ""
+"> [多邊形 1 的設定]\n"
+"多邊形 1 的頂點 1\n"
+"多邊形 1 的頂點 2\n"
+"多邊形 1 的頂點 3\n"
+"...\n"
+"> [多邊形 2 的設定]\n"
+"..."
 msgstr ""
 
 #: ../../plot_vector_data.rst:111
@@ -139,6 +194,40 @@ msgstr ""
 msgid "例如，要畫出七巧板上的圖形，我們可以使用如下的檔案內容："
 msgstr ""
 
+#: ../../plot_vector_data.rst:120 ../../plot_vector_data.rst:350
+msgid ""
+"> -Z0\n"
+"0 0\n"
+"2 2\n"
+"4 0\n"
+"> -Z3\n"
+"0 0\n"
+"2 2\n"
+"0 4\n"
+"> -Z6\n"
+"0 4\n"
+"1 3\n"
+"2 4\n"
+"> -Z9\n"
+"1 3\n"
+"2 4\n"
+"3 3\n"
+"2 2\n"
+"> -Z12\n"
+"3 3\n"
+"2 2\n"
+"3 1\n"
+"> -Z15\n"
+"3 1\n"
+"3 3\n"
+"4 2\n"
+"4 0\n"
+"> -Z18\n"
+"2 4\n"
+"4 2\n"
+"4 4"
+msgstr ""
+
 #: ../../plot_vector_data.rst:153
 msgid ""
 "第一個多邊形是七巧板底部的大三角形，座標從 (0, 0)、(2, 2) 到 (4, 0)，各位可以試試看找出其他六個多邊形分別是什麼形狀。\\ "
@@ -151,6 +240,12 @@ msgstr ""
 msgid "把以上的文字檔案另存成 ``pieces.txt``，然後使用如下的指令繪圖："
 msgstr ""
 
+#: ../../plot_vector_data.rst:162
+msgid ""
+"$ makecpt -Cwysiwyg > tangram.cpt\n"
+"$ psxy pieces.txt -R0/4/0/4 -JX15c -P -L -Ctangram.cpt > pieces.ps"
+msgstr ""
+
 #: ../../plot_vector_data.rst:167
 msgid ""
 "注意這裡的 ``-L``，這個參數會告訴 ``psxy`` 我們畫的是多邊形，如此一來 ``psxy`` 才會\\ "
@@ -161,12 +256,61 @@ msgstr ""
 msgid "這下子七巧板也有模有樣了！我們順便來加上邊框："
 msgstr ""
 
+#: ../../plot_vector_data.rst:173
+msgid ""
+"$ psxy pieces.txt -R0/4/0/4 -JX15c -P -L -W2p,black -Ctangram.cpt > "
+"pieces.ps"
+msgstr ""
+
 #: ../../plot_vector_data.rst:179
 msgid ""
 "看起來非常不錯，不過請注意到圖形的角落，例如左下角，有一些小小的線段突出來了。這是因為使用這種方式繪製的邊框是沿著多邊形邊邊描繪，\\ "
 "因此原本的各個多邊形會稍稍放大一點點。如果你覺得這沒關係，那倒無妨；但如果你是個完美主義者，不想看到任何東西突出在正方形方框外面，\\ "
 "可以選擇的替代方案，就是把多邊形邊框挪到 ``lines.txt`` 裡面做成線段資料，與網格線條一起繪製。因此，我們的 "
 "``lines.txt`` 要多增加\\ 幾行資訊："
+msgstr ""
+
+#: ../../plot_vector_data.rst:184 ../../plot_vector_data.rst:306
+msgid ""
+"> -W1p,grey,.\n"
+"1 0\n"
+"1 4\n"
+">\n"
+"2 0\n"
+"2 4\n"
+">\n"
+"3 0\n"
+"3 4\n"
+">\n"
+"0 1\n"
+"4 1\n"
+">\n"
+"0 2\n"
+"4 2\n"
+">\n"
+"0 3\n"
+"4 3\n"
+"> -W2p,black\n"
+"0 0\n"
+"4 0\n"
+"4 4\n"
+"0 4\n"
+"0 0\n"
+">\n"
+"0 4\n"
+"4 0\n"
+">\n"
+"0 0\n"
+"3 3\n"
+">\n"
+"3 1\n"
+"3 3\n"
+">\n"
+"1 3\n"
+"2 4\n"
+">\n"
+"2 4\n"
+"4 2"
 msgstr ""
 
 #: ../../plot_vector_data.rst:226
@@ -180,8 +324,21 @@ msgid ""
 "開始，``makecpt`` 的 ``-A`` 選項是用來指定透明度的："
 msgstr ""
 
+#: ../../plot_vector_data.rst:238
+msgid ""
+"$ makecpt -Cwysiwyg -A70 > tangram.cpt\n"
+"# -A: %70 透明"
+msgstr ""
+
 #: ../../plot_vector_data.rst:243
 msgid "這時色階檔的內容會像是"
+msgstr ""
+
+#: ../../plot_vector_data.rst:245
+msgid ""
+"0    64/0/64@70    1    64/0/64@70\n"
+"1    64/0/192@70   2    64/0/192@70\n"
+"... (以下略)"
 msgstr ""
 
 #: ../../plot_vector_data.rst:251
@@ -191,8 +348,19 @@ msgid ""
 "提供了\\ 一個指令 ``psconvert``，可以把 .ps 檔中不能顯示的透明度設定，轉檔成別的格式以成功顯示。它的語法為"
 msgstr ""
 
+#: ../../plot_vector_data.rst:255
+msgid "$ psconvert 輸入的ps檔 -T輸出檔格式 [其他選項...]"
+msgstr ""
+
 #: ../../plot_vector_data.rst:259
 msgid "``輸出檔格式`` 使用單一字母來指定，例如 ``g`` 是 PNG，``f`` 是 PDF 等等。在最終的指令稿中，我們使用的格式和選項如下所示："
+msgstr ""
+
+#: ../../plot_vector_data.rst:261
+msgid ""
+"$ psconvert tangram.ps -Tg -A -P\n"
+"# -A: 裁剪至影像範圍\n"
+"# -P: 強迫直向輸出 (我們的圖本來就是直向，所以在本例中這個不加也沒差，但一律加上的話對其他不同的情況很方便)"
 msgstr ""
 
 #: ../../plot_vector_data.rst:267
@@ -206,12 +374,38 @@ msgid ""
 "``psconvert``。"
 msgstr ""
 
+#: ../../plot_vector_data.rst:274
+msgid "ps2raster tangram.ps -Tg -A -P"
+msgstr ""
+
 #: ../../plot_vector_data.rst:280
 msgid "指令稿"
 msgstr ""
 
 #: ../../plot_vector_data.rst:281
 msgid "本地圖的最終指令稿如下："
+msgstr ""
+
+#: ../../plot_vector_data.rst:283
+msgid ""
+"# ==== 設定變數 ====\n"
+"out_ps=\"tangram.ps\"\n"
+"in_cpt=\"tangram.cpt\"\n"
+"\n"
+"# ==== 製作含有透明度的色階檔 ====\n"
+"makecpt -Cwysiwyg -A70 > $in_cpt\n"
+"\n"
+"# ==== 畫線、畫多邊形 ====\n"
+"    # 寫入檔頭、-R 與 -J 的設定\n"
+"psxy -R0/4/0/4 -JX15c -T -K -P > $out_ps\n"
+"    # 注意線和多邊形的樣式設定其實是寫在各自的檔案中！\n"
+"psxy lines.txt -R -J -O -K >> $out_ps\n"
+"psxy pieces.txt -R -J -O -K -L -C$in_cpt >> $out_ps\n"
+"    # 寫入 EOF\n"
+"psxy -R -J -O -T >> $out_ps\n"
+"\n"
+"# ==== 轉成 png 檔並保留透明度設定 ====\n"
+"psconvert $out_ps -A -P -Tg"
 msgstr ""
 
 #: ../../plot_vector_data.rst:304

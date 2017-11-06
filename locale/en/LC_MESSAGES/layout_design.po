@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-30 17:33-0400\n"
+"POT-Creation-Date: 2017-11-06 15:45-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -184,6 +184,12 @@ msgid ""
 "使用的資料表就建立完成。以下是使用十進位制座標的 ``coord.txt`` 內容："
 msgstr ""
 
+#: ../../layout_design.rst:73
+msgid ""
+"47.92, 106.92\n"
+"47.61, -122.33"
+msgstr ""
+
 #: ../../layout_design.rst:78
 msgid ""
 "再次強調，資料中的第一欄現在是緯度 (y 值)，第二欄是經度 (x 值)。這與我們在「\\ :doc:`scatter_plot`\\ "
@@ -193,6 +199,12 @@ msgstr ""
 
 #: ../../layout_design.rst:82
 msgid "以下是使用度分秒制座標的 ``coord.txt`` 內容："
+msgstr ""
+
+#: ../../layout_design.rst:84
+msgid ""
+"47:55:0N, 106:55:0E\n"
+"47:36:35N, 122:19:59W"
 msgstr ""
 
 #: ../../layout_design.rst:89
@@ -249,14 +261,52 @@ msgid ""
 "我們可以沿用相同的概念，來設定腳本開頭。因此，整個腳本的基礎設計大概會是這樣："
 msgstr ""
 
+#: ../../layout_design.rst:118
+msgid ""
+"# ==== 設定腳本的變數與參數 ====\n"
+"out_ps=\"ulaanbaatar_seattle.ps\"\n"
+"其他設定......\n"
+"\n"
+"# ==== 開門 (寫入 PS 檔頭) ====\n"
+"     # 因為只寫檔頭，所以 -R 和 -J 的設定並不重要，你可以隨意指定。\n"
+"psxy -R0/1/0/1 -JX1c -T -K > $out_ps\n"
+"\n"
+"# ==== 繪圖 ====\n"
+"主要的繪圖指令......\n"
+"\n"
+"# ==== 關門 (寫入 EOF) ====\n"
+"psxy -R -J -O -T >> $out_ps"
+msgstr ""
+
 #: ../../layout_design.rst:134
 msgid ""
 "在前面的章節中，我們會把 ``-P`` 加入第一個 GMT 指令中，以指定紙張採用直向排版。這裡我們要嘗試使用\\ 另一種方式：\\ **調整 "
 "GMT 的預設參數**\\ 。在終端機中輸入"
 msgstr ""
 
+#: ../../layout_design.rst:137
+msgid "$ gmtdefaults"
+msgstr ""
+
 #: ../../layout_design.rst:141
 msgid "會看到螢幕中輸出一大串如下的文字："
+msgstr ""
+
+#: ../../layout_design.rst:143
+msgid ""
+"#\n"
+"# GMT 5.2.1 Defaults file\n"
+"# vim:sw=8:ts=8:sts=8\n"
+"# $Revision: 15178 $\n"
+"# $LastChangedDate: 2015-11-06 11:45:03 +0100 (Fri, 06 Nov 2015) $\n"
+"#\n"
+"# COLOR Parameters\n"
+"#\n"
+"COLOR_BACKGROUND            = black\n"
+"COLOR_FOREGROUND            = white\n"
+"COLOR_NAN                   = 127.5\n"
+"COLOR_MODEL                 = none\n"
+"..... #(太多了，以下省略)"
 msgstr ""
 
 #: ../../layout_design.rst:159
@@ -264,6 +314,10 @@ msgid ""
 "其中不以 ``#`` 號開頭的每一行，都是 GMT 在畫圖的時候會使用的預設參數。\\ 所有參數的意思，都可以在 `GMT 的官方手冊 "
 "<http://gmt.soest.hawaii.edu/doc/5.1.0/gmt.conf.html>`_\\ 中找到。\\ "
 "在這麼多的參數中，應該會有一行如下所示"
+msgstr ""
+
+#: ../../layout_design.rst:163
+msgid "PS_PAGE_ORIENTATION         = landscape"
 msgstr ""
 
 #: ../../layout_design.rst:167
@@ -276,6 +330,10 @@ msgstr ""
 msgid "在下 GMT 指令時，使用 ``--長參數`` 的語法，參數的名稱就是在這裡出現的大寫字串，例如："
 msgstr ""
 
+#: ../../layout_design.rst:172
+msgid "$ psxy -R0/1/0/1 -JX1c -T -K --PS_PAGE_ORIENTATION=portrait > $out_ps"
+msgstr ""
+
 #: ../../layout_design.rst:176
 msgid ""
 "在這裡 ``--PS_PAGE_ORIENTATION=portrait`` 的效果與 ``-P`` 一樣，指定版面為直向 "
@@ -286,8 +344,21 @@ msgstr ""
 msgid "使用 ``gmtset`` 設定 ``PS_PAGE_ORIENTATION`` 的預設值。它的語法如下："
 msgstr ""
 
+#: ../../layout_design.rst:181
+msgid ""
+"$ gmtset 參數名1 參數值1 [參數名2 參數值2 參數名3 參數值3...]\n"
+"# ---- 或是 ----\n"
+"$ gmtset 參數名1=參數值1 [參數名2=參數值2 參數名3=參數值3...]"
+msgstr ""
+
 #: ../../layout_design.rst:187
 msgid "個人推薦使用第二種語法，因為它與 ``--長參數`` 的語法格式一致。如使用這種方法，以上的例子可改為"
+msgstr ""
+
+#: ../../layout_design.rst:189
+msgid ""
+"$ gmtset PS_PAGE_ORIENTATION=portrait\n"
+"$ psxy -R0/1/0/1 -JX1c -T -K > $out_ps"
 msgstr ""
 
 #: ../../layout_design.rst:194
@@ -326,6 +397,27 @@ msgstr ""
 
 #: ../../layout_design.rst:217
 msgid "介紹完 ``gmtset`` 後，讓我們實際在本例中做個測試。先畫出目標地圖的下半部 (麥卡托投影的部份)："
+msgstr ""
+
+#: ../../layout_design.rst:219
+msgid ""
+"# ==== 設定變數 ====\n"
+"out_ps=\"ulaanbaatar_seattle.ps\"\n"
+"land_color=\"#CEB9A0\"\n"
+"\n"
+"# ==== 調整 GMT 預設參數 ====\n"
+"gmtset PS_PAGE_ORIENTATION=portrait\n"
+"\n"
+"# ==== 開門 (寫入 PS 檔頭) ====\n"
+"psxy -R0/1/0/1 -JX1c -T -K > $out_ps\n"
+"\n"
+"# ==== 繪圖 ====\n"
+"psbasemap -R70/270/30S/70N -JM13c -O -K -B+tMercator >> $out_ps\n"
+"pscoast -R -J -O -K -Dl -A1000 -G$land_color -N1/thick,60 -Ba40f20g20 >> "
+"$out_ps\n"
+"\n"
+"# ==== 關門 (寫入 EOF) ====\n"
+"psxy -R -J -O -T >> $out_ps"
 msgstr ""
 
 #: ../../layout_design.rst:238
@@ -405,6 +497,26 @@ msgstr ""
 msgid "因此，在原腳本中 ``# ==== 調整 GMT 預設參數 ====`` 的一節，可以擴展成："
 msgstr ""
 
+#: ../../layout_design.rst:266
+msgid ""
+"# (前略)\n"
+"# ==== 調整 GMT 預設參數 ====\n"
+"gmtset FONT_TITLE=30,Bookman-Demi,#0D057A \\\n"
+"       FONT_ANNOT_PRIMARY=12p,20,#0D057A \\\n"
+"       FORMAT_GEO_MAP=dddF \\\n"
+"       MAP_FRAME_TYPE=plain \\\n"
+"       MAP_GRID_CROSS_SIZE_PRIMARY=8p \\\n"
+"       MAP_GRID_PEN_PRIMARY=thinner,#ED99F0 \\\n"
+"       MAP_TICK_PEN_PRIMARY=thicker,black \\\n"
+"       MAP_TITLE_OFFSET=0.5c \\\n"
+"       MAP_ORIGIN_X=0 \\\n"
+"       MAP_ANNOT_OBLIQUE=32 \\\n"
+"       PS_CHAR_ENCODING=ISOLatin1+ \\\n"
+"       PS_PAGE_ORIENTATION=portrait \\\n"
+"       PS_PAGE_COLOR=ivory\n"
+"# (後略)"
+msgstr ""
+
 #: ../../layout_design.rst:287
 msgid ""
 "有許多參數名稱都有 ``PRIMARY``，這是由於 GMT 的某些邊框 (尤其是 ``fancy`` 類型的邊框) 會使用不同的設定來指定主格線"
@@ -429,10 +541,25 @@ msgid ""
 "``MAP_ORIGIN_X`` 設成大一點的數值之外，GMT 也提供了一個通用選項 ``-X`` 來設定地圖在紙張上的水平位置，它的用法為"
 msgstr ""
 
+#: ../../layout_design.rst:304
+msgid "-X與地圖左緣或與上一張地圖定位點的距離"
+msgstr ""
+
 #: ../../layout_design.rst:308
 msgid ""
 "在我們的例子中，看起來最協調的設計是地圖擺在紙張正中間的位置。由於 A4 的短邊長度是 21 公分，我們的地圖寬是 13 公分，\\ 因此 "
 "``-X4c`` 可以讓地圖左側空上 4 公分的距離，正好讓地圖置中於紙張。因此，加上 ``-X`` 選項後的腳本為"
+msgstr ""
+
+#: ../../layout_design.rst:311
+msgid ""
+"# (前略)\n"
+"# ==== 繪圖 ====\n"
+"psbasemap -R70/270/30S/70N -JM13c -O -K -X4c -B+tMercator >> $out_ps    #"
+" 調整水平位置\n"
+"pscoast -R -J -O -K -Dl -A1000 -G$land_color -N1/thick,60 -Ba40f20g20 \\\n"
+"        --MAP_GRID_PEN_PRIMARY=thicker >> $out_ps    # 這可以讓我們的十字符號粗一點\n"
+"# (後略)"
 msgstr ""
 
 #: ../../layout_design.rst:320
@@ -449,6 +576,44 @@ msgid ""
 "在地圖上畫線時的預設模式是\\ 「畫出大圓路徑」，如果加上 ``-A`` "
 "選項，可以改成「畫出投影系統中的直線路徑」，在麥卡托投影中，這條路徑就是恆向線。因此，\\ 運用 ``psxy`` 與 "
 "``pstext``，就可以畫出以上目標，並且標注兩條路徑的名稱："
+msgstr ""
+
+#: ../../layout_design.rst:329
+msgid ""
+"# ==== 設定變數 ====\n"
+"out_ps=\"ulaanbaatar_seattle.ps\"\n"
+"input_xy=\"coord.txt\"\n"
+"xy_ulaanbaatar=\"47:55:0N, 106:55:0E\"       # 烏蘭巴托的座標\n"
+"xy_seattle=\"47:36:35N, 122:19:59W\"         # 西雅圖的座標\n"
+"land_color=\"#CEB9A0\"                       # pscoast 的陸域填色\n"
+"gcp_color=\"#0044FF\"                        # 大圓路徑的顏色\n"
+"psl_color=\"#FF0073\"                        # 恆向線的顏色\n"
+"    # 把兩個城市的 xy 座標寫入 $input_xy 檔案中。\n"
+"    # 如果你已經下載了 coord.txt，以下兩行可以註解掉。\n"
+"echo $xy_ulaanbaatar > $input_xy\n"
+"echo $xy_seattle    >> $input_xy\n"
+"\n"
+"# ==== 調整 GMT 預設參數 ====\n"
+"# (同上，略)\n"
+"# ==== 開門 (寫入 PS 檔頭) ====\n"
+"# (同上，略)\n"
+"\n"
+"# ==== 繪圖 (麥卡托) ====\n"
+"psbasemap -R70/270/30S/70N -JM13c -O -K -X4c -B+tMercator >> $out_ps\n"
+"pscoast -R -J -O -K -Dl -A1000 -G$land_color -N1/thick,60 -Ba40f20g20 \\\n"
+"        --MAP_GRID_PEN_PRIMARY=thicker >> $out_ps\n"
+"psxy $input_xy -R -J -O -K -: -A -W1p,$psl_color >> $out_ps    # 恆向線\n"
+"psxy $input_xy -R -J -O -K -:    -W1p,$gcp_color >> $out_ps    # 大圓路徑\n"
+"psxy $input_xy -R -J -O -K -:    -Sa0.4c -Gblack >> $out_ps    # "
+"城市的位置，-Sa0.4c 是外接圓為 0.4 公分的星形符號。\n"
+"    # 兩條線的說明文字\n"
+"echo \"174 41 Projected Straight Line\" | pstext -R -J -O -K "
+"-F+f,18,$psl_color >> $out_ps\n"
+"echo \"174 61 Great Circle Path\"       | pstext -R -J -O -K "
+"-F+f,18,$gcp_color >> $out_ps\n"
+"\n"
+"# ==== 關門 (寫入 EOF) ====\n"
+"# (同上，略)"
 msgstr ""
 
 #: ../../layout_design.rst:364
@@ -469,8 +634,32 @@ msgid ""
 "它的效果與前者相同。``-J`` 語法則為："
 msgstr ""
 
+#: ../../layout_design.rst:376
+msgid "-JA中心點經度/中心點緯度/尺寸"
+msgstr ""
+
 #: ../../layout_design.rst:380
 msgid "讓我們選擇烏蘭巴托的座標當作投影的中心點，畫出地圖、海岸線、大圓路徑與城市位置："
+msgstr ""
+
+#: ../../layout_design.rst:382
+msgid ""
+"# (前略)\n"
+"# ==== 繪圖 (麥卡托) ====\n"
+"# (同上，略)\n"
+"\n"
+"# ==== 繪圖 (蘭伯特) ====\n"
+"psbasemap -Rg -JA106:55/47:55/13c -O -K -Y12c -B+tLambert \\\n"
+"        --MAP_TITLE_OFFSET=0c >> $out_ps      # 把標題與地圖邊框弄靠近一點\n"
+"pscoast -R -J -O -K -Dl -A1000 -G$land_color -N1/thick,60 -Bxg60 -Byg30 "
+"\\\n"
+"        --MAP_GRID_CROSS_SIZE_PRIMARY=0p >> $out_ps      # "
+"這次我們不要十字符號出現在此地圖中\n"
+"psxy $input_xy -R -J -O -K -: -W1p,$gcp_color >> $out_ps    # 大圓路徑\n"
+"psxy $input_xy -R -J -O -K -: -Sa0.4c -Gblack >> $out_ps    # 城市位置\n"
+"\n"
+"# ==== 關門 (寫入 EOF) ====\n"
+"# (同上，略)"
 msgstr ""
 
 #: ../../layout_design.rst:401
@@ -488,16 +677,43 @@ msgid ""
 "(麥卡托投影中的直線)。它的語法為"
 msgstr ""
 
+#: ../../layout_design.rst:410
+msgid ""
+"project -C起點座標 -E終點座標 -G每個取樣點的距離(單位與起終點座標的相同) -N\n"
+"# -N: 設定座標系為平面直角座標"
+msgstr ""
+
 #: ../../layout_design.rst:415
 msgid ""
 "起點設為 ``106.92/47.92`` (烏蘭巴托)，終點設為 ``237.67/47.61`` "
 "(西雅圖，注意這邊的經度要比烏蘭巴托大，因此不能使用負值)，每個取樣點間隔設為 10 度，\\ 在終端機中的指令與輸出就像以下所示："
 msgstr ""
 
+#: ../../layout_design.rst:419
+msgid ""
+"$ project -C106.92/47.92 -E237.67/47.61 -G10 -N\n"
+"106.92      47.92   0\n"
+"116.919971893       47.8962906976   10\n"
+"126.919943787       47.8725813952   20\n"
+"136.91991568        47.8488720928   30\n"
+"146.919887574       47.8251627905   40\n"
+"156.919859467       47.8014534881   50\n"
+"166.91983136        47.7777441857   60\n"
+"176.919803254       47.7540348833   70\n"
+"-173.080224853      47.7303255809   80\n"
+".... # (以下略)"
+msgstr ""
+
 #: ../../layout_design.rst:433
 msgid ""
 "輸出部份的第一欄與第二欄很明顯是經度與緯度，第三欄則是與起點的距離 (以度為單位)。因此，我們可以簡單的利用\\ 管線指令，把 "
 "``project`` 的輸出傳遞給 ``psxy`` 使用："
+msgstr ""
+
+#: ../../layout_design.rst:436
+msgid ""
+"project -C106.92/47.92 -E237.67/47.61 -G10 -N |\\\n"
+"psxy           -R -J -O -K    -W1p,$psl_color >> $out_ps    # 在蘭伯特投影中的恆向線"
 msgstr ""
 
 #: ../../layout_design.rst:441
@@ -511,11 +727,31 @@ msgid ""
 "利用重導向符號 ``<<`` 一次輸入以上這些不同資訊。它的具體語法為："
 msgstr ""
 
+#: ../../layout_design.rst:449
+msgid ""
+"pstext 選項們 -F+欄位a+欄位b+.... >> 輸出檔 << EOF\n"
+"第一欄(固定為X) 第二欄(固定為Y) 第三欄(欄位a) 第四欄(欄位b) ... 最後一欄(固定為標籤文字)\n"
+"...           ...           ...          ...          ... ...\n"
+"...           ...           ...          ...          ... ...\n"
+"EOF"
+msgstr ""
+
 #: ../../layout_design.rst:457
 msgid ""
 "也就是說，``pstext`` 要求輸入最少為 3 欄 (X、Y、標籤文字)，而透過 ``-F`` 選項，可以指定更多的欄位。\\ "
 "如果要加上經緯格線的文字標籤，我們可以使用 ``-F+a``，如此一來第 3 欄就會是每個文字的角度 (從水平開始往\\ "
 "逆時針旋轉)，標籤文字則會被擠到第 4 欄，如下所示："
+msgstr ""
+
+#: ../../layout_design.rst:461
+msgid ""
+"pstext -R -J -O -K -F+a   >> $out_ps << ANNOTEND\n"
+"106.92 -30 0   30\\260S\n"
+"106.92 30  0   30\\260N\n"
+"60     15  70  60\\260E\n"
+"180    15  305 180\\260\n"
+"ANNOTEND\n"
+"# 經度  緯度  角度  文字"
 msgstr ""
 
 #: ../../layout_design.rst:471
@@ -524,6 +760,15 @@ msgid ""
 "``-F+f字型樣式`` ，如果不給 ``字型樣式`` 的話，\\ 就代表 ``pstext`` "
 "必需要在輸入資料中尋找對應的欄位。在本例中，我們可使用 ``-F+a+f`` 來指定\\ 第 3 欄為角度、第 4 "
 "欄為字型樣式，而標籤文字這次則被放到了第 5 欄："
+msgstr ""
+
+#: ../../layout_design.rst:476
+msgid ""
+"pstext -R -J -O -K -F+a+f >> $out_ps << LABELEND\n"
+"180    40  58  ,Bookman-DemiItalic,$psl_color   Rhumb Line\n"
+"180    80  58  ,Bookman-DemiItalic,$gcp_color   Great Circle Path\n"
+"LABELEND\n"
+"# 經度  緯度  角度  字型樣式  文字"
 msgstr ""
 
 #: ../../layout_design.rst:484
@@ -537,12 +782,94 @@ msgid ""
 "或是你也可以把刪除指令放在腳本中的最後一行："
 msgstr ""
 
+#: ../../layout_design.rst:490
+msgid ""
+"# (前略)\n"
+"# ==== 關門 (寫入 EOF) ====\n"
+"psxy -R -J -O -T >> $out_ps\n"
+"rm -rf gmt.conf    # <---- 消除舊的組態設定檔"
+msgstr ""
+
 #: ../../layout_design.rst:498
 msgid "指令稿"
 msgstr ""
 
 #: ../../layout_design.rst:500
 msgid "本地圖的最終指令稿如下："
+msgstr ""
+
+#: ../../layout_design.rst:502
+msgid ""
+"# ==== 設定變數 ====\n"
+"out_ps=\"ulaanbaatar_seattle.ps\"\n"
+"input_xy=\"coord.txt\"\n"
+"xy_ulaanbaatar=\"47:55:0N, 106:55:0E\"\n"
+"xy_seattle=\"47:36:35N, 122:19:59W\"\n"
+"land_color=\"#CEB9A0\"\n"
+"gcp_color=\"#0044FF\"        # 大圓路徑的顏色\n"
+"psl_color=\"#FF0073\"        # 恆向線的顏色\n"
+"    # 把兩個城市的 xy 座標寫入 $input_xy 檔案中。\n"
+"    # 如果你已經下載了 coord.txt，以下兩行可以註解掉。\n"
+"echo $xy_ulaanbaatar > $input_xy\n"
+"echo $xy_seattle    >> $input_xy\n"
+"\n"
+"# ==== 調整 GMT 預設參數 ====\n"
+"gmtset FONT_TITLE=30,Bookman-Demi,#0D057A \\\n"
+"       FONT_ANNOT_PRIMARY=12p,20,#0D057A \\\n"
+"       FORMAT_GEO_MAP=dddF \\\n"
+"       MAP_FRAME_TYPE=plain \\\n"
+"       MAP_GRID_CROSS_SIZE_PRIMARY=8p \\\n"
+"       MAP_GRID_PEN_PRIMARY=thinner,#ED99F0 \\\n"
+"       MAP_TICK_PEN_PRIMARY=thicker,black \\\n"
+"       MAP_TITLE_OFFSET=0.5c \\\n"
+"       MAP_ORIGIN_X=0 \\\n"
+"       MAP_ANNOT_OBLIQUE=32 \\\n"
+"       PS_CHAR_ENCODING=ISOLatin1+ \\\n"
+"       PS_PAGE_ORIENTATION=portrait \\\n"
+"       PS_PAGE_COLOR=ivory\n"
+"\n"
+"# ==== 開門 (寫入 PS 檔頭) ====\n"
+"psxy -R0/1/0/1 -JX1c -T -K > $out_ps\n"
+"\n"
+"# ==== 下圖 (麥卡托) ====\n"
+"psbasemap -R70/270/30S/70N -JM13c -O -K -X4c -B+tMercator >> $out_ps\n"
+"pscoast -R -J -O -K -Dl -A1000 -G$land_color -N1/thick,60 -Ba40f20g20 \\\n"
+"        --MAP_GRID_PEN_PRIMARY=thicker >> $out_ps\n"
+"psxy $input_xy -R -J -O -K -: -A -W1p,$psl_color >> $out_ps    # 恆向線\n"
+"psxy $input_xy -R -J -O -K -:    -W1p,$gcp_color >> $out_ps    # 大圓路徑\n"
+"psxy $input_xy -R -J -O -K -:    -Sa0.4c -Gblack >> $out_ps    # 點\n"
+"    # 線的說明文字\n"
+"echo \"174 41 Rhumb Line\"              | pstext -R -J -O -K "
+"-F+f,18,$psl_color >> $out_ps\n"
+"echo \"174 61 Great Circle Path\"       | pstext -R -J -O -K "
+"-F+f,18,$gcp_color >> $out_ps\n"
+"\n"
+"# ==== 上圖 (蘭伯特) ====\n"
+"psbasemap -Rg -JA106:55/47:55/13c -O -K -Y12c -B+tLambert \\\n"
+"        --MAP_TITLE_OFFSET=0c >> $out_ps\n"
+"pscoast -R -J -O -K -Dl -A1000 -G$land_color -N1/thick,60 -Bxg60 -Byg30 "
+"\\\n"
+"        --MAP_GRID_CROSS_SIZE_PRIMARY=0p >> $out_ps\n"
+"project -C106.92/47.92 -E237.67/47.61 -G10 -N |\\\n"
+"psxy           -R -J -O -K    -W1p,$psl_color >> $out_ps    # 恆向線\n"
+"psxy $input_xy -R -J -O -K -: -W1p,$gcp_color >> $out_ps    # 大圓路徑\n"
+"psxy $input_xy -R -J -O -K -: -Sa0.4c -Gblack >> $out_ps    # 點\n"
+"    # 加座標\n"
+"pstext -R -J -O -K -F+a   >> $out_ps << ANNOTEND\n"
+"106.92 -30 0   30\\260S\n"
+"106.92 30  0   30\\260N\n"
+"60     15  70  60\\260E\n"
+"180    15  305 180\\260\n"
+"ANNOTEND\n"
+"    # 線的說明文字\n"
+"pstext -R -J -O -K -F+a+f >> $out_ps << LABELEND\n"
+"180    40  58  ,Bookman-DemiItalic,$psl_color   Rhumb Line\n"
+"180    80  58  ,Bookman-DemiItalic,$gcp_color   Great Circle Path\n"
+"LABELEND\n"
+"\n"
+"# ==== 關門 (寫入 EOF) ====\n"
+"psxy -R -J -O -T >> $out_ps\n"
+"# rm -rf gmt.conf    # <---- 此行可用於消除舊的組態設定檔"
 msgstr ""
 
 #: ../../layout_design.rst:574
