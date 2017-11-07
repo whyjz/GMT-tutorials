@@ -26,10 +26,13 @@ msgid ""
 "說到 GMT 中最簡單的繪圖指令，那非 ``pscoast`` 莫屬。在本章中，我們要來解說如何用 ``pscoast`` 製作海岸線地圖、GMT"
 " 本身的參數輸入風格，以及如何調整這些參數。"
 msgstr ""
+"The very first command in the beginning is definitely ``pscoast``, which is also the easiest command for mapping. "
+"In this chapter, we're going to see how to make a map with coastlines using ``pscoast``. The other "
+"topics in this chapter are the style of GMT input and how to set up these input parameters."
 
 #: ../../making_first_map.rst:9
 msgid "目標"
-msgstr ""
+msgstr "Goal"
 
 #: ../../making_first_map.rst:10
 #, python-format
@@ -39,38 +42,44 @@ msgid ""
 "名，被大小不等的眾多島嶼給佔據。事實上，群島海很有可能是擁有最多島嶼的海，雖然大部分的島\\ 都很小就是了。西邊的最大島嶼叫做奧蘭島 "
 "(Åland)，屬於芬蘭下轄的自治區。這麼多島嶼的地方，\\ 用來觀察 ``pscoast`` 的各種調整效果再適合不過了。"
 msgstr ""
+"Make a map of `Archipelago Sea <https://en.wikipedia.org/wiki/Archipelago_Sea>`_, as the figure here shows. "
+"Located in Northern Europe, Archipelago Sea is actually part of the Baltic Sea. "
+"As its name suggests, the sea are actually occupied by numerous islands in any size. Although "
+"Most islands are small, Archipelago Sea possibly contains the most island in the world. "
+"The largest island in the archipelago is Åland, an autonomous region of Finland. Such a place makes itself "
+"ideal to show how ``pscoast`` can fine tune your coasline map."
 
 #: ../../making_first_map.rst:20
 msgid "直接觀看\\ `指令稿`_"
-msgstr ""
+msgstr "Go to the final `Script`_ "
 
 #: ../../making_first_map.rst:23
 msgid "使用的指令與概念"
-msgstr ""
+msgstr "Commands and Techniques"
 
 #: ../../making_first_map.rst:24
 msgid "``pscoast`` - **繪製海岸線**"
-msgstr ""
+msgstr "``pscoast`` - **plot shorelines**"
 
 #: ../../making_first_map.rst:25
 msgid "GMT 共用選項：``-B`` ``-J`` ``-P`` ``-R`` ``-U``"
-msgstr ""
+msgstr "GMT shared options: ``-B`` ``-J`` ``-P`` ``-R`` ``-U``"
 
 #: ../../making_first_map.rst:26
 msgid "GMT 的命令列參數調整"
-msgstr ""
+msgstr "How to adjust parameters at a GMT command line"
 
 #: ../../making_first_map.rst:27
 msgid "調整地圖邊框的簡單方法"
-msgstr ""
+msgstr "A simple way to set up map frame"
 
 #: ../../making_first_map.rst:28
 msgid "GMT 的輸出與轉存"
-msgstr ""
+msgstr "The output file of GMT and how to convert it to other format"
 
 #: ../../making_first_map.rst:31
 msgid "操作流程"
-msgstr ""
+msgstr "Procedure"
 
 #: ../../making_first_map.rst:32
 msgid ""
@@ -79,6 +88,11 @@ msgid ""
 "Sea*，然後視窗就會移到這片海域的附近。以右鍵在你想要當作地圖邊界的\\ 區域底點一下，選「\\ *這是哪裡？*\\ "
 "」，底下就會出現點選區域的名稱和經緯度。"
 msgstr ""
+"The first step of plotting a map is to determine where to be plotted. Even though we know we are going to plot "
+"Archipelago Sea, we still can't start without a precise map extent. The most convenient way to retrieve map "
+"extent in Lat/Long representation is to go to `Google Maps <https://www.google.com/maps/>`_ and search for "
+"*Archipelago Sea*. When the map jumps to the region of our interest, right-click on \"*What's here?*\", "
+"and the name of the region and its Lat/Long would appear in the bottom."
 
 #: ../../making_first_map.rst:39
 msgid ""
@@ -95,7 +109,7 @@ msgstr ""
 
 #: ../../making_first_map.rst:47
 msgid "$ pscoast"
-msgstr ""
+msgstr "$ pscoast"
 
 #: ../../making_first_map.rst:51
 msgid ""
@@ -105,15 +119,15 @@ msgstr ""
 
 #: ../../making_first_map.rst:54
 msgid "$ pscoast -"
-msgstr ""
+msgstr "$ pscoast -"
 
 #: ../../making_first_map.rst:58
 msgid "幾乎所有 GMT 的指令，包含 ``pscoast``，都是以類似如下的語法操作："
-msgstr ""
+msgstr "Almost all GMT commands, including ``pscoast`` have a syntax like this:"
 
 #: ../../making_first_map.rst:60
 msgid "$ 指令 (輸入檔) [選項1 選項2 選項3...]"
-msgstr ""
+msgstr "$ command (input_file) [option1 option2 option3...]"
 
 #: ../../making_first_map.rst:64
 msgid ""
@@ -137,6 +151,8 @@ msgid ""
 "-R19.42/22.95/59.71/60.56\n"
 "-R19.42/59.71/22.95/60.56r"
 msgstr ""
+"-R19.42/22.95/59.71/60.56\n"
+"-R19.42/59.71/22.95/60.56r"
 
 #: ../../making_first_map.rst:81
 msgid ""
@@ -153,6 +169,10 @@ msgid ""
 "pscoast: Syntax error: Must specify at least one of -C, -G, -S, -I, -N, "
 "-Q and -W"
 msgstr ""
+"$ pscoast -R19.42/22.95/59.71/60.56\n"
+"pscoast: Syntax error: Must specify a map projection with the -J option\n"
+"pscoast: Syntax error: Must specify at least one of -C, -G, -S, -I, -N, "
+"-Q and -W"
 
 #: ../../making_first_map.rst:92
 #, python-format
@@ -165,7 +185,7 @@ msgstr ""
 
 #: ../../making_first_map.rst:97
 msgid "$ pscoast -R19.42/22.95/59.71/60.56 -JM6i"
-msgstr ""
+msgstr "$ pscoast -R19.42/22.95/59.71/60.56 -JM6i"
 
 #: ../../making_first_map.rst:101
 msgid ""
@@ -190,7 +210,7 @@ msgstr ""
 
 #: ../../making_first_map.rst:118
 msgid "-W粗細,顏色,樣式"
-msgstr ""
+msgstr "-Wlinewidth,linecolor,linestyle"
 
 #: ../../making_first_map.rst:122
 msgid "如果省略時，就使用預設的樣式作圖。我們試著指定指定畫筆粗細為 0.1 點 (1 點 = 1/72 英吋 = 0.03527 公分) 的黑色線條看看："
@@ -198,7 +218,7 @@ msgstr ""
 
 #: ../../making_first_map.rst:125
 msgid "$ pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black"
-msgstr ""
+msgstr "$ pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black"
 
 #: ../../making_first_map.rst:129
 msgid ""
@@ -229,6 +249,15 @@ msgid ""
 "end\n"
 "%%EOF"
 msgstr ""
+"$ pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black\n"
+"%!PS-Adobe-3.0\n"
+"%%BoundingBox: 0 0 595 842\n"
+"%%HiResBoundingBox: 0 0 595 842\n"
+"%%Title: GMT v5.1.1 (r12968) [64-bit] Document from pscoast\n"
+"%%Creator: GMT5\n"
+"..... #(it's pretty long!)\n"
+"end\n"
+"%%EOF"
 
 #: ../../making_first_map.rst:153
 msgid ""
@@ -240,7 +269,7 @@ msgstr ""
 
 #: ../../making_first_map.rst:158
 msgid "$ pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black > archi_sea.ps"
-msgstr ""
+msgstr "$ pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black > archi_sea.ps"
 
 #: ../../making_first_map.rst:162
 msgid ""
@@ -261,6 +290,8 @@ msgid ""
 "$ pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 "
 "-Scornflowerblue > archi_sea.ps"
 msgstr ""
+"$ pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 "
+"-Scornflowerblue > archi_sea.ps"
 
 #: ../../making_first_map.rst:176
 msgid ""
@@ -276,6 +307,9 @@ msgid ""
 "\n"
 "          -Scornflowerblue > archi_sea.ps"
 msgstr ""
+"$ pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \\"
+"\n"
+"          -Scornflowerblue > archi_sea.ps"
 
 #: ../../making_first_map.rst:186
 msgid "本文為了方便閱讀起見，也會使用 ``\\`` 分隔過長的段落，但如果你想要在一行之內完成此道指令，則可以省略\\ 這個符號。"
@@ -295,6 +329,9 @@ msgid ""
 "\n"
 "          -Scornflowerblue -Df > archi_sea.ps"
 msgstr ""
+"$ pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \\"
+"\n"
+"          -Scornflowerblue -Df > archi_sea.ps"
 
 #: ../../making_first_map.rst:199
 msgid "畫出來的 .ps 檔就如下所示"
@@ -338,6 +375,8 @@ msgid ""
 "-Ba座標數值間隔f座標刻度間隔g格線間隔\n"
 "-B地圖四邊設定+t標題"
 msgstr ""
+"-Ba(annotation_spacing)f(tick_spacing)g(grid_spacing)\n"
+"-B(four_borders)+t(title)"
 
 #: ../../making_first_map.rst:233
 msgid ""
@@ -358,6 +397,11 @@ msgid ""
 "\\\n"
 "          > archi_sea.ps"
 msgstr ""
+"$ pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \\"
+"\n"
+"          -Scornflowerblue -Df -P -Ba2f0.5g1 -BWSne+t\"Archipelago Sea\" "
+"\\\n"
+"          > archi_sea.ps"
 
 #: ../../making_first_map.rst:247
 msgid ""
@@ -400,11 +444,11 @@ msgstr ""
 
 #: ../../making_first_map.rst:279
 msgid "指令稿"
-msgstr ""
+msgstr "Script"
 
 #: ../../making_first_map.rst:281
 msgid "本地圖的最終指令稿如下："
-msgstr ""
+msgstr "The final command for our goal is:"
 
 #: ../../making_first_map.rst:283
 msgid ""
@@ -414,6 +458,11 @@ msgid ""
 "\\\n"
 "          -A0.1 -U > archi_sea.ps"
 msgstr ""
+"$ pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \\"
+"\n"
+"          -Scornflowerblue -Df -P -Ba2f0.5g1 -BWSne+t\"Archipelago Sea\" "
+"\\\n"
+"          -A0.1 -U > archi_sea.ps"
 
 #: ../../making_first_map.rst:291
 msgid ""
@@ -423,14 +472,21 @@ msgid ""
 "**2** 度，刻度間隔 **0.5** 度，\\ 格線間隔 **1** 度，標題為 *Archipelago Sea*，存檔為 "
 "``archi_sea.ps``。」"
 msgstr ""
+"\"Plot the coastline map - map extent is set to **(19.42E - 22.95E, 59.71N - 60.56N)**; "
+"Mercator projection and **6** inches wide. Coastlines are black and **0.1** point wide. "
+"Land area is filled with the color ``darkseagreen2``, and water area is filled with "
+"``cornflowerblue``. We use the coastline data at full resolution. "
+"The map is plotted in portrait mode, with a border frame and annotation marks in the left and bottom. "
+"Annotation spacing is **2** degrees, tick spacing is **0.5** degrees, and grid spacing is **1** degree. "
+"The map is entitled *Archipelago Sea* and saved as ``archi_sea.ps``.\""
 
 #: ../../making_first_map.rst:296
 msgid "觀看\\ `最終版地圖`_"
-msgstr ""
+msgstr "View the `Final Map`_"
 
 #: ../../making_first_map.rst:299
 msgid "習題"
-msgstr ""
+msgstr "Exercise"
 
 #: ../../making_first_map.rst:301
 msgid ""
