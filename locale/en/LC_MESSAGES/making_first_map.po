@@ -368,6 +368,13 @@ msgid ""
 "發生。在命令列操作時，這不是什麼大問題，終端機都會自動幫你換行，不過之後如果有要寫 GMT 腳本的需求，\\ 為了排版美觀，可以使用 UNIX "
 "常見的接續符號 ``\\``，換行繼續輸入指令。以下指令跟上面的指令效果一模一樣："
 msgstr ""
+"Like ``black``, ``darkseagreen2`` and ``cornflowerblue`` are also pre-defined color name in GMT. "
+"Now the command gets a bit longer, which is quite normal when using GMT, especially when you want to "
+"change the defaults and make a pretty map. It's not a problem when a long command are entered at the "
+"prompt line because the terminal window would automatically cut a long command into a new line. However, "
+"if later you are writing a GMT script and want to make you script neat, "
+"you can use the UNIX line-break sign ``\\`` to continue the command at a new line. "
+"The following example would give the same result as the previous one: "
 
 #: ../../making_first_map.rst:181
 msgid ""
@@ -381,7 +388,8 @@ msgstr ""
 
 #: ../../making_first_map.rst:186
 msgid "本文為了方便閱讀起見，也會使用 ``\\`` 分隔過長的段落，但如果你想要在一行之內完成此道指令，則可以省略\\ 這個符號。"
-msgstr ""
+msgstr "In this tutorial, we also use ``\\`` to break a long command for clarity. "
+"If you would like to finish your command in one line, just ignore this line-break sign."
 
 #: ../../making_first_map.rst:189
 msgid ""
@@ -390,6 +398,11 @@ msgid ""
 "(intermediate，中)、``l`` (low，低) 和 ``c`` (crude，粗糙)，預設值是 "
 "``l``。這裡我們要用最高等級的解析度，也就是 ``-Df``："
 msgstr ""
+"Next, we are going to adjust the coastline resolution. This is because some islands in this region are "
+"so small that they won't show on a map without a finest resolution. ``pscoast`` use ``-D`` flag to control "
+"the coastline resolution. The accepted parameters are ``f`` (full), ``h`` (high), "
+"``i`` (intermediate), ``l`` (low), and ``c`` (crude). The default value is ``l``. "
+"Here we use the highest level of resolution, that is, ``-Df``:"
 
 #: ../../making_first_map.rst:194
 msgid ""
@@ -403,11 +416,11 @@ msgstr ""
 
 #: ../../making_first_map.rst:199
 msgid "畫出來的 .ps 檔就如下所示"
-msgstr ""
+msgstr "The following figure is the output .ps file."
 
 #: ../../making_first_map.rst:205
 msgid "由此可見，光是調整海岸線解析度，以及陸地與海洋的顏色，整張圖就會與脫胎換骨。"
-msgstr ""
+msgstr "Here we can see that the map is totally changed by only adjusting coastline resolution and colors for land and sea."
 
 #: ../../making_first_map.rst:207
 msgid ""
@@ -417,6 +430,16 @@ msgid ""
 "檔看圖軟體的預設版面都是直向紙張，所以輸出的地圖就會像上面一樣，不是以\\ 最「通俗」(北方朝上) "
 "的方向呈現。為了讓我們操作時更方便一點，我們可以加上 ``-P`` 選項，命令 GMT 把地圖畫在直向 (Portrait) A4 紙張上。"
 msgstr ""
+"Maybe you've noticed that there is a always large white space in the output ps file. This is because "
+"GMT is not \"generating an image of map\" but \"printing a map on a fixed paper format\". If we stick "
+"to the default settings, GMT would use landscape-oriented A4 paper. Therefore, our 15-cm-wide map "
+"does not totally occupy the paper and leaves a large portion of empty white space. "
+"Here we are not going to adjust the paper size, but will address the paper orientation because "
+"many PostScript viewers use portrait A4 as default (Microsoft Word does this, too). "
+"If we open a landscape-oriented A4 map using the default setting, the map would be rotated and thus "
+"the north is not at the top anymore, which is not a conventional map setting. To be more convenient, "
+"we can add ``-P`` flag, which tells GMT the map should be drawn on a protrait-oriented A4 paper."
+
 
 #: ../../making_first_map.rst:214
 msgid ""
@@ -424,12 +447,19 @@ msgid ""
 "\n"
 "          -Scornflowerblue -Df -P > archi_sea.ps"
 msgstr ""
+"$ pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \\"
+"\n"
+"          -Scornflowerblue -Df -P > archi_sea.ps"
 
 #: ../../making_first_map.rst:221
 msgid ""
 "要更改紙張大小的話，得先了解 ``gmtdefaults`` 的相關設定。同樣的，從 ``gmtdefaults`` 中，\\ "
 "也可以調整預設紙張的方向，這樣就不用每次都加 ``-P`` 了。與版面設定相關的教學，請看\\ **之後的章節**。"
 msgstr ""
+"To change paper size, you need to learn the settings in ``gmtdefaults``. "
+"Likewise, you can also change the settings in ``gmtdefaults`` directly and then "
+"there will be no need to add ``-P``. Please see **later chapter** for setting up "
+"paper format in detail."
 
 #: ../../making_first_map.rst:224
 msgid ""
@@ -437,6 +467,11 @@ msgid ""
 "座標標誌、底色、標題等等，合起來稱為底圖 (Basemap) 設定。``-B`` 選項是 GMT 中最複雜的選項之一， "
 "有著五花八門的樣式組合可供選擇。這邊我們先講最簡單的兩種組合"
 msgstr ""
+"Now the main map is almost finished, and it's time to add a map frame. GMT uses ``-B`` "
+"to tweak map frame and associated elements, like grids, ticks, annotationsn and title. "
+"They are collectively called the Basemap settings. ``-B`` is one of the most "
+"complex arguments in GMT since it's got tons of styles for your choice. "
+"Here we are going to introduce 2 simplest combinations:"
 
 #: ../../making_first_map.rst:228
 msgid ""
@@ -456,6 +491,17 @@ msgid ""
 "(地圖上端會破一個洞)」。第二種組合可以透過 ``+t`` "
 "來延伸，後方可以輸入此幅地圖的標題。兩種組合可以同時加在一個指令內，例如說我們的地圖如果這樣設計："
 msgstr ""
+"The first combination gives the spacing number to annotation (tick mark), tick, and grid. It used the same unit as specified in "
+"``-R``. For example, ``-Ba1f1g1`` means annotations, ticks, and grids are plotted at every degree; ``-Ba2f1`` means "
+"that \"annotation is labeled every other degree, tick is plotted every degree, and don't add any grid.\" "
+"The second combination is for four sides of a map, and it uses W, S, E, N for West, South, East, and North. "
+"If it's a captial letter, GMT would put everything (frame and annotations) at this side; if it's a lowercase letter, "
+"only frame would be added to this side; if you don't add a letter, nothing will be plotted. For example, "
+"``-Bwsne`` is to put a map frame without any annotation (ignoring the ``-Ba`` setting in the first combination); "
+"``-BWSe`` is to put a frame with annotation at west and south side, but only frame itself at east side (and no frame "
+"at the north - the map would look broken!) It's also ok to add ``+t`` at the second combination, which a map title "
+"followed by the ``+t`` flag. Two combinations can be both used in the same command. For instance, we can design our map like this:"
+
 
 #: ../../making_first_map.rst:241
 msgid ""
@@ -476,6 +522,9 @@ msgid ""
 "那麼，地圖四邊都會加上邊框，但只有西側和南側會標上經緯度，經緯度會以每 2 度標示一次，\\ 刻度 (黑白線區間) 以每 0.5 "
 "度標示一次，格線每 1 度就有一條，而且還會加上 *Archipelago Sea* 這個標題。\\ 畫出來的樣子如下所示："
 msgstr ""
+"In this case, a map frame us added to all four edges, but annotations are only marked at the west side and the south side. "
+"lat/long annotations are at every 2 degrees, ticks (the black and white bars in the map frame) are 0.5 degrees wide, and "
+"grid line is put at every degree. The map is also entitled as *Archipelago Sea*, like the following figure shows:"
 
 #: ../../making_first_map.rst:255
 msgid ""
@@ -483,6 +532,10 @@ msgid ""
 "``psbasemap`` 來達成，如此一來，程式會先畫好邊框，我們再把其他圖層填到邊框內即可。\\ 有關進階的 ``-B`` "
 "選項調整，像是自訂數值標記、各軸分開設定、主格線與次要格線、中文字標題與標記等等， 會在\\ **之後的章節**\\ 說明。"
 msgstr ""
+"Actually ``-B`` is a shortened version of another GMT command called ``psbasemap``. We can use ``psbasemap`` to plot many more "
+"complex frame settings independently, and then filling the map content into the frame is just simple. "
+"For advanced ``-B`` options like custom tick marks, adjusting single axis, primary and secondary grid, and special characters, "
+"please see **later chapter**. "
 
 #: ../../making_first_map.rst:260
 msgid ""
@@ -490,6 +543,11 @@ msgid ""
 "為了精簡地圖，讓讀者聚焦在關鍵資訊上，``pscoast`` 提供了 ``-A`` 選項，這個選項可以讓我們輸入島嶼\\ 面積 "
 "(單位是平方公里)，然後 ``pscoast`` 會省略比這個面積還小的島嶼不畫。這裡我們要省略比 0.1 平方\\ 公里還小的島嶼："
 msgstr ""
+"You would probably feel that ther are too many islands in Archipelago Sea and they easily distract readers, "
+"especially if we want to label other information on the map. To simplify our map and make readers focus on "
+"key information, ``pscoast`` provides ``-A`` flag to let us specify a minimum area of an island, in "
+"square kilometers. Once it's set, ``pscoast`` would ignore any island that is smaller than the given area. "
+"Here we are going to make islands that are smaller than 0.1 square kilometers disappear: "
 
 #: ../../making_first_map.rst:265
 msgid ""
@@ -499,16 +557,23 @@ msgid ""
 "\\\n"
 "          -A0.1 > archi_sea.ps"
 msgstr ""
+"$ pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \\"
+"\n"
+"          -Scornflowerblue -Df -P -Ba2f0.5g1 -BWSne+t\"Archipelago Sea\" "
+"\\\n"
+"          -A0.1 > archi_sea.ps"
 
 #: ../../making_first_map.rst:271
 msgid "島嶼比較少，看起來清爽多了，卻又不會喪失「群島海」名稱的霸氣。"
-msgstr ""
+msgstr "With fewer islands, the map looks cleaner but still keeps the sense of its name, \"Archipelago Sea\"."
 
 #: ../../making_first_map.rst:275
 msgid ""
 "我們的地圖目前已大致完成。最後，可以再使用 ``-U`` 選項在右下角加上 GMT 軟體的標誌。``-U`` 選項和 ``-P`` "
 "一樣，可以直接加在指令內，不用給定任何值。"
 msgstr ""
+"Now our map is close to finish. Lastly, let us use ``-U`` flag to add a GMT mark and time stamp at the bottom right corner. "
+"The usage of ``-U`` is similar to ``-P`` - it doesn't need any parameters. "
 
 #: ../../making_first_map.rst:279
 msgid "指令稿"
@@ -561,4 +626,6 @@ msgid ""
 "畫出蘇拉威西島 (*Sulawesi*) 的海岸線圖。蘇拉威西島是印尼第四大島，外觀非常有趣，\\ 像是字母 K 或是正在跳舞的人。座標可使用 "
 "``118.34E 至 125.70E``，以及 ``6.12S 至 2.08N``。"
 msgstr ""
+"Make a map illustrating the coastline of *Sulawesi*. Sulawesi is the fourth largest island in Indonesia with an "
+"fun shape like the letter K or a dancing person. Use the coordiante ``118.34E to 125.70E`` and ``6.12S to 2.08N``."
 
