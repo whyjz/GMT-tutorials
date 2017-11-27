@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-25 00:36-0500\n"
+"POT-Creation-Date: 2017-11-27 18:19-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.2.0\n"
+"Generated-By: Babel 2.3.3\n"
 
 #: ../../map_elements.rst:3
 msgid "加入地圖元素"
@@ -25,23 +25,115 @@ msgstr "Add Map Elements"
 msgid "目標"
 msgstr ""
 
-#: ../../map_elements.rst:11
+#: ../../map_elements.rst:13
+msgid "直接觀看\\ `指令稿`_"
+msgstr ""
+
+#: ../../map_elements.rst:17
 msgid "使用的指令與概念"
 msgstr ""
 
-#: ../../map_elements.rst:15
-msgid "前置作業"
+#: ../../map_elements.rst:18
+msgid "``gmtset`` - 更改 GMT 的預設作圖參數"
 msgstr ""
 
 #: ../../map_elements.rst:19
-msgid "操作流程"
+msgid "``grdinfo`` - **由網格資料建立** ``-R`` **設定**"
+msgstr ""
+
+#: ../../map_elements.rst:20
+msgid "``grdimage`` - **以 RGB 資料進行繪圖**"
+msgstr ""
+
+#: ../../map_elements.rst:21
+msgid "``psbasemap`` - **添加不同的地圖元素**"
+msgstr ""
+
+#: ../../map_elements.rst:22
+msgid "``pscoast`` - 繪製海岸線、國界與海域填色"
 msgstr ""
 
 #: ../../map_elements.rst:23
-msgid "指令稿"
+msgid "``pstext`` - 在地圖上加入文字"
+msgstr ""
+
+#: ../../map_elements.rst:24
+msgid "``psxy`` - 輸出檔尾"
+msgstr ""
+
+#: ../../map_elements.rst:25
+msgid "``psconvert`` - 把 ps 檔轉成 png 檔並保留透明度設定"
+msgstr ""
+
+#: ../../map_elements.rst:26
+msgid "外部指令 ``echo`` - 把資料輸入到管線命令中"
 msgstr ""
 
 #: ../../map_elements.rst:27
+msgid "如何繪製分圖 (Map Inset)"
+msgstr ""
+
+#: ../../map_elements.rst:31
+msgid "前置作業"
+msgstr ""
+
+#: ../../map_elements.rst:35
+msgid "操作流程"
+msgstr ""
+
+#: ../../map_elements.rst:39
+msgid "指令稿"
+msgstr ""
+
+#: ../../map_elements.rst:40
+msgid "本地圖的最終指令稿如下："
+msgstr ""
+
+#: ../../map_elements.rst:42
+msgid ""
+"out_ps=\"Rub_al_Khali.ps\"\n"
+"\n"
+"in_grd_r=\"LC81600452017098LGN00_B4_s.grd\"\n"
+"in_grd_g=\"LC81600452017098LGN00_B3_s.grd\"\n"
+"in_grd_b=\"LC81600452017098LGN00_B2_s.grd\"\n"
+"\n"
+"gmtset MAP_FRAME_TYPE=plain\n"
+"\n"
+"R=$(grdinfo $in_grd_r -I1/1)\n"
+"grdimage $in_grd_r $in_grd_g $in_grd_b -R$in_grd_r -JX15c/0 -P -K > "
+"$out_ps\n"
+"psbasemap -R -J -O -K -B0 >> $out_ps\n"
+"# GMT 5.2\n"
+"# psbasemap -R -JU40Q/15c -O -K -TdjRT+w2c+f+l\\ ,\\ ,\\ ,N+o1c/1.8c "
+"-F+c0.2c/0.2c/0.2c/1c+gwhite@50+r0.5c --FONT=15p >> $out_ps\n"
+"# GMT 5.4\n"
+"psbasemap -R -JU40Q/15c -O -K -TdjRT+w2c+f+l,,,N+o1c/1.8c "
+"-F+c0.2c/0.2c/0.2c/1c+gwhite@50+r0.5c --FONT=15p >> $out_ps\n"
+"psbasemap -R -J         -O -K -LjRB+c22+w10k+f+o2c/2c+u -F+gwhite@50  >> "
+"$out_ps\n"
+"\n"
+"pscoast -R-700000/1100000/1920000/3180000 -JU40Q/5c -O -K -Di -Wthinner "
+"-Gwhite -Sgray -B0 -N1/thinnest >> $out_ps\n"
+"\n"
+"psbasemap -R -JX5c/0 -O -K -D${R#*-R} -F >> $out_ps\n"
+"\n"
+"echo -300000 2300000 Saudi Arabia | pstext -R -J -O -K -F+f8p+jMC >> "
+"$out_ps\n"
+"\n"
+"psxy -R -J -O -T >> $out_ps\n"
+"\n"
+"psconvert $out_ps -A -P -Tg"
+msgstr ""
+
+#: ../../map_elements.rst:73
+msgid "「」"
+msgstr ""
+
+#: ../../map_elements.rst:75
+msgid "觀看\\ `最終版地圖`_"
+msgstr ""
+
+#: ../../map_elements.rst:78
 msgid "習題"
 msgstr ""
 
