@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-29 23:38-0500\n"
+"POT-Creation-Date: 2018-03-19 16:04-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.2.0\n"
+"Generated-By: Babel 2.3.3\n"
 
 #: ../../map_elements.rst:3
 msgid "加入地圖元素"
@@ -93,26 +93,30 @@ msgid "外部指令 ``echo`` - 把資料輸入到管線命令中"
 msgstr ""
 
 #: ../../map_elements.rst:38
+msgid "如何使用正確的 ``-J`` 投影選項套疊衛星影像與其他地理空間資料"
+msgstr ""
+
+#: ../../map_elements.rst:39
 msgid "如何繪製分圖 (Map Inset)"
 msgstr ""
 
-#: ../../map_elements.rst:41
+#: ../../map_elements.rst:42
 msgid "前置作業"
 msgstr ""
 
-#: ../../map_elements.rst:45
+#: ../../map_elements.rst:46
 msgid "操作流程"
 msgstr ""
 
-#: ../../map_elements.rst:49
+#: ../../map_elements.rst:50
 msgid "指令稿"
 msgstr ""
 
-#: ../../map_elements.rst:50
+#: ../../map_elements.rst:51
 msgid "本地圖的最終指令稿如下："
 msgstr ""
 
-#: ../../map_elements.rst:52
+#: ../../map_elements.rst:53
 msgid ""
 "# ==== 設定變數 ====\n"
 "out_ps=\"Rub_al_Khali.ps\"\n"
@@ -155,19 +159,19 @@ msgid ""
 "psconvert $out_ps -A -P -Tg"
 msgstr ""
 
-#: ../../map_elements.rst:90
+#: ../../map_elements.rst:91
 msgid "「」"
 msgstr ""
 
-#: ../../map_elements.rst:92
+#: ../../map_elements.rst:93
 msgid "觀看\\ `最終版地圖`_"
 msgstr ""
 
-#: ../../map_elements.rst:95
+#: ../../map_elements.rst:96
 msgid "習題"
 msgstr ""
 
-#: ../../map_elements.rst:98
+#: ../../map_elements.rst:99
 msgid ""
 "Peter Vincent (2008). `Saudi Arabia: an environmental overview "
 "<https://books.google.com/books?id=Vacv2wy3yd8C&pg=PA141>`_. Taylor & "
@@ -175,45 +179,5 @@ msgid ""
 msgstr ""
 
 #~ msgid ""
-#~ "out_ps=\"Rub_al_Khali.ps\"\n"
-#~ "\n"
-#~ "in_grd_r=\"LC81600452017098LGN00_B4_s.grd\"\n"
-#~ "in_grd_g=\"LC81600452017098LGN00_B3_s.grd\"\n"
-#~ "in_grd_b=\"LC81600452017098LGN00_B2_s.grd\"\n"
-#~ "\n"
-#~ "gmtset MAP_FRAME_TYPE=plain\n"
-#~ "\n"
-#~ "R=$(grdinfo $in_grd_r -I1/1)\n"
-#~ "grdimage $in_grd_r $in_grd_g $in_grd_b "
-#~ "-R$in_grd_r -JX15c/0 -P -K > $out_ps"
-#~ "\n"
-#~ "psbasemap -R -J -O -K -B0 >> $out_ps\n"
-#~ "# GMT 5.2\n"
-#~ "# psbasemap -R -JU40Q/15c -O -K "
-#~ "-TdjRT+w2c+f+l\\ ,\\ ,\\ ,N+o1c/1.8c "
-#~ "-F+c0.2c/0.2c/0.2c/1c+gwhite@50+r0.5c --FONT=15p >> "
-#~ "$out_ps\n"
-#~ "# GMT 5.4\n"
-#~ "psbasemap -R -JU40Q/15c -O -K "
-#~ "-TdjRT+w2c+f+l,,,N+o1c/1.8c "
-#~ "-F+c0.2c/0.2c/0.2c/1c+gwhite@50+r0.5c --FONT=15p >> "
-#~ "$out_ps\n"
-#~ "psbasemap -R -J         -O -K "
-#~ "-LjRB+c22+w10k+f+o2c/2c+u -F+gwhite@50  >> $out_ps"
-#~ "\n"
-#~ "\n"
-#~ "pscoast -R-700000/1100000/1920000/3180000 -JU40Q/5c "
-#~ "-O -K -Di -Wthinner -Gwhite -Sgray "
-#~ "-B0 -N1/thinnest >> $out_ps\n"
-#~ "\n"
-#~ "psbasemap -R -JX5c/0 -O -K -D${R#*-R} -F >> $out_ps\n"
-#~ "\n"
-#~ "echo -300000 2300000 Saudi Arabia | "
-#~ "pstext -R -J -O -K -F+f8p+jMC >>"
-#~ " $out_ps\n"
-#~ "\n"
-#~ "psxy -R -J -O -T >> $out_ps\n"
-#~ "\n"
-#~ "psconvert $out_ps -A -P -Tg"
 #~ msgstr ""
 
