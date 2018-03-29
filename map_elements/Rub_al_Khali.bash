@@ -13,9 +13,14 @@
 
 out_ps="Rub_al_Khali.ps"
 
-in_grd_r="LC81600452017098LGN00_B4_s.grd"
-in_grd_g="LC81600452017098LGN00_B3_s.grd"
-in_grd_b="LC81600452017098LGN00_B2_s.grd"
+# in_grd_r="LC81600452017098LGN00_B4_s.grd"
+# in_grd_g="LC81600452017098LGN00_B3_s.grd"
+# in_grd_b="LC81600452017098LGN00_B2_s.grd"
+
+in_grd_r="LC08_L1TP_160045_20170408_20170414_01_T1_B4_s.grd"
+in_grd_g="LC08_L1TP_160045_20170408_20170414_01_T1_B3_s.grd"
+in_grd_b="LC08_L1TP_160045_20170408_20170414_01_T1_B2_s.grd"
+
 
 gmtset MAP_FRAME_TYPE=plain
 
@@ -23,9 +28,9 @@ R=$(grdinfo $in_grd_r -I1/1)
 grdimage $in_grd_r $in_grd_g $in_grd_b -R$in_grd_r -JX15c/0 -P -K > $out_ps
 psbasemap -R -J -O -K -B0 >> $out_ps
 # GMT 5.2
-# psbasemap -R -JU40Q/15c -O -K -TdjRT+w2c+f+l\ ,\ ,\ ,N+o1c/1.8c -F+c0.2c/0.2c/0.2c/1c+gwhite@50+r0.5c --FONT=15p >> $out_ps
+psbasemap -R -JU40Q/15c -O -K -TdjRT+w2c+f+l\ ,\ ,\ ,N+o1c/1.8c -F+c0.2c/0.2c/0.2c/1c+gwhite@50+r0.5c --FONT=15p >> $out_ps
 # GMT 5.4
-psbasemap -R -JU40Q/15c -O -K -TdjRT+w2c+f+l,,,N+o1c/1.8c -F+c0.2c/0.2c/0.2c/1c+gwhite@50+r0.5c --FONT=15p >> $out_ps
+# psbasemap -R -JU40Q/15c -O -K -TdjRT+w2c+f+l,,,N+o1c/1.8c -F+c0.2c/0.2c/0.2c/1c+gwhite@50+r0.5c --FONT=15p >> $out_ps
 psbasemap -R -J         -O -K -LjRB+c22+w10k+f+o2c/2c+u -F+gwhite@50  >> $out_ps
 
 
