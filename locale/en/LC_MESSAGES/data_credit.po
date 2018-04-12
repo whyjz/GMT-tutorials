@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) 2016-17, 鄭懷傑 (Whyjay Zheng)
+# Copyright (C) 2016-18, 鄭懷傑 (Whyjay Zheng)
 # This file is distributed under the same license as the GMT 教學手冊 package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-11 16:01-0400\n"
+"POT-Creation-Date: 2018-04-12 17:14-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,8 @@ msgstr ""
 "Generated-By: Babel 2.2.0\n"
 
 #: ../../data_credit.rst:3
-msgid "資料來源"
+#, fuzzy
+msgid "資料來源與誌謝"
 msgstr "Data Credit"
 
 #: ../../data_credit.rst:5 ../../data_credit.rst:14
@@ -83,5 +84,9 @@ msgid ""
 "USGS (2006), Shuttle Radar Topography Mission, 1 Arc Second scene "
 "n13_e123_1arc_v3, Filled Finished 3.0, Global Land Cover Facility, "
 "University of Maryland, College Park, Maryland, February 2000."
+msgstr ""
+
+#: ../../data_credit.rst:41
+msgid "感謝 ---- Turtle"
 msgstr ""
 

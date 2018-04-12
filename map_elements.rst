@@ -19,7 +19,8 @@
 
 .. _最終版地圖:
 
-.. image:: map_elements/Rub_al_Khali.png
+.. image:: map_elements/Rub_al_Khali_s.png
+    :target: _images/Rub_al_Khali.png
 
 直接觀看\ `指令稿`_
 
@@ -55,7 +56,7 @@ Landsat 衛星影像可以從美國地質調查局 (USGS) 管理的網站 `Earth
 .. image:: map_elements/map_elements_fig2.png
 
 下載之後解壓縮，你會發現其中有許多 GeoTIFF 檔案，每個檔案代表一個特定的影像波段。\
-`這裡 <https://landsat.usgs.gov/what-are-band-designations-landsat-satellites>`_\ 說明了每個編號各自代表的波段。在本教學中，\
+`Landsat 網站上 <https://landsat.usgs.gov/what-are-band-designations-landsat-satellites>`_\ 說明了每個編號各自代表的波段。在本教學中，\
 我們要使用可見光的紅、綠、藍三個波段 (RGB)，編號分別是 B4、B3 和 B2。為了方便分享輸入檔以及增強影像的對比，我對這三個影像進行了\
 如下操作：
 

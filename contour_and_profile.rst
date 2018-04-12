@@ -19,7 +19,8 @@
 
 .. _最終版地圖:
 
-.. image:: contour_and_profile/mayon.png
+.. image:: contour_and_profile/mayon_s.png
+    :target: _images/mayon.png
 
 直接觀看\ `指令稿`_
 

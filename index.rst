@@ -79,6 +79,7 @@ Copyright © 2016-17 鄭懷傑 (Whyjay Zheng). All rights reserved.
    - :doc:`raster_calculator`
 * 附錄
    - :doc:`data_credit`
+   - :doc:`command_index`
    - :doc:`gallery`
 
 .. toctree::
@@ -102,5 +103,6 @@ Copyright © 2016-17 鄭懷傑 (Whyjay Zheng). All rights reserved.
    view3d
    raster_calculator
    data_credit
+   command_index
    gallery
 

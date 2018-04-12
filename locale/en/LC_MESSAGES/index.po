@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) 2016-17, 鄭懷傑 (Whyjay Zheng)
+# Copyright (C) 2016-18, 鄭懷傑 (Whyjay Zheng)
 # This file is distributed under the same license as the GMT 教學手冊 package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-11 16:01-0400\n"
+"POT-Creation-Date: 2018-04-12 17:14-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,12 +45,12 @@ msgid ""
 "中組織這些指令。除此之外，本教學也會在適當的地方，解說與\\ GMT 相關的格式、軟體像是 shapefile、GDAL "
 "之間的銜接，它們在實作上總是非常的有用。"
 msgstr ""
-"In these tutorials, we will explore some basic knowledge of GMT and useful"
-" plotting skills from numerous examples. The final goal of each chapter "
-"is to design a good-looking map from very beginning. You will be learning"
-" many GMT commands and how to organize them in a command line or Shell "
-"script. In addition, the tutorials will also explain anything that is "
-"associated with GMT at right time, such as geospatial data format and "
+"In these tutorials, we will explore some basic knowledge of GMT and "
+"useful plotting skills from numerous examples. The final goal of each "
+"chapter is to design a good-looking map from very beginning. You will be "
+"learning many GMT commands and how to organize them in a command line or "
+"Shell script. In addition, the tutorials will also explain anything that "
+"is associated with GMT at right time, such as geospatial data format and "
 "tools, like shapefiles and GDAL. These stuff can usually expedite your "
 "mapping tasks."
 
@@ -85,8 +85,8 @@ msgstr ""
 "to whichever chapter you want to check it up to save your time if you've "
 "been using GMT for a while. Please feel free to leave any messages below "
 "any chapters, or contact `me <https://www.facebook.com/whyjz>`_ at any "
-"time for any questions, comments, and ideas/tips to be shared. I hope you "
-"enjoy the fun of mapping from reading these tutorials!"
+"time for any questions, comments, and ideas/tips to be shared. I hope you"
+" enjoy the fun of mapping from reading these tutorials!"
 
 #: ../../index.rst:35
 msgid "授權"
@@ -217,7 +217,7 @@ msgstr "Processing Grid Data"
 msgid ":doc:`raster_calculator`"
 msgstr ""
 
-#: ../../index.rst:82
+#: ../../index.rst:83
 msgid "附錄"
 msgstr "Appendix"
 
@@ -226,6 +226,10 @@ msgid ":doc:`data_credit`"
 msgstr ""
 
 #: ../../index.rst:82
+msgid ":doc:`command_index`"
+msgstr ""
+
+#: ../../index.rst:83
 msgid ":doc:`gallery`"
 msgstr ""
 

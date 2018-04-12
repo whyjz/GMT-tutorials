@@ -22,7 +22,8 @@
 
 .. _最終版地圖:
 
-.. image:: hillshading/hawaiian-emperor.png
+.. image:: hillshading/hawaiian-emperor_s.png
+    :target: _images/hawaiian-emperor.png
 
 直接觀看\ `指令稿`_
 
@@ -86,7 +87,8 @@
         #      3. 這裡我們使用小寫的 -Jx，意味著每度距離是 0.25 公分。由於地圖水平橫跨 60 度，
         #         橫向的寬度就會是 15 公分。
 
-.. image:: hillshading/hillshading_fig1.png
+.. image:: hillshading/hillshading_fig1_s.png
+    :target: _images/hillshading_fig1.png
 
 ``grdimage`` 預設的色階是 ``rainbow``，地圖會一片藍的原因是網格檔中有幾個地方的數值特別高。\
 因此，我們要換上從 `cpt-city`_ 找來的色階檔 ``Spectral``，並且調整色階讓地圖能夠傳達更多資訊。``Spectral`` 色階檔可以\
@@ -125,7 +127,8 @@
     # ==== 繪圖 ====
     grdimage $in_grd -Jx0.25c -P -C$in_cpt > $out_ps
 
-.. image:: hillshading/hillshading_fig3.png
+.. image:: hillshading/hillshading_fig3_s.png
+    :target: _images/hillshading_fig3.png
 
 這次的輸出看起來好多了，更多細節透過不同的顏色呈現在圖中。這張地圖或許已經可以滿足某些目的，例如找出重力異常值\
 特別高或特別低的地區；但對於相同顏色區塊中數值的變化情形就較無法掌握，例如我們很難判斷在深藍色或深紅色的區塊中，\
@@ -195,7 +198,8 @@ GMT 的暈渲技術要透過 ``grdgradient`` 來完成。顧名思義，``grdgra
     grdgradient $in_grd -G$in_shadow -A45 -N10
     grdimage $in_shadow -Jx0.25c -P -Cgray > shadow.ps
 
-.. image:: hillshading/hillshading_fig4.png
+.. image:: hillshading/hillshading_fig4_s.png
+    :target: _images/hillshading_fig4.png
 
 這就是陰影檔本身的樣子，透過顏色深淺的不同，清楚的呈現了地形的起伏，像是在海洋地殼上面的火山島，或是\
 海溝的延伸方向等等。暈渲的技術，大致上就是把這層陰影檔圖層，以半透明的方式套疊在原本的網格上，使原本的\
@@ -269,7 +273,8 @@ GMT 的暈渲技術要透過 ``grdgradient`` 來完成。顧名思義，``grdgra
     # ==== 關門 (寫入 EOF) ====
     psxy -R -J -O -T >> $out_ps
 
-.. image:: hillshading/hillshading_fig5.png
+.. image:: hillshading/hillshading_fig5_s.png
+    :target: _images/hillshading_fig5.png
 
 加上了渲染效果、邊框、文字標籤以及色階條後，地圖看起來變得專業許多。不過你或許會發現還有兩點值得改進：
 
