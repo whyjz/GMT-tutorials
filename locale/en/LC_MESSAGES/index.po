@@ -147,15 +147,15 @@ msgstr "Beginner's GMT Course"
 
 #: ../../index.rst:62
 msgid ":doc:`intro_install`"
-msgstr ""
+msgstr ":doc:`intro_install`"
 
 #: ../../index.rst:63
 msgid ":doc:`software`"
-msgstr ""
+msgstr ":doc:`software`"
 
 #: ../../index.rst:64
 msgid ":doc:`basic_concept`"
-msgstr ""
+msgstr ":doc:`basic_concept`"
 
 #: ../../index.rst:68
 msgid "繪圖的基本技巧"
@@ -163,19 +163,19 @@ msgstr "Basic Mapping Skills"
 
 #: ../../index.rst:66
 msgid ":doc:`making_first_map`"
-msgstr ""
+msgstr ":doc:`making_first_map`"
 
 #: ../../index.rst:67
 msgid ":doc:`coloring_topography`"
-msgstr ""
+msgstr ":doc:`coloring_topography`"
 
 #: ../../index.rst:68
 msgid ":doc:`pen_and_painting`"
-msgstr ""
+msgstr ":doc:`pen_and_painting`"
 
 #: ../../index.rst:69
 msgid ":doc:`scatter_plot`"
-msgstr ""
+msgstr ":doc:`scatter_plot`"
 
 #: ../../index.rst:76
 msgid "繪製與編修各種常見的地圖"
@@ -183,31 +183,31 @@ msgstr "Plot and Edit Different Kinds of Maps"
 
 #: ../../index.rst:71
 msgid ":doc:`editing_cpt_colorbar`"
-msgstr ""
+msgstr ":doc:`editing_cpt_colorbar`"
 
 #: ../../index.rst:72
 msgid ":doc:`layout_design`"
-msgstr ""
+msgstr ":doc:`layout_design`"
 
 #: ../../index.rst:73
 msgid ":doc:`hillshading`"
-msgstr ""
+msgstr ":doc:`hillshading`"
 
 #: ../../index.rst:74
 msgid ":doc:`contour_and_profile`"
-msgstr ""
+msgstr ":doc:`contour_and_profile`"
 
 #: ../../index.rst:75
 msgid ":doc:`plot_vector_data`"
-msgstr ""
+msgstr ":doc:`plot_vector_data`"
 
 #: ../../index.rst:76
 msgid ":doc:`map_elements`"
-msgstr ""
+msgstr ":doc:`map_elements`"
 
 #: ../../index.rst:77
 msgid ":doc:`view3d`"
-msgstr ""
+msgstr ":doc:`view3d`"
 
 #: ../../index.rst:78
 msgid "網格資料處理"
@@ -215,7 +215,7 @@ msgstr "Processing Grid Data"
 
 #: ../../index.rst:79
 msgid ":doc:`raster_calculator`"
-msgstr ""
+msgstr ":doc:`raster_calculator`"
 
 #: ../../index.rst:83
 msgid "附錄"
@@ -223,15 +223,15 @@ msgstr "Appendix"
 
 #: ../../index.rst:81
 msgid ":doc:`data_credit`"
-msgstr ""
+msgstr ":doc:`data_credit`"
 
 #: ../../index.rst:82
 msgid ":doc:`command_index`"
-msgstr ""
+msgstr ":doc:`command_index`"
 
 #: ../../index.rst:83
 msgid ":doc:`gallery`"
-msgstr ""
+msgstr ":doc:`gallery`"
 
 #~ msgid ""
 #~ msgstr ""

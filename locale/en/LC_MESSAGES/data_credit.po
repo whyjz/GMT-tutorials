@@ -20,7 +20,7 @@ msgstr ""
 #: ../../data_credit.rst:3
 #, fuzzy
 msgid "資料來源與誌謝"
-msgstr "Data Credit"
+msgstr "Data Credit and Acknowledgement"
 
 #: ../../data_credit.rst:5 ../../data_credit.rst:14
 msgid ":doc:`coloring_topography`"

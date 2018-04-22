@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../command_index.rst:3
 msgid "指令索引"
-msgstr ""
+msgstr "Command Index"
 
 #: ../../command_index.rst:9
 msgid "``gmtdefaults``"
