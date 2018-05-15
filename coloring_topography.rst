@@ -18,6 +18,7 @@
 冬天非常乾燥，幾乎不會下雪\ [#]_)。
 
 .. _的的喀喀湖: https://zh.wikipedia.org/wiki/%E7%9A%84%E7%9A%84%E5%96%80%E5%96%80%E6%B9%96
+.. _Lake Titicaca: https://en.wikipedia.org/wiki/Lake_Titicaca
 
 .. _最終版地圖:
 

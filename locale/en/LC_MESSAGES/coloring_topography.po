@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-04-25 03:01-0400\n"
+"PO-Revision-Date: 2018-05-15 11:56-0400\n"
 "Last-Translator: Whyjay Zheng <jhsttshj@gmail.com>\n"
 "Language-Team: English (United States)\n"
 "Language: en-US\n"
@@ -126,6 +126,8 @@ msgstr ""
 #: ../../coloring_topography.rst:52
 msgid "`下載 ETOPO1 Bedrock netCDF 檔`_ (383M，解壓後約 891M)"
 msgstr ""
+"`Download ETOPO1 Bedrock in netCDF format`_ (383M，will be 891M after "
+"extraction)"
 
 #: ../../coloring_topography.rst:57
 msgid ""
@@ -135,6 +137,17 @@ msgid ""
 "讀取並作圖。如果想要參閱檔案的基本資訊，除了上 `ETOPO`_ 官網外，也可以透過終端機輸入 ``grdinfo`` "
 "指令來達成。執行畫面會像如下所示："
 msgstr ""
+"You will see a file named ``ETOPO1_Bed_g_gmt4.grd`` in the extracted files. "
+"The file extension ``.grd`` suggests that it's a \"gridded\" file. Imagine "
+"part of Earth's surface is cut like a chessboard, and every cell on this "
+"chessboard has one value that represents the height of the surface. This is "
+"how a \"gridded\" surface would look like. (The concept of GeoTiff is really "
+"similar to this; however, we call each chessboard value a \"pixel\", not a "
+"\"gridded point\".) The extension ``.grd`` is commonly used for netCDF "
+"format, which is able to be loaded and plotted by GMT. If you want to check "
+"the information of the ETOPO ``.grd`` file, you can either go to the "
+"`ETOPO`_ website or enter ``grdinfo`` in your terminal. The results would be "
+"something like this:"
 
 #: ../../coloring_topography.rst:63
 msgid ""
@@ -170,33 +183,44 @@ msgstr ""
 
 #: ../../coloring_topography.rst:77
 msgid "從輸出文字中你可以看到一些基本資訊，像是"
-msgstr ""
+msgstr "What we can get from the output text are like"
 
 #: ../../coloring_topography.rst:79
 msgid "網格檔的格式是 netCDF，CF-1.5。"
-msgstr ""
+msgstr "This gridded file's format is netCDF, CF-1.5."
 
 #: ../../coloring_topography.rst:80
 msgid "X 從 -180 度到 180 度，Y 從 -90 度到 90 度，意味著此網格檔涵蓋全球的範圍。"
 msgstr ""
+"X is from -180 to 180 degrees, and Y is from -90 to 90 degrees. This means "
+"the file covers the entire Earth's surface."
 
 #: ../../coloring_topography.rst:81
 msgid "網格大小是 0.0166666666667，也就是 1/60 度 (1 弧分)。"
 msgstr ""
+"The size of each grid is 0.0166666666667, equal to one sixtieth degrees (1 "
+"arc minute)."
 
 #: ../../coloring_topography.rst:82
 msgid "總共有 21601 x 10801 = 233312401 個格點 (也就是兩億三千三百萬像素)。"
 msgstr ""
+"There are in total of 21,601 x 10,801 = 233,312,401 grid points (that is, "
+"around one-fourth billion pixels!)"
 
 #: ../../coloring_topography.rst:83
 msgid ""
 "Z 值 (高度) 從 -10898 到 8271。雖然沒有註明單位，但很容易可以推敲出來是公尺。\\ 為什麼最高的地方不是 8848 公尺 "
 "(聖母峰的高度)? 那是因為網格的解析度還是不夠高，\\ 1 弧分其實只相當於 1 至 2 公里才取一個點而已。"
 msgstr ""
+"Z value (height) is from -10898 to 8271. Although we could not find an unit "
+"associated with the z value, it's still easy to figure out that it's in "
+"meters. Why is the highest point not 8848 m (the elevation of Mt. Everest)? "
+"This is because the resolution of this grid file is not fine enough. an 1-"
+"arc-minute spacing means we only take one height measurement every 1-2 km. "
 
 #: ../../coloring_topography.rst:88
 msgid "操作流程"
-msgstr ""
+msgstr "Procedure"
 
 #: ../../coloring_topography.rst:89
 msgid ""
@@ -204,10 +228,16 @@ msgid ""
 "*Google Map* 等工具決定區域。這裡我們考慮到高度的呈現效果，選擇\\ 經度從 -70.8 到 -66.56 (負值表示西經)，緯度從 -17."
 "17 到 -14.42 (負值表示南緯。)"
 msgstr ""
+"Once we get the global topography data, the next step would be deciding "
+"where on the Earth we want to plot (that is, map extent). Like we said in "
+"the previous chapter :doc:`making_first_map`, we can use tools like *Google "
+"Map* to determine the region. Here we choose longitude from -70.8 to -66.56 "
+"(negative number means W) and latitude from -17.17 to -14.42 (negative "
+"number means S), based on the distribution of elevations."
 
 #: ../../coloring_topography.rst:96
 msgid "本次作圖區域在 `Google Map` 上呈現的樣子。"
-msgstr ""
+msgstr "The map extent viewed on `Google Maps`. "
 
 #: ../../coloring_topography.rst:98
 msgid ""
@@ -215,24 +245,40 @@ msgid ""
 "(投影方法和地圖大小)。就讓我們來畫一張跟\\ `前一章 <making_first_map.html>`_\\ 一樣寬度的地圖吧。在\\ :ref:"
 "`終端機`\\ 模式下前往 ``ETOPO1_Bed_g_gmt4.grd`` 所在的資料夾， 然後輸入以下指令："
 msgstr ""
+"To use ``grdimage`` for plotting topography, we need to at least provide "
+"three arguments, which are ``input file``, ``-R`` (map extent), and ``-J`` "
+"(projection and map size). Let's make a map with the same size from the map "
+"in the `previous chapter <making_first_map.html>`_. In the terminal mode, go "
+"to the folder where ``ETOPO1_Bed_g_gmt4.grd`` is located, and enter the "
+"following command:"
 
 #: ../../coloring_topography.rst:103
 msgid ""
 "$ grdimage ETOPO1_Bed_g_gmt4.grd -R-70.8/-17.17/-66.56/-14.42r \\\n"
 "           -JM6i -P > titicaca.ps"
 msgstr ""
+"$ grdimage ETOPO1_Bed_g_gmt4.grd -R-70.8/-17.17/-66.56/-14.42r \\\n"
+"           -JM6i -P > titicaca.ps"
 
 #: ../../coloring_topography.rst:108
 msgid ""
 "這邊順便加了 ``-P``，方便輸出圖檔的觀看。如需以上指令的語法說明，請至\\ 「\\ :doc:`making_first_map`\\ "
 "」中查閱。輸出的圖檔 ``titicaca.ps`` 開啟後應該會是如下的圖案："
 msgstr ""
+"Here we added ``-P`` to view the output file more easily. If you are "
+"confused about the syntax, just go to \":doc:`making_first_map`\" and you'll "
+"find the detailed description. The output file ``titicaca.ps`` should look "
+"like this:"
 
 #: ../../coloring_topography.rst:114
 msgid ""
 "有點難以看懂？這是因為 GMT 預設的套色沒那麼適合這個地區的緣故。在未指定地圖的套色下，\\ GMT 會用一套名為 ``rainbow`` "
 "的色階來呈色。這個色階的顏色如下所示"
 msgstr ""
+"Really hard to comprehend? This is because the default GMT color ramp "
+"doesn't fit the map region quite well. If we don't assign a color ramp, GMT "
+"would use one called ``rainbow`` for the output map. The color distribution "
+"of this color scheme is shown here:"
 
 #: ../../coloring_topography.rst:121
 msgid ""
@@ -240,6 +286,12 @@ msgid ""
 "和最高的的地方。有沒有辦法換成另一種比較好看的色階？當然可以，GMT 有數種方法可以製造\\ "
 "或調整色階，但這邊我們要先來看一種最簡單的方法：直接下載已經做好的色階來用。"
 msgstr ""
+"The the color of ``0`` and the color of ``1`` -- that is, purple and red -- "
+"would correspond to the lowest and the highest point on the map. Is there "
+"any way to change the color ramp which is better? Of course the answer is "
+"yes; GMT has several ways to create your own color ramp or adjust an "
+"existing one, but here we are going to see the simplest method: downloading "
+"a ready-to-use color ramp from the Internet."
 
 #: ../../coloring_topography.rst:125
 msgid ""
@@ -248,44 +300,64 @@ msgid ""
 "bytemark.co.uk/pub/cpt-city/views/totp-cpt.html>`_\\ 就列了許多最常被下載的 ``.cpt`` "
 "檔。我們這次來用其中的一個叫做 ``mby`` 的色階看看。按下\\ ``mby`` 的色階表，你應該就會看到如下頁面"
 msgstr ""
+"The website `cpt-city`_ has collected many common color ramps, including "
+"those in the GMT format. GMT-formatted color ramps usually use the file "
+"extension ``.cpt``, which represents \"color palette table\". You can look "
+"for the color ramp you want on the website; for example, `this page <http://"
+"soliton.vm.bytemark.co.uk/pub/cpt-city/views/totp-cpt.html>`_ lists the most-"
+"downloaded ``.cpt`` files. Here we are going to use the one called ``mby``. "
+"Click the ``mby`` color ramp, and you should see the following page:"
 
 #: ../../coloring_topography.rst:135
 msgid ""
 "注意圖中的 **-8000 ... 5000**，這是指此色階已經被指定在 -8000 到 5000 公尺之內呈現了。\\ 按一下網頁上的 `cpt` "
 "連結就可以把此色階檔下載下來。"
 msgstr ""
+"Note that the number **-8000 ... 5000** means that this color ramp has been "
+"adjusted to illustrate elevations between -8000 and 5000 (presumably in "
+"meters). Click the link to `cpt` on the page to download this color ramp."
 
 #: ../../coloring_topography.rst:138
 msgid ""
 "為了方便起見，\\ :download:`這邊 <coloring_topography/mby.cpt>`\\ 也提供了 ``mby.cpt`` "
 "的下載點。"
 msgstr ""
+"For your convenience, We also provides the download link to ``mby.cpt`` at :"
+"download:`here <coloring_topography/mby.cpt>`."
 
 #: ../../coloring_topography.rst:140
 msgid ""
 "使用 ``grdimage`` 中的 ``-C`` 選項，就可以指定要用的色階，只要在 ``-C`` 後接續色階檔檔名\\ "
 "就行了。所以我們更新版的指令為："
 msgstr ""
+"If we want to assign a color ramp in our plot, we can use ``-C`` option in "
+"``grdimage``. It's easy - just put the name of the ramp file directly after "
+"the ``-C``. Here's our updated command:"
 
 #: ../../coloring_topography.rst:143
 msgid ""
 "$ grdimage ETOPO1_Bed_g_gmt4.grd -R-70.8/-17.17/-66.56/-14.42r \\\n"
 "           -JM6i -P -Cmby.cpt > titicaca.ps"
 msgstr ""
+"$ grdimage ETOPO1_Bed_g_gmt4.grd -R-70.8/-17.17/-66.56/-14.42r \\\n"
+"           -JM6i -P -Cmby.cpt > titicaca.ps"
 
 #: ../../coloring_topography.rst:148
 msgid "這次地圖會變成這樣"
-msgstr ""
+msgstr "The map will become this"
 
 #: ../../coloring_topography.rst:152
 msgid "看起來已經有模有樣了。"
-msgstr ""
+msgstr "Looks much better!"
 
 #: ../../coloring_topography.rst:156
 msgid ""
 "有關於如何自訂色階表，讓地圖的顏色可以隨心所欲變化的技巧，請參閱「\\ :doc:`coloring_topography`\\ 」與\\ 「\\ :"
 "doc:`editing_cpt_colorbar`\\ 」。"
 msgstr ""
+"If you want to customize your color ramp and use whichever color you like on "
+"the map, please see \":doc:`coloring_topography`\" and \":doc:"
+"`editing_cpt_colorbar`\"."
 
 #: ../../coloring_topography.rst:159
 msgid ""
@@ -294,6 +366,14 @@ msgid ""
 "狀態，所以光靠這個檔案，無從得知哪邊是湖泊、海洋等等的地貌。因此，為了標上\\ `的的喀喀湖`_\\ 的位置，我們只好再次呼叫 ``pscoast`` "
 "這個指令，利用內建的水體資料幫我們畫上湖泊，順便再畫上邊框。"
 msgstr ""
+"However, there is still a big problem on our map - we have already known "
+"that this whole area is mostly elevated (shown in gray-white), but we still "
+"can't see our major target `Lake Titicaca`_. This is because  "
+"``ETOPO1_Bed_g_gmt4.grd`` only contains the height data and doesn't say "
+"anything about the types of land cover. If we only use this file, we will "
+"not be able to know where the lakes or the seas are. That's why we have to "
+"call ``pscoast`` again in order to mark the location of `Lake Titicaca`_\\ , "
+"draw the water body, and put a map frame on it."
 
 #: ../../coloring_topography.rst:164
 msgid ""
@@ -301,6 +381,13 @@ msgid ""
 "ref:`腳本`\\ 內，再執行此腳本以一次送出所有\\ 指令給電腦。請建立新文字檔，檔名可以為 ``titicaca.bash`` 或任何你喜歡、\\ "
 "且符合作業系統格式慣例的名字。請在檔案中輸入："
 msgstr ""
+"From now on, we are going to run more than one command at once. Of course "
+"you can do something like entering these commands line by line on a terminal "
+"window, but the more preferred way for the ease of editing would be to write "
+"everything down in a text :ref:`script`, and run this script to send all "
+"commands to the computer. Please make a new text file, entitled ``titicaca."
+"bash`` or whatever you like (it's still better to fit your system format "
+"convention). Enter the following lines:"
 
 #: ../../coloring_topography.rst:169
 msgid ""
@@ -309,12 +396,20 @@ msgid ""
 "pscoast  -R-70.8/-17.17/-66.56/-14.42r -JM6i -P -Scornflowerblue \\\n"
 "         -Df -Baf -B+t\"Lago Titicaca\" > titicaca.ps"
 msgstr ""
+"grdimage ETOPO1_Bed_g_gmt4.grd -R-70.8/-17.17/-66.56/-14.42r \\\n"
+"         -JM6i -P -Cmby.cpt > titicaca.ps\n"
+"pscoast  -R-70.8/-17.17/-66.56/-14.42r -JM6i -P -Scornflowerblue \\\n"
+"         -Df -Baf -B+t\"Lago Titicaca\" > titicaca.ps"
 
 #: ../../coloring_topography.rst:178
 msgid ""
 "關於 ``pscoast`` 的指令解說，請至「\\ :doc:`making_first_map`\\ 」查看。\\ "
 "另外，不同的作業系統的腳本會有不同的額外設定，可以讓你的腳本能夠更方便的執行，詳情\\ 請參閱「\\ :doc:`basic_concept`\\」。"
 msgstr ""
+"Please go to :doc:`making_first_map` for checking how to use ``pscoast`` "
+"options. In addition, if you are running scripts on a platform other than "
+"Linux, there will be some extra settings to make the script run more easily. "
+"Please see :doc:`basic_concept` for more details."
 
 #: ../../coloring_topography.rst:184
 msgid ""
@@ -322,10 +417,17 @@ msgid ""
 "C`` 選項。因為本圖沒有海域，\\ ``-Scornflowerblue`` 和 ``-Cl/cornflowerblue`` 具有相同效果，不過\\ "
 "後者其實只會為湖泊填上顏色。"
 msgstr ""
+"The ``-S`` option in ``pscoast`` is for every water body. If there are seas "
+"and lakes in your map and you want to assign different colors for seas and "
+"lakes, ``-C`` option can do the job for you. There is no ocean area on our "
+"map, so ``-Scornflowerblue`` and ``-Cl/cornflowerblue`` would have the same "
+"effect, although the latter only fills the color into lake areas."
 
 #: ../../coloring_topography.rst:189
 msgid "在終端機中執行這個檔案，然後開啟輸出檔，應該會看到下圖："
 msgstr ""
+"Run this script in a terminal, and then open the output file. You'll see a "
+"map like this:"
 
 #: ../../coloring_topography.rst:193
 msgid ""
@@ -335,6 +437,16 @@ msgid ""
 "的輸出就會像第二個圖層一樣，蓋在第一個圖層，也就是 ``grdimage`` 的輸出地圖上方。\\ 所以我們來把第二個 ``>`` 改成 ``>>`` "
 "看看："
 msgstr ""
+"Now the lake and the frame appear, but the topography from the previous "
+"command disappears? The reason is that we used the ``>`` symbol twice. The "
+"``>`` symbol always overwrites the contents from the previous steps. In our "
+"example, we used ``>`` to save the results from ``pscoast`` to the file, so "
+"the results from previous ``grdimage`` were gone. To avoid this situation, "
+"we must use ``>>`` symbol to save the contents from later commands into the "
+"map file. ``>>`` will paste the output form ``pscoast`` at the end of the "
+"original file. Therefore, the contents from ``pscoast`` would act as if a "
+"second layer overlaid on the first layer which ``grdimage`` generated. Let's "
+"try to change the second ``>`` to ``>>``:"
 
 #: ../../coloring_topography.rst:200
 msgid ""
@@ -343,10 +455,16 @@ msgid ""
 "pscoast  -R-70.8/-17.17/-66.56/-14.42r -JM6i -P -Scornflowerblue \\\n"
 "         -Df -Baf -B+t\"Lago Titicaca\" >> titicaca.ps"
 msgstr ""
+"grdimage ETOPO1_Bed_g_gmt4.grd -R-70.8/-17.17/-66.56/-14.42r \\\n"
+"         -JM6i -P -Cmby.cpt > titicaca.ps\n"
+"pscoast  -R-70.8/-17.17/-66.56/-14.42r -JM6i -P -Scornflowerblue \\\n"
+"         -Df -Baf -B+t\"Lago Titicaca\" >> titicaca.ps"
 
 #: ../../coloring_topography.rst:207
 msgid "這次的腳本也能成功執行，但輸出結果會變這樣："
 msgstr ""
+"We can also run the updated script without any bugs, but the output file "
+"would become this: "
 
 #: ../../coloring_topography.rst:211
 msgid ""
@@ -357,6 +475,18 @@ msgid ""
 "K``，是專門處理這種情況的，它可以把指令輸出的 EOF 字符移除。在我們的例子中，``-K`` 必須要加在 ``grdimage`` "
 "內，這樣子檔案就不會在中段出現 EOF 字符，像這樣："
 msgstr ""
+"Really strange - this isn't exactly the same from the map without "
+"``pscoast``? Yes, they are the same because the output from ``pscoast`` is "
+"not interpreted into part of the map. The PostScript language needs a "
+"specific line to \"conclude\" the file, otherwise it cannot be read. This "
+"specific line is generally called **EOF** (End-Of-File) character. In a "
+"default situation, every GMT command adds an EOF character in the end of the "
+"output file, and when a PS file interpreter reads an EOF character, it would "
+"stop reading. This is why we have run ``pscoast`` but it doesn't show on the "
+"map. There is a universal option ``-K`` in GMT for this situation - it "
+"prevents a GMT comment to add an EOF in the end of the output. In our case, "
+"``-K`` must be added at ``grdimage`` in order to not put an EOF in the "
+"middle of the final file, like this:"
 
 #: ../../coloring_topography.rst:220
 msgid ""
@@ -365,10 +495,14 @@ msgid ""
 "pscoast  -R-70.8/-17.17/-66.56/-14.42r -JM6i -P -Scornflowerblue \\\n"
 "         -Df -Baf -B+t\"Lago Titicaca\" >> titicaca.ps"
 msgstr ""
+"grdimage ETOPO1_Bed_g_gmt4.grd -R-70.8/-17.17/-66.56/-14.42r \\\n"
+"         -JM6i -P -Cmby.cpt -K > titicaca.ps\n"
+"pscoast  -R-70.8/-17.17/-66.56/-14.42r -JM6i -P -Scornflowerblue \\\n"
+"         -Df -Baf -B+t\"Lago Titicaca\" >> titicaca.ps"
 
 #: ../../coloring_topography.rst:227
 msgid "這次的腳本輸出結果為："
-msgstr ""
+msgstr "The result from this script is:"
 
 #: ../../coloring_topography.rst:231
 msgid ""
@@ -380,6 +514,20 @@ msgid ""
 "O``，加上了這個選項，指令就不會輸出檔頭。在我們的例子中，``-O`` 必須要加在 ``pscoast`` "
 "內，這樣才不會在檔案的中段突然出現奇怪的檔頭，像這樣："
 msgstr ""
+"It still seems identical to the previous map at a first glance, but did you "
+"see the tiny little pattern at the left-bottom corner? Yes, that strange "
+"pattern is just the output from ``pscoast``. It turns out that the PS "
+"interpreter does not overlay the two layers properly; instead, they mix up "
+"with a strange ratio, which is not what we want. The reason of the strange "
+"output is similar to the previous paragraph: when each GMT command is "
+"generating a map, in addition to adding an EOF, it also appends a **header "
+"description** to the beginning of the output. It is just like what we saw in "
+"the previous chapter, :ref:`some text describing basic information of the "
+"map file <PS header>`. If there are two headers in one file, the PS "
+"interpreter would read it incorrectly. Hence, there is also a universal "
+"option ``-O``, which prevent a command from adding a header into the output "
+"file. In our example, ``-O`` must be added at ``pscoast`` in order to not "
+"put the second header in the middle of file, like this:"
 
 #: ../../coloring_topography.rst:240
 msgid ""
@@ -388,22 +536,32 @@ msgid ""
 "pscoast  -R-70.8/-17.17/-66.56/-14.42r -JM6i -P -Scornflowerblue \\\n"
 "         -Df -Baf -B+t\"Lago Titicaca\" -O >> titicaca.ps"
 msgstr ""
+"grdimage ETOPO1_Bed_g_gmt4.grd -R-70.8/-17.17/-66.56/-14.42r \\\n"
+"         -JM6i -P -Cmby.cpt -K > titicaca.ps\n"
+"pscoast  -R-70.8/-17.17/-66.56/-14.42r -JM6i -P -Scornflowerblue \\\n"
+"         -Df -Baf -B+t\"Lago Titicaca\" -O >> titicaca.ps"
 
 #: ../../coloring_topography.rst:247
 msgid "這次總算有個令人滿意的輸出結果。"
-msgstr ""
+msgstr "Now the map starts to look satisfying."
 
 #: ../../coloring_topography.rst:253
 msgid ""
 "有關 ``-K`` 和 ``-O`` 的通用規則就是：除了最後一個指令之外，前面的所有指令都\\ 應該加上 ``-K`` (可以記成 Continue "
 "的 K 音)；而除了第一個指令之外，前面的\\ 所有指令都應該加上 ``-O`` (它是 Overlay 的 O)。"
 msgstr ""
+"The rule of thumb for ``-K`` and ``-O``: unless the last one, all commands "
+"should add a ``-K`` (which sounds like \"continue\"); unless the first one, "
+"all commands should add an ``-O`` (which is for \"overlay\"). "
 
 #: ../../coloring_topography.rst:258
 msgid ""
 "讓我們看一下 ``pscoast`` 中的兩個 ``-B`` 選項。實際上它們也可以加在 ``grdimage`` "
 "中，因為邊框屬於哪個圖層在本例中不影響地圖疊加，所以效果會一模一樣。"
 msgstr ""
+"Let us take a look at two ``-B`` options at ``pscoast``. Actually it is also "
+"ok to put them in ``grdimage`` because which layer the map frame is plotted "
+"on doesn't really matter, and it would look totally the same. "
 
 #: ../../coloring_topography.rst:267
 msgid ""
@@ -415,6 +573,21 @@ msgid ""
 "不允許前後的指令作圖在不同形狀的紙上，所以 ``pscoast`` 中，不管有沒有加 ``-P`` 都沒關係，GMT 會\\ "
 "繼續使用直幅的紙張格式來疊圖。因此，簡化後但具有相同功能的腳本就如下所示："
 msgstr ""
+"The script is still able to be shortened a little bit. **For all universal "
+"GMT options, if they represent the same meaning, then default value for the "
+"latter use would be the value given at the first-time use**. That said, if "
+"you have two options, each in different commands but with the same "
+"arguments, you can omit the latter argument for simplicity. In ``pscoast``, "
+"``-R`` and ``-J`` are identical to the ``-R`` and ``-J`` in ``grdimage`` "
+"(because it is required to have the same map extent and projection, "
+"otherwise you cannot match the two layers properly, like weird size or "
+"misplaced lines). Therefore, the parameter value of ``-R`` and ``-J`` in "
+"``grdimage`` can be omitted. In addition, we have added ``-P`` (portrait "
+"mode) at two commands. The latter ``-P`` at ``pscoast`` doesn't matter since "
+"GMT doesn't allow multiple commands plotting on different size of pages, so "
+"we can also remove it without changing the output map. GMT would still use "
+"portrait mode to overlay all commands. Finally the simplified (but with the "
+"same map appearance) script is:"
 
 #: ../../coloring_topography.rst:275
 msgid ""
@@ -423,10 +596,16 @@ msgid ""
 "pscoast  -R -J -O -Scornflowerblue \\\n"
 "         -Df -Baf -B+t\"Lago Titicaca\" >> titicaca.ps"
 msgstr ""
+"grdimage ETOPO1_Bed_g_gmt4.grd -R-70.8/-17.17/-66.56/-14.42r \\\n"
+"         -JM6i -P -Cmby.cpt -K > titicaca.ps\n"
+"pscoast  -R -J -O -Scornflowerblue \\\n"
+"         -Df -Baf -B+t\"Lago Titicaca\" >> titicaca.ps"
 
 #: ../../coloring_topography.rst:282
 msgid "我順便把 -O 調換了一下位置，因為它是很常出現的選項，所以個人習慣把它放前面以供辨別。"
 msgstr ""
+"I moved the position of ``-O`` too, because it is a common option and would "
+"be easier to catch if being put at the first few positions."
 
 #: ../../coloring_topography.rst:286
 msgid ""
@@ -436,14 +615,27 @@ msgid ""
 "history`` 只會儲存使用者最近一次的選項值，所以你如果執行了別的 GMT 指令，舊的設定就有可能會被覆蓋掉，\\ "
 "導致腳本無法執行。因此，個人推薦\\ **在腳本中第一次出現的選項值一定要詳細設定**\\ ，才不會導致\\ 上述狀況的發生。"
 msgstr ""
+"The trick why GMT can do this is that GMT actually saves these arguments in "
+"the text file ``gmt.history`` when we give the value the first time. This "
+"file is placed at the folder where a user runs GMT. If a user omit some "
+"argument values, GMT would search this file and load the settings given in "
+"previous time. That is, when at the second time you run the script, if the "
+"``gmt.history`` still exists, you can even remove the values after ``-R`` "
+"and ``-J`` at the first line! Of course this is pretty risky because your "
+"old settings may be overwritten and your script would not be able to run. My "
+"personal recommendation is that you have to set these options up in details "
+"the first time when they appear in your script, for not causing additional "
+"troubles."
 
 #: ../../coloring_topography.rst:295
 msgid "接下來，我們還可以利用 ``pscoast`` 的其餘功能來美化這張地圖。首先是 ``-I``，它可以\\ 幫我們標上河流，語法為"
 msgstr ""
+"Now we can use other options in ``pscoast`` to decorate this map. First, ``-"
+"I`` marks rivers on the map, with the following syntax:"
 
 #: ../../coloring_topography.rst:298
 msgid "-I編號/畫筆"
-msgstr ""
+msgstr "-Inumber/pen"
 
 #: ../../coloring_topography.rst:302
 msgid ""
@@ -451,14 +643,20 @@ msgid ""
 "則用來指定河流的繪圖樣式。這裡我們要使用 ``r`` 這個編號，它對應的是\\ **所有的永久河流**。\\ 畫筆樣式則使用 ``0."
 "7p,cornflowerblue``。"
 msgstr ""
+"The ``number`` is an alphanumerical letter corresponding to different levels "
+"of rivers (in terms of size), and the :ref:`pen` is used for giving the "
+"appearance of these rivers. Here we use the letter ``r``, corresponding to "
+"**all permanent rivers**, and the pen style is ``0.7p,cornflowerblue``."
 
 #: ../../coloring_topography.rst:306
 msgid "另外一個 ``pscoast`` 的選項是 ``-N``，它可以在地圖上標上政治性的邊界。語法同樣為"
 msgstr ""
+"Another ``pscoast`` option we are going to use is ``-N``, for plotting "
+"political boundaries. Its syntax is similar:"
 
 #: ../../coloring_topography.rst:308
 msgid "-N編號/畫筆"
-msgstr ""
+msgstr "-Nnumber/pen"
 
 #: ../../coloring_topography.rst:312
 msgid ""
@@ -466,23 +664,35 @@ msgid ""
 "**標上國界**。至於畫筆樣式，則使用 ``0.7p,,--``，\\ 注意這裡我們空下了「顏色」的欄位，因此 GMT "
 "會使用預設值「黑色」進行繪圖。在「線條樣式」\\ 欄位中，我們選擇 ``--``，這樣國界就會以虛線呈現。"
 msgstr ""
+"The ``number`` here, just like the previous one, is an alphanumerical letter "
+"corresponding to different tiers of political boundaries (national, state, "
+"etc.). We are going to use ``1``, which means **national boundaries**. We "
+"use ``0.7,,--`` for pen attributes; note that we omit the column of "
+"\"color\", so GMT would use the default \"black\" to plot these lines. Also, "
+"we choose ``--`` for \"line style\" so that the boundaries will be plotted "
+"in dashed lines."
 
 #: ../../coloring_topography.rst:319
 msgid ""
 "有關畫筆的進階樣式設定，例如設定線條樣式、利用 RGB 值自訂顏色等，會在「\\ :doc:`pen_and_painting`\\ 」詳加描述。"
 msgstr ""
+"For the advanced and detailed settings of the pen attributes, like line "
+"styles or custom colors using RGB values, please go to :doc:"
+"`pen_and_painting`."
 
 #: ../../coloring_topography.rst:321
 msgid "把 ``-N`` 和 ``-I`` 以及他們的設定參數加入我們的 ``pscoast`` 指令中，就完成了這次的地圖設計。"
 msgstr ""
+"Add ``-N`` and ``-I`` and their parameters to our ``pscoast`` command, and "
+"finally the map design is done!"
 
 #: ../../coloring_topography.rst:324
 msgid "指令稿"
-msgstr ""
+msgstr "Script"
 
 #: ../../coloring_topography.rst:326
 msgid "本地圖的最終指令稿如下："
-msgstr ""
+msgstr "The final script for our map is:"
 
 #: ../../coloring_topography.rst:328
 msgid ""
@@ -491,6 +701,10 @@ msgid ""
 "pscoast  -R -J -O -Ir/0.7p,cornflowerblue -N1/0.7p,,-- \\\n"
 "         -Scornflowerblue -Df -Baf -B+t\"Lago Titicaca\" >> titicaca.ps"
 msgstr ""
+"grdimage ETOPO1_Bed_g_gmt4.grd -R-70.8/-17.17/-66.56/-14.42r \\\n"
+"         -JM6i -P -Cmby.cpt -K > titicaca.ps\n"
+"pscoast  -R -J -O -Ir/0.7p,cornflowerblue -N1/0.7p,,-- \\\n"
+"         -Scornflowerblue -Df -Baf -B+t\"Lago Titicaca\" >> titicaca.ps"
 
 #: ../../coloring_topography.rst:337
 msgid ""
@@ -499,28 +713,43 @@ msgid ""
 "把湖泊和河流上色，畫上國界，四邊繪製邊框與\\ 刻度數值，自動選擇數值間隔與刻度間隔，不畫格線，標題為 *Lago Titicaca*，\\ 存檔為 "
 "``titicaca.ps``。」"
 msgstr ""
+"\"Plot the topographical map - map extent is set to **(70.8E - 66.56E，17.17S "
+"- 14.42S)** in Mercator projection and **6** inches wide with a portrait "
+"layout. We use the color ramp from ``mby.cpt``, and the full-resolution "
+"coastline data. Lakes and rivers are plotted with ``cornflowerblue``. We "
+"also plot national borders, a map frame, and annotation marks. The locations "
+"and the spacing of these marks are automatically determined. We do not plot "
+"grid lines this time. The map is entitled *Lago Titicaca* and saved as "
+"``titicaca.ps``.\""
 
 #: ../../coloring_topography.rst:343
 msgid "觀看\\ `最終版地圖`_"
-msgstr ""
+msgstr "Check the `final map`_"
 
 #: ../../coloring_topography.rst:346
 msgid "習題"
-msgstr ""
+msgstr "Exercise"
 
 #: ../../coloring_topography.rst:348
 msgid ""
 "畫出貝加爾湖 (*Lake Baikal* 或 *Baygal nuur*) 與週邊區域的地形設色圖。貝加爾湖是全世界最深的湖泊，\\ "
 "也是世界第七大湖，位於俄羅斯，南端接近蒙古的邊界。"
 msgstr ""
+"Make a colored topographical map of *Lake Baikal* (*Baygal nuur*) and its "
+"surrounding area. Lake Baikal is the deepest lake and the seventh largest "
+"lake in the world. It is located in Russia, close to the boundary of "
+"Mongolia in the south."
 
 #: ../../coloring_topography.rst:350
 msgid "從地圖中可看到有幾條河流注入或流出貝加爾湖？"
 msgstr ""
+"How many rivers that are connected to Lake Baikal can you see on the map?"
 
 #: ../../coloring_topography.rst:351
 msgid "貝加爾湖週邊的海拔為何？湖底的海拔為何？你的地圖分別用什麼顏色表示這兩個海拔？"
 msgstr ""
+"How high is the area around Lake Baikal? How high is the bottom of Lake "
+"Baikal? What colors are used to represent these two elevations on your map?"
 
 #: ../../coloring_topography.rst:354
 msgid ""
@@ -528,6 +757,9 @@ msgid ""
 "database/sam/dsam04.html>`_ International Lake Environment Committee "
 "Foundation - ILEC. Retrieved 2009-01-03."
 msgstr ""
+"`Data Summary: Lago Titicaca (Lake Titicaca). <http://www.ilec.or.jp/"
+"database/sam/dsam04.html>`_ International Lake Environment Committee "
+"Foundation - ILEC. Retrieved 2009-01-03."
 
 #: ../../coloring_topography.rst:356
 msgid ""
@@ -535,4 +767,7 @@ msgid ""
 "wxinfo/climat/world/eng/s_america/ec_per/juliaca_e.htm>`_ Hong Kong "
 "Observatory."
 msgstr ""
+"`ClClimatological Information for Juliaca, Peru. <http://www.weather.gov.hk/"
+"wxinfo/climat/world/eng/s_america/ec_per/juliaca_e.htm>`_ Hong Kong "
+"Observatory."
 
