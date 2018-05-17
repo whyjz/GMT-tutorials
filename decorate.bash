@@ -90,7 +90,7 @@ do
         sed -i "/theme.css/a\ $google_fonts" $html_f
     fi
     # ==== Attaching jf code ====
-    if grep -q '^ <script' $html_f; then
+    if grep -q 'jf.push' $html_f; then
         echo skip ${html_f##*/} - already attached the jf code
     else
         echo ----- Attaching jf code to ${html_f##*/} ...

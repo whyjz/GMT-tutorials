@@ -411,7 +411,7 @@ msgstr ""
 "adopt a different reference ellipsoid from WGS84. but TWD87 has a greater"
 " offset which often results in a distance of 0.1-1 km from WGS84 "
 "Lat/Long. TWD97, on the other hand, is fairly close to WGS84 with only a "
-"distance of several tens of centimeters."
+"distance of several tens of centimeters. [#]_"
 
 #: ../../basic_concept.rst:185
 msgid "GMT 4 與 GMT 5 語法上的差別"

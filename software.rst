@@ -84,6 +84,7 @@ GMT 的強大之處是在於它對空間資料的數學操作，以及類 Unix �
   地理空間資料，不過這在許多狀況中已經很夠用了。目前 Google 地球可以安裝在各種作業系統，當然也有
   Android，同時還有一般版與專業版可以選擇。
 
+.. _PostScript Viewer:
 .. _PostScript 看圖軟體:
 
 PostScript 看圖軟體
