@@ -43,7 +43,7 @@ GMT 4 在某些地方，尤其是預設屬性的設定上，與 GMT 5 較為不�
 
 本網站中大部分用以繪圖的資料皆屬公領域，或以 GNU 通用公共授權條款發行。詳細說明請參閱「\ :doc:`data_credit`\ 」。
 
-Copyright © 2016-17 鄭懷傑 (Whyjay Zheng). All rights reserved.
+Copyright © 2016-18 鄭懷傑 (Whyjay Zheng). All rights reserved.
 
 教學內文與圖片的原始碼也公開在 `Github <https://github.com/whyjz/GMT-tutorials>`_ 上，以 
 `reStructuredText <https://en.wikipedia.org/wiki/ReStructuredText>`_ 格式編寫。歡迎隨時動叉！
