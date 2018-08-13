@@ -149,8 +149,8 @@ msgstr ""
 
 #: ../../pen_and_painting.rst:71
 msgid ""
-"第一段：海底地形圖 (psimage)\n"
-"第二段：格線 (可以併在 psimage -B 的選項來畫)\n"
+"第一段：海底地形圖 (grdimage)\n"
+"第二段：格線 (可以併在 pscoast -B 的選項來畫)\n"
 "第三段：國家邊界與著色 (pscoast)"
 msgstr ""
 

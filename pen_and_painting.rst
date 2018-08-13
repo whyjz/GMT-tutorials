@@ -70,8 +70,8 @@ grid-registered: netCDF)，或是使用如下快速連結下載：
 
 .. code-block:: bash
 
-    第一段：海底地形圖 (psimage)
-    第二段：格線 (可以併在 psimage -B 的選項來畫)
+    第一段：海底地形圖 (grdimage)
+    第二段：格線 (可以併在 pscoast -B 的選項來畫)
     第三段：國家邊界與著色 (pscoast)
 
 海底地形圖和國家著色，都必需要指定繪圖的顏色或色階，所以這裡我們先來看看單一的顏色要怎麼指定。\
