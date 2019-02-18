@@ -179,7 +179,7 @@ grid-registered: netCDF)，或是使用如下快速連結下載：
     colorgroup1='MX,BR,PA'
     pscoast -R-100/1/-50/34r -JM6i -F${colorgroup1}+g${color1} -P > central_america.ps
 
-以上腳本可以把墨西哥 (``MX``)、巴拿馬 (``BR``)、巴西 (``PA``) 一次塗上磚紅色。如果你想要更改\
+以上腳本可以把墨西哥 (``MX``)、巴西 (``BR``)、巴拿馬 (``PA``) 一次塗上磚紅色。如果你想要更改\
 顏色或國家，只要修改變數 ``colorgroup1`` 或 ``color1`` 的內容即可，不需要動到 ``pscoast``
 的指令。
 
