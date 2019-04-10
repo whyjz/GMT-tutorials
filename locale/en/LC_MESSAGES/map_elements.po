@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-12 17:14-0400\n"
+"POT-Creation-Date: 2019-04-09 23:18-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.2.0\n"
+"Generated-By: Babel 2.6.0\n"
 
 #: ../../map_elements.rst:3
 msgid "加入地圖元素"
@@ -252,15 +252,25 @@ msgid ""
 "也是可以作到，不過要遵循以下的輸入方法："
 msgstr ""
 
-#: ../../map_elements.rst:162
+#: ../../map_elements.rst:139
+msgid "$ grdimage 紅色網格檔(R) 綠色網格檔(G) 藍色網格檔(B)"
+msgstr ""
+
+#: ../../map_elements.rst:143
+msgid ""
+"如果一次指定三個網格檔，``grdimage`` 會使用指定 RGB 顏色值的方式繪圖，這時第一個網格檔會被當作紅色像素值，第二個網格檔會\\ "
+"被當作綠色像素值，第三個網格檔會被當作藍色像素值。我們馬上就來試試看："
+msgstr ""
+
+#: ../../map_elements.rst:169
 msgid "指令稿"
 msgstr ""
 
-#: ../../map_elements.rst:163
+#: ../../map_elements.rst:170
 msgid "本地圖的最終指令稿如下："
 msgstr ""
 
-#: ../../map_elements.rst:165
+#: ../../map_elements.rst:172
 msgid ""
 "# ==== 設定變數 ====\n"
 "out_ps=\"Rub_al_Khali.ps\"\n"
@@ -306,19 +316,19 @@ msgid ""
 "psconvert $out_ps -A -P -Tg"
 msgstr ""
 
-#: ../../map_elements.rst:203
+#: ../../map_elements.rst:210
 msgid "「」"
 msgstr ""
 
-#: ../../map_elements.rst:205
+#: ../../map_elements.rst:212
 msgid "觀看\\ `最終版地圖`_"
 msgstr ""
 
-#: ../../map_elements.rst:208
+#: ../../map_elements.rst:215
 msgid "習題"
 msgstr ""
 
-#: ../../map_elements.rst:211
+#: ../../map_elements.rst:218
 msgid ""
 "Peter Vincent (2008). `Saudi Arabia: an environmental overview "
 "<https://books.google.com/books?id=Vacv2wy3yd8C&pg=PA141>`_. Taylor & "

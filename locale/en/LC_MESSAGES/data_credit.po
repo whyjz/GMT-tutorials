@@ -18,7 +18,6 @@ msgstr ""
 "Generated-By: Babel 2.2.0\n"
 
 #: ../../data_credit.rst:3
-#, fuzzy
 msgid "資料來源與誌謝"
 msgstr "Data Credit and Acknowledgement"
 
