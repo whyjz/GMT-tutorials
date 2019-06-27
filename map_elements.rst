@@ -192,8 +192,18 @@ GeoTIFF 檔，可以進一步知道這個座標系統是 UTM Zone 40N。像素�
 
     .. code-block:: bash
 
-
         grdimage $in_grd_r $in_grd_g $in_grd_b -R$in_grd_r -JX15c/0 -P -K > $out_ps
+
+接下來，我們還有三個地圖元素需要繪製：(1) 指北符號；(2) 比例尺；(3) 插頁小圖。這些很多地圖中有的小配件，都可以使用 ``psbasemap`` 來畫。\
+讓我們先從最簡單的指北符號開始，需要添加的選項是 ``-Td``：
+
+.. code-block:: bash
+
+    $ psbasemap -Td座標+w寬度＋l西,東,南,北四個方位的字串+o水平偏移量/垂直偏移量
+
+
+
+
 
 
 

@@ -77,6 +77,14 @@ Copyright © 2016-19 鄭懷傑 (Whyjay Zheng). All rights reserved.
    - :doc:`view3d`
 * 網格資料處理
    - :doc:`raster_calculator`
+   - :doc:`basic_img_processing`
+* 數值資料處理
+   - :doc:`stat_histogram`
+   - :doc:`regression_basics`
+* 進階繪圖技巧
+   - :doc:`focal_mech`
+   - :doc:`draping`
+
 * 附錄
    - :doc:`data_credit`
    - :doc:`command_index`
@@ -102,6 +110,11 @@ Copyright © 2016-19 鄭懷傑 (Whyjay Zheng). All rights reserved.
    map_elements
    view3d
    raster_calculator
+   basic_img_processing
+   stat_histogram
+   regression_basics
+   focal_mech
+   draping
    data_credit
    command_index
    gallery

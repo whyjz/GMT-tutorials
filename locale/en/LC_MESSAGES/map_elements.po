@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 23:18-0400\n"
+"POT-Creation-Date: 2019-06-26 23:46-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.7.0\n"
 
 #: ../../map_elements.rst:3
 msgid "加入地圖元素"
@@ -262,15 +262,92 @@ msgid ""
 "被當作綠色像素值，第三個網格檔會被當作藍色像素值。我們馬上就來試試看："
 msgstr ""
 
-#: ../../map_elements.rst:169
+#: ../../map_elements.rst:146
+msgid ""
+"# ==== 設定變數 ====\n"
+"out_ps=\"Rub_al_Khali.ps\"\n"
+"in_grd_r=\"LC08_L1TP_160045_20170408_20170414_01_T1_B4_s.grd\"    # "
+"輸入檔，作為紅色 (R) 波段\n"
+"in_grd_g=\"LC08_L1TP_160045_20170408_20170414_01_T1_B3_s.grd\"    # "
+"輸入檔，作為綠色 (G) 波段\n"
+"in_grd_b=\"LC08_L1TP_160045_20170408_20170414_01_T1_B2_s.grd\"    # "
+"輸入檔，作為藍色 (B) 波段\n"
+"\n"
+"# ==== 繪製衛星影像 ====\n"
+"grdimage $in_grd_r $in_grd_g $in_grd_b -JX15c -P > $out_ps"
+msgstr ""
+
+#: ../../map_elements.rst:157
+msgid ""
+"在腳本中有幾件事情要注意。第一，投影法的選擇是 ``-JX``，這是因為網格檔已經使用 UTM 座標，我們不需要在 GMT "
+"內多加一次投影座標的轉換；\\ 第二，在 0 至 255 之間的像素值才會被準確解讀，超過 255 的值都會被解讀成 255。以下就是出圖的樣子："
+msgstr ""
+
+#: ../../map_elements.rst:163
+msgid ""
+"看來我們的底圖已經準確的呈現出來了！這就是一次給定 RGB "
+"值的好處，我們不用費心選擇要用什麼樣的色階檔。唯一的問題是，如果我們要調整對比、明亮\\ "
+"程度等等的設定，這種模式會比較麻煩。接下來，就讓我們加上各式各樣的地圖元素。首先當然是地圖的邊框，和之前一樣也可以使用 ``psbasemap``"
+" 來達成。\\ 不過，如果超過一個指令要畫在同一個地圖上，我們還得先決定 ``-R`` 的參數才行。我們可以使用 ``grdinfo`` "
+"手動查詢邊界然後再輸入到 ``-R`` 指令內，不過這邊還有一個更快的方法：直接利用 ``grdinfo`` 提供的參數來查詢，如下："
+msgstr ""
+
+#: ../../map_elements.rst:168
+msgid ""
+"$ grdinfo LC08_L1TP_160045_20170408_20170414_01_T1_B2_s.grd -Ir\n"
+"# -Ir: 取得地圖的 X/Y 邊界，並且回傳 -R 字串\n"
+"-R190015/249985/2410000/2460000"
+msgstr ""
+
+#: ../../map_elements.rst:176
+msgid ""
+"可以看到回傳的訊息中，已經按照 ``-R`` 的參數格式幫你整理好了。因此最快的方法，就是把指令的輸出轉存為變數，再放到其他的指令中就可以了。\\"
+" 另外，這次我們沒有要在邊框上加上任何經緯度或 X/Y 座標，因此在 ``psbasemap`` 中，我們可以設定 ``-B0`` "
+"來達成此要求。記得畫之前也要調整 GMT 的變數 ``MAP_FRAME_TYPE`` 為 "
+"``plain``，這樣邊框才會是樸實的黑線條而不是華麗的斑馬紋。這一部份的腳本合起來如下："
+msgstr ""
+
+#: ../../map_elements.rst:181
+msgid ""
+"gmtset MAP_FRAME_TYPE=plain\n"
+"R=$(grdinfo $in_grd_r -Ir)\n"
+"grdimage $in_grd_r $in_grd_g $in_grd_b $R -JX15c/0 -P -K > $out_ps   # "
+"-JX15c/0 中的 0 意指 Y 軸使用與 X 軸相同的比例尺\n"
+"psbasemap -R -J -O -K -B0 >> $out_ps    # 因為 -R 和 -J 都已經在 grdimage "
+"裡給定，不用再給第二次"
+msgstr ""
+
+#: ../../map_elements.rst:190
+msgid ""
+"``grdimage`` 的 ``-R`` 選項也接受網格檔當輸入參數，在此狀況下，程式會使用網格檔的 X/Y 邊界當成 ``-R`` "
+"的參數。因此，\\ 在上例中的 ``grdimage`` 一行也可以改成這樣："
+msgstr ""
+
+#: ../../map_elements.rst:193
+msgid ""
+"grdimage $in_grd_r $in_grd_g $in_grd_b -R$in_grd_r -JX15c/0 -P -K > "
+"$out_ps"
+msgstr ""
+
+#: ../../map_elements.rst:197
+msgid ""
+"接下來，我們還有三個地圖元素需要繪製：(1) 指北符號；(2) 比例尺；(3) 插頁小圖。這些很多地圖中有的小配件，都可以使用 "
+"``psbasemap`` 來畫。\\ 讓我們先從最簡單的指北符號開始，需要添加的選項是 ``-Td``："
+msgstr ""
+
+#: ../../map_elements.rst:200
+msgid "$ psbasemap -Td座標+w寬度＋l西,東,南,北四個方位的字串+o水平偏移量/垂直偏移量"
+msgstr ""
+
+#: ../../map_elements.rst:215
 msgid "指令稿"
 msgstr ""
 
-#: ../../map_elements.rst:170
+#: ../../map_elements.rst:216
 msgid "本地圖的最終指令稿如下："
 msgstr ""
 
-#: ../../map_elements.rst:172
+#: ../../map_elements.rst:218
 msgid ""
 "# ==== 設定變數 ====\n"
 "out_ps=\"Rub_al_Khali.ps\"\n"
@@ -287,8 +364,7 @@ msgid ""
 "# ==== 繪製衛星影像 ====\n"
 "    # 取得 -R 資訊並畫圖 (注意 -J 的設定！)\n"
 "R=$(grdinfo $in_grd_r -I1/1)\n"
-"grdimage $in_grd_r $in_grd_g $in_grd_b -R$in_grd_r -JX15c/0 -P -K > "
-"$out_ps\n"
+"grdimage $in_grd_r $in_grd_g $in_grd_b $R -JX15c/0 -P -K > $out_ps\n"
 "    # 繪製不含任何標記的邊框\n"
 "psbasemap -R -J -O -K -B0 >> $out_ps\n"
 "\n"
@@ -316,19 +392,19 @@ msgid ""
 "psconvert $out_ps -A -P -Tg"
 msgstr ""
 
-#: ../../map_elements.rst:210
+#: ../../map_elements.rst:256
 msgid "「」"
 msgstr ""
 
-#: ../../map_elements.rst:212
+#: ../../map_elements.rst:258
 msgid "觀看\\ `最終版地圖`_"
 msgstr ""
 
-#: ../../map_elements.rst:215
+#: ../../map_elements.rst:261
 msgid "習題"
 msgstr ""
 
-#: ../../map_elements.rst:218
+#: ../../map_elements.rst:264
 msgid ""
 "Peter Vincent (2008). `Saudi Arabia: an environmental overview "
 "<https://books.google.com/books?id=Vacv2wy3yd8C&pg=PA141>`_. Taylor & "
@@ -344,6 +420,59 @@ msgstr ""
 #~ "in_grd_r=\"LC81600452017098LGN00_B4_s.grd\"    # 輸入檔，作為紅色 (R) 波段\n"
 #~ "in_grd_g=\"LC81600452017098LGN00_B3_s.grd\"    # 輸入檔，作為綠色 (G) 波段\n"
 #~ "in_grd_b=\"LC81600452017098LGN00_B2_s.grd\"    # 輸入檔，作為藍色 (B) 波段\n"
+#~ "\n"
+#~ "# ==== 調整 GMT 預設參數 ====\n"
+#~ "gmtset MAP_FRAME_TYPE=plain\n"
+#~ "\n"
+#~ "# ==== 繪製衛星影像 ====\n"
+#~ "    # 取得 -R 資訊並畫圖 (注意 -J 的設定！)\n"
+#~ "R=$(grdinfo $in_grd_r -I1/1)\n"
+#~ "grdimage $in_grd_r $in_grd_g $in_grd_b "
+#~ "-R$in_grd_r -JX15c/0 -P -K > $out_ps"
+#~ "\n"
+#~ "    # 繪製不含任何標記的邊框\n"
+#~ "psbasemap -R -J -O -K -B0 >> $out_ps\n"
+#~ "\n"
+#~ "# ==== 繪製地圖元素 ====\n"
+#~ "    # 繪製指北針 (注意 -J 的設定！)\n"
+#~ "        # GMT 5.2\n"
+#~ "# psbasemap -R -JU40Q/15c -O -K "
+#~ "-TdjRT+w2c+f+l\\ ,\\ ,\\ ,N+o1c/1.8c "
+#~ "-F+c0.2c/0.2c/0.2c/1c+gwhite@50+r0.5c --FONT=15p >> "
+#~ "$out_ps\n"
+#~ "        # GMT 5.4\n"
+#~ "psbasemap -R -JU40Q/15c -O -K "
+#~ "-TdjRT+w2c+f+l,,,N+o1c/1.8c "
+#~ "-F+c0.2c/0.2c/0.2c/1c+gwhite@50+r0.5c --FONT=15p >> "
+#~ "$out_ps\n"
+#~ "    # 繪製比例尺\n"
+#~ "psbasemap -R -J         -O -K "
+#~ "-LjRB+c22+w10k+f+o2c/2c+u -F+gwhite@50  >> $out_ps"
+#~ "\n"
+#~ "    # 繪製分圖，放上鄰近區域的海岸線和國界位置\n"
+#~ "pscoast -R-700000/1100000/1920000/3180000 -JU40Q/5c "
+#~ "-O -K -Di -Wthinner -Gwhite -Sgray "
+#~ "-B0 -N1/thinnest >> $out_ps\n"
+#~ "    # 標上主地圖在分圖中的位置 (注意 -J 的設定！) 與其他文字\n"
+#~ "psbasemap -R -JX5c/0 -O -K -D${R#*-R} -F >> $out_ps\n"
+#~ "echo -300000 2300000 Saudi Arabia | "
+#~ "pstext -R -J -O -K -F+f8p+jMC >>"
+#~ " $out_ps\n"
+#~ "\n"
+#~ "# ==== 關門 (寫入 EOF) 與轉檔 ====\n"
+#~ "psxy -R -J -O -T >> $out_ps\n"
+#~ "psconvert $out_ps -A -P -Tg"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "# ==== 設定變數 ====\n"
+#~ "out_ps=\"Rub_al_Khali.ps\"\n"
+#~ "in_grd_r=\"LC08_L1TP_160045_20170408_20170414_01_T1_B4_s.grd\"    "
+#~ "# 輸入檔，作為紅色 (R) 波段\n"
+#~ "in_grd_g=\"LC08_L1TP_160045_20170408_20170414_01_T1_B3_s.grd\"    "
+#~ "# 輸入檔，作為綠色 (G) 波段\n"
+#~ "in_grd_b=\"LC08_L1TP_160045_20170408_20170414_01_T1_B2_s.grd\"    "
+#~ "# 輸入檔，作為藍色 (B) 波段\n"
 #~ "\n"
 #~ "# ==== 調整 GMT 預設參數 ====\n"
 #~ "gmtset MAP_FRAME_TYPE=plain\n"
