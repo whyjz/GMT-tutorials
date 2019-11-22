@@ -1,13 +1,14 @@
 # Whyjay Zheng <jhsttshj@gmail.com>, 2018. #zanata
+# Whyjay Zheng <jhsttshj@gmail.com>, 2019. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: GMT 教學手冊 1.1\n"
+"Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 23:43-0400\n"
+"POT-Creation-Date: 2019-11-22 00:50-0500\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-08-31 08:36+0000\n"
+"PO-Revision-Date: 2019-07-03 04:49+0000\n"
 "Last-Translator: Whyjay Zheng <jhsttshj@gmail.com>\n"
 "Language-Team: English (United States)\n"
 "Language: en_US\n"
@@ -172,6 +173,9 @@ msgid ""
 "第二段：格線 (可以併在 pscoast -B 的選項來畫)\n"
 "第三段：國家邊界與著色 (pscoast)"
 msgstr ""
+"Section 1: bathymetry (grdimage)\n"
+"Section 2: grid line (can be marged with the pscoast -B option)\n"
+"Section 3: political boundaries and colors for countries (pscoast)"
 
 #: ../../pen_and_painting.rst:77
 msgid ""
@@ -179,6 +183,13 @@ msgid ""
 "最簡單，並也在之前的章節使用的一種方法，就是指定顏色的名稱。GMT 支援了超過百種顏色的名稱，\\ 可以在\\ `這邊 <http://gmt."
 "soest.hawaii.edu/doc/5.2.1/gmtcolors.html#list-of-colors>`_\\ 查看並使用。例如說以下指令"
 msgstr ""
+"You will need to assign a color or a series of colors (color ramp) for both "
+"bathymetry and countries. First off, let's see how to specify a single color."
+" The simplest way, which has been used in the previous chapter, is providing "
+"the name of the desired color. GMT supports over than hundred names of "
+"colors, and you can check them out at `here <http://gmt.soest.hawaii.edu/doc/"
+"5.2.1/gmtcolors.html#list-of-colors>`_ and use them directly. For example, "
+"the following command"
 
 #: ../../pen_and_painting.rst:82
 msgid "pscoast -Ggreen    # ...後續省略"
@@ -190,6 +201,11 @@ msgid ""
 "`DCW <https://www.soest.hawaii.edu/pwessel/dcw/>`_ 的資料庫，使用內含的國家邊界資料進行著色。``-"
 "F`` 的語法大致為"
 msgstr ""
+"will fill the land with green. Since we are going to fill the country "
+"blocks, we have to use another ``pscoast`` option ``-F``. The ``-F`` option "
+"reads a database called `DCW <https://www.soest.hawaii.edu/pwessel/dcw/>`_ "
+"and fills the blocks using the political boundaries data found from the "
+"database. The syntax is like: "
 
 #: ../../pen_and_painting.rst:90
 msgid "-F代碼1,代碼2,...+g填色+p畫筆"
@@ -201,6 +217,11 @@ msgid ""
 "ISO_3166-1_alpha-2>`_ 國家名稱的二位字母代碼，例如 ``TW`` 代表台灣，``US`` "
 "代表美國等等。除了可以從維基百科查詢這些代碼以外，\\ 也可以輸入以下指令，直接在 GMT 中查詢："
 msgstr ""
+"Here ``code`` represents the 2-letter code of country name from `ISO 3166-1 "
+"alpha-2 <https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2>`_. For example, "
+"``TW`` is Taiwan, and ``US`` represents the United States. Besides from "
+"checking the code table from the Wikipedia, you can also enter the following "
+"command and search them in GMT:"
 
 #: ../../pen_and_painting.rst:98
 msgid ""
@@ -208,11 +229,18 @@ msgid ""
 "# 或\n"
 "$ pscoast -F+L    # 在螢幕中列出二位字母國碼與幾個大國家的省份碼"
 msgstr ""
+"$ pscoast -F+l    # show the 2-letter national code on screen\n"
+"# or\n"
+"$ pscoast -F+L    # show the 2-letter national and province (only for big "
+"countries) code on screen"
 
 #: ../../pen_and_painting.rst:104
 msgid ""
 "這邊順便舉個方便的技巧：如果你想查詢特定國家 (已經知道英文國名) 的代碼，可以使用 ``sh`` 內建的 ``grep`` 指令來輔助查詢。如下這樣："
 msgstr ""
+"There is a useful trick: if you want to search for a specific country (the "
+"name is know), you can use ``grep``, a built-in command in ``sh`` to assist "
+"the search, like this:"
 
 #: ../../pen_and_painting.rst:107
 msgid ""
@@ -655,7 +683,7 @@ msgstr ""
 
 #: ../../pen_and_painting.rst:398
 msgid "$ makecpt"
-msgstr ""
+msgstr "$ makecpt"
 
 #: ../../pen_and_painting.rst:402
 msgid "然後在 ``-C`` 的說明中就可以看到這些色階的名字。我們先來試試看其中一個叫 ``ocean`` 的色階看看："
@@ -676,6 +704,18 @@ msgid ""
 "F   white\n"
 "N   127.5"
 msgstr ""
+"$ makecpt -Cocean\n"
+"-8000       0/2.5/12.5              -7000   0/2.5/12.5\n"
+"-7000       0/7.5/37.5              -6000   0/7.5/37.5\n"
+"-6000       0/45/87.5               -5000   0/45/87.5\n"
+"-5000       0/115/162.5             -4000   0/115/162.5\n"
+"-4000       43/173.5/192            -3000   43/173.5/192\n"
+"-3000       129/221/176             -2000   129/221/176\n"
+"-2000       191.5/247.5/189.5       -1000   191.5/247.5/189.5\n"
+"-1000       230.5/252.5/233         0       230.5/252.5/233\n"
+"B   black\n"
+"F   white\n"
+"N   127.5"
 
 #: ../../pen_and_painting.rst:419
 msgid ""
@@ -696,6 +736,14 @@ msgid ""
 "F   white\n"
 "N   127.5"
 msgstr ""
+"$ makecpt -Cocean -T-1000/0/250 -Z\n"
+"-1000       black           -750    0/10/50\n"
+"-750        0/10/50         -500    0/150/200\n"
+"-500        0/150/200       -250    172/245/168\n"
+"-250        172/245/168     0       250/255/255\n"
+"B   black\n"
+"F   white\n"
+"N   127.5"
 
 #: ../../pen_and_painting.rst:437
 msgid ""
@@ -706,11 +754,11 @@ msgstr ""
 
 #: ../../pen_and_painting.rst:441
 msgid "$ makecpt -Cocean -T-1000/0/250 -Z > ocean_new.cpt"
-msgstr ""
+msgstr "$ makecpt -Cocean -T-1000/0/250 -Z > ocean_new.cpt"
 
 #: ../../pen_and_painting.rst:447
 msgid "如果你下的是這個指令，然後看到了以下錯誤"
-msgstr ""
+msgstr "If you entered the command like this way but saw an error like this"
 
 #: ../../pen_and_painting.rst:449
 msgid ""
@@ -718,6 +766,9 @@ msgid ""
 "makecpt: Error: CPT file ocean.cpt has no z-slices!\n"
 "[Session makecpt (0)]: Error returned from GMT API: GMT_CPT_READ_ERROR (8)"
 msgstr ""
+"$ makecpt -Cocean -T-1000/0/250 -Z > ocean.cpt\n"
+"makecpt: Error: CPT file ocean.cpt has no z-slices!\n"
+"[Session makecpt (0)]: Error returned from GMT API: GMT_CPT_READ_ERROR (8)"
 
 #: ../../pen_and_painting.rst:455
 msgid ""
@@ -783,11 +834,11 @@ msgstr ""
 
 #: ../../pen_and_painting.rst:507
 msgid "指令稿"
-msgstr ""
+msgstr "Script"
 
 #: ../../pen_and_painting.rst:509
 msgid "本地圖的最終指令稿如下："
-msgstr ""
+msgstr "The final script for our map is:"
 
 #: ../../pen_and_painting.rst:511
 msgid ""
@@ -844,11 +895,11 @@ msgstr ""
 
 #: ../../pen_and_painting.rst:563
 msgid "觀看\\ `最終版地圖`_"
-msgstr ""
+msgstr "Check the `final map`_"
 
 #: ../../pen_and_painting.rst:566
 msgid "習題"
-msgstr ""
+msgstr "Exercise"
 
 #: ../../pen_and_painting.rst:568
 msgid ""

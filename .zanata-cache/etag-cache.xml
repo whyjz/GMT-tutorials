@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <etag-cache>
-    <entry lang="en-US" localFileMD5="d8f06ef8563ac1210db8612414848b53" localFileName="coloring_topography" localFileTime="1562039062000" serverETag="&quot;2019-07-02 03:43:55.0&quot;"/>
-    <entry lang="en-US" localFileMD5="5f6f8f026decb25e69be6543c8a15013" localFileName="making_first_map" localFileTime="1562039067000" serverETag="&quot;2019-07-02 03:44:06.0&quot;"/>
-    <entry lang="en-US" localFileMD5="42c08f140227d30e1ff4e15a3c5d521c" localFileName="pen_and_painting" localFileTime="1562039068000" serverETag="&quot;2019-07-02 03:44:08.0&quot;"/>
+    <entry lang="en-US" localFileMD5="4f9118b87b600996f3b6b98c5f38aa70" localFileName="coloring_topography" localFileTime="1574405281000" serverETag="&quot;2019-11-22 06:47:31.0&quot;"/>
+    <entry lang="en-US" localFileMD5="b8f062e0135a446bb16186b77aac5f0c" localFileName="making_first_map" localFileTime="1574405284000" serverETag="&quot;2019-11-22 06:47:42.0&quot;"/>
+    <entry lang="en-US" localFileMD5="3ea5b08297c1b72cffccb3e5acbf690b" localFileName="pen_and_painting" localFileTime="1574405285000" serverETag="&quot;2019-11-22 06:47:44.0&quot;"/>
+    <entry lang="en-US" localFileMD5="dc6b18d0c723308a0f927154e8b9f7ed" localFileName="basic_concept" localFileTime="1574405280000" serverETag="&quot;2019-11-22 06:47:29.0&quot;"/>
+    <entry lang="en-US" localFileMD5="474752d3578c06439a70dfa66a00f3c3" localFileName="basic_img_processing" localFileTime="1574405280000" serverETag="&quot;2019-11-22 06:47:30.0&quot;"/>
+    <entry lang="en-US" localFileMD5="95a7083722fd9d4443b259de1ffd3263" localFileName="command_index" localFileTime="1574405281000" serverETag="&quot;2019-11-22 06:47:32.0&quot;"/>
+    <entry lang="en-US" localFileMD5="da99be4f7ca7d179d50b13fd9d3a58fb" localFileName="contour_and_profile" localFileTime="1574405281000" serverETag="&quot;2019-11-22 06:47:33.0&quot;"/>
+    <entry lang="en-US" localFileMD5="5fc119bd9e578649133b4d7c4819f4bf" localFileName="data_credit" localFileTime="1574405281000" serverETag="&quot;2019-11-22 06:47:34.0&quot;"/>
+    <entry lang="en-US" localFileMD5="88fe21a38b603dec6911282595ca5aeb" localFileName="draping" localFileTime="1574405282000" serverETag="&quot;2019-11-22 06:47:35.0&quot;"/>
+    <entry lang="en-US" localFileMD5="3967e619e8e987ea5a1fbc8a11c12443" localFileName="editing_cpt_colorbar" localFileTime="1574405282000" serverETag="&quot;2019-11-22 06:47:36.0&quot;"/>
+    <entry lang="en-US" localFileMD5="3c846309c1158deb3071408d7ec05edc" localFileName="focal_mech" localFileTime="1574405282000" serverETag="&quot;2019-11-22 06:47:36.0&quot;"/>
+    <entry lang="en-US" localFileMD5="2ee90bdcf216e2c27873815d71d15fc0" localFileName="gallery" localFileTime="1574405283000" serverETag="&quot;2019-11-22 06:47:37.0&quot;"/>
+    <entry lang="en-US" localFileMD5="d34762f2f975a7b5cdbb77fb5545d3ca" localFileName="hillshading" localFileTime="1574405283000" serverETag="&quot;2019-11-22 06:47:38.0&quot;"/>
+    <entry lang="en-US" localFileMD5="c152b0d0f25fa2926a567f5e539cfc70" localFileName="index" localFileTime="1574405283000" serverETag="&quot;2019-11-22 06:47:39.0&quot;"/>
+    <entry lang="en-US" localFileMD5="6d35eb8d3cbcca1b7a2b6d039ad88202" localFileName="intro_install" localFileTime="1574405284000" serverETag="&quot;2019-11-22 06:47:40.0&quot;"/>
+    <entry lang="en-US" localFileMD5="92f629ef076209e1af536c023e52b087" localFileName="layout_design" localFileTime="1574405284000" serverETag="&quot;2019-11-22 06:47:41.0&quot;"/>
+    <entry lang="en-US" localFileMD5="90615fce3447def26a50732fa4ec7797" localFileName="map_elements" localFileTime="1574405284000" serverETag="&quot;2019-11-22 06:47:43.0&quot;"/>
+    <entry lang="en-US" localFileMD5="2f9ae406bd6bcde9da58f37e72432977" localFileName="plot_vector_data" localFileTime="1574405285000" serverETag="&quot;2019-11-22 06:47:45.0&quot;"/>
+    <entry lang="en-US" localFileMD5="5798a60cd5a565ac451a6c784eb31d46" localFileName="raster_calculator" localFileTime="1574405285000" serverETag="&quot;2019-11-22 06:47:46.0&quot;"/>
+    <entry lang="en-US" localFileMD5="19609e55f65a481bf19c2b9b51168d2e" localFileName="regression_basics" localFileTime="1574405286000" serverETag="&quot;2019-11-22 06:47:47.0&quot;"/>
+    <entry lang="en-US" localFileMD5="b56f734b6d72f79f8f53b522919c79aa" localFileName="scatter_plot" localFileTime="1574405286000" serverETag="&quot;2019-11-22 06:47:48.0&quot;"/>
+    <entry lang="en-US" localFileMD5="83ee2c83ef571288ec86b114489a4c38" localFileName="software" localFileTime="1574405286000" serverETag="&quot;2019-11-22 06:47:48.0&quot;"/>
+    <entry lang="en-US" localFileMD5="19780ab2c927a1e05e21326249a6c9f8" localFileName="stat_histogram" localFileTime="1574405286000" serverETag="&quot;2019-11-22 06:47:49.0&quot;"/>
+    <entry lang="en-US" localFileMD5="f7fef20d88e901f97480686190acecd9" localFileName="view3d" localFileTime="1574405287000" serverETag="&quot;2019-11-22 06:47:50.0&quot;"/>
 </etag-cache>

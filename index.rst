@@ -8,28 +8,24 @@ GMT 教學手冊
     :scale: 25
     :align: center
 
-**GMT** (**Generic Mapping Tools**, 通常譯成「**通用製圖工具**」) 是一套開放的地理繪圖軟體。與一般\
-的地理繪圖軟體如 QGIS、ArcGIS 最大的不同是，GMT 完全可以在命令列介面底下運行。對於有大量\
-繪圖需求，想用程式語言或腳本批次檔處理這些繪圖工作的人而言，GMT 非常值得一學，但也正因為\
-GMT 的命令列風格令上手曲線顯得相當陡峭，使得許多想接觸地理繪圖的初學者望之卻步。
+**GMT** (**Generic Mapping Tools**, 通常譯成「**通用製圖工具**」) 是一套開放的地理繪圖軟體。與一般的地理繪圖軟體如 QGIS、ArcGIS 最大的不同是，GMT 完全可以在命令列介面底下運行。對於有大量繪圖需求，想用程式語言或腳本批次檔處理這些繪圖工作的人而言，GMT 非常值得一學，但也正因為GMT 的命令列風格令上手曲線顯得相當陡峭，使得許多想接觸地理繪圖的初學者望之卻步。
 
-在本教學手冊中，會透過一個個範例介紹 GMT 的基礎知識與許多作圖實用技巧。每個章節的最終目標，\
-基本上都是完成一張精美的插圖，你可以透過這些範例，了解 GMT 許多有用的指令操作方法，以及如\
-何在命令列腳本 (Shell script) 中組織這些指令。除此之外，本教學也會在適當的地方，解說與\
-GMT 相關的格式、軟體像是 shapefile、GDAL 之間的銜接，它們在實作上總是非常的有用。
+在本教學手冊中，會透過一個個範例介紹 GMT 的基礎知識與許多作圖實用技巧。每個章節的最終目標，基本上都是完成一張精美的插圖，你可以透過這些範例，了解 GMT 許多有用的指令操作方法，以及如何在命令列腳本 (Shell script) 中組織這些指令。除此之外，本教學也會在適當的地方，解說與 GMT 相關的格式、軟體像是 shapefile、GDAL 之間的銜接，它們在實作上總是非常的有用。
 
-GMT 目前具有兩個主要的版本：**GMT 4** 和 **GMT 5**。兩個版本的基本指令非常相似，但 GMT 5 具有更為\
-齊全的功能。本教學使用 `GMT 5 <http://gmt.soest.hawaii.edu/>`_ 當作操作軟體，如果你是 GMT 新手，\
-它也是我推薦使用的 GMT 版本。\
-GMT 4 在某些地方，尤其是預設屬性的設定上，與 GMT 5 較為不同，因此如果你手邊已經有一些 GMT 4
-的程式碼，在指令選項的細節上，請以
-`GMT 4 官方說明手冊 <https://www.soest.hawaii.edu/gmt/gmt/html/gmt_services.html>`_\
-為準。
+在 2019 年 11 月，GMT 釋出了官方第六版。此版本比起之前大眾常用的 GMT 4 與 GMT 5 改進了不少，而且語法更是全新翻修過。本教學預計以 **GMT 6** 的新式語法為主，但是各章節將附連結至 **GMT 4-5** 的傳統語法，供您參考。
 
-本教學基本上採循序漸進的模式撰寫，但各篇章使用的材料是互相獨立的。初學者不妨從頭開始閱讀，\
-但如果你已對 GMT 有相當程度的了解，更請隨時跳至你想查閱的部份以節省時間。如果有什麼想分\
-享的評論或使用秘訣，非常歡迎在各章節中留言或直接與\ `我 <https://www.facebook.com/whyjz>`_\ 聯繫。\
-祝各位都能在閱讀的過程中，享受到使用 GMT 畫地圖的樂趣！
+
+.. GMT 目前具有兩個主要的版本：**GMT 4** 和 **GMT 5**。兩個版本的基本指令非常相似，但 GMT 5 具有更為\
+.. 齊全的功能。本教學使用 `GMT 5 <http://gmt.soest.hawaii.edu/>`_ 當作操作軟體，如果你是 GMT 新手，\
+.. 它也是我推薦使用的 GMT 版本。\
+.. GMT 4 在某些地方，尤其是預設屬性的設定上，與 GMT 5 較為不同，因此如果你手邊已經有一些 GMT 4
+.. 的程式碼，在指令選項的細節上，請以
+.. `GMT 4 官方說明手冊 <https://www.soest.hawaii.edu/gmt/gmt/html/gmt_services.html>`_\
+.. 為準。
+
+.. GMT has 2 main versions so far: GMT 4 and GMT 5. They are really similar to each other, especially for basic commands, but GMT 5 is further developed and has more completed functions. Here we use GMT 5 as our primary GMT version in all tutorials. If it’s your first time using GMT, I would also recommend sticking with GMT 5. As the old version, Some syntax details in GMT 4, such as setting up default parameters, differs from GMT 5. Thus, if you already have some codes written in GMT 4, please see GMT 4 Online Services for the most accurate support.
+
+本教學基本上採循序漸進的模式撰寫，但各篇章使用的材料是互相獨立的。初學者不妨從頭開始閱讀，但如果你已對 GMT 有相當程度的了解，更請隨時跳至你想查閱的部份以節省時間。如果有什麼想分享的評論或使用秘訣，非常歡迎在各章節中留言或直接與\ `我 <mailto:whyjayzheng@gmail.com>`_\ 聯繫。祝各位都能在閱讀的過程中，享受到使用 GMT 畫地圖的樂趣！
 
 授權
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -50,7 +46,8 @@ Copyright © 2016-19 鄭懷傑 (Whyjay Zheng). All rights reserved.
 
 致謝
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+感謝 William Durkin，
+Patricia MacQueen，李明龍，李定宇等人提出的建議與討論，讓本教學手冊的內容更為豐富完整。另外，也感謝所有 Github 上的協作者：譚諤 (tan2)，李奎模 (likueimo)，王亮 (wangliang1989)，對文檔內容所作的建設性修改。
 
 
 目錄

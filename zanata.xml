@@ -2,7 +2,7 @@
 <config xmlns="http://zanata.org/namespace/config/">
     <url>https://translate.zanata.org/</url>
     <project>gmt-tutorials</project>
-    <project-version>gmt-tutorials-1.1</project-version>
+    <project-version>gmt-tutorials-1.2</project-version>
     <project-type>gettext</project-type>
     <src-dir>_build/locale</src-dir>
     <trans-dir>locale</trans-dir>
