@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-26 23:46-0400\n"
+"POT-Creation-Date: 2019-07-01 22:42-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,7 +43,8 @@ msgid ""
 "然而，魯卜哈利沙漠的衛星影像卻讓我們發現了大地之母的藝術實驗室。無數的\\ `新月丘 "
 "<https://en.wikipedia.org/wiki/Barchan>`_\\ 連綿不絕，日以繼夜的移動、合併與分離，\\ "
 "奇幻的畫面甚至會讓你懷疑這是否是真的自然景觀。由於以上特殊的地理、氣候條件，魯卜哈利沙漠也是研究由風力所形塑的地表作用的絕佳地點。\\ "
-"在本衛星影像中，所有的新月形沙丘似乎都朝向相同的方向。這個事實告訴了我們在這個區域，盛行風是從西北偏北的方向吹來。\\ 為什麼？請看\\ `這裡 "
+"在本衛星影像中，所有的新月形沙丘似乎都朝向相同的方向。這個事實告訴了我們在這個區域，盛行風是從西北偏北的方向吹來。\\ 為什麼？請看\\ "
+"`這裡有地形學上的解釋 "
 "<http://nadm.gl.ntu.edu.tw/nadm/cht/class_detail.php?serial=122&serial_type_1=8&serial_type_2=4&serial_type_3=16>`_\\"
 " 。"
 msgstr ""
@@ -274,16 +275,18 @@ msgid ""
 "輸入檔，作為藍色 (B) 波段\n"
 "\n"
 "# ==== 繪製衛星影像 ====\n"
-"grdimage $in_grd_r $in_grd_g $in_grd_b -JX15c -P > $out_ps"
+"grdimage $in_grd_r $in_grd_g $in_grd_b -JX15c/0 -P > $out_ps"
 msgstr ""
 
 #: ../../map_elements.rst:157
 msgid ""
 "在腳本中有幾件事情要注意。第一，投影法的選擇是 ``-JX``，這是因為網格檔已經使用 UTM 座標，我們不需要在 GMT "
-"內多加一次投影座標的轉換；\\ 第二，在 0 至 255 之間的像素值才會被準確解讀，超過 255 的值都會被解讀成 255。以下就是出圖的樣子："
+"內多加一次投影座標的轉換；\\ 第二，在 ``-JX15c`` 後面還有個 ``/0``，意味著 Y 軸使用與 X 軸相同的比例尺 "
+"(不加的話，出圖會永遠保持正方形)；第三，在 0 至 255 之間的像素值才會被準確解讀，超過 255 的值都會被解讀成 "
+"255。以下就是出圖的樣子："
 msgstr ""
 
-#: ../../map_elements.rst:163
+#: ../../map_elements.rst:164
 msgid ""
 "看來我們的底圖已經準確的呈現出來了！這就是一次給定 RGB "
 "值的好處，我們不用費心選擇要用什麼樣的色階檔。唯一的問題是，如果我們要調整對比、明亮\\ "
@@ -292,14 +295,14 @@ msgid ""
 "手動查詢邊界然後再輸入到 ``-R`` 指令內，不過這邊還有一個更快的方法：直接利用 ``grdinfo`` 提供的參數來查詢，如下："
 msgstr ""
 
-#: ../../map_elements.rst:168
+#: ../../map_elements.rst:169
 msgid ""
 "$ grdinfo LC08_L1TP_160045_20170408_20170414_01_T1_B2_s.grd -Ir\n"
 "# -Ir: 取得地圖的 X/Y 邊界，並且回傳 -R 字串\n"
 "-R190015/249985/2410000/2460000"
 msgstr ""
 
-#: ../../map_elements.rst:176
+#: ../../map_elements.rst:177
 msgid ""
 "可以看到回傳的訊息中，已經按照 ``-R`` 的參數格式幫你整理好了。因此最快的方法，就是把指令的輸出轉存為變數，再放到其他的指令中就可以了。\\"
 " 另外，這次我們沒有要在邊框上加上任何經緯度或 X/Y 座標，因此在 ``psbasemap`` 中，我們可以設定 ``-B0`` "
@@ -307,7 +310,7 @@ msgid ""
 "``plain``，這樣邊框才會是樸實的黑線條而不是華麗的斑馬紋。這一部份的腳本合起來如下："
 msgstr ""
 
-#: ../../map_elements.rst:181
+#: ../../map_elements.rst:182
 msgid ""
 "gmtset MAP_FRAME_TYPE=plain\n"
 "R=$(grdinfo $in_grd_r -Ir)\n"
@@ -317,37 +320,106 @@ msgid ""
 "裡給定，不用再給第二次"
 msgstr ""
 
-#: ../../map_elements.rst:190
+#: ../../map_elements.rst:191
 msgid ""
 "``grdimage`` 的 ``-R`` 選項也接受網格檔當輸入參數，在此狀況下，程式會使用網格檔的 X/Y 邊界當成 ``-R`` "
 "的參數。因此，\\ 在上例中的 ``grdimage`` 一行也可以改成這樣："
 msgstr ""
 
-#: ../../map_elements.rst:193
+#: ../../map_elements.rst:194
 msgid ""
 "grdimage $in_grd_r $in_grd_g $in_grd_b -R$in_grd_r -JX15c/0 -P -K > "
 "$out_ps"
 msgstr ""
 
-#: ../../map_elements.rst:197
+#: ../../map_elements.rst:198
 msgid ""
 "接下來，我們還有三個地圖元素需要繪製：(1) 指北符號；(2) 比例尺；(3) 插頁小圖。這些很多地圖中有的小配件，都可以使用 "
 "``psbasemap`` 來畫。\\ 讓我們先從最簡單的指北符號開始，需要添加的選項是 ``-Td``："
 msgstr ""
 
-#: ../../map_elements.rst:200
+#: ../../map_elements.rst:201
 msgid "$ psbasemap -Td座標+w寬度＋l西,東,南,北四個方位的字串+o水平偏移量/垂直偏移量"
 msgstr ""
 
-#: ../../map_elements.rst:215
+#: ../../map_elements.rst:205
+msgid ""
+"這邊的「座標」有很多種給定方式，例如地圖座標或是版面的絕對座標。在這裡我們就不一一詳述，只說明我們要使用的 (也是個人覺得最方便的) "
+"系統，``j對齊選項``。這種系統與字體定位的 ``+j`` 選項相同 (請參閱\\ :doc:`scatter_plot`\\ "
+")，不過這次是把地圖分成九宮格，\\ 縱向有 3 列：L (左)，C (中)，R (右)，而橫向也有 3 列：B (底)，M (中)，T "
+"(頂)。從橫向與縱向中任選兩個字符，就可以把指北符號\\ 放在地圖上的相對位置。如果還是沒有位於你想要的位置，再用 ``+o`` "
+"微調。另外，``+w`` 調整的是指北針寬度 (也就是大小)，而 ``+l`` 可以讓你指定在指北符號的四個方位要放些什麼文字。預設當然是 "
+"``W,E,S,N``，但是如果你只想顯示北方的文字，可以改成 ``,,,N``。\\ 另外還有一點很重要，\\ **地圖指北符號不能搭配** "
+"``-JX`` **使用！**\\ 原因是 ``-JX`` 本身就是直角座標，沒有必要再使用指北針指出北方，\\ 畫蛇添足。在本例中使用的網格檔是"
+" UTM 座標，我們需要此資訊放在 ``-J`` 選項中，才能正確顯示北方的位置。你可以利用 ``gdalinfo`` 來查看網格檔的分區："
+msgstr ""
+
+#: ../../map_elements.rst:214
+msgid ""
+"$ gdalinfo LC08_L1TP_160045_20170408_20170414_01_T1_B2_s.grd\n"
+"..... #(前略)\n"
+"transverse_mercator#spatial_ref=PROJCS[\"WGS 84 / UTM zone "
+"40N\",GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\".....\n"
+"..... #(後略)"
+msgstr ""
+
+#: ../../map_elements.rst:221
+msgid ""
+"注意 ``UTM zone 40N`` 的字樣，這就是 UTM 的分區號碼。另外，你還必須要指定以英文字母標記的緯度分區，好讓 GMT "
+"知道指北箭頭到底該朝向哪裡。\\ 緯度分區可至\\ `這裡 <http://www.dmap.co.uk/utmworld.htm>`_\\ "
+"查詢。可以看到 *魯卜哈利沙漠* 大致上位於 Q 區。\\ 因此，我們這邊要使用的投影法是 ``-JU40Q``。我們來看看完整的腳本和出圖結果："
+msgstr ""
+
+#: ../../map_elements.rst:225
+msgid ""
+"# ==== 設定變數 ====\n"
+"out_ps=\"Rub_al_Khali.ps\"\n"
+"in_grd_r=\"LC08_L1TP_160045_20170408_20170414_01_T1_B4_s.grd\"    # "
+"輸入檔，作為紅色 (R) 波段\n"
+"in_grd_g=\"LC08_L1TP_160045_20170408_20170414_01_T1_B3_s.grd\"    # "
+"輸入檔，作為綠色 (G) 波段\n"
+"in_grd_b=\"LC08_L1TP_160045_20170408_20170414_01_T1_B2_s.grd\"    # "
+"輸入檔，作為藍色 (B) 波段\n"
+"\n"
+"# ==== 調整 GMT 預設參數 ====\n"
+"gmtset MAP_FRAME_TYPE=plain\n"
+"\n"
+"# ==== 繪製衛星影像 ====\n"
+"    # 取得 -R 資訊並畫圖 (注意 -J 的設定！)\n"
+"R=$(grdinfo $in_grd_r -Ir)\n"
+"grdimage $in_grd_r $in_grd_g $in_grd_b $R -JX15c/0 -P -K > $out_ps\n"
+"    # 繪製不含任何標記的邊框\n"
+"psbasemap -R -J -O -K -B0 >> $out_ps\n"
+"\n"
+"# ==== 繪製地圖元素 ====\n"
+"    # 繪製指北針 (注意 -J 的設定！)\n"
+"psbasemap -R -JU40Q/15c -O -K -TdjRT+w2c+f+l,,,N+o1c/1.8c --FONT=15p >> "
+"$out_ps\n"
+"    # jRT: 擺放位置在地圖右上角\n"
+"    # +w2c: 圖示寬度 2 公分\n"
+"    # +f: 使用比較華麗的羅盤圖形代替指北符號\n"
+"    # +l,,,N: 如上段落所述\n"
+"    # +o1c/1.8c: 圖形從原本的錨點向左偏移 1 公分，向下偏移 1.8 公分\n"
+"    # --FONT=15p: 文字 \"N\" 的大小\n"
+"\n"
+"# ==== 關門 (寫入 EOF) 與轉檔 ====\n"
+"psxy -R -J -O -T >> $out_ps\n"
+"psconvert $out_ps -A -P -Tg"
+msgstr ""
+
+#: ../../map_elements.rst:261
+msgid "如果你發現腳本可以順利執行，但是指北針並沒有被畫出來，那麼很有可能是投影法出了問題，可以檢查一下 ``-J`` 選項是否如上所述的順利設定了。"
+msgstr ""
+
+#: ../../map_elements.rst:266
 msgid "指令稿"
 msgstr ""
 
-#: ../../map_elements.rst:216
+#: ../../map_elements.rst:267
 msgid "本地圖的最終指令稿如下："
 msgstr ""
 
-#: ../../map_elements.rst:218
+#: ../../map_elements.rst:269
 msgid ""
 "# ==== 設定變數 ====\n"
 "out_ps=\"Rub_al_Khali.ps\"\n"
@@ -392,19 +464,19 @@ msgid ""
 "psconvert $out_ps -A -P -Tg"
 msgstr ""
 
-#: ../../map_elements.rst:256
+#: ../../map_elements.rst:307
 msgid "「」"
 msgstr ""
 
-#: ../../map_elements.rst:258
+#: ../../map_elements.rst:309
 msgid "觀看\\ `最終版地圖`_"
 msgstr ""
 
-#: ../../map_elements.rst:261
+#: ../../map_elements.rst:312
 msgid "習題"
 msgstr ""
 
-#: ../../map_elements.rst:264
+#: ../../map_elements.rst:315
 msgid ""
 "Peter Vincent (2008). `Saudi Arabia: an environmental overview "
 "<https://books.google.com/books?id=Vacv2wy3yd8C&pg=PA141>`_. Taylor & "
@@ -515,5 +587,45 @@ msgstr ""
 #~ "# ==== 關門 (寫入 EOF) 與轉檔 ====\n"
 #~ "psxy -R -J -O -T >> $out_ps\n"
 #~ "psconvert $out_ps -A -P -Tg"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "# ==== 設定變數 ====\n"
+#~ "out_ps=\"Rub_al_Khali.ps\"\n"
+#~ "in_grd_r=\"LC08_L1TP_160045_20170408_20170414_01_T1_B4_s.grd\"    "
+#~ "# 輸入檔，作為紅色 (R) 波段\n"
+#~ "in_grd_g=\"LC08_L1TP_160045_20170408_20170414_01_T1_B3_s.grd\"    "
+#~ "# 輸入檔，作為綠色 (G) 波段\n"
+#~ "in_grd_b=\"LC08_L1TP_160045_20170408_20170414_01_T1_B2_s.grd\"    "
+#~ "# 輸入檔，作為藍色 (B) 波段\n"
+#~ "\n"
+#~ "# ==== 繪製衛星影像 ====\n"
+#~ "grdimage $in_grd_r $in_grd_g $in_grd_b -JX15c -P > $out_ps"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "在腳本中有幾件事情要注意。第一，投影法的選擇是 ``-JX``，這是因為網格檔已經使用 UTM "
+#~ "座標，我們不需要在 GMT 內多加一次投影座標的轉換；\\ 第二，在 0 至"
+#~ " 255 之間的像素值才會被準確解讀，超過 255 的值都會被解讀成 "
+#~ "255。以下就是出圖的樣子："
+#~ msgstr ""
+
+#~ msgid ""
+#~ "繪製\\ `魯卜哈利沙漠 "
+#~ "<https://zh.wikipedia.org/wiki/%E9%B2%81%E5%8D%9C%E5%93%88%E5%88%A9%E6%B2%99%E6%BC%A0>`_"
+#~ " (Rub' al Khali 或 الربع الخالي) "
+#~ "其中一個\\ 小區域的 `Landsat "
+#~ "<https://zh.wikipedia.org/wiki/%E9%99%B8%E5%9C%B0%E8%A1%9B%E6%98%9F%E8%A8%88%E7%95%AB>`_"
+#~ " 衛星影像，並標上指北針、比例尺及在阿拉伯半島的大略位置。魯卜哈利沙漠具有全世界最大的連續沙丘區域\\ [#]_\\"
+#~ " ，也是全世界最杳無人煙的地方之一。\\ "
+#~ "如同其阿拉伯語的意思「空曠的四分之一」，在這片區域除了沙丘以外幾乎什麼也沒有；\\ "
+#~ "然而，魯卜哈利沙漠的衛星影像卻讓我們發現了大地之母的藝術實驗室。無數的\\ `新月丘 "
+#~ "<https://en.wikipedia.org/wiki/Barchan>`_\\ "
+#~ "連綿不絕，日以繼夜的移動、合併與分離，\\ "
+#~ "奇幻的畫面甚至會讓你懷疑這是否是真的自然景觀。由於以上特殊的地理、氣候條件，魯卜哈利沙漠也是研究由風力所形塑的地表作用的絕佳地點。\\"
+#~ " 在本衛星影像中，所有的新月形沙丘似乎都朝向相同的方向。這個事實告訴了我們在這個區域，盛行風是從西北偏北的方向吹來。\\ "
+#~ "為什麼？請看\\ `這裡 "
+#~ "<http://nadm.gl.ntu.edu.tw/nadm/cht/class_detail.php?serial=122&serial_type_1=8&serial_type_2=4&serial_type_3=16>`_\\"
+#~ " 。"
 #~ msgstr ""
 

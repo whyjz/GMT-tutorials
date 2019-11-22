@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<config xmlns="http://zanata.org/namespace/config/">
+    <url>https://translate.zanata.org/</url>
+    <project>gmt-tutorials</project>
+    <project-version>gmt-tutorials-1.1</project-version>
+    <project-type>gettext</project-type>
+    <src-dir>_build/locale</src-dir>
+    <trans-dir>locale</trans-dir>
+    <rules>
+        <rule>{path}/{locale_with_underscore}/LC_MESSAGES/{filename}.po</rule>
+    </rules>
+</config>

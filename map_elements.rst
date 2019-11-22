@@ -15,7 +15,7 @@
 `新月丘 <https://en.wikipedia.org/wiki/Barchan>`_\ 連綿不絕，日以繼夜的移動、合併與分離，\
 奇幻的畫面甚至會讓你懷疑這是否是真的自然景觀。由於以上特殊的地理、氣候條件，魯卜哈利沙漠也是研究由風力所形塑的地表作用的絕佳地點。\
 在本衛星影像中，所有的新月形沙丘似乎都朝向相同的方向。這個事實告訴了我們在這個區域，盛行風是從西北偏北的方向吹來。\
-為什麼？請看\ `這裡 <http://nadm.gl.ntu.edu.tw/nadm/cht/class_detail.php?serial=122&serial_type_1=8&serial_type_2=4&serial_type_3=16>`_\ 。
+為什麼？請看\ `這裡有地形學上的解釋 <http://nadm.gl.ntu.edu.tw/nadm/cht/class_detail.php?serial=122&serial_type_1=8&serial_type_2=4&serial_type_3=16>`_\ 。
 
 .. _最終版地圖:
 
