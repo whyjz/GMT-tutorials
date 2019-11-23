@@ -3,3 +3,5 @@ _build
 *~
 todolist.txt
 locale/en/LC_MESSAGES/*.mo
+.zanata-cache
+.zanata-cache/*
