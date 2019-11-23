@@ -8,12 +8,12 @@
 
 html_files=$(ls _build/html/*.html _build/html/en/*.html)
 
-google_fonts=$(cat _static/google_fonts.txt)
-jf_string=$(cat _static/jf_code.txt)
-disqus_string=$(cat _static/disqus_code.txt)
-github_ribbon=$(cat _static/github_ribbon.txt)
-favicon_string=$(cat _static/favicon.txt)
-localemenu=$(cat _static/localemenu.txt)
+google_fonts=$(cat SOURCE_DOCS/_static/google_fonts.txt)
+jf_string=$(cat SOURCE_DOCS/_static/jf_code.txt)
+disqus_string=$(cat SOURCE_DOCS/_static/disqus_code.txt)
+github_ribbon=$(cat SOURCE_DOCS/_static/github_ribbon.txt)
+favicon_string=$(cat SOURCE_DOCS/_static/favicon.txt)
+localemenu=$(cat SOURCE_DOCS/_static/localemenu.txt)
 
 # refer to the escape characters...
 # http://unix.stackexchange.com/questions/32907/what-characters-do-i-need-to-escape-when-using-sed-in-a-sh-script

@@ -1,0 +1,67 @@
+# Whyjay Zheng <jhsttshj@gmail.com>, 2019. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: GMT 教學手冊 1.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-11-23 00:10-0500\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2019-07-03 05:04+0000\n"
+"Last-Translator: Whyjay Zheng <jhsttshj@gmail.com>\n"
+"Language-Team: English (United States)\n"
+"Language: en_US\n"
+"X-Generator: Zanata 4.6.2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: ../../SOURCE_DOCS/gallery.rst:3
+msgid "章節地圖索引"
+msgstr "Gallery (Chapter Index)"
+
+#: ../../SOURCE_DOCS/gallery.rst:6
+msgid "First Map"
+msgstr ""
+
+#: ../../SOURCE_DOCS/gallery.rst:6
+msgid "Color-coded Topo"
+msgstr ""
+
+#: ../../SOURCE_DOCS/gallery.rst:6
+msgid "Color Basics"
+msgstr ""
+
+#: ../../SOURCE_DOCS/gallery.rst:6
+msgid "Scatter Plot"
+msgstr ""
+
+#: ../../SOURCE_DOCS/gallery.rst:11
+msgid "Editing CPT"
+msgstr ""
+
+#: ../../SOURCE_DOCS/gallery.rst:11
+msgid "Layout Design"
+msgstr ""
+
+#: ../../SOURCE_DOCS/gallery.rst:11
+msgid "Hillshading"
+msgstr ""
+
+#: ../../SOURCE_DOCS/gallery.rst:11
+msgid "Contours and Profile"
+msgstr ""
+
+#: ../../SOURCE_DOCS/gallery.rst:16
+msgid "Vector Data"
+msgstr ""
+
+#: ../../SOURCE_DOCS/gallery.rst:16
+msgid "Map Elements"
+msgstr ""
+
+#: ../../SOURCE_DOCS/gallery.rst:16
+msgid "3-D Topo"
+msgstr ""
+
+#: ../../SOURCE_DOCS/gallery.rst:16
+msgid "Raster Calculator"
+msgstr ""

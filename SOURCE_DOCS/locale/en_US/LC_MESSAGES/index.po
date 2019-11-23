@@ -1,0 +1,260 @@
+# Whyjay Zheng <jhsttshj@gmail.com>, 2019. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: GMT 教學手冊 1.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-11-23 00:10-0500\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2019-11-22 06:49+0000\n"
+"Last-Translator: Whyjay Zheng <jhsttshj@gmail.com>\n"
+"Language-Team: English (United States)\n"
+"Language: en_US\n"
+"X-Generator: Zanata 4.6.2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: ../../SOURCE_DOCS/index.rst:5
+msgid "GMT 教學手冊"
+msgstr "GMT Tutorials"
+
+#: ../../SOURCE_DOCS/index.rst:11
+msgid ""
+"**GMT** (**Generic Mapping Tools**, 通常譯成「**通用製圖工具**」) "
+"是一套開放的地理繪圖軟體。與一般的地理繪圖軟體如 QGIS、ArcGIS 最大的不同是，GMT "
+"完全可以在命令列介面底下運行。對於有大量繪圖需求，想用程式語言或腳本批次檔處理這些繪圖工作的人而言，GMT 非常值得一學，但也正因為GMT "
+"的命令列風格令上手曲線顯得相當陡峭，使得許多想接觸地理繪圖的初學者望之卻步。"
+msgstr ""
+"**Generic Mapping Tools** (**GMT**) is a set of open-source software for "
+"mapping and plotting geographic data. It features a command-line interface, "
+"which makes it completely different from the common GIS software like QGIS "
+"or ArcGIS. For those who need to deal with a lot of plotting tasks or want "
+"to write a script for handling all these jobs, GMT is extremely worth "
+"learning. However, The command-line style of GMT syntax would be very "
+"challenging and makes the learning curve very steep, especially for "
+"beginners who are not familiar with manipulating geographic data and mapping."
+""
+
+#: ../../SOURCE_DOCS/index.rst:13
+msgid ""
+"在本教學手冊中，會透過一個個範例介紹 GMT 的基礎知識與許多作圖實用技巧。每個章節的最終目標，基本上都是完成一張精美的插圖，你可以透過這些範例，了解 "
+"GMT 許多有用的指令操作方法，以及如何在命令列腳本 (Shell script) 中組織這些指令。除此之外，本教學也會在適當的地方，解說與 GMT "
+"相關的格式、軟體像是 shapefile、GDAL 之間的銜接，它們在實作上總是非常的有用。"
+msgstr ""
+"In these tutorials, we will explore some basic knowledge of GMT and useful "
+"plotting skills from numerous examples. The final goal of each chapter is to "
+"design a good-looking map from the very beginning. You will be learning many "
+"GMT commands and how to organize them in a command line or Shell script. The "
+"tutorials will also explain anything that is associated with GMT at the "
+"right time, such as geospatial data format and tools, like shapefiles and "
+"GDAL. This stuff can usually expedite your mapping tasks."
+
+#: ../../SOURCE_DOCS/index.rst:15
+msgid ""
+"在 2019 年 11 月，GMT 釋出了官方第六版。此版本比起之前大眾常用的 GMT 4 與 GMT 5 "
+"改進了不少，而且語法更是全新翻修過。本教學預計以 **GMT 6** 的新式語法為主，但是各章節將附連結至 **GMT 4-5** "
+"的傳統語法，供您參考。"
+msgstr ""
+"In November 2019, GMT released its version 6. This version is a major rehaul "
+"from the previous GMT 4 and GMT 5, especially for the more concise syntax. "
+"In each chapter of this tutorial, we will use the modern syntax introduced "
+"by **GMT 6** while providing a link to scripts written in **GMT 4-5** syntax "
+"for your reference."
+
+#: ../../SOURCE_DOCS/index.rst:28
+msgid ""
+"本教學基本上採循序漸進的模式撰寫，但各篇章使用的材料是互相獨立的。初學者不妨從頭開始閱讀，但如果你已對 GMT "
+"有相當程度的了解，更請隨時跳至你想查閱的部份以節省時間。如果有什麼想分享的評論或使用秘訣，非常歡迎在各章節中留言或直接與\\ `我 <mailto:"
+"whyjayzheng@gmail.com>`_\\ 聯繫。祝各位都能在閱讀的過程中，享受到使用 GMT 畫地圖的樂趣！"
+msgstr ""
+"The tutorials are written step-by-step, from beginner level to more advanced "
+"tricks, but the content in each chapter is well independent. You can start "
+"over if you are a GMT rookie, or you can jump to whichever section you want "
+"to check it up to save your time if you’ve been using GMT for a while. "
+"Please feel free to leave any messages below any chapters or contact `me "
+"<mailto:whyjayzheng@gmail.com>`_ at any time for any questions, comments, "
+"and ideas/tips to be shared. I hope you enjoy the fun of mapping from "
+"reading these tutorials!"
+
+#: ../../SOURCE_DOCS/index.rst:31
+msgid "授權"
+msgstr "License"
+
+#: ../../SOURCE_DOCS/index.rst:37
+msgid ""
+"本著作係採用\\ `創用 CC 姓名標示 4.0 國際 授權條款 <http://creativecommons.org/licenses/by/4.0/"
+">`_\\ 授權。\\ 在此授權條款下，您可以在任何目的下自由分享或修改本作品，並包含商業性質之使用。您只需給予原作者適當表彰（姓名標示）。"
+msgstr ""
+"The work is licensed under a `Creative Commons Attribution 4.0 International "
+"License <http://creativecommons.org/licenses/by/4.0/>`_. You may use, share, "
+"or adapt the document in any medium or format for any purpose, even "
+"commercially. You must give appropriate credit to the author, provide a link "
+"to the license, and indicate if changes were made."
+
+#: ../../SOURCE_DOCS/index.rst:40
+msgid "本網站中大部分用以繪圖的資料皆屬公領域，或以 GNU 通用公共授權條款發行。詳細說明請參閱「\\ :doc:`data_credit`\\ 」。"
+msgstr ""
+"Most data used for plotting in the work are under public domain or licensed "
+"under GNU General Public License. Please see :doc:`data_credit` for more "
+"information."
+
+#: ../../SOURCE_DOCS/index.rst:42
+msgid "Copyright © 2016-19 鄭懷傑 (Whyjay Zheng). All rights reserved."
+msgstr "Copyright © 2016-19 Whyjay Zheng. All rights reserved."
+
+#: ../../SOURCE_DOCS/index.rst:44
+msgid ""
+"教學內文與圖片的原始碼也公開在 `Github <https://github.com/whyjz/GMT-tutorials>`_ 上，以 "
+"`reStructuredText <https://en.wikipedia.org/wiki/ReStructuredText>`_ "
+"格式編寫。歡迎隨時動叉！"
+msgstr ""
+"The source codes of all the text and pictures are accessible on `Github "
+"<https://github.com/whyjz/GMT-tutorials>`_, and are written in the format of "
+"`reStructuredText <https://en.wikipedia.org/wiki/ReStructuredText>`_. Feel "
+"free to fork me at any time!"
+
+#: ../../SOURCE_DOCS/index.rst:48
+msgid "致謝"
+msgstr "Acknowledgments"
+
+#: ../../SOURCE_DOCS/index.rst:49
+msgid ""
+"感謝 William Durkin， Patricia "
+"MacQueen，李明龍，李定宇等人提出的建議與討論，讓本教學手冊的內容更為豐富完整。另外，也感謝所有 Github 上的協作者：譚諤 "
+"(tan2)，李奎模 (likueimo)，王亮 (wangliang1989)，對文檔內容所作的建設性修改。"
+msgstr ""
+"I want to thank William Durkin, Patricia MacQueen, 李明龍, and 李定宇 for their "
+"insightful comments and conversations which have complemented the tutorials. "
+"I also want to thank all the contributors on Github, including Er Tan "
+"(tan2), KMO Li (likueimo), and Liang Wang (wangliang1989), for their "
+"constructive fixes to the documentation.  "
+
+#: ../../SOURCE_DOCS/index.rst:54
+msgid "目錄"
+msgstr "Table of Contents"
+
+#: ../../SOURCE_DOCS/index.rst:56
+msgid "如果你想快速瀏覽各章的目標與地圖，請前往\\ :doc:`gallery`。"
+msgstr ""
+"If you would like to skim goals and maps for each chapter, please go to :doc:"
+"`gallery`."
+
+#: ../../SOURCE_DOCS/index.rst:60
+msgid "新手入門"
+msgstr "Beginner’s GMT Course"
+
+#: ../../SOURCE_DOCS/index.rst:59
+msgid ":doc:`intro_install`"
+msgstr ":doc:`intro_install`"
+
+#: ../../SOURCE_DOCS/index.rst:60
+msgid ":doc:`software`"
+msgstr ":doc:`software`"
+
+#: ../../SOURCE_DOCS/index.rst:61
+msgid ":doc:`basic_concept`"
+msgstr ":doc:`basic_concept`"
+
+#: ../../SOURCE_DOCS/index.rst:65
+msgid "繪圖的基本技巧"
+msgstr "Basic Mapping Skills"
+
+#: ../../SOURCE_DOCS/index.rst:63
+msgid ":doc:`making_first_map`"
+msgstr ":doc:`making_first_map`"
+
+#: ../../SOURCE_DOCS/index.rst:64
+msgid ":doc:`coloring_topography`"
+msgstr ":doc:`coloring_topography`"
+
+#: ../../SOURCE_DOCS/index.rst:65
+msgid ":doc:`pen_and_painting`"
+msgstr ":doc:`pen_and_painting`"
+
+#: ../../SOURCE_DOCS/index.rst:66
+msgid ":doc:`scatter_plot`"
+msgstr ":doc:`scatter_plot`"
+
+#: ../../SOURCE_DOCS/index.rst:73
+msgid "繪製與編修各種常見的地圖"
+msgstr "Plot and Edit Different Kinds of Maps"
+
+#: ../../SOURCE_DOCS/index.rst:68
+msgid ":doc:`editing_cpt_colorbar`"
+msgstr ":doc:`editing_cpt_colorbar`"
+
+#: ../../SOURCE_DOCS/index.rst:69
+msgid ":doc:`layout_design`"
+msgstr ":doc:`layout_design`"
+
+#: ../../SOURCE_DOCS/index.rst:70
+msgid ":doc:`hillshading`"
+msgstr ":doc:`hillshading`"
+
+#: ../../SOURCE_DOCS/index.rst:71
+msgid ":doc:`contour_and_profile`"
+msgstr ":doc:`contour_and_profile`"
+
+#: ../../SOURCE_DOCS/index.rst:72
+msgid ":doc:`plot_vector_data`"
+msgstr ":doc:`plot_vector_data`"
+
+#: ../../SOURCE_DOCS/index.rst:73
+msgid ":doc:`map_elements`"
+msgstr ":doc:`map_elements`"
+
+#: ../../SOURCE_DOCS/index.rst:74
+msgid ":doc:`view3d`"
+msgstr ":doc:`view3d`"
+
+#: ../../SOURCE_DOCS/index.rst:76
+msgid "網格資料處理"
+msgstr "Processing Gridded Data"
+
+#: ../../SOURCE_DOCS/index.rst:76
+msgid ":doc:`raster_calculator`"
+msgstr ":doc:`raster_calculator`"
+
+#: ../../SOURCE_DOCS/index.rst:77
+msgid ":doc:`basic_img_processing`"
+msgstr ":doc:`basic_img_processing`"
+
+#: ../../SOURCE_DOCS/index.rst:79
+msgid "數值資料處理"
+msgstr "Processing Numerical Data"
+
+#: ../../SOURCE_DOCS/index.rst:79
+msgid ":doc:`stat_histogram`"
+msgstr ":doc:`stat_histogram`"
+
+#: ../../SOURCE_DOCS/index.rst:80
+msgid ":doc:`regression_basics`"
+msgstr ":doc:`regression_basics`"
+
+#: ../../SOURCE_DOCS/index.rst:83
+msgid "進階繪圖技巧"
+msgstr "Advanced Mapping Skills"
+
+#: ../../SOURCE_DOCS/index.rst:82
+msgid ":doc:`focal_mech`"
+msgstr ":doc:`focal_mech`"
+
+#: ../../SOURCE_DOCS/index.rst:83
+msgid ":doc:`draping`"
+msgstr ":doc:`draping`"
+
+#: ../../SOURCE_DOCS/index.rst:88
+msgid "附錄"
+msgstr "Appendix"
+
+#: ../../SOURCE_DOCS/index.rst:86
+msgid ":doc:`data_credit`"
+msgstr ":doc:`data_credit`"
+
+#: ../../SOURCE_DOCS/index.rst:87
+msgid ":doc:`command_index`"
+msgstr ":doc:`command_index`"
+
+#: ../../SOURCE_DOCS/index.rst:88
+msgid ":doc:`gallery`"
+msgstr ":doc:`gallery`"

@@ -1,0 +1,108 @@
+# Whyjay Zheng <jhsttshj@gmail.com>, 2019. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: GMT 教學手冊 1.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-11-23 00:10-0500\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2019-07-03 05:02+0000\n"
+"Last-Translator: Whyjay Zheng <jhsttshj@gmail.com>\n"
+"Language-Team: English (United States)\n"
+"Language: en_US\n"
+"X-Generator: Zanata 4.6.2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: ../../SOURCE_DOCS/data_credit.rst:3
+msgid "資料來源與誌謝"
+msgstr "Data Credit and Acknowledgements"
+
+#: ../../SOURCE_DOCS/data_credit.rst:5
+#: ../../SOURCE_DOCS/data_credit.rst:14
+msgid ":doc:`coloring_topography`"
+msgstr ":doc:`coloring_topography`"
+
+#: ../../SOURCE_DOCS/data_credit.rst:6
+#: ../../SOURCE_DOCS/data_credit.rst:15
+msgid ":doc:`pen_and_painting`"
+msgstr ":doc:`pen_and_painting`"
+
+#: ../../SOURCE_DOCS/data_credit.rst:7
+#: ../../SOURCE_DOCS/data_credit.rst:16
+msgid ":doc:`editing_cpt_colorbar`"
+msgstr ":doc:`editing_cpt_colorbar`"
+
+#: ../../SOURCE_DOCS/data_credit.rst:9
+msgid ""
+"Amante, C. and B.W. Eakins, 2009. ETOPO1 1 Arc-Minute Global Relief Model: "
+"Procedures, Data Sources and Analysis. NOAA Technical Memorandum NESDIS NGDC-"
+"24. National Geophysical Data Center, NOAA. doi:10.7289/V5C8276M [accessed "
+"on 2016/1/21]."
+msgstr ""
+"Amante, C. and B.W. Eakins, 2009. ETOPO1 1 Arc-Minute Global Relief Model: "
+"Procedures, Data Sources and Analysis. NOAA Technical Memorandum NESDIS NGDC-"
+"24. National Geophysical Data Center, NOAA. doi:10.7289/V5C8276M [accessed "
+"on 2016/1/21]."
+
+#: ../../SOURCE_DOCS/data_credit.rst:17
+#: ../../SOURCE_DOCS/data_credit.rst:27
+msgid ":doc:`hillshading`"
+msgstr ":doc:`hillshading`"
+
+#: ../../SOURCE_DOCS/data_credit.rst:18
+msgid ":doc:`contour_and_profile`"
+msgstr ":doc:`contour_and_profile`"
+
+#: ../../SOURCE_DOCS/data_credit.rst:19
+#: ../../SOURCE_DOCS/data_credit.rst:35
+msgid ":doc:`plot_vector_data`"
+msgstr ":doc:`plot_vector_data`"
+
+#: ../../SOURCE_DOCS/data_credit.rst:21
+msgid "`Cpt-city <http://soliton.vm.bytemark.co.uk/pub/cpt-city/index.html>`_"
+msgstr ""
+"`Cpt-city <http://soliton.vm.bytemark.co.uk/pub/cpt-city/index.html>`_"
+
+#: ../../SOURCE_DOCS/data_credit.rst:23
+msgid ":doc:`scatter_plot`"
+msgstr ":doc:`scatter_plot`"
+
+#: ../../SOURCE_DOCS/data_credit.rst:25
+msgid ""
+"中央氣象局觀測資料。`CODiS 觀測資料查詢系統 <http://e-service.cwb.gov.tw/HistoryDataQuery/"
+"index.jsp>`_"
+msgstr ""
+"Data source: Central Weather Bureau, MOTC, Taiwan. `CODiS - CWB Observation "
+"Data Inquire System <http://e-service.cwb.gov.tw/HistoryDataQuery/index."
+"jsp>`_"
+
+#: ../../SOURCE_DOCS/data_credit.rst:29
+msgid ""
+"Sandwell, D. T., R. D. Müller, W. H. F. Smith, E. Garcia, R. Francis, `New "
+"global marine gravity model from CryoSat-2 and Jason-1 reveals buried "
+"tectonic structure <http://www.sciencemag.org/content/346/6205/65>`_, "
+"Science, Vol. 346, no. 6205, pp. 65-67, `doi: 10.1126/science.1258213 <http:/"
+"/dx.doi.org/10.1126/science.1258213>`, 2014. [`Website <http://topex.ucsd."
+"edu/grav_outreach/>`_, accessed on 2016/5/16]."
+msgstr ""
+"Sandwell, D. T., R. D. Müller, W. H. F. Smith, E. Garcia, R. Francis, `New "
+"global marine gravity model from CryoSat-2 and Jason-1 reveals buried "
+"tectonic structure <http://www.sciencemag.org/content/346/6205/65>`_, "
+"Science, Vol. 346, no. 6205, pp. 65-67, `doi: 10.1126/science.1258213 <http:/"
+"/dx.doi.org/10.1126/science.1258213>`, 2014. [`Website <http://topex.ucsd."
+"edu/grav_outreach/>`_, accessed on 2016/5/16]."
+
+#: ../../SOURCE_DOCS/data_credit.rst:37
+msgid ""
+"USGS (2006), Shuttle Radar Topography Mission, 1 Arc Second scene "
+"n13_e123_1arc_v3, Filled Finished 3.0, Global Land Cover Facility, "
+"University of Maryland, College Park, Maryland, February 2000."
+msgstr ""
+"USGS (2006), Shuttle Radar Topography Mission, 1 Arc Second scene "
+"n13_e123_1arc_v3, Filled Finished 3.0, Global Land Cover Facility, "
+"University of Maryland, College Park, Maryland, February 2000."
+
+#: ../../SOURCE_DOCS/data_credit.rst:41
+msgid "感謝 ---- Turtle"
+msgstr ""
