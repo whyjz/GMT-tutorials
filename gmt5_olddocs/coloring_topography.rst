@@ -2,91 +2,94 @@
 為地形圖上色
 ======================================
 
-.. attention::
-
-    本教學適用於 GMT 6 的現代模式。如須參閱 GMT 6 (傳統模式) 與 GMT 4-5 繪製相同地圖的教程，\ `請至這裡 <coloring_topography_gmt5.html>`_。
-
-把地圖依照不同屬性、在不同區域著色，可以把龐大的資料有效視覺化。最常用來著色的屬性，高度絕對是其中之一。在典型的地形圖中，不同的海拔高度會套上不同的顏色。本章中將會詳細說明如何利用地表的不同高度，製作彩色的地形圖。
+把地圖依照不同屬性、在不同區域著色，可以把龐大的資料有效視覺化。最常用來著色的屬性，\
+高度絕對是其中之一。在典型的地形圖中，不同的海拔高度會套上不同的顏色。本章中將會詳細\
+說明如何利用地表的不同高度，製作彩色的地形圖。
 
 目標
 --------------------------------------
-製作一張\ `的的喀喀湖`_ (Lago Titicaca) 的分層設色地形圖，如下圖所示。的的喀喀湖位於秘魯和玻利維亞交界，面積達 8372 平方公里。特殊的是，湖面位置的海拔高達 3812 公尺，是全世界最高的商業通航湖泊\ [#]_。圖中的藍色線條表示河流，注意右側的河流其實是亞馬遜河的源頭，而且並沒有和的的喀喀湖連接。黑色的虛線是兩國國界。地形圖的顏色從海拔 0 至 5000 公尺，依循以下顏色過渡：綠色 -> 黃色 -> 紅色 -> 灰色 -> 白色，其中 2800 公尺以上即開始以灰色系展示。這麼高的湖泊，位於一片白色系背景當中，更增添了些許雪國的氣氛 (實際上，的的喀喀湖冬天非常乾燥，幾乎不會下雪\ [#]_)。
+製作一張\ `的的喀喀湖`_ 
+(Lago Titicaca) 的分層設色地形圖，如下圖所示。的的喀喀湖位於秘魯和玻利維亞交界，\
+面積達 8372 平方公里。特殊的是，湖面位置的海拔高達 3812 公尺，是全世界最高的商業通航\
+湖泊\ [#]_。圖中的藍色線條表示河流，注意右側的河流其實是亞馬遜河的源頭，而且並沒有和的的喀喀湖\
+連接。黑色的虛線是兩國國界。地形圖的顏色從海拔 0 至 5000 公尺，依循以下顏色過渡：\
+綠色 -> 黃色 -> 紅色 -> 灰色 -> 白色，其中 2800 公尺以上即開始以灰色系展示。\
+這麼高的湖泊，位於一片白色系背景當中，更增添了些許雪國的氣氛 (實際上，的的喀喀湖\
+冬天非常乾燥，幾乎不會下雪\ [#]_)。
 
 .. _的的喀喀湖: https://zh.wikipedia.org/wiki/%E7%9A%84%E7%9A%84%E5%96%80%E5%96%80%E6%B9%96
 .. _Lake Titicaca: https://en.wikipedia.org/wiki/Lake_Titicaca
 
 .. _最終版地圖:
 
-.. image:: coloring_topography/titicaca_gmt6.png
-    :width: 1000px
-    :align: center
+.. image:: coloring_topography/titicaca.png
 
 直接觀看\ `指令稿`_
 
 
 使用的指令與概念
 --------------------------------------
-
 - ``grdinfo`` - **查閱網格檔的基本資訊**
 - ``grdimage`` - **繪製著色影像**
-- ``coast`` - **繪製河流、湖泊與國界**
-- 使用 GMT 伺服器的地形資料繪圖
+- ``pscoast`` - **繪製河流、湖泊與國界**
+- GMT 共用選項：``-O`` ``-K``
+- 輸入網格化地形資料到 GMT 中
 - 從 `cpt-city`_ 尋找適合地圖的色階檔
 - 如何疊加輸出圖層
 - 使用腳本一次下達所有繪圖指令
 
-.. GMT 共用選項：``-O`` ``-K``
-
-
 .. _cpt-city: http://soliton.vm.bytemark.co.uk/pub/cpt-city
 
-取得資料
+前置作業
 --------------------------------------
-這次我們必須要先取得繪圖區域的地形資料。GMT 6 本身有提供全球的地形資料，不過是放在遠端伺服器上，當使用者需要時才會下載到本機電腦中。這些地形資料的檔名為：
+這次我們必須要先取得繪圖區域的地形資料。這類型的資料有時後會被視作機密，尤其是高解析度的區域資料，\
+時常需經申請或付費才能使用。不過這次我們預計使用的資料，已經公開在網路上了，任何人都可以直接下載使用。\
+它就是 `ETOPO`_，或稱為「全球地形數位模型」。ETOPO 是由美國大氣海洋局 (NOAA) 附屬的美國環境資訊中心 (NCEI) 建立\
+及維護，此資料庫蒐集了數個不同測高衛星與海洋探測的地形調查資料，再把他們統一彙整到相同的解析度。\
+這裡我們要用資料版本是 ETOPO1 Bedrock (ETOPO 解析度 1 弧分的地形高程，極區採用冰層下的基盤高度)
+以 **netCDF** 格式發布的檔案。檔案可以在 `ETOPO`_ 的網站下載 (ETOPO1 Bedrock -> 
+grid-registered: netCDF)，或是使用如下快速連結下載：
+
+`下載 ETOPO1 Bedrock netCDF 檔`_ (383M，解壓後約 891M)
+
+.. _ETOPO: https://www.ngdc.noaa.gov/mgg/global/global.html
+.. _下載 ETOPO1 Bedrock netCDF 檔: https://www.ngdc.noaa.gov/mgg/global/relief/ETOPO1/data/bedrock/grid_registered/netcdf/ETOPO1_Bed_g_gmt4.grd.gz
+
+解壓縮後，會有一個叫做 ``ETOPO1_Bed_g_gmt4.grd`` 的檔案，副檔名是 ``.grd``，表明了它是某種\
+「網格檔」，亦即地球的二維表面被切割成網格狀，每個「格子」內，都有一個相對應的高度數據。(非常類似 
+GeoTiff 的概念，只不過在 GeoTiff 中，相對應的術語稱為「像素」而非「網格點」。) ``.grd`` 
+檔是 netCDF 格式常見的附檔名，也就是說它可被 GMT 讀取並作圖。如果想要參閱檔案的基本資訊，除了上
+`ETOPO`_ 官網外，也可以透過終端機輸入 ``grdinfo`` 指令來達成。執行畫面會像如下所示：
 
 .. code-block:: bash
 
-    @earth_relief_rru
+    $ grdinfo ETOPO1_Bed_g_gmt4.grd
+    ETOPO1_Bed_g_gmt4.grd: Title: ETOPO1_Bed_g_gmt4.grd
+    ETOPO1_Bed_g_gmt4.grd: Command: 
+    ETOPO1_Bed_g_gmt4.grd: Remark: 
+    ETOPO1_Bed_g_gmt4.grd: Gridline node registration used [Geographic grid]
+    ETOPO1_Bed_g_gmt4.grd: Grid file format: ni = GMT netCDF format (32-bit integer), COARDS, CF-1.5
+    ETOPO1_Bed_g_gmt4.grd: x_min: -180 x_max: 180 x_inc: 0.0166666666667 name: Longitude [degrees_east] nx: 21601
+    ETOPO1_Bed_g_gmt4.grd: y_min: -90 y_max: 90 y_inc: 0.0166666666667 name: Latitude [degrees_north] ny: 10801
+    ETOPO1_Bed_g_gmt4.grd: z_min: -10898 z_max: 8271 name: z
+    ETOPO1_Bed_g_gmt4.grd: scale_factor: 1 add_offset: 0
+    ETOPO1_Bed_g_gmt4.grd: format: classic
 
-其中 ``rr`` 是解析度的大小，而 ``u`` 是單位 (有度 ``d``、分 ``m``、秒 ``s`` 可選)。我們在這邊要使用的是全球解析度 1 弧分的地形高程，因此檔名為 ``@earth_relief_01m``。其他可供選擇的資料，皆在 `GMT 官方手冊中有說明 <https://docs.generic-mapping-tools.org/latest/datasets/earth_relief.html>`_。如果你想查閱地形資料的更多資訊，可以透過終端機輸入 ``grdinfo`` 指令來達成。執行畫面會像如下所示：
+從輸出文字中你可以看到一些基本資訊，像是
 
-
-.. 這類型的資料有時後會被視作機密，尤其是高解析度的區域資料，時常需經申請或付費才能使用。不過這次我們預計使用的資料，已經公開在網路上了，任何人都可以直接下載使用。它就是 `ETOPO`_，或稱為「全球地形數位模型」。ETOPO 是由美國大氣海洋局 (NOAA) 附屬的美國環境資訊中心 (NCEI) 建立及維護，此資料庫蒐集了數個不同測高衛星與海洋探測的地形調查資料，再把他們統一彙整到相同的解析度。這裡我們要用資料版本是 ETOPO1 Bedrock (ETOPO 解析度 1 弧分的地形高程，極區採用冰層下的基盤高度) 以 **netCDF** 格式發布的檔案。檔案可以在 `ETOPO`_ 的網站下載 (ETOPO1 Bedrock -> grid-registered: netCDF)，或是使用如下快速連結下載：
-
-.. `下載 ETOPO1 Bedrock netCDF 檔`_ (383M，解壓後約 891M)
-
-.. ETOPO: https://www.ngdc.noaa.gov/mgg/global/global.html
-.. 下載 ETOPO1 Bedrock netCDF 檔: https://www.ngdc.noaa.gov/mgg/global/relief/ETOPO1/data/bedrock/grid_registered/netcdf/ETOPO1_Bed_g_gmt4.grd.gz
-
-
-.. code-block:: bash
-
-    $ gmt grdinfo @earth_relief_01m
-    earth_relief_01m: Download file from the GMT data server [data set size is 214M].
-    earth_relief_01m: Earth Relief at 1x1 arc minutes obtained by Gaussian Cartesian filtering (1.9 km fullwidth) of SRTM15+V2 [Tozer et al., 2019].
-
-    /home/whyj/.gmt/server/earth_relief_01m.grd: Title: Earth Relief at 01 arc minute
-    /home/whyj/.gmt/server/earth_relief_01m.grd: Command: grdfilter SRTM15+V2.nc -Fg1.9 -D1 -I01m -rg -Gearth_relief_01m.grd=ns --IO_NC4_DEFLATION_LEVEL=9 --PROJ_ELLIPSOID=Sphere
-    /home/whyj/.gmt/server/earth_relief_01m.grd: Remark: Obtained by Gaussian Cartesian filtering (1.9 km fullwidth) from SRTM15+V2.nc [Tozer et al., 2019; http://dx.doi.org/10.1029/2019EA000658]
-    /home/whyj/.gmt/server/earth_relief_01m.grd: Gridline node registration used [Geographic grid]
-    /home/whyj/.gmt/server/earth_relief_01m.grd: Grid file format: ns = GMT netCDF format (16-bit integer), CF-1.7
-    /home/whyj/.gmt/server/earth_relief_01m.grd: x_min: -180 x_max: 180 x_inc: 0.0166666666667 (1 min) name: longitude n_columns: 21601
-    /home/whyj/.gmt/server/earth_relief_01m.grd: y_min: -90 y_max: 90 y_inc: 0.0166666666667 (1 min) name: latitude n_rows: 10801
-    /home/whyj/.gmt/server/earth_relief_01m.grd: z_min: -10907 z_max: 8170 name: elevation (m)
-    /home/whyj/.gmt/server/earth_relief_01m.grd: scale_factor: 1 add_offset: 0
-    /home/whyj/.gmt/server/earth_relief_01m.grd: format: netCDF-4 chunk_size: 129,129 shuffle: on deflation_level: 9
-
-訊息的前兩行在有需要下載時才會出現。下載下來的檔案預設是放在 ``~/.gmt/server/`` 這個位置，之後 GMT 會先查看這個位置有沒有已經下載的檔案，如果沒有的話才會再次下載。下載檔檔名為 ``earth_relief_01m.grd``，副檔名 ``.grd`` 表明了它是某種「網格檔 (grid)」，亦即地球的二維表面被切割成網格狀，每個「格子」內，都有一個相對應的高度數據。(非常類似 GeoTiff 的概念，只不過在 GeoTiff 中，相對應的術語稱為「像素」而非「網格點」。) ``.grd`` 檔是 netCDF 格式常見的附檔名，也就是說它可被 GMT 讀取並作圖。另外，從 ``grdinfo`` 的輸出中你還可以看到其他的基本資訊，像是
-
-- 網格檔是從 `SRTM15+V2 <https://topex.ucsd.edu/WWW_html/srtm15_plus.html>`_ 這個資料庫重新取樣而來
+- 網格檔的格式是 netCDF，CF-1.5。
 - X 從 -180 度到 180 度，Y 從 -90 度到 90 度，意味著此網格檔涵蓋全球的範圍。
 - 網格大小是 0.0166666666667，也就是 1/60 度 (1 弧分)。
 - 總共有 21601 x 10801 = 233312401 個格點 (也就是兩億三千三百萬像素)。
-- Z 值 (高度) 從 -10907 到 8170 公尺。為什麼最高的地方不是 8848 公尺 (聖母峰的高度)? 那是因為網格的解析度還是不夠高，1 弧分其實只相當於 1 至 2 公里才取一個點而已。
+- Z 值 (高度) 從 -10898 到 8271。雖然沒有註明單位，但很容易可以推敲出來是公尺。\
+  為什麼最高的地方不是 8848 公尺 (聖母峰的高度)? 那是因為網格的解析度還是不夠高，\
+  1 弧分其實只相當於 1 至 2 公里才取一個點而已。
 
 操作流程
 --------------------------------------
-畫地圖的第一步就是決定繪製區域。如同前一章「\ :doc:`making_first_map`\ 」所述，我們可以使用 *Google Map* 等工具決定區域。這裡我們考慮到高度的呈現效果，選擇經度從 -70.8 到 -66.56 (負值表示西經)，緯度從 -17.17 到 -14.42 (負值表示南緯。)
+取得全球的地形資料後，就是決定地圖繪製的區域。如同前一章--\ :doc:`making_first_map`\
+--所述，我們可以使用 *Google Map* 等工具決定區域。這裡我們考慮到高度的呈現效果，選擇\
+經度從 -70.8 到 -66.56 (負值表示西經)，緯度從 -17.17 到 -14.42 (負值表示南緯。)
 
 .. figure:: coloring_topography/coloring_topography_fig1.png
     :align: center
