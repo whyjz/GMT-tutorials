@@ -2,124 +2,145 @@
 畫筆與調色技巧
 ======================================
 
-.. attention::
-
-    本教學適用於 GMT 6 的現代模式。如須參閱 GMT 6 (傳統模式) 與 GMT 4-5 繪製相似地圖的教程，\ `請至這裡 <pen_and_painting_gmt5.html>`_。
-
-為了有效的在地圖上呈現資料，顏色與線條樣式應要謹慎選擇。為地圖挑選合適的配色是門藝術，地圖製作者通常都會花上許多時間，把地圖調整成看起來最調和、最舒服的外觀。這裡我們要介紹如何在 GMT 中操作相關設定，讓你能夠更快的找到心目中的完美配色。本章也會說明如何繪製簡單的色階圖例。
+為了有效的在地圖上呈現資料，顏色與線條樣式應要謹慎選擇。為地圖挑選\
+合適的配色是門藝術，地圖製作者通常都會花上許多時間，把地圖調整成看起來\
+最調和、最舒服的外觀。這裡我們要介紹如何在 GMT 中操作相關設定，\
+讓你能夠更快的找到心目中的完美配色。
 
 目標
 --------------------------------------
-製作一張中美洲的地圖，海域部份為分層設色地形圖，陸域部份則依國家來著色，如下圖所示。被中美地峽與島嶼群圍起來的區域為\ `加勒比海 <https://zh.wikipedia.org/wiki/%E5%8A%A0%E5%8B%92%E6%AF%94%E6%B5%B7>`_，而左上方的海灣則為\ `墨西哥灣 <https://zh.wikipedia.org/wiki/%E5%A2%A8%E8%A5%BF%E5%93%A5%E6%B9%BE>`_。圖中可以找到此區域的十幾個比較大的國家，也可以發現加勒比海和墨西哥灣，都比東北方的大西洋要淺得多。根據地圖上的海床色階圖例，也可以發現最深的地方位於波多黎各北方的海溝，有大概 8000 多公尺深。
+製作一張中美洲的地圖，海域部份為分層設色地形圖，陸域部份則依國家來著色，\
+如下圖所示。被中美地峽與島嶼群圍起來的區域為\
+`加勒比海 <https://zh.wikipedia.org/wiki/%E5%8A%A0%E5%8B%92%E6%AF%94%E6%B5%B7>`_，\
+而左上方的海灣則為\ `墨西哥灣 <https://zh.wikipedia.org/wiki/%E5%A2%A8%E8%A5%BF%E5%93%A5%E6%B9%BE>`_。\
+圖中可以找到此區域的十幾個比較大的國家，也可以發現加勒比海和墨西哥灣，\
+都比東北方的大西洋要淺得多。
 
 .. _最終版地圖:
 
-.. image:: pen_and_painting/central_america_gmt6_s.png
-    :target: _images/central_america_gmt6.png
+.. image:: pen_and_painting/central_america_s.png
+    :target: _images/central_america.png
 
 直接觀看\ `指令稿`_
 
 
 使用的指令與概念
 --------------------------------------
-- ``coast`` - **為國家上色**
-- ``grdimage`` - 繪製著色影像
-- ``colorbar`` - **繪製色階條**
-- 外部指令 ``grep`` - **在 GMT 的輸出中搜尋字串** (Windows 為 ``findstr``) (非必要)
+- ``makecpt`` - **製作或調整色階檔**
+- ``pscoast`` - **為國家上色**
+- ``grdimage`` - **繪製著色影像**
 - 如何指定作圖顏色
 - 畫筆的屬性設定
+- 如何製作與修改色階檔
 - 疊加多個圖層
 - 在腳本中使用變數以美化排版
 
-.. 如何製作與修改色階檔
-.. ``makecpt`` - **製作或調整色階檔**
-
 前置作業
 --------------------------------------
-在本章中，我們一樣會使用 GMT 伺服器提供的 ``@earth_relief_01m`` 資料庫。相關的介紹請看「\ :doc:`coloring_topography`\ 」。本次的作圖區域，是 ``-R-100/1/-50/34r``，如以下 *Google Map* 截圖所示。有關 ``-R`` 的詳細說明，請參閱「\ :doc:`making_first_map`\ 」。
+在本章中，我們一樣會使用 `ETOPO`_ Bedrock 資料庫來繪製海底地形。有關 `ETOPO`_ 的詳細說明，\
+請參閱「\ :doc:`coloring_topography`\ 」。檔案可以在 `ETOPO`_ 的網站下載 (ETOPO1 Bedrock -> 
+grid-registered: netCDF)，或是使用如下快速連結下載：
 
-..  `ETOPO`_ Bedrock 資料庫來繪製海底地形。有關 `ETOPO`_ 的詳細說明，請參閱「\ :doc:`coloring_topography`\ 」。檔案可以在 `ETOPO`_ 的網站下載 (ETOPO1 Bedrock -> grid-registered: netCDF)，或是使用如下快速連結下載：
+`下載 ETOPO1 Bedrock netCDF 檔`_ (383M，解壓後約 891M)
 
-.. `下載 ETOPO1 Bedrock netCDF 檔`_ (383M，解壓後約 891M)
+.. _ETOPO: https://www.ngdc.noaa.gov/mgg/global/global.html
+.. _下載 ETOPO1 Bedrock netCDF 檔: https://www.ngdc.noaa.gov/mgg/global/relief/ETOPO1/data/bedrock/grid_registered/netcdf/ETOPO1_Bed_g_gmt4.grd.gz
 
-.. ETOPO: https://www.ngdc.noaa.gov/mgg/global/global.html
-.. 下載 ETOPO1 Bedrock netCDF 檔: https://www.ngdc.noaa.gov/mgg/global/relief/ETOPO1/data/bedrock/grid_registered/netcdf/ETOPO1_Bed_g_gmt4.grd.gz
-
+本次的作圖區域，是 ``-R-100/1/-50/34r``，如以下 *Google Map* 截圖所示。\
+有關 ``-R`` 的詳細說明，請參閱「\ :doc:`making_first_map`\ 」。
 
 .. image:: pen_and_painting/pen_and_painting_fig1.png
 
-.. 另外，我們這次也會使用到 `cpt-city`_ 的 ``mby`` 色階。你可以從 `cpt-city 網頁 <http://soliton.vm.bytemark.co.uk/pub/cpt-city/mby/tn/mby.png.index.html>`_\ 上下載，也可以直接從\ :download:`這邊 <coloring_topography/mby.cpt>`\ 下載。
+另外，我們這次也會使用到 `cpt-city`_ 的 ``mby`` 色階。你可以從\
+`cpt-city 網頁 <http://soliton.vm.bytemark.co.uk/pub/cpt-city/mby/tn/mby.png.index.html>`_\ 上下載，\
+也可以直接從\ :download:`這邊 <coloring_topography/mby.cpt>`\ 下載。
 
-.. cpt-city: http://soliton.vm.bytemark.co.uk/pub/cpt-city
+.. _cpt-city: http://soliton.vm.bytemark.co.uk/pub/cpt-city
 
 操作流程
 --------------------------------------
-我們先來分析一下目標的地圖。在此地圖中有很多不同的元素，依照固定的順序疊加。如果認真檢查，這些元素可以分成四群，由底層到頂層分別為
+我們先來分析一下目標的地圖。在此地圖中有很多不同的元素，依照固定的順序疊加。\
+如果認真檢查，這些元素可以分成三群，由底層到頂層分別為
 
 - 地形圖
-- 國家的著色
-- 海岸線、國家邊界與地圖格線
-- 色階圖例的區塊
+- 格線，它覆蓋在海底地形上面
+- 國家的著色，它把格線和海底地形都覆蓋掉了
 
 因此，我們的 GMT 繪圖腳本，應該也要照如上的順序進行繪圖，也就是說程式碼看起來會長這樣
 
 .. code-block:: bash
 
     第一段：海底地形圖 (grdimage)
-    第二段：國家的著色 (coast)
-    第三段：所有的線段 (coast)
-    第四段：色階條 (colorbar)
+    第二段：格線 (可以併在 pscoast -B 的選項來畫)
+    第三段：國家邊界與著色 (pscoast)
 
-
-海底地形圖和國家著色，都必需要指定繪圖的顏色或色階，所以這裡我們先來看看單一的顏色要怎麼指定。最簡單，並也在之前的章節使用的一種方法，就是指定顏色的名稱。GMT 支援了超過百種顏色的名稱，可以在\ `這邊 <https://docs.generic-mapping-tools.org/latest/gmtcolors.html?highlight=gmtcolor#list-of-colors>`_\ 查看並使用。例如說以下指令
-
-.. code-block:: bash
-
-    gmt coast -Ggreen    # ...後續省略
-
-可以把陸域染成綠色。由於這裡我們要著色的是個別的國家，所以得先介紹另外一個 ``coast`` 的選項 ``-E`` 才行。``-E`` 會讀取一個稱為 `DCW <https://www.soest.hawaii.edu/pwessel/dcw/>`_ 的資料庫，使用內含的國家邊界資料進行著色。``-E`` 的語法大致為
+海底地形圖和國家著色，都必需要指定繪圖的顏色或色階，所以這裡我們先來看看單一的顏色要怎麼指定。\
+最簡單，並也在之前的章節使用的一種方法，就是指定顏色的名稱。GMT 支援了超過百種顏色的名稱，\
+可以在\ `這邊 <http://gmt.soest.hawaii.edu/doc/5.2.1/gmtcolors.html#list-of-colors>`_\
+查看並使用。例如說以下指令
 
 .. code-block:: bash
 
-    -E代碼1,代碼2,...+g填色+p畫筆
+    pscoast -Ggreen    # ...後續省略
+
+可以把陸域染成綠色。由於這裡我們要著色的是國家，所以得先介紹另外一個 ``pscoast``
+的選項 ``-F`` 才行。``-F`` 會讀取一個稱為 `DCW <https://www.soest.hawaii.edu/pwessel/dcw/>`_ 
+的資料庫，使用內含的國家邊界資料進行著色。``-F`` 的語法大致為
+
+.. code-block:: bash
+
+    -F代碼1,代碼2,...+g填色+p畫筆
 
 其中的\ ``代碼``\ 指的是 `ISO 3166-1 alpha-2 <https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2>`_
-國家名稱的二位字母代碼，例如 ``TW`` 代表台灣，``US`` 代表美國等等。除了可以從維基百科查詢這些代碼以外，也可以輸入以下指令，直接在 GMT 中查詢：
+國家名稱的二位字母代碼，例如 ``TW`` 代表台灣，``US`` 代表美國等等。除了可以從維基百科查詢這些代碼以外，\
+也可以輸入以下指令，直接在 GMT 中查詢：
 
 .. code-block:: bash
 
-    $ gmt coast -E+l    # 在螢幕中列出二位字母國碼
+    $ pscoast -F+l    # 在螢幕中列出二位字母國碼
     # 或
-    $ gmt coast -E+L    # 在螢幕中列出二位字母國碼與幾個大國家的省份碼
+    $ pscoast -F+L    # 在螢幕中列出二位字母國碼與幾個大國家的省份碼
 
-這邊順便舉個方便的技巧：如果你想查詢特定國家 (已經知道英文國名) 的代碼，可以使用 ``sh`` 內建的 ``grep`` 指令來輔助查詢。如下這樣：
+這邊順便舉個方便的技巧：如果你想查詢特定國家 (已經知道英文國名) 的代碼，可以使用 ``sh`` 內建的
+``grep`` 指令來輔助查詢。如下這樣：
 
 .. code-block:: bash
 
-    $ gmt coast -E+l | grep -i japan
+    $ pscoast -F+l | grep -i japan
+    List of ISO 3166-1 alpha-2 codes for DCW supported countries:
+
+    Africa [AF]:
+    Antarctica [AN]:
+    Asia [AS]:
+    Europe [EU]:
+    Oceania [OC]:
+    North America [NA]:
+    South America [SA]:
       JP    Japan
 
-這邊的 ``-i`` 選項是「大小寫視為相同」之意。在下方的搜尋結果中，就出現了日本的代碼 ``JP``。
+這邊的 ``-i`` 選項是「大小寫視為相同」之意。你會看到在最後一行中，就出現了日本的代碼 ``JP``。
 
-.. 在 GMT 5.2 之後的版本，``-F`` 換成了 ``-E``，但選項內容不變。
+.. attention::
+
+    1. 在 GMT 5.2 之後的版本，``-F`` 換成了 ``-E``，但選項內容不變。
+    2. 如果你的作業系統是 **Windows**，內建會沒有 ``grep``，但你可以使用替代的指令
+       ``findstr`` 來操作，如下：
+
+       .. code-block:: bash
+
+           $ pscoast -F+l | findstr /i japan
 
 .. tip::
 
-    1. 如果你的作業系統是 **Windows**，內建會沒有 ``grep``，但你可以使用替代的指令 ``findstr`` 來操作，如下：
+    如果你想要使用 ``grep`` 一次查詢多個國家，可以使用如下語法：
 
-       .. code-block:: bash
+    .. code-block:: bash
 
-           $ gmt coast -E+l | findstr /i japan
+       $ pscoast -F+l | grep -i 'japan\|singapore\|zealand'
 
-    2. 如果你想要使用 ``grep`` 一次查詢多個國家，可以使用如下語法：
+    這樣程式會一次把日本、新加坡跟紐西蘭的代碼找出來。
 
-       .. code-block:: bash
-
-           $ gmt coast -E+l | grep -i 'japan\|singapore\|zealand'
-
-       這樣程式會一次把日本、新加坡跟紐西蘭的代碼找出來。
-
-接下來就是\ **填色**。GMT 實際上支援了六種顏色表達方式，分別為
+接下來就是\ ``填色``。GMT 實際上支援了六種顏色表達方式，分別為
 
 .. code-block:: bash
 
@@ -130,17 +151,20 @@
     「8/8/0/2」       # 5. 使用 C/M/Y/K 值 (百分比表示)，左邊這是薰衣草色
     「169」           # 6. 灰階號碼，此例相當於 R/G/B 的 169/169/169
 
-你可以使用你喜歡的表達方式給定顏色。這邊我們要試著幫墨西哥 (代碼 ``MX``) 塗上磚紅色，使用 HTML 標記的代碼 ``#CD5C5C``，語法如下：
+你可以使用你喜歡的表達方式給定顏色。這邊我們要試著幫墨西哥 (代碼 ``MX``) 塗上磚紅色，\
+使用 HTML 標記的代碼 ``#CD5C5C``，語法如下：
 
 .. code-block:: bash
 
-    $ gmt coast -R-100/1/-50/34r -JM15c -EMX+g#CD5C5C -png central_america    # 地圖 15 公分寬
+    $ pscoast -R-100/1/-50/34r -JM6i -FMX+g#CD5C5C -P > central_america.ps
 
 成品就會看到有個磚紅色的區塊，這就是墨西哥的國土。
 
-.. image:: pen_and_painting/pen_and_painting_gmt6_fig2.png
+.. image:: pen_and_painting/pen_and_painting_fig2.png
 
-因為我們等一下會為不同的國家塗上不同的顏色，為了程式碼的美觀，可以把顏色和對應的國家先以變數的方式存放，之後執行 ``coast`` 再使用這些變數。這種方式除了可以整齊排版，更利於之後的編輯修改。每個 shell 指定變數的方式略有不同，這裡以 ``bash`` 為示範，變數的指定與取方式為：
+因為我們等一下會為不同的國家塗上不同的顏色，為了程式碼的美觀，可以把顏色和對應的國家先以變數的\
+方式存放，之後執行 ``pscoast`` 再使用這些變數。這種方式除了可以整齊排版，更利於之後的編輯修改。\
+每個 shell 指定變數的方式略有不同，這裡以 ``bash`` 為示範，變數的指定與取方式為：
 
 .. code-block:: bash
 
@@ -152,80 +176,78 @@
 .. code-block:: bash
 
     color1='#CD5C5C'
-    colorgroup1='MX,BR,PA,DO'
-    gmt coast -R-100/1/-50/34r -JM15c -E${colorgroup1}+g${color1} -png central_america
+    colorgroup1='MX,BR,PA'
+    pscoast -R-100/1/-50/34r -JM6i -F${colorgroup1}+g${color1} -P > central_america.ps
 
-以上腳本可以把墨西哥 (``MX``)、巴西 (``BR``)、巴拿馬 (``PA``) 和多明尼加 (``DO``) 一次塗上磚紅色。如果你想要更改顏色或國家，只要修改變數 ``colorgroup1`` 或 ``color1`` 的內容即可，不需要動到 ``pscoast`` 的指令。
+以上腳本可以把墨西哥 (``MX``)、巴西 (``BR``)、巴拿馬 (``PA``) 一次塗上磚紅色。如果你想要更改\
+顏色或國家，只要修改變數 ``colorgroup1`` 或 ``color1`` 的內容即可，不需要動到 ``pscoast``
+的指令。
 
 .. tip::
 
-    1. 由於不同的指令列環境有不同的變數設定方式，而且是值得另闢章節討論的話題，在此我們先略過這些內容以集中精神在 GMT 指令上。有關於變數指定的細節，請參考你所使用的 shell 如 cmd、bash 或 csh 等的技術專書或網頁。
-    2. 有許多不錯的網頁調色盤，如 `HTML color codes <http://html-color-codes.info/>`_，可以幫助你用視覺化的方式挑選你想要的顏色，然後再把色碼貼到腳本變數中就行了。好好尋找你想要的顏色吧！
+    1. 由於不同的指令列環境有不同的變數設定方式，而且是值得另闢章節討論的話題，在此我們先略過這些內容以\
+       集中精神在 GMT 指令上。有關於變數指定的細節，請參考你所使用的 shell 如 cmd、bash 或 csh 
+       等的技術專書或網頁。
+    2. 有許多不錯的網頁調色盤，如 `HTML color codes <http://html-color-codes.info/>`_，可以\
+       幫助你用視覺化的方式挑選你想要的顏色，然後再把色碼貼到腳本變數中就行了。好好尋找你想要的顏色吧！
 
-接下來，只要依樣畫葫蘆，把所有的鄰近國家都填上顏色就可以了。依照\ `上一章 <coloring_topography.html>`_\ 所示，我們先使用 ``grdimage`` 畫地形底圖，再使用 ``coast`` 把剛剛提的所有東西填上去：
+接下來，只要依樣畫葫蘆，把所有的鄰近國家都填上顏色就可以了：
 
 .. code-block:: bash
 
     # ==== 設定顏色與對應的國家 ====
-    # mexico, brazil, costa rica, dominican
+    # mexico, panama, brazil
     color1='#CD5C5C'
-    colorgroup1='MX,BR,CR,DO'
-    # guatemala, venezuela, jamaica, french guiana, bahamas
-    color2='pink'
-    colorgroup2='GT,JM,VE,GF,BS'
-    # united states, puerto rico, nicaragua, guyana
+    colorgroup1='MX,BR,PA'
+    # guatemala, venezuela, jamaica
+    color2='coral'
+    colorgroup2='GT,JM,VE'
+    # united states, puerto rico, salvador
     color3='240/230/140'
-    colorgroup3='US,PR,NI,GY'
-    # belize, haiti, trinidad and tobago, panama, salvador
+    colorgroup3='US,PR,SV'
+    # belize, french guiana, haiti, trinidad and tobago
     color4='0/36/74/4'
-    colorgroup4='BZ,HT,TT,PA,SV'
-    # colombia, cuba, honduras, suriname
+    colorgroup4='BZ,GF,HT,TT'
+    # honduras, colombia, cuba
     color5='97-0.52-0.94'
-    colorgroup5='CO,CU,HN,SR'
-    # 其他國家
+    colorgroup5='CO,CU,HN'
+    # nicaragua, guyana, bahamas
+    color6='250/138/255'
+    colorgroup6='BS,GY,NI'
+    # costa rica, suriname, dominican
+    color7='#8DC740'
+    colorgroup7='CR,DO,SR'
+    # other countries
     color0='169'
 
     # ==== 主要指令 ====
-    gmt begin central_america png
-        gmt grdimage @earth_relief_01m -JB-80.27/8.58/-8/24/15c -R-100/1/-50/34r -Cgeo
-        gmt coast -G${color0} \
-            -E${colorgroup1}+g${color1} \
-            -E${colorgroup2}+g${color2} \
-            -E${colorgroup3}+g${color3} \
-            -E${colorgroup4}+g${color4} \
-            -E${colorgroup5}+g${color5}
-    gmt end
+        # 底圖
+    pscoast -R-100/1/-50/34r -JB-80.27/8.58/-8/24/6i -K -Dh \
+            -Bafg -G${color0} -P > central_america.ps
+        # 國家上色
+    pscoast -R -J -O -K -F${colorgroup1}+g${color1} >> central_america.ps
+    pscoast -R -J -O -K -F${colorgroup2}+g${color2} >> central_america.ps
+    pscoast -R -J -O -K -F${colorgroup3}+g${color3} >> central_america.ps
+    pscoast -R -J -O -K -F${colorgroup4}+g${color4} >> central_america.ps
+    pscoast -R -J -O -K -F${colorgroup5}+g${color5} >> central_america.ps
+    pscoast -R -J -O -K -F${colorgroup6}+g${color6} >> central_america.ps 
+    pscoast -R -J -O -F${colorgroup7}+g${color7} >> central_america.ps
 
-注意在 ``grdimage`` 中，``-J`` 選項使用了 ``B``，這是另一種稱為 `Albers 投影 <https://zh.wikipedia.org/wiki/%E4%BA%9A%E5%B0%94%E5%8B%83%E6%96%AF%E6%8A%95%E5%BD%B1>`_\ 的地圖投影法，是一種圓錐型投影，可使地圖上的每個區域面積保持一致。它的語法為
+在\ ``設定顏色與對應的國家``\ 的部份，我們總共指定了 7 種顏色與 22 個國家。``color0`` 
+是灰色，用於中美洲其餘的國家。而在\ ``主要指令``\ 中，``底圖``\ 內的指令會為所有的國家\
+先著上灰色的 ``color0``，然後再依照先前指定的顏色鋪上新的圖層 (灰色圖層其實還是在，不過被後來\
+的上色指令掩蓋了)。注意這邊的 ``-J`` 選項使用了 ``B``，這是另一種稱為
+`Albers 投影 <https://zh.wikipedia.org/wiki/%E4%BA%9A%E5%B0%94%E5%8B%83%E6%96%AF%E6%8A%95%E5%BD%B1>`_\
+的地圖投影法，是一種圓錐型投影，可使地圖上的每個區域面積保持一致。它的語法為
 
 .. code-block:: bash
 
     -JB投影中心經線/投影中心緯線/圓錐上端緯線/圓錐下端緯線/地圖尺寸
 
-另外，在「\ :doc:`coloring_topography`\ 」中也提過，地形資料的 ``-C`` 選項 (色階) 預設值是 ``geo``。這邊我們為了使讀者了解我們使用的設定，因此特地加上 ``-Cgeo``。實際上，就算不加上色階檔檔名 (``-C`` 或乾脆省略)，GMT 也會使用相同的色階畫圖。在\ ``設定顏色與對應的國家``\ 的部份，我們總共指定了 6 種顏色與 22 個國家。``color0`` 是灰色，用於中美洲其餘的國家。而在\ ``主要指令``\ 中，我們先使用 ``-G`` 把所有陸域塗上灰色，然後再使用 ``-E`` 為各個國家填色。你會發現所有的 ``-E`` 選項都可以被加在同一個 ``coast`` 指令內，省去重複輸入的麻煩！整個腳本執行的結果如下所示 (中文註解可能要改成英文才可順利執行)。
+整個腳本執行的結果如下所示 (中文註解可能要改成英文才可順利執行)。由於格線是下在第一行指令，\
+所以造成了「陸地覆蓋在格線上」的效果。
 
-.. 由於格線是下在第一行指令，所以造成了「陸地覆蓋在格線上」的效果。
-
-.. image:: pen_and_painting/pen_and_painting_gmt6_fig3_s.png
-    :target: _images/pen_and_painting_gmt6_fig3.png
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.. image:: pen_and_painting/pen_and_painting_fig3.png
 
 
 .. note::
@@ -298,7 +320,9 @@
 .. image:: pen_and_painting/pen_and_painting_fig5_s.png
     :target: _images/pen_and_painting_fig5.png
 
-.. 如果你覺得海床的部份著色很奇怪 (很少見到海是用綠色著色的)，那就是自己動手修改的時候了。第一步當然是從已經建立好的色階表搜尋，所以我們就再用一次 `cpt-city`_ 的 ``mby`` 色階看看。下載好色階表後，放到與腳本相同的資料夾中，然後為 grdimage 加上 ``-C`` 選項：
+如果你覺得海床的部份著色很奇怪 (很少見到海是用綠色著色的)，那就是自己動手修改的時候了。\
+第一步當然是從已經建立好的色階表搜尋，所以我們就再用一次 `cpt-city`_ 的 ``mby`` 色階\
+看看。下載好色階表後，放到與腳本相同的資料夾中，然後為 grdimage 加上 ``-C`` 選項：
 
 .. code-block:: bash
 
@@ -487,40 +511,54 @@
 .. code-block:: bash
 
     # ==== 設定顏色與對應的國家 ====
-    # mexico, brazil, costa rica, dominican
+    # mexico, panama, brazil
     color1='#CD5C5C'
-    colorgroup1='MX,BR,CR,DO'
-    # guatemala, venezuela, jamaica, french guiana, bahamas
-    color2='pink'
-    colorgroup2='GT,JM,VE,GF,BS'
-    # united states, puerto rico, nicaragua, guyana
+    colorgroup1='MX,BR,PA'
+    # guatemala, venezuela, jamaica
+    color2='coral'
+    colorgroup2='GT,JM,VE'
+    # united states, puerto rico, salvador
     color3='240/230/140'
-    colorgroup3='US,PR,NI,GY'
-    # belize, haiti, trinidad and tobago, panama, salvador
+    colorgroup3='US,PR,SV'
+    # belize, french guiana, haiti, trinidad and tobago
     color4='0/36/74/4'
-    colorgroup4='BZ,HT,TT,PA,SV'
-    # colombia, cuba, honduras, suriname
+    colorgroup4='BZ,GF,HT,TT'
+    # honduras, colombia, cuba
     color5='97-0.52-0.94'
-    colorgroup5='CO,CU,HN,SR'
-    # 其他國家
+    colorgroup5='CO,CU,HN'
+    # nicaragua, guyana, bahamas
+    color6='250/138/255'
+    colorgroup6='BS,GY,NI'
+    # costa rica, suriname, dominican
+    color7='#8DC740'
+    colorgroup7='CR,DO,SR'
+    # other countries
     color0='169'
 
     # ==== 主要指令 ====
-    gmt begin central_america_gmt6 png
-        gmt grdimage @earth_relief_01m -JB-80.27/8.58/-8/24/15c -R-100/1/-50/34r -Cgeo    # 底圖
-        gmt coast -G${color0} \
-            -E${colorgroup1}+g${color1} \
-            -E${colorgroup2}+g${color2} \
-            -E${colorgroup3}+g${color3} \
-            -E${colorgroup4}+g${color4} \
-            -E${colorgroup5}+g${color5}    # 國家上色
-        gmt coast -W1/thinner -N1/thinner -Di -Bafg    # 國界與海岸線 
-        gmt colorbar -DjRM+w3c -C -G-8376/0 -Bx3000 -By+lm -F+gwhite@50    # 色階條
-    gmt end
+        # 底圖
+    makecpt -Cmby.cpt -T-8000/5100/50 -Z > ocean_new.cpt
+    grdimage ETOPO1_Bed_g_gmt4.grd -JB-80.27/8.58/-8/24/6i \
+             -R-100/1/-50/34r -P -Cocean_new.cpt -K > central_america.ps
+    pscoast -R -J -O -K -Dh -Bafg -G${color0} >> central_america.ps
+        # 國家上色
+    pscoast -R -J -O -K -F${colorgroup1}+g${color1} >> central_america.ps
+    pscoast -R -J -O -K -F${colorgroup2}+g${color2} >> central_america.ps
+    pscoast -R -J -O -K -F${colorgroup3}+g${color3} >> central_america.ps
+    pscoast -R -J -O -K -F${colorgroup4}+g${color4} >> central_america.ps
+    pscoast -R -J -O -K -F${colorgroup5}+g${color5} >> central_america.ps
+    pscoast -R -J -O -K -F${colorgroup6}+g${color6} >> central_america.ps 
+    pscoast -R -J -O -K -F${colorgroup7}+g${color7} >> central_america.ps
+        # 國界
+    pscoast -R -J -O -D -W1/thinner -N1/thinner -Bf >> central_america.ps
 
 .. note::
 
-    「繪製國界與海床地形圖：以 **100W - 50W，1N - 34N** 為邊界，Albers 圓錐投影，地圖橫向寬 **15** 公分。國家使用 6 種不同的顏色著色，為國界和海岸線加上黑色細線條，海底地形使用 ``@earth_relief_01m`` 資料並以 ``geo`` 為色階。最後在地圖的\ **右側**\ 畫上 **3** 公分長的色階圖例，每隔 3000 公尺標示海床的深度，色階圖例背景使用透明白來填色。」
+    「繪製國界與海床地形圖：以 **100W - 50W，1N - 34N** 為邊界，Albers 圓錐投影，\
+    地圖橫向寬 **6** 吋，直幅繪圖，國家使用 8 種不同的顏色著色，為國界和海岸線加上黑色\
+    細線條，海底地形使用 ``ETOPO1 Bedrock`` 資料，以 ``ocean_new.cpt`` 為色階上色，\
+    這個色階是從 ``mby.cpt`` 修改而來，目的是把海床的顏色重新分配，使其不包含綠色的色階。\
+    邊框使用 GMT 的預設格式與間距。」
 
 觀看\ `最終版地圖`_
 
