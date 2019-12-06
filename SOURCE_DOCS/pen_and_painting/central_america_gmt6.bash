@@ -30,5 +30,5 @@ gmt begin central_america_gmt6 png
               -E${colorgroup4}+g${color4} \
               -E${colorgroup5}+g${color5}
     gmt coast -W1/thinner -N1/thinner -Di -Bafg 
-    gmt colorbar -DjRM+w3c -C -G-8376/0 -Bx3000 -By+lm -F+gwhite@50
+    gmt colorbar -DjRM+w3c -G-8434/0 -Bx3000 -By+lm -F+gwhite@50
 gmt end
