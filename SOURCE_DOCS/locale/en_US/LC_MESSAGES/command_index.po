@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-07-03 05:04+0000\n"
+"PO-Revision-Date: 2019-12-06 04:19+0000\n"
 "Last-Translator: Whyjay Zheng <jhsttshj@gmail.com>\n"
 "Language-Team: English (United States)\n"
 "Language: en_US\n"
@@ -96,11 +96,11 @@ msgstr "``grdimage``"
 
 #: ../../SOURCE_DOCS/command_index.rst:65
 msgid ":doc:`coloring_topography` - **繪製著色影像**"
-msgstr ""
+msgstr ":doc:`coloring_topography` - **plot colored image**"
 
 #: ../../SOURCE_DOCS/command_index.rst:66
 msgid ":doc:`pen_and_painting` - **繪製著色影像**"
-msgstr ""
+msgstr ":doc:`pen_and_painting` - **plot colored image**"
 
 #: ../../SOURCE_DOCS/command_index.rst:67
 msgid ":doc:`editing_cpt_colorbar` - **繪製著色影像**"
@@ -206,19 +206,19 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/command_index.rst:133
 msgid "``pscoast``"
-msgstr ""
+msgstr "``pscoast``"
 
 #: ../../SOURCE_DOCS/command_index.rst:135
 msgid ":doc:`making_first_map` - **繪製海岸線**"
-msgstr ""
+msgstr ":doc:`making_first_map` - **plot shorelines**"
 
 #: ../../SOURCE_DOCS/command_index.rst:136
 msgid ":doc:`coloring_topography` - **繪製河流、湖泊與國界**"
-msgstr ""
+msgstr ":doc:`coloring_topography` - **plot rivers, lakes, and borders**"
 
 #: ../../SOURCE_DOCS/command_index.rst:137
 msgid ":doc:`pen_and_painting` - **為國家上色**"
-msgstr ""
+msgstr ":doc:`pen_and_painting` - **fill countries with colors**"
 
 #: ../../SOURCE_DOCS/command_index.rst:138
 msgid ":doc:`editing_cpt_colorbar` - **沿著海岸線裁剪地圖**"
@@ -242,7 +242,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/command_index.rst:148
 msgid "``psconvert``"
-msgstr ""
+msgstr "``psconvert``"
 
 #: ../../SOURCE_DOCS/command_index.rst:150
 msgid ":doc:`plot_vector_data` - **把 ps 檔轉成 png 檔並保留透明度設定**"
@@ -254,11 +254,11 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/command_index.rst:157
 msgid "``psscale``"
-msgstr ""
+msgstr "``psscale``"
 
 #: ../../SOURCE_DOCS/command_index.rst:159
 msgid ":doc:`editing_cpt_colorbar` - **繪製色階條**"
-msgstr ""
+msgstr ":doc:`editing_cpt_colorbar` - **plot color bar**"
 
 #: ../../SOURCE_DOCS/command_index.rst:160
 msgid ":doc:`hillshading` - 繪製色階條"
@@ -266,7 +266,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/command_index.rst:166
 msgid "``pstext``"
-msgstr ""
+msgstr "``pstext``"
 
 #: ../../SOURCE_DOCS/command_index.rst:168
 msgid ":doc:`scatter_plot` - **在圖上標記文字**"
@@ -290,7 +290,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/command_index.rst:178
 msgid "``psxy``"
-msgstr ""
+msgstr "``psxy``"
 
 #: ../../SOURCE_DOCS/command_index.rst:180
 msgid ":doc:`scatter_plot` - **繪製點、線與多邊形；輸出檔頭與檔尾**"

@@ -4,11 +4,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-05 22:22-0500\n"
+"POT-Creation-Date: 2019-12-06 22:01-0500\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-11-30 06:18+0000\n"
+"PO-Revision-Date: 2019-12-07 03:03+0000\n"
 "Last-Translator: Whyjay Zheng <jhsttshj@gmail.com>\n"
 "Language-Team: English (United States)\n"
 "Language: en_US\n"
@@ -24,12 +24,23 @@ msgid ""
 "本教學適用於 GMT 6 的現代模式。如須參閱 GMT 6 (傳統模式) 與 GMT 4-5 繪製相似地圖的教程，\\ `請至這裡 "
 "<pen_and_painting_gmt5.html>`_。"
 msgstr ""
+"This instruction is for the Modern Mode in GMT 6. For making the same map "
+"using the GMT 6 Classic Mode or GMT 4-5, `Please go to this page "
+"<pen_and_painting_gmt5.html>`_ (only final script and partial instruction)."
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:9
 msgid ""
 "為了有效的在地圖上呈現資料，顏色與線條樣式應要謹慎選擇。為地圖挑選合適的配色是門藝術，地圖製作者通常都會花上許多時間，把地圖調整成看起來最調和、最舒服的外觀。這裡我們要介紹如何在 "
 "GMT 中操作相關設定，讓你能夠更快的找到心目中的完美配色。本章也會說明如何繪製簡單的色階圖例。"
 msgstr ""
+"In order to show the data on a map effectively, we should select all the "
+"colors and line styles with discretion. Picking the right color and line "
+"combination for a map is truly an art - a map maker usually spends much time "
+"tweaking their map, and hopes that their map will look pleasing and "
+"comfortable. Here we are going to introduce how to manipulate the related "
+"settings in GMT, which will make you find your best combination for your map "
+"must faster. We will also show how to make a simple colorbar legend on the "
+"map in this chapter."
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:12
 msgid "目標"
@@ -43,6 +54,17 @@ msgid ""
 "%E5%A2%A8%E8%A5%BF%E5%93%A5%E6%B9%BE>`_。圖中可以找到此區域的十幾個比較大的國家，也可以發現加勒比海和墨西哥灣，都比東北方的大西洋要淺得多。根據地圖上的海床色階圖例，也可以發現最深的地方位於波多黎各北方的海溝，有大概 "
 "8000 多公尺深。"
 msgstr ""
+"Make a map of Central America. Ocean area is colored based on topography, "
+"and the Land area is colored based on countries, as the following map shows. "
+"The water area encircled by central America and many islands is `Caribbean "
+"Sea <https://en.wikipedia.org/wiki/Caribbean_Sea>`_, and the bay area at the "
+"upper left corner is called the `Gulf of Mexico <https://en.wikipedia.org/"
+"wiki/Gulf_of_Mexico>`_. On this map, you can quickly locate more than a "
+"dozen big countries (in terms of area) and realize that both the Caribbean "
+"Sea and the Gulf of Mexico are much shallower than the Atlantic Ocean in the "
+"northeast. According to the bathymetry depth colorbar legend, we can also "
+"find that the deepest place is in the north of Puerto Rico, at more than "
+"8000 m deep."
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:20
 msgid "直接觀看\\ `指令稿`_"
@@ -54,23 +76,25 @@ msgstr "Commands and Techniques"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:25
 msgid "``coast`` - **為國家上色**"
-msgstr ""
+msgstr "``coast`` - **fill countries with colors**"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:26
 msgid "``grdimage`` - 繪製著色影像"
-msgstr ""
+msgstr "``grdimage`` - plot colored image"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:27
 msgid "``colorbar`` - **繪製色階條**"
-msgstr ""
+msgstr "``colorbar`` - **plot color bar**"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:28
 msgid "``grdinfo`` - 查閱網格檔的基本資訊"
-msgstr ""
+msgstr "``grdinfo`` - display basic information from a grid file"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:29
 msgid "外部指令 ``grep`` - **在 GMT 的輸出中搜尋字串** (Windows 為 ``findstr``) (非必要)"
 msgstr ""
+"External command ``grep`` - **find strings in GMT output text** (``findstr`` "
+"in Windows) (optional)"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:30
 msgid "如何指定作圖顏色"
@@ -90,7 +114,7 @@ msgstr "Use variables in a script to make your script look pretty"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:34
 msgid "使用錨點指定色階條的繪製位置"
-msgstr ""
+msgstr "Use anchor points to specify location to plot the colorbar"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:40
 msgid "前置作業"
@@ -102,6 +126,11 @@ msgid ""
 "`coloring_topography`\\ 」。本次的作圖區域，是 ``-R-100/1/-50/34r``，如以下 *Google Map* "
 "截圖所示。有關 ``-R`` 的詳細說明，請參閱「\\ :doc:`making_first_map`\\ 」。"
 msgstr ""
+"In this chapter, we will again use the ``@earth_relief_01m`` dataset from "
+"the GMT server. For more details, please see :doc:`coloring_topography`. The "
+"extent of the desired map is ``-R-100/1/-50/34r``, as the following *Google "
+"Maps* screenshot shows. Please see :doc:`making_first_map` for more details "
+"about ``-R``."
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:58
 msgid "操作流程"
@@ -110,6 +139,9 @@ msgstr "Procedure"
 #: ../../SOURCE_DOCS/pen_and_painting.rst:59
 msgid "我們先來分析一下目標的地圖。在此地圖中有很多不同的元素，依照固定的順序疊加。如果認真檢查，這些元素可以分成四群，由底層到頂層分別為"
 msgstr ""
+"Firstly let’s take a look at our desired map. There are many different "
+"elements overlaid with a fixed order in the map. We can generally classify "
+"them into four groups, which are (from the bottom to the top):"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:61
 msgid "地形圖"
@@ -117,15 +149,15 @@ msgstr "Topography map"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:62
 msgid "國家的著色"
-msgstr ""
+msgstr "Country blocks"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:63
 msgid "海岸線、國家邊界與地圖格線"
-msgstr ""
+msgstr "Coastline, borders, and grid lines"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:64
 msgid "色階圖例的區塊"
-msgstr ""
+msgstr "The block for the colorbar legend"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:66
 msgid "因此，我們的 GMT 繪圖腳本，應該也要照如上的順序進行繪圖，也就是說程式碼看起來會長這樣"
@@ -140,6 +172,10 @@ msgid ""
 "第三段：所有的線段 (coast)\n"
 "第四段：色階條 (colorbar)"
 msgstr ""
+"Section 1: bathymetry (grdimage)\n"
+"Section 2: filling of the countries (coast)\n"
+"Section 3: all lines (coast)\n"
+"Section 4: color bar (colorbar)"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:76
 msgid ""
@@ -147,10 +183,17 @@ msgid ""
 "支援了超過百種顏色的名稱，可以在\\ `這邊 <https://docs.generic-mapping-tools.org/latest/"
 "gmtcolors.html?highlight=gmtcolor#list-of-colors>`_\\ 查看並使用。例如說以下指令"
 msgstr ""
+"You will need to assign a color or a series of colors (color ramp) for both "
+"bathymetry and countries. First off, let’s see how to specify a single color."
+" The simplest way, which has been used in the previous chapter, is providing "
+"the name of the desired color. GMT supports more than a hundred names of "
+"colors, and you can check them out at `here <https://docs.generic-mapping-"
+"tools.org/latest/gmtcolors.html?highlight=gmtcolor#list-of-colors>`_ and use "
+"them directly. For example, the following command"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:78
 msgid "gmt coast -Ggreen    # ...後續省略"
-msgstr ""
+msgstr "gmt coast -Ggreen    # ... the later part is skipped"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:82
 msgid ""
@@ -158,10 +201,15 @@ msgid ""
 "`DCW <https://www.soest.hawaii.edu/pwessel/dcw/>`_ 的資料庫，使用內含的國家邊界資料進行著色。``-"
 "E`` 的語法大致為"
 msgstr ""
+"will fill the land with green. Since we are going to fill the country "
+"blocks, we have to use another ``coast`` option ``-E``. The ``-E`` option "
+"reads a database called `DCW <https://www.soest.hawaii.edu/pwessel/dcw/>`_ "
+"and fills the blocks using the political boundaries data found from the "
+"database. Its syntax is:"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:84
 msgid "-E代碼1,代碼2,...+g填色+p畫筆"
-msgstr ""
+msgstr "-E(code1),(code2),...+g(fill)+p(pen)"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:88
 msgid ""
@@ -169,6 +217,11 @@ msgid ""
 "ISO_3166-1_alpha-2>`_ 國家名稱的二位字母代碼，例如 ``TW`` 代表台灣，``US`` "
 "代表美國等等。除了可以從維基百科查詢這些代碼以外，也可以輸入以下指令，直接在 GMT 中查詢："
 msgstr ""
+"Here ``code`` represents the 2-letter code of country name from `ISO 3166-1 "
+"alpha-2 <https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2>`_. For example, "
+"``TW`` is Taiwan, and ``US`` represents the United States. Besides from "
+"checking the code table from the Wikipedia, you can also enter the following "
+"command and search them in GMT:"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:91
 msgid ""
@@ -176,6 +229,10 @@ msgid ""
 "# 或\n"
 "$ gmt coast -E+L    # 在螢幕中列出二位字母國碼與幾個大國家的省份碼"
 msgstr ""
+"$ gmt coast -E+l    # show the 2-letter national code on screen\n"
+"# or\n"
+"$ gmt coast -E+L    # show the 2-letter national and province (only for big "
+"countries) code on screen"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:97
 msgid ""
@@ -188,11 +245,14 @@ msgstr ""
 #: ../../SOURCE_DOCS/pen_and_painting.rst:99
 msgid "$ gmt coast -E+l | grep -i japan\n"
 "  JP    Japan"
-msgstr ""
+msgstr "$ gmt coast -E+l | grep -i japan\n"
+"  JP    Japan"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:104
 msgid "這邊的 ``-i`` 選項是「大小寫視為相同」之意。在下方的搜尋結果中，就出現了日本的代碼 ``JP``。"
 msgstr ""
+"The ``-i`` option here is to treat upper-case letters the same as lower-case "
+"letters. You can see that Japan’s code ``JP`` appears in the last line."
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:110
 msgid "如果你的作業系統是 **Windows**，內建會沒有 ``grep``，但你可以使用替代的指令 ``findstr`` 來操作，如下："
@@ -202,23 +262,29 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:112
 msgid "$ gmt coast -E+l | findstr /i japan"
-msgstr ""
+msgstr "$ gmt coast -E+l | findstr /i japan"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:116
 msgid "如果你想要使用 ``grep`` 一次查詢多個國家，可以使用如下語法："
 msgstr ""
+"If you want to use ``grep`` for querying more than one country at once, use "
+"the following syntax:"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:118
 msgid "$ gmt coast -E+l | grep -i 'japan\\|singapore\\|zealand'"
-msgstr ""
+msgstr "$ gmt coast -E+l | grep -i 'japan\\|singapore\\|zealand'"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:122
 msgid "這樣程式會一次把日本、新加坡跟紐西蘭的代碼找出來。"
 msgstr ""
+"And the command will find the code for Japan, Singapore, and New Zealand, "
+"all at once."
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:124
 msgid "接下來就是\\ **填色**。GMT 實際上支援了六種顏色表達方式，分別為"
 msgstr ""
+"And the next task is to fill **colors**. GMT supports six ways to represent "
+"colors:"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:126
 msgid ""
@@ -229,22 +295,38 @@ msgid ""
 "「8/8/0/2」       # 5. 使用 C/M/Y/K 值 (百分比表示)，左邊這是薰衣草色\n"
 "「169」           # 6. 灰階號碼，此例相當於 R/G/B 的 169/169/169"
 msgstr ""
+"\"green\"         # 1. Color name\n"
+"\"255/99/71\"     # 2. R/G/B value (from 0 to 255). This is tomato color\n"
+"\"#87CEEE\"       # 3. HTML color representation (#RRGGBB，hexadecimal). This "
+"is sky blue\n"
+"\"25-0.86-0.82\"  # 4. H-S-V value (H from 0 to 255; S and V from 0 to 1). "
+"This is chocolate color\n"
+"\"8/8/0/2\"       # 5. C/M/Y/K value (in percentage). This is lavender\n"
+"\"169\"           # 6. Grayscale number. This one is equivalent to 169/169/"
+"169 in R/G/B"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:135
 msgid ""
 "你可以使用你喜歡的表達方式給定顏色。這邊我們要試著幫墨西哥 (代碼 ``MX``) 塗上磚紅色，使用 HTML 標記的代碼 "
 "``#CD5C5C``，語法如下："
 msgstr ""
+"You can use whichever way you like to specify colors. Here we try to fill "
+"Mexico (code ``MX``) with brick red using HTML code ``#CD5C5C`` as following:"
+""
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:137
 msgid ""
 "$ gmt coast -R-100/1/-50/34r -JM15c -EMX+g#CD5C5C -png central_america    # "
 "地圖 15 公分寬"
 msgstr ""
+"$ gmt coast -R-100/1/-50/34r -JM15c -EMX+g#CD5C5C -png central_america    # "
+"the map is 15 cm wide"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:141
 msgid "成品就會看到有個磚紅色的區塊，這就是墨西哥的國土。"
 msgstr ""
+"In the output PNG, you can see that the land area of Mexico has turned into "
+"brick red."
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:145
 msgid ""
@@ -252,15 +334,25 @@ msgid ""
 "再使用這些變數。這種方式除了可以整齊排版，更利於之後的編輯修改。每個 shell 指定變數的方式略有不同，這裡以 ``bash`` "
 "為示範，變數的指定與取方式為："
 msgstr ""
+"Since we are going to use many different colors for different countries, we "
+"can specify those colors and the corresponding countries in variables and "
+"use them later when running ``coast``. This not only makes your code look "
+"clean and pretty, but also more convenient for later editing. The ways to "
+"assign variables are slightly different from shell to shell, and here we "
+"will use ``bash`` as an example. You can use the following expression to "
+"assign and access your variable:"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:147
 msgid "變數名稱='變數內容'     # 指定變數\n"
 "${變數名稱}            # 存取變數 (這串文字會被'變數內容'取代掉)"
 msgstr ""
+"variable_name='variable_content'     # assigning a variable\n"
+"${variable_name}            # accessing a variable (\"variable_name\" will "
+"be substituted by \"variable_content\")"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:152
 msgid "把上述語法套用到我們的例子中，就像是這樣："
-msgstr ""
+msgstr "Use the syntax to our example and the code will look like:"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:154
 msgid ""
@@ -269,31 +361,52 @@ msgid ""
 "gmt coast -R-100/1/-50/34r -JM15c -E${colorgroup1}+g${color1} -png "
 "central_america"
 msgstr ""
+"color1='#CD5C5C'\n"
+"colorgroup1='MX,BR,PA,DO'\n"
+"gmt coast -R-100/1/-50/34r -JM15c -E${colorgroup1}+g${color1} -png "
+"central_america"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:160
 msgid ""
 "以上腳本可以把墨西哥 (``MX``)、巴西 (``BR``)、巴拿馬 (``PA``) 和多明尼加 (``DO``) "
 "一次塗上磚紅色。如果你想要更改顏色或國家，只要修改變數 ``colorgroup1`` 或 ``color1`` 的內容即可，不需要動到 "
-"``pscoast`` 的指令。"
+"``coast`` 的指令。"
 msgstr ""
+"This code snippet can paint Mexico (``MX``), Brazil (``BR``), Panama "
+"(``PA``), and Dominican (``DO``) with brick red at once. If you want to "
+"change the color or the country list, you only need to change the content of "
+"``colorgroup1`` or ``color1`` and leave the ``coast`` command the same."
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:164
 msgid ""
 "由於不同的指令列環境有不同的變數設定方式，而且是值得另闢章節討論的話題，在此我們先略過這些內容以集中精神在 GMT "
 "指令上。有關於變數指定的細節，請參考你所使用的 shell 如 cmd、bash 或 csh 等的技術專書或網頁。"
 msgstr ""
+"A different command-line environment has a different way to set up "
+"variables, and this is not an easy topic regarding which one you are using. "
+"Here we will only focus on the GMT commands. For the details of using "
+"variables, please refer to some websites or books designed for your shell, e."
+"g., cmd, bash or csh."
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:165
 msgid ""
 "有許多不錯的網頁調色盤，如 `HTML color codes <http://html-color-codes.info/"
 ">`_，可以幫助你用視覺化的方式挑選你想要的顏色，然後再把色碼貼到腳本變數中就行了。好好尋找你想要的顏色吧！"
 msgstr ""
+"There are many online palettes, such as `HTML color codes <http://html-color-"
+"codes.info/>`_, which helps you pick the color you want. After you decide "
+"the color from the website, you can simply copy the color code and paste it "
+"to the variables in the script. Have fun hunting for colors!"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:167
 msgid ""
 "接下來，只要依樣畫葫蘆，把所有的鄰近國家都填上顏色就可以了。依照\\ `上一章 <coloring_topography.html>`_\\ "
 "所示，我們先使用 ``grdimage`` 畫地形底圖，再使用 ``coast`` 把剛剛提的所有東西填上去："
 msgstr ""
+"Next, we are going to use the same way to fill all the neighboring countries "
+"with color. As the `previous chapter <coloring_topography.html>`_ shows, we "
+"firstly use ``grdimage`` to plot bathymetry, and then use ``coast`` to fill "
+"everything on the map:"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:169
 msgid ""
@@ -328,6 +441,36 @@ msgid ""
 "        -E${colorgroup5}+g${color5}\n"
 "gmt end"
 msgstr ""
+"# ==== Setting up colors and corresponding countries ====\n"
+"# mexico, brazil, costa rica, dominican\n"
+"color1='#CD5C5C'\n"
+"colorgroup1='MX,BR,CR,DO'\n"
+"# guatemala, venezuela, jamaica, french guiana, bahamas\n"
+"color2='pink'\n"
+"colorgroup2='GT,JM,VE,GF,BS'\n"
+"# united states, puerto rico, nicaragua, guyana\n"
+"color3='240/230/140'\n"
+"colorgroup3='US,PR,NI,GY'\n"
+"# belize, haiti, trinidad and tobago, panama, salvador\n"
+"color4='0/36/74/4'\n"
+"colorgroup4='BZ,HT,TT,PA,SV'\n"
+"# colombia, cuba, honduras, suriname\n"
+"color5='97-0.52-0.94'\n"
+"colorgroup5='CO,CU,HN,SR'\n"
+"# other countries\n"
+"color0='169'\n"
+"\n"
+"# ==== Main commands ====\n"
+"gmt begin central_america png\n"
+"    gmt grdimage @earth_relief_01m -JB-80.27/8.58/-8/24/15c -R-100/1/-50/34r "
+"-Cgeo\n"
+"    gmt coast -G${color0} \\\n"
+"        -E${colorgroup1}+g${color1} \\\n"
+"        -E${colorgroup2}+g${color2} \\\n"
+"        -E${colorgroup3}+g${color3} \\\n"
+"        -E${colorgroup4}+g${color4} \\\n"
+"        -E${colorgroup5}+g${color5}\n"
+"gmt end"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:201
 msgid ""
@@ -336,10 +479,16 @@ msgid ""
 "%E4%BA%9A%E5%B0%94%E5%8B%83%E6%96%AF%E6%8A%95%E5%BD%B1>`_\\ "
 "的地圖投影法，是一種圓錐型投影，可使地圖上的每個區域面積保持一致。它的語法為"
 msgstr ""
+"Note that in ``grdimage``, we choose ``B`` for the ``-J`` option. This is a "
+"different map projection called `Albers Projection <https://en.wikipedia.org/"
+"wiki/Albers_projection>`_. Albers projection is a conic projection that "
+"keeps everywhere on the map staying in their original size. Its syntax goes "
+"like this:"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:203
 msgid "-JB投影中心經線/投影中心緯線/圓錐上端緯線/圓錐下端緯線/地圖尺寸"
 msgstr ""
+"-JB[center_lon]/[center_lat]/[upper_bond_lat]/[lower_bond_lat]/[map_width]"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:207
 msgid ""
@@ -350,6 +499,18 @@ msgid ""
 "``-E`` 為各個國家填色。你會發現所有的 ``-E`` 選項都可以被加在同一個 ``coast`` "
 "指令內，省去重複輸入的麻煩！整個腳本執行的結果如下所示 (中文註解可能要改成英文才可順利執行)。"
 msgstr ""
+"As we mentioned in :doc:`coloring_topography`, the default ``-C`` setting "
+"(colormap) for topographic data is  ``geo``. To help readers understand the "
+"settings used in the map, we use ``-Cgeo`` explicitly. In fact, GMT still "
+"uses the same colormap without adding ``geo``, or even without ``-C``. In "
+"the ``Setting up colors and corresponding countries`` section, we specify 6 "
+"colors and 22 countries. The gray ``color0`` is used for other countries in "
+"the map area. In the ``Main commands`` section, we firstly use ``-G`` to "
+"paint all land area in gray, and then use ``-E`` for coloring each country. "
+"You may notice that all the ``-E`` options can be assigned in a single "
+"``coast`` command, which saves your time from entering the ``coast`` command "
+"multiple times. Run the script, and you should get the output map like this: "
+""
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:217
 msgid ""
@@ -362,6 +523,21 @@ msgid ""
 "與上述的色碼通用，選你喜歡的表達方式即可。畫筆的\\ ``樣式``\\ 預設是連續線條，你可以使用 ``-`` (折線) 與 ``.`` (點) "
 "自由的混搭樣式，如 ``-..`` 會畫出折線中間間隔兩個點的線條。以下是一些示範："
 msgstr ""
+"The next thing is to draw coastlines and country borderlines so that these "
+"countries will jump out. In :doc:`making_first_map`, we mentioned that the "
+"\"pen attributes\" of a line consist of three parts: "
+"``thickness,color,style``. ``thickness`` can be predefined names, such as "
+"``thinner``, ``thickest``, or ``fat``. There are 12 names for thickness, and "
+"`you can check them up here <https://docs.generic-mapping-tools.org/latest/"
+"cookbook/features.html?highlight=pen%20attributes#specifying-pen-"
+"attributes>`_. If you would like to specify thickness manually, you can use "
+"units like ``c`` (cm), ``i`` (inch), ``p`` (pt). For example, ``0.1c`` "
+"stands for 0.1 cm. The ``color`` of the pen uses the same color code system "
+"we said earlier in this chapter, so just use any expression you like. The "
+"``style`` of the pen is a solid, continuous line, and you can freely combine "
+"``-`` (dash) and ``.`` (dot) to generate the line style you want. For "
+"example, ``-..`` means a line with two dots lying in between two dashes. "
+"Here are more examples:"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:220
 msgid ""
@@ -369,10 +545,13 @@ msgid ""
 "3p,100/0/100,.      # 3 點寬，深紫色的點線\n"
 "1c,#555555,--..     # 1 公分寬，灰色的 \"--..\" 樣式線條"
 msgstr ""
+"thinner,green,-     # green, thin solid line (0.5 pt)\n"
+"3p,100/0/100,.      # deep purple dotted line in 3 pt wide\n"
+"1c,#555555,--..     # gray, \"--..\" styled line in 1 cm wide"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:226
 msgid "``coast`` 有三個跟畫線有關的指令，分別為"
-msgstr ""
+msgstr "``coast`` has three options that plot lines. They are:"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:228
 msgid ""
@@ -380,6 +559,9 @@ msgid ""
 "-N編號/畫筆          # 畫上政治邊界\n"
 "-W編號/畫筆          # 畫上水域邊界"
 msgstr ""
+"-I[number]/[pen]          # Draw rivers\n"
+"-N[number]/[pen]          # Draw political borders\n"
+"-W[number]/[pen]          # Draw shorelines"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:234
 msgid ""
@@ -387,6 +569,12 @@ msgid ""
 "``1``、``2``、``3`` 及 ``4``，分別代表海岸線、湖岸線、湖中島岸線、湖中島中湖岸線。這裡我們就再使用一次 ``coast`` "
 "把海岸線和國界線用 ``thinner`` 等級的線條來畫畫看，順便再使用 ``-Bafg`` 畫上地圖邊框及格線："
 msgstr ""
+"We have already introduced ``-I`` and ``-N`` in :doc:`coloring_topography`. "
+"The number in ``-W`` can be ``1``, ``2``, ``3``, or ``4``, representing "
+"coastline, lake shoreline, shoreline of island-in-a-lake, and shoreline of "
+"lake-on-an-island-in-a-lake, respectively. Here we can use ``coast`` again "
+"to draw coastlines and country borders using ``thinner`` thickness, and also "
+"place ``-Bafg`` to draw the map frame and gridlines."
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:236
 msgid ""
@@ -404,32 +592,55 @@ msgid ""
 "    gmt coast -W1/thinner -N1/thinner -Di -Bafg\n"
 "gmt end"
 msgstr ""
+"# (skipped)\n"
+"# ==== Main commands ====\n"
+"gmt begin central_america png\n"
+"    gmt grdimage @earth_relief_01m -JB-80.27/8.58/-8/24/15c -R-100/1/-50/34r "
+"-Cgeo\n"
+"    gmt coast -G${color0} \\\n"
+"        -E${colorgroup1}+g${color1} \\\n"
+"        -E${colorgroup2}+g${color2} \\\n"
+"        -E${colorgroup3}+g${color3} \\\n"
+"        -E${colorgroup4}+g${color4} \\\n"
+"        -E${colorgroup5}+g${color5}\n"
+"    gmt coast -W1/thinner -N1/thinner -Di -Bafg\n"
+"gmt end"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:251
 msgid "這次的成品看起來就像這樣："
-msgstr ""
+msgstr "The output map this time looks like this:"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:258
 msgid "不知道你有沒有發現換了投影方法的同時，邊框的形式也會跟著變化？有關邊框進一步的設定，請參閱\\ :doc:`layout_design`。"
 msgstr ""
+"Did you notice that the style of the map frame changed after we used a "
+"different map projection? To further set up the map frames, please see :doc:"
+"`layout_design` for detailed instruction."
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:260
 msgid ""
 "為了清楚的表示海床的深度，最後我們要來加上色階圖例，顯示不同深度對應的顏色。在 GMT 6 中用來畫色階條與色階圖例的指令是 ``colorbar`` "
 "(在之前的版本中稱為 ``psscale``)。``colorbar`` 的基本語法為："
 msgstr ""
+"To show the depth of the seafloor, finally we are going add a colorbar "
+"legend showing which color corresponds to which depth. In GMT 6, we can use "
+"``colorbar`` to plot color bars and colorbar legends. (It was called "
+"``psscale`` in the previous GMT version.) The basic syntax of ``colorbar`` "
+"is:"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:262
 msgid "gmt colorbar -D[位置與尺寸] -B[格線、座標間距、標題等資訊]"
-msgstr ""
+msgstr "gmt colorbar -D[position_and_size] -B[gridline_ticks_labels_etc]"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:266
 msgid "``colorbar`` 提供了設定 ``-D`` 的許多不同方法，這裡我們要使用最簡單的一種："
 msgstr ""
+"``colorbar`` provides many ways to set up ``-D``. Here we are going to use "
+"the simplest one:"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:268
 msgid "-Dj[錨點位置]+w[色階條長度]"
-msgstr ""
+msgstr "-Dj[Anchor_point_position]+w[colorbar_length]"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:272
 msgid ""
@@ -437,6 +648,12 @@ msgid ""
 "``L`` (左側)、``C`` (水平中央)、``R`` (右側)、``T`` (上方)、``M`` (垂直中央)、``B`` "
 "(下方)。前三個字母中挑一個加上後三個字母中挑一個，就能得到錨點的位置與相對應的組合："
 msgstr ""
+"``-Dj`` places the color bar in one of the **reference points** inside the "
+"map. GMT uses six letters to specify the reference point position: ``L`` "
+"(left), ``C`` (horizontal central), ``R`` (right), ``T`` (top), ``M`` "
+"(vertical middle), and ``B`` (bottom). We pick one letter from ``L, C, R`` "
+"and another letter from ``T, M, B`` and combine them together to get the "
+"reference point position:"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:274
 msgid "LT   CT   RT\n"
@@ -444,25 +661,37 @@ msgid "LT   CT   RT\n"
 "LM   CM   RM\n"
 "\n"
 "LB   CB   RB"
-msgstr ""
+msgstr "LT   CT   RT\n"
+"\n"
+"LM   CM   RM\n"
+"\n"
+"LB   CB   RB"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:282
 msgid "如果我們想要在圖的中央右側畫上長度為 ``3`` 公分的色階圖例，只要這麼寫就行了："
 msgstr ""
+"If we want to place a ``3`` cm-long color bar in the inner right side of the "
+"map, set the ``-Dj`` option like this:"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:284
 msgid "-DjRM+w3c"
-msgstr ""
+msgstr "-DjRM+w3c"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:288
 msgid ""
 "下一個 ``-B`` 選項基本上和 ``coast`` 的 ``-B`` 選項方法相同。不過因為色階條的顏色只沿著一維方向變化，我們必須要分開調整 x "
 "軸和 y 軸的設定："
 msgstr ""
+"The ``-B`` option in ``colorbar`` is basically the same from the ``-B`` "
+"option in ``coast``. However, we have to adjust the settings of the x axis "
+"and y axis separately because a color bar only changes its color along one "
+"direction: "
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:290
 msgid "-Bx[格線與刻度 (afg 設定)]+l[擺在刻度一側的標籤] -By+l[擺在色階條一端的標籤]"
 msgstr ""
+"-Bx[gridline and ticks (afg settings)]+l[label at the tick side] -By+l[label "
+"at the end of the colorbar]"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:294
 msgid ""
@@ -470,6 +699,11 @@ msgid ""
 "(在色階條一端寫上 ``m`` 這個字)。我們沒有要在有刻度的一側擺上任何標籤，所以在 ``-Bx`` 中的 ``+l`` 可以省略。把 "
 "``colorbar`` 指令擺在 ``coast`` 後面，就能確保它被畫在地圖的頂層："
 msgstr ""
+"Here we try to use ``-Bx3000`` (this number will be applied to all the "
+"``afg`` settings) and ``-By+lm`` (place ``m`` at one side of the color bar). "
+"We don't plan to place anything at the side of map ticks so that we can omit "
+"``+l`` in ``-Bx``. Place the ``colorbar`` command after ``coast`` to ensure "
+"it is plotted at the top of the map:"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:296
 msgid ""
@@ -488,16 +722,35 @@ msgid ""
 "    gmt colorbar -DjRM+w3c -Bx3000 -By+lm\n"
 "gmt end"
 msgstr ""
+"# (skipped)\n"
+"# ==== Main commands ====\n"
+"gmt begin central_america png\n"
+"    gmt grdimage @earth_relief_01m -JB-80.27/8.58/-8/24/15c -R-100/1/-50/34r "
+"-Cgeo\n"
+"    gmt coast -G${color0} \\\n"
+"        -E${colorgroup1}+g${color1} \\\n"
+"        -E${colorgroup2}+g${color2} \\\n"
+"        -E${colorgroup3}+g${color3} \\\n"
+"        -E${colorgroup4}+g${color4} \\\n"
+"        -E${colorgroup5}+g${color5}\n"
+"    gmt coast -W1/thinner -N1/thinner -Di -Bafg\n"
+"    gmt colorbar -DjRM+w3c -Bx3000 -By+lm\n"
+"gmt end"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:315
 msgid ""
 "到目前為止，我們的地圖幾乎已經完成了。剩下的工作，就是讓色階圖例更顯眼，更易判讀。由於色階圖例直接畫在深色的海床上會看不清楚，我們可以在圖例下方填上一層帶有透明度的白色，讓黑色的數字和線條浮現出來。``colorbar`` "
 "的填色指令為："
 msgstr ""
+"So far, our map is nearly finished. The rest of the work is to make the "
+"colorbar legend more visible and more readable. Since it is not clear to see "
+"when the colorbar is plotted on the dark sea bed, we can fill the background "
+"of the colorbar with a transparent white color and add the contrast to black "
+"lines and words. ``colorbar`` uses the following option to fill background:"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:317
 msgid "-F+g[顏色]"
-msgstr ""
+msgstr "-F+g[color]"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:321
 msgid ""
@@ -506,16 +759,28 @@ msgid ""
 "來達成我們的目標。另外，由於陸域的地形被國家填色給蓋掉了，導致色階圖例的上半部 (0 至 5000 公尺) "
 "是無用的資訊。為了省略此段的內容，我們可以使用 ``-G`` 選項來指定繪製圖例時使用的色階範圍。語法為"
 msgstr ""
+"To specify **transparency**, what you need is simply to add "
+"``@[transparency%]``. ``@100`` means completely transparent (which equals to "
+"nothing), and ``@0`` means completely non-transparent (which equals to the "
+"original fill color.) Here we use ``-F+gwhite@50`` to achieve our goal. "
+"Besides, Our land topography is overlaid by the country color blocks so that "
+"the upper part of the colorbar (0 to 5000 m) is useless information. To skip "
+"drawing this part, we can use ``-G`` option for specifying the range of the "
+"color bar to be plotted, like this:"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:323
 msgid "-G[最小值]/[最大值]"
-msgstr ""
+msgstr "-G[min_value]/[max_value]"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:327
 msgid ""
 "``最大值`` 可以設定為海平面 (``0``)，那最小值呢？別忘了我們可以使用 ``grdinfo`` "
 "來查閱網格檔的基本資訊，只是這次要加上查詢的地理範圍 (``-R``)："
 msgstr ""
+"``max_value`` can be set to the sea level (``0``), but what about the "
+"minimum value? Don't forget that we can use ``grdinfo`` to look at the "
+"information of the grid file, but we have to use the geographic area (``-"
+"R``) of interest this time:"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:329
 msgid ""
@@ -529,22 +794,41 @@ msgid ""
 "elevation (m)\n"
 "# (後略)"
 msgstr ""
+"$ gmt grdinfo @earth_relief_01m -R-100/1/-50/34r\n"
+"# (skipped)\n"
+"/home/whyj/.gmt/server/earth_relief_01m.grd: x_min: -100 x_max: -50 x_inc: 0."
+"0166666666667 (1 min) name: longitude n_columns: 3001\n"
+"/home/whyj/.gmt/server/earth_relief_01m.grd: y_min: 1 y_max: 34 y_inc: 0."
+"0166666666667 (1 min) name: latitude n_rows: 1981\n"
+"/home/whyj/.gmt/server/earth_relief_01m.grd: z_min: -8434 z_max: 5310 name: "
+"elevation (m)\n"
+"# (skipped)"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:338
 msgid ""
 "注意 ``z_min`` 的值，就是在搜尋區域中最低的像素值。因此，``最小值`` 使用 ``-8434`` 就可以了。完整的選項設定為 ``-G-"
 "8434/0``。把 ``-G`` 和 ``-F`` 的設定都加進 ``colorbar`` 指令內，就完成了本章地圖所有的要求。"
 msgstr ""
+"The value for ``z_min`` is the minimum value in the search region. "
+"Therefore, we will use ``-8434`` as the ``min_value``. The full option is ``-"
+"G-8434/0``. Add ``-G`` and ``-F`` options into your ``colorbar`` command``, "
+"and voila! Your map is done."
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:342
 msgid ""
 "``colorbar`` 預設繪製在腳本中最後一次使用的色階，在本例中為 ``geo``。如果你要使用 ``colorbar`` "
-"位置不同的色階條，必須使用 ``-C[色階名]`` 來指定色階進行繪圖。"
+"繪製不同的色階條，必須使用 ``-C[色階名]`` 來指定色階進行繪圖。"
 msgstr ""
+"By default, ``colorbar`` draws the colormap that is most recently used in "
+"the script, which is ``geo`` in this example, If you want to use "
+"``colorbar`` for plotting a different colorbar, you have to use ``-"
+"C[colormap_name]`` for specifying the colormap to plot."
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:343
 msgid "本章示範的是最基本的色階條繪製方法，如須查閱更多進階的技巧，請參閱\\ :doc:`editing_cpt_colorbar`。"
 msgstr ""
+"This chapter shows the most basic way to plot the color bar. For advances "
+"skills and tips, please see :doc:`editing_cpt_colorbar`."
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:407
 msgid "指令稿"
@@ -589,6 +873,40 @@ msgid ""
 "    gmt colorbar -DjRM+w3c -G-8434/0 -Bx3000 -By+lm -F+gwhite@50    # 色階條\n"
 "gmt end"
 msgstr ""
+"# ==== Setting up colors and corresponding countries ====\n"
+"# mexico, brazil, costa rica, dominican\n"
+"color1='#CD5C5C'\n"
+"colorgroup1='MX,BR,CR,DO'\n"
+"# guatemala, venezuela, jamaica, french guiana, bahamas\n"
+"color2='pink'\n"
+"colorgroup2='GT,JM,VE,GF,BS'\n"
+"# united states, puerto rico, nicaragua, guyana\n"
+"color3='240/230/140'\n"
+"colorgroup3='US,PR,NI,GY'\n"
+"# belize, haiti, trinidad and tobago, panama, salvador\n"
+"color4='0/36/74/4'\n"
+"colorgroup4='BZ,HT,TT,PA,SV'\n"
+"# colombia, cuba, honduras, suriname\n"
+"color5='97-0.52-0.94'\n"
+"colorgroup5='CO,CU,HN,SR'\n"
+"# other countries\n"
+"color0='169'\n"
+"\n"
+"# ==== Main commands ====\n"
+"gmt begin central_america_gmt6 png\n"
+"    gmt grdimage @earth_relief_01m -JB-80.27/8.58/-8/24/15c -R-100/1/-50/34r "
+"-Cgeo    # basemap\n"
+"    gmt coast -G${color0} \\\n"
+"        -E${colorgroup1}+g${color1} \\\n"
+"        -E${colorgroup2}+g${color2} \\\n"
+"        -E${colorgroup3}+g${color3} \\\n"
+"        -E${colorgroup4}+g${color4} \\\n"
+"        -E${colorgroup5}+g${color5}    # fill countries with colors\n"
+"    gmt coast -W1/thinner -N1/thinner -Di -Bafg    # boundaries and "
+"coastline\n"
+"    gmt colorbar -DjRM+w3c -G-8434/0 -Bx3000 -By+lm -F+gwhite@50    # "
+"colorbar legend\n"
+"gmt end"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:447
 msgid ""
@@ -596,6 +914,13 @@ msgid ""
 "種不同的顏色著色，為國界和海岸線加上黑色細線條，海底地形使用 ``@earth_relief_01m`` 資料並以 ``geo`` "
 "為色階。最後在地圖的\\ **右側**\\ 畫上 **3** 公分長的色階圖例，每隔 3000 公尺標示海床的深度，色階圖例背景使用透明白來填色。」"
 msgstr ""
+"\"Plot the country and bathymetry map -- map extent is set to **(100W -- "
+"50W，1N -- 34N)** in Albers projection and **15** cm wide. We use 6 different "
+"colors to fill country blocks and draw borders and coastlines with a thin "
+"black line. The bathymetry data come from the ``@earth_relief_01m`` dataset "
+"and are plotted with the ``geo`` color ramp. Finally, we place a **3-cm-"
+"tall** color bar on the right side of the map with tick tables at every 3000 "
+"m. The background of the legend is filled with transparent white.\""
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:449
 msgid "觀看\\ `最終版地圖`_"
