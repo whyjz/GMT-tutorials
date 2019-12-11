@@ -2,9 +2,9 @@
 zzh='zzh.txt'
 suao='suao.txt'
 
-# gmt gmtinfo zzh.txt suao.txt
+# gmt info zzh.txt suao.txt
 # ==== begin to plot ====
-gmt begin windszzh.txtpeed_vs_temperature_gmt6 png
+gmt begin windspeed_vs_temperature_gmt6 png
 	gmt basemap -R-1/23/0/7 -JX15c/10c -BWSne+t"January 2016" -Bxaf+l"Temperature (@.C)" -Bya2f+l"Wind Speed (m s@+-1@+)" 
 	gmt plot $zzh  -Sc0.35c -G#58C73A -W0.03c,black
 	gmt plot $suao -Sd0.35c -G#3A6BC7 -W0.03c,black
