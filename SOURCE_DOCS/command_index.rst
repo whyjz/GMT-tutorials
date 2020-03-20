@@ -118,7 +118,7 @@
 
     .. container:: header
 
-        ``psbasemap``
+        ``basemap``
 
     - :doc:`scatter_plot` - **設定繪圖區、座標軸與邊框**
     - :doc:`layout_design` - 設定繪圖區、座標軸與邊框
@@ -130,7 +130,7 @@
 
     .. container:: header
 
-        ``pscoast``
+        ``coast``
 
     - :doc:`making_first_map` - **繪製海岸線**
     - :doc:`coloring_topography` - **繪製河流、湖泊與國界**
@@ -154,7 +154,7 @@
 
     .. container:: header
 
-        ``psscale``
+        ``colorbar`` (GMT 5 及之前：``psscale``)
 
     - :doc:`editing_cpt_colorbar` - **繪製色階條**
     - :doc:`hillshading` - 繪製色階條
@@ -163,7 +163,7 @@
 
     .. container:: header
 
-        ``pstext``
+        ``text``
 
     - :doc:`scatter_plot` - **在圖上標記文字**
     - :doc:`layout_design` - **詳細的設定標記在圖上的文字**
@@ -175,7 +175,7 @@
 
     .. container:: header
 
-        ``psxy``
+        ``plot`` (GMT 5 及之前：``psxy``)
 
     - :doc:`scatter_plot` - **繪製點、線與多邊形；輸出檔頭與檔尾**
     - :doc:`layout_design` - **在地理座標系統上畫點和線**

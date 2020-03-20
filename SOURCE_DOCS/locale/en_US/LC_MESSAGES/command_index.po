@@ -3,11 +3,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-23 00:10-0500\n"
+"POT-Creation-Date: 2019-12-25 19:15-0500\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-12-06 04:19+0000\n"
+"PO-Revision-Date: 2019-12-26 01:18+0000\n"
 "Last-Translator: Whyjay Zheng <jhsttshj@gmail.com>\n"
 "Language-Team: English (United States)\n"
 "Language: en_US\n"
@@ -146,7 +146,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/command_index.rst:94
 msgid "``img2grd``"
-msgstr ""
+msgstr "``img2grd``"
 
 #: ../../SOURCE_DOCS/command_index.rst:96
 msgid ":doc:`hillshading` - **把 Sandwell/Smith 麥卡托 .img 檔轉成 NetCDF 格式**"
@@ -154,7 +154,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/command_index.rst:102
 msgid "``makecpt``"
-msgstr ""
+msgstr "``makecpt``"
 
 #: ../../SOURCE_DOCS/command_index.rst:104
 msgid ":doc:`pen_and_painting` - **製作或調整色階檔**"
@@ -170,7 +170,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/command_index.rst:112
 msgid "``project``"
-msgstr ""
+msgstr "``project``"
 
 #: ../../SOURCE_DOCS/command_index.rst:114
 msgid ":doc:`layout_design` - **產生路徑座標**"
@@ -181,8 +181,8 @@ msgid ":doc:`contour_and_profile` - **產生以公里為單位的路徑座標**"
 msgstr ""
 
 #: ../../SOURCE_DOCS/command_index.rst:121
-msgid "``psbasemap``"
-msgstr ""
+msgid "``basemap``"
+msgstr "``basemap``"
 
 #: ../../SOURCE_DOCS/command_index.rst:123
 msgid ":doc:`scatter_plot` - **設定繪圖區、座標軸與邊框**"
@@ -205,8 +205,8 @@ msgid ":doc:`map_elements` - **添加不同的地圖元素**"
 msgstr ""
 
 #: ../../SOURCE_DOCS/command_index.rst:133
-msgid "``pscoast``"
-msgstr "``pscoast``"
+msgid "``coast``"
+msgstr "``coast``"
 
 #: ../../SOURCE_DOCS/command_index.rst:135
 msgid ":doc:`making_first_map` - **繪製海岸線**"
@@ -253,8 +253,8 @@ msgid ":doc:`map_elements` - 把 ps 檔轉成 png 檔並保留透明度設定"
 msgstr ""
 
 #: ../../SOURCE_DOCS/command_index.rst:157
-msgid "``psscale``"
-msgstr "``psscale``"
+msgid "``colorbar`` (GMT 5 及之前：``psscale``)"
+msgstr "``colorbar`` (GMT 5 and before: ``psscale``)"
 
 #: ../../SOURCE_DOCS/command_index.rst:159
 msgid ":doc:`editing_cpt_colorbar` - **繪製色階條**"
@@ -265,8 +265,8 @@ msgid ":doc:`hillshading` - 繪製色階條"
 msgstr ""
 
 #: ../../SOURCE_DOCS/command_index.rst:166
-msgid "``pstext``"
-msgstr "``pstext``"
+msgid "``text``"
+msgstr "``text``"
 
 #: ../../SOURCE_DOCS/command_index.rst:168
 msgid ":doc:`scatter_plot` - **在圖上標記文字**"
@@ -289,8 +289,8 @@ msgid ":doc:`map_elements` - 在地圖上加入文字"
 msgstr ""
 
 #: ../../SOURCE_DOCS/command_index.rst:178
-msgid "``psxy``"
-msgstr "``psxy``"
+msgid "``plot`` (GMT 5 及之前：``psxy``)"
+msgstr "``plot`` (GMT 5 and before: ``psxy``)"
 
 #: ../../SOURCE_DOCS/command_index.rst:180
 msgid ":doc:`scatter_plot` - **繪製點、線與多邊形；輸出檔頭與檔尾**"

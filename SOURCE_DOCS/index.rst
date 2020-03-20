@@ -64,24 +64,24 @@ Patricia MacQueen，李明龍，李定宇等人提出的建議與討論，讓本
    - :doc:`coloring_topography`
    - :doc:`pen_and_painting`
    - :doc:`scatter_plot`
-* 繪製與編修各種常見的地圖
-   - :doc:`editing_cpt_colorbar`
+* 繪製與編修各種常見的地圖 (基礎)
+   - :doc:`cpt_colormap`
+   - :doc:`plot_vector_data`
    - :doc:`layout_design`
    - :doc:`hillshading`
    - :doc:`contour_and_profile`
-   - :doc:`plot_vector_data`
    - :doc:`map_elements`
+* 繪製與編修各種常見的地圖 (進階)
+   - :doc:`editing_cpt_colorbar`
    - :doc:`view3d`
+   - :doc:`focal_mech`
+   - :doc:`draping`
 * 網格資料處理
    - :doc:`raster_calculator`
    - :doc:`basic_img_processing`
 * 數值資料處理
    - :doc:`stat_histogram`
    - :doc:`regression_basics`
-* 進階繪圖技巧
-   - :doc:`focal_mech`
-   - :doc:`draping`
-
 * 附錄
    - :doc:`data_credit`
    - :doc:`command_index`
@@ -99,20 +99,22 @@ Patricia MacQueen，李明龍，李定宇等人提出的建議與討論，讓本
    coloring_topography
    pen_and_painting
    scatter_plot
-   editing_cpt_colorbar
+   cpt_colormap
+   plot_vector_data
    layout_design
    hillshading
    contour_and_profile
-   plot_vector_data
    map_elements
+   editing_cpt_colorbar
    view3d
+   focal_mech
+   draping
    raster_calculator
    basic_img_processing
    stat_histogram
    regression_basics
-   focal_mech
-   draping
    data_credit
    command_index
    gallery
+
 

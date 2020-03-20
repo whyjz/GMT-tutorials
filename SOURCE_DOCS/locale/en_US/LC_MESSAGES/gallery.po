@@ -3,11 +3,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-23 00:10-0500\n"
+"POT-Creation-Date: 2019-12-25 19:18-0500\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-12-06 04:16+0000\n"
+"PO-Revision-Date: 2019-12-26 12:25+0000\n"
 "Last-Translator: Whyjay Zheng <jhsttshj@gmail.com>\n"
 "Language-Team: English (United States)\n"
 "Language: en_US\n"
@@ -35,8 +35,12 @@ msgid "Scatter Plot"
 msgstr "Scatter Plot"
 
 #: ../../SOURCE_DOCS/gallery.rst:11
-msgid "Editing CPT"
-msgstr "Editing CPT"
+msgid "Colormap"
+msgstr "Colormap"
+
+#: ../../SOURCE_DOCS/gallery.rst:11
+msgid "Vector Data"
+msgstr "Vector Data"
 
 #: ../../SOURCE_DOCS/gallery.rst:11
 msgid "Layout Design"
@@ -46,22 +50,22 @@ msgstr "Layout Design"
 msgid "Hillshading"
 msgstr "Hillshading"
 
-#: ../../SOURCE_DOCS/gallery.rst:11
+#: ../../SOURCE_DOCS/gallery.rst:16
 msgid "Contours and Profile"
 msgstr "Contours and Profile"
-
-#: ../../SOURCE_DOCS/gallery.rst:16
-msgid "Vector Data"
-msgstr "Vector Data"
 
 #: ../../SOURCE_DOCS/gallery.rst:16
 msgid "Map Elements"
 msgstr "Map Elements"
 
 #: ../../SOURCE_DOCS/gallery.rst:16
+msgid "Editing CPT"
+msgstr "Editing CPT"
+
+#: ../../SOURCE_DOCS/gallery.rst:16
 msgid "3-D Topo"
 msgstr "3-D Topo"
 
-#: ../../SOURCE_DOCS/gallery.rst:16
+#: ../../SOURCE_DOCS/gallery.rst:21
 msgid "Raster Calculator"
 msgstr "Raster Calculator"

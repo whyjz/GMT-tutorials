@@ -3,11 +3,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-23 00:10-0500\n"
+"POT-Creation-Date: 2019-12-25 19:15-0500\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-11-23 07:19+0000\n"
+"PO-Revision-Date: 2019-12-26 12:24+0000\n"
 "Last-Translator: Whyjay Zheng <jhsttshj@gmail.com>\n"
 "Language-Team: English (United States)\n"
 "Language: en_US\n"
@@ -175,73 +175,77 @@ msgstr ":doc:`pen_and_painting`"
 msgid ":doc:`scatter_plot`"
 msgstr ":doc:`scatter_plot`"
 
-#: ../../SOURCE_DOCS/index.rst:73
-msgid "繪製與編修各種常見的地圖"
-msgstr "Plot and Edit Different Kinds of Maps"
+#: ../../SOURCE_DOCS/index.rst:72
+msgid "繪製與編修各種常見的地圖 (基礎)"
+msgstr "Plot and Edit Different Kinds of Maps (Basic)"
 
 #: ../../SOURCE_DOCS/index.rst:68
-msgid ":doc:`editing_cpt_colorbar`"
-msgstr ":doc:`editing_cpt_colorbar`"
+msgid ":doc:`cpt_colormap`"
+msgstr ":doc:`cpt_colormap`"
 
 #: ../../SOURCE_DOCS/index.rst:69
+msgid ":doc:`plot_vector_data`"
+msgstr ":doc:`plot_vector_data`"
+
+#: ../../SOURCE_DOCS/index.rst:70
 msgid ":doc:`layout_design`"
 msgstr ":doc:`layout_design`"
 
-#: ../../SOURCE_DOCS/index.rst:70
+#: ../../SOURCE_DOCS/index.rst:71
 msgid ":doc:`hillshading`"
 msgstr ":doc:`hillshading`"
 
-#: ../../SOURCE_DOCS/index.rst:71
+#: ../../SOURCE_DOCS/index.rst:72
 msgid ":doc:`contour_and_profile`"
 msgstr ":doc:`contour_and_profile`"
-
-#: ../../SOURCE_DOCS/index.rst:72
-msgid ":doc:`plot_vector_data`"
-msgstr ":doc:`plot_vector_data`"
 
 #: ../../SOURCE_DOCS/index.rst:73
 msgid ":doc:`map_elements`"
 msgstr ":doc:`map_elements`"
 
-#: ../../SOURCE_DOCS/index.rst:74
+#: ../../SOURCE_DOCS/index.rst:77
+msgid "繪製與編修各種常見的地圖 (進階)"
+msgstr "Plot and Edit Different Kinds of Maps (Advanced)"
+
+#: ../../SOURCE_DOCS/index.rst:75
+msgid ":doc:`editing_cpt_colorbar`"
+msgstr ":doc:`editing_cpt_colorbar`"
+
+#: ../../SOURCE_DOCS/index.rst:76
 msgid ":doc:`view3d`"
 msgstr ":doc:`view3d`"
 
-#: ../../SOURCE_DOCS/index.rst:76
-msgid "網格資料處理"
-msgstr "Processing Gridded Data"
-
-#: ../../SOURCE_DOCS/index.rst:76
-msgid ":doc:`raster_calculator`"
-msgstr ":doc:`raster_calculator`"
-
 #: ../../SOURCE_DOCS/index.rst:77
-msgid ":doc:`basic_img_processing`"
-msgstr ":doc:`basic_img_processing`"
-
-#: ../../SOURCE_DOCS/index.rst:79
-msgid "數值資料處理"
-msgstr "Processing Numerical Data"
-
-#: ../../SOURCE_DOCS/index.rst:79
-msgid ":doc:`stat_histogram`"
-msgstr ":doc:`stat_histogram`"
-
-#: ../../SOURCE_DOCS/index.rst:80
-msgid ":doc:`regression_basics`"
-msgstr ":doc:`regression_basics`"
-
-#: ../../SOURCE_DOCS/index.rst:83
-msgid "進階繪圖技巧"
-msgstr "Advanced Mapping Skills"
-
-#: ../../SOURCE_DOCS/index.rst:82
 msgid ":doc:`focal_mech`"
 msgstr ":doc:`focal_mech`"
 
-#: ../../SOURCE_DOCS/index.rst:83
+#: ../../SOURCE_DOCS/index.rst:78
 msgid ":doc:`draping`"
 msgstr ":doc:`draping`"
+
+#: ../../SOURCE_DOCS/index.rst:80
+msgid "網格資料處理"
+msgstr "Processing Gridded Data"
+
+#: ../../SOURCE_DOCS/index.rst:80
+msgid ":doc:`raster_calculator`"
+msgstr ":doc:`raster_calculator`"
+
+#: ../../SOURCE_DOCS/index.rst:81
+msgid ":doc:`basic_img_processing`"
+msgstr ":doc:`basic_img_processing`"
+
+#: ../../SOURCE_DOCS/index.rst:83
+msgid "數值資料處理"
+msgstr "Processing Numerical Data"
+
+#: ../../SOURCE_DOCS/index.rst:83
+msgid ":doc:`stat_histogram`"
+msgstr ":doc:`stat_histogram`"
+
+#: ../../SOURCE_DOCS/index.rst:84
+msgid ":doc:`regression_basics`"
+msgstr ":doc:`regression_basics`"
 
 #: ../../SOURCE_DOCS/index.rst:88
 msgid "附錄"

@@ -1,0 +1,117 @@
+# Whyjay Zheng <jhsttshj@gmail.com>, 2019. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: GMT 教學手冊 1.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-12-25 19:15-0500\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2019-12-26 01:22+0000\n"
+"Last-Translator: Whyjay Zheng <jhsttshj@gmail.com>\n"
+"Language-Team: English (United States)\n"
+"Language: en_US\n"
+"X-Generator: Zanata 4.6.2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: ../../SOURCE_DOCS/cpt_colormap.rst:3
+msgid "使用色階表為網格資料著色"
+msgstr "Visualize Raster Data Using Colormaps"
+
+#: ../../SOURCE_DOCS/cpt_colormap.rst:7
+msgid "目標"
+msgstr "Goal"
+
+#: ../../SOURCE_DOCS/cpt_colormap.rst:15
+msgid "直接觀看\\ `指令稿`_"
+msgstr "Go to the final `Script`_"
+
+#: ../../SOURCE_DOCS/cpt_colormap.rst:18
+msgid "使用的指令與概念"
+msgstr "Commands and Techniques"
+
+#: ../../SOURCE_DOCS/cpt_colormap.rst:19
+msgid "``basemap`` - 設定繪圖區、座標軸與邊框"
+msgstr "``basemap`` - set up mapping area, axes, and map frame"
+
+#: ../../SOURCE_DOCS/cpt_colormap.rst:20
+msgid "``coast`` - 繪製海岸線與陸海域填色"
+msgstr "``coast`` - plot shorelines and fill land/sea area"
+
+#: ../../SOURCE_DOCS/cpt_colormap.rst:21
+msgid "``clip`` - **只在給定的多邊形區域內繪製資料**"
+msgstr "``clip`` - **only plot data within given polygon regions**"
+
+#: ../../SOURCE_DOCS/cpt_colormap.rst:22
+msgid "``makecpt`` - **製作與修改色階表**"
+msgstr "``makecpt`` - **Make and adjust a color palette table**"
+
+#: ../../SOURCE_DOCS/cpt_colormap.rst:23
+msgid "``grdimage`` - 繪製著色影像"
+msgstr "``grdimage`` - plot colored image"
+
+#: ../../SOURCE_DOCS/cpt_colormap.rst:24
+msgid "``plot`` - 繪製多邊形"
+msgstr "``plot`` - **plot polygons**"
+
+#: ../../SOURCE_DOCS/cpt_colormap.rst:25
+msgid "``colorbar`` - 繪製色階條"
+msgstr "``colorbar`` - plot color bar"
+
+#: ../../SOURCE_DOCS/cpt_colormap.rst:26
+msgid "``text`` - 在圖上標記文字"
+msgstr "``text`` - Make text labels in a map"
+
+#: ../../SOURCE_DOCS/cpt_colormap.rst:27
+msgid "外部指令 ``gdalwarp`` - **把網格資料重投影，並轉檔成 NetCDF 格式**"
+msgstr ""
+
+#: ../../SOURCE_DOCS/cpt_colormap.rst:28
+msgid "如何解釋色階表 (CPT, color palette table) 的內容"
+msgstr ""
+
+#: ../../SOURCE_DOCS/cpt_colormap.rst:31
+msgid "前置作業"
+msgstr "Tasks before plotting"
+
+#: ../../SOURCE_DOCS/cpt_colormap.rst:35
+msgid "操作流程"
+msgstr "Procedure"
+
+#: ../../SOURCE_DOCS/cpt_colormap.rst:39
+msgid "指令稿"
+msgstr "Script"
+
+#: ../../SOURCE_DOCS/cpt_colormap.rst:40
+msgid "本地圖的最終指令稿如下："
+msgstr "The final script for our map is:"
+
+#: ../../SOURCE_DOCS/cpt_colormap.rst:42
+msgid ""
+"speed_file=ICE_G0240_0000_v_EPSG4326.nc\n"
+"glacier_outline=glims_iceland_glacier_outlines.gmt\n"
+"\n"
+"gmt begin iceland_glacier_speed png\n"
+"    gmt basemap -Baf -BWNEs -RIS+R0.2 -JM15c\n"
+"    gmt coast -Wthinnest,darkred -Gdarkseagreen1 -Slightblue -A1\n"
+"    gmt clip $glacier_outline\n"
+"    gmt makecpt -Cbatlow -T0/400/10 -D -Z -M --COLOR_NAN=gray\n"
+"    gmt grdimage $speed_file\n"
+"    gmt clip -C\n"
+"    gmt plot $glacier_outline -Wthinner,black\n"
+"    gmt colorbar -DJCB+w6c+ef -Bx100+l\"Glacier Speed (m/yr)\"\n"
+"    echo -16.8 64.95 Vatnajökull | gmt text -F+f12p+jCM\n"
+"gmt end"
+msgstr ""
+
+#: ../../SOURCE_DOCS/cpt_colormap.rst:61
+msgid "「」"
+msgstr ""
+
+#: ../../SOURCE_DOCS/cpt_colormap.rst:63
+msgid "觀看\\ `最終版地圖`_"
+msgstr "Check the `final map`_"
+
+#: ../../SOURCE_DOCS/cpt_colormap.rst:67
+msgid "習題"
+msgstr "Exercise"
