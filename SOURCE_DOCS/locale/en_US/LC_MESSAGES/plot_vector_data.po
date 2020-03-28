@@ -1,4 +1,5 @@
 # Whyjay Zheng <jhsttshj@gmail.com>, 2019. #zanata
+# Whyjay Zheng <jhsttshj@gmail.com>, 2020. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
@@ -7,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-07-03 04:54-0400\n"
+"PO-Revision-Date: 2020-03-28 02:29-0400\n"
 "Last-Translator: Whyjay Zheng <jhsttshj@gmail.com>\n"
 "Language-Team: English (United States)\n"
 "Language: en_US\n"
@@ -48,7 +49,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/plot_vector_data.rst:27
 msgid "使用的指令與概念"
-msgstr ""
+msgstr "Commands and Techniques"
 
 #: ../../SOURCE_DOCS/plot_vector_data.rst:28
 msgid "``makecpt`` - **製作含有透明度設定的色階檔**"
@@ -64,7 +65,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/plot_vector_data.rst:34
 msgid "操作流程"
-msgstr ""
+msgstr "Procedure"
 
 #: ../../SOURCE_DOCS/plot_vector_data.rst:35
 msgid ""
@@ -376,11 +377,11 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/plot_vector_data.rst:280
 msgid "指令稿"
-msgstr ""
+msgstr "Script"
 
 #: ../../SOURCE_DOCS/plot_vector_data.rst:281
 msgid "本地圖的最終指令稿如下："
-msgstr ""
+msgstr "The final script of our figure is:"
 
 #: ../../SOURCE_DOCS/plot_vector_data.rst:283
 msgid ""
@@ -403,18 +404,41 @@ msgid ""
 "# ==== 轉成 png 檔並保留透明度設定 ====\n"
 "psconvert $out_ps -A -P -Tg"
 msgstr ""
+"# ==== Setting variables ====\n"
+"out_ps=\"tangram.ps\"\n"
+"in_cpt=\"tangram.cpt\"\n"
+"\n"
+"# ==== Making a colormap with transparency settings ====\n"
+"makecpt -Cwysiwyg -A70 > $in_cpt\n"
+"\n"
+"# ==== Plot lines and polygons ====\n"
+"    # Write headers and the settings of -R and -J\n"
+"psxy -R0/4/0/4 -JX15c -T -K -P > $out_ps\n"
+"    # Note that the styles of lines and polygons are defined in their source "
+"files!\n"
+"psxy lines.txt -R -J -O -K >> $out_ps\n"
+"psxy pieces.txt -R -J -O -K -L -C$in_cpt >> $out_ps\n"
+"    # Write EOF\n"
+"psxy -R -J -O -T >> $out_ps\n"
+"\n"
+"# ==== Convert to png file, keeping the transparency settings ====\n"
+"psconvert $out_ps -A -P -Tg"
 
 #: ../../SOURCE_DOCS/plot_vector_data.rst:304
 msgid ""
 "線段資料 ``lines.txt`` 內容如下，並\\ :download:`可在這裡下載 <plot_vector_data/lines."
 "txt>`\\ 。"
 msgstr ""
+"The segment data ``lines.txt`` are as follows, and are available for "
+"downloading :download:`here <plot_vector_data/lines.txt>`."
 
 #: ../../SOURCE_DOCS/plot_vector_data.rst:348
 msgid ""
 "多邊形資料 ``pieces.txt`` 內容如下，並\\ :download:`可在這裡下載 <plot_vector_data/pieces."
 "txt>`\\ 。"
 msgstr ""
+"The polygon data ``pieces.txt`` are as follows, and are available at :"
+"download:`here <plot_vector_data/pieces.txt>`."
 
 #: ../../SOURCE_DOCS/plot_vector_data.rst:385
 msgid ""
@@ -424,7 +448,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/plot_vector_data.rst:388
 msgid "觀看\\ `最終版圖片`_"
-msgstr ""
+msgstr "Check the `final figure`_"
 
 #: ../../SOURCE_DOCS/plot_vector_data.rst:391
 msgid "習題"
