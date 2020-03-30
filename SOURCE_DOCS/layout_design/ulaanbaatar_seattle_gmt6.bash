@@ -31,17 +31,17 @@ gmt begin ulaanbaatar_seattle_gmt6 png
 	echo "174 41 Rhumb Line"    | gmt text -F+f,18,$rl_color
 	echo "174 61 Great Circle"  | gmt text -F+f,18,$gc_color
 
-	# ==== Uppder Lambert ====
+	# ==== Upper Lambert ====
 	gmt basemap -Rg -JA106:55/47:55/13c -Yh+3c -B+tLambert --MAP_TITLE_OFFSET=0c
 	gmt coast -Dl -A1000 -G$land_color -N1/thick,60 -Bxg60 -Byg30 --MAP_GRID_CROSS_SIZE_PRIMARY=0p
 	gmt plot $input_xy -: -Ap -W1p,$rl_color
 	gmt plot $input_xy -:     -W1p,$gc_color
 	gmt plot $input_xy -: -Sa0.4c -Gblack
 	gmt text -F+a   << ANNOTEND
-106.92 -30 0   30\260S
-106.92 30  0   30\260N
-60     15  70  60\260E
-180    15  305 180\260
+106.92 -30 0   30@.S
+106.92 30  0   30@.N
+60     15  70  60@.E
+180    15  305 180@.
 ANNOTEND
 	gmt text -F+a+f << LABELEND
 180    40  58  ,Bookman-DemiItalic,$rl_color   Rhumb Line
