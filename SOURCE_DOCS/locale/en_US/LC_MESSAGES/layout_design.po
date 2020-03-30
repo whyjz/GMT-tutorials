@@ -1,4 +1,5 @@
 # Whyjay Zheng <jhsttshj@gmail.com>, 2019. #zanata
+# Whyjay Zheng <jhsttshj@gmail.com>, 2020. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
@@ -7,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-07-03 04:53-0400\n"
+"PO-Revision-Date: 2020-03-30 12:58-0400\n"
 "Last-Translator: Whyjay Zheng <jhsttshj@gmail.com>\n"
 "Language-Team: English (United States)\n"
 "Language: en_US\n"
@@ -57,11 +58,11 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/layout_design.rst:32
 msgid "直接觀看\\ `指令稿`_"
-msgstr ""
+msgstr "Go to the final `Script`_"
 
 #: ../../SOURCE_DOCS/layout_design.rst:35
 msgid "使用的指令與概念"
-msgstr ""
+msgstr "Commands and Techniques"
 
 #: ../../SOURCE_DOCS/layout_design.rst:36
 msgid "``gmtdefaults`` - **查看 GMT 的預設作圖參數**"
@@ -125,7 +126,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/layout_design.rst:53
 msgid "前置作業"
-msgstr ""
+msgstr "Tasks before plotting"
 
 #: ../../SOURCE_DOCS/layout_design.rst:54
 msgid ""
@@ -247,7 +248,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/layout_design.rst:114
 msgid "操作流程"
-msgstr ""
+msgstr "Procedure"
 
 #: ../../SOURCE_DOCS/layout_design.rst:115
 msgid ""
@@ -777,11 +778,11 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/layout_design.rst:498
 msgid "指令稿"
-msgstr ""
+msgstr "Script"
 
 #: ../../SOURCE_DOCS/layout_design.rst:500
 msgid "本地圖的最終指令稿如下："
-msgstr ""
+msgstr "The final script for our map is:"
 
 #: ../../SOURCE_DOCS/layout_design.rst:502
 msgid ""
@@ -855,6 +856,78 @@ msgid ""
 "psxy -R -J -O -T >> $out_ps\n"
 "# rm -rf gmt.conf    # <---- 此行可用於消除舊的組態設定檔"
 msgstr ""
+"# ==== Setting variables ====\n"
+"out_ps=\"ulaanbaatar_seattle.ps\"\n"
+"input_xy=\"coord.txt\"\n"
+"xy_ulaanbaatar=\"47:55:0N, 106:55:0E\"\n"
+"xy_seattle=\"47:36:35N, 122:19:59W\"\n"
+"land_color=\"#CEB9A0\"\n"
+"gcp_color=\"#0044FF\"        # color for great circle path\n"
+"psl_color=\"#FF0073\"        # color for rhumb line\n"
+"    # Now we are writing the coordinates of the two cities to the $input_xy "
+"file.\n"
+"    # If you have downloaded coord.txt. then you can just comment out these "
+"two lines.\n"
+"echo $xy_ulaanbaatar > $input_xy\n"
+"echo $xy_seattle    >> $input_xy\n"
+"\n"
+"# ==== Adjust GMT default parameters ====\n"
+"gmtset FONT_TITLE=30,Bookman-Demi,#0D057A \\\n"
+"       FONT_ANNOT_PRIMARY=12p,20,#0D057A \\\n"
+"       FORMAT_GEO_MAP=dddF \\\n"
+"       MAP_FRAME_TYPE=plain \\\n"
+"       MAP_GRID_CROSS_SIZE_PRIMARY=8p \\\n"
+"       MAP_GRID_PEN_PRIMARY=thinner,#ED99F0 \\\n"
+"       MAP_TICK_PEN_PRIMARY=thicker,black \\\n"
+"       MAP_TITLE_OFFSET=0.5c \\\n"
+"       MAP_ORIGIN_X=0 \\\n"
+"       MAP_ANNOT_OBLIQUE=32 \\\n"
+"       PS_CHAR_ENCODING=ISOLatin1+ \\\n"
+"       PS_PAGE_ORIENTATION=portrait \\\n"
+"       PS_PAGE_COLOR=ivory\n"
+"\n"
+"# ==== Begin to draw (Write PS headers) ====\n"
+"psxy -R0/1/0/1 -JX1c -T -K > $out_ps\n"
+"\n"
+"# ==== Lower panel (Mercator) ====\n"
+"psbasemap -R70/270/30S/70N -JM13c -O -K -X4c -B+tMercator >> $out_ps\n"
+"pscoast -R -J -O -K -Dl -A1000 -G$land_color -N1/thick,60 -Ba40f20g20 \\\n"
+"        --MAP_GRID_PEN_PRIMARY=thicker >> $out_ps\n"
+"psxy $input_xy -R -J -O -K -: -A -W1p,$psl_color >> $out_ps    # rhumb line\n"
+"psxy $input_xy -R -J -O -K -:    -W1p,$gcp_color >> $out_ps    # GCP\n"
+"psxy $input_xy -R -J -O -K -:    -Sa0.4c -Gblack >> $out_ps    # points\n"
+"    # text for two lines\n"
+"echo \"174 41 Rhumb Line\"              | pstext -R -J -O -K -"
+"F+f,18,$psl_color >> $out_ps\n"
+"echo \"174 61 Great Circle Path\"       | pstext -R -J -O -K -"
+"F+f,18,$gcp_color >> $out_ps\n"
+"\n"
+"# ==== Upper panel (Lambert) ====\n"
+"psbasemap -Rg -JA106:55/47:55/13c -O -K -Y12c -B+tLambert \\\n"
+"        --MAP_TITLE_OFFSET=0c >> $out_ps\n"
+"pscoast -R -J -O -K -Dl -A1000 -G$land_color -N1/thick,60 -Bxg60 -Byg30 \\\n"
+"        --MAP_GRID_CROSS_SIZE_PRIMARY=0p >> $out_ps\n"
+"project -C106.92/47.92 -E237.67/47.61 -G10 -N |\\\n"
+"psxy           -R -J -O -K    -W1p,$psl_color >> $out_ps    # rhumb line\n"
+"psxy $input_xy -R -J -O -K -: -W1p,$gcp_color >> $out_ps    # GCP\n"
+"psxy $input_xy -R -J -O -K -: -Sa0.4c -Gblack >> $out_ps    # points\n"
+"    # Add grid annotations\n"
+"pstext -R -J -O -K -F+a   >> $out_ps << ANNOTEND\n"
+"106.92 -30 0   30\\260S\n"
+"106.92 30  0   30\\260N\n"
+"60     15  70  60\\260E\n"
+"180    15  305 180\\260\n"
+"ANNOTEND\n"
+"    # text for two lines\n"
+"pstext -R -J -O -K -F+a+f >> $out_ps << LABELEND\n"
+"180    40  58  ,Bookman-DemiItalic,$psl_color   Rhumb Line\n"
+"180    80  58  ,Bookman-DemiItalic,$gcp_color   Great Circle Path\n"
+"LABELEND\n"
+"\n"
+"# ==== End drawing (Write EOF) ====\n"
+"psxy -R -J -O -T >> $out_ps\n"
+"# rm -rf gmt.conf    # <---- This line is used to erase former gmtset "
+"settings"
 
 #: ../../SOURCE_DOCS/layout_design.rst:574
 msgid ""
@@ -864,11 +937,11 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/layout_design.rst:578
 msgid "觀看\\ `最終版地圖`_"
-msgstr ""
+msgstr "Check the `final map`_"
 
 #: ../../SOURCE_DOCS/layout_design.rst:581
 msgid "習題"
-msgstr ""
+msgstr "Exercise"
 
 #: ../../SOURCE_DOCS/layout_design.rst:582
 msgid ""
@@ -882,3 +955,4 @@ msgstr ""
 msgid ""
 "`Public domain country maps <http://ian.macky.net/pat/map/gq/gq.html>`_."
 msgstr ""
+"`Public domain country maps <http://ian.macky.net/pat/map/gq/gq.html>`_."
