@@ -5,3 +5,4 @@ todolist.txt
 locale/en/LC_MESSAGES/*.mo
 .zanata-cache
 .zanata-cache/*
+.ipynb_checkpoints
