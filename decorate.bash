@@ -152,9 +152,9 @@ do
             localemenu_each=${localemenu/LinkToChinese/${html_name/./\\.}}
             localemenu_each=${localemenu_each/LinkToEnglish/en\\\/${html_name/./\\.}}
         fi
-        # delete 2 lines before class "wy-menu wy-menu-vertical"
+        # delete 3 lines before class "wy-menu wy-menu-vertical"
         vi -e - $html_f <<COMMANDEND
-g/wy-menu wy-menu-vertical/-2,-1d
+g/wy-menu wy-menu-vertical/-3,-1d
 wq
 COMMANDEND
         # add locale menu body

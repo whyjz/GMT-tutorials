@@ -4,11 +4,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-30 17:29-0400\n"
+"POT-Creation-Date: 2021-01-08 20:34-0500\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2020-03-30 12:58-0400\n"
+"PO-Revision-Date: 2020-06-25 12:28-0400\n"
 "Last-Translator: Whyjay Zheng <jhsttshj@gmail.com>\n"
 "Language-Team: English (United States)\n"
 "Language: en_US\n"
@@ -24,6 +24,9 @@ msgid ""
 "本教學適用於 GMT 6 的現代模式。如須參閱 GMT 6 (傳統模式) 與 GMT 4-5 繪製相似地圖的教程，\\ `請至這裡 "
 "<layout_design_gmt5.html>`_。"
 msgstr ""
+"This instruction is for the Modern Mode in GMT 6. For making the same map "
+"using the GMT 6 Classic Mode or GMT 4-5, `Please go to this page "
+"<layout_design_gmt5.html>`_ (only final script available)."
 
 #: ../../SOURCE_DOCS/layout_design.rst:9
 msgid ""
@@ -31,6 +34,13 @@ msgid ""
 "使用了許多預設選項，讓使用者不需做太多設定就能產生想要的地圖。如果我們想設計比較複雜的配置，例如版面分割、邊框樣式調整、字型與字體樣式，就需要調整 "
 "GMT 的「使用者組態設定」。另外，我們也會在這裡介紹地理空間資料常用的兩大類座標：平面與球面，以及 GMT 作圖時的相關設定。"
 msgstr ""
+"Now let us see how GMT deals with the map layout. GMT uses many pre-defined "
+"option values so that uses don't need to set a lot of things up for making a "
+"map. However, if we want to have a more complex design such as multiple "
+"panels, different frame types, and tweaking font style, we have to adjust "
+"GMT's \"user configuration.\" Also, in this chapter we will introduce the "
+"two major projection types used for geospatial data: cylindrical (Mercator) "
+"and planar (Lambert) and the associated settings in GMT. "
 
 #: ../../SOURCE_DOCS/layout_design.rst:12
 msgid "目標"
@@ -46,20 +56,41 @@ msgid ""
 "azimuthal equal-area projection) ，下圖為「麥卡托投影」(**Mercator** "
 "Projection)。圖中說明了幾個特點："
 msgstr ""
+"Draw the `Great Circle Route <https://en.wikipedia.org/wiki/Great-"
+"circle_distance>` and the `Rhumb Line <https://en.wikipedia.org/wiki/"
+"Rhumb_line>`_ between *Ulaanbaatar*, Mongolia, and *Seattle*, USA. A great "
+"circle route is the path along the great circle (the circle whose radius "
+"equals the radius of Earth), and a rhumb line is a path whose incident angle "
+"to any meridian is the same. The map of this chapter uses two different "
+"projections. The upper panel uses the **Lambert** azimuthal equal-area "
+"projection, and the lower panel uses the **Mercator** Projection. The map "
+"shows some interesting points:"
 
 #: ../../SOURCE_DOCS/layout_design.rst:15
 msgid "恆向線在麥卡托投影中會以直線呈現，而大圓路徑在相同的圖中則是曲線。不過，大圓路徑才是兩地之間實際較短的路徑。"
 msgstr ""
+"A rhumb line is a straight line when the map is drawing using the Mercator "
+"projection, while the great circle route is a curved line on the same map. "
+"However, the great circle route is actually the shortest path between any "
+"two locations."
 
 #: ../../SOURCE_DOCS/layout_design.rst:16
 msgid ""
 "連接到蘭伯特等積方位投影中心點 (本例中為烏蘭巴托) "
 "的大圓路徑會是直線，恆向線則變成曲線。這是比較能直觀連結它們的實際長度的一種方法，也是投影名稱的「方位」二字緣由 (大圓路徑保持在相同方位)。"
 msgstr ""
+"The great circle route connecting any point to the center of the Lambert map "
+"(Ulaanbaatar in this example) is a straight line. On the other hand, the "
+"thumb line becomes a curved line in this case. You can see that a Lambert "
+"map does a better job of keeping the relative length of different paths, as "
+"well as their actual direction (which is why this projection is referred to "
+"as an azimuthal projection). "
 
 #: ../../SOURCE_DOCS/layout_design.rst:18
 msgid "另外，本地圖也替換了 GMT 的預設字型、顏色與版面配置。這些細節將會在以下部份一一解說。"
 msgstr ""
+"We will also change the GMT default settings including fonts, colors, and "
+"layout for this map. You will find more details in this chapter."
 
 #: ../../SOURCE_DOCS/layout_design.rst:26
 msgid "直接觀看\\ `指令稿`_"
@@ -71,59 +102,61 @@ msgstr "Commands and Techniques"
 
 #: ../../SOURCE_DOCS/layout_design.rst:30
 msgid "``defaults`` - **查看 GMT 的預設作圖參數**"
-msgstr ""
+msgstr "``defaults`` - **check GMT's default map parameters**"
 
 #: ../../SOURCE_DOCS/layout_design.rst:31
 msgid "``set`` - **更改 GMT 的預設作圖參數**"
-msgstr ""
+msgstr "``set`` - **change GMT's default map parameters**"
 
 #: ../../SOURCE_DOCS/layout_design.rst:32
 msgid "``plot`` - **在地理座標系統上畫點和線**"
 msgstr ""
+"``plot`` - **plot points and lines using under a geographical coordinate "
+"system**"
 
 #: ../../SOURCE_DOCS/layout_design.rst:33
 msgid "``text`` - **詳細的設定標記在圖上的文字**"
-msgstr ""
+msgstr "``text`` - **set text in detail on a map**"
 
 #: ../../SOURCE_DOCS/layout_design.rst:34
 msgid "``basemap`` - 設定繪圖區、座標軸與邊框"
-msgstr ""
+msgstr "``basemap`` - set up mapping area, axes, and map frame"
 
 #: ../../SOURCE_DOCS/layout_design.rst:35
 msgid "``coast`` - 繪製海岸線與國界"
-msgstr ""
+msgstr "``coast`` - plot shorelines and borders"
 
 #: ../../SOURCE_DOCS/layout_design.rst:36
 msgid "外部指令 ``rm`` - **刪除檔案** (Windows 為 ``del``)"
-msgstr ""
+msgstr "External command ``rm`` - **delete a file** (``del`` for Windows)"
 
 #: ../../SOURCE_DOCS/layout_design.rst:37
 msgid "外部指令 ``echo`` - 把資料輸入到管線命令中"
-msgstr ""
+msgstr "External command ``echo`` - pass input data through a pipe"
 
 #: ../../SOURCE_DOCS/layout_design.rst:38
 msgid "GMT 共用選項：``-X`` ``-Y`` ``-:``"
-msgstr ""
+msgstr "GMT shared options: ``-X`` ``-Y`` ``-:``"
 
 #: ../../SOURCE_DOCS/layout_design.rst:39
 msgid "GMT 的預設參數與 ``gmt.conf`` 檔案"
-msgstr ""
+msgstr "GMT default settings and the ``gmt.conf`` file"
 
 #: ../../SOURCE_DOCS/layout_design.rst:40
 msgid "地理座標的給定方式"
-msgstr ""
+msgstr "More ways to specify geographical coordinates "
 
 #: ../../SOURCE_DOCS/layout_design.rst:41
 msgid "地圖版面的設定"
-msgstr ""
+msgstr "How to set up a map layout"
 
 #: ../../SOURCE_DOCS/layout_design.rst:42
 msgid "文字風格設定"
-msgstr ""
+msgstr "How to change font style"
 
 #: ../../SOURCE_DOCS/layout_design.rst:43
 msgid "GMT 針對不同投影座標系統的不同處理方式"
-msgstr ""
+msgstr "How GMT makes a map using a different projection system"
 
 #: ../../SOURCE_DOCS/layout_design.rst:48
 msgid "前置作業"
@@ -134,74 +167,94 @@ msgid ""
 "我們要先取得烏蘭巴托與西雅圖兩地的經緯度座標。從 *Wikipedia* "
 "的條目頁面中，可以找到「經緯度」的資訊欄位，點選連結後，可以看到不同座標系統的位置資訊，如下所示 (以烏蘭巴托為例)。"
 msgstr ""
+"First, we have to get the coordinates for Ulaanbaatar and Seattle. On their "
+"*Wikipedia* page we can find the latitude and longitude of both cities, "
+"which is a link to more information about coordinates under different "
+"projection systems. Here we have an example of Ulaanbaatar:"
 
 #: ../../SOURCE_DOCS/layout_design.rst:55
 msgid ""
 "注意在「\\ **WGS84**\\ 」欄位中，有兩種座標的格式。你要使用哪種都可以，GMT "
 "都有支援。另外也請注意這裡的座標是「緯度在前，經度在後」。在下表中，也蒐集了兩地的經緯座標 (十進位制四捨五入至小數點第二位)："
 msgstr ""
+"Note that there are two formats of coordinates in the **WGS84** field. "
+"Either of them work in this example as GMT supports both formats. The other "
+"thing worth paying attention to is the coordinates are represented by "
+"\"latitude-longitude\". We have collected the coordinates of both places in "
+"the following table (rounded to the second decimal place):  "
 
 #: ../../SOURCE_DOCS/layout_design.rst:58
 msgid "城市"
-msgstr ""
+msgstr "City"
 
 #: ../../SOURCE_DOCS/layout_design.rst:58
 msgid "烏蘭巴托"
-msgstr ""
+msgstr "Ulaanbaatar"
 
 #: ../../SOURCE_DOCS/layout_design.rst:58
 msgid "西雅圖"
-msgstr ""
+msgstr "Seattle"
 
 #: ../../SOURCE_DOCS/layout_design.rst:60
 msgid "經緯度 (度分秒)"
-msgstr ""
+msgstr "Latitude/Longitude (Deg, Min, Sec)"
 
 #: ../../SOURCE_DOCS/layout_design.rst:60
 msgid "47° 55′ 0″ N, 106° 55′ 0″ E"
-msgstr ""
+msgstr "47° 55′ 0″ N, 106° 55′ 0″ E"
 
 #: ../../SOURCE_DOCS/layout_design.rst:60
 msgid "47° 36′ 35″ N, 122° 19′ 59″ W"
-msgstr ""
+msgstr "47° 36′ 35″ N, 122° 19′ 59″ W"
 
 #: ../../SOURCE_DOCS/layout_design.rst:61
 msgid "經緯度 (十進位)"
-msgstr ""
+msgstr "Latitude/Longitude (Decimal)"
 
 #: ../../SOURCE_DOCS/layout_design.rst:61
 msgid "47.92, 106.92"
-msgstr ""
+msgstr "47.92, 106.92"
 
 #: ../../SOURCE_DOCS/layout_design.rst:61
 msgid "47.61, -122.33"
-msgstr ""
+msgstr "47.61, -122.33"
 
 #: ../../SOURCE_DOCS/layout_design.rst:64
 msgid ""
 "為了方便使用這些資料，我們可以建立一個純文字文件 ``coord.txt``，再把兩地的座標資訊複製到文件中存檔，如此一來供 GMT "
 "使用的資料表就建立完成。以下是使用十進位制座標的 ``coord.txt`` 內容："
 msgstr ""
+"We can create a text file ``coord.txt`` and save the coordinate information "
+"to the file to easily access them later with GMT. Here's the content of "
+"``coord.txt`` with the decimal formatted coordinates."
 
 #: ../../SOURCE_DOCS/layout_design.rst:66
 msgid "47.92, 106.92\n"
 "47.61, -122.33"
-msgstr ""
+msgstr "47.92, 106.92\n"
+"47.61, -122.33"
 
 #: ../../SOURCE_DOCS/layout_design.rst:71
 msgid ""
 "再次強調，資料中的第一欄現在是緯度 (y 值)，第二欄是經度 (x 值)。這與我們在「\\ :doc:`scatter_plot`\\ 」一章中所使用的 "
 "xy 順序相反，不過只要適當的指定欄位意義，GMT 仍然可以讀取。另外，兩個欄位中間使用了「逗號」分隔，在 GMT 中也是可以接受的。"
 msgstr ""
+"Let me emphasize that the first column is latitude (y) and the second column "
+"is longitude (x). This is opposite to the x-y order we used in the chapter :"
+"doc:`scatter_plot`. However, you'll see there is a way to specify the "
+"meaning of each column so that GMT can still recognize them correctly. In "
+"addition, we use commas to separate the columns here, which is acceptable "
+"for GMT too. "
 
 #: ../../SOURCE_DOCS/layout_design.rst:73
 msgid "以下是使用度分秒制座標的 ``coord.txt`` 內容："
-msgstr ""
+msgstr "Here's the content of ``coord.txt`` with the d/m/s coordinates."
 
 #: ../../SOURCE_DOCS/layout_design.rst:75
 msgid "47:55:0N, 106:55:0E\n"
 "47:36:35N, 122:19:59W"
-msgstr ""
+msgstr "47:55:0N, 106:55:0E\n"
+"47:36:35N, 122:19:59W"
 
 #: ../../SOURCE_DOCS/layout_design.rst:80
 msgid ""
@@ -266,7 +319,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/layout_design.rst:115
 msgid "$ gmt defaults -D"
-msgstr ""
+msgstr "$ gmt defaults -D"
 
 #: ../../SOURCE_DOCS/layout_design.rst:119
 msgid "螢幕的輸出如下所示："
@@ -285,6 +338,16 @@ msgid ""
 "COLOR_MODEL                    = none\n"
 "... #(以下省略)"
 msgstr ""
+"#\n"
+"# GMT 6.0.0 Defaults file\n"
+"#\n"
+"# COLOR Parameters\n"
+"#\n"
+"COLOR_BACKGROUND               = black\n"
+"COLOR_FOREGROUND               = white\n"
+"COLOR_NAN                      = 127.5\n"
+"COLOR_MODEL                    = none\n"
+"... #(skipped)"
 
 #: ../../SOURCE_DOCS/layout_design.rst:134
 msgid ""
@@ -414,6 +477,20 @@ msgid ""
 "# 注意我在每一行結尾使用了 \"\\\" 符號，意味著下一行仍然是 gmt set 的內容。\n"
 "# (後略)"
 msgstr ""
+"# (skipped)\n"
+"gmt set FONT_ANNOT_PRIMARY          12p,20,#0D057A \\\n"
+"        FONT_TITLE                  30,Bookman-Demi,#0D057A \\\n"
+"        FORMAT_GEO_MAP              dddF \\\n"
+"        MAP_ANNOT_OBLIQUE           32 \\\n"
+"        MAP_FRAME_TYPE              plain \\\n"
+"        MAP_GRID_CROSS_SIZE_PRIMARY 8p \\\n"
+"        MAP_GRID_PEN_PRIMARY        thinner,#ED99F0 \\\n"
+"        MAP_TICK_PEN_PRIMARY        thicker,black \\\n"
+"        MAP_TITLE_OFFSET            0.5c \\\n"
+"        PS_PAGE_COLOR               ivory\n"
+"# Note that I used \"\\\" at the end of every line, meaning the gmt set "
+"command extends to the next line.\n"
+"# (skipped)"
 
 #: ../../SOURCE_DOCS/layout_design.rst:259
 msgid ""
@@ -634,6 +711,9 @@ msgid "# (前略)\n"
 "gmt end\n"
 "rm -rf gmt.conf    # <---- 消除舊的組態設定檔"
 msgstr ""
+"# (skipped)\n"
+"gmt end\n"
+"rm -rf gmt.conf    # <---- Remove the old GMT parameter file"
 
 #: ../../SOURCE_DOCS/layout_design.rst:462
 msgid "指令稿"
@@ -707,6 +787,68 @@ msgid ""
 "\n"
 "# rm -rf gmt.conf   # 消除舊的 GMT 參數檔"
 msgstr ""
+"# ==== Setting variables ====\n"
+"input_xy=\"coord.txt\"\n"
+"land_color=\"#CEB9A0\"\n"
+"rl_color=\"#FF0073\"        # Rhumb line color\n"
+"gc_color=\"#0044FF\"        # Great circle color\n"
+"# Writing the xy coordiantes of two cities to the $input_xy file\n"
+"# If you have downloaded coord.txt, then you can just comment these four "
+"lines out.\n"
+"xy_ulaanbaatar=\"47:55:0N, 106:55:0E\"       # Ulaanbaatar coordinates\n"
+"xy_seattle=\"47:36:35N, 122:19:59W\"         # Seattle coordinates\n"
+"echo $xy_ulaanbaatar > $input_xy\n"
+"echo $xy_seattle    >> $input_xy\n"
+"\n"
+"# ==== Setting GMT parameters ====\n"
+"gmt set FONT_ANNOT_PRIMARY          12p,20,#0D057A \\\n"
+"        FONT_TITLE                  30,Bookman-Demi,#0D057A \\\n"
+"        FORMAT_GEO_MAP              dddF \\\n"
+"        MAP_ANNOT_OBLIQUE           32 \\\n"
+"        MAP_FRAME_TYPE              plain \\\n"
+"        MAP_GRID_CROSS_SIZE_PRIMARY 8p \\\n"
+"        MAP_GRID_PEN_PRIMARY        thinner,#ED99F0 \\\n"
+"        MAP_TICK_PEN_PRIMARY        thicker,black \\\n"
+"        MAP_TITLE_OFFSET            0.5c \\\n"
+"        PS_PAGE_COLOR               ivory\n"
+"\n"
+"# ==== Begin to draw ====\n"
+"gmt begin ulaanbaatar_seattle_gmt6 png\n"
+"\n"
+"    # ==== Lower panel (Mercator) ====\n"
+"    gmt basemap -R70/270/30S/70N -JM13c -B+tMercator\n"
+"    gmt coast -Dl -A1000 -G$land_color -N1/thick,60 -Ba40f20g20 --"
+"MAP_GRID_PEN_PRIMARY=thicker\n"
+"    gmt plot $input_xy -: -A -W1p,$rl_color    # Rhumb line\n"
+"    gmt plot $input_xy -:    -W1p,$gc_color    # Great circle route\n"
+"    gmt plot $input_xy -:    -Sa0.4c -Gblack\n"
+"    echo \"174 41 Rhumb Line\"    | gmt text -F+f,18,$rl_color\n"
+"    echo \"174 61 Great Circle\"  | gmt text -F+f,18,$gc_color\n"
+"\n"
+"    # ==== Upper panel (Lambert) ====\n"
+"    gmt basemap -Rg -JA106:55/47:55/13c -Yh+3c -B+tLambert --"
+"MAP_TITLE_OFFSET=0c\n"
+"    gmt coast -Dl -A1000 -G$land_color -N1/thick,60 -Bxg60 -Byg30 --"
+"MAP_GRID_CROSS_SIZE_PRIMARY=0p\n"
+"    gmt plot $input_xy -: -Ap -W1p,$rl_color    # Rhumb line\n"
+"    gmt plot $input_xy -:     -W1p,$gc_color    # Great circle route\n"
+"    gmt plot $input_xy -: -Sa0.4c -Gblack\n"
+"\n"
+"    gmt text -F+a   << ANNOTEND\n"
+"106.92 -30 0   30@.S\n"
+"106.92 30  0   30@.N\n"
+"60     15  70  60@.E\n"
+"180    15  305 180@.\n"
+"ANNOTEND\n"
+"\n"
+"    gmt text -F+a+f << LABELEND\n"
+"180    40  58  ,Bookman-DemiItalic,$rl_color   Rhumb Line\n"
+"180    80  58  ,Bookman-DemiItalic,$gc_color   Great Circle\n"
+"LABELEND\n"
+"\n"
+"gmt end\n"
+"\n"
+"# rm -rf gmt.conf   # Remove the old GMT parameter file"
 
 #: ../../SOURCE_DOCS/layout_design.rst:529
 msgid ""
