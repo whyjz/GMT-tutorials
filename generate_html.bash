@@ -3,7 +3,7 @@
 
 # make gettext
 # sphinx-intl update -p _build/locale -l en
-zanata-cli push
+# zanata-cli push
 zanata-cli pull
 make html
 make -e SPHINXOPTS="-D language='en_US'" BUILDSURFIX="/en" html
