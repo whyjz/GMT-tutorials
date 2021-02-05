@@ -1,5 +1,5 @@
-_build/*
-_build
+_build/[dh]*
+_build/locale/.doctrees/*
 *~
 todolist.txt
 locale/en/LC_MESSAGES/*.mo
