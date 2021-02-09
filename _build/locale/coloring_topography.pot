@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-14 19:37-0500\n"
+"POT-Creation-Date: 2021-02-08 21:58-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -80,29 +80,8 @@ msgstr ""
 msgid "這次我們必須要先取得繪圖區域的地形資料。GMT 6 本身有提供全球的地形資料，不過是放在遠端伺服器上，當使用者需要時才會下載到本機電腦中。這些地形資料的檔名為："
 msgstr ""
 
-#: ../../SOURCE_DOCS/coloring_topography.rst:47
-msgid "@earth_relief_rru"
-msgstr ""
-
 #: ../../SOURCE_DOCS/coloring_topography.rst:51
 msgid "其中 ``rr`` 是解析度的大小，而 ``u`` 是單位 (有度 ``d``、分 ``m``、秒 ``s`` 可選)。我們在這邊要使用的是全球解析度 1 弧分的地形高程，因此檔名為 ``@earth_relief_01m``。其他可供選擇的資料，皆在 `GMT 官方手冊中有說明 <https://docs.generic-mapping-tools.org/latest/datasets/earth_relief.html>`_。如果你想查閱地形資料的更多資訊，可以透過終端機輸入 ``grdinfo`` 指令來達成。執行畫面會像如下所示："
-msgstr ""
-
-#: ../../SOURCE_DOCS/coloring_topography.rst:62
-msgid "$ gmt grdinfo @earth_relief_01m\n"
-"earth_relief_01m: Download file from the GMT data server [data set size is 214M].\n"
-"earth_relief_01m: Earth Relief at 1x1 arc minutes obtained by Gaussian Cartesian filtering (1.9 km fullwidth) of SRTM15+V2 [Tozer et al., 2019].\n"
-"\n"
-"/home/whyj/.gmt/server/earth_relief_01m.grd: Title: Earth Relief at 01 arc minute\n"
-"/home/whyj/.gmt/server/earth_relief_01m.grd: Command: grdfilter SRTM15+V2.nc -Fg1.9 -D1 -I01m -rg -Gearth_relief_01m.grd=ns --IO_NC4_DEFLATION_LEVEL=9 --PROJ_ELLIPSOID=Sphere\n"
-"/home/whyj/.gmt/server/earth_relief_01m.grd: Remark: Obtained by Gaussian Cartesian filtering (1.9 km fullwidth) from SRTM15+V2.nc [Tozer et al., 2019; http://dx.doi.org/10.1029/2019EA000658]\n"
-"/home/whyj/.gmt/server/earth_relief_01m.grd: Gridline node registration used [Geographic grid]\n"
-"/home/whyj/.gmt/server/earth_relief_01m.grd: Grid file format: ns = GMT netCDF format (16-bit integer), CF-1.7\n"
-"/home/whyj/.gmt/server/earth_relief_01m.grd: x_min: -180 x_max: 180 x_inc: 0.0166666666667 (1 min) name: longitude n_columns: 21601\n"
-"/home/whyj/.gmt/server/earth_relief_01m.grd: y_min: -90 y_max: 90 y_inc: 0.0166666666667 (1 min) name: latitude n_rows: 10801\n"
-"/home/whyj/.gmt/server/earth_relief_01m.grd: z_min: -10907 z_max: 8170 name: elevation (m)\n"
-"/home/whyj/.gmt/server/earth_relief_01m.grd: scale_factor: 1 add_offset: 0\n"
-"/home/whyj/.gmt/server/earth_relief_01m.grd: format: netCDF-4 chunk_size: 129,129 shuffle: on deflation_level: 9"
 msgstr ""
 
 #: ../../SOURCE_DOCS/coloring_topography.rst:79
@@ -137,14 +116,6 @@ msgstr ""
 msgid "從本章開始，我們需要使用兩個以上的 GMT 指令製作地圖。在上一章介紹過的 ``coast`` 用來畫向量式資料 (河流、湖泊以及國界)，而在本章中新介紹的 ``grdimage`` 則用來畫地形起伏。因為上一章介紹的 ``-png`` 選項只適用於單一指令，所以在本章我們要用另一種更通用的方式指定輸出檔。具體做法是使用 ``gmt begin`` 和 ``gmt end`` 這兩個關鍵字串把其他所有繪圖指令包起來，像這樣："
 msgstr ""
 
-#: ../../SOURCE_DOCS/coloring_topography.rst:91
-msgid "$ gmt begin [輸出地圖主檔名，不用加附檔名] [格式]      # 輸入後按下 enter\n"
-"$ [繪圖指令1]    # 輸入後按下 enter\n"
-"$ [繪圖指令2]    # 輸入後按下 enter\n"
-"...\n"
-"$ gmt end"
-msgstr ""
-
 #: ../../SOURCE_DOCS/coloring_topography.rst:100
 msgid "你可以一行一行的在命令列中打好指令再送出執行，不過為了修改方便，我們通常會選擇把所有的指令先寫在\\ :ref:`腳本 <腳本>`\\ 內，再執行此腳本以一次送出所有指令給電腦。在本章中，我們就要來介紹這種更爲便捷的方式。"
 msgstr ""
@@ -161,18 +132,8 @@ msgstr ""
 msgid "使用 ``grdimage`` 呈現地形數據，最少需要提供兩個參數，分別是 ``輸入檔`` 和 ``-J`` (投影方法和地圖大小)。在這裡我們也需要使用 ``-R`` 指定繪製區域，如果不加 ``-R`` 的話，GMT 會把全網格檔的資料話在地圖上 (因爲我們使用的是全球地形資料，所以輸出會是全球地圖)。就讓我們來畫一張跟\\ `前一章 <making_first_map.html>`_\\ 一樣寬度的地圖吧。請建立新文字檔，檔名可以為 ``titicaca.bash`` 或任何你喜歡、且符合作業系統格式慣例的名字。然後在檔案中輸入："
 msgstr ""
 
-#: ../../SOURCE_DOCS/coloring_topography.rst:112
-msgid "gmt begin titicaca png\n"
-"    gmt grdimage @earth_relief_01m -R-70.8/-17.17/-66.56/-14.42r -JM6i\n"
-"gmt end"
-msgstr ""
-
 #: ../../SOURCE_DOCS/coloring_topography.rst:118
 msgid "你會注意到我們在 ``gmt grdimage`` 前面多加了四個空格，這純粹只是製造縮排效果，讓閱讀腳本的人知道這行被包在 ``gmt begin`` 和 ``gmt end`` 之間，增加腳本的可讀性。縮排與否和空格數量不會影響腳本的執行。如需 ``-R`` 與 ``-J`` 選項的語法說明，請至「\\ :doc:`making_first_map`\\ 」中查閱。存檔後，在\\ :ref:`終端機`\\ 模式下前往 ``titicaca.bash`` 所在的資料夾，然後執行腳本 (以 Linux 系統爲例)："
-msgstr ""
-
-#: ../../SOURCE_DOCS/coloring_topography.rst:120
-msgid "$ bash titicaca.bash"
 msgstr ""
 
 #: ../../SOURCE_DOCS/coloring_topography.rst:128
@@ -207,12 +168,6 @@ msgstr ""
 msgid "使用 ``grdimage`` 中的 ``-C`` 選項，就可以指定要用的色階，只要在 ``-C`` 後接續色階檔檔名就行了。所以我們更新版的腳本為："
 msgstr ""
 
-#: ../../SOURCE_DOCS/coloring_topography.rst:157
-msgid "gmt begin titicaca png\n"
-"    gmt grdimage @earth_relief_01m -R-70.8/-17.17/-66.56/-14.42r -JM6i -Cmby.cpt\n"
-"gmt end"
-msgstr ""
-
 #: ../../SOURCE_DOCS/coloring_topography.rst:163
 msgid "使用相同的方式再執行一次腳本，這次地圖會變成這樣"
 msgstr ""
@@ -231,13 +186,6 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/coloring_topography.rst:177
 msgid "當一張地圖包含兩個以上的作圖指令時，\\ **越上方的圖層要越後畫**。由於我們希望 ``coast`` 畫的湖泊水體疊加在 ``grdimage`` 畫的地形資料上，所以 ``coast`` 指令要排在 ``grdimage`` 之後。再次打開腳本，把內容修改爲："
-msgstr ""
-
-#: ../../SOURCE_DOCS/coloring_topography.rst:179
-msgid "gmt begin titicaca png\n"
-"    gmt grdimage @earth_relief_01m -R-70.8/-17.17/-66.56/-14.42r -JM6i -Cmby.cpt\n"
-"    gmt coast -Scornflowerblue -Baf -B+t\"Lago Titicaca\"\n"
-"gmt end"
 msgstr ""
 
 #: ../../SOURCE_DOCS/coloring_topography.rst:186
@@ -260,20 +208,12 @@ msgstr ""
 msgid "這次總算有個令人滿意的輸出結果。接下來，我們還可以利用 ``coast`` 的其餘功能來美化這張地圖。首先是 ``-I``，它可以幫我們標上河流，語法為"
 msgstr ""
 
-#: ../../SOURCE_DOCS/coloring_topography.rst:247
-msgid "-I編號/畫筆"
-msgstr ""
-
 #: ../../SOURCE_DOCS/coloring_topography.rst:251
 msgid "其中的\\ ``編號``\\ 可以為不同的英數字，對應到不同等級的河流；而\\ :ref:`畫筆 <畫筆>`\\ 則用來指定河流的繪圖樣式。這裡我們要使用 ``r`` 這個編號，它對應的是\\ **所有的永久河流**。畫筆樣式則使用 ``0.7p,cornflowerblue``。"
 msgstr ""
 
 #: ../../SOURCE_DOCS/coloring_topography.rst:253
 msgid "另外一個 ``coast`` 的選項是 ``-N``，它可以在地圖上標上政治性的邊界。語法同樣為"
-msgstr ""
-
-#: ../../SOURCE_DOCS/coloring_topography.rst:255
-msgid "-N編號/畫筆"
 msgstr ""
 
 #: ../../SOURCE_DOCS/coloring_topography.rst:259
@@ -294,13 +234,6 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/coloring_topography.rst:270
 msgid "本地圖的最終指令稿如下："
-msgstr ""
-
-#: ../../SOURCE_DOCS/coloring_topography.rst:272
-msgid "gmt begin titicaca png\n"
-"    gmt grdimage @earth_relief_01m -R-70.8/-17.17/-66.56/-14.42r -JM6i -Cmby.cpt\n"
-"    gmt coast -Ir/0.7p,cornflowerblue -N1/0.7p,,-- -Scornflowerblue -Baf -B+t\"Lago Titicaca\"\n"
-"gmt end"
 msgstr ""
 
 #: ../../SOURCE_DOCS/coloring_topography.rst:282

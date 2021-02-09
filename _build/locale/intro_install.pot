@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-14 19:37-0500\n"
+"POT-Creation-Date: 2021-02-08 21:58-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -96,53 +96,24 @@ msgstr ""
 msgid "開啟終端機 (Linux 或 Mac) 或是 Anaconda 的指令列 (Windows)，建立 GMT 的安裝環境： (更多終端機的詳細說明請看「:doc:`basic_concept`」。這邊環境的名字 ``gmt6`` 可自由更改成您喜歡的字。)"
 msgstr ""
 
-#: ../../SOURCE_DOCS/intro_install.rst:55
-msgid "$ conda create --name gmt6\n"
-"$ conda activate gmt6"
-msgstr ""
-
 #: ../../SOURCE_DOCS/intro_install.rst:60
 msgid "安裝 GMT："
-msgstr ""
-
-#: ../../SOURCE_DOCS/intro_install.rst:62
-msgid "$ conda config --prepend channels conda-forge\n"
-"$ conda install python=3.9 gmt"
 msgstr ""
 
 #: ../../SOURCE_DOCS/intro_install.rst:67
 msgid "或是你也可以直接安裝 PyGMT，這樣 GMT 會一併被安裝："
 msgstr ""
 
-#: ../../SOURCE_DOCS/intro_install.rst:69
-msgid "$ conda config --prepend channels conda-forge\n"
-"$ conda install python=3.9 pygmt pip numpy pandas xarray netcdf4 packaging gmt pytest pytest-mpl"
-msgstr ""
-
 #: ../../SOURCE_DOCS/intro_install.rst:74
 msgid "如果你計畫使用 PyGMT，推薦一併安裝 Jupyter 以進行互動式資料分析。"
-msgstr ""
-
-#: ../../SOURCE_DOCS/intro_install.rst:76
-msgid "$ conda install jupyterlab"
 msgstr ""
 
 #: ../../SOURCE_DOCS/intro_install.rst:80
 msgid "要使用 GMT 時，切換至 GMT 的環境即可開始使用。"
 msgstr ""
 
-#: ../../SOURCE_DOCS/intro_install.rst:82
-msgid "$ conda activate gmt6\n"
-"$ gmt help"
-msgstr ""
-
 #: ../../SOURCE_DOCS/intro_install.rst:87
 msgid "要使用 PyGMT 時，在 Python 內匯入同名模組即可："
-msgstr ""
-
-#: ../../SOURCE_DOCS/intro_install.rst:89
-msgid "import pygmt\n"
-"pygmt.show_versions()"
 msgstr ""
 
 #: ../../SOURCE_DOCS/intro_install.rst:104

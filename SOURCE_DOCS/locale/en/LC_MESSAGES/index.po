@@ -1,16 +1,17 @@
-# Whyjay Zheng <jhsttshj@gmail.com>, 2019. #zanata
-# Whyjay Zheng <jhsttshj@gmail.com>, 2021. #zanata
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-21, 鄭懷傑 (Whyjay Zheng)
+# This file is distributed under the same license as the GMT 教學手冊 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-08 21:34-0500\n"
-"PO-Revision-Date: 2021-02-05 15:55+0000\n"
-"Last-Translator: Whyjay Zheng <wz278@cornell.edu>\n"
-"Language: en_US\n"
-"Language-Team: English (United States) "
-"<https://hosted.weblate.org/projects/gmt-tutorials/index/en_US/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,7 +19,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:5
 msgid "GMT 教學手冊"
-msgstr "GMT Tutorials"
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:11
 msgid ""
@@ -28,17 +29,6 @@ msgid ""
 "提供的各種繪圖工具。對於有大量繪圖需求，想用程式語言或腳本批次檔處理這些繪圖工作的人而言，GMT 非常值得一學，但也正因為 GMT "
 "的命令列風格令上手曲線顯得相當陡峭，使得許多想接觸地理繪圖的初學者望之卻步。"
 msgstr ""
-"**Generic Mapping Tools** (**GMT**) is a set of open-source software for "
-"mapping and plotting geographic data. It features a command-line "
-"interface, which makes it completely different from the common GIS "
-"software like QGIS or ArcGIS. The PyGMT software, which is the latest "
-"derivative of GMT, even allows all Python users to use the collection of "
-"GMT tools more conveniently. For those who need to deal with a lot of "
-"plotting tasks or want to write a script for handling all these jobs, GMT"
-" is extremely worth learning. However, The command-line style of GMT "
-"syntax would be very challenging and makes the learning curve very steep,"
-" especially for beginners who are not familiar with manipulating "
-"geographic data and mapping."
 
 #: ../../SOURCE_DOCS/index.rst:13
 msgid ""
@@ -48,15 +38,6 @@ msgid ""
 "腳本中組織)。除此之外，本教學也會在適當的地方解說 GMT 如何與 shapefile、GDAL "
 "等相關的格式或軟體銜接，讓您的資料或繪圖處理流程更為順暢。"
 msgstr ""
-"In these tutorials, we will explore basic knowledge of GMT and useful "
-"plotting skills from numerous examples. The goal of each chapter is to "
-"produce a high-quality map from scratch and I will show you how to do "
-"that step by step. You will be learning many GMT commands and how to "
-"organize them in a command-line interface or Shell script (or Python "
-"script if using PyGMT). The tutorials will also explain things related to"
-" GMT when needed, such as the shapefile data format and the GDAL "
-"geospatial software, which would improve the efficiency of your mapping "
-"tasks."
 
 #: ../../SOURCE_DOCS/index.rst:15
 msgid ""
@@ -65,16 +46,6 @@ msgid ""
 "的傳統語法供您參考。另外。PyGMT 已於 2020 年發布測試版，因軟體尚在積極開發中，本教學暫時不會詳細的介紹 PyGMT "
 "的各項語法，但是在每一章的最後，你可以找到用 PyGMT 寫成的腳本 (Jupyter Notebook 格式) 來製作此章節的目標圖片。"
 msgstr ""
-"In November 2019, GMT released its version 6. This version is a major "
-"rehaul from the previous GMT 4 and GMT 5, especially for the more concise"
-" and easier syntax. In each chapter of this tutorial, we will use the "
-"modern syntax introduced by **GMT 6** while providing a link to scripts "
-"written in **GMT 4-5** syntax for your reference. In addition, the PyGMT "
-"software was released its beta version last year (2020). Since it is "
-"under active development, this tutorial does not provide a detailed "
-"explanation of its syntax, but instead, you can find a Python script in "
-"Jupyter Notebook format at the end of each chapter showing how to make "
-"the target chapter figure using PyGMT."
 
 #: ../../SOURCE_DOCS/index.rst:27
 msgid ""
@@ -82,43 +53,25 @@ msgid ""
 "有相當程度的了解，更請隨時跳至你想查閱的部份以節省時間。如果有什麼想分享的評論或使用秘訣，非常歡迎在各章節中留言或直接與\\ `我 "
 "<mailto:whyjayzheng@gmail.com>`_\\ 聯繫。祝各位都能在閱讀的過程中，享受到使用 GMT 畫地圖的樂趣！"
 msgstr ""
-"The tutorials are designed and written from beginner level to more "
-"advanced tricks, but the content in each chapter is actually independent."
-" You can read all the chapters in order if you are a GMT rookie, or you "
-"can jump to whichever section you are interested in to save your time if "
-"you have been using GMT for a while. Please feel free to leave any "
-"messages below any chapters or contact `me "
-"<mailto:whyjayzheng@gmail.com>`_ at any time for any questions, comments,"
-" and ideas/tips to be shared. I hope you enjoy the fun of mapping from "
-"reading these tutorials!"
 
 #: ../../SOURCE_DOCS/index.rst:30
 msgid "授權"
-msgstr "License"
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:36
-#, fuzzy
 msgid ""
 "本著作採用\\ `創用 CC 姓名標示 4.0 國際 授權條款 "
 "<http://creativecommons.org/licenses/by/4.0/>`_\\ "
 "授權。在此授權條款下，您可以在任何目的下自由分享或修改本作品，並包含商業性質之使用。您只需給予原作者適當表彰（姓名標示）。"
 msgstr ""
-"The work is licensed under a `Creative Commons Attribution 4.0 "
-"International License <http://creativecommons.org/licenses/by/4.0/>`_. "
-"You may use, share, or adapt the document in any medium or format for any"
-" purpose, even commercially. You must give appropriate credit to the "
-"author, provide a link to the license, and indicate if changes were made."
 
 #: ../../SOURCE_DOCS/index.rst:38
 msgid "本網站中大部分用以繪圖的資料皆屬公領域，或以 GNU 通用公共授權條款發行。詳細說明請參閱「\\ :doc:`data_credit`\\ 」。"
 msgstr ""
-"Most data presented in this website are from the public domain or "
-"licensed under the GNU General Public License. Please see "
-":doc:`data_credit` for more information."
 
 #: ../../SOURCE_DOCS/index.rst:40
 msgid "Copyright © 2016-21 鄭懷傑 (Whyjay Zheng). All rights reserved."
-msgstr "Copyright © 2016-21 Whyjay Zheng. All rights reserved."
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:42
 msgid ""
@@ -126,14 +79,10 @@ msgid ""
 "`reStructuredText <https://en.wikipedia.org/wiki/ReStructuredText>`_ "
 "格式編寫。歡迎隨時動叉！"
 msgstr ""
-"The source codes of all the text and pictures are accessible on `Github "
-"<https://github.com/whyjz/GMT-tutorials>`_, and are written in the format"
-" of `reStructuredText <https://en.wikipedia.org/wiki/ReStructuredText>`_."
-" Feel free to fork me at any time!"
 
 #: ../../SOURCE_DOCS/index.rst:45
 msgid "致謝"
-msgstr "Acknowledgments"
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:46
 msgid ""
@@ -141,142 +90,136 @@ msgid ""
 "MacQueen，李明龍，李定宇等人提出的建議與討論，讓本教學手冊的內容更為豐富完整。另外，也感謝所有 Github 上的協作者：譚諤 "
 "(tan2)，李奎模 (likueimo)，王亮 (wangliang1989)，對文檔內容所作的建設性修改。"
 msgstr ""
-"I want to thank William Durkin, Patricia MacQueen, Minlong Lee, and "
-"Timothy Ting-Yu Lee for their insightful comments and conversations which"
-" have complemented the tutorials. I would also like to thank all the "
-"Github contributors, including Er Tan (tan2), KMO Li (likueimo), and "
-"Liang Wang (wangliang1989), for their constructive edits to the "
-"documentation."
 
 #: ../../SOURCE_DOCS/index.rst:50
 msgid "目錄"
-msgstr "Table of Contents"
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:52
 msgid "如果你想快速瀏覽各章的目標與地圖，請前往\\ :doc:`gallery`。"
-msgstr "To skim through the chapter goals and maps, please go to :doc:`gallery`."
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:56
 msgid "新手入門"
-msgstr "Beginner’s GMT Course"
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:55
 msgid ":doc:`intro_install`"
-msgstr ":doc:`intro_install`"
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:56
 msgid ":doc:`software`"
-msgstr ":doc:`software`"
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:57
 msgid ":doc:`basic_concept`"
-msgstr ":doc:`basic_concept`"
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:61
 msgid "繪圖的基本技巧"
-msgstr "Basic Mapping Skills"
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:59
 msgid ":doc:`making_first_map`"
-msgstr ":doc:`making_first_map`"
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:60
 msgid ":doc:`coloring_topography`"
-msgstr ":doc:`coloring_topography`"
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:61
 msgid ":doc:`pen_and_painting`"
-msgstr ":doc:`pen_and_painting`"
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:62
 msgid ":doc:`scatter_plot`"
-msgstr ":doc:`scatter_plot`"
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:68
 msgid "繪製與編修各種常見的地圖 (基礎)"
-msgstr "Plot and Edit Different Kinds of Maps (Basic)"
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:64
 msgid ":doc:`cpt_colormap`"
-msgstr ":doc:`cpt_colormap`"
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:65
 msgid ":doc:`plot_vector_data`"
-msgstr ":doc:`plot_vector_data`"
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:66
 msgid ":doc:`layout_design`"
-msgstr ":doc:`layout_design`"
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:67
 msgid ":doc:`hillshading`"
-msgstr ":doc:`hillshading`"
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:68
 msgid ":doc:`contour_and_profile`"
-msgstr ":doc:`contour_and_profile`"
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:69
 msgid ":doc:`map_elements`"
-msgstr ":doc:`map_elements`"
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:73
 msgid "繪製與編修各種常見的地圖 (進階)"
-msgstr "Plot and Edit Different Kinds of Maps (Advanced)"
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:71
 msgid ":doc:`editing_cpt_colorbar`"
-msgstr ":doc:`editing_cpt_colorbar`"
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:72
 msgid ":doc:`view3d`"
-msgstr ":doc:`view3d`"
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:73
 msgid ":doc:`focal_mech`"
-msgstr ":doc:`focal_mech`"
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:74
 msgid ":doc:`draping`"
-msgstr ":doc:`draping`"
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:76
 msgid "網格資料處理"
-msgstr "Processing Gridded Data"
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:76
 msgid ":doc:`raster_calculator`"
-msgstr ":doc:`raster_calculator`"
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:77
 msgid ":doc:`basic_img_processing`"
-msgstr ":doc:`basic_img_processing`"
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:79
 msgid "數值資料處理"
-msgstr "Processing Numerical Data"
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:79
 msgid ":doc:`stat_histogram`"
-msgstr ":doc:`stat_histogram`"
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:80
 msgid ":doc:`regression_basics`"
-msgstr ":doc:`regression_basics`"
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:84
 msgid "附錄"
-msgstr "Appendix"
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:82
 msgid ":doc:`data_credit`"
-msgstr ":doc:`data_credit`"
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:83
 msgid ":doc:`command_index`"
-msgstr ":doc:`command_index`"
+msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:84
 msgid ":doc:`gallery`"
-msgstr ":doc:`gallery`"
+msgstr ""
 

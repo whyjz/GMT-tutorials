@@ -1,14 +1,17 @@
-# Whyjay Zheng <jhsttshj@gmail.com>, 2019. #zanata
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-21, 鄭懷傑 (Whyjay Zheng)
+# This file is distributed under the same license as the GMT 教學手冊 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-08 21:58-0500\n"
-"PO-Revision-Date: 2019-11-25 03:48-0500\n"
-"Last-Translator: Whyjay Zheng <jhsttshj@gmail.com>\n"
-"Language: en_US\n"
-"Language-Team: English (United States)\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"POT-Creation-Date: 2021-01-14 19:37-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,33 +19,25 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:3
 msgid "基本概念與名詞"
-msgstr "Basic Concepts and Terms"
+msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:5
 msgid ""
 "GMT 是建立在擬 UNIX 環境之下的軟體，對於曾經接觸過 shell 或 cmd "
 "的人，它的操作方法應該不陌生。如果你之前完全沒有用過以上所述的東西也沒有關係，以下將提供一些必要的基本概念，稍微熟悉後，就可以快速上手。"
 msgstr ""
-"GMT inherits the way of how the UNIX system manipulates data. For those "
-"who have some experience using Unix shell or cmd, GMT is easy to get "
-"started. If you never used anything like that, don't worry about it.  "
-"This section will introduce some essential concepts for using GMT, which "
-"makes you get into the swing of it."
 
 #: ../../SOURCE_DOCS/basic_concept.rst:7
 msgid "另外，這裡也會簡單介紹 GMT 相關的一些檔案格式與操作，如果你是第一次接觸地理空間的資料，也歡迎在此查閱相關的術語。"
 msgstr ""
-"In addition, we will also introduce file formats that are associated with"
-" GMT. If it’s your first time using geospatial data, there should be some"
-" terms worth to look up at any time."
 
 #: ../../SOURCE_DOCS/basic_concept.rst:10
 msgid "UNIX 環境"
-msgstr "UNIX environment"
+msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:16
 msgid "終端機"
-msgstr "Terminal"
+msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:17
 msgid ""
@@ -53,29 +48,18 @@ msgid ""
 "之後的版本，有兩種「終端機」可以選擇，一個就是 cmd，另一個稱為「PowerShell」，簡單的說就是讓使用者可以在 Windows "
 "的介面之下使用 UNIX 殼程式 (shell) 的一些語法。在本教學中，所有要在終端機下輸入的指令，最前方都會有個提示符號"
 msgstr ""
-"Although all the system platforms adopt a graphic interface (desktop) as "
-"the default user interface, You still can use command-line tools to get "
-"control over your computer. The easiest way to do this is to open a "
-"built-in program on the desktop environment. The program is called "
-"**cmd** on Windows, or **terminal** on Mac or most Linux systems. In this"
-" tutorial, to “open the terminal (app)” means to control your computer "
-"using a command-line tool. On Windows XP or later versions, there are "
-"actually two terminals on a single platform: cmd and “PowerShell.” The "
-"latter enables the usage of Unix shell’s syntax. In this tutorial, we "
-"always put a prompt sign at every command you need to type on the "
-"terminal:"
+
+#: ../../SOURCE_DOCS/basic_concept.rst:19
+msgid "$"
+msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:23
 msgid "接在 ``$`` 之後的文字，才是使用者真正要輸入的指令。有關如何開啟作業系統的指令模式，請參考相關的專書或網頁，於此不再贅述。"
 msgstr ""
-"The words after the ``$`` symbol are what users actually type. If you got"
-" any questions on how to open the terminal on your system platform, "
-"please check up related textbooks and webpages for the detailed step-by-"
-"step."
 
 #: ../../SOURCE_DOCS/basic_concept.rst:26
 msgid "殼層 (Shell)"
-msgstr "Shell"
+msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:27
 msgid ""
@@ -87,38 +71,22 @@ msgid ""
 "指令操作的一部分來學習。有關於殼層的基本語法，許多資訊科學的專書或網頁均有詳細介紹，例如\\ `鳥哥的Linux 私房菜 "
 "<http://linux.vbird.org/>`_。會一點殼層的指令，絕對對操作 GMT 有莫大的助益。"
 msgstr ""
-"Generally speaking, a shell refers to the interface between a user and a "
-"machine such as your PC. That means either the Desktop environment on "
-"Windows or the command console on other platforms counts. The way to "
-"interact with a computer varies from different shells. Let’s take the "
-"text-based shell for instance: a user needs to type a pre-defined command"
-" to make the computer work. GMT was initially designed and built on a "
-"famous command-line shell called **sh**, but now it has been developed "
-"and transplanted into other shells on other platforms, like the cmd on "
-"Windows. Nevertheless, GMT has remained its original style in terms of "
-"the syntax. It is recommended to learn the shell syntax together with the"
-" GMT commands. If you would like to learn more about the shell syntax, "
-"there are many textbooks or online sources that are comprehensive and "
-"well-written, like `Ryans Tutorials <https://ryanstutorials.net/bash-"
-"scripting-tutorial/>`_. Getting some knowledge of shell would definitely "
-"make you more confident with GMT."
 
 #: ../../SOURCE_DOCS/basic_concept.rst:31
 msgid "有一個語法倒是非常值得一記，那就是註解符號 ``#``，例如以下指令："
 msgstr ""
-"There’s a syntax worth mentioning here: the comment mark ``#``. For "
-"example,"
+
+#: ../../SOURCE_DOCS/basic_concept.rst:33
+msgid "$ gmt grdinfo 你的檔案.grd     # 觀看此檔案的資訊"
+msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:37
 msgid "在 ``#`` 後面的文字，是對指令的補充說明。本教學中，也會使用此格式，使腳本更易於閱讀。"
 msgstr ""
-"The words following the ``#`` are the additional description of the "
-"command. In this tutorial, we will use the format to make our scripts "
-"easier for reading."
 
 #: ../../SOURCE_DOCS/basic_concept.rst:43
 msgid "批次檔或腳本"
-msgstr "Scripts, aka Batch files"
+msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:44
 msgid ""
@@ -127,53 +95,50 @@ msgid ""
 " Windows 中，這種檔案叫做「批次檔 (batch file)」，而在 sh 或由它衍生的各種殼層中，通常會稱為「腳本 "
 "(script)」，但基本上他們指的是同一件東西，在本教學中，將統一稱之為「腳本」。不同系統在執行腳本的操作細節上，會有些許差異，而且通常也有許多種方式可以讀取腳本。以下是筆者推薦的操作方法。"
 msgstr ""
-"Whenever you press ``Enter`` on a command console, the computer starts to"
-" run the command you just put immediately. A user, however, can also opt "
-"to write down all the commands in a single text file, and type the name "
-"of the text file into the command line, then the computer would read the "
-"content and runs over all commands in order. On Windows, these files are "
-"called “batch files,” but they are also usually called “scripts” on "
-"Bourne shell or other related shells. They have the same function no "
-"matter the names they bear. In this tutorial, we choose to call them "
-"“scripts” regardless of platforms for the best readiness. You usually "
-"have many ways to get your script run, and there is also some difference "
-"among platforms in terms of processing details. I recommend the following"
-" several ways to do this:"
 
 #: ../../SOURCE_DOCS/basic_concept.rst:46
 msgid ""
 "Windows: 把 ``.txt`` 腳本檔案的副檔名改成 ``.bat``，然後點兩下此檔，Windows 就會自動開啟 cmd "
 "來執行。一般來說，腳本的最後一行可以放上"
 msgstr ""
-"Windows: change the file extension from ``.txt`` to ``.bat``, and double-"
-"click the file. Windows will automatically open cmd and run it. You can "
-"also put the following line at the bottom of your file:"
+
+#: ../../SOURCE_DOCS/basic_concept.rst:48
+msgid ""
+"...(以上都是你的指令)\n"
+"pause"
+msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:53
 msgid "加上 ``pause`` 之後，腳本執行完不會直接關閉 cmd 視窗，你可以在手動關閉前，先看一下所有指令的執行情況。"
 msgstr ""
-"``pause`` command prevents cmd from closing the command window after "
-"running the script. It makes you be able to check the progress of all the"
-" commands in your script before manually closing the window."
 
 #: ../../SOURCE_DOCS/basic_concept.rst:55
 msgid ""
 "Unix 為基礎的系統 (Linux 或 Mac 等等): 副檔名可以隨便命名，筆者通常偏好以 ``.sh``、``.csh`` 或 "
 "``.bash`` 結尾，端看你想要用哪種殼程式進行操作。以 bash 為例，腳本的第一行可以放上"
 msgstr ""
-"Unix-based system (Linux, Mac, etc.): there’s no regulation of file "
-"extension, but I usually prefer using ``.sh``, ``.csh``, or ``.bash``, "
-"depending on which shell you are going to use. Take bash as an example; "
-"it is convenient to put this at the first line of the script (it’s called"
-" **sheband**):"
+
+#: ../../SOURCE_DOCS/basic_concept.rst:57
+msgid ""
+"#!/bin/bash\n"
+"...(以下都是你的指令)"
+msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:62
 msgid "然後在指令列中，改變檔案權限"
-msgstr "And then change the file permission at the command prompt"
+msgstr ""
+
+#: ../../SOURCE_DOCS/basic_concept.rst:64
+msgid "$ chmod +x 你的腳本.bash"
+msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:68
 msgid "這樣要執行時，就可以直接下達如下指令，非常方便："
-msgstr "And now you can run your script by typing this:"
+msgstr ""
+
+#: ../../SOURCE_DOCS/basic_concept.rst:70
+msgid "$ 你的腳本路徑/你的腳本.bash"
+msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:74
 msgid ""
@@ -182,22 +147,14 @@ msgid ""
 "(csh、tcsh、cmd、Power Shell "
 "等等)，本教學的腳本在執行之前，可能需要小幅的修改成符合你使用的殼的語法，尤其是像指定變數、迴圈、建立檔案、文字資料處理等等的操作。"
 msgstr ""
-"In this tutorial, **all the scripts are written in bash format**. "
-"Although the GMT commands never change through platforms or shells, you "
-"still need to be aware of other syntax in your script that varies with "
-"shell. If you are using other shells than bash (like csh, tcsh, cmd, "
-"Power Shell…), you may have to modify the script a little bit and make it"
-" adapt to another shell. This is especially true for operations like "
-"assigning variables, looping, reading and writing some files, and text-"
-"file processing."
 
 #: ../../SOURCE_DOCS/basic_concept.rst:82
 msgid "地理空間資料"
-msgstr "Geospatial data"
+msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:85
 msgid "NetCDF"
-msgstr "NetCDF"
+msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:86
 #, python-format
@@ -213,56 +170,32 @@ msgid ""
 "無關，使用者不須擔心資料傳給別人後會讀取錯誤。其他詳細的說明，請參閱 `netCDF 網站 "
 "<http://www.unidata.ucar.edu/software/netcdf/>`_。"
 msgstr ""
-"NetCDF, or “Network Common Data Form,” is a data type developed by UCAR "
-"(University Corporation for Atmospheric Research). First released in "
-"1989, the initial goal of NetCDF is to provide a standard for scientific "
-"data storage, as it’s convenient in terms of data sharing. In addition to"
-" data format, UCAR has also released a set of modules and libraries that "
-"enable users to access data with different environments or programming "
-"languages. NetCDF is the main file format GMT supports, commonly seen as "
-"the ``.nc`` extension, but sometimes ``.grd`` is also used for clarifying"
-" its data structure. NetCDF data are saved in binary value, with a text-"
-"based header (also usually called as “metadata”) for describing "
-"associated data. The advantage of NetCDF format is that the data have "
-"nothing to do with your system’s byte order, and that’s great news since "
-"you don’t have to worry that people can’t read your data correctly when "
-"you are sharing files with them. For more details, please go to the "
-"`NetCDF website <http://www.unidata.ucar.edu/software/netcdf/>`_."
 
 #: ../../SOURCE_DOCS/basic_concept.rst:89
 msgid "大地座標系統 (Datum)"
-msgstr "Geodetic datum"
+msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:90
 msgid ""
 "大地座標系統，就是一批用以描述地球形狀的參數，以及運用這些參數計算出來的地球表面的三維座標。目前全世界最通用的大地座標系統為 **WGS84** "
 "(又稱之為 **EPSG:4326**)，它也是 GPS 衛星所採用的大地座標系統。"
 msgstr ""
-"A geodetic datum is a set of parameters for describing the shape of the "
-"Earth. We need it to calculate the coordinates of any place on the Earth."
-" The most common geodetic datum now is **WGS84** (aka **EPSG:4326**), "
-"which is also adopted by GPS satellites."
 
 #: ../../SOURCE_DOCS/basic_concept.rst:92
 msgid ""
 "以 WGS84 為例，它把地球的形狀定義成兩極略扁的橢球，橢球的中心對準地球的質心。這個形狀通常稱為 **WGS84 "
 "參考橢球**。此外在地表的水平座標設定上，緯度原點是赤道大圓，經度子午線原點則稍稍偏離了格林威治天文台。"
 msgstr ""
-"In WGS84, the shape of the Earth is defined as an oblate spheroid with "
-"flattened poles. The center of the oblate spheroid is at Earth’s center "
-"of mass. This shape is often called the **WGS84 reference ellipsoid**. "
-"When calculating the surface coordinates, the latitude zero is set at the"
-" equator, and the longitude zero is a little bit away from the Royal "
-"Observatory in Greenwich."
 
 #: ../../SOURCE_DOCS/basic_concept.rst:94
 msgid ""
 "簡而言之，大地座標系統就是一整套幫地表設定三維座標 **(經度，緯度，高度)** 的參數集合。GMT 預設的大地座標系統也是 "
 "WGS84，你也可以使用以下指令查看現在 GMT 的座標系統："
 msgstr ""
-"In a nutshell, we use geodetic datum to set up coordinates (**Latitude, "
-"Longitude, Height**) at any location on the Earth. The default datum of "
-"GMT is WGS84, and you can also check the current datum by this command"
+
+#: ../../SOURCE_DOCS/basic_concept.rst:96
+msgid "$ gmt defaults -D   # 在 Projection Parameters 的欄位"
+msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:102
 #, python-format
@@ -271,23 +204,14 @@ msgid ""
 "<https://zh.wikipedia.org/wiki/%E5%A4%A7%E5%9C%B0%E6%B0%B4%E5%87%86%E9%9D%A2>`_\\"
 " 的差距。目前 WGS84 使用 **EGM96** 這個地球的重力模型來設定地球的大地水準面。"
 msgstr ""
-"WGS84 uses the difference between the surface and the `geoid "
-"<https://en.wikipedia.org/wiki/Geoid>`_ as the altitude of the surface. "
-"Currently, WGS84 adopts **EGM96**, a gravitational model, as the standard"
-" of geoid."
 
 #: ../../SOURCE_DOCS/basic_concept.rst:106
 msgid "大地座標系統基本上是不會定義垂直高度的參考基準的，它必須要由使用者自己決定。目前常用的基準有兩個："
 msgstr ""
-"A geodetic datum doesn't define the basis of vertical elevation. It means"
-" users have to determine how to measure the altitude of topography. There"
-" are two commonly used standards:"
 
 #: ../../SOURCE_DOCS/basic_concept.rst:108
 msgid "直接用參考橢球的表面當基準測量高度，稱之為\\ **橢球高**。"
 msgstr ""
-"Measure the vertical difference between topography and the reference "
-"ellipsoid. This is called **Ellipsoidal Height**."
 
 #: ../../SOURCE_DOCS/basic_concept.rst:109
 #, python-format
@@ -296,24 +220,16 @@ msgid ""
 "<https://zh.wikipedia.org/wiki/%E5%A4%A7%E5%9C%B0%E6%B0%B4%E5%87%86%E9%9D%A2>`_\\)"
 " 當基準測量高度，稱之為\\ **正高**。目前常用的標準為 **EGM96** 這個地球的重力模型。"
 msgstr ""
-"Measure the vertical difference between topography and sea surface "
-"(`geoid <https://en.wikipedia.org/wiki/Geoid>`_). This is called "
-"**Orthometric Height** or **Geoid Height**. **EGM96** is the most "
-"commonly used gravitational model for deriving geoid location."
 
 #: ../../SOURCE_DOCS/basic_concept.rst:113
 msgid ""
 "慣例上，以 WGS84 做基準的資料都會採用\\ **正高**\\ "
 "來表示高度，但並非所有的資料都會遵循這條規則。如果你對高度有精細的要求，例如誤差須在數十公尺內，最好確認一下你的資料是使用哪種高度參考基準。"
 msgstr ""
-"Data based on WGS84 usually use **Orthometric Height** to represent "
-"elevation, but not all data follow this convention. If it is required to "
-"have a small uncertainty on elevation, like within 10 meters, it would be"
-" better to check which way the height was measured."
 
 #: ../../SOURCE_DOCS/basic_concept.rst:116
 msgid "投影法與投影座標系統 (Projected Coordinate System)"
-msgstr "Projection and Projected Coordinate System"
+msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:117
 msgid ""
@@ -321,14 +237,6 @@ msgid ""
 "多公里，如果地圖很小，常常都只會有幾弧分或幾弧秒的改變)，所以在許多時候，我們會使用特定的投影法，把地球的弧面依照某種幾何公式拓展成平面，這樣地圖上一個點的座標，就可以用"
 " **(二維 X 座標，二維 Y 座標，高度)** 來表示。這種座標表示法，就稱作投影座標系統。"
 msgstr ""
-"Unlike the curved surface of the Earth, most maps are flat. Moreover, it "
-"would be awkward to use Lat/Long for a regional map because 1 degree is "
-"usually around 110 km, which is way larger than the size of many cities "
-"and towns. Therefore, in many cases we would stretch and flatten the "
-"Earth’s surface using a specific projection (which is actually a set of "
-"geometric formulae). Any location on a map can thus be written as a 3-D "
-"coordinates **(X, Y, Height)**. This way to represent geographical "
-"locations is called Projected Coordinate System."
 
 #: ../../SOURCE_DOCS/basic_concept.rst:119
 msgid ""
@@ -338,13 +246,6 @@ msgid ""
 "<https://en.wikipedia.org/wiki/Transverse_Mercator_projection>`_\\ "
 "來製作地圖的二維座標。"
 msgstr ""
-"We need both the shape of Earth (aka reference ellipsoid in the geodetic "
-"datum) and a projection to make a (projected) coordinate system. The most"
-" popular projection coordinate system is **UTM**, or Universal Transverse"
-" Mercator, which uses WGS84 ellipsoid. It cuts the Earth into 60 zones "
-"(except the polar region), and apply the `Transverse Mercator "
-"<https://en.wikipedia.org/wiki/Transverse_Mercator_projection>`_ "
-"projection to each zone with different coordinate origin."
 
 #: ../../SOURCE_DOCS/basic_concept.rst:121
 msgid ""
@@ -352,10 +253,6 @@ msgid ""
 "<http://hep.ccic.ntnu.edu.tw/browse2.php?s=237>`_\\ 或\\ `上河文化的解說網頁 "
 "<http://www.sunriver.com.tw/grid_tm2.htm>`_。"
 msgstr ""
-"For more introductions on projections and projected coordinate systems, "
-"`ArcGIS online webpages <http://desktop.arcgis.com/en/arcmap/10.3/guide-"
-"books/map-projections/about-projected-coordinate-systems.htm>`_ provide "
-"good explanations over these topics."
 
 #: ../../SOURCE_DOCS/basic_concept.rst:125
 msgid ""
@@ -364,17 +261,10 @@ msgid ""
 "的差距較大，導致算出來的座標會與 WGS84 有數百公尺至一公里的差距；而 TWD97 就非常的接近 "
 "WGS84，在台灣地區的座標差距大致上只有數十公分。\\ [1]_"
 msgstr ""
-"In addition to WGS84, there are other two widely-used sets of geodetic "
-"datum called **TWD67** and **TWD97** for regional maps of Taiwan. The "
-"corresponding projected coordinate systems are TWD67-TM2 and TWD97-TM2, "
-"respectively. Both two sets adopt a different reference ellipsoid from "
-"WGS84, but TWD87 has a greater offset, which often results in a distance "
-"of 0.1-1 km from WGS84 Lat/Long. TWD97, on the other hand, is relatively "
-"close to WGS84, with only a range of several tens of centimeters. [1]_"
 
 #: ../../SOURCE_DOCS/basic_concept.rst:128
 msgid "GMT 6 的新語法模式"
-msgstr "The new syntax mode in GMT 6"
+msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:129
 msgid ""
@@ -384,65 +274,38 @@ msgid ""
 "的繪圖步驟轉移到暫存檔中，並直接產生向量形式的 PDF 或是影像形式的 PNG 與 "
 "JPG，因此大大簡化了腳本的繁雜程度。以下列出現代模式和傳統模式最主要的差別\\ [2]_\\ ："
 msgstr ""
-"GMT 6 is released in 2019 and is the latest version of GMT. It is also "
-"the version this tutorial is based on. It introduces a brand new system "
-"of syntax, called the **Modern Mode**, to highlight the difference from "
-"the old syntax GMT 5 was using (called the **Classic Mode**). In the "
-"modern mode, GMT saves its PostScript-formated map into a temporary file,"
-" and directly generate a vector PDF or an image PNG/JPG to the user. This"
-" way greatly reduces the complexity of a GMT script. I have listed some "
-"major differences between the modern mode and the classic mode here: [2]_"
 
 #: ../../SOURCE_DOCS/basic_concept.rst:131
 msgid "GMT 指令不再透過 UNIX 的輸出重導向 (``>``) 把地圖存到 ``.ps`` 檔中。"
 msgstr ""
-"GMT commands no longer use UNIX's redirecting symbol ``>`` to save a map "
-"to a ``.ps`` file."
 
 #: ../../SOURCE_DOCS/basic_concept.rst:132
 msgid "使用者不用再透過 ``-O`` 與 ``-K`` 選項「連接」不同的 GMT 指令。"
 msgstr ""
-"Users don't need to use ``-O`` and ``-K`` to \"connect\" multiple GMT "
-"commands anymore. "
 
 #: ../../SOURCE_DOCS/basic_concept.rst:133
 msgid "因為可以直接選擇多種出圖格式，使用者不用再花費時間轉檔。"
 msgstr ""
-"Because you can now directly specify many different map formats, it saves"
-" your time from converting your final maps."
 
 #: ../../SOURCE_DOCS/basic_concept.rst:134
 msgid "出圖的版面尺寸不再綁定紙張尺寸，而是會自動裁切到繪圖區域的大小。因此，``-P`` 選項也不需要了。"
 msgstr ""
-"The map size is no longer fixed to the paper size. Instead, GMT now "
-"automatically crops the map to the plotting area. Thus, you don't need "
-"the ``-P`` option anymore."
 
 #: ../../SOURCE_DOCS/basic_concept.rst:135
 msgid "許多 ``ps`` 開頭的指令改了名字，多半是把 ``ps`` 刪掉，但也有完全改掉的例子，例如 ``psxy`` 變成了 ``plot``。"
 msgstr ""
-"Many commands starting with ``ps`` have changed their names. Most of them"
-" just have the ``ps`` removed, but few of them have a completely new name"
-" now. For example, ``psxy`` in GMT 4-5 is ``plot`` in GMT 6."
 
 #: ../../SOURCE_DOCS/basic_concept.rst:136
 msgid "在現代模式中，使用者\\ **必須**\\ 要透過 ``gmt begin`` 與 ``gmt end`` 來包住繪圖的指令。在傳統模式中無此語法。"
 msgstr ""
-"In the modern mode, you **have to** use ``gmt begin`` and ``gmt end`` to "
-"wrap the other plotting commands. You cannot find these two commands in "
-"the classic mode."
 
 #: ../../SOURCE_DOCS/basic_concept.rst:137
 msgid "重複的繪圖區域 ``-R`` 和投影 ``-J`` 等設定，再也不用在每一個指令中都列出。"
 msgstr ""
-"Now you don't need to repeatedly list map extent ``-R`` and projection "
-"``-J`` in each GMT command."
 
 #: ../../SOURCE_DOCS/basic_concept.rst:138
 msgid "增加了 ``subplot`` 指令，讓製作多合一地圖變得很容易。"
 msgstr ""
-"There is a new command called ``subplot`` to expedite the task to make "
-"multi-frame maps."
 
 #: ../../SOURCE_DOCS/basic_concept.rst:140
 msgid ""
@@ -450,39 +313,32 @@ msgid ""
 "**在本教學手冊中，我會使用現代模式的語法來撰寫腳本**\\ "
 "。然而，在每個繪製地圖的章節中，我也會一併放上傳統模式的教學連結以及使用傳統模式撰寫的腳本，供各位使用者參考。"
 msgstr ""
-"In order to realize the backward compatibility, in GMT 6 you can use "
-"either modern mode or classic mode to write your script. Because there "
-"are many advantages of the new syntax, **In this tutorial I would use the"
-" modern mode syntax to create maps.** However, for your reference, I "
-"would also provide a link to the script using the classical mode and the "
-"associated instruction for each map-making chapter. "
 
 #: ../../SOURCE_DOCS/basic_concept.rst:142
 msgid "如果你已經是 GMT 5 的使用者，可以馬上無痛升級到 GMT 6，因為幾乎所有第五版的語法在第六版中都有支援 (傳統模式)。"
 msgstr ""
-"If you are already using GMT 5, then you might want to update to GMT 6 "
-"right now because the new version supports almost all GMT 5 syntax (as "
-"the classic mode)."
 
 #: ../../SOURCE_DOCS/basic_concept.rst:144
 msgid "如果你已經是 GMT 4 的使用者，以下列出幾個例子顯示 GMT 6 (傳統模式) 與 GMT 4 指令上的不同："
 msgstr ""
-"If you are already using GMT 4, the following cases show the difference "
-"between GMT 4 and GMT 6 (classic mode) in terms of commands:"
+
+#: ../../SOURCE_DOCS/basic_concept.rst:146
+msgid ""
+"$ pscoast 各種選項...       # GMT 4 的 pscoast 指令\n"
+"$ gmt coast 各種選項...     # 在 GMT 6 中，換成了 coast 指令，而且變成總指令 gmt 下屬的一個模組。\n"
+"$ gmtset 各種選項...        # GMT 4 的 gmtset 指令\n"
+"$ gmt set 各種選項...       # 在 GMT 6 中也換成了 set 指令，而且變成總指令 gmt 下屬的一個模組。"
+msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:153
 msgid ""
 "然而，在安裝 GMT 6 的時候，系統會問你要不要替所有 ``gmt`` 指令下屬的模組建立捷徑。如果你選了 Yes，那麼你就可以使用 GMT 4"
 " 的語法來讓 GMT 6 執行你的腳本 (意思就是，GMT 會讓系統理解 ``pscoast`` 等等 GMT 的舊指令名字)。"
 msgstr ""
-"However, when installing GMT 6 the system would ask you if you want to "
-"generate shortcuts for all the ``gmt`` modules. If you choose Yes, then "
-"you can use the GMT 4 syntax in GMT 6 (i.e., GMT can make system "
-"understand the old GMT commands such as ``pscoast``)."
 
 #: ../../SOURCE_DOCS/basic_concept.rst:169
 msgid "`Taiwan datums <https://wiki.osgeo.org/wiki/Taiwan_datums>`_, OSGeo Wiki."
-msgstr "`Taiwan datums <https://wiki.osgeo.org/wiki/Taiwan_datums>`_, OSGeo Wiki."
+msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:170
 msgid ""
@@ -491,55 +347,4 @@ msgid ""
 "Geochemistry, Geophysics, Geosystems, 20. `doi.org/10.1029/2019GC008515 "
 "<http://doi.org/10.1029/2019GC008515>`_."
 msgstr ""
-"Wessel, P., Luis, J., Uieda, L., Scharroo, R., Wobbe, F., Smith, W. H. "
-"F., and Tian, D. (2019). The Generic Mapping Tools Version 6. "
-"Geochemistry, Geophysics, Geosystems, 20. `doi.org/10.1029/2019GC008515 "
-"<http://doi.org/10.1029/2019GC008515>`_."
-
-#~ msgid "$"
-#~ msgstr "$"
-
-#~ msgid "$ gmt grdinfo 你的檔案.grd     # 觀看此檔案的資訊"
-#~ msgstr "$ grdinfo yourfile.grd     # view info of the file"
-
-#~ msgid ""
-#~ "...(以上都是你的指令)\n"
-#~ "pause"
-#~ msgstr ""
-#~ "...(your commands)\n"
-#~ "pause"
-
-#~ msgid ""
-#~ "#!/bin/bash\n"
-#~ "...(以下都是你的指令)"
-#~ msgstr ""
-#~ "#!/bin/bash\n"
-#~ "...(starting your commands)"
-
-#~ msgid "$ chmod +x 你的腳本.bash"
-#~ msgstr "$ chmod +x yourscript.bash"
-
-#~ msgid "$ 你的腳本路徑/你的腳本.bash"
-#~ msgstr "$ path_to_your_script/yourscript.bash"
-
-#~ msgid "$ gmt defaults -D   # 在 Projection Parameters 的欄位"
-#~ msgstr "$ gmt defaults -D   # inside the block of Projection Parameters"
-
-#~ msgid ""
-#~ "$ pscoast 各種選項...       # GMT 4 的 pscoast 指令\n"
-#~ "$ gmt coast 各種選項...     # 在 GMT 6 中，換成了 coast 指令，而且變成總指令 gmt 下屬的一個模組。\n"
-#~ "$ gmtset 各種選項...        # GMT 4 的 gmtset 指令\n"
-#~ "$ gmt set 各種選項...       # 在 GMT 6 中也換成了 set 指令，而且變成總指令 gmt 下屬的一個模組。"
-#~ msgstr ""
-#~ "$ pscoast options...       # pscoast in GMT 4\n"
-#~ "$ gmt pscoast options...     # In "
-#~ "GMT 6, pscoast has changed to "
-#~ "coast, and it becomes a module "
-#~ "under the master gmt command as "
-#~ "well.\n"
-#~ "$ gmtset options...        # gmtset in GMT 4\n"
-#~ "$ gmt set options...       # In "
-#~ "GMT 6, this has changed to set,"
-#~ " and it becomes a module under "
-#~ "the master gmt command as well."
 

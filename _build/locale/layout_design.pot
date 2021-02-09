@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-14 19:37-0500\n"
+"POT-Creation-Date: 2021-02-08 21:58-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -164,22 +164,12 @@ msgstr ""
 msgid "為了方便使用這些資料，我們可以建立一個純文字文件 ``coord.txt``，再把兩地的座標資訊複製到文件中存檔，如此一來供 GMT 使用的資料表就建立完成。以下是使用十進位制座標的 ``coord.txt`` 內容："
 msgstr ""
 
-#: ../../SOURCE_DOCS/layout_design.rst:66
-msgid "47.92, 106.92\n"
-"47.61, -122.33"
-msgstr ""
-
 #: ../../SOURCE_DOCS/layout_design.rst:71
 msgid "再次強調，資料中的第一欄現在是緯度 (y 值)，第二欄是經度 (x 值)。這與我們在「\\ :doc:`scatter_plot`\\ 」一章中所使用的 xy 順序相反，不過只要適當的指定欄位意義，GMT 仍然可以讀取。另外，兩個欄位中間使用了「逗號」分隔，在 GMT 中也是可以接受的。"
 msgstr ""
 
 #: ../../SOURCE_DOCS/layout_design.rst:73
 msgid "以下是使用度分秒制座標的 ``coord.txt`` 內容："
-msgstr ""
-
-#: ../../SOURCE_DOCS/layout_design.rst:75
-msgid "47:55:0N, 106:55:0E\n"
-"47:36:35N, 122:19:59W"
 msgstr ""
 
 #: ../../SOURCE_DOCS/layout_design.rst:80
@@ -218,39 +208,12 @@ msgstr ""
 msgid "讓我們從目標地圖的下半部 (麥卡托投影的部份) 開始吧。先來畫出海岸線與國界："
 msgstr ""
 
-#: ../../SOURCE_DOCS/layout_design.rst:99
-msgid "land_color=\"#CEB9A0\" # 陸域填色\n"
-"\n"
-"gmt begin ulaanbaatar_seattle png\n"
-"    gmt basemap -R70/270/30S/70N -JM13c -B+tMercator\n"
-"    gmt coast -Dl -A1000 -G$land_color -N1/thick,60 -Ba40f20g20\n"
-"    # -D: 調整海岸線解析度。因為我們畫的是全球資料，用不著高解析度的海岸線，所以設定為 l (low) 即可。\n"
-"gmt end"
-msgstr ""
-
 #: ../../SOURCE_DOCS/layout_design.rst:113
 msgid "這張地圖的細節設定，例如字體大小、格線粗細等等，採用的是 GMT 的預設參數。你可以使用 ``defaults`` 指令在終端機中查看所有的參數值："
 msgstr ""
 
-#: ../../SOURCE_DOCS/layout_design.rst:115
-msgid "$ gmt defaults -D"
-msgstr ""
-
 #: ../../SOURCE_DOCS/layout_design.rst:119
 msgid "螢幕的輸出如下所示："
-msgstr ""
-
-#: ../../SOURCE_DOCS/layout_design.rst:121
-msgid "#\n"
-"# GMT 6.0.0 Defaults file\n"
-"#\n"
-"# COLOR Parameters\n"
-"#\n"
-"COLOR_BACKGROUND               = black\n"
-"COLOR_FOREGROUND               = white\n"
-"COLOR_NAN                      = 127.5\n"
-"COLOR_MODEL                    = none\n"
-"... #(以下省略)"
 msgstr ""
 
 #: ../../SOURCE_DOCS/layout_design.rst:134
@@ -265,12 +228,6 @@ msgstr ""
 msgid "使用 ``set`` 指令設定參數的預設值。它的語法如下："
 msgstr ""
 
-#: ../../SOURCE_DOCS/layout_design.rst:140
-msgid "$ gmt set 參數名1 參數值1 [參數名2 參數值2 參數名3 參數值3...]\n"
-"# ---- 或是 ----\n"
-"$ gmt set 參數名1=參數值1 [參數名2=參數值2 參數名3=參數值3...]"
-msgstr ""
-
 #: ../../SOURCE_DOCS/layout_design.rst:146
 msgid "在本教學中我會使用第一種語法以方便對齊參數值。這種方法與前一種方法的主要差異是，GMT 會紀錄改變的預設值，只要紀錄不被覆蓋或刪除，**改變的參數對接下來的所有指令都有效**。第一次下達 ``set`` 指令時，GMT 會在當前目錄下建立 ``gmt.conf`` 檔案，並把所有更動儲存在內。之後所有的 GMT 指令都會讀取此檔案，這就是為什麼使用 ``set`` 設定參數會有永久性效用的原因。"
 msgstr ""
@@ -281,17 +238,6 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/layout_design.rst:188
 msgid "介紹完 ``set`` 後，讓我們馬上來做個測試。在剛剛目標地圖下半部的腳本中加入此指令："
-msgstr ""
-
-#: ../../SOURCE_DOCS/layout_design.rst:190
-msgid "land_color=\"#CEB9A0\"\n"
-"gmt set MAP_FRAME_TYPE plain\n"
-"# MAP_FRAME_TYPE：地圖邊框樣式。預設是 fancy，就是上圖的黑白相間邊框。改成 plain 的話，邊框會變成最基本的樣式。\n"
-"\n"
-"gmt begin ulaanbaatar_seattle png\n"
-"    gmt basemap -R70/270/30S/70N -JM13c -B+tMercator\n"
-"    gmt coast -Dl -A1000 -G$land_color -N1/thick,60 -Ba40f20g20\n"
-"gmt end"
 msgstr ""
 
 #: ../../SOURCE_DOCS/layout_design.rst:205
@@ -338,22 +284,6 @@ msgstr ""
 msgid "因此，在原腳本中 ``set`` 的設定可以擴展成："
 msgstr ""
 
-#: ../../SOURCE_DOCS/layout_design.rst:241
-msgid "# (前略)\n"
-"gmt set FONT_ANNOT_PRIMARY          12p,20,#0D057A \\\n"
-"        FONT_TITLE                  30,Bookman-Demi,#0D057A \\\n"
-"        FORMAT_GEO_MAP              dddF \\\n"
-"        MAP_ANNOT_OBLIQUE           32 \\\n"
-"        MAP_FRAME_TYPE              plain \\\n"
-"        MAP_GRID_CROSS_SIZE_PRIMARY 8p \\\n"
-"        MAP_GRID_PEN_PRIMARY        thinner,#ED99F0 \\\n"
-"        MAP_TICK_PEN_PRIMARY        thicker,black \\\n"
-"        MAP_TITLE_OFFSET            0.5c \\\n"
-"        PS_PAGE_COLOR               ivory\n"
-"# 注意我在每一行結尾使用了 \"\\\" 符號，意味著下一行仍然是 gmt set 的內容。\n"
-"# (後略)"
-msgstr ""
-
 #: ../../SOURCE_DOCS/layout_design.rst:259
 msgid "有許多參數名稱都有 ``PRIMARY``，這是由於 GMT 的某些邊框 (尤其是 ``fancy`` 類型的邊框) 會使用不同的設定來指定主格線 (刻度) 與副格線 (刻度)。在我們的例子中，只設定了主格線，副格線皆已省略。你也可以換成 ``fancy`` 類型的邊框，指定副格線的樣式 (帶有 ``SECONDARY`` 的參數名稱)，看看出圖會是什麼樣的感覺！"
 msgstr ""
@@ -370,50 +300,12 @@ msgstr ""
 msgid "大部分的改動都如我們所預期：所有的字體樣式都換了、地圖邊框改了、顏色和格線也換成比較舒服的搭配。接下來讓我們補完這張地圖上的城市位置和兩條不同的路徑。由於在 ``coord.txt`` 中，座標欄位是「先緯度再經度」，因此在使用 ``plot`` 時，需要加上 ``-:`` 選項，「告訴」GMT 第一欄是 Y 值，第二欄是 X 值。``plot`` 在地圖上畫線時的預設模式是「畫出大圓路徑」，如果加上 ``-A`` 選項，可以改成「畫出投影系統中的直線路徑」，在麥卡托投影中，這條路徑就是恆向線。因此，運用 ``plot`` 與 ``text``，就可以畫出以上目標，並且標注兩條路徑的名稱："
 msgstr ""
 
-#: ../../SOURCE_DOCS/layout_design.rst:288
-msgid "# ==== 設定變數 ====\n"
-"input_xy=\"coord.txt\"\n"
-"land_color=\"#CEB9A0\" # 陸域填色\n"
-"rl_color=\"#FF0073\"   # 恆向線顏色\n"
-"gc_color=\"#0044FF\"   # 大圓路徑顏色\n"
-"\n"
-"# ==== 設定作圖參數 ====\n"
-"gmt set FONT_ANNOT_PRIMARY          12p,20,#0D057A \\\n"
-"        FONT_TITLE                  30,Bookman-Demi,#0D057A \\\n"
-"        FORMAT_GEO_MAP              dddF \\\n"
-"        MAP_ANNOT_OBLIQUE           32 \\\n"
-"        MAP_FRAME_TYPE              plain \\\n"
-"        MAP_GRID_CROSS_SIZE_PRIMARY 8p \\\n"
-"        MAP_GRID_PEN_PRIMARY        thinner,#ED99F0 \\\n"
-"        MAP_TICK_PEN_PRIMARY        thicker,black \\\n"
-"        MAP_TITLE_OFFSET            0.5c \\\n"
-"        PS_PAGE_COLOR               ivory\n"
-"\n"
-"# ==== 開始繪圖 ====\n"
-"gmt begin ulaanbaatar_seattle png\n"
-"    gmt basemap -R70/270/30S/70N -JM13c -B+tMercator\n"
-"    gmt coast -Dl -A1000 -G$land_color -N1/thick,60 -Ba40f20g20 --MAP_GRID_PEN_PRIMARY=thicker\n"
-"    # 調整 MAP_GRID_PEN_PRIMARY 讓十字符號粗一點\n"
-"    gmt plot $input_xy -: -A -W1p,$rl_color    # 恆向線\n"
-"    gmt plot $input_xy -:    -W1p,$gc_color    # 大圓路徑\n"
-"    gmt plot $input_xy -:    -Sa0.4c -Gblack   # 城市的位置，-Sa0.4c 是外接圓為 0.4 公分的星形符號。\n"
-"    # 以下是兩條線的說明文字\n"
-"    echo \"174 41 Rhumb Line\"    | gmt text -F+f,18,$rl_color\n"
-"    echo \"174 61 Great Circle\"  | gmt text -F+f,18,$gc_color\n"
-"gmt end"
-msgstr ""
-
 #: ../../SOURCE_DOCS/layout_design.rst:329
 msgid "如此一來，目標地圖的下半部就完成了！"
 msgstr ""
 
 #: ../../SOURCE_DOCS/layout_design.rst:335
 msgid "接下來讓我們進入上半部，蘭伯特投影的地圖。為了不讓地圖彼此重疊，我們必須把第二個地圖呈現的位置往上移。GMT 的通用選項 ``-X`` 和 ``-Y`` 就是用來設定地圖的相對位置，它的用法為"
-msgstr ""
-
-#: ../../SOURCE_DOCS/layout_design.rst:337
-msgid "-X水平偏移量 (向右為正)\n"
-"-Y垂直偏移量 (向上為正)"
 msgstr ""
 
 #: ../../SOURCE_DOCS/layout_design.rst:342
@@ -424,47 +316,16 @@ msgstr ""
 msgid "接下來我們來看看蘭伯特等積方位投影使用的 ``-R`` 與 ``-J`` 選項。此投影法限定使用全球的作圖範圍，也就是 ``-R-180/180/-90/90``。你也可以使用比較短的特殊代號 ``-Rg``，它的效果與前者相同。``-J`` 語法則為："
 msgstr ""
 
-#: ../../SOURCE_DOCS/layout_design.rst:348
-msgid "-JA中心點經度/中心點緯度/尺寸"
-msgstr ""
-
 #: ../../SOURCE_DOCS/layout_design.rst:352
 msgid "選擇烏蘭巴托的座標當作投影的中心點，就可以畫出地圖、海岸線、大圓路徑與城市位置："
-msgstr ""
-
-#: ../../SOURCE_DOCS/layout_design.rst:354
-msgid "# (前略)\n"
-"# ==== 開始繪圖 ====\n"
-"gmt begin ulaanbaatar_seattle png\n"
-"    # (上述麥卡托地圖的部份)\n"
-"    # ==== 繪圖 (蘭伯特) ====\n"
-"    gmt basemap -Rg -JA106:55/47:55/13c -Yh+3c -B+tLambert --MAP_TITLE_OFFSET=0c    # 把標題與地圖邊框弄靠近一點\n"
-"    gmt coast -Dl -A1000 -G$land_color -N1/thick,60 -Bxg60 -Byg30 --MAP_GRID_CROSS_SIZE_PRIMARY=0p\n"
-"    # 我們不要十字符號出現在此地圖中所以 MAP_GRID_CROSS_SIZE_PRIMARY 設為 0\n"
-"    gmt plot $input_xy -:     -W1p,$gc_color    # 大圓路徑\n"
-"    gmt plot $input_xy -: -Sa0.4c -Gblack       # 城市位置\n"
-"\n"
-"gmt end"
 msgstr ""
 
 #: ../../SOURCE_DOCS/layout_design.rst:373
 msgid "注意 GMT 無法透過 ``-B`` 選項為蘭伯特地圖設定座標刻度，我們稍後得自行使用 ``text`` 額外標上去。現在烏蘭巴托已經被置於地圖正中間了，這時大圓路徑在地圖上就是一直線前往西雅圖，如果我們把 ``-A`` 選項打開，也只會得到相同的路徑。那麼，**該如何畫出在這張地圖上的恆向線？**\\ 由於西雅圖和烏蘭巴托的緯度非常相近，因此恆向線相當於沿著緯線前進的線段。對於這種狀況，我們可以使用 ``-Ap`` 選項，強制讓兩點之間沿著緯線和經線連接："
 msgstr ""
 
-#: ../../SOURCE_DOCS/layout_design.rst:375
-msgid "gmt plot $input_xy -: -Ap -W1p,$rl_color    # (第二個地圖上的) 恆向線"
-msgstr ""
-
 #: ../../SOURCE_DOCS/layout_design.rst:383
 msgid "以上繪製恆向線的技巧在兩地處在不同的緯度下無法適用。更一般性的作法是呼叫 GMT 中一個多功能的指令：``project``。這個指令可以用來進行座標轉換或是產生在某個特定的座標系統下的兩點間移動路徑。使用 ``project`` 在平面直角座標下產生直線路徑，再送給 ``plot`` 繪圖，就可以畫出恆向線："
-msgstr ""
-
-#: ../../SOURCE_DOCS/layout_design.rst:385
-msgid "gmt project -C106.92/47.92 -E237.67/47.61 -G10 -N | gmt plot -W1p,$rl_color    # (第二個地圖上的) 恆向線\n"
-"# -C: 起點座標 (烏蘭巴托)\n"
-"# -E: 終點座標 (西雅圖, 經度要比烏蘭巴托大，因此加上 360)\n"
-"# -G: 每個取樣點的距離 (單位與起終點座標相同)\n"
-"# -N: 設定座標系為平面直角座標"
 msgstr ""
 
 #: ../../SOURCE_DOCS/layout_design.rst:393
@@ -475,39 +336,12 @@ msgstr ""
 msgid "本地圖的最後一步，就是替兩條線與經緯格線加上文字標籤。換 ``text`` 上場了！這次要標的文字比較複雜，因為每個標籤的角度都不一樣，使用 ``echo`` 一一指定的話會變得有點麻煩。幸好，``text`` 和 ``plot`` 一樣，都可以利用重導向符號 ``<<`` 一次輸入以上這些不同資訊。它的具體語法為："
 msgstr ""
 
-#: ../../SOURCE_DOCS/layout_design.rst:420
-msgid "gmt text -F+欄位a+欄位b+.... [其他選項] << EOF\n"
-"第一欄(固定為X) 第二欄(固定為Y) 第三欄(欄位a) 第四欄(欄位b) ... 最後一欄(固定為標籤文字)\n"
-"...           ...           ...          ...          ... ...\n"
-"...           ...           ...          ...          ... ...\n"
-"EOF"
-msgstr ""
-
 #: ../../SOURCE_DOCS/layout_design.rst:428
 msgid "也就是說，``text`` 要求輸入最少為 3 欄 (X、Y、標籤文字)，而透過 ``-F`` 選項，可以指定更多的欄位。如果要加上經緯格線的文字標籤，我們可以使用 ``-F+a``，如此一來第 3 欄就會是每個文字的角度 (從水平開始往逆時針旋轉)，標籤文字則會被擠到第 4 欄，如下所示："
 msgstr ""
 
-#: ../../SOURCE_DOCS/layout_design.rst:430
-msgid "gmt text -F+a << ANNOTEND\n"
-"106.92 -30 0   30@.S\n"
-"106.92 30  0   30@.N\n"
-"60     15  70  60@.E\n"
-"180    15  305 180@.\n"
-"ANNOTEND\n"
-"# 經度  緯度  角度  文字\n"
-"# \"@.\" 會被解讀成度數符號"
-msgstr ""
-
 #: ../../SOURCE_DOCS/layout_design.rst:441
 msgid "如果要加上大圓路徑和恆向線的標籤，我們除了要指定旋轉角度外，也要指定不同的字型。在前面的麥卡托地圖中，指定字型的方式是 ``-F+f字型樣式`` ，如果不給 ``字型樣式`` 的話，就代表 ``text`` 必需要在輸入資料中尋找對應的欄位。因此，我們也可使用 ``-F+a+f`` 來指定第 3 欄為角度、第 4 欄為字型樣式，而標籤文字這次則被放到了第 5 欄："
-msgstr ""
-
-#: ../../SOURCE_DOCS/layout_design.rst:443
-msgid "gmt text -F+a+f << LABELEND\n"
-"180    40  58  ,Bookman-DemiItalic,$rl_color   Rhumb Line\n"
-"180    80  58  ,Bookman-DemiItalic,$gc_color   Great Circle\n"
-"LABELEND\n"
-"# 經度  緯度  角度  字型樣式  文字"
 msgstr ""
 
 #: ../../SOURCE_DOCS/layout_design.rst:451
@@ -518,79 +352,12 @@ msgstr ""
 msgid "恭喜！我們終於完成本章目標的地圖了。最後再次提醒：使用 ``set`` 修改的預設參數，都會被存在 ``gmt.conf`` 中。如果你下次要在同一個資料夾作圖，但是又不想使用這次的設定，那麼在地圖完成後，請自行刪除 ``gmt.conf`` 或是把刪除指令放在腳本中的最後一行："
 msgstr ""
 
-#: ../../SOURCE_DOCS/layout_design.rst:455
-msgid "# (前略)\n"
-"gmt end\n"
-"rm -rf gmt.conf    # <---- 消除舊的組態設定檔"
-msgstr ""
-
 #: ../../SOURCE_DOCS/layout_design.rst:462
 msgid "指令稿"
 msgstr ""
 
 #: ../../SOURCE_DOCS/layout_design.rst:464
 msgid "本地圖的最終指令稿如下："
-msgstr ""
-
-#: ../../SOURCE_DOCS/layout_design.rst:466
-msgid "# ==== 設定變數 ====\n"
-"input_xy=\"coord.txt\"\n"
-"land_color=\"#CEB9A0\"\n"
-"rl_color=\"#FF0073\"        # 恆向線顏色\n"
-"gc_color=\"#0044FF\"        # 大圓路徑顏色\n"
-"# 把兩個城市的 xy 座標寫入 $input_xy 檔案中\n"
-"# 如果你已經下載了 coord.txt，以下四行可以註解掉。\n"
-"xy_ulaanbaatar=\"47:55:0N, 106:55:0E\"       # 烏蘭巴托的座標\n"
-"xy_seattle=\"47:36:35N, 122:19:59W\"         # 西雅圖的座標\n"
-"echo $xy_ulaanbaatar > $input_xy\n"
-"echo $xy_seattle    >> $input_xy\n"
-"\n"
-"# ==== 設定作圖參數 ====\n"
-"gmt set FONT_ANNOT_PRIMARY          12p,20,#0D057A \\\n"
-"        FONT_TITLE                  30,Bookman-Demi,#0D057A \\\n"
-"        FORMAT_GEO_MAP              dddF \\\n"
-"        MAP_ANNOT_OBLIQUE           32 \\\n"
-"        MAP_FRAME_TYPE              plain \\\n"
-"        MAP_GRID_CROSS_SIZE_PRIMARY 8p \\\n"
-"        MAP_GRID_PEN_PRIMARY        thinner,#ED99F0 \\\n"
-"        MAP_TICK_PEN_PRIMARY        thicker,black \\\n"
-"        MAP_TITLE_OFFSET            0.5c \\\n"
-"        PS_PAGE_COLOR               ivory\n"
-"\n"
-"# ==== 開始繪圖 ====\n"
-"gmt begin ulaanbaatar_seattle_gmt6 png\n"
-"\n"
-"    # ==== 下圖 (麥卡托) ====\n"
-"    gmt basemap -R70/270/30S/70N -JM13c -B+tMercator\n"
-"    gmt coast -Dl -A1000 -G$land_color -N1/thick,60 -Ba40f20g20 --MAP_GRID_PEN_PRIMARY=thicker\n"
-"    gmt plot $input_xy -: -A -W1p,$rl_color    # 恆向線\n"
-"    gmt plot $input_xy -:    -W1p,$gc_color    # 大圓路徑\n"
-"    gmt plot $input_xy -:    -Sa0.4c -Gblack\n"
-"    echo \"174 41 Rhumb Line\"    | gmt text -F+f,18,$rl_color\n"
-"    echo \"174 61 Great Circle\"  | gmt text -F+f,18,$gc_color\n"
-"\n"
-"    # ==== 上圖 (蘭伯特) ====\n"
-"    gmt basemap -Rg -JA106:55/47:55/13c -Yh+3c -B+tLambert --MAP_TITLE_OFFSET=0c\n"
-"    gmt coast -Dl -A1000 -G$land_color -N1/thick,60 -Bxg60 -Byg30 --MAP_GRID_CROSS_SIZE_PRIMARY=0p\n"
-"    gmt plot $input_xy -: -Ap -W1p,$rl_color    # 恆向線\n"
-"    gmt plot $input_xy -:     -W1p,$gc_color    # 大圓路徑\n"
-"    gmt plot $input_xy -: -Sa0.4c -Gblack\n"
-"\n"
-"    gmt text -F+a   << ANNOTEND\n"
-"106.92 -30 0   30@.S\n"
-"106.92 30  0   30@.N\n"
-"60     15  70  60@.E\n"
-"180    15  305 180@.\n"
-"ANNOTEND\n"
-"\n"
-"    gmt text -F+a+f << LABELEND\n"
-"180    40  58  ,Bookman-DemiItalic,$rl_color   Rhumb Line\n"
-"180    80  58  ,Bookman-DemiItalic,$gc_color   Great Circle\n"
-"LABELEND\n"
-"\n"
-"gmt end\n"
-"\n"
-"# rm -rf gmt.conf   # 消除舊的 GMT 參數檔"
 msgstr ""
 
 #: ../../SOURCE_DOCS/layout_design.rst:529
