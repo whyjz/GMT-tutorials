@@ -75,3 +75,9 @@ bash decorate.bash
 
 # 完成！ (Finished!!)
 ```
+
+# 翻譯協作 (How to contribute translation)
+
+如您對翻譯此網站有興趣，歡迎前往在 [Weblate 上公開的專案](https://hosted.weblate.org/projects/gmt-tutorials/) 並隨時開始翻譯。感謝您的貢獻！
+
+If you are interested in translating this website, please come to the [open project on Weblate](https://hosted.weblate.org/projects/gmt-tutorials/) and start translating at any time. Thank you for contributing to this project!
