@@ -8,17 +8,20 @@ msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-08 21:58-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2021-02-16 16:12+0000\n"
+"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
+"gmt-tutorials/map-elements/nb_NO/>\n"
 "Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.5\n"
 
 #: ../../SOURCE_DOCS/map_elements.rst:3
 msgid "加入地圖元素"
-msgstr ""
+msgstr "Legg til kartelementer"
 
 #: ../../SOURCE_DOCS/map_elements.rst:4
 msgid "為了使呈現的資料更容易判讀，一張地圖上通常會含有其它的輔助性圖示。除了網格線和地圖四周的座標數字外，常見的圖示還有\\ 比例尺、指北記號以及分圖等等。在本章中，我們要來試著使用 GMT 標上這些地圖元素。"
@@ -26,7 +29,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/map_elements.rst:8
 msgid "目標"
-msgstr ""
+msgstr "Mål"
 
 #: ../../SOURCE_DOCS/map_elements.rst:9
 msgid "繪製\\ `魯卜哈利沙漠 <https://zh.wikipedia.org/wiki/%E9%B2%81%E5%8D%9C%E5%93%88%E5%88%A9%E6%B2%99%E6%BC%A0>`_ (Rub' al Khali 或 الربع الخالي) 其中一個\\ 小區域的 `Landsat <https://zh.wikipedia.org/wiki/%E9%99%B8%E5%9C%B0%E8%A1%9B%E6%98%9F%E8%A8%88%E7%95%AB>`_ 衛星影像，並標上指北針、比例尺及在阿拉伯半島的大略位置。魯卜哈利沙漠具有全世界最大的連續沙丘區域\\ [#]_\\ ，也是全世界最杳無人煙的地方之一。\\ 如同其阿拉伯語的意思「空曠的四分之一」，在這片區域除了沙丘以外幾乎什麼也沒有；\\ 然而，魯卜哈利沙漠的衛星影像卻讓我們發現了大地之母的藝術實驗室。無數的\\ `新月丘 <https://en.wikipedia.org/wiki/Barchan>`_\\ 連綿不絕，日以繼夜的移動、合併與分離，\\ 奇幻的畫面甚至會讓你懷疑這是否是真的自然景觀。由於以上特殊的地理、氣候條件，魯卜哈利沙漠也是研究由風力所形塑的地表作用的絕佳地點。\\ 在本衛星影像中，所有的新月形沙丘似乎都朝向相同的方向。這個事實告訴了我們在這個區域，盛行風是從西北偏北的方向吹來。\\ 為什麼？請看\\ `這裡有地形學上的解釋 <http://nadm.gl.ntu.edu.tw/nadm/cht/class_detail.php?serial=122&serial_type_1=8&serial_type_2=4&serial_type_3=16>`_\\ 。"
@@ -203,3 +206,6 @@ msgstr ""
 #: ../../SOURCE_DOCS/map_elements.rst:315
 msgid "Peter Vincent (2008). `Saudi Arabia: an environmental overview <https://books.google.com/books?id=Vacv2wy3yd8C&pg=PA141>`_. Taylor & Francis. p. 141. ISBN 978-0-415-41387-9."
 msgstr ""
+"Peter Vincent (2008). `Saudi Arabia: en miljømessig oversikt <https://books."
+"google.com/books?id=Vacv2wy3yd8C&pg=PA141>`_. Taylor & Francis. p. 141. ISBN "
+"978-0-415-41387-9."
