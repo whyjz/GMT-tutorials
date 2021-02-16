@@ -5,15 +5,16 @@ msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-08 21:34-0500\n"
-"PO-Revision-Date: 2021-02-05 15:55+0000\n"
+"PO-Revision-Date: 2021-02-17 16:50+0000\n"
 "Last-Translator: Whyjay Zheng <wz278@cornell.edu>\n"
+"Language-Team: English (United States) <https://hosted.weblate.org/projects/"
+"gmt-tutorials/index/en_US/>\n"
 "Language: en_US\n"
-"Language-Team: English (United States) "
-"<https://hosted.weblate.org/projects/gmt-tutorials/index/en_US/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.5\n"
 "Generated-By: Babel 2.9.0\n"
 
 #: ../../SOURCE_DOCS/index.rst:5
@@ -97,17 +98,16 @@ msgid "授權"
 msgstr "License"
 
 #: ../../SOURCE_DOCS/index.rst:36
-#, fuzzy
 msgid ""
 "本著作採用\\ `創用 CC 姓名標示 4.0 國際 授權條款 "
 "<http://creativecommons.org/licenses/by/4.0/>`_\\ "
 "授權。在此授權條款下，您可以在任何目的下自由分享或修改本作品，並包含商業性質之使用。您只需給予原作者適當表彰（姓名標示）。"
 msgstr ""
-"The work is licensed under a `Creative Commons Attribution 4.0 "
-"International License <http://creativecommons.org/licenses/by/4.0/>`_. "
-"You may use, share, or adapt the document in any medium or format for any"
-" purpose, even commercially. You must give appropriate credit to the "
-"author, provide a link to the license, and indicate if changes were made."
+"The work is licensed under a `Creative Commons Attribution 4.0 International "
+"License <http://creativecommons.org/licenses/by/4.0/>`_. You may use, share, "
+"or adapt the document in any medium or format for any purpose, even "
+"commercially. You must give appropriate credit to the author, provide a link "
+"to the license, and indicate if changes were made."
 
 #: ../../SOURCE_DOCS/index.rst:38
 msgid "本網站中大部分用以繪圖的資料皆屬公領域，或以 GNU 通用公共授權條款發行。詳細說明請參閱「\\ :doc:`data_credit`\\ 」。"
@@ -279,4 +279,3 @@ msgstr ":doc:`command_index`"
 #: ../../SOURCE_DOCS/index.rst:84
 msgid ":doc:`gallery`"
 msgstr ":doc:`gallery`"
-
