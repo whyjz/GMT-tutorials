@@ -4,14 +4,16 @@ msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-04 15:43-0500\n"
-"PO-Revision-Date: 2019-11-24 04:49-0500\n"
-"Last-Translator: Whyjay Zheng <jhsttshj@gmail.com>\n"
+"PO-Revision-Date: 2021-02-17 16:50+0000\n"
+"Last-Translator: Whyjay Zheng <wz278@cornell.edu>\n"
+"Language-Team: English (United States) <https://hosted.weblate.org/projects/"
+"gmt-tutorials/software/en_US/>\n"
 "Language: en_US\n"
-"Language-Team: English (United States)\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.5\n"
 "Generated-By: Babel 2.9.0\n"
 
 #: ../../SOURCE_DOCS/software.rst:3
@@ -19,23 +21,21 @@ msgid "推薦搭配的軟體或套件"
 msgstr "Software and Packages"
 
 #: ../../SOURCE_DOCS/software.rst:5
-#, fuzzy
 msgid ""
 "GMT 是負責「畫圖」的軟體，只要丟給它適當的數據和選項，它就能為我們畫出漂亮的圖片。正因為它只負責繪圖，我們時常需要搭配其他軟體處理餵給 GMT"
 " 畫圖的資料或是編修輸出圖檔。以下就是筆者推薦搭配 GMT 一同安裝並使用的程式套件或是軟體。"
 msgstr ""
-"GMT is a toolbox for plotting. It is fed with proper data and draws "
-"beautiful pictures for us in return. Because it only does the plotting "
-"job, we usually need other tools in our workflow, such as preparing the "
-"data for GMT or editing the output image or text files from GMT. This "
-"page lists some packages I recommend to install when using GMT."
+"GMT is a toolbox for plotting. We feed it with proper data and it draws "
+"beautiful pictures for us in return. Because GMT only does the plotting job, "
+"we usually need other tools in our workflow, such as preparing the data for "
+"GMT or editing the output files from GMT. This page lists some packages I "
+"recommend installing when using GMT."
 
 #: ../../SOURCE_DOCS/software.rst:8
 msgid "程式碼編輯器"
 msgstr "Text editor"
 
 #: ../../SOURCE_DOCS/software.rst:9
-#, fuzzy
 msgid ""
 "GMT 使用 UNIX 系統下的 Shell 指令介面的風格設計而成，也就是說它跟其他所有指令列語言一樣，可以先把所有要下的指令寫成\\ "
 "**腳本或批次檔**，再一併執行。使用 PyGMT 的方法則與撰寫 Python 程式語言腳本相同。雖然作業軟體 (尤其是 Windows) "
@@ -43,25 +43,24 @@ msgid ""
 msgstr ""
 "We communicate with GMT using a command-line interface, such as the UNIX "
 "system’s Shell. That is, we can write all the commands down in a single "
-"**script** (or batch file, whatever you call), and have it run like a "
-"Python or bash script. Many operating systems have their built-in text "
-"editor for writing a script, like Notepad in Windows. However, I highly "
-"recommend finding a better text editor crafted for programming. These "
-"fancy editors come along with many handy features like syntax "
-"highlighting, auto-indentation, basic debugging, etc. The followings are "
-"some popular choices:"
+"**script** (or batch file, whatever you call) and have it run like a Python "
+"or bash script. For PyGMT, the way to use it is really similar to writing a "
+"Python script. Many operating systems have their built-in text editor for "
+"writing a script, like Notepad in Windows. However, I highly recommend "
+"finding a better text editor crafted for programming. These fancy editors "
+"come along with many handy features like syntax highlighting, auto-"
+"indentation, basic debugging, etc. The followings are some popular choices:"
 
 #: ../../SOURCE_DOCS/software.rst:12
 msgid "`Gedit <https://wiki.gnome.org/Apps/Gedit>`_"
 msgstr "`Gedit <https://wiki.gnome.org/Apps/Gedit>`_"
 
 #: ../../SOURCE_DOCS/software.rst:14
-#, fuzzy
 msgid "本來是為 GNOME 桌面環境 (如 Ubuntu) 製作的輕量級文字編輯器，特點為簡單、易用，並支援語法標示模式，目前更可安裝於所有的作業系統。"
 msgstr ""
-"Initially designed on GNOME’s desktop (like Ubuntu) as a light-weighted "
-"text editor. It’s simple, easy to use, and has syntax highlighting. It "
-"has even released on all PC platforms."
+"Initially designed on GNOME’s desktop (like Ubuntu) as a light-weighted text "
+"editor. It’s simple, easy to use, and has syntax highlighting. It has even "
+"released on all PC platforms."
 
 #: ../../SOURCE_DOCS/software.rst:17
 msgid "`Sublime Text <http://www.sublimetext.com>`_"
@@ -94,13 +93,12 @@ msgstr ""
 #: ../../SOURCE_DOCS/software.rst:26
 msgid "其他還有 Vim、Nano、Kate、Crimson Editor 等等，族繁不及備載，歡迎大家比較後，挑一個自己覺得比較順手的就行了。"
 msgstr ""
-"Besides, there are still other good editors like Vim, Nano, Kate, Crimson"
-" Editor. Feel free to pick whichever you feel the best!"
+"Besides, there are still other good editors like Vim, Nano, Kate, Crimson "
+"Editor. Feel free to pick whichever you feel the best."
 
 #: ../../SOURCE_DOCS/software.rst:29
-#, fuzzy
 msgid "`Jupyter <https://jupyter.org/>`_"
-msgstr "`Inkscape <https://inkscape.org/>`_"
+msgstr "`Jupyter <https://jupyter.org/>`_"
 
 #: ../../SOURCE_DOCS/software.rst:30
 msgid ""
@@ -113,6 +111,20 @@ msgid ""
 "Jupyter Meets the Earth 團隊的一員，本教學中所有關於 Jupyter "
 "的描述皆是我個人意見，並且是我利用閒暇時間所寫成，不代表開發團隊的意見。*)"
 msgstr ""
+"The Jupyter project's core concept is to provide a standard for open-source "
+"software and develop interactive computing interfaces for users who work "
+"with different programming languages. Jupyter has many software products, "
+"and if you plan to use PyGMT, I recommend installing Jupyter Lab because it "
+"allows you to use your web browser as an integrated interface for developing "
+"your scripts. See `here <https://www.mdeditor.tw/pl/23Lf/zh-tw>`_ for more "
+"detailed descriptions about Jupyter Lab. The PyGMT scripts provided in the "
+"following chapters are written in the Jupyter Notebook format and converted "
+"into HTML using Voilà (another package in the Jupyter ecosystem). "
+"(*Disclaimer:* `I <http://www.geo.cornell.edu/eas/gstudent/wz278/>`_ *am "
+"currently a team member of the Jupyter Meets the Earth project. All "
+"descriptions about Jupyter in these tutorials are my personal opinions and "
+"do not represent the Jupyter dev team. I wrote these tutorials using my off-"
+"work time.*)"
 
 #: ../../SOURCE_DOCS/software.rst:33
 msgid "`GDAL <https://gdal.org/>`_"
@@ -129,59 +141,67 @@ msgid ""
 "可以獨立安裝在各種作業系統中，或是透過 Anaconda 等套件管理軟體進行安裝。請記得如果你想讓 GMT 可以透過 GDAL "
 "的支援讀取更多的資料格式，就要在安裝 GMT 時一併或預先安裝 GDAL。"
 msgstr ""
+"GMT natively supports some geospatial formats such as **NetCDF** and plain "
+"text files. Users can also install GDAL for additional support to other "
+"common data formats, including **GeoTIFF** and **shapefile**. GDAL is short "
+"for “Geospatial Data Abstraction Library.” It is open-source software and is "
+"constantly updating. As of now, GDAL supports at least 142 raster formats "
+"and 84 vector formats. GDAL comes with handy console commands which let you "
+"browse or edit geospatial data without pain. Besides, GDAL also serves as a "
+"library that can be run as a module in many programming languages such as "
+"Python. GDAL can be installed on any platform independently or as a part of "
+"the QGIS standard installation since QGIS uses it for manipulating "
+"geospatial data. Note that if you want GMT to read more GDAL-supported file "
+"formats, you have to install GDAL before installing GMT."
 
 #: ../../SOURCE_DOCS/software.rst:46
 msgid "地理空間資料處理圖形介面"
 msgstr "Graphic interface for processing geospatial data"
 
 #: ../../SOURCE_DOCS/software.rst:47
-#, fuzzy
 msgid ""
 "GMT 的強大之處是在於它對空間資料的數學操作，以及類 Unix "
 "的設計理念，就算是很複雜的製圖需求，都可以只透過短短幾行指令達成；但有的時候，你只是想要快速的看一下你的資料，或是對它們進行一些簡單的處理。這種情況下，安裝一個具有圖形介面的地理資訊系統"
 " (GIS) 處理軟體或許也是不錯的選擇。"
 msgstr ""
-"GMT is powerful because it can manipulate geospatial data with a few "
-"command lines, even though you have to make a complex figure. However, "
-"there is always time you might just want to browse your data or run some "
-"simple tasks. In this case, a graphic interface for processing geospatial"
-" data would be your best friend."
+"GMT is powerful because it manipulates geospatial data with a few command "
+"lines, even though you have to make a complex figure. However, there is "
+"always time you might just want to browse your data or run some simple "
+"tasks. In this case, a graphic interface of GIS for analyzing geospatial "
+"data would be your best friend."
 
 #: ../../SOURCE_DOCS/software.rst:50
 msgid "`QGIS <http://qgis.org/>`_"
 msgstr "`QGIS <http://qgis.org/>`_"
 
 #: ../../SOURCE_DOCS/software.rst:52
-#, fuzzy
 msgid ""
 "QGIS 是非常著名的 GIS 自由軟體，從 2009 年釋出第一版至今，已經累積了不少使用者和志願協助開發者。除了使用圖形化介面操作以外，它也以"
 " Python 作為腳本語言，方便使用者編寫腳本增進工作效率，甚至自行設計外掛模組。QGIS 可以安裝在各種電腦作業系統，甚至還包括 "
 "Android！"
 msgstr ""
-"QGIS is a popular free GIS software released in 2009. Numerous users and "
-"volunteers have joined the community to make it better. It uses `GDAL`_ "
-"functions and Python as the console language, which makes users "
-"efficiently process your data in a graphic or script-based fashion. You "
-"can also actually make your plugin to increase efficiency for different "
-"kinds of works. QGIS supports various platforms, even including Android!"
+"QGIS is popular free GIS software released in 2009. Numerous users and "
+"volunteers have joined the community to make it better. It uses Python as "
+"the console language, which makes users efficiently process data in a "
+"graphic or script-based fashion. You can also make your plugins to increase "
+"working efficiency. QGIS supports various operating systems, even including "
+"Android!"
 
 #: ../../SOURCE_DOCS/software.rst:55
 msgid "`ArcGIS <https://www.arcgis.com/>`_"
 msgstr "`ArcGIS <https://www.arcgis.com/>`_"
 
 #: ../../SOURCE_DOCS/software.rst:57
-#, fuzzy
 msgid ""
 "ArcGIS 是一個老牌的 GIS 商業軟體，由 Esri 這間公司一手打造。ArcGIS 其實是一群軟體的統稱：Esri "
 "依照使用者不同的需求，把自家產品往許多方向微調，讓我們可以依照不同的目的選擇最適當的軟體來操作。同樣的，Python 也是 ArcGIS "
 "主流支援的腳本語言，可惜的是目前 ArcGIS 只能安裝在 Windows 中。"
 msgstr ""
-"ArcGIS is a well-know business GIS software, designed by Esri in 1999. "
-"The coolest feature of ArcGIS is that the name refers to a bunch of "
-"packages -- Esri has fine-tuned the product based on various needs, so we"
-" can choose the best package to work for different goals. Python is also "
-"the language used to make scripts in ArcGIS. Unfortunately, ArcGIS has "
-"only released on Windows."
+"ArcGIS is a well-known business GIS software designed by Esri. This name "
+"ArcGIS actually refers to a bunch of packages as Esri fine-tunes their "
+"products based on various needs, and we can choose the best package to work "
+"for different goals. Python is also the scripting language supported by "
+"ArcGIS. Unfortunately, ArcGIS is only available on Windows."
 
 #: ../../SOURCE_DOCS/software.rst:62
 msgid "`Google 地球 <http://www.google.com/intl/zh-TW/earth/>`_"
@@ -201,33 +221,35 @@ msgstr ""
 "standard and professional versions are provided."
 
 #: ../../SOURCE_DOCS/software.rst:68
-#, fuzzy
 msgid "圖檔處理與編修軟體"
-msgstr "Vector-format image editor"
+msgstr "Image processing and editing software"
 
 #: ../../SOURCE_DOCS/software.rst:69
 msgid ""
 "從 GMT 6 開始，使用者可以自行選擇出圖的格式，例如向量格式的 PDF 或影像格式的 PNG。難免有些時候，你會覺得 GMT "
 "的出圖還需要一點點額外的編修。除了重新跑一次 GMT 的所有指令外，你也可以使用以下幾種比較流行的的影像編輯軟體來幫你處理："
 msgstr ""
+"For GMT 6, users can select the output map format, for example, vector-"
+"format PDF or image-format PNG. Nevertheless, to tweak the map just a little "
+"(e.g., adjusting resolution and image size), it is still easier to use an "
+"image processor as it saves your time from rerunning the GMT script. Here I "
+"introduce some popular tools to help expedite your task:"
 
 #: ../../SOURCE_DOCS/software.rst:73
 msgid "`ImageMagick <http://www.imagemagick.org/>`_"
 msgstr "`ImageMagick <http://www.imagemagick.org/>`_"
 
 #: ../../SOURCE_DOCS/software.rst:74
-#, fuzzy
 msgid ""
 "一款開源的免費圖像處理軟體，由許多不同的指令構成，每個指令都有很多選項可使用，更支援許多不同的向量或影像格式。它使用命令列操作，你可以使用 "
 "``convert`` 這個指令，輕鬆快速的微調輸出的影像 (如調整解析度與尺寸等等操作)。ImageMagick "
 "目前可以在多種平台上安裝，同時它也是許多 Linux 發行版預裝的軟體之一。"
 msgstr ""
-"An open-source and free software for image processing. It includes "
-"numerous commands, and every single command has various options. It "
-"supports many image formats, including PS and PDF as well. You can run "
-"the command ``convert`` to easily adjust images. ImageMagick is available"
-" on several platforms and is pre-installed on your Linux computer as one "
-"of the standard OS packages."
+"An open-source and free package for image processing. It includes numerous "
+"commands; each of them has various options. It also supports many image or "
+"vector formats. You can run the command ``convert`` to easily adjust images. "
+"ImageMagick is available on several platforms and is pre-installed on Linux "
+"as one of the standard OS packages."
 
 #: ../../SOURCE_DOCS/software.rst:78
 msgid "`Adobe Illustrator <http://www.adobe.com/tw/products/illustrator.html>`_"
@@ -254,29 +276,27 @@ msgid "`Inkscape <https://inkscape.org/>`_"
 msgstr "`Inkscape <https://inkscape.org/>`_"
 
 #: ../../SOURCE_DOCS/software.rst:92
-#, fuzzy
 msgid "如果你想要使用自由軟體編修向量檔，或是你的作業系統是 Linux，那麼此套軟體是不錯的選擇。它也可在非 Linux 的多種平台上執行。"
 msgstr ""
 "If you are a fan of free software or you are using Linux, Inkscape would "
-"suit you the best. It is free, cross-platform, and also capable of "
-"tackling vectorized images."
+"suit you the best for tackling vectorized images. It is also available on "
+"non-Linux platforms."
 
 #: ../../SOURCE_DOCS/software.rst:99
 msgid "PostScript 看圖軟體"
 msgstr "PostScript viewer"
 
 #: ../../SOURCE_DOCS/software.rst:100
-#, fuzzy
 msgid ""
 "GMT 6 的預設出圖格式是 PDF，所以正常情況下你的電腦應該有方法可以讀取它。但如果你是使用 GMT 5 "
 "或更以前的版本，出圖格式只有一種能選，也就是 PostScript (請參閱\\ :doc:`basic_concept`)。以下列出能讀取 "
 "PostScript 格式 (PS 檔) 的軟體。"
 msgstr ""
-"The default map format of GMT 6 is PDF, so normally your computer should "
-"be able to read the output map without problems. However, if you are "
-"using GMT 5 or an earlier version, the output format would be fixed to "
-"PostScript (see :doc:`basic_concept` for more details). The following "
-"list contains software that can read those PostScript (PS) files."
+"The default map format of GMT 6 is PDF, so normally your computer should be "
+"able to read the output map without problems. However, if you are using GMT "
+"5 or an earlier version, the output format would be fixed to PostScript (see "
+":doc:`basic_concept` for more details). The following list contains software "
+"that can read those PostScript (PS) files."
 
 #: ../../SOURCE_DOCS/software.rst:103
 msgid "`Google 文件 <https://www.google.com/intl/zh-TW/docs/about/>`_"
@@ -410,4 +430,3 @@ msgstr ""
 #~ "that support vector formats do the "
 #~ "job. The followings are some popular "
 #~ "choices:"
-
