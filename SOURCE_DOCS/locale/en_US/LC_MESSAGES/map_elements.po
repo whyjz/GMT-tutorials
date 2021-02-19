@@ -4,14 +4,16 @@ msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-08 21:58-0500\n"
-"PO-Revision-Date: 2019-07-03 04:55-0400\n"
-"Last-Translator: Whyjay Zheng <jhsttshj@gmail.com>\n"
+"PO-Revision-Date: 2021-02-20 08:50+0000\n"
+"Last-Translator: Yukun Zhou <zyk79109@gmail.com>\n"
+"Language-Team: English (United States) <https://hosted.weblate.org/projects/"
+"gmt-tutorials/map-elements/en_US/>\n"
 "Language: en_US\n"
-"Language-Team: English (United States)\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.5\n"
 "Generated-By: Babel 2.9.0\n"
 
 #: ../../SOURCE_DOCS/map_elements.rst:3
@@ -80,7 +82,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/map_elements.rst:36
 msgid "``pstext`` - 在地圖上加入文字"
-msgstr ""
+msgstr "‘pstext’ - add text on the map"
 
 #: ../../SOURCE_DOCS/map_elements.rst:37
 msgid "``psxy`` - 輸出檔尾"
@@ -485,4 +487,3 @@ msgstr ""
 #~ "psxy -R -J -O -T >> $out_ps\n"
 #~ "psconvert $out_ps -A -P -Tg"
 #~ msgstr ""
-
