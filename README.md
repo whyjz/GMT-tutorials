@@ -1,9 +1,13 @@
+<a href="https://hosted.weblate.org/engage/gmt-tutorials/">
+<img src="https://hosted.weblate.org/widgets/gmt-tutorials/-/svg-badge.svg" alt="翻譯狀態" />
+</a>
+
 # GMT 教學手冊 (GMT Tutorials)
+
+![Banner Logo](SOURCE_DOCS/index_banner_text.png =300x)
 
 [網站 (中文)](http://gmt-tutorials.org)
 [Website (English)](http://gmt-tutorials.org/en/)
-
-![CC-BY](SOURCE_DOCS/by.png)
 
 # 有關於此儲存庫 (About This Repository)
 
@@ -15,7 +19,6 @@
 - `_build/`: 編譯過的文檔
 
 This repo hosts the source files (text, scripts, and images) of the website "GMT Tutorials". All the text (expect for the README.md itself) is in *re***Structured***Text* format and is built using [Sphinx](http://www.sphinx-doc.org/en/stable/index.html).
-
 
 
 - `SOURCE_DOCS/xxx.rst`: text file for each chapter (webpage)
@@ -76,8 +79,17 @@ bash decorate.bash
 # 完成！ (Finished!!)
 ```
 
+# 授權 (License)
+
+本作品使用 MIT 與 CC BY 4.0 雙授權。更多資訊請參閱 [授權檔案](LICENSE.md)。
+
+This work is dual-licensed under the MIT licenses and the CC BY 4.0 licenses. For more information, please see the [LICENSE file](LICENSE.md).
+
 # 翻譯協作 (How to contribute translation)
 
 如您對翻譯此網站有興趣，歡迎前往在 [Weblate 上公開的專案](https://hosted.weblate.org/projects/gmt-tutorials/) 並隨時開始翻譯。感謝您的貢獻！
 
 If you are interested in translating this website, please come to the [open project on Weblate](https://hosted.weblate.org/projects/gmt-tutorials/) and start translating at any time. Thank you for contributing to this project!
+
+<a href="https://hosted.weblate.org/engage/gmt-tutorials/">
+<img src="https://hosted.weblate.org/widgets/gmt-tutorials/-/multi-auto.svg" alt="翻譯狀態" />

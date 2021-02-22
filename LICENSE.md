@@ -1,4 +1,7 @@
-This work is dual-licensed under the MIT and the Creative Commons Attribution 4.0 International Licenses.
+This work is dual-licensed under the MIT licenses (for code) and the Creative 
+Commons Attribution 4.0 International (for other content) Licenses. Users can
+choose either or both licenses according to which part of the work they seek 
+permission.
 
 Copyright (c) 2016-2021 Whyjay Zheng. All rights reserved.
 
