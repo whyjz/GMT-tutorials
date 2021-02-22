@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-08 21:58-0500\n"
-"PO-Revision-Date: 2021-02-20 08:50+0000\n"
+"PO-Revision-Date: 2021-02-22 16:51+0000\n"
 "Last-Translator: Yukun Zhou <zyk79109@gmail.com>\n"
 "Language-Team: English (United States) <https://hosted.weblate.org/projects/"
 "gmt-tutorials/contour-and-profile/en_US/>\n"
@@ -78,7 +78,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/contour_and_profile.rst:38
 msgid "``grdimage`` - 繪製暈渲圖"
-msgstr "'grdimage' - draw rendering"
+msgstr "‘grdimage’ -"
 
 #: ../../SOURCE_DOCS/contour_and_profile.rst:39
 msgid "``pscoast`` - 繪製海岸線與海域填色"
