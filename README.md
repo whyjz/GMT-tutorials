@@ -4,8 +4,6 @@
 
 # GMT 教學手冊 (GMT Tutorials)
 
-![Banner Logo](SOURCE_DOCS/index_banner_text.png =300x)
-
 [網站 (中文)](http://gmt-tutorials.org)
 [Website (English)](http://gmt-tutorials.org/en/)
 
