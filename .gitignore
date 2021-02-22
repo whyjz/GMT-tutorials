@@ -2,7 +2,7 @@ _build/[dh]*
 _build/locale/.doctrees/*
 *~
 todolist.txt
-locale/en/LC_MESSAGES/*.mo
+*.mo
 .zanata-cache
 .zanata-cache/*
 .ipynb_checkpoints
