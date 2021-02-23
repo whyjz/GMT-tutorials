@@ -4,17 +4,16 @@ msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-23 11:56-0500\n"
-"PO-Revision-Date: 2021-02-20 08:50+0000\n"
-"Last-Translator: Yukun Zhou <zyk79109@gmail.com>\n"
+"PO-Revision-Date: 2021-02-23 21:54+0000\n"
+"Last-Translator: Whyjay Zheng <wz278@cornell.edu>\n"
 "Language-Team: English (United States) <https://hosted.weblate.org/projects/"
 "gmt-tutorials/map-elements/en_US/>\n"
 "Language: en_US\n"
-"Language-Team: English (United States) "
-"<https://hosted.weblate.org/projects/gmt-tutorials/map-elements/en_US/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.5\n"
 "Generated-By: Babel 2.9.0\n"
 
 #: ../../SOURCE_DOCS/map_elements.rst:3
@@ -51,11 +50,11 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/map_elements.rst:25
 msgid "直接觀看\\ `指令稿`_"
-msgstr ""
+msgstr "Go to the final `Script`_"
 
 #: ../../SOURCE_DOCS/map_elements.rst:29
 msgid "使用的指令與概念"
-msgstr ""
+msgstr "Commands and Techniques"
 
 #: ../../SOURCE_DOCS/map_elements.rst:30
 msgid "``gmtset`` - 更改 GMT 的預設作圖參數"
@@ -191,7 +190,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/map_elements.rst:95
 msgid "操作流程"
-msgstr ""
+msgstr "Procedure"
 
 #: ../../SOURCE_DOCS/map_elements.rst:97
 msgid "在繪圖之前，我們先來使用 ``grdinfo`` 確認一下要使用的資料。"
@@ -413,11 +412,11 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/map_elements.rst:266
 msgid "指令稿"
-msgstr ""
+msgstr "Script"
 
 #: ../../SOURCE_DOCS/map_elements.rst:267
 msgid "本地圖的最終指令稿如下："
-msgstr ""
+msgstr "The final script for our map is:"
 
 #: ../../SOURCE_DOCS/map_elements.rst:269
 msgid ""
@@ -470,11 +469,11 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/map_elements.rst:309
 msgid "觀看\\ `最終版地圖`_"
-msgstr ""
+msgstr "Check the `final map`_"
 
 #: ../../SOURCE_DOCS/map_elements.rst:312
 msgid "習題"
-msgstr ""
+msgstr "Exercise"
 
 #: ../../SOURCE_DOCS/map_elements.rst:315
 msgid ""
@@ -684,4 +683,3 @@ msgstr ""
 #~ "psxy -R -J -O -T >> $out_ps\n"
 #~ "psconvert $out_ps -A -P -Tg"
 #~ msgstr ""
-
