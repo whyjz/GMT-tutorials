@@ -6,6 +6,8 @@ msgstr ""
 "POT-Creation-Date: 2021-02-23 11:56-0500\n"
 "PO-Revision-Date: 2021-02-20 08:50+0000\n"
 "Last-Translator: Yukun Zhou <zyk79109@gmail.com>\n"
+"Language-Team: English (United States) <https://hosted.weblate.org/projects/"
+"gmt-tutorials/contour-and-profile/en_US/>\n"
 "Language: en_US\n"
 "Language-Team: English (United States) "
 "<https://hosted.weblate.org/projects/gmt-tutorials/contour-and-"
@@ -78,7 +80,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/contour_and_profile.rst:38
 msgid "``grdimage`` - 繪製暈渲圖"
-msgstr "'grdimage' - draw rendering"
+msgstr "``grdimage`` - draw hillshade"
 
 #: ../../SOURCE_DOCS/contour_and_profile.rst:39
 msgid "``pscoast`` - 繪製海岸線與海域填色"
@@ -98,7 +100,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/contour_and_profile.rst:43
 msgid "``pstext`` - 在地圖上加入文字"
-msgstr "‘pstext’ - add text on the map"
+msgstr "``pstext`` - add text on the map"
 
 #: ../../SOURCE_DOCS/contour_and_profile.rst:44
 msgid "``psbasemap`` - 設定繪圖區、座標軸與邊框"

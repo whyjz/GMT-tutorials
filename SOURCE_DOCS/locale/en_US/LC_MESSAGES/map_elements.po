@@ -6,6 +6,8 @@ msgstr ""
 "POT-Creation-Date: 2021-02-23 11:56-0500\n"
 "PO-Revision-Date: 2021-02-20 08:50+0000\n"
 "Last-Translator: Yukun Zhou <zyk79109@gmail.com>\n"
+"Language-Team: English (United States) <https://hosted.weblate.org/projects/"
+"gmt-tutorials/map-elements/en_US/>\n"
 "Language: en_US\n"
 "Language-Team: English (United States) "
 "<https://hosted.weblate.org/projects/gmt-tutorials/map-elements/en_US/>\n"
@@ -81,7 +83,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/map_elements.rst:36
 msgid "``pstext`` - 在地圖上加入文字"
-msgstr "‘pstext’ - add text on the map"
+msgstr "``pstext`` - add text on the map"
 
 #: ../../SOURCE_DOCS/map_elements.rst:37
 msgid "``psxy`` - 輸出檔尾"
