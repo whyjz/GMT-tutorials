@@ -85,9 +85,9 @@ This work is dual-licensed under the MIT licenses and the CC BY 4.0 licenses. Fo
 
 # 翻譯協作 (How to contribute translation)
 
-如您對翻譯此網站有興趣，歡迎前往在 [Weblate 上公開的專案](https://hosted.weblate.org/projects/gmt-tutorials/) 並隨時開始翻譯。感謝您的貢獻！
+如您對翻譯此網站有興趣，歡迎前往在 [Weblate 上公開的專案](https://hosted.weblate.org/engage/gmt-tutorials/) 並隨時開始翻譯。感謝您的貢獻！
 
-If you are interested in translating this website, please come to the [open project on Weblate](https://hosted.weblate.org/projects/gmt-tutorials/) and start translating at any time. Thank you for contributing to this project!
+If you are interested in translating this website, please come to the [open project on Weblate](https://hosted.weblate.org/engage/gmt-tutorials/) and start translating at any time. Thank you for contributing to this project!
 
 <a href="https://hosted.weblate.org/engage/gmt-tutorials/">
 <img src="https://hosted.weblate.org/widgets/gmt-tutorials/-/multi-auto.svg" alt="翻譯狀態" />

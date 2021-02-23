@@ -14,6 +14,8 @@ disqus_string=$(cat SOURCE_DOCS/_static/disqus_code.txt)
 github_ribbon=$(cat SOURCE_DOCS/_static/github_ribbon.txt)
 favicon_string=$(cat SOURCE_DOCS/_static/favicon.txt)
 localemenu=$(cat SOURCE_DOCS/_static/localemenu.txt)
+paypal_button=$(cat SOURCE_DOCS/_static/paypal.txt)
+support_string=$(cat SOURCE_DOCS/_static/support.txt)
 
 # refer to the escape characters...
 # http://unix.stackexchange.com/questions/32907/what-characters-do-i-need-to-escape-when-using-sed-in-a-sh-script
@@ -77,6 +79,26 @@ localemenu=${localemenu//\^/\\\^}     # changes all "^" to "\^"
 localemenu=${localemenu//\//\\\/}     # changes all "/" to "\/"
 localemenu=${localemenu//\"/\\\"}     # changes all '"' to '\"'
 
+paypal_button=${paypal_button//\\/\\\\}     # changes all "\" to "\\"
+paypal_button=${paypal_button//\[/\\\[}     # changes all "[" to "\["
+paypal_button=${paypal_button//\]/\\\]}     # changes all "]" to "\]"
+paypal_button=${paypal_button//\$/\\\$}     # changes all "$" to "\$"
+paypal_button=${paypal_button//\./\\\.}     # changes all "." to "\."
+paypal_button=${paypal_button//\*/\\\*}     # changes all "*" to "\*"
+paypal_button=${paypal_button//\^/\\\^}     # changes all "^" to "\^"
+paypal_button=${paypal_button//\//\\\/}     # changes all "/" to "\/"
+paypal_button=${paypal_button//\"/\\\"}     # changes all '"' to '\"'
+
+support_string=${support_string//\\/\\\\}     # changes all "\" to "\\"
+support_string=${support_string//\[/\\\[}     # changes all "[" to "\["
+support_string=${support_string//\]/\\\]}     # changes all "]" to "\]"
+support_string=${support_string//\$/\\\$}     # changes all "$" to "\$"
+support_string=${support_string//\./\\\.}     # changes all "." to "\."
+support_string=${support_string//\*/\\\*}     # changes all "*" to "\*"
+support_string=${support_string//\^/\\\^}     # changes all "^" to "\^"
+support_string=${support_string//\//\\\/}     # changes all "/" to "\/"
+support_string=${support_string//\"/\\\"}     # changes all '"' to '\"'
+
 # start to insert
 
 for html_f in $html_files
@@ -119,6 +141,14 @@ do
             echo skip ${html_f##*/} - No "View page source"
         fi
     fi
+    # ==== Add suppport message at the end ====
+    if grep -q 'milktea' $html_f; then
+        echo skip ${html_f##*/} - already attached the support message
+    else
+        echo ----- Attaching support message to ${html_f##*/} ...
+        # insert a new line before </footer> tag
+        sed -i "/<\/footer>/i\ $support_string" $html_f
+    fi
 done
 
 # or     $ find . -type f -exec sed -e 's/cpu/memory/ig' '{}' \;
@@ -135,6 +165,19 @@ else
     # insert a new line before </head> tag
     sed -i "/<\/head>/i\ $favicon_string" $indpage
 fi
+
+# ==== Add donate button in index.html ====
+
+indpages="_build/html/index.html _build/html/en/index.html"
+
+if grep -q 'PayPal button' $indpages; then
+    echo skip paypal button - already added
+else
+    echo ----- Adding paypal button to ${indpages##*/} ...
+    # insert a new line after ":D" tag
+    sed -i "/:D/a\ $paypal_button" $indpages 
+fi
+
 
 # ==== Add locate menu ====
 

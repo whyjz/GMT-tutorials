@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-08 21:34-0500\n"
+"POT-Creation-Date: 2021-02-23 15:56-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,158 +40,182 @@ msgstr ""
 msgid "授權"
 msgstr ""
 
+#: ../../SOURCE_DOCS/index.rst:32
+msgid "本著作使用 MIT 與創用 CC 姓名標示 4.0 雙授權，使用者可以依據其想要獲得授權的部份選擇任一或兩個許可："
+msgstr ""
+
+#: ../../SOURCE_DOCS/index.rst:34
+msgid "`MIT 授權 <https://github.com/whyjz/GMT-tutorials/blob/master/LICENSE.md>`_：適用程式碼的部份以及所有的 Jupyter Notebooks。被授權人有權利使用、複製、修改、合併、出版發行、散布、再授權和/或販售軟體及軟體的副本。"
+msgstr ""
+
 #: ../../SOURCE_DOCS/index.rst:36
-msgid "本著作採用\\ `創用 CC 姓名標示 4.0 國際 授權條款 <http://creativecommons.org/licenses/by/4.0/>`_\\ 授權。在此授權條款下，您可以在任何目的下自由分享或修改本作品，並包含商業性質之使用。您只需給予原作者適當表彰（姓名標示）。"
+msgid "`創用 CC 姓名標示 4.0 國際 授權條款 <http://creativecommons.org/licenses/by/4.0/>`_：適用於文本部份。在此授權條款下，您可以在任何目的下自由分享或修改本作品，並包含商業性質之使用。您只需給予原作者適當表彰（姓名標示）。"
 msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:38
-msgid "本網站中大部分用以繪圖的資料皆屬公領域，或以 GNU 通用公共授權條款發行。詳細說明請參閱「\\ :doc:`data_credit`\\ 」。"
+msgid "|pic1| |pic2|"
 msgstr ""
 
-#: ../../SOURCE_DOCS/index.rst:40
+#: ../../SOURCE_DOCS/index.rst:54
 msgid "Copyright © 2016-21 鄭懷傑 (Whyjay Zheng). All rights reserved."
 msgstr ""
 
-#: ../../SOURCE_DOCS/index.rst:42
-msgid "教學內文與圖片的原始碼也公開在 `Github <https://github.com/whyjz/GMT-tutorials>`_ 上，以 `reStructuredText <https://en.wikipedia.org/wiki/ReStructuredText>`_ 格式編寫。歡迎隨時動叉！"
-msgstr ""
-
-#: ../../SOURCE_DOCS/index.rst:45
-msgid "致謝"
-msgstr ""
-
-#: ../../SOURCE_DOCS/index.rst:46
-msgid "感謝 William Durkin，Patricia MacQueen，李明龍，李定宇等人提出的建議與討論，讓本教學手冊的內容更為豐富完整。另外，也感謝所有 Github 上的協作者：譚諤 (tan2)，李奎模 (likueimo)，王亮 (wangliang1989)，對文檔內容所作的建設性修改。"
-msgstr ""
-
-#: ../../SOURCE_DOCS/index.rst:50
-msgid "目錄"
-msgstr ""
-
-#: ../../SOURCE_DOCS/index.rst:52
-msgid "如果你想快速瀏覽各章的目標與地圖，請前往\\ :doc:`gallery`。"
-msgstr ""
-
 #: ../../SOURCE_DOCS/index.rst:56
-msgid "新手入門"
-msgstr ""
-
-#: ../../SOURCE_DOCS/index.rst:55
-msgid ":doc:`intro_install`"
-msgstr ""
-
-#: ../../SOURCE_DOCS/index.rst:56
-msgid ":doc:`software`"
-msgstr ""
-
-#: ../../SOURCE_DOCS/index.rst:57
-msgid ":doc:`basic_concept`"
-msgstr ""
-
-#: ../../SOURCE_DOCS/index.rst:61
-msgid "繪圖的基本技巧"
+msgid "教學內文與圖片的原始碼公開在 `Github <https://github.com/whyjz/GMT-tutorials>`_ 上，以 `reStructuredText <https://en.wikipedia.org/wiki/ReStructuredText>`_ 格式編寫。歡迎隨時動叉！"
 msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:59
-msgid ":doc:`making_first_map`"
+msgid "致謝"
 msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:60
-msgid ":doc:`coloring_topography`"
+msgid "感謝 William Durkin，Patricia MacQueen，李明龍，李定宇等人提出的建議與討論，讓本教學手冊的內容更為豐富完整。另外，也感謝所有 Github 上的協作者：譚諤 (tan2)，李奎模 (likueimo)，王亮 (wangliang1989)，對文檔內容所作的建設性修改。在此深深謝謝參與翻譯此教學手冊的人員，翻譯是件龐大的工作，沒有你們的協助是不可能完成的。如您也想參與一起翻譯本教學，請參閱下方說明。"
 msgstr ""
 
-#: ../../SOURCE_DOCS/index.rst:61
-msgid ":doc:`pen_and_painting`"
-msgstr ""
-
-#: ../../SOURCE_DOCS/index.rst:62
-msgid ":doc:`scatter_plot`"
-msgstr ""
-
-#: ../../SOURCE_DOCS/index.rst:68
-msgid "繪製與編修各種常見的地圖 (基礎)"
+#: ../../SOURCE_DOCS/index.rst:63
+msgid "翻譯協作 |pic3|"
 msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:64
-msgid ":doc:`cpt_colormap`"
-msgstr ""
-
-#: ../../SOURCE_DOCS/index.rst:65
-msgid ":doc:`plot_vector_data`"
-msgstr ""
-
-#: ../../SOURCE_DOCS/index.rst:66
-msgid ":doc:`layout_design`"
-msgstr ""
-
-#: ../../SOURCE_DOCS/index.rst:67
-msgid ":doc:`hillshading`"
-msgstr ""
-
-#: ../../SOURCE_DOCS/index.rst:68
-msgid ":doc:`contour_and_profile`"
-msgstr ""
-
-#: ../../SOURCE_DOCS/index.rst:69
-msgid ":doc:`map_elements`"
+msgid "如您對翻譯此網站有興趣，歡迎前往在 `Weblate 上公開的專案 <https://hosted.weblate.org/engage/gmt-tutorials/>`_\\ 並隨時開始翻譯。感謝您的貢獻！"
 msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:73
-msgid "繪製與編修各種常見的地圖 (進階)"
-msgstr ""
-
-#: ../../SOURCE_DOCS/index.rst:71
-msgid ":doc:`editing_cpt_colorbar`"
-msgstr ""
-
-#: ../../SOURCE_DOCS/index.rst:72
-msgid ":doc:`view3d`"
-msgstr ""
-
-#: ../../SOURCE_DOCS/index.rst:73
-msgid ":doc:`focal_mech`"
+msgid "贊助本教學"
 msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:74
-msgid ":doc:`draping`"
-msgstr ""
-
-#: ../../SOURCE_DOCS/index.rst:76
-msgid "網格資料處理"
-msgstr ""
-
-#: ../../SOURCE_DOCS/index.rst:76
-msgid ":doc:`raster_calculator`"
+msgid "覺得本教學手冊的內容頗有幫助？隨時歡迎\\ `請我喝杯手搖奶茶 <https://www.paypal.com/donate?hosted_button_id=68GZNRJ3MZDBE>`_，讓我有更多的能量繼續創作。行有餘力的話，也歡迎出資贊助本教學網站的營運和維護成本 :D"
 msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:77
-msgid ":doc:`basic_img_processing`"
+msgid "目錄"
 msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:79
-msgid "數值資料處理"
-msgstr ""
-
-#: ../../SOURCE_DOCS/index.rst:79
-msgid ":doc:`stat_histogram`"
-msgstr ""
-
-#: ../../SOURCE_DOCS/index.rst:80
-msgid ":doc:`regression_basics`"
-msgstr ""
-
-#: ../../SOURCE_DOCS/index.rst:84
-msgid "附錄"
-msgstr ""
-
-#: ../../SOURCE_DOCS/index.rst:82
-msgid ":doc:`data_credit`"
+msgid "如果你想快速瀏覽各章的目標與地圖，請前往\\ :doc:`gallery`。"
 msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:83
-msgid ":doc:`command_index`"
+msgid "新手入門"
+msgstr ""
+
+#: ../../SOURCE_DOCS/index.rst:82
+msgid ":doc:`intro_install`"
+msgstr ""
+
+#: ../../SOURCE_DOCS/index.rst:83
+msgid ":doc:`software`"
 msgstr ""
 
 #: ../../SOURCE_DOCS/index.rst:84
+msgid ":doc:`basic_concept`"
+msgstr ""
+
+#: ../../SOURCE_DOCS/index.rst:88
+msgid "繪圖的基本技巧"
+msgstr ""
+
+#: ../../SOURCE_DOCS/index.rst:86
+msgid ":doc:`making_first_map`"
+msgstr ""
+
+#: ../../SOURCE_DOCS/index.rst:87
+msgid ":doc:`coloring_topography`"
+msgstr ""
+
+#: ../../SOURCE_DOCS/index.rst:88
+msgid ":doc:`pen_and_painting`"
+msgstr ""
+
+#: ../../SOURCE_DOCS/index.rst:89
+msgid ":doc:`scatter_plot`"
+msgstr ""
+
+#: ../../SOURCE_DOCS/index.rst:95
+msgid "繪製與編修各種常見的地圖 (基礎)"
+msgstr ""
+
+#: ../../SOURCE_DOCS/index.rst:91
+msgid ":doc:`cpt_colormap`"
+msgstr ""
+
+#: ../../SOURCE_DOCS/index.rst:92
+msgid ":doc:`plot_vector_data`"
+msgstr ""
+
+#: ../../SOURCE_DOCS/index.rst:93
+msgid ":doc:`layout_design`"
+msgstr ""
+
+#: ../../SOURCE_DOCS/index.rst:94
+msgid ":doc:`hillshading`"
+msgstr ""
+
+#: ../../SOURCE_DOCS/index.rst:95
+msgid ":doc:`contour_and_profile`"
+msgstr ""
+
+#: ../../SOURCE_DOCS/index.rst:96
+msgid ":doc:`map_elements`"
+msgstr ""
+
+#: ../../SOURCE_DOCS/index.rst:100
+msgid "繪製與編修各種常見的地圖 (進階)"
+msgstr ""
+
+#: ../../SOURCE_DOCS/index.rst:98
+msgid ":doc:`editing_cpt_colorbar`"
+msgstr ""
+
+#: ../../SOURCE_DOCS/index.rst:99
+msgid ":doc:`view3d`"
+msgstr ""
+
+#: ../../SOURCE_DOCS/index.rst:100
+msgid ":doc:`focal_mech`"
+msgstr ""
+
+#: ../../SOURCE_DOCS/index.rst:101
+msgid ":doc:`draping`"
+msgstr ""
+
+#: ../../SOURCE_DOCS/index.rst:103
+msgid "網格資料處理"
+msgstr ""
+
+#: ../../SOURCE_DOCS/index.rst:103
+msgid ":doc:`raster_calculator`"
+msgstr ""
+
+#: ../../SOURCE_DOCS/index.rst:104
+msgid ":doc:`basic_img_processing`"
+msgstr ""
+
+#: ../../SOURCE_DOCS/index.rst:106
+msgid "數值資料處理"
+msgstr ""
+
+#: ../../SOURCE_DOCS/index.rst:106
+msgid ":doc:`stat_histogram`"
+msgstr ""
+
+#: ../../SOURCE_DOCS/index.rst:107
+msgid ":doc:`regression_basics`"
+msgstr ""
+
+#: ../../SOURCE_DOCS/index.rst:111
+msgid "附錄"
+msgstr ""
+
+#: ../../SOURCE_DOCS/index.rst:109
+msgid ":doc:`data_credit`"
+msgstr ""
+
+#: ../../SOURCE_DOCS/index.rst:110
+msgid ":doc:`command_index`"
+msgstr ""
+
+#: ../../SOURCE_DOCS/index.rst:111
 msgid ":doc:`gallery`"
 msgstr ""

@@ -29,22 +29,49 @@ GMT 教學手冊
 授權
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. figure:: by.png
-    :scale: 30
-    :align: center
+本著作使用 MIT 與創用 CC 姓名標示 4.0 雙授權，使用者可以依據其想要獲得授權的部份選擇任一或兩個許可：
 
-    本著作採用\ `創用 CC 姓名標示 4.0 國際 授權條款 <http://creativecommons.org/licenses/by/4.0/>`_\ 授權。在此授權條款下，您可以在任何目的下自由分享或修改本作品，並包含商業性質之使用。您只需給予原作者適當表彰（姓名標示）。
+* `MIT 授權 <https://github.com/whyjz/GMT-tutorials/blob/master/LICENSE.md>`_：適用程式碼的部份以及所有的 Jupyter Notebooks。被授權人有權利使用、複製、修改、合併、出版發行、散布、再授權和/或販售軟體及軟體的副本。
 
-本網站中大部分用以繪圖的資料皆屬公領域，或以 GNU 通用公共授權條款發行。詳細說明請參閱「\ :doc:`data_credit`\ 」。
+* `創用 CC 姓名標示 4.0 國際 授權條款 <http://creativecommons.org/licenses/by/4.0/>`_：適用於文本部份。在此授權條款下，您可以在任何目的下自由分享或修改本作品，並包含商業性質之使用。您只需給予原作者適當表彰（姓名標示）。
+
+|pic1| |pic2|
+
+.. |pic1| image:: mit.png
+   :alt: MIT License
+   :scale: 30
+
+.. |pic2| image:: by.png
+   :alt: CC BY 4.0 License
+   :scale: 30
+
+.. figure by.png
+..    :scale: 30
+..    :align: center
+
+.. 本網站中大部分用以繪圖的資料皆屬公領域，或以 GNU 通用公共授權條款發行。詳細說明請參閱「\ :doc:`data_credit`\ 」。
 
 Copyright © 2016-21 鄭懷傑 (Whyjay Zheng). All rights reserved.
 
-教學內文與圖片的原始碼也公開在 `Github <https://github.com/whyjz/GMT-tutorials>`_ 上，以 `reStructuredText <https://en.wikipedia.org/wiki/ReStructuredText>`_ 格式編寫。歡迎隨時動叉！
+教學內文與圖片的原始碼公開在 `Github <https://github.com/whyjz/GMT-tutorials>`_ 上，以 `reStructuredText <https://en.wikipedia.org/wiki/ReStructuredText>`_ 格式編寫。歡迎隨時動叉！
 
 致謝
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-感謝 William Durkin，Patricia MacQueen，李明龍，李定宇等人提出的建議與討論，讓本教學手冊的內容更為豐富完整。另外，也感謝所有 Github 上的協作者：譚諤 (tan2)，李奎模 (likueimo)，王亮 (wangliang1989)，對文檔內容所作的建設性修改。
+感謝 William Durkin，Patricia MacQueen，李明龍，李定宇等人提出的建議與討論，讓本教學手冊的內容更為豐富完整。另外，也感謝所有 Github 上的協作者：譚諤 (tan2)，李奎模 (likueimo)，王亮 (wangliang1989)，對文檔內容所作的建設性修改。在此深深謝謝參與翻譯此教學手冊的人員，翻譯是件龐大的工作，沒有你們的協助是不可能完成的。如您也想參與一起翻譯本教學，請參閱下方說明。
 
+翻譯協作 |pic3|
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+如您對翻譯此網站有興趣，歡迎前往在 `Weblate 上公開的專案 <https://hosted.weblate.org/engage/gmt-tutorials/>`_\ 並隨時開始翻譯。感謝您的貢獻！
+
+.. |pic3| image:: https://hosted.weblate.org/widgets/gmt-tutorials/-/88x31-black.png
+    :alt: Translation status
+    :target: https://hosted.weblate.org/engage/gmt-tutorials/
+
+..    :align: left 
+
+贊助本教學
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+覺得本教學手冊的內容頗有幫助？隨時歡迎\ `請我喝杯手搖奶茶 <https://www.paypal.com/donate?hosted_button_id=68GZNRJ3MZDBE>`_，讓我有更多的能量繼續創作。行有餘力的話，也歡迎出資贊助本教學網站的營運和維護成本 :D
 
 目錄
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
