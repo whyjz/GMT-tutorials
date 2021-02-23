@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-08 21:58-0500\n"
+"POT-Creation-Date: 2021-02-23 11:56-0500\n"
 "PO-Revision-Date: 2019-12-25 11:10-0500\n"
 "Last-Translator: Whyjay Zheng <jhsttshj@gmail.com>\n"
 "Language: en_US\n"
@@ -118,6 +118,10 @@ msgstr ""
 "remote server. Those data are only downloaded if needed. The name of the "
 "dataset is:"
 
+#: ../../SOURCE_DOCS/coloring_topography.rst:47
+msgid "@earth_relief_rru"
+msgstr ""
+
 #: ../../SOURCE_DOCS/coloring_topography.rst:51
 msgid ""
 "其中 ``rr`` 是解析度的大小，而 ``u`` 是單位 (有度 ``d``、分 ``m``、秒 ``s`` "
@@ -135,6 +139,39 @@ msgstr ""
 "access other available data. If you want to check your topo data for more"
 " information, you can enter ``grdinfo`` in your terminal like what the "
 "following panel shows:"
+
+#: ../../SOURCE_DOCS/coloring_topography.rst:62
+msgid ""
+"$ gmt grdinfo @earth_relief_01m\n"
+"earth_relief_01m: Download file from the GMT data server [data set size "
+"is 214M].\n"
+"earth_relief_01m: Earth Relief at 1x1 arc minutes obtained by Gaussian "
+"Cartesian filtering (1.9 km fullwidth) of SRTM15+V2 [Tozer et al., 2019]."
+"\n"
+"\n"
+"/home/whyj/.gmt/server/earth_relief_01m.grd: Title: Earth Relief at 01 "
+"arc minute\n"
+"/home/whyj/.gmt/server/earth_relief_01m.grd: Command: grdfilter "
+"SRTM15+V2.nc -Fg1.9 -D1 -I01m -rg -Gearth_relief_01m.grd=ns "
+"--IO_NC4_DEFLATION_LEVEL=9 --PROJ_ELLIPSOID=Sphere\n"
+"/home/whyj/.gmt/server/earth_relief_01m.grd: Remark: Obtained by Gaussian"
+" Cartesian filtering (1.9 km fullwidth) from SRTM15+V2.nc [Tozer et al., "
+"2019; http://dx.doi.org/10.1029/2019EA000658]\n"
+"/home/whyj/.gmt/server/earth_relief_01m.grd: Gridline node registration "
+"used [Geographic grid]\n"
+"/home/whyj/.gmt/server/earth_relief_01m.grd: Grid file format: ns = GMT "
+"netCDF format (16-bit integer), CF-1.7\n"
+"/home/whyj/.gmt/server/earth_relief_01m.grd: x_min: -180 x_max: 180 "
+"x_inc: 0.0166666666667 (1 min) name: longitude n_columns: 21601\n"
+"/home/whyj/.gmt/server/earth_relief_01m.grd: y_min: -90 y_max: 90 y_inc: "
+"0.0166666666667 (1 min) name: latitude n_rows: 10801\n"
+"/home/whyj/.gmt/server/earth_relief_01m.grd: z_min: -10907 z_max: 8170 "
+"name: elevation (m)\n"
+"/home/whyj/.gmt/server/earth_relief_01m.grd: scale_factor: 1 add_offset: "
+"0\n"
+"/home/whyj/.gmt/server/earth_relief_01m.grd: format: netCDF-4 chunk_size:"
+" 129,129 shuffle: on deflation_level: 9"
+msgstr ""
 
 #: ../../SOURCE_DOCS/coloring_topography.rst:79
 msgid ""
@@ -216,6 +253,15 @@ msgstr ""
 "begin`` and ``gmt end`` to wrap all the other plotting commands, like "
 "this:"
 
+#: ../../SOURCE_DOCS/coloring_topography.rst:91
+msgid ""
+"$ gmt begin [輸出地圖主檔名，不用加附檔名] [格式]      # 輸入後按下 enter\n"
+"$ [繪圖指令1]    # 輸入後按下 enter\n"
+"$ [繪圖指令2]    # 輸入後按下 enter\n"
+"...\n"
+"$ gmt end"
+msgstr ""
+
 #: ../../SOURCE_DOCS/coloring_topography.rst:100
 msgid ""
 "你可以一行一行的在命令列中打好指令再送出執行，不過為了修改方便，我們通常會選擇把所有的指令先寫在\\ :ref:`腳本 <腳本>`\\ "
@@ -262,6 +308,13 @@ msgstr ""
 "``titicaca.bash`` or whatever you like (it’s still better to fit your "
 "system format convention). Enter the following lines:"
 
+#: ../../SOURCE_DOCS/coloring_topography.rst:112
+msgid ""
+"gmt begin titicaca png\n"
+"    gmt grdimage @earth_relief_01m -R-70.8/-17.17/-66.56/-14.42r -JM6i\n"
+"gmt end"
+msgstr ""
+
 #: ../../SOURCE_DOCS/coloring_topography.rst:118
 msgid ""
 "你會注意到我們在 ``gmt grdimage`` 前面多加了四個空格，這純粹只是製造縮排效果，讓閱讀腳本的人知道這行被包在 ``gmt "
@@ -277,6 +330,10 @@ msgstr ""
 "you file, and in the :ref:`Terminal` mode, go to the folder where "
 "``titicaca.bash`` is located and run the script. For example, type this "
 "in Linux:"
+
+#: ../../SOURCE_DOCS/coloring_topography.rst:120
+msgid "$ bash titicaca.bash"
+msgstr ""
 
 #: ../../SOURCE_DOCS/coloring_topography.rst:128
 msgid "不同的作業系統的腳本會有不同的額外設定，可以讓你的腳本能夠更方便的執行，詳情請參閱「\\ :doc:`basic_concept`\\」。"
@@ -355,6 +412,14 @@ msgstr ""
 "our map -- simply put the name of the ramp file directly after the ``-C``"
 " and you are done. Here's our updated script:"
 
+#: ../../SOURCE_DOCS/coloring_topography.rst:157
+msgid ""
+"gmt begin titicaca png\n"
+"    gmt grdimage @earth_relief_01m -R-70.8/-17.17/-66.56/-14.42r -JM6i "
+"-Cmby.cpt\n"
+"gmt end"
+msgstr ""
+
 #: ../../SOURCE_DOCS/coloring_topography.rst:163
 msgid "使用相同的方式再執行一次腳本，這次地圖會變成這樣"
 msgstr "Run the script again and your map would become this"
@@ -398,6 +463,15 @@ msgstr ""
 "lied above the topo data from ``grdimage``, we have to put the line of "
 "``coast`` command below the ``grdimage`` command. Open the script again "
 "and change the content to"
+
+#: ../../SOURCE_DOCS/coloring_topography.rst:179
+msgid ""
+"gmt begin titicaca png\n"
+"    gmt grdimage @earth_relief_01m -R-70.8/-17.17/-66.56/-14.42r -JM6i "
+"-Cmby.cpt\n"
+"    gmt coast -Scornflowerblue -Baf -B+t\"Lago Titicaca\"\n"
+"gmt end"
+msgstr ""
 
 #: ../../SOURCE_DOCS/coloring_topography.rst:186
 msgid ""
@@ -448,6 +522,10 @@ msgstr ""
 " other options in ``coast`` to decorate it. First, ``-I`` marks rivers on"
 " the map, with the following syntax:"
 
+#: ../../SOURCE_DOCS/coloring_topography.rst:247
+msgid "-I編號/畫筆"
+msgstr ""
+
 #: ../../SOURCE_DOCS/coloring_topography.rst:251
 msgid ""
 "其中的\\ ``編號``\\ 可以為不同的英數字，對應到不同等級的河流；而\\ :ref:`畫筆 <畫筆>`\\ "
@@ -465,6 +543,10 @@ msgid "另外一個 ``coast`` 的選項是 ``-N``，它可以在地圖上標上�
 msgstr ""
 "Another ``coast`` option we are going to use is ``-N`` for plotting "
 "political boundaries. Its syntax is similar:"
+
+#: ../../SOURCE_DOCS/coloring_topography.rst:255
+msgid "-N編號/畫筆"
+msgstr ""
 
 #: ../../SOURCE_DOCS/coloring_topography.rst:259
 msgid ""
@@ -500,6 +582,16 @@ msgstr "Script"
 #: ../../SOURCE_DOCS/coloring_topography.rst:270
 msgid "本地圖的最終指令稿如下："
 msgstr "The final script for our map is:"
+
+#: ../../SOURCE_DOCS/coloring_topography.rst:272
+msgid ""
+"gmt begin titicaca png\n"
+"    gmt grdimage @earth_relief_01m -R-70.8/-17.17/-66.56/-14.42r -JM6i "
+"-Cmby.cpt\n"
+"    gmt coast -Ir/0.7p,cornflowerblue -N1/0.7p,,-- -Scornflowerblue -Baf "
+"-B+t\"Lago Titicaca\"\n"
+"gmt end"
+msgstr ""
 
 #: ../../SOURCE_DOCS/coloring_topography.rst:282
 msgid ""

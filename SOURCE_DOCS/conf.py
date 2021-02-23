@@ -357,4 +357,7 @@ epub_exclude_files = ['search.html']
 # If false, no index is generated.
 #epub_use_index = True
 
+# -- Options for i18n (sphinx-intl) ----------------------------------------------
 locale_dirs = ['locale/']
+gettext_compact = False
+gettext_additional_targets = ['literal-block']

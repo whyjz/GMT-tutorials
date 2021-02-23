@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-08 21:58-0500\n"
+"POT-Creation-Date: 2021-02-23 11:56-0500\n"
 "PO-Revision-Date: 2019-12-09 07:27-0500\n"
 "Last-Translator: Whyjay Zheng <jhsttshj@gmail.com>\n"
 "Language: en_US\n"
@@ -135,6 +135,10 @@ msgstr ""
 " free to try whatever region if you would like! Now, open :ref:`Terminal`"
 " and enter the following prompt:"
 
+#: ../../SOURCE_DOCS/making_first_map.rst:46
+msgid "$ gmt coast"
+msgstr ""
+
 #: ../../SOURCE_DOCS/making_first_map.rst:50
 msgid ""
 "會看到一連串的說明，``coast`` "
@@ -145,9 +149,17 @@ msgstr ""
 "want to make sure for the usage, you can also enter the command like the "
 "following line, and it will only show the syntax on screen."
 
+#: ../../SOURCE_DOCS/making_first_map.rst:52
+msgid "$ gmt coast -"
+msgstr ""
+
 #: ../../SOURCE_DOCS/making_first_map.rst:56
 msgid "幾乎所有 GMT 的指令，包含 ``coast``，都是以類似如下的語法操作："
 msgstr "Almost all GMT commands, including ``coast``, have a syntax like this:"
+
+#: ../../SOURCE_DOCS/making_first_map.rst:58
+msgid "$ gmt 指令 (輸入檔) [選項1 選項2 選項3...]"
+msgstr ""
 
 #: ../../SOURCE_DOCS/making_first_map.rst:62
 msgid ""
@@ -186,6 +198,12 @@ msgstr ""
 " just put all the parameters directly after ``-R``, without any spaces. "
 "Typically, there are two ways to specify extent using ``-R`` flag:"
 
+#: ../../SOURCE_DOCS/making_first_map.rst:66
+msgid ""
+"-R19.42/22.95/59.71/60.56\n"
+"-R19.42/59.71/22.95/60.56r"
+msgstr ""
+
 #: ../../SOURCE_DOCS/making_first_map.rst:71
 msgid ""
 "第一種格式為 ``西邊界/東邊界/南邊界/北邊界``，也就是由 x 座標 (經度) 和 y 座標 (緯度) "
@@ -213,6 +231,13 @@ msgstr ""
 " output file name. This flag is actually the file extension (format). The"
 " syntax goes like this:"
 
+#: ../../SOURCE_DOCS/making_first_map.rst:75
+msgid ""
+"-png archi_sea        # archi_sea 是輸出檔檔名。注意 png 和檔名之間有空格。輸出檔的全名爲 "
+"archi_sea.png\n"
+"-pdf archi_sea        # PDF 格式輸出。檔名爲 archi_sea.pdf。"
+msgstr ""
+
 #: ../../SOURCE_DOCS/making_first_map.rst:80
 msgid ""
 "其他可選的格式還有 ``-eps``, ``-ps``, ``-jpg`` 等等，可參閱官方手冊的\\ `格式列表 "
@@ -225,6 +250,13 @@ msgstr ""
 "GMT official manual. Now let see how it goes after combining ``-R`` and "
 "``-png``. Enter the following prompt in the terminal and run it:"
 
+#: ../../SOURCE_DOCS/making_first_map.rst:83
+msgid ""
+"$ gmt coast -R19.42/22.95/59.71/60.56 -png archi_sea\n"
+"coast [ERROR]: Syntax error: Must specify at least one of -C, -G, -S, -I,"
+" -N, -Q and -W"
+msgstr ""
+
 #: ../../SOURCE_DOCS/making_first_map.rst:89
 msgid ""
 "嗚唔，出現錯誤了！問題出在我們還有一些選項沒有給定。這是有關「繪圖樣式」的設定。GMT 要求我們至少給定一種繪圖樣式，我們先使用 ``-W`` "
@@ -236,11 +268,19 @@ msgstr ""
 "attribute. A pen attribute contains three values: thickness, color, and "
 "style. The syntax is"
 
+#: ../../SOURCE_DOCS/making_first_map.rst:94
+msgid "-W粗細,顏色,樣式"
+msgstr ""
+
 #: ../../SOURCE_DOCS/making_first_map.rst:98
 msgid "如果省略時，就使用預設的樣式作圖。我們試著指定指定畫筆粗細為 0.1 點 (1 點 = 1/72 英吋 = 0.03527 公分) 的黑色線條看看："
 msgstr ""
 "If any is omitted, the default is used. Here we try to specify a black "
 "pen with a thickness at 0.1 points (1 point = 1/72 inches = 0.03527 cm):"
+
+#: ../../SOURCE_DOCS/making_first_map.rst:100
+msgid "-W0.1p,black"
+msgstr ""
 
 #: ../../SOURCE_DOCS/making_first_map.rst:104
 msgid ""
@@ -270,6 +310,10 @@ msgstr ""
 "Now we have set 3 arguments up and ``coast`` should be able to run "
 "smoothly. Type the following command, and if you see this:"
 
+#: ../../SOURCE_DOCS/making_first_map.rst:112
+msgid "$ gmt coast -R19.42/22.95/59.71/60.56 -W0.1p,black -png archi_sea"
+msgstr ""
+
 #: ../../SOURCE_DOCS/making_first_map.rst:133
 #, python-format
 msgid ""
@@ -289,6 +333,10 @@ msgstr ""
 "but here we are going to pick a common one for drawing a regional map: "
 "`Mercator projection "
 "<https://en.wikipedia.org/wiki/Mercator_projection>`_. The syntax is:"
+
+#: ../../SOURCE_DOCS/making_first_map.rst:137
+msgid "-JM6i"
+msgstr ""
 
 #: ../../SOURCE_DOCS/making_first_map.rst:141
 msgid ""
@@ -325,6 +373,12 @@ msgstr ""
 "with colors. We will need ``-G`` (Ground) and ``-S`` (Sea) flags "
 "respectively."
 
+#: ../../SOURCE_DOCS/making_first_map.rst:176
+msgid ""
+"-Gdarkseagreen2\n"
+"-Scornflowerblue"
+msgstr ""
+
 #: ../../SOURCE_DOCS/making_first_map.rst:181
 msgid ""
 "``darkseagreen2`` 和 ``cornflowerblue`` 都跟 ``black`` 一樣，是 GMT "
@@ -333,6 +387,12 @@ msgstr ""
 "Like ``black``, ``darkseagreen2`` and ``cornflowerblue`` are also pre-"
 "defined color names in GMT. Let's pull all options together, and you will"
 " get the following command:"
+
+#: ../../SOURCE_DOCS/making_first_map.rst:183
+msgid ""
+"$ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 "
+"-Scornflowerblue -png archi_sea"
+msgstr ""
 
 #: ../../SOURCE_DOCS/making_first_map.rst:187
 msgid ""
@@ -348,6 +408,13 @@ msgstr ""
 "script neat, you can use the UNIX line-break sign ``\\`` to continue the "
 "command at a new line. The following example would give the same result "
 "as the previous one:"
+
+#: ../../SOURCE_DOCS/making_first_map.rst:189
+msgid ""
+"$ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 "
+"\\\n"
+"          -Scornflowerblue -png archi_sea"
+msgstr ""
 
 #: ../../SOURCE_DOCS/making_first_map.rst:194
 msgid "本文為了方便閱讀起見，也會使用 ``\\`` 分隔過長的段落，但如果你想要在一行之內完成此道指令，則可以省略這個符號。"
@@ -393,6 +460,12 @@ msgstr ""
 "got tons of styles for your choice. Here we are going to introduce two "
 "simplest combinations:"
 
+#: ../../SOURCE_DOCS/making_first_map.rst:225
+msgid ""
+"-Ba座標數值間隔f座標刻度間隔g格線間隔\n"
+"-B地圖四邊設定+t標題"
+msgstr ""
+
 #: ../../SOURCE_DOCS/making_first_map.rst:230
 msgid ""
 "第一種組合可以給定地圖邊框的數值、刻度與格線設定，而且使用與 ``-R`` 相同的座標單位，例如 ``-Ba1f1g1`` "
@@ -420,6 +493,14 @@ msgstr ""
 "combination, which a map title followed by the ``+t`` flag. Two "
 "combinations can be both used in the same command. For instance, we can "
 "design our map like this:"
+
+#: ../../SOURCE_DOCS/making_first_map.rst:232
+msgid ""
+"$ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 "
+"\\\n"
+"          -Scornflowerblue -Ba2f0.5g1 -BWSne+t\"Archipelago Sea\" -png "
+"archi_sea"
+msgstr ""
 
 #: ../../SOURCE_DOCS/making_first_map.rst:237
 msgid ""
@@ -460,6 +541,15 @@ msgstr ""
 "area. Here we are going to make islands that are lower than 0.1 square "
 "kilometers disappear:"
 
+#: ../../SOURCE_DOCS/making_first_map.rst:249
+msgid ""
+"$ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 "
+"\\\n"
+"          -Scornflowerblue -Ba2f0.5g1 -BWSne+t\"Archipelago Sea\" -A0.1 "
+"\\\n"
+"          -png archi_sea"
+msgstr ""
+
 #: ../../SOURCE_DOCS/making_first_map.rst:255
 msgid "島嶼比較少，看起來清爽多了，卻又不會喪失「群島海」名稱的霸氣。"
 msgstr ""
@@ -482,6 +572,15 @@ msgstr "Script"
 #: ../../SOURCE_DOCS/making_first_map.rst:266
 msgid "本地圖的最終指令稿如下："
 msgstr "The final command for our goal is:"
+
+#: ../../SOURCE_DOCS/making_first_map.rst:268
+msgid ""
+"$ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 "
+"\\\n"
+"          -Scornflowerblue -Ba2f0.5g1 -BWSne+t\"Archipelago Sea\" -A0.1 "
+"-U \\\n"
+"          -png archi_sea"
+msgstr ""
 
 #: ../../SOURCE_DOCS/making_first_map.rst:276
 msgid ""

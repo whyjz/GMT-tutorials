@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-08 21:58-0500\n"
+"POT-Creation-Date: 2021-02-23 11:56-0500\n"
 "PO-Revision-Date: 2020-03-22 05:41-0400\n"
 "Last-Translator: Whyjay Zheng <jhsttshj@gmail.com>\n"
 "Language: en_US\n"
@@ -183,6 +183,10 @@ msgstr ""
 "comma-separated file. Then use shell commands to process the CSV file. "
 "For example, you can use this in the most Linux shells:"
 
+#: ../../SOURCE_DOCS/scatter_plot.rst:53
+msgid "$ cut -d ',' -f 8,17 你的檔案.csv > zzh.txt"
+msgstr ""
+
 #: ../../SOURCE_DOCS/scatter_plot.rst:57
 msgid "其中第 8 欄和第 17 欄分別就是「氣溫」與「風速」的資料。"
 msgstr ""
@@ -194,6 +198,17 @@ msgid "處理完的 ``zzh.txt`` 檔可以直接使用文字編輯器打開，前
 msgstr ""
 "The output file ``zzh.txt`` can be opened directly in a text editor. The "
 "first few rows should look like this:"
+
+#: ../../SOURCE_DOCS/scatter_plot.rst:61
+msgid ""
+"14.6,3.6\n"
+"15.7,0.2\n"
+"16,0.3\n"
+"17.7,0.3\n"
+"17.8,0.7\n"
+"# ....以下略....\n"
+"# 第 1 欄：氣溫 (攝氏)；第 2 欄：風速 (公尺/秒)"
+msgstr ""
 
 #: ../../SOURCE_DOCS/scatter_plot.rst:71
 msgid ""
@@ -253,6 +268,13 @@ msgstr ""
 "can use the built-in GMT command ``info`` to check the information of the"
 " text data real quick, like this:"
 
+#: ../../SOURCE_DOCS/scatter_plot.rst:88
+msgid ""
+"$ gmt info zzh.txt\n"
+"zzh.txt: N = 31     <-0.4/17.8>     <0.2/6.3>\n"
+"# 檔名  資料點數      第一欄最小/最大值  第二欄最小/最大值"
+msgstr ""
+
 #: ../../SOURCE_DOCS/scatter_plot.rst:94
 msgid ""
 "由於第一和第二欄的數值會分別被用在 x 軸和 y 軸，我們馬上就可以依照最大和最小值決定 ``-R`` 的範圍。``info`` "
@@ -264,6 +286,13 @@ msgstr ""
 "files as long as all the files have the same amount of columns. The "
 "syntax goes the following:"
 
+#: ../../SOURCE_DOCS/scatter_plot.rst:96
+msgid ""
+"$ gmt info zzh.txt suao.txt\n"
+"dataset: N = 62     <-0.4/21.6>     <0.2/6.3>\n"
+"#      資料點數      第一欄最小/最大值  第二欄最小/最大值"
+msgstr ""
+
 #: ../../SOURCE_DOCS/scatter_plot.rst:102
 msgid ""
 "依照 ``info`` 的輸出資料，我們可以知道所有的資料點一定能畫在 ``-R-1/23/0/7`` 的範圍內 (x 從 -1 至 23，y 從"
@@ -272,6 +301,10 @@ msgstr ""
 "According to the output message from ``info``, we know that all the data "
 "points can be shown within ``-R-1/23/0/7`` (x from -1 to 23; y from 0 to "
 "7). Let's take a look at our data:"
+
+#: ../../SOURCE_DOCS/scatter_plot.rst:104
+msgid "$ gmt plot zzh.txt -R-1/23/0/7 -JX15c -Bafg -png zzh"
+msgstr ""
 
 #: ../../SOURCE_DOCS/scatter_plot.rst:112
 msgid ""
@@ -285,6 +318,10 @@ msgstr ""
 " have to add the ``-S`` option. This option turns ``plot`` into the "
 "**scatter plot mode** and has the following syntax to set up the style of"
 " data points:"
+
+#: ../../SOURCE_DOCS/scatter_plot.rst:114
+msgid "-S代號[尺寸]"
+msgstr ""
 
 #: ../../SOURCE_DOCS/scatter_plot.rst:118
 msgid ""
@@ -313,6 +350,14 @@ msgstr ""
 "``-JX15c/10c`` sets the x-axis length at 15 cm and the y-axis length at "
 "10 cm. Use these new options and draw our figure again:"
 
+#: ../../SOURCE_DOCS/scatter_plot.rst:120
+msgid ""
+"$ gmt plot zzh.txt -R-1/23/0/7 -JX15c/10c -Sc0.35c -G#58C73A "
+"-W0.03c,black -Baf -png zzh\n"
+"# -G: 標記填色\n"
+"# -W: 標記外框畫筆"
+msgstr ""
+
 #: ../../SOURCE_DOCS/scatter_plot.rst:130
 msgid "選擇了適當的標記樣式與填色，與粗一點的標記框線，看起來就會美觀許多。"
 msgstr ""
@@ -336,6 +381,10 @@ msgstr ""
 "``plot``. For example, this shows the ``echo`` command that is available "
 "in many OS terminals:"
 
+#: ../../SOURCE_DOCS/scatter_plot.rst:136
+msgid "$ echo \"10.2 3.2\" | gmt plot -選項們"
+msgstr ""
+
 #: ../../SOURCE_DOCS/scatter_plot.rst:140
 msgid "如此一來，(10.2, 3.2) 就會被當成座標點畫在圖上。"
 msgstr "Hence, (10.2, 3.2) will be plotted as a data point."
@@ -345,6 +394,13 @@ msgid "使用標準輸入重導向搭配結束的輸入字元 (``<<`` 符號)：
 msgstr ""
 "Redirect the standard input using the ``<<`` characters at the end of a "
 "line:"
+
+#: ../../SOURCE_DOCS/scatter_plot.rst:144
+msgid ""
+"$ gmt plot -選項們 << END\n"
+"...任意的多行資料...\n"
+"END"
+msgstr ""
 
 #: ../../SOURCE_DOCS/scatter_plot.rst:150
 msgid ""
@@ -367,6 +423,27 @@ msgstr ""
 "way described above. In the following script, we also plot the second "
 "dataset using the blue diamond as point marks."
 
+#: ../../SOURCE_DOCS/scatter_plot.rst:154
+msgid ""
+"# ==== 設定變數 ====\n"
+"zzh='zzh.txt'\n"
+"suao='suao.txt'\n"
+"\n"
+"gmt begin windspeed_vs_temperature png\n"
+"    # ==== 繪點 ====\n"
+"    gmt plot $zzh  -R-1/23/0/7 -JX15c/10c -Sc0.35c -G#58C73A "
+"-W0.03c,black -Baf\n"
+"    gmt plot $suao -Sd0.35c -G#3A6BC7 -W0.03c,black\n"
+"\n"
+"    # ==== 灰色垂直虛線 ====\n"
+"    gmt plot -W0.03c,100,-- << LINEEND\n"
+"0 0\n"
+"0 7\n"
+"LINEEND\n"
+"\n"
+"gmt end"
+msgstr ""
+
 #: ../../SOURCE_DOCS/scatter_plot.rst:173
 msgid "這條灰色的線寬度是 0.03 cm，並且連接 (0, 0) 與 (0, 7) 兩點。"
 msgstr ""
@@ -384,6 +461,23 @@ msgstr ""
 " this isn't that beautiful, there is another stdin redirection symbol "
 "``<<-`` you can use, but keep in mind that **you can only use tab as the "
 "indentation character** with this symbol, as shown here:"
+
+#: ../../SOURCE_DOCS/scatter_plot.rst:179
+msgid ""
+"# (前略)\n"
+"gmt begin windszzh.txtpeed_vs_temperature_gmt6 png\n"
+"        # ==== 繪點 ====\n"
+"        gmt plot $zzh  -R-1/23/0/7 -JX15c/10c -Sc0.35c -G#58C73A "
+"-W0.03c,black -Baf\n"
+"        gmt plot $suao -Sd0.35c -G#3A6BC7 -W0.03c,black\n"
+"\n"
+"        # ==== 灰色垂直虛線 ====\n"
+"        gmt plot -W0.03c,100,-- <<- LINEEND\n"
+"        0 0\n"
+"        0 7\n"
+"        LINEEND\n"
+"gmt end"
+msgstr ""
 
 #: ../../SOURCE_DOCS/scatter_plot.rst:194
 msgid "``<<-`` 重導向字元會把資料結束字元前面的 ``tab`` 區塊移除，使 ``LINEEND`` 結束字元能夠正確的被讀取。"
@@ -428,11 +522,25 @@ msgstr ""
 "would make your script clear and more readable. Let's revisit these two "
 "lines:"
 
+#: ../../SOURCE_DOCS/scatter_plot.rst:208
+msgid ""
+"gmt plot $zzh  -R-1/23/0/7 -JX15c/10c -Sc0.35c -G#58C73A -W0.03c,black "
+"-Baf\n"
+"gmt plot $suao -Sd0.35c -G#3A6BC7 -W0.03c,black"
+msgstr ""
+
 #: ../../SOURCE_DOCS/scatter_plot.rst:213
 msgid "我們可以把地圖的通用選項移到 ``basmap`` 中，因此以上指令也可以寫成這樣"
 msgstr ""
 "We can move all the general settings to the ``basemap`` command, and the "
 "script becomes to"
+
+#: ../../SOURCE_DOCS/scatter_plot.rst:215
+msgid ""
+"gmt basemap -R-1/23/0/7 -JX15c/10c -Baf\n"
+"gmt plot $zzh  -Sc0.35c -G#58C73A -W0.03c,black\n"
+"gmt plot $suao -Sd0.35c -G#3A6BC7 -W0.03c,black"
+msgstr ""
 
 #: ../../SOURCE_DOCS/scatter_plot.rst:221
 msgid ""
@@ -459,6 +567,34 @@ msgstr ""
 ":doc:`editing_cpt_colorbar`, we also mentioned that the axis label is "
 "governed by ``-B[x_or_y]+l``. Follow these instructions and add some text"
 " in the map:"
+
+#: ../../SOURCE_DOCS/scatter_plot.rst:242
+msgid ""
+"# ==== 設定變數 ====\n"
+"zzh='zzh.txt'\n"
+"suao='suao.txt'\n"
+"zzh_style=\"-Sc0.35c -G#58C73A -W0.03c,black\"\n"
+"suao_style=\"-Sd0.35c -G#3A6BC7 -W0.03c,black\"\n"
+"\n"
+"gmt begin windspeed_vs_temperature png\n"
+"    # ==== 版面與作圖區設定 ====\n"
+"    # -Baf 現在拆成了 -Bxaf 與 -Bya2f，\n"
+"    # 你可以分開給定 x 軸與 y 軸的 a、f、g 選項！\n"
+"    gmt basemap -R-1/23/0/7 -JX15c/10c -B+t\"January 2016\" \\\n"
+"                -Bxaf+l\"Temperature (degree C)\" -Bya2f+l\"Wind Speed (m"
+" s-1)\"\n"
+"    # ==== 繪點 ====\n"
+"    gmt plot $zzh  $zzh_style\n"
+"    gmt plot $suao $suao_style\n"
+"\n"
+"    # ==== 灰色垂直虛線 ====\n"
+"    gmt plot -W0.03c,100,-- << LINEEND\n"
+"0 0\n"
+"0 7\n"
+"LINEEND\n"
+"\n"
+"gmt end"
+msgstr ""
 
 #: ../../SOURCE_DOCS/scatter_plot.rst:268
 msgid "以上腳本的出圖如下："
@@ -510,6 +646,13 @@ msgstr ""
 "Let's modify our script based on the changes above and the \"Settings "
 "about the map\" section will become this:"
 
+#: ../../SOURCE_DOCS/scatter_plot.rst:286
+msgid ""
+"# ==== 版面與作圖區設定 ====\n"
+"gmt basemap -R-1/23/0/7 -JX15c/10c -BWSne+t\"January 2016\" "
+"-Bxaf+l\"Temperature (@.C)\" -Bya2f+l\"Wind Speed (m s@+-1@+)\""
+msgstr ""
+
 #: ../../SOURCE_DOCS/scatter_plot.rst:291
 msgid "修改後的座標軸看起來就清爽多了！"
 msgstr "Now, these axes look much better."
@@ -535,6 +678,17 @@ msgstr ""
 "rectangular polygon with the color ``#E6F4F2``. You can insert this "
 "snippet before ``gmt end``:"
 
+#: ../../SOURCE_DOCS/scatter_plot.rst:299
+msgid ""
+"# ==== 圖例框與圖例內容 ====\n"
+"gmt plot -W0.05c,black -G#E6F4F2 << BOXEND\n"
+"16 5\n"
+"22 5\n"
+"22 6.5\n"
+"16 6.5\n"
+"BOXEND"
+msgstr ""
+
 #: ../../SOURCE_DOCS/scatter_plot.rst:309
 msgid ""
 "接下來，圖例框中需要放入之前使用過的符號與相對應的文字說明。符號同樣可以透過 ``plot`` 繪製，這次我們使用 ``echo`` "
@@ -544,6 +698,12 @@ msgstr ""
 "labels. ``plot`` can draw the markers for us. This time, we use ``echo`` "
 "and the pipe commands to plot the symbols in the legend box. Of course, "
 "you have to determine their coordinates first. Like this:"
+
+#: ../../SOURCE_DOCS/scatter_plot.rst:311
+msgid ""
+"echo \"17 6.05\" | gmt plot $zzh_style\n"
+"echo \"17 5.45\" | gmt plot $suao_style"
+msgstr ""
 
 #: ../../SOURCE_DOCS/scatter_plot.rst:316
 msgid ""
@@ -558,6 +718,10 @@ msgstr ""
 "first two columns are the x-y coordinates, and the third column is the "
 "text to be labeled**. Also, ``text`` has its own option ``-F`` to adjust "
 "the details of the text. Some important options under the ``-F`` flag are"
+
+#: ../../SOURCE_DOCS/scatter_plot.rst:318
+msgid "-F+f[字形屬性]+j[對齊錨點位置]    # 實際上不只這些，但其餘暫略"
+msgstr ""
 
 #: ../../SOURCE_DOCS/scatter_plot.rst:322
 msgid ""
@@ -577,6 +741,12 @@ msgstr ""
 " the (horizontal) center to the given coordinates. The full command to "
 "input text will look like this:"
 
+#: ../../SOURCE_DOCS/scatter_plot.rst:324
+msgid ""
+"echo \"18 6.05 Zhuzihu\" | gmt text -F+f14p+jML\n"
+"echo \"18 5.45 Su'ao\"   | gmt text -F+f14p+jML"
+msgstr ""
+
 #: ../../SOURCE_DOCS/scatter_plot.rst:329
 msgid ""
 "第一行會把 (18, 6.05) 設為 ``Zhuzihu`` (竹子湖) 文字的最左側，而第二行則是使用相同的指令設定 ``Su'ao`` "
@@ -591,6 +761,14 @@ msgid "``text`` 也可以讓使用者一次輸入多個字串，所以其實這�
 msgstr ""
 "``text`` also accepts multi-line data input. So these two lines of "
 "``text`` commands can be rewritten using the stdin redirection:"
+
+#: ../../SOURCE_DOCS/scatter_plot.rst:338
+msgid ""
+"gmt text -F+f14p+jML << TEXTEND\n"
+"18 6.05 Zhuzihu\n"
+"18 5.45 Su'ao\n"
+"TEXTEND"
+msgstr ""
 
 #: ../../SOURCE_DOCS/scatter_plot.rst:345
 msgid ""
@@ -612,6 +790,44 @@ msgstr "Script"
 #: ../../SOURCE_DOCS/scatter_plot.rst:350
 msgid "本地圖的最終指令稿如下："
 msgstr "The final script for our map is:"
+
+#: ../../SOURCE_DOCS/scatter_plot.rst:352
+msgid ""
+"# ==== 設定變數 ====\n"
+"zzh='zzh.txt'\n"
+"suao='suao.txt'\n"
+"zzh_style=\"-Sc0.35c -G#58C73A -W0.03c,black\"\n"
+"suao_style=\"-Sd0.35c -G#3A6BC7 -W0.03c,black\"\n"
+"\n"
+"gmt begin windspeed_vs_temperature png\n"
+"    # ==== 版面與作圖區設定 ====\n"
+"    gmt basemap -R-1/23/0/7 -JX15c/10c -BWSne+t\"January 2016\" "
+"-Bxaf+l\"Temperature (@.C)\" -Bya2f+l\"Wind Speed (m s@+-1@+)\"\n"
+"\n"
+"    # ==== 繪點 ====\n"
+"    gmt plot $zzh  $zzh_style\n"
+"    gmt plot $suao $suao_style\n"
+"\n"
+"    # ==== 灰色垂直虛線 ====\n"
+"    gmt plot -W0.03c,100,-- << LINEEND\n"
+"0 0\n"
+"0 7\n"
+"LINEEND\n"
+"\n"
+"    # ==== 圖例框與圖例內容 ====\n"
+"    gmt plot -W0.05c,black -G#E6F4F2 << BOXEND\n"
+"16 5\n"
+"22 5\n"
+"22 6.5\n"
+"16 6.5\n"
+"BOXEND\n"
+"\n"
+"    echo \"17 6.05\" | gmt plot $zzh_style\n"
+"    echo \"17 5.45\" | gmt plot $suao_style\n"
+"    echo \"18 6.05 Zhuzihu\" | gmt text -F+f14p+jML\n"
+"    echo \"18 5.45 Su'ao\" | gmt text -F+f14p+jML\n"
+"gmt end"
+msgstr ""
 
 #: ../../SOURCE_DOCS/scatter_plot.rst:391
 msgid "「以兩個不同氣象站的 2016 年 1 月風速與氣溫觀測資料，繪製 XY 散佈圖。攝氏 0 度以灰色垂直線表示。圖例、座標軸皆已清楚的標示。」"

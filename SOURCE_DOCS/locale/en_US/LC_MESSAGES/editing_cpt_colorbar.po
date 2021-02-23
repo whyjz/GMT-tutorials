@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-08 21:58-0500\n"
+"POT-Creation-Date: 2021-02-23 11:56-0500\n"
 "PO-Revision-Date: 2019-07-03 04:53-0400\n"
 "Last-Translator: Whyjay Zheng <jhsttshj@gmail.com>\n"
 "Language: en_US\n"
@@ -137,6 +137,19 @@ msgid ""
 " (``-JB``)，使格陵蘭與其他地表的相對面積與實際大小一致。"
 msgstr ""
 
+#: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:72
+msgid ""
+"# ==== 設定變數 ====\n"
+"in_grd='ETOPO1_Bed_g_gmt4.grd'\n"
+"out_ps='greenland.ps'\n"
+"cpt_sea='mby.cpt'\n"
+"\n"
+"# ==== 繪製地形圖 ====\n"
+"grdimage $in_grd -R-60/57/20/80r -JB-42/76/90/60/4i -K -P -C$cpt_sea \\\n"
+"         -Ba15g15 -BWSne > $out_ps\n"
+"pscoast          -R -J -O -Dh -W,black >> $out_ps"
+msgstr ""
+
 #: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:84
 msgid "以上腳本出圖如下"
 msgstr ""
@@ -151,6 +164,14 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:98
 msgid "在以上所述的情況下，``grdimage`` 還是可以執行成功，但嘗試開啟 ``.ps`` 檔時會出現如下錯誤："
+msgstr ""
+
+#: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:100
+msgid ""
+"undefined -21\n"
+"undefined -21\n"
+"undefined -21\n"
+"undefined -21"
 msgstr ""
 
 #: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:107
@@ -168,6 +189,27 @@ msgid ""
 "不過它還有另一個功能，就是當語法為 ``-Gc`` 時，GMT 不會為陸域填色，而是會\\ **沿著海岸線把陸地部份的地圖剪掉**。\\ 在下了 "
 "``pscoast -Gc`` 之後，我們要再使用 ``grdimage`` 畫一次地圖，接著使用 ``pscoast -Q`` 指令，來「告訴」"
 " GMT 剛才畫的地圖是用來填補剪下的陸地部份的。因此，腳本可以撰寫如下："
+msgstr ""
+
+#: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:119
+msgid ""
+"# ==== 設定變數 ====\n"
+"in_grd='ETOPO1_Bed_g_gmt4.grd'\n"
+"out_ps='greenland.ps'\n"
+"cpt_sea='mby.cpt'         # 海域的色階\n"
+"cpt_land='cequal.cpt'     # 陸域的色階\n"
+"\n"
+"# ==== 繪製地形圖 ====\n"
+"    # 畫第一次圖，使用海域色階\n"
+"grdimage $in_grd -R-60/57/20/80r -JB-42/76/90/60/4i -K -P -C$cpt_sea \\\n"
+"         -Ba15g15 -BWSne > $out_ps\n"
+"    # 沿著海岸線剪下 (-Gc) 前面影像的陸域部份 (以 -Dh 選擇海岸線精細度)\n"
+"pscoast          -R -J -O -K -Dh -Gc >> $out_ps\n"
+"    # 畫第二次圖，使用陸域色階，注意這裡需要 -B 選項來把邊框重新設定一次，\n"
+"    # 這是因為格線和與陸地接觸到的邊框都會被剪掉\n"
+"grdimage $in_grd -R -J -O -K -C$cpt_land -B >> $out_ps\n"
+"    # 沿著海岸線貼上 (-Q) 從前一個 pscoast 指令之後產生的影像\n"
+"pscoast          -R -J -O -Q -B+t\"Greenland Bedrock\" >> $out_ps"
 msgstr ""
 
 #: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:139
@@ -202,8 +244,29 @@ msgid ""
 "z 值以製作色階檔，而後者則是\\ **依據輸入的網格檔數值，自動調整輸出色階檔的 z 值區間**。\\ 我們可以使用如下指令來測試一下他的功能："
 msgstr ""
 
+#: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:167
+msgid "$ grd2cpt $in_grd -Ccequal.cpt    # $in_grd 已設為 'ETOPO1_Bed_g_gmt4.grd'"
+msgstr ""
+
 #: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:171
 msgid "程式可能會需要跑一陣子，因為它會逐一讀取網格檔中的所有數值。程式結束時輸出的訊息大概會像這樣："
+msgstr ""
+
+#: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:173
+msgid ""
+"-10898              1               -5133.54194385  1\n"
+"-5133.54194385      1/40/43         -4096.56238785  1/40/43\n"
+"-4096.56238785      1/115/158       -3348.82717077  1/115/158\n"
+"-3348.82717077      83/111/235      -2709.9149979   83/111/235\n"
+"-2709.9149979       154/1/247       -2112.73915566  154/1/247\n"
+"-2112.73915566      209/65/164      -1515.56331342  209/65/164\n"
+"-1515.56331342      242/132/65      -876.651140552  242/132/65\n"
+"-876.651140552      254/212/1       -128.915923474  254/212/1\n"
+"-128.915923474      254/250/182     908.063632524   254/250/182\n"
+"908.063632524       254             8271            254\n"
+"B   black\n"
+"F   white\n"
+"N   red"
 msgstr ""
 
 #: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:189
@@ -231,11 +294,41 @@ msgid ""
 "值，會稍微方便一點。再加上其他的選項後，指令會像是這樣："
 msgstr ""
 
+#: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:206
+msgid ""
+"$ grd2cpt $in_grd -Ccequal.cpt -R-52/67/-30/80r -L-650/0 -G90/190 -Z -V "
+"-N\n"
+"    # -R: 指定計算區域 (經緯度)\n"
+"    # -L: 只產生 z 值落於 -650 到 0 之間的色階，而且在計算 CDF 時，也忽略這個區間以外的部份\n"
+"    # -G: 只使用輸入色階檔中 z 值從 90 到 190 之間的顏色\n"
+"    # -Z: 製作連續色階檔 (與 makecpt 相同)\n"
+"    # -V: 絮叨模式\n"
+"    # -N: 不產生最後三行 (B、F 與 N)"
+msgstr ""
+
 #: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:216
 msgid ""
 "這邊值得一提的是，``-V`` 幾乎是所有 GMT 共有的選項。一旦加上了這個選項，在螢幕上的輸出資訊會比平常的還要多，\\ 因此稱為「\\ "
 "**絮叨模式**\\ 」。在絮叨模式開啟時會輸出包括程式目前的執行進度、額外的輔助資訊等等，在腳本中使用時\\ "
 "能讓查閱結果與除錯更為方便。以上的指令會輸出如下色階檔："
+msgstr ""
+
+#: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:220
+msgid ""
+"grd2cpt: Processing input grid(s)\n"
+"grd2cpt: Mean and S.D. of data are -103.258494991 80.4274398244\n"
+"grd2cpt: Warning: Making a continuous cpt from a discrete cpt may give "
+"unexpected results!\n"
+"-650        87/111/238      -206.330406411  120/84/254\n"
+"-206.330406411      120/84/254      -170.947936109  139/22/254\n"
+"-170.947936109      139/22/254      -145.434685671  169/1/237\n"
+"-145.434685671      169/1/237       -123.634553883  177/7/215\n"
+"-123.634553883      180/12/210      -103.258494991  206/61/169\n"
+"-103.258494991      206/61/169      -82.8824360992  226/96/130\n"
+"-82.8824360992      226/96/130      -61.0823043116  235/111/106\n"
+"-61.0823043116      236/113/104     -35.5690538732  247/146/40\n"
+"-35.5690538732      247/146/40      -0.186583571607 254/178/1\n"
+"-0.186583571607     254/182/1       0       254/219/1"
 msgstr ""
 
 #: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:236
@@ -245,6 +338,13 @@ msgid ""
 "的最大/最小值和色階的顏色範圍都和原本的不同，而且最後三行也不是 B、F 與 N。你也可以嘗試自行\\ "
 "調整所有相關的選項與設定，看看輸出會有什麼變化。最後，我們一樣可以使用\\ 重導向符號 ``>`` 把色階資訊轉存成 ``.cpt`` "
 "格式的色階檔："
+msgstr ""
+
+#: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:242
+msgid ""
+"$ cpt_land='greenland.cpt'\n"
+"$ grd2cpt $in_grd -Ccequal.cpt -R-52/67/-30/80r -L-650/0 -G90/190 \\\n"
+"          -Z -V -N > $cpt_land"
 msgstr ""
 
 #: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:248
@@ -261,8 +361,37 @@ msgstr ""
 msgid "接下來的目標是水面上的色階檔。我們要截切 ``mby.cpt`` 的一部分過來當作新色階檔的下半部，只要運用 ``makecpt`` 指令即可："
 msgstr ""
 
+#: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:259
+msgid ""
+"$ cpt_sea='mby.cpt'\n"
+"$ makecpt -C$cpt_sea -G0/4000 -Z -M >> $cpt_land"
+msgstr ""
+
 #: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:264
 msgid "完成的陸域色階檔 ``greenland.cpt`` 的內容就會像下面這樣"
+msgstr ""
+
+#: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:266
+msgid ""
+"-650                87/111/238      -206.330406411  120/84/254\n"
+"-206.330406411      120/84/254      -170.947936109  139/22/254\n"
+"-170.947936109      139/22/254      -145.434685671  169/1/237\n"
+"-145.434685671      169/1/237       -123.634553883  177/7/215\n"
+"-123.634553883      180/12/210      -103.258494991  206/61/169\n"
+"-103.258494991      206/61/169      -82.8824360992  226/96/130\n"
+"-82.8824360992      226/96/130      -61.0823043116  235/111/106\n"
+"-61.0823043116      236/113/104     -35.5690538732  247/146/40\n"
+"-35.5690538732      247/146/40      -0.186583571607 254/178/1\n"
+"-0.186583571607     254/182/1       0               254/219/1\n"
+"0                   0/97/71         50              16/123/48\n"
+"50                  16/123/48       500             232/214/125\n"
+"500                 232/214/125     1200            163/68/0\n"
+"1200                163/68/0        1800            130/30/30\n"
+"1800                130/30/30       2800            gray63\n"
+"2800                gray63          4000            206\n"
+"B   black\n"
+"F   white\n"
+"N   127.5"
 msgstr ""
 
 #: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:288
@@ -275,10 +404,22 @@ msgid ""
 "等等的「短指令」不同，要用如下的方式給定參數："
 msgstr ""
 
+#: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:295
+msgid "$ 某GMT指令 --長指令名稱=長指令參數 ... # 和短指令一樣，可以無限增加"
+msgstr ""
+
 #: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:299
 msgid ""
 "因此，如果我們想在原本的 ``makecpt`` 中加上這個選項，指定與 z = -650 時相同的顏色，製作 ``greenland.cpt``"
 " 的兩步驟語法可以寫成："
+msgstr ""
+
+#: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:302
+msgid ""
+"$ grd2cpt $in_grd -Ccequal.cpt -R-52/67/-30/80r -L-650/0 -G90/190 -Z -V "
+"-N > $cpt_land\n"
+"$ makecpt -C$cpt_sea -G0/4000 -Z -M --COLOR_BACKGROUND=82/106/233 >> "
+"$cpt_land"
 msgstr ""
 
 #: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:307
@@ -304,11 +445,19 @@ msgid ""
 "中，能幫助我們繪製色階條的指令為 ``psscale``，它的語法大概是"
 msgstr ""
 
+#: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:324
+msgid "$ psscale -C色階檔 -D位置與長寬 -B邊框與標記 -其他選項"
+msgstr ""
+
 #: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:328
 msgid ""
 "最重要的三個選項分別是 ``-C``、``-D`` 與 ``-B``，而且 ``-C`` 的功用與大部分色階相關的指令的 ``-C`` "
 "指令一樣，都是「輸入色階檔」，``-B`` 則與幾乎所有的 GMT 的 ``-B`` 相同，不過語法上有一點點限制。因此， 只有 ``-D`` "
 "需要特別介紹一下。``-D`` 需要四個參數，分別是"
+msgstr ""
+
+#: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:332
+msgid "-Dx軸座標/y軸座標/色條長度/色條寬度[h]"
 msgstr ""
 
 #: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:336
@@ -318,6 +467,10 @@ msgid ""
 "而是「繪圖區」的左下角。紙張與繪圖區的關係，就好比於在 *Microsoft Word* 中，紙張與可以輸入文字的區塊關係一樣，\\ "
 "通常後者會比前者略小一點，就能在版面四周留白以增進美觀。我們來實際繪製一個色階條顯示 ``mby.cpt`` 這個色階檔，\\ "
 "就能掌握這些尺寸到底可以控制哪些東西的位置："
+msgstr ""
+
+#: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:342
+msgid "$ psscale -Cmby.cpt -D8c/15c/20c/3c -P > scalebar.ps"
 msgstr ""
 
 #: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:346
@@ -340,8 +493,22 @@ msgid ""
 "給定方法大致上就像這樣："
 msgstr ""
 
+#: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:365
+msgid "-Bx[afg設定][+l座標軸標籤] [-By+l座標軸標籤]"
+msgstr ""
+
 #: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:369
 msgid "來看看以下這個例子，為了方便閱讀，我們使用水平色階條呈現："
+msgstr ""
+
+#: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:371
+msgid ""
+"$ psscale -Cmby.cpt -D7c/2c/13c/2ch -P -Bxa2000f+lHeight -By+lm > "
+"scalebar.ps\n"
+"# 這次的色階條長 13 公分，寬 (高) 2 公分\n"
+"# 預設的紙張尺寸 (A4) 是 21.0 x 29.7 公分，所以我們要稍微縮小一點以塞進紙張的短邊\n"
+"# x 座標軸標籤是 Height\n"
+"# y 座標軸標籤是 m"
 msgstr ""
 
 #: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:379
@@ -354,12 +521,31 @@ msgstr ""
 msgid "這裡還有另外一個例子，展示了更多的選項："
 msgstr ""
 
+#: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:388
+msgid ""
+"$ psscale -Cmby.cpt -D7c/2c/13c/2ch -P \\\n"
+"$         -Bxa1000f+l\"Bathymetry (m)\" -G-6000/0 -A -I1 > scalebar.ps\n"
+"# 如果座標軸標籤中包含空格，要用雙引號把所有的字串括起來，這樣子才會被 +l 正確解讀\n"
+"# -G: 只使用輸入色階檔中 z 值從 -6000 到 0 之間的顏色\n"
+"# -A: 把 x 座標軸標籤擺到另外一側 (水平的話是上面，垂直的話是左側)\n"
+"# -I: 設定色階條的照明光強度，參數數值越高越強，加上這個選項之後，色階條會出現明暗與陰影"
+msgstr ""
+
 #: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:397
 msgid "以下圖片就是此指令的輸出，注意色階條的上半部出現了照明光："
 msgstr ""
 
 #: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:403
 msgid "在第三個例子中，我們來看看要怎麼把色階檔中 B 和 F 指定的顏色也標上去："
+msgstr ""
+
+#: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:405
+msgid ""
+"$ psscale -Cmby.cpt -D7c/2c/13c/2ch -P \\\n"
+"$         -Bxa1000f+lLand -By+lm -G0/NaN -Ef1c > scalebar.ps\n"
+"# -G: 如果數值是 NaN，代表使用色階檔中的最大值\n"
+"# -E: 在色階條的兩側繪製三角形，顏色為 B 或 F 的顏色，高度為 1cm。\n"
+"#     -Ef 只會畫出 F 那端的顏色，而 -Eb 只會畫出 B 那端的顏色。"
 msgstr ""
 
 #: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:413
@@ -394,6 +580,40 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:432
 msgid "本地圖的最終指令稿如下："
+msgstr ""
+
+#: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:434
+msgid ""
+"# ==== 設定變數 ====\n"
+"in_grd='ETOPO1_Bed_g_gmt4.grd'\n"
+"out_ps='greenland.ps'\n"
+"cpt_sea='mby.cpt'                # 海床的 cpt 檔\n"
+"cpt_land='greenland.cpt'         # 陸域的 cpt 檔\n"
+"\n"
+"# ==== 製作陸域的 cpt 檔 ====\n"
+"    # 水面下的部份\n"
+"grd2cpt $in_grd -Ccequal.cpt -R-52/67/-30/80r -L-650/0 -G90/190 \\\n"
+"        -Z -V -N > $cpt_land\n"
+"    # 水面上的部份\n"
+"makecpt -C$cpt_sea -G0/4000 -Z -M \\\n"
+"        --COLOR_BACKGROUND=82/106/233 >> $cpt_land\n"
+"\n"
+"# ==== 繪製地形圖 ====\n"
+"grdimage $in_grd -R-60/57/20/80r -JB-42/76/90/60/4i -K -P -C$cpt_sea \\\n"
+"         -Ba15g15 -BWSne > $out_ps\n"
+"    # 把以上影像的陸域部份剪掉\n"
+"pscoast          -R -J -O -K -Dh -Gc >> $out_ps\n"
+"grdimage $in_grd -R -J -O -K -C$cpt_land -B >> $out_ps\n"
+"    # 使用以上影像，回填被剪掉的部份\n"
+"pscoast          -R -J -O -K -Q -B+t\"Greenland Bedrock\" >> $out_ps\n"
+"\n"
+"# ==== 繪製數值色條 ====\n"
+"psscale -O -K -C$cpt_sea  -D5.35i/4.5i/1.75i/0.3i -G0/3500 \\\n"
+"        -Bxa1000f+l\"Above Sea Level\" -By+lm >> $out_ps\n"
+"psscale -O -K -C$cpt_sea  -D5.1i/1.9i/3i/0.3i     -G-6000/0 -A -I0.5 \\\n"
+"        -Bxa1000f+lBathymetry >> $out_ps\n"
+"psscale -O    -C$cpt_land -D5.6i/2.9i/1i/0.3i     -GNaN/0      -I0.5 \\\n"
+"        -Bxa600f+lBedrock -Eb0.1i >> $out_ps"
 msgstr ""
 
 #: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:469

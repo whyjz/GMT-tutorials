@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-08 21:58-0500\n"
+"POT-Creation-Date: 2021-02-23 11:56-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,6 +40,10 @@ msgstr ""
 msgid "雖然目前主要的作業系統都是以圖形介面 (桌面) 當作預設的使用者介面，但是你仍然可以透過指令列來控制你的電腦。最簡單的方法就是透過作業系統在桌面環境下內建的指令列程式來執行。指令列程式在 Windows 下稱為 cmd，而 Mac 或大部分 Linux 系統則稱為終端機 (terminal)。在本教學中，「開啟終端機」就意味開啟指令列模式來操作你的電腦。在 Windows XP 之後的版本，有兩種「終端機」可以選擇，一個就是 cmd，另一個稱為「PowerShell」，簡單的說就是讓使用者可以在 Windows 的介面之下使用 UNIX 殼程式 (shell) 的一些語法。在本教學中，所有要在終端機下輸入的指令，最前方都會有個提示符號"
 msgstr ""
 
+#: ../../SOURCE_DOCS/basic_concept.rst:19
+msgid "$"
+msgstr ""
+
 #: ../../SOURCE_DOCS/basic_concept.rst:23
 msgid "接在 ``$`` 之後的文字，才是使用者真正要輸入的指令。有關如何開啟作業系統的指令模式，請參考相關的專書或網頁，於此不再贅述。"
 msgstr ""
@@ -54,6 +58,10 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:31
 msgid "有一個語法倒是非常值得一記，那就是註解符號 ``#``，例如以下指令："
+msgstr ""
+
+#: ../../SOURCE_DOCS/basic_concept.rst:33
+msgid "$ gmt grdinfo 你的檔案.grd     # 觀看此檔案的資訊"
 msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:37
@@ -72,6 +80,11 @@ msgstr ""
 msgid "Windows: 把 ``.txt`` 腳本檔案的副檔名改成 ``.bat``，然後點兩下此檔，Windows 就會自動開啟 cmd 來執行。一般來說，腳本的最後一行可以放上"
 msgstr ""
 
+#: ../../SOURCE_DOCS/basic_concept.rst:48
+msgid "...(以上都是你的指令)\n"
+"pause"
+msgstr ""
+
 #: ../../SOURCE_DOCS/basic_concept.rst:53
 msgid "加上 ``pause`` 之後，腳本執行完不會直接關閉 cmd 視窗，你可以在手動關閉前，先看一下所有指令的執行情況。"
 msgstr ""
@@ -80,12 +93,25 @@ msgstr ""
 msgid "Unix 為基礎的系統 (Linux 或 Mac 等等): 副檔名可以隨便命名，筆者通常偏好以 ``.sh``、``.csh`` 或 ``.bash`` 結尾，端看你想要用哪種殼程式進行操作。以 bash 為例，腳本的第一行可以放上"
 msgstr ""
 
+#: ../../SOURCE_DOCS/basic_concept.rst:57
+msgid "#!/bin/bash\n"
+"...(以下都是你的指令)"
+msgstr ""
+
 #: ../../SOURCE_DOCS/basic_concept.rst:62
 msgid "然後在指令列中，改變檔案權限"
 msgstr ""
 
+#: ../../SOURCE_DOCS/basic_concept.rst:64
+msgid "$ chmod +x 你的腳本.bash"
+msgstr ""
+
 #: ../../SOURCE_DOCS/basic_concept.rst:68
 msgid "這樣要執行時，就可以直接下達如下指令，非常方便："
+msgstr ""
+
+#: ../../SOURCE_DOCS/basic_concept.rst:70
+msgid "$ 你的腳本路徑/你的腳本.bash"
 msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:74
@@ -118,6 +144,10 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:94
 msgid "簡而言之，大地座標系統就是一整套幫地表設定三維座標 **(經度，緯度，高度)** 的參數集合。GMT 預設的大地座標系統也是 WGS84，你也可以使用以下指令查看現在 GMT 的座標系統："
+msgstr ""
+
+#: ../../SOURCE_DOCS/basic_concept.rst:96
+msgid "$ gmt defaults -D   # 在 Projection Parameters 的欄位"
 msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:102
@@ -210,6 +240,13 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:144
 msgid "如果你已經是 GMT 4 的使用者，以下列出幾個例子顯示 GMT 6 (傳統模式) 與 GMT 4 指令上的不同："
+msgstr ""
+
+#: ../../SOURCE_DOCS/basic_concept.rst:146
+msgid "$ pscoast 各種選項...       # GMT 4 的 pscoast 指令\n"
+"$ gmt coast 各種選項...     # 在 GMT 6 中，換成了 coast 指令，而且變成總指令 gmt 下屬的一個模組。\n"
+"$ gmtset 各種選項...        # GMT 4 的 gmtset 指令\n"
+"$ gmt set 各種選項...       # 在 GMT 6 中也換成了 set 指令，而且變成總指令 gmt 下屬的一個模組。"
 msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:153

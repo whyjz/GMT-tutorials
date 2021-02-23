@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-08 21:58-0500\n"
+"POT-Creation-Date: 2021-02-23 11:56-0500\n"
 "PO-Revision-Date: 2020-04-06 11:52-0400\n"
 "Last-Translator: Whyjay Zheng <jhsttshj@gmail.com>\n"
 "Language: en_US\n"
@@ -157,6 +157,16 @@ msgstr ""
 "library, for converting Geotiff to NetCDF and reprojecting the file to "
 "lat/lon format (EPSG:4326):"
 
+#: ../../SOURCE_DOCS/cpt_colormap.rst:48
+msgid ""
+"$ gdalwarp -t_srs EPSG:4326 -dstnodata NaN -of NetCDF "
+"ICE_G0240_0000_v.tif ICE_G0240_0000_v_EPSG4326.nc\n"
+"# 選項意義：\n"
+"# -t_srs: 輸出檔案的投影法 (EPSG 是投影法的編碼系統。EPSG:4326 就是 WGS84 經緯度座標系統的編碼代號。)\n"
+"# -dstnodata: 輸出檔案中代表「無資料」的數值 (NaN 意味著使用浮點數的 NaN 數值)\n"
+"# -of: 輸出檔案格式"
+msgstr ""
+
 #: ../../SOURCE_DOCS/cpt_colormap.rst:56
 msgid "注意我們使用了不同的副檔名 ``.nc`` 代表這是 NetCDF 格式的網格檔。"
 msgstr ""
@@ -250,11 +260,25 @@ msgstr ""
 "``+R`` for adjusting the distance between the map frame and the country "
 "border. Thus, our ``basemap`` command becomes:"
 
+#: ../../SOURCE_DOCS/cpt_colormap.rst:82
+msgid ""
+"gmt basemap -Baf -BWNEs -RIS+R0.2 -JM15c\n"
+"# -RIS+R0.2: 以冰島 (IS) 作為地圖區域，冰島國界與地圖四周邊框保有 0.2 度的距離"
+msgstr ""
+
 #: ../../SOURCE_DOCS/cpt_colormap.rst:87
 msgid "接下來我們就來綜合前幾個章節學到的指令以及相關選項，把冰島的海岸線畫出來："
 msgstr ""
 "Now we can review the commands and options we learned from the previous "
 "chapters and plot the coastline of Iceland:"
+
+#: ../../SOURCE_DOCS/cpt_colormap.rst:89
+msgid ""
+"gmt begin iceland_glacier_speed png\n"
+"    gmt basemap -Baf -BWNEs -RIS+R0.2 -JM15c\n"
+"    gmt coast -Wthinnest,darkred -Gdarkseagreen1 -Slightblue -A1\n"
+"gmt end"
+msgstr ""
 
 #: ../../SOURCE_DOCS/cpt_colormap.rst:100
 msgid "地圖下方沒有顯示經緯度座標，是預留給色階條的空間。"
@@ -328,6 +352,10 @@ msgstr ""
 " and the value range, we can now use the ``makecpt`` command. Its basic "
 "syntax is"
 
+#: ../../SOURCE_DOCS/cpt_colormap.rst:117
+msgid "gmt makecpt -C母色階檔名 [-T最小值/最大值/間距] [-Z]"
+msgstr ""
+
 #: ../../SOURCE_DOCS/cpt_colormap.rst:121
 msgid ""
 "只有 ``-C`` 是必要選項，但 ``-T`` "
@@ -339,6 +367,18 @@ msgstr ""
 " colormap), and spacing means the interval to sample the color from the "
 "master colormap. Let us try to type the following command in the "
 "terminal:"
+
+#: ../../SOURCE_DOCS/cpt_colormap.rst:123
+msgid ""
+"$ gmt makecpt -Cbatlow -T0/400/100\n"
+"0   15/58.875/95            100     15/58.875/95\n"
+"100 77.625/114.62/76.375    200     77.625/114.62/76.375\n"
+"200 191.75/144/56.375       300     191.75/144/56.375\n"
+"300 253/180.12/181.25       400     253/180.12/181.25\n"
+"B   1/25/89\n"
+"F   250/204/250\n"
+"N   white"
+msgstr ""
 
 #: ../../SOURCE_DOCS/cpt_colormap.rst:134
 msgid "輸入完指令後，螢幕上就會顯示這個色階表的設定："
@@ -392,6 +432,18 @@ msgstr ""
 "colormap (color varies between two sample points) instead of a discrete "
 "colormap (same color between two sample points). "
 
+#: ../../SOURCE_DOCS/cpt_colormap.rst:145
+msgid ""
+"$ gmt makecpt -Cbatlow -T0/400/100 -Z\n"
+"0   1/25/89                 100     34.75/91.75/96\n"
+"100 34.75/91.75/96          200     128/129.5/51\n"
+"200 128/129.5/51            300     244.25/158.25/113.75\n"
+"300 244.25/158.25/113.75    400     250/204/250\n"
+"B   1/25/89\n"
+"F   250/204/250\n"
+"N   white"
+msgstr ""
+
 #: ../../SOURCE_DOCS/cpt_colormap.rst:156
 msgid ""
 "你會發現第 2 欄與第 4 欄的顏色值現在不一樣了。以第一行為例，如果數值介於 ``0`` 與 ``100`` 之間，GMT "
@@ -406,6 +458,18 @@ msgstr ""
 msgid "在此腳本中，``makecpt`` 以如下的方式設定："
 msgstr "In this script, we will set ``makecpt`` as follows:"
 
+#: ../../SOURCE_DOCS/cpt_colormap.rst:160
+msgid ""
+"gmt makecpt -Cbatlow -T0/400/10 -D -Z -M --COLOR_NAN=gray\n"
+"# -C: 母色階檔名 (batlow)\n"
+"# -T: 對應數值範圍 (0 至 400 中每隔 10 對母色階取樣)\n"
+"# -D: 使用色階的端點顏色當作前景與背景色 (修改 B 與 F 的設定；任何大於 400 的數值都會與 400 有著相同顏色；任何小於 0 "
+"的數值都會與 0 有著相同顏色)\n"
+"# -Z: 使用連續色階\n"
+"# -M: 使用 GMT 預設的 NaN 顏色當作無資料點的顏色 (修改原本 N 的設定)\n"
+"# --COLOR_NAN: 指定 GMT 預設的 NaN 顏色 (詳見後述)"
+msgstr ""
+
 #: ../../SOURCE_DOCS/cpt_colormap.rst:170
 msgid ""
 "我們在指令中使用了 ``--COLOR_NAN`` 這個選項。它是所謂的「\\ **長指令**\\ 」，語法上與 -R、-Z "
@@ -415,6 +479,10 @@ msgstr ""
 "\"**long command**, which is different from -R or -Z, etc. (short "
 "commands) in terms of syntax. We have to use the following syntax for a "
 "long command:"
+
+#: ../../SOURCE_DOCS/cpt_colormap.rst:172
+msgid "$ 某GMT指令 --長指令名稱=長指令參數 ... # 和短指令一樣，可以無限增加"
+msgstr ""
 
 #: ../../SOURCE_DOCS/cpt_colormap.rst:176
 msgid "搭配 ``-M`` 和 ``--COLOR_NAN``，我們可以自由的更改數值為 NaN 時顯示的顏色。"
@@ -428,6 +496,10 @@ msgstr ""
 "All of the GMT default parameters can be reset using long commands. You "
 "can view the full list of these parameters by entering the following "
 "command:"
+
+#: ../../SOURCE_DOCS/cpt_colormap.rst:182
+msgid "$ gmt defaults -D"
+msgstr ""
 
 #: ../../SOURCE_DOCS/cpt_colormap.rst:186
 msgid "如需更多詳情，請參閱\\ :doc:`layout_design`。"
@@ -458,6 +530,18 @@ msgstr ""
 msgid "現在我們馬上來使用 ``grdimage`` 畫畫看冰河速度："
 msgstr "Now we can try to plot glacier speeds using ``grdimage``:"
 
+#: ../../SOURCE_DOCS/cpt_colormap.rst:196
+msgid ""
+"speed_file=ICE_G0240_0000_v_EPSG4326.nc\n"
+"\n"
+"gmt begin iceland_glacier_speed png\n"
+"    gmt basemap -Baf -BWNEs -RIS+R0.2 -JM15c\n"
+"    gmt coast -Wthinnest,darkred -Gdarkseagreen1 -Slightblue -A1\n"
+"    gmt makecpt -Cbatlow -T0/400/10 -D -Z -M --COLOR_NAN=gray\n"
+"    gmt grdimage $speed_file\n"
+"gmt end"
+msgstr ""
+
 #: ../../SOURCE_DOCS/cpt_colormap.rst:211
 msgid ""
 "等等...冰島的輪廓整個不見了！與之前的那張地圖比對一下，看來是因為 ``ICE_G0240_0000_v_EPSG4326.nc`` "
@@ -476,6 +560,13 @@ msgstr ""
 "map? Now we have to use the ``clip`` command. Here's how to use the "
 "``clip`` command:"
 
+#: ../../SOURCE_DOCS/cpt_colormap.rst:213
+msgid ""
+"gmt clip 作圖範圍檔案\n"
+"gmt grdimage ...\n"
+"gmt clip -C"
+msgstr ""
+
 #: ../../SOURCE_DOCS/cpt_colormap.rst:219
 msgid ""
 "``作圖範圍檔案`` 必須要是以純文字格式記載的多邊形向量檔。相關的格式描述，我們將在「\\ :doc:`plot_vector_data`\\ "
@@ -492,6 +583,23 @@ msgstr ""
 " will only plot glacier speeds within these outlines. Thus, the gray "
 "areas of NaN will be largely reduced. Apply this command segment to our "
 "script:"
+
+#: ../../SOURCE_DOCS/cpt_colormap.rst:221
+msgid ""
+"speed_file=ICE_G0240_0000_v_EPSG4326.nc\n"
+"glacier_outline=glims_iceland_glacier_outlines.gmt\n"
+"\n"
+"gmt begin iceland_glacier_speed png\n"
+"    gmt basemap -Baf -BWNEs -RIS+R0.2 -JM15c\n"
+"    gmt coast -Wthinnest,darkred -Gdarkseagreen1 -Slightblue -A1\n"
+"    # 裁剪路徑開始\n"
+"    gmt clip $glacier_outline\n"
+"    gmt makecpt -Cbatlow -T0/400/10 -D -Z -M --COLOR_NAN=gray\n"
+"    gmt grdimage $speed_file\n"
+"    gmt clip -C\n"
+"    # 裁剪路徑結束\n"
+"gmt end"
+msgstr ""
 
 #: ../../SOURCE_DOCS/cpt_colormap.rst:241
 msgid "這樣總算是達到我們的目標。注意在圖上仍然有些灰色區域，不過這是因為冰河速度資料本來就不是百分之百涵蓋所有冰河覆蓋區域的緣故，因此予以保留。"
@@ -515,6 +623,18 @@ msgstr ""
 "explanation, please go to :doc:`pen_and_painting` and "
 ":doc:`scatter_plot`."
 
+#: ../../SOURCE_DOCS/cpt_colormap.rst:245
+msgid ""
+"gmt plot $glacier_outline -Wthinner,black\n"
+"# -W: 輪廓使用黑色細線\n"
+"gmt colorbar -DJCB+w6c+ef -Bx100+l\"Glacier Speed (m/yr)\"\n"
+"# -DJ: 把色階圖例畫在地圖外部的九宮格錨點中的任一個位置。下方置中 (CB)，長度 6 公分 (+w6c)，\n"
+"#      在色階的最大值處劃上三角形，表示有數值超出顏色表示的最大值 (+ef)\n"
+"# -B: 座標軸刻度間距為 100 (x100)，在下方列出色階的意義及單位 (+l\"Glacier Speed (m/yr)\")\n"
+"echo -16.8 64.95 Vatnajökull | gmt text -F+f12p+jCM\n"
+"# -F: 字體大小 12 點 (+f12p)，垂直水平置中對齊給定的座標 (+jCM)"
+msgstr ""
+
 #: ../../SOURCE_DOCS/cpt_colormap.rst:257
 msgid "指令稿"
 msgstr "Script"
@@ -522,6 +642,34 @@ msgstr "Script"
 #: ../../SOURCE_DOCS/cpt_colormap.rst:258
 msgid "本地圖的最終指令稿如下："
 msgstr "The final script for our map is:"
+
+#: ../../SOURCE_DOCS/cpt_colormap.rst:260
+msgid ""
+"# ==== 設定輸入檔 ====\n"
+"speed_file=ICE_G0240_0000_v_EPSG4326.nc\n"
+"glacier_outline=glims_iceland_glacier_outlines.gmt\n"
+"\n"
+"# ==== 主要指令 ====\n"
+"gmt begin iceland_glacier_speed png\n"
+"    gmt basemap -Baf -BWNEs -RIS+R0.2 -JM15c                       # 底圖\n"
+"    gmt coast -Wthinnest,darkred -Gdarkseagreen1 -Slightblue -A1   # "
+"海岸線與填色\n"
+"    gmt clip $glacier_outline                                      # "
+"開始使用多邊形裁剪路徑\n"
+"    gmt makecpt -Cbatlow -T0/400/10 -D -Z -M --COLOR_NAN=gray      # "
+"製作本地圖使用的色階\n"
+"    gmt grdimage $speed_file                                       # "
+"在多邊形內繪製冰河速度\n"
+"    gmt clip -C                                                    # "
+"結束使用多邊形裁剪路徑\n"
+"    gmt plot $glacier_outline -Wthinner,black                      # "
+"冰河覆蓋範圍\n"
+"    gmt colorbar -DJCB+w6c+ef -Bx100+l\"Glacier Speed (m/yr)\"       # "
+"色階條\n"
+"    echo -16.8 64.95 Vatnajökull | gmt text -F+f12p+jCM            # 文字標記"
+"\n"
+"gmt end"
+msgstr ""
 
 #: ../../SOURCE_DOCS/cpt_colormap.rst:281
 msgid ""

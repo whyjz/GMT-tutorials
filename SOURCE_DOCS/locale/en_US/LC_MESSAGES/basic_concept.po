@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-08 21:58-0500\n"
+"POT-Creation-Date: 2021-02-23 11:56-0500\n"
 "PO-Revision-Date: 2019-11-25 03:48-0500\n"
 "Last-Translator: Whyjay Zheng <jhsttshj@gmail.com>\n"
 "Language: en_US\n"
@@ -65,6 +65,10 @@ msgstr ""
 "always put a prompt sign at every command you need to type on the "
 "terminal:"
 
+#: ../../SOURCE_DOCS/basic_concept.rst:19
+msgid "$"
+msgstr ""
+
 #: ../../SOURCE_DOCS/basic_concept.rst:23
 msgid "接在 ``$`` 之後的文字，才是使用者真正要輸入的指令。有關如何開啟作業系統的指令模式，請參考相關的專書或網頁，於此不再贅述。"
 msgstr ""
@@ -109,6 +113,10 @@ msgstr ""
 "There’s a syntax worth mentioning here: the comment mark ``#``. For "
 "example,"
 
+#: ../../SOURCE_DOCS/basic_concept.rst:33
+msgid "$ gmt grdinfo 你的檔案.grd     # 觀看此檔案的資訊"
+msgstr ""
+
 #: ../../SOURCE_DOCS/basic_concept.rst:37
 msgid "在 ``#`` 後面的文字，是對指令的補充說明。本教學中，也會使用此格式，使腳本更易於閱讀。"
 msgstr ""
@@ -149,6 +157,12 @@ msgstr ""
 "click the file. Windows will automatically open cmd and run it. You can "
 "also put the following line at the bottom of your file:"
 
+#: ../../SOURCE_DOCS/basic_concept.rst:48
+msgid ""
+"...(以上都是你的指令)\n"
+"pause"
+msgstr ""
+
 #: ../../SOURCE_DOCS/basic_concept.rst:53
 msgid "加上 ``pause`` 之後，腳本執行完不會直接關閉 cmd 視窗，你可以在手動關閉前，先看一下所有指令的執行情況。"
 msgstr ""
@@ -167,13 +181,27 @@ msgstr ""
 "it is convenient to put this at the first line of the script (it’s called"
 " **sheband**):"
 
+#: ../../SOURCE_DOCS/basic_concept.rst:57
+msgid ""
+"#!/bin/bash\n"
+"...(以下都是你的指令)"
+msgstr ""
+
 #: ../../SOURCE_DOCS/basic_concept.rst:62
 msgid "然後在指令列中，改變檔案權限"
 msgstr "And then change the file permission at the command prompt"
 
+#: ../../SOURCE_DOCS/basic_concept.rst:64
+msgid "$ chmod +x 你的腳本.bash"
+msgstr ""
+
 #: ../../SOURCE_DOCS/basic_concept.rst:68
 msgid "這樣要執行時，就可以直接下達如下指令，非常方便："
 msgstr "And now you can run your script by typing this:"
+
+#: ../../SOURCE_DOCS/basic_concept.rst:70
+msgid "$ 你的腳本路徑/你的腳本.bash"
+msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:74
 msgid ""
@@ -263,6 +291,10 @@ msgstr ""
 "In a nutshell, we use geodetic datum to set up coordinates (**Latitude, "
 "Longitude, Height**) at any location on the Earth. The default datum of "
 "GMT is WGS84, and you can also check the current datum by this command"
+
+#: ../../SOURCE_DOCS/basic_concept.rst:96
+msgid "$ gmt defaults -D   # 在 Projection Parameters 的欄位"
+msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:102
 #, python-format
@@ -469,6 +501,14 @@ msgid "如果你已經是 GMT 4 的使用者，以下列出幾個例子顯示 GM
 msgstr ""
 "If you are already using GMT 4, the following cases show the difference "
 "between GMT 4 and GMT 6 (classic mode) in terms of commands:"
+
+#: ../../SOURCE_DOCS/basic_concept.rst:146
+msgid ""
+"$ pscoast 各種選項...       # GMT 4 的 pscoast 指令\n"
+"$ gmt coast 各種選項...     # 在 GMT 6 中，換成了 coast 指令，而且變成總指令 gmt 下屬的一個模組。\n"
+"$ gmtset 各種選項...        # GMT 4 的 gmtset 指令\n"
+"$ gmt set 各種選項...       # 在 GMT 6 中也換成了 set 指令，而且變成總指令 gmt 下屬的一個模組。"
+msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:153
 msgid ""
