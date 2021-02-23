@@ -4,14 +4,16 @@ msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-23 11:56-0500\n"
-"PO-Revision-Date: 2019-07-03 04:54-0400\n"
-"Last-Translator: Whyjay Zheng <jhsttshj@gmail.com>\n"
+"PO-Revision-Date: 2021-02-23 21:54+0000\n"
+"Last-Translator: Whyjay Zheng <wz278@cornell.edu>\n"
+"Language-Team: English (United States) <https://hosted.weblate.org/projects/"
+"gmt-tutorials/hillshading/en_US/>\n"
 "Language: en_US\n"
-"Language-Team: English (United States)\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.5\n"
 "Generated-By: Babel 2.9.0\n"
 
 #: ../../SOURCE_DOCS/hillshading.rst:3
@@ -49,11 +51,11 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/hillshading.rst:28
 msgid "直接觀看\\ `指令稿`_"
-msgstr ""
+msgstr "Go to the final `Script`_"
 
 #: ../../SOURCE_DOCS/hillshading.rst:31
 msgid "使用的指令與概念"
-msgstr ""
+msgstr "Commands and Techniques"
 
 #: ../../SOURCE_DOCS/hillshading.rst:32
 msgid "``img2grd`` - **把 Sandwell/Smith 麥卡托 .img 檔轉成 NetCDF 格式**"
@@ -180,7 +182,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/hillshading.rst:108
 msgid "操作流程"
-msgstr ""
+msgstr "Procedure"
 
 #: ../../SOURCE_DOCS/hillshading.rst:109
 msgid ""
@@ -479,11 +481,11 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/hillshading.rst:339
 msgid "指令稿"
-msgstr ""
+msgstr "Script"
 
 #: ../../SOURCE_DOCS/hillshading.rst:340
 msgid "本地圖的最終指令稿如下："
-msgstr ""
+msgstr "The final script for our map is:"
 
 #: ../../SOURCE_DOCS/hillshading.rst:342
 msgid ""
@@ -552,11 +554,11 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/hillshading.rst:402
 msgid "觀看\\ `最終版地圖`_"
-msgstr ""
+msgstr "Check the `final map`_"
 
 #: ../../SOURCE_DOCS/hillshading.rst:405
 msgid "習題"
-msgstr ""
+msgstr "Exercise"
 
 #: ../../SOURCE_DOCS/hillshading.rst:407
 msgid ""
@@ -795,4 +797,3 @@ msgstr ""
 #~ "psxy -R -J -O -T >> $out_ps\n"
 #~ "# rm -rf gmt.conf    # <---- 此行可用於消除舊的組態設定檔"
 #~ msgstr ""
-

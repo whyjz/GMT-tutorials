@@ -5,14 +5,16 @@ msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-23 11:56-0500\n"
-"PO-Revision-Date: 2019-12-09 07:27-0500\n"
-"Last-Translator: Whyjay Zheng <jhsttshj@gmail.com>\n"
+"PO-Revision-Date: 2021-02-23 21:54+0000\n"
+"Last-Translator: Whyjay Zheng <wz278@cornell.edu>\n"
+"Language-Team: English (United States) <https://hosted.weblate.org/projects/"
+"gmt-tutorials/making-first-map/en_US/>\n"
 "Language: en_US\n"
-"Language-Team: English (United States)\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.5\n"
 "Generated-By: Babel 2.9.0\n"
 
 #: ../../SOURCE_DOCS/making_first_map.rst:3
@@ -137,7 +139,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/making_first_map.rst:46
 msgid "$ gmt coast"
-msgstr ""
+msgstr "$ gmt coast"
 
 #: ../../SOURCE_DOCS/making_first_map.rst:50
 msgid ""
@@ -151,7 +153,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/making_first_map.rst:52
 msgid "$ gmt coast -"
-msgstr ""
+msgstr "$ gmt coast -"
 
 #: ../../SOURCE_DOCS/making_first_map.rst:56
 msgid "幾乎所有 GMT 的指令，包含 ``coast``，都是以類似如下的語法操作："
@@ -159,7 +161,7 @@ msgstr "Almost all GMT commands, including ``coast``, have a syntax like this:"
 
 #: ../../SOURCE_DOCS/making_first_map.rst:58
 msgid "$ gmt 指令 (輸入檔) [選項1 選項2 選項3...]"
-msgstr ""
+msgstr "$ gmt command (input_file) [option1 option2 option3...]"
 
 #: ../../SOURCE_DOCS/making_first_map.rst:62
 msgid ""
@@ -203,6 +205,8 @@ msgid ""
 "-R19.42/22.95/59.71/60.56\n"
 "-R19.42/59.71/22.95/60.56r"
 msgstr ""
+"-R19.42/22.95/59.71/60.56\n"
+"-R19.42/59.71/22.95/60.56r"
 
 #: ../../SOURCE_DOCS/making_first_map.rst:71
 msgid ""
@@ -237,6 +241,11 @@ msgid ""
 "archi_sea.png\n"
 "-pdf archi_sea        # PDF 格式輸出。檔名爲 archi_sea.pdf。"
 msgstr ""
+"-png archi_sea        # archi_sea is the name of the output file. Note that "
+"there is a space between png and the filename. The full file name is "
+"archi_sea.png\n"
+"-pdf archi_sea        # generate PDF format instead. The file name is "
+"archi_sea.pdf."
 
 #: ../../SOURCE_DOCS/making_first_map.rst:80
 msgid ""
@@ -256,6 +265,9 @@ msgid ""
 "coast [ERROR]: Syntax error: Must specify at least one of -C, -G, -S, -I,"
 " -N, -Q and -W"
 msgstr ""
+"$ gmt coast -R19.42/22.95/59.71/60.56 -png archi_sea\n"
+"coast [ERROR]: Syntax error: Must specify at least one of -C, -G, -S, -I, -"
+"N, -Q and -W"
 
 #: ../../SOURCE_DOCS/making_first_map.rst:89
 msgid ""
@@ -270,7 +282,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/making_first_map.rst:94
 msgid "-W粗細,顏色,樣式"
-msgstr ""
+msgstr "-Wlinewidth,linecolor,linestyle"
 
 #: ../../SOURCE_DOCS/making_first_map.rst:98
 msgid "如果省略時，就使用預設的樣式作圖。我們試著指定指定畫筆粗細為 0.1 點 (1 點 = 1/72 英吋 = 0.03527 公分) 的黑色線條看看："
@@ -280,7 +292,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/making_first_map.rst:100
 msgid "-W0.1p,black"
-msgstr ""
+msgstr "-W0.1p,black"
 
 #: ../../SOURCE_DOCS/making_first_map.rst:104
 msgid ""
@@ -312,7 +324,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/making_first_map.rst:112
 msgid "$ gmt coast -R19.42/22.95/59.71/60.56 -W0.1p,black -png archi_sea"
-msgstr ""
+msgstr "$ gmt coast -R19.42/22.95/59.71/60.56 -W0.1p,black -png archi_sea"
 
 #: ../../SOURCE_DOCS/making_first_map.rst:133
 #, python-format
@@ -336,7 +348,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/making_first_map.rst:137
 msgid "-JM6i"
-msgstr ""
+msgstr "-JM6i"
 
 #: ../../SOURCE_DOCS/making_first_map.rst:141
 msgid ""
@@ -369,15 +381,16 @@ msgstr ""
 #: ../../SOURCE_DOCS/making_first_map.rst:174
 msgid "另外爲了讓地圖易於判讀，我們也可以為陸地和海洋加上顏色，使用的分別是 ``-G`` (Ground) 和 ``-S`` (Sea) 選項："
 msgstr ""
-"To improve the readability of the map, we can fill land and sea areas "
-"with colors. We will need ``-G`` (Ground) and ``-S`` (Sea) flags "
-"respectively."
+"To improve the readability of the map, we can fill land and sea areas with "
+"colors. We will need ``-G`` (Ground) and ``-S`` (Sea) flags respectively:"
 
 #: ../../SOURCE_DOCS/making_first_map.rst:176
 msgid ""
 "-Gdarkseagreen2\n"
 "-Scornflowerblue"
 msgstr ""
+"-Gdarkseagreen2\n"
+"-Scornflowerblue"
 
 #: ../../SOURCE_DOCS/making_first_map.rst:181
 msgid ""
@@ -393,6 +406,8 @@ msgid ""
 "$ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 "
 "-Scornflowerblue -png archi_sea"
 msgstr ""
+"$ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 -"
+"Scornflowerblue -png archi_sea"
 
 #: ../../SOURCE_DOCS/making_first_map.rst:187
 msgid ""
@@ -415,6 +430,8 @@ msgid ""
 "\\\n"
 "          -Scornflowerblue -png archi_sea"
 msgstr ""
+"$ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \\\n"
+"          -Scornflowerblue -png archi_sea"
 
 #: ../../SOURCE_DOCS/making_first_map.rst:194
 msgid "本文為了方便閱讀起見，也會使用 ``\\`` 分隔過長的段落，但如果你想要在一行之內完成此道指令，則可以省略這個符號。"
@@ -465,6 +482,8 @@ msgid ""
 "-Ba座標數值間隔f座標刻度間隔g格線間隔\n"
 "-B地圖四邊設定+t標題"
 msgstr ""
+"-Ba(annotation_spacing)f(tick_spacing)g(grid_spacing)\n"
+"-B(four_borders)+t(title)"
 
 #: ../../SOURCE_DOCS/making_first_map.rst:230
 msgid ""
@@ -501,6 +520,9 @@ msgid ""
 "          -Scornflowerblue -Ba2f0.5g1 -BWSne+t\"Archipelago Sea\" -png "
 "archi_sea"
 msgstr ""
+"$ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \\\n"
+"          -Scornflowerblue -Ba2f0.5g1 -BWSne+t\"Archipelago Sea\" -png "
+"archi_sea"
 
 #: ../../SOURCE_DOCS/making_first_map.rst:237
 msgid ""
@@ -549,6 +571,9 @@ msgid ""
 "\\\n"
 "          -png archi_sea"
 msgstr ""
+"$ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \\\n"
+"          -Scornflowerblue -Ba2f0.5g1 -BWSne+t\"Archipelago Sea\" -A0.1 \\\n"
+"          -png archi_sea"
 
 #: ../../SOURCE_DOCS/making_first_map.rst:255
 msgid "島嶼比較少，看起來清爽多了，卻又不會喪失「群島海」名稱的霸氣。"
@@ -571,7 +596,7 @@ msgstr "Script"
 
 #: ../../SOURCE_DOCS/making_first_map.rst:266
 msgid "本地圖的最終指令稿如下："
-msgstr "The final command for our goal is:"
+msgstr "The final script for our map is:"
 
 #: ../../SOURCE_DOCS/making_first_map.rst:268
 msgid ""
@@ -581,6 +606,10 @@ msgid ""
 "-U \\\n"
 "          -png archi_sea"
 msgstr ""
+"$ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \\\n"
+"          -Scornflowerblue -Ba2f0.5g1 -BWSne+t\"Archipelago Sea\" -A0.1 -U \\"
+"\n"
+"          -png archi_sea"
 
 #: ../../SOURCE_DOCS/making_first_map.rst:276
 msgid ""
@@ -739,4 +768,3 @@ msgstr ""
 #~ "-BWSne+t\"Archipelago Sea\" -A0.1 -U \\\n"
 #~ ""
 #~ "          -png archi_sea"
-

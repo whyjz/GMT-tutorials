@@ -5,16 +5,16 @@ msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-23 11:56-0500\n"
-"PO-Revision-Date: 2021-02-17 16:50+0000\n"
+"PO-Revision-Date: 2021-02-23 21:54+0000\n"
 "Last-Translator: Whyjay Zheng <wz278@cornell.edu>\n"
+"Language-Team: English (United States) <https://hosted.weblate.org/projects/"
+"gmt-tutorials/intro-install/en_US/>\n"
 "Language: en_US\n"
-"Language-Team: English (United States) "
-"<https://hosted.weblate.org/projects/gmt-tutorials/intro-install/en_US/>"
-"\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.5\n"
 "Generated-By: Babel 2.9.0\n"
 
 #: ../../SOURCE_DOCS/intro_install.rst:3
@@ -222,6 +222,8 @@ msgid ""
 "$ conda create --name gmt6\n"
 "$ conda activate gmt6"
 msgstr ""
+"$ conda create --name gmt6\n"
+"$ conda activate gmt6"
 
 #: ../../SOURCE_DOCS/intro_install.rst:60
 msgid "安裝 GMT："
@@ -232,6 +234,8 @@ msgid ""
 "$ conda config --prepend channels conda-forge\n"
 "$ conda install python=3.9 gmt"
 msgstr ""
+"$ conda config --prepend channels conda-forge\n"
+"$ conda install python=3.9 gmt"
 
 #: ../../SOURCE_DOCS/intro_install.rst:67
 msgid "或是你也可以直接安裝 PyGMT，這樣 GMT 會一併被安裝："
@@ -245,6 +249,9 @@ msgid ""
 "$ conda install python=3.9 pygmt pip numpy pandas xarray netcdf4 "
 "packaging gmt pytest pytest-mpl"
 msgstr ""
+"$ conda config --prepend channels conda-forge\n"
+"$ conda install python=3.9 pygmt pip numpy pandas xarray netcdf4 packaging "
+"gmt pytest pytest-mpl"
 
 #: ../../SOURCE_DOCS/intro_install.rst:74
 msgid "如果你計畫使用 PyGMT，推薦一併安裝 Jupyter 以進行互動式資料分析。"
@@ -254,7 +261,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/intro_install.rst:76
 msgid "$ conda install jupyterlab"
-msgstr ""
+msgstr "$ conda install jupyterlab"
 
 #: ../../SOURCE_DOCS/intro_install.rst:80
 msgid "要使用 GMT 時，切換至 GMT 的環境即可開始使用。"
@@ -265,6 +272,8 @@ msgid ""
 "$ conda activate gmt6\n"
 "$ gmt help"
 msgstr ""
+"$ conda activate gmt6\n"
+"$ gmt help"
 
 #: ../../SOURCE_DOCS/intro_install.rst:87
 msgid "要使用 PyGMT 時，在 Python 內匯入同名模組即可："
@@ -275,6 +284,8 @@ msgid ""
 "import pygmt\n"
 "pygmt.show_versions()"
 msgstr ""
+"import pygmt\n"
+"pygmt.show_versions()"
 
 #: ../../SOURCE_DOCS/intro_install.rst:104
 msgid ""
@@ -351,4 +362,3 @@ msgstr ""
 #~ msgstr ""
 #~ "import pygmt\n"
 #~ "pygmt.show_versions()"
-
