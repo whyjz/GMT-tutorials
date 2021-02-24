@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-23 11:56-0500\n"
-"PO-Revision-Date: 2021-02-23 21:54+0000\n"
+"PO-Revision-Date: 2021-02-24 22:30+0000\n"
 "Last-Translator: Whyjay Zheng <wz278@cornell.edu>\n"
 "Language-Team: English (United States) <https://hosted.weblate.org/projects/"
 "gmt-tutorials/hillshading/en_US/>\n"
@@ -115,7 +115,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/hillshading.rst:48
 msgid "前置作業"
-msgstr ""
+msgstr "Tasks before plotting"
 
 #: ../../SOURCE_DOCS/hillshading.rst:49
 msgid ""
