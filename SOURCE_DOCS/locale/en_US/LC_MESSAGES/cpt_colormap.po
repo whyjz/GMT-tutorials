@@ -5,14 +5,16 @@ msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-23 11:56-0500\n"
-"PO-Revision-Date: 2020-04-06 11:52-0400\n"
-"Last-Translator: Whyjay Zheng <jhsttshj@gmail.com>\n"
+"PO-Revision-Date: 2021-02-24 22:30+0000\n"
+"Last-Translator: Whyjay Zheng <wz278@cornell.edu>\n"
+"Language-Team: English (United States) <https://hosted.weblate.org/projects/"
+"gmt-tutorials/cpt-colormap/en_US/>\n"
 "Language: en_US\n"
-"Language-Team: English (United States)\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.5\n"
 "Generated-By: Babel 2.9.0\n"
 
 #: ../../SOURCE_DOCS/cpt_colormap.rst:3
@@ -499,7 +501,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/cpt_colormap.rst:182
 msgid "$ gmt defaults -D"
-msgstr ""
+msgstr "$ gmt defaults -D"
 
 #: ../../SOURCE_DOCS/cpt_colormap.rst:186
 msgid "如需更多詳情，請參閱\\ :doc:`layout_design`。"
@@ -1032,4 +1034,3 @@ msgstr ""
 #~ "gmt text -F+f12p+jCM            # text "
 #~ "label\n"
 #~ "gmt end"
-
