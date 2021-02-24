@@ -8,17 +8,20 @@ msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-23 11:56-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2021-02-24 22:30+0000\n"
+"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
+"gmt-tutorials/coloring-topography/nb_NO/>\n"
 "Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.5\n"
 
 #: ../../SOURCE_DOCS/coloring_topography.rst:3
 msgid "為地形圖上色"
-msgstr ""
+msgstr "Fargelegg topografien"
 
 #: ../../SOURCE_DOCS/coloring_topography.rst:7
 msgid "本教學適用於 GMT 6 的現代模式。如須參閱 GMT 6 (傳統模式) 與 GMT 4-5 繪製相同地圖的教程，\\ `請至這裡 <coloring_topography_gmt5.html>`_。"
@@ -30,7 +33,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/coloring_topography.rst:12
 msgid "目標"
-msgstr ""
+msgstr "Mål"
 
 #: ../../SOURCE_DOCS/coloring_topography.rst:13
 msgid "製作一張\\ `的的喀喀湖`_ (Lago Titicaca) 的分層設色地形圖，如下圖所示。的的喀喀湖位於秘魯和玻利維亞交界，面積達 8372 平方公里。特殊的是，湖面位置的海拔高達 3812 公尺，是全世界最高的商業通航湖泊\\ [#]_。圖中的藍色線條表示河流，注意右側的河流其實是亞馬遜河的源頭，而且並沒有和的的喀喀湖連接。黑色的虛線是兩國國界。地形圖的顏色從海拔 0 至 5000 公尺，依循以下顏色過渡：綠色 -> 黃色 -> 紅色 -> 灰色 -> 白色，其中 2800 公尺以上即開始以灰色系展示。這麼高的湖泊，位於一片白色系背景當中，更增添了些許雪國的氣氛 (實際上，的的喀喀湖冬天非常乾燥，幾乎不會下雪\\ [#]_)。"
@@ -42,23 +45,23 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/coloring_topography.rst:28
 msgid "使用的指令與概念"
-msgstr ""
+msgstr "Kommandoer og teknikker"
 
 #: ../../SOURCE_DOCS/coloring_topography.rst:30
 msgid "``grdinfo`` - **查閱網格檔的基本資訊**"
-msgstr ""
+msgstr "``grdinfo`` - **vis grunnleggende info fra en rutenettsfil**"
 
 #: ../../SOURCE_DOCS/coloring_topography.rst:31
 msgid "``grdimage`` - **繪製著色影像**"
-msgstr ""
+msgstr "``grdimage`` - **plott fargelagt bilde**"
 
 #: ../../SOURCE_DOCS/coloring_topography.rst:32
 msgid "``coast`` - **繪製河流、湖泊與國界**"
-msgstr ""
+msgstr "``coast`` - **plott elver, innsjøer, og grenser**"
 
 #: ../../SOURCE_DOCS/coloring_topography.rst:33
 msgid "使用 GMT 伺服器的地形資料繪圖"
-msgstr ""
+msgstr "Bruk topografidataen fra GMT-tjeneren"
 
 #: ../../SOURCE_DOCS/coloring_topography.rst:34
 msgid "從 `cpt-city`_ 尋找適合地圖的色階檔"
@@ -74,7 +77,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/coloring_topography.rst:44
 msgid "取得資料"
-msgstr ""
+msgstr "Henting av data"
 
 #: ../../SOURCE_DOCS/coloring_topography.rst:45
 msgid "這次我們必須要先取得繪圖區域的地形資料。GMT 6 本身有提供全球的地形資料，不過是放在遠端伺服器上，當使用者需要時才會下載到本機電腦中。這些地形資料的檔名為："
@@ -124,6 +127,8 @@ msgstr ""
 #: ../../SOURCE_DOCS/coloring_topography.rst:84
 msgid "總共有 21601 x 10801 = 233312401 個格點 (也就是兩億三千三百萬像素)。"
 msgstr ""
+"Det er totalt 21601 x 10801 = 233312401 rutenettspunkter (altså omtrent en "
+"kvart milliard piksler!)"
 
 #: ../../SOURCE_DOCS/coloring_topography.rst:85
 msgid "Z 值 (高度) 從 -10907 到 8170 公尺。為什麼最高的地方不是 8848 公尺 (聖母峰的高度)? 那是因為網格的解析度還是不夠高，1 弧分其實只相當於 1 至 2 公里才取一個點而已。"
@@ -131,7 +136,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/coloring_topography.rst:88
 msgid "操作流程"
-msgstr ""
+msgstr "Prosedyre"
 
 #: ../../SOURCE_DOCS/coloring_topography.rst:89
 msgid "從本章開始，我們需要使用兩個以上的 GMT 指令製作地圖。在上一章介紹過的 ``coast`` 用來畫向量式資料 (河流、湖泊以及國界)，而在本章中新介紹的 ``grdimage`` 則用來畫地形起伏。因為上一章介紹的 ``-png`` 選項只適用於單一指令，所以在本章我們要用另一種更通用的方式指定輸出檔。具體做法是使用 ``gmt begin`` 和 ``gmt end`` 這兩個關鍵字串把其他所有繪圖指令包起來，像這樣："
@@ -219,7 +224,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/coloring_topography.rst:169
 msgid "看起來已經有模有樣了。"
-msgstr ""
+msgstr "Ser mye bedre ut!"
 
 #: ../../SOURCE_DOCS/coloring_topography.rst:173
 msgid "有關於如何自訂色階表，讓地圖的顏色可以隨心所欲變化的技巧，請參閱「\\ :doc:`pen_and_painting`\\ 」與「\\ :doc:`editing_cpt_colorbar`\\ 」。"
@@ -320,8 +325,10 @@ msgid "畫出貝加爾湖 (*Lake Baikal* 或 *Baygal nuur*) 與週邊區域的�
 msgstr ""
 
 #: ../../SOURCE_DOCS/coloring_topography.rst:290
+#, fuzzy
 msgid "從地圖中可看到有幾條河流注入或流出貝加爾湖？"
 msgstr ""
+"Hvor mange elver er tilknyttet Baikal-innsjøen? Kan du se det på kartet?"
 
 #: ../../SOURCE_DOCS/coloring_topography.rst:291
 msgid "貝加爾湖週邊的海拔為何？湖底的海拔為何？你的地圖分別用什麼顏色表示這兩個海拔？"
