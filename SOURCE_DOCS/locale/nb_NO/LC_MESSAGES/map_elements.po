@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-08 21:58-0500\n"
-"PO-Revision-Date: 2021-02-16 16:12+0000\n"
+"PO-Revision-Date: 2021-02-24 22:30+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
 "gmt-tutorials/map-elements/nb_NO/>\n"
@@ -41,7 +41,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/map_elements.rst:29
 msgid "使用的指令與概念"
-msgstr ""
+msgstr "Kommandoer og teknikker"
 
 #: ../../SOURCE_DOCS/map_elements.rst:30
 msgid "``gmtset`` - 更改 GMT 的預設作圖參數"
@@ -133,7 +133,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/map_elements.rst:95
 msgid "操作流程"
-msgstr ""
+msgstr "Prosedyre"
 
 #: ../../SOURCE_DOCS/map_elements.rst:97
 msgid "在繪圖之前，我們先來使用 ``grdinfo`` 確認一下要使用的資料。"
