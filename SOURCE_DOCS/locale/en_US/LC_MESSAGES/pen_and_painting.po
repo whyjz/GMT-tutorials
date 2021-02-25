@@ -5,14 +5,16 @@ msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-23 11:56-0500\n"
-"PO-Revision-Date: 2019-12-07 03:03-0500\n"
-"Last-Translator: Whyjay Zheng <jhsttshj@gmail.com>\n"
+"PO-Revision-Date: 2021-02-25 02:22+0000\n"
+"Last-Translator: Whyjay Zheng <wz278@cornell.edu>\n"
+"Language-Team: English (United States) <https://hosted.weblate.org/projects/"
+"gmt-tutorials/pen-and-painting/en_US/>\n"
 "Language: en_US\n"
-"Language-Team: English (United States)\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.5\n"
 "Generated-By: Babel 2.9.0\n"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:3
@@ -244,6 +246,8 @@ msgid ""
 "$ gmt coast -E+l | grep -i japan\n"
 "  JP    Japan"
 msgstr ""
+"$ gmt coast -E+l | grep -i japan\n"
+"  JP    Japan"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:104
 msgid "這邊的 ``-i`` 選項是「大小寫視為相同」之意。在下方的搜尋結果中，就出現了日本的代碼 ``JP``。"
@@ -260,7 +264,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:112
 msgid "$ gmt coast -E+l | findstr /i japan"
-msgstr ""
+msgstr "$ gmt coast -E+l | findstr /i japan"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:116
 msgid "如果你想要使用 ``grep`` 一次查詢多個國家，可以使用如下語法："
@@ -270,7 +274,7 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:118
 msgid "$ gmt coast -E+l | grep -i 'japan\\|singapore\\|zealand'"
-msgstr ""
+msgstr "$ gmt coast -E+l | grep -i 'japan\\|singapore\\|zealand'"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:122
 msgid "這樣程式會一次把日本、新加坡跟紐西蘭的代碼找出來。"
@@ -346,6 +350,10 @@ msgid ""
 "gmt coast -R-100/1/-50/34r -JM15c -E${colorgroup1}+g${color1} -png "
 "central_america"
 msgstr ""
+"color1='#CD5C5C'\n"
+"colorgroup1='MX,BR,PA,DO'\n"
+"gmt coast -R-100/1/-50/34r -JM15c -E${colorgroup1}+g${color1} -png "
+"central_america"
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:160
 msgid ""
@@ -1193,4 +1201,3 @@ msgstr ""
 #~ "-Bx3000 -By+lm -F+gwhite@50    # colorbar "
 #~ "legend\n"
 #~ "gmt end"
-
