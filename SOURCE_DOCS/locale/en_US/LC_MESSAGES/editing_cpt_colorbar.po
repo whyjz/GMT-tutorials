@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-23 11:56-0500\n"
-"PO-Revision-Date: 2021-02-24 22:30+0000\n"
+"PO-Revision-Date: 2021-02-25 02:22+0000\n"
 "Last-Translator: Whyjay Zheng <wz278@cornell.edu>\n"
 "Language-Team: English (United States) <https://hosted.weblate.org/projects/"
 "gmt-tutorials/editing-cpt-colorbar/en_US/>\n"
@@ -67,11 +67,11 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:32
 msgid "``grdinfo`` - **查閱網格檔的基本資訊**"
-msgstr ""
+msgstr "``grdinfo`` - **display basic information from a grid file**"
 
 #: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:33
 msgid "``grdimage`` - **繪製著色影像**"
-msgstr ""
+msgstr "``grdimage`` - **plot colored image**"
 
 #: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:34
 msgid "GMT 共用選項：``-V`` ``-B`` ``--長參數``"
