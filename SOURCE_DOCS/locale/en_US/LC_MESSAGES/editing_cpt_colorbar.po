@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-23 11:56-0500\n"
-"PO-Revision-Date: 2021-02-25 02:22+0000\n"
+"PO-Revision-Date: 2021-02-26 22:45+0000\n"
 "Last-Translator: Whyjay Zheng <wz278@cornell.edu>\n"
 "Language-Team: English (United States) <https://hosted.weblate.org/projects/"
 "gmt-tutorials/editing-cpt-colorbar/en_US/>\n"
@@ -409,6 +409,8 @@ msgstr ""
 #: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:295
 msgid "$ 某GMT指令 --長指令名稱=長指令參數 ... # 和短指令一樣，可以無限增加"
 msgstr ""
+"$ gmt command --long_command_name=long_coomand_value ... # Like short "
+"commands, we can add as many long commands as we like in a single line"
 
 #: ../../SOURCE_DOCS/editing_cpt_colorbar.rst:299
 msgid ""
