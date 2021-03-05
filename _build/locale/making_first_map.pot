@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-23 11:56-0500\n"
+"POT-Creation-Date: 2021-03-04 22:05-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -292,9 +292,30 @@ msgid "觀看\\ `最終版地圖`_"
 msgstr ""
 
 #: ../../SOURCE_DOCS/making_first_map.rst:281
-msgid "習題"
+msgid "PyGMT 指令稿"
 msgstr ""
 
 #: ../../SOURCE_DOCS/making_first_map.rst:283
+msgid "使用 PyGMT，可以如下腳本繪製本地圖："
+msgstr ""
+
+#: ../../SOURCE_DOCS/making_first_map.rst:285
+msgid "import pygmt\n"
+"fig = pygmt.Figure()\n"
+"fig.coast(region=[19.42, 22.95, 59.71, 60.56], projection=\"M6i\", shorelines=['0.1p', 'black'], land='green',\n"
+"          water='cornflowerblue', frame=['a2f0.5g1', 'WSne+t\"Archipelago Sea\"'], area_thresh=0.1, timestamp=True)\n"
+"fig.show()\n"
+"fig.savefig('archi_sea_pygmt.png')"
+msgstr ""
+
+#: ../../SOURCE_DOCS/making_first_map.rst:294
+msgid "你可以使用以下的 Binder 連結嘗試此程式碼："
+msgstr ""
+
+#: ../../SOURCE_DOCS/making_first_map.rst:301
+msgid "習題"
+msgstr ""
+
+#: ../../SOURCE_DOCS/making_first_map.rst:303
 msgid "畫出蘇拉威西島 (*Sulawesi*) 的海岸線圖。蘇拉威西島是印尼第四大島，外觀非常有趣，\\ 像是字母 K 或是正在跳舞的人。座標可使用 ``118.34E 至 125.70E``，以及 ``6.12S 至 2.08N``。"
 msgstr ""

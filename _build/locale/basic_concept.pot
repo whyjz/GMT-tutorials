@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-23 11:56-0500\n"
+"POT-Creation-Date: 2021-03-04 22:05-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgid "基本概念與名詞"
 msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:5
-msgid "GMT 是建立在擬 UNIX 環境之下的軟體，對於曾經接觸過 shell 或 cmd 的人，它的操作方法應該不陌生。如果你之前完全沒有用過以上所述的東西也沒有關係，以下將提供一些必要的基本概念，稍微熟悉後，就可以快速上手。"
+msgid "GMT 繼承了在 UNIX 環境之下處理資料的方法，對於曾經接觸過 shell 或 cmd 的人，它的操作方法應該不陌生。如果你之前完全沒有用過，也沒有關係，以下將提供一些必要的基本概念，稍微熟悉後，就可以快速上手。"
 msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:7
@@ -61,7 +61,7 @@ msgid "有一個語法倒是非常值得一記，那就是註解符號 ``#``，�
 msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:33
-msgid "$ gmt grdinfo 你的檔案.grd     # 觀看此檔案的資訊"
+msgid "$ gmt grdinfo 你的檔案.grd     # 觀看檔案的資訊"
 msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:37
@@ -231,7 +231,7 @@ msgid "增加了 ``subplot`` 指令，讓製作多合一地圖變得很容易。
 msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:140
-msgid "為了向下相容使用舊版語法的腳本，在 GMT 6 中你可以使用現代模式或是傳統模式的語法。因為新的語法具有許多優點，\\ **在本教學手冊中，我會使用現代模式的語法來撰寫腳本**\\ 。然而，在每個繪製地圖的章節中，我也會一併放上傳統模式的教學連結以及使用傳統模式撰寫的腳本，供各位使用者參考。"
+msgid "為了向下相容使用舊版語法的腳本，在 GMT 6 中你可以使用現代模式或是傳統模式的語法。因為新的語法具有許多優點，\\ **在本教學手冊中，我會使用現代模式的語法來撰寫腳本**\\ 。然而，在部份繪製地圖的章節中，我也會一併放上傳統模式的教學連結以及使用傳統模式撰寫的腳本，供各位使用者參考。"
 msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:142

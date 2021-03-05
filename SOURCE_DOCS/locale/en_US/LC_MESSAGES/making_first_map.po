@@ -4,17 +4,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-23 11:56-0500\n"
+"POT-Creation-Date: 2021-03-04 22:05-0500\n"
 "PO-Revision-Date: 2021-02-25 02:22+0000\n"
 "Last-Translator: Whyjay Zheng <wz278@cornell.edu>\n"
-"Language-Team: English (United States) <https://hosted.weblate.org/projects/"
-"gmt-tutorials/making-first-map/en_US/>\n"
 "Language: en_US\n"
+"Language-Team: English (United States) "
+"<https://hosted.weblate.org/projects/gmt-tutorials/making-first-"
+"map/en_US/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.5\n"
 "Generated-By: Babel 2.9.0\n"
 
 #: ../../SOURCE_DOCS/making_first_map.rst:3
@@ -241,9 +241,9 @@ msgid ""
 "archi_sea.png\n"
 "-pdf archi_sea        # PDF 格式輸出。檔名爲 archi_sea.pdf。"
 msgstr ""
-"-png archi_sea        # archi_sea is the name of the output file. Note that "
-"there is a space between png and the filename. The full file name is "
-"archi_sea.png\n"
+"-png archi_sea        # archi_sea is the name of the output file. Note "
+"that there is a space between png and the filename. The full file name is"
+" archi_sea.png\n"
 "-pdf archi_sea        # generate PDF format instead. The file name is "
 "archi_sea.pdf."
 
@@ -266,8 +266,8 @@ msgid ""
 " -N, -Q and -W"
 msgstr ""
 "$ gmt coast -R19.42/22.95/59.71/60.56 -png archi_sea\n"
-"coast [ERROR]: Syntax error: Must specify at least one of -C, -G, -S, -I, -"
-"N, -Q and -W"
+"coast [ERROR]: Syntax error: Must specify at least one of -C, -G, -S, -I,"
+" -N, -Q and -W"
 
 #: ../../SOURCE_DOCS/making_first_map.rst:89
 msgid ""
@@ -381,8 +381,9 @@ msgstr ""
 #: ../../SOURCE_DOCS/making_first_map.rst:174
 msgid "另外爲了讓地圖易於判讀，我們也可以為陸地和海洋加上顏色，使用的分別是 ``-G`` (Ground) 和 ``-S`` (Sea) 選項："
 msgstr ""
-"To improve the readability of the map, we can fill land and sea areas with "
-"colors. We will need ``-G`` (Ground) and ``-S`` (Sea) flags respectively:"
+"To improve the readability of the map, we can fill land and sea areas "
+"with colors. We will need ``-G`` (Ground) and ``-S`` (Sea) flags "
+"respectively:"
 
 #: ../../SOURCE_DOCS/making_first_map.rst:176
 msgid ""
@@ -406,8 +407,8 @@ msgid ""
 "$ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 "
 "-Scornflowerblue -png archi_sea"
 msgstr ""
-"$ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 -"
-"Scornflowerblue -png archi_sea"
+"$ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 "
+"-Scornflowerblue -png archi_sea"
 
 #: ../../SOURCE_DOCS/making_first_map.rst:187
 msgid ""
@@ -430,7 +431,8 @@ msgid ""
 "\\\n"
 "          -Scornflowerblue -png archi_sea"
 msgstr ""
-"$ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \\\n"
+"$ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 "
+"\\\n"
 "          -Scornflowerblue -png archi_sea"
 
 #: ../../SOURCE_DOCS/making_first_map.rst:194
@@ -520,7 +522,8 @@ msgid ""
 "          -Scornflowerblue -Ba2f0.5g1 -BWSne+t\"Archipelago Sea\" -png "
 "archi_sea"
 msgstr ""
-"$ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \\\n"
+"$ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 "
+"\\\n"
 "          -Scornflowerblue -Ba2f0.5g1 -BWSne+t\"Archipelago Sea\" -png "
 "archi_sea"
 
@@ -571,8 +574,10 @@ msgid ""
 "\\\n"
 "          -png archi_sea"
 msgstr ""
-"$ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \\\n"
-"          -Scornflowerblue -Ba2f0.5g1 -BWSne+t\"Archipelago Sea\" -A0.1 \\\n"
+"$ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 "
+"\\\n"
+"          -Scornflowerblue -Ba2f0.5g1 -BWSne+t\"Archipelago Sea\" -A0.1 "
+"\\\n"
 "          -png archi_sea"
 
 #: ../../SOURCE_DOCS/making_first_map.rst:255
@@ -606,9 +611,10 @@ msgid ""
 "-U \\\n"
 "          -png archi_sea"
 msgstr ""
-"$ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \\\n"
-"          -Scornflowerblue -Ba2f0.5g1 -BWSne+t\"Archipelago Sea\" -A0.1 -U \\"
-"\n"
+"$ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 "
+"\\\n"
+"          -Scornflowerblue -Ba2f0.5g1 -BWSne+t\"Archipelago Sea\" -A0.1 "
+"-U \\\n"
 "          -png archi_sea"
 
 #: ../../SOURCE_DOCS/making_first_map.rst:276
@@ -632,10 +638,34 @@ msgid "觀看\\ `最終版地圖`_"
 msgstr "Check the `final map`_"
 
 #: ../../SOURCE_DOCS/making_first_map.rst:281
+msgid "PyGMT 指令稿"
+msgstr ""
+
+#: ../../SOURCE_DOCS/making_first_map.rst:283
+msgid "使用 PyGMT，可以如下腳本繪製本地圖："
+msgstr ""
+
+#: ../../SOURCE_DOCS/making_first_map.rst:285
+msgid ""
+"import pygmt\n"
+"fig = pygmt.Figure()\n"
+"fig.coast(region=[19.42, 22.95, 59.71, 60.56], projection=\"M6i\", "
+"shorelines=['0.1p', 'black'], land='green',\n"
+"          water='cornflowerblue', frame=['a2f0.5g1', 'WSne+t\"Archipelago"
+" Sea\"'], area_thresh=0.1, timestamp=True)\n"
+"fig.show()\n"
+"fig.savefig('archi_sea_pygmt.png')"
+msgstr ""
+
+#: ../../SOURCE_DOCS/making_first_map.rst:294
+msgid "你可以使用以下的 Binder 連結嘗試此程式碼："
+msgstr ""
+
+#: ../../SOURCE_DOCS/making_first_map.rst:301
 msgid "習題"
 msgstr "Exercise"
 
-#: ../../SOURCE_DOCS/making_first_map.rst:283
+#: ../../SOURCE_DOCS/making_first_map.rst:303
 msgid ""
 "畫出蘇拉威西島 (*Sulawesi*) 的海岸線圖。蘇拉威西島是印尼第四大島，外觀非常有趣，\\ 像是字母 K 或是正在跳舞的人。座標可使用 "
 "``118.34E 至 125.70E``，以及 ``6.12S 至 2.08N``。"
@@ -768,3 +798,4 @@ msgstr ""
 #~ "-BWSne+t\"Archipelago Sea\" -A0.1 -U \\\n"
 #~ ""
 #~ "          -png archi_sea"
+

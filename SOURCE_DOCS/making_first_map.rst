@@ -277,6 +277,26 @@
 
 觀看\ `最終版地圖`_
 
+PyGMT 指令稿
+--------------------------------------
+
+使用 PyGMT，可以如下腳本繪製本地圖：
+
+.. code-block:: python
+
+    import pygmt
+    fig = pygmt.Figure()
+    fig.coast(region=[19.42, 22.95, 59.71, 60.56], projection="M6i", shorelines=['0.1p', 'black'], land='green', 
+              water='cornflowerblue', frame=['a2f0.5g1', 'WSne+t"Archipelago Sea"'], area_thresh=0.1, timestamp=True)
+    fig.show()
+    fig.savefig('archi_sea_pygmt.png')
+
+你可以使用以下的 Binder 連結嘗試此程式碼：
+
+.. image:: https://mybinder.org/badge_logo.svg
+    :target: https://mybinder.org/v2/gh/whyjz/GMT-tutorials/HEAD?filepath=SOURCE_DOCS%2Fmaking_first_map%2Farchi_sea_pygmt.ipynb
+
+
 習題
 --------------------------------------
 
