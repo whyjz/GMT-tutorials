@@ -71,8 +71,9 @@ UNIX 環境
 
     $ 你的腳本路徑/你的腳本.bash
 
-在本教學中，\ **所有的腳本都是以 bash 語法編寫**\ 。雖然不管你使用的是哪種作業系統或殼程式，GMT 的指令都會相同，但是因為腳本中難免會出現隨著殼程式不同而變化的語法，因此如果你使用的是除了 bash 之外的其他殼 (csh、tcsh、cmd、Power Shell 等等)，本教學的腳本在執行之前，可能需要小幅的修改成符合你使用的殼的語法，尤其是像指定變數、迴圈、建立檔案、文字資料處理等等的操作。
+在本教學中，\ **所有的 GMT 腳本都是以 bash 語法編寫**\ 。雖然不管你使用的是哪種作業系統或殼程式，GMT 的指令都會相同，但是因為腳本中難免會出現隨著殼程式不同而變化的語法，因此如果你使用的是除了 bash 之外的其他殼 (csh、tcsh、cmd、Power Shell 等等)，本教學的腳本在執行之前，可能需要小幅的修改成符合你使用的殼的語法，尤其是像指定變數、迴圈、建立檔案、文字資料處理等等的操作。
 
+至於在本教學中出現的 PyGMT 腳本...當然就是以 `Python`_ 語言撰寫的啦！
 
 .. 在本教學中，腳本的格式預設以 Linux 或 Mac 為主。也就是說，Windows 使用者可以把本教學中
    出現的腳本內的 ``#!/bin/bash`` 移除，不會影響輸出。實際上，就算不移除此行，Windows 
@@ -165,6 +166,42 @@ GMT 6 的新語法模式
 
 .. According to the development team, the change is to avoid the name conflict between GMT commands and commands from other software. However, to make GMT 5 compatible with old scripts, you can opt to install the “soft links” of all commands, which means GMT 5 can actually run any scripts, no matter the syntax they are based on. In this tutorial, we will use the style of GMT 4, i.e. without gmt in front of any commands, for greater code clarity. However, please feel free to choose the syntax you like to write your own GMT scripts.
 
+PyGMT 的工作環境
+--------------------------------------
+
+.. _Python:
+
+Python 與 PyGMT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Python 是\ `現在最流行的一種程式語言 <https://www.statista.com/chart/16567/popular-programming-languages/>`_。如果您對 Python 有興趣，網路上有非常多的學習資源。因為它非常流行，所以在 GMT 使用者社群中一直存在一股想法，就是希望能透過 Python 使用 GMT 的各項功能。GMT 是以 `C 語言 <https://zh.wikipedia.org/wiki/C%E8%AF%AD%E8%A8%80>`_\ 開發的，如果要使用 Python 存取 GMT 的函式庫，就要透過 API (應用程式介面，Application Programming Interface) 才能順利達成。GMT 的 API 本質上是額外的程式碼，但你可以把它想像成是不同線材的轉接頭，讓本質上是 C 語言的 GMT 函式庫能夠理解 Python 傳來的指令。PyGMT 就是透過 API 來下達繪圖指令給 GMT，並且再把 GMT 的回傳值 (地圖、數據等等) 整理成與 Python 相容的數據結構。這種軟體也稱為包裝庫 (Wrapper library)。
+
+
+PyGMT 的語法簡介
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+PyGMT 把每張地圖視作一個\ `物件 <https://zh.wikipedia.org/wiki/%E5%AF%B9%E8%B1%A1_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6)>`_，然後透過物件的\ `方法 <https://zh.wikipedia.org/wiki/%E6%96%B9%E6%B3%95_(%E9%9B%BB%E8%85%A6%E7%A7%91%E5%AD%B8)>`_\ 來執行所有的繪圖指令。以 GMT 6 的 ``coast`` 指令來說，在 PyGMT 下你要這樣執行：
+
+    .. code-block:: python
+
+        import pygmt                # 首先必須匯入 PyGMT 模組！
+        fig = pygmt.Figure()        # 建立地圖物件
+        fig.coast(各種選項...)
+        # 最後再用 fig.show() 螢幕出圖，或是 fig.savefig(...) 儲存圖檔
+
+
+``coast`` 指令的各種選項，在 GMT 中是以 UNIX 風格的「旗標」模式指定，例如 ``-R``、``-J`` 等等。而在 PyGMT 中，不同的旗標被賦予了全名，並以參數值的格式輸入到物件方法中，例如 ``-R`` 對應到 ``region``，``-J`` 對應到 ``projection`` 等等。以下是來自「\ :doc:`making_first_map`\ 」的更詳細對照：
+
+
+    .. code-block:: python
+
+        # 使用 GMT 時... (在 shell 腳本中)
+        gmt coast -R... -J... -W... -G... -B...
+        # 使用 PyGMT 時... (在 python 腳本中)
+        fig.coast(region=..., projection=..., shorelines=..., land=..., frame=...)
+
+在 PyGMT 的使用手冊中，可以找到更詳細的\ `選項對照表格 <https://www.pygmt.org/latest/api/generated/pygmt.Figure.coast.html>`_。
+
+Jupyter Notebook 與 Binder Hub
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. [1] `Taiwan datums <https://wiki.osgeo.org/wiki/Taiwan_datums>`_, OSGeo Wiki.
 .. [2] Wessel, P., Luis, J., Uieda, L., Scharroo, R., Wobbe, F., Smith, W. H. F., 
