@@ -27,7 +27,9 @@ GMT 使用 UNIX 系統下的 Shell 指令介面的風格設計而成，也就是
 
 `Jupyter <https://jupyter.org/>`_
 ----------------------------------------------------------
-Jupyter 專案的核心宗旨是提供開源的軟體與技術標準，並設計互動性的運算界面，服務以不同程式語言進行工作的使用者們。Jupyter 有許多不同的軟體產品，如果你預計使用 PyGMT，那麼我推薦安裝 Jupyter Lab，讓你可以使用網頁瀏覽器作為撰寫腳本時的整合性開發介面。`這裡 <https://www.mdeditor.tw/pl/23Lf/zh-tw>`_\ 有關於 Jupyter Lab 的進一步介紹。在後續章節中提供的 PyGMT 腳本，就是使用 Jupyter Notebook 格式儲存，並透過 Voilà (Jupyter 生態系中的一個套件) 轉換為 HTML 格式讓您閱讀。(*聲明：*\ `本人 <http://www.geo.cornell.edu/eas/gstudent/wz278/>`_\ *現為 Jupyter 的一個子專案 Jupyter Meets the Earth 團隊的一員，本教學中所有關於 Jupyter 的描述皆是我個人意見，並且是我利用閒暇時間所寫成，不代表開發團隊的意見。*)
+Jupyter 專案的核心宗旨是提供開源的軟體與技術標準，並設計互動性的運算界面，服務以不同程式語言進行工作的使用者們。Jupyter 有許多不同的軟體產品，如果你預計使用 PyGMT，那麼我推薦安裝 Jupyter Lab，讓你可以使用網頁瀏覽器作為撰寫腳本時的整合性開發介面。`這裡 <https://www.mdeditor.tw/pl/23Lf/zh-tw>`_\ 有關於 Jupyter Lab 的進一步介紹。在後續章節中提供的 PyGMT 腳本，就是使用 Jupyter Notebook 格式儲存。(*聲明：*\ `本人 <http://www.geo.cornell.edu/eas/gstudent/wz278/>`_\ *現為 Jupyter 的一個子專案 Jupyter Meets the Earth 團隊的一員，本教學中所有關於 Jupyter 的描述皆是我個人意見，並且是我利用閒暇時間所寫成，不代表開發團隊的意見。*)
+
+.. 並透過 Voilà (Jupyter 生態系中的一個套件) 轉換為 HTML 格式讓您閱讀。
 
 `GDAL <https://gdal.org/>`_ 
 --------------------------------------

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-23 11:56-0500\n"
+"POT-Creation-Date: 2021-03-16 16:55-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -146,13 +146,21 @@ msgid "import pygmt\n"
 msgstr ""
 
 #: ../../SOURCE_DOCS/intro_install.rst:104
+msgid "使用者社群"
+msgstr ""
+
+#: ../../SOURCE_DOCS/intro_install.rst:105
+msgid "GMT 與 PyGMT 有著日益茁壯的社群。`官方的使用者論壇 (英文) <https://forum.generic-mapping-tools.org/>`_ 提供了使用者們交流、發問、參與開發的園地，也是軟體發布新版本時的公佈欄。"
+msgstr ""
+
+#: ../../SOURCE_DOCS/intro_install.rst:109
 msgid "Wessel, P., and Smith, W. H. F. (1991). Free software helps map and display data, EOS Trans. AGU, 72(41), 445–446. `doi.org/10.1029/90EO00319 <http://doi.org/10.1029/90EO00319>`_."
 msgstr ""
 
-#: ../../SOURCE_DOCS/intro_install.rst:107
+#: ../../SOURCE_DOCS/intro_install.rst:112
 msgid "Wessel, P., Luis, J., Uieda, L., Scharroo, R., Wobbe, F., Smith, W. H. F., and Tian, D. (2019). The Generic Mapping Tools Version 6. Geochemistry, Geophysics, Geosystems, 20. `doi.org/10.1029/2019GC008515 <http://doi.org/10.1029/2019GC008515>`_."
 msgstr ""
 
-#: ../../SOURCE_DOCS/intro_install.rst:110
+#: ../../SOURCE_DOCS/intro_install.rst:115
 msgid "Uieda, L., Tian, D., Leong, W. J., Toney, L., Newton, T., and Wessel, P. (2020, November 14). PyGMT: A Python interface for the Generic Mapping Tools (Version v0.2.1). Zenodo. `doi.org/10.5281/zenodo.4253459 <http://doi.org/10.5281/zenodo.4253459>`_."
 msgstr ""

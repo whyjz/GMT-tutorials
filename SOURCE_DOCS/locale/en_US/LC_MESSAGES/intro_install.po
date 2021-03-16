@@ -4,17 +4,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-23 11:56-0500\n"
+"POT-Creation-Date: 2021-03-16 16:55-0400\n"
 "PO-Revision-Date: 2021-02-23 21:54+0000\n"
 "Last-Translator: Whyjay Zheng <wz278@cornell.edu>\n"
-"Language-Team: English (United States) <https://hosted.weblate.org/projects/"
-"gmt-tutorials/intro-install/en_US/>\n"
 "Language: en_US\n"
+"Language-Team: English (United States) "
+"<https://hosted.weblate.org/projects/gmt-tutorials/intro-install/en_US/>"
+"\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.5\n"
 "Generated-By: Babel 2.9.0\n"
 
 #: ../../SOURCE_DOCS/intro_install.rst:3
@@ -250,8 +250,8 @@ msgid ""
 "packaging gmt pytest pytest-mpl"
 msgstr ""
 "$ conda config --prepend channels conda-forge\n"
-"$ conda install python=3.9 pygmt pip numpy pandas xarray netcdf4 packaging "
-"gmt pytest pytest-mpl"
+"$ conda install python=3.9 pygmt pip numpy pandas xarray netcdf4 "
+"packaging gmt pytest pytest-mpl"
 
 #: ../../SOURCE_DOCS/intro_install.rst:74
 msgid "如果你計畫使用 PyGMT，推薦一併安裝 Jupyter 以進行互動式資料分析。"
@@ -288,6 +288,16 @@ msgstr ""
 "pygmt.show_versions()"
 
 #: ../../SOURCE_DOCS/intro_install.rst:104
+msgid "使用者社群"
+msgstr ""
+
+#: ../../SOURCE_DOCS/intro_install.rst:105
+msgid ""
+"GMT 與 PyGMT 有著日益茁壯的社群。`官方的使用者論壇 (英文) <https://forum.generic-mapping-"
+"tools.org/>`_ 提供了使用者們交流、發問、參與開發的園地，也是軟體發布新版本時的公佈欄。"
+msgstr ""
+
+#: ../../SOURCE_DOCS/intro_install.rst:109
 msgid ""
 "Wessel, P., and Smith, W. H. F. (1991). Free software helps map and "
 "display data, EOS Trans. AGU, 72(41), 445–446. `doi.org/10.1029/90EO00319"
@@ -297,7 +307,7 @@ msgstr ""
 "display data, EOS Trans. AGU, 72(41), 445–446. `doi.org/10.1029/90EO00319"
 " <http://doi.org/10.1029/90EO00319>`_."
 
-#: ../../SOURCE_DOCS/intro_install.rst:107
+#: ../../SOURCE_DOCS/intro_install.rst:112
 msgid ""
 "Wessel, P., Luis, J., Uieda, L., Scharroo, R., Wobbe, F., Smith, W. H. "
 "F., and Tian, D. (2019). The Generic Mapping Tools Version 6. "
@@ -309,7 +319,7 @@ msgstr ""
 "Geochemistry, Geophysics, Geosystems, 20. `doi.org/10.1029/2019GC008515 "
 "<http://doi.org/10.1029/2019GC008515>`_."
 
-#: ../../SOURCE_DOCS/intro_install.rst:110
+#: ../../SOURCE_DOCS/intro_install.rst:115
 msgid ""
 "Uieda, L., Tian, D., Leong, W. J., Toney, L., Newton, T., and Wessel, P. "
 "(2020, November 14). PyGMT: A Python interface for the Generic Mapping "
@@ -362,3 +372,4 @@ msgstr ""
 #~ msgstr ""
 #~ "import pygmt\n"
 #~ "pygmt.show_versions()"
+

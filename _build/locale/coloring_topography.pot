@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-23 11:56-0500\n"
+"POT-Creation-Date: 2021-03-16 17:34-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -312,25 +312,52 @@ msgid "觀看\\ `最終版地圖`_"
 msgstr ""
 
 #: ../../SOURCE_DOCS/coloring_topography.rst:287
-msgid "習題"
+msgid "PyGMT 指令稿"
 msgstr ""
 
 #: ../../SOURCE_DOCS/coloring_topography.rst:289
-msgid "畫出貝加爾湖 (*Lake Baikal* 或 *Baygal nuur*) 與週邊區域的地形設色圖。貝加爾湖是全世界最深的湖泊，也是世界第七大湖，位於俄羅斯，南端接近蒙古的邊界。"
-msgstr ""
-
-#: ../../SOURCE_DOCS/coloring_topography.rst:290
-msgid "從地圖中可看到有幾條河流注入或流出貝加爾湖？"
+msgid "使用 PyGMT，可以如下腳本繪製本地圖："
 msgstr ""
 
 #: ../../SOURCE_DOCS/coloring_topography.rst:291
+msgid "import pygmt\n"
+"\n"
+"# 取得地形資料\n"
+"region = [-70.8, -66.56, -17.17, -14.42]\n"
+"grid = pygmt.datasets.load_earth_relief(resolution='01m', region=region)\n"
+"\n"
+"# 繪圖\n"
+"fig = pygmt.Figure()\n"
+"fig.grdimage(grid, region=region, projection='M6i', cmap='mby.cpt')\n"
+"fig.coast(rivers='r/0.7p,cornflowerblue', borders='1/0.7p,,--', water='cornflowerblue', frame=['af', '+t\"Lago Titicaca\"'])\n"
+"fig.show()\n"
+"fig.savefig('titicaca_pygmt.png')"
+msgstr ""
+
+#: ../../SOURCE_DOCS/coloring_topography.rst:306
+msgid "你可以使用以下的 Binder 連結嘗試此程式碼："
+msgstr ""
+
+#: ../../SOURCE_DOCS/coloring_topography.rst:313
+msgid "習題"
+msgstr ""
+
+#: ../../SOURCE_DOCS/coloring_topography.rst:315
+msgid "畫出貝加爾湖 (*Lake Baikal* 或 *Baygal nuur*) 與週邊區域的地形設色圖。貝加爾湖是全世界最深的湖泊，也是世界第七大湖，位於俄羅斯，南端接近蒙古的邊界。"
+msgstr ""
+
+#: ../../SOURCE_DOCS/coloring_topography.rst:316
+msgid "從地圖中可看到有幾條河流注入或流出貝加爾湖？"
+msgstr ""
+
+#: ../../SOURCE_DOCS/coloring_topography.rst:317
 msgid "貝加爾湖週邊的海拔為何？湖底的海拔為何？你的地圖分別用什麼顏色表示這兩個海拔？"
 msgstr ""
 
-#: ../../SOURCE_DOCS/coloring_topography.rst:294
+#: ../../SOURCE_DOCS/coloring_topography.rst:320
 msgid "`Data Summary: Lago Titicaca (Lake Titicaca). <http://www.ilec.or.jp/database/sam/dsam04.html>`_ International Lake Environment Committee Foundation - ILEC. Retrieved 2009-01-03."
 msgstr ""
 
-#: ../../SOURCE_DOCS/coloring_topography.rst:296
+#: ../../SOURCE_DOCS/coloring_topography.rst:322
 msgid "`ClClimatological Information for Juliaca, Peru. <http://www.weather.gov.hk/wxinfo/climat/world/eng/s_america/ec_per/juliaca_e.htm>`_ Hong Kong Observatory."
 msgstr ""

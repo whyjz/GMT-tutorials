@@ -100,6 +100,11 @@ GMT 和 PyGMT 有許多種安裝方式，以下是我個人推薦的方法：利
 
 .. `GSHHG <https://www.soest.hawaii.edu/pwessel/gshhg/>`_ (**Global Self-consistent, Hierarchical, High-resolution Geography**)： 提供數種解析度的向量形式資料，像是海岸線、河湖水系、國界與州界等等。
 
+使用者社群
+--------------------------------------
+GMT 與 PyGMT 有著日益茁壯的社群。`官方的使用者論壇 (英文) <https://forum.generic-mapping-tools.org/>`_ 提供了使用者們交流、發問、參與開發的園地，也是軟體發布新版本時的公佈欄。
+
+
 
 .. [1] Wessel, P., and Smith, W. H. F. (1991). 
        Free software helps map and display data, EOS Trans. AGU, 72(41), 445–446. 

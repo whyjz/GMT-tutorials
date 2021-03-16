@@ -283,6 +283,32 @@
 
 觀看\ `最終版地圖`_
 
+PyGMT 指令稿
+--------------------------------------
+
+使用 PyGMT，可以如下腳本繪製本地圖：
+
+.. code-block:: python
+
+    import pygmt
+    
+    # 取得地形資料
+    region = [-70.8, -66.56, -17.17, -14.42]
+    grid = pygmt.datasets.load_earth_relief(resolution='01m', region=region)
+    
+    # 繪圖
+    fig = pygmt.Figure()
+    fig.grdimage(grid, region=region, projection='M6i', cmap='mby.cpt')
+    fig.coast(rivers='r/0.7p,cornflowerblue', borders='1/0.7p,,--', water='cornflowerblue', frame=['af', '+t"Lago Titicaca"'])
+    fig.show()
+    fig.savefig('titicaca_pygmt.png')
+
+你可以使用以下的 Binder 連結嘗試此程式碼：
+
+.. image:: https://mybinder.org/badge_logo.svg
+    :target: https://mybinder.org/v2/gh/whyjz/GMT-tutorials/HEAD?filepath=SOURCE_DOCS%2Fcoloring_topography%2Ftiticaca_pygmt.ipynb
+
+
 習題
 --------------------------------------
 

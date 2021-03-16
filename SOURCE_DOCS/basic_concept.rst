@@ -200,8 +200,11 @@ PyGMT 把每張地圖視作一個\ `物件 <https://zh.wikipedia.org/wiki/%E5%AF
 
 在 PyGMT 的使用手冊中，可以找到更詳細的\ `選項對照表格 <https://www.pygmt.org/latest/api/generated/pygmt.Figure.coast.html>`_。
 
-Jupyter Notebook 與 Binder Hub
+Jupyter Notebook 與 Binder
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+本教學手冊中使用兩種 PyGMT 腳本的格式。除了傳統的純文字 HTML 語法顯示外，也提供了 `Jupyter Notebook <https://jupyter.org/>`_ 的 Binder 連結。點開 Binder 連結後，伺服器端會安裝一個可以執行 PyGMT 的環境，然後你就可以透過你的網頁瀏覽器執行與修改教學手冊中的 PyGMT 程式碼。本功能目前使用 `MyBinder.org <https://mybinder.org/>`_ 提供、利用 Amazon Web Services 的雲端運算服務讓各位都能免安裝就體驗 PyGMT。歡迎各位多加嘗試！
+
+
 
 .. [1] `Taiwan datums <https://wiki.osgeo.org/wiki/Taiwan_datums>`_, OSGeo Wiki.
 .. [2] Wessel, P., Luis, J., Uieda, L., Scharroo, R., Wobbe, F., Smith, W. H. F., 
