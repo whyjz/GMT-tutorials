@@ -4,16 +4,16 @@ msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-16 16:55-0400\n"
-"PO-Revision-Date: 2021-02-23 21:54+0000\n"
+"PO-Revision-Date: 2021-03-17 03:08+0000\n"
 "Last-Translator: Whyjay Zheng <wz278@cornell.edu>\n"
+"Language-Team: English (United States) <https://hosted.weblate.org/projects/"
+"gmt-tutorials/basic-concept/en_US/>\n"
 "Language: en_US\n"
-"Language-Team: English (United States) "
-"<https://hosted.weblate.org/projects/gmt-tutorials/basic-concept/en_US/>"
-"\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.5.2-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 #: ../../SOURCE_DOCS/basic_concept.rst:3
@@ -21,16 +21,15 @@ msgid "基本概念與名詞"
 msgstr "Basic Concepts and Terms"
 
 #: ../../SOURCE_DOCS/basic_concept.rst:5
-#, fuzzy
 msgid ""
 "GMT 繼承了在 UNIX 環境之下處理資料的方法，對於曾經接觸過 shell 或 cmd "
 "的人，它的操作方法應該不陌生。如果你之前完全沒有用過，也沒有關係，以下將提供一些必要的基本概念，稍微熟悉後，就可以快速上手。"
 msgstr ""
-"GMT inherits the way of how the UNIX system manipulates data. For those "
-"who have some experience using Unix shell or cmd, GMT is easy to get "
-"started. If you never used anything like that, don't worry about it. This"
-" section will introduce some essential concepts for using GMT, which "
-"makes you get into the swing of it."
+"GMT inherits the way of how the UNIX system manipulates data. For those who "
+"have some experience using Unix shell or cmd, GMT is easy to get started. If "
+"you never used anything like that, don't worry about it. This section will "
+"introduce some essential concepts for using GMT, which makes you get into "
+"the swing of it."
 
 #: ../../SOURCE_DOCS/basic_concept.rst:7
 msgid "另外，這裡也會簡單介紹 GMT 相關的一些檔案格式與操作，如果你是第一次接觸地理空間的資料，也歡迎在此查閱相關的術語。"
@@ -117,9 +116,8 @@ msgstr ""
 "example:"
 
 #: ../../SOURCE_DOCS/basic_concept.rst:33
-#, fuzzy
 msgid "$ gmt grdinfo 你的檔案.grd     # 觀看檔案的資訊"
-msgstr "$ grdinfo yourfile.grd     # view info of the file"
+msgstr "$ gmt grdinfo yourfile.grd     # view info of the file"
 
 #: ../../SOURCE_DOCS/basic_concept.rst:37
 msgid "在 ``#`` 後面的文字，是對指令的補充說明。本教學中，也會使用此格式，使腳本更易於閱讀。"
@@ -212,25 +210,25 @@ msgid "$ 你的腳本路徑/你的腳本.bash"
 msgstr "$ path_to_your_script/yourscript.bash"
 
 #: ../../SOURCE_DOCS/basic_concept.rst:74
-#, fuzzy
 msgid ""
 "在本教學中，\\ **所有的 GMT 腳本都是以 bash 語法編寫**\\ 。雖然不管你使用的是哪種作業系統或殼程式，GMT "
 "的指令都會相同，但是因為腳本中難免會出現隨著殼程式不同而變化的語法，因此如果你使用的是除了 bash 之外的其他殼 "
 "(csh、tcsh、cmd、Power Shell "
 "等等)，本教學的腳本在執行之前，可能需要小幅的修改成符合你使用的殼的語法，尤其是像指定變數、迴圈、建立檔案、文字資料處理等等的操作。"
 msgstr ""
-"In this tutorial, **all the scripts are written in bash format**. "
+"In this tutorial, **all the GMT scripts are written in bash format**. "
 "Although the GMT commands never change through platforms or shells, you "
-"still need to be aware of other syntax in your script that varies with "
-"shell. If you are using other shells than bash (like csh, tcsh, cmd, "
-"Power Shell…), you may have to modify the script a little bit and make it"
-" adapt to another shell. This is especially true for operations like "
-"assigning variables, looping, reading and writing some files, and text-"
-"file processing."
+"still need to be aware of the syntax that varies with the shell. If you are "
+"using other shells than bash (like csh, tcsh, cmd, Power Shell…), you may "
+"have to modify the script a little bit so it adapts to another shell. This "
+"is especially true for operations like assigning variables, looping, reading "
+"and writing some files, and text-file processing."
 
 #: ../../SOURCE_DOCS/basic_concept.rst:76
 msgid "至於在本教學中出現的 PyGMT 腳本...當然就是以 `Python`_ 語言撰寫的啦！"
 msgstr ""
+"For the PyGMT scripts in the tutorial... of course, they are written in "
+"`Python`_!"
 
 #: ../../SOURCE_DOCS/basic_concept.rst:83
 msgid "地理空間資料"
@@ -490,18 +488,17 @@ msgstr ""
 "multi-frame maps."
 
 #: ../../SOURCE_DOCS/basic_concept.rst:141
-#, fuzzy
 msgid ""
 "為了向下相容使用舊版語法的腳本，在 GMT 6 中你可以使用現代模式或是傳統模式的語法。因為新的語法具有許多優點，\\ "
 "**在本教學手冊中，我會使用現代模式的語法來撰寫腳本**\\ "
 "。然而，在部份繪製地圖的章節中，我也會一併放上傳統模式的教學連結以及使用傳統模式撰寫的腳本，供各位使用者參考。"
 msgstr ""
-"In order to realize the backward compatibility, in GMT 6 you can use "
-"either modern mode or classic mode to write your script. Because there "
-"are many advantages of the new syntax, **In this tutorial I would use the"
-" modern mode syntax to create maps.** However, for your reference, I "
-"would also provide a link to the script using the classical mode and the "
-"associated instruction for each map-making chapter."
+"To make the backward compatibility, in GMT 6 you can use either modern mode "
+"or classic mode to write your script. Because there are many advantages of "
+"the new syntax, **for this tutorial I use the modern mode syntax to create "
+"maps.** However, I will also provide a link to the script using the "
+"classical mode and the associated instruction in some chapters for your "
+"reference."
 
 #: ../../SOURCE_DOCS/basic_concept.rst:143
 msgid "如果你已經是 GMT 5 的使用者，可以馬上無痛升級到 GMT 6，因為幾乎所有第五版的語法在第六版中都有支援 (傳統模式)。"
@@ -542,11 +539,11 @@ msgstr ""
 
 #: ../../SOURCE_DOCS/basic_concept.rst:170
 msgid "PyGMT 的工作環境"
-msgstr ""
+msgstr "The working environment of PyGMT"
 
 #: ../../SOURCE_DOCS/basic_concept.rst:175
 msgid "Python 與 PyGMT"
-msgstr ""
+msgstr "Python and PyGMT"
 
 #: ../../SOURCE_DOCS/basic_concept.rst:176
 #, python-format
@@ -560,10 +557,24 @@ msgid ""
 "Python 傳來的指令。PyGMT 就是透過 API 來下達繪圖指令給 GMT，並且再把 GMT 的回傳值 (地圖、數據等等) 整理成與 "
 "Python 相容的數據結構。這種軟體也稱為包裝庫 (Wrapper library)。"
 msgstr ""
+"Python is the `most popular programming language at the present time "
+"<https://www.statista.com/chart/16567/popular-programming-languages/>`_. If "
+"you are interested in learning Python, there is a lot of onboarding "
+"resources available online. Thanks to its popularity, there has been an idea "
+"in the GMT user community: it would be great if we could access GMT through "
+"Python. GMT is based on the `C programming language <https://en.wikipedia."
+"org/wiki/C_(programming_language)>`_, which means you have to use an API ("
+"Application Programming Interface) to access the GMT library in Python. The "
+"GMT's API is essentially some code, and it is analogous to the adapter for "
+"different cables. In other words, the API makes the GMT library understand "
+"the control commands from Python. PyGMT uses such an API, sends tasks to "
+"GMT, and converts the return values (data, map, etc.) into some Python-"
+"compatible formats. We also call this kind of software package a wrapper "
+"library."
 
 #: ../../SOURCE_DOCS/basic_concept.rst:180
 msgid "PyGMT 的語法簡介"
-msgstr ""
+msgstr "The PyGMT syntax"
 
 #: ../../SOURCE_DOCS/basic_concept.rst:181
 #, python-format
@@ -574,6 +585,11 @@ msgid ""
 "<https://zh.wikipedia.org/wiki/%E6%96%B9%E6%B3%95_(%E9%9B%BB%E8%85%A6%E7%A7%91%E5%AD%B8)>`_\\"
 " 來執行所有的繪圖指令。以 GMT 6 的 ``coast`` 指令來說，在 PyGMT 下你要這樣執行："
 msgstr ""
+"PyGMT treats a map as an `object <https://en.wikipedia.org/wiki/"
+"Object_(computer_science)>`_ and executes all the plotting commands through "
+"the object's `methods <https://en.wikipedia.org/wiki/"
+"Method_(computer_programming)>`_. For example, you have to use this way to "
+"run the ``coast`` command in GMT 6:"
 
 #: ../../SOURCE_DOCS/basic_concept.rst:183
 msgid ""
@@ -582,6 +598,12 @@ msgid ""
 "fig.coast(各種選項...)\n"
 "# 最後再用 fig.show() 螢幕出圖，或是 fig.savefig(...) 儲存圖檔"
 msgstr ""
+"import pygmt                # First off, you have to import the PyGMT module!"
+"\n"
+"fig = pygmt.Figure()        # Make a map object\n"
+"fig.coast(options...)\n"
+"# Finally, use fig.show() to show the map on the screen, or use fig."
+"savefig(...) to save to disk"
 
 #: ../../SOURCE_DOCS/basic_concept.rst:191
 msgid ""
@@ -589,6 +611,12 @@ msgid ""
 " 中，不同的旗標被賦予了全名，並以參數值的格式輸入到物件方法中，例如 ``-R`` 對應到 ``region``，``-J`` 對應到 "
 "``projection`` 等等。以下是來自「\\ :doc:`making_first_map`\\ 」的更詳細對照："
 msgstr ""
+"GMT uses the UNIX-style \"flags\" to assign various options of the ``coast`` "
+"command, for example, ``-R`` and ``-J``. In PyGMT, These flags are all "
+"changed to a more meaningful name and are passed into the object method as "
+"an argument. For example, ``-R`` is renamed as ``region``, and ``-J`` "
+"corresponds to ``projection``. Here are some more translations from "
+":doc:`making_first_map`:"
 
 #: ../../SOURCE_DOCS/basic_concept.rst:194
 msgid ""
@@ -597,16 +625,23 @@ msgid ""
 "# 使用 PyGMT 時... (在 python 腳本中)\n"
 "fig.coast(region=..., projection=..., shorelines=..., land=..., frame=...)"
 msgstr ""
+"# When using GMT... (in a shell script)\n"
+"gmt coast -R... -J... -W... -G... -B...\n"
+"# When using PyGMT... (in a python script)\n"
+"fig.coast(region=..., projection=..., shorelines=..., land=..., frame=...)"
 
 #: ../../SOURCE_DOCS/basic_concept.rst:201
 msgid ""
 "在 PyGMT 的使用手冊中，可以找到更詳細的\\ `選項對照表格 "
 "<https://www.pygmt.org/latest/api/generated/pygmt.Figure.coast.html>`_。"
 msgstr ""
+"In the PyGMT user manual, you can check the more detailed `parameter list "
+"and their aliases <https://www.pygmt.org/latest/api/generated/pygmt.Figure."
+"coast.html>`_."
 
 #: ../../SOURCE_DOCS/basic_concept.rst:204
 msgid "Jupyter Notebook 與 Binder"
-msgstr ""
+msgstr "Jupyter Notebook and Binder"
 
 #: ../../SOURCE_DOCS/basic_concept.rst:205
 msgid ""
@@ -616,6 +651,14 @@ msgid ""
 "<https://mybinder.org/>`_ 提供、利用 Amazon Web Services 的雲端運算服務讓各位都能免安裝就體驗 "
 "PyGMT。歡迎各位多加嘗試！"
 msgstr ""
+"This tutorial uses two different formats for PyGMT scripts. In addition to "
+"the traditional pain text rendered as HTML, I also provide them as `Jupyter "
+"Notebooks <https://jupyter.org/>`_ as well as their Binder links. The Binder "
+"link will lead you to a server that installs a PyGMT environment for you, "
+"and you can run, modify, and try these PyGMT scripts using your web browser. "
+"I currently use the service from `MyBinder.org <https://mybinder.org/>`_ "
+"which uses the cloud computing resources at Amazon Web Services so that "
+"everyone can try PyGMT without installing it. Feel free to give it a try!"
 
 #: ../../SOURCE_DOCS/basic_concept.rst:209
 msgid "`Taiwan datums <https://wiki.osgeo.org/wiki/Taiwan_datums>`_, OSGeo Wiki."
@@ -679,4 +722,3 @@ msgstr ""
 #~ "GMT 6, this has changed to set,"
 #~ " and it becomes a module under "
 #~ "the master gmt command as well."
-
