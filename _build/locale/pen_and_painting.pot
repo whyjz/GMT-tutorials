@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-23 11:56-0500\n"
+"POT-Creation-Date: 2021-03-16 21:05-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -493,13 +493,54 @@ msgid "觀看\\ `最終版地圖`_"
 msgstr ""
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:452
-msgid "習題"
+msgid "PyGMT 指令稿"
 msgstr ""
 
 #: ../../SOURCE_DOCS/pen_and_painting.rst:454
+msgid "使用 PyGMT，可以如下腳本繪製本地圖："
+msgstr ""
+
+#: ../../SOURCE_DOCS/pen_and_painting.rst:456
+msgid "import pygmt\n"
+"\n"
+"# ==== 設定顏色與對應的國家 ====\n"
+"# 這裡我們利用了 Python 的 Dictionary 資料結構來縮短程式碼！\n"
+"color_dict = {'MX,BR,CR,DO':    '#CD5C5C',        # mexico, brazil, costa rica, dominican\n"
+"              'GT,JM,VE,GF,BS': 'pink',           # guatemala, venezuela, jamaica, french guiana, bahamas\n"
+"              'US,PR,NI,GY':    '240/230/140',    # united states, puerto rico, nicaragua, guyana\n"
+"              'BZ,HT,TT,PA,SV': '0/36/74/4',      # belize, haiti, trinidad and tobago, panama, salvador\n"
+"              'CO,CU,HN,SR':    '97-0.52-0.94'}   # colombia, cuba, honduras, suriname\n"
+"\n"
+"color0 = '169'  # 其他國家\n"
+"dcw_list = [key + '+g' + value for key, value in color_dict.items()]\n"
+"\n"
+"# ==== 取得地形資料 ====\n"
+"region = [-100, -50,  1, 34]\n"
+"grid = pygmt.datasets.load_earth_relief(resolution='05m', region=region)\n"
+"\n"
+"# ==== 繪圖 ====\n"
+"fig = pygmt.Figure()\n"
+"fig.grdimage(grid, region=region, projection='B-80.27/8.58/-8/24/15c', cmap='geo')\n"
+"fig.coast(land=color0, dcw=dcw_list)\n"
+"fig.coast(shorelines='1/thinner', borders='1/thinner', resolution='i', frame='afg')\n"
+"# 注意這裡我們在色階條的位置字串中加上了 +o1c/0，稍微偏移其位置。\n"
+"fig.colorbar(position='jRM+w3c+o1c/0', truncate=[-8000, 0], frame=['x3000', 'y+lm'], box='+gwhite@50')\n"
+"fig.show()\n"
+"fig.savefig('central_america_pygmt.png')"
+msgstr ""
+
+#: ../../SOURCE_DOCS/pen_and_painting.rst:486
+msgid "你可以使用以下的 Binder 連結嘗試此程式碼："
+msgstr ""
+
+#: ../../SOURCE_DOCS/pen_and_painting.rst:493
+msgid "習題"
+msgstr ""
+
+#: ../../SOURCE_DOCS/pen_and_painting.rst:495
 msgid "仿造此章節的地圖，畫出南海 (*South China Sea*) 的海底地形與週邊國家圖。座標可使用 ``95E 至 123E``，以及 ``0N 至 26N``。可使用本章節的顏色或自行調整你愛的搭配。"
 msgstr ""
 
-#: ../../SOURCE_DOCS/pen_and_painting.rst:455
+#: ../../SOURCE_DOCS/pen_and_painting.rst:496
 msgid "有沒有辦法把香港與海南島塗上與中國不同的顏色？"
 msgstr ""

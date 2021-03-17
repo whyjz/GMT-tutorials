@@ -448,6 +448,47 @@
 
 觀看\ `最終版地圖`_
 
+PyGMT 指令稿
+--------------------------------------
+
+使用 PyGMT，可以如下腳本繪製本地圖：
+
+.. code-block:: python
+
+    import pygmt
+    
+    # ==== 設定顏色與對應的國家 ====
+    # 這裡我們利用了 Python 的 Dictionary 資料結構來縮短程式碼！
+    color_dict = {'MX,BR,CR,DO':    '#CD5C5C',        # mexico, brazil, costa rica, dominican
+                  'GT,JM,VE,GF,BS': 'pink',           # guatemala, venezuela, jamaica, french guiana, bahamas
+                  'US,PR,NI,GY':    '240/230/140',    # united states, puerto rico, nicaragua, guyana
+                  'BZ,HT,TT,PA,SV': '0/36/74/4',      # belize, haiti, trinidad and tobago, panama, salvador
+                  'CO,CU,HN,SR':    '97-0.52-0.94'}   # colombia, cuba, honduras, suriname
+
+    color0 = '169'  # 其他國家
+    dcw_list = [key + '+g' + value for key, value in color_dict.items()]
+
+    # ==== 取得地形資料 ====
+    region = [-100, -50,  1, 34]
+    grid = pygmt.datasets.load_earth_relief(resolution='05m', region=region)
+
+    # ==== 繪圖 ====
+    fig = pygmt.Figure()
+    fig.grdimage(grid, region=region, projection='B-80.27/8.58/-8/24/15c', cmap='geo')
+    fig.coast(land=color0, dcw=dcw_list)
+    fig.coast(shorelines='1/thinner', borders='1/thinner', resolution='i', frame='afg')
+    # 注意這裡我們在色階條的位置字串中加上了 +o1c/0，稍微偏移其位置。
+    fig.colorbar(position='jRM+w3c+o1c/0', truncate=[-8000, 0], frame=['x3000', 'y+lm'], box='+gwhite@50')
+    fig.show()
+    fig.savefig('central_america_pygmt.png')
+    
+
+你可以使用以下的 Binder 連結嘗試此程式碼：
+
+.. image:: https://mybinder.org/badge_logo.svg
+    :target: https://mybinder.org/v2/gh/whyjz/GMT-tutorials/HEAD?filepath=SOURCE_DOCS%2Fpen_and_painting%2Fcentral_america_pygmt.ipynb
+
+
 習題
 --------------------------------------
 
