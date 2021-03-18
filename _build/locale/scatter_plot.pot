@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMT 教學手冊 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-23 11:56-0500\n"
+"POT-Creation-Date: 2021-03-18 14:30-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -494,17 +494,64 @@ msgid "觀看\\ `最終版圖片`_"
 msgstr ""
 
 #: ../../SOURCE_DOCS/scatter_plot.rst:396
+msgid "PyGMT 指令稿"
+msgstr ""
+
+#: ../../SOURCE_DOCS/scatter_plot.rst:398
+msgid "使用 PyGMT，可以如下腳本繪製本地圖："
+msgstr ""
+
+#: ../../SOURCE_DOCS/scatter_plot.rst:400
+msgid "import pygmt\n"
+"import numpy as np\n"
+"# 需要 Numpy 來讀取檔案中的資料\n"
+"\n"
+"# ==== 設定變數 ====\n"
+"# 我們使用 numpy.loadtxt 載入資料表，然後資料點樣式使用 Python 的 Dictionary 來指定。\n"
+"zzh  = np.loadtxt('zzh.txt', delimiter=',')\n"
+"suao = np.loadtxt('suao.txt', delimiter=',')\n"
+"zzh_style  = {'style': 'c0.35c', 'color': '#58C73A', 'pen': '0.03c,black'}\n"
+"suao_style = {'style': 'd0.35c', 'color': '#3A6BC7', 'pen': '0.03c,black'}\n"
+"\n"
+"fig = pygmt.Figure()\n"
+"\n"
+"# ==== 版面與作圖區設定 ====\n"
+"fig.basemap(region=[-1, 23, 0, 7], projection='X15c/10c', frame=['WSne+t\"January 2016\"', 'xaf+l\"Temperature (@.C)\"', 'ya2f+l\"Wind Speed (m s@+-1@+)\"'])\n"
+"\n"
+"# ==== 繪點 ====\n"
+"fig.plot(data=zzh,  **zzh_style)\n"
+"fig.plot(data=suao, **suao_style)\n"
+"\n"
+"# ==== 灰色垂直虛線 ====\n"
+"fig.plot(x=[0, 0], y=[0, 7], pen='0.03c,100,--')\n"
+"\n"
+"# ==== 圖例框與圖例內容 ====\n"
+"fig.plot(x=[16, 22, 22, 16], y=[5, 5, 6.5, 6.5], pen='0.05c,black', color='#E6F4F2')\n"
+"fig.plot(data=[[17, 6.05]],  **zzh_style)\n"
+"fig.plot(data=[[17, 5.45]],  **suao_style)\n"
+"fig.text(x=18, y=6.05, text='Zhuzihu', font='14p', justify='ML')\n"
+"fig.text(x=18, y=5.45, text=\"Su'ao\", font='14p', justify='ML')\n"
+"\n"
+"fig.show()\n"
+"fig.savefig('windspeed_vs_temperature_pygmt.png')"
+msgstr ""
+
+#: ../../SOURCE_DOCS/scatter_plot.rst:436
+msgid "你可以使用以下的 Binder 連結嘗試此程式碼："
+msgstr ""
+
+#: ../../SOURCE_DOCS/scatter_plot.rst:443
 msgid "習題"
 msgstr ""
 
-#: ../../SOURCE_DOCS/scatter_plot.rst:397
+#: ../../SOURCE_DOCS/scatter_plot.rst:444
 msgid "本章使用的資料事實上是依照時間排序的，每日只有一個測量數值。因此，請利用本章中提供的數據，畫出竹子湖與蘇澳測站在 2016 年 1 月份的氣溫每日變化的\\ **折線圖**。"
 msgstr ""
 
-#: ../../SOURCE_DOCS/scatter_plot.rst:399
+#: ../../SOURCE_DOCS/scatter_plot.rst:446
 msgid "請利用 ``plot`` 畫出「`大衛之星 <https://zh.wikipedia.org/wiki/%E5%A4%A7%E8%A1%9B%E6%98%9F>`_」。"
 msgstr ""
 
-#: ../../SOURCE_DOCS/scatter_plot.rst:401
+#: ../../SOURCE_DOCS/scatter_plot.rst:448
 msgid "`頻果日報，2016 年 1 月 24 日新聞 <http://www.appledaily.com.tw/realtimenews/article/new/20160124/782086/>`_。"
 msgstr ""

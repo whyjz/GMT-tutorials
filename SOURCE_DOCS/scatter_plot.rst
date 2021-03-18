@@ -392,6 +392,53 @@ XY 點散佈圖
 
 觀看\ `最終版圖片`_
 
+PyGMT 指令稿
+--------------------------------------
+
+使用 PyGMT，可以如下腳本繪製本地圖：
+
+.. code-block:: python
+
+    import pygmt
+    import numpy as np
+    # 需要 Numpy 來讀取檔案中的資料
+    
+    # ==== 設定變數 ====
+    # 我們使用 numpy.loadtxt 載入資料表，然後資料點樣式使用 Python 的 Dictionary 來指定。
+    zzh  = np.loadtxt('zzh.txt', delimiter=',')
+    suao = np.loadtxt('suao.txt', delimiter=',')
+    zzh_style  = {'style': 'c0.35c', 'color': '#58C73A', 'pen': '0.03c,black'}
+    suao_style = {'style': 'd0.35c', 'color': '#3A6BC7', 'pen': '0.03c,black'}
+
+    fig = pygmt.Figure()
+
+    # ==== 版面與作圖區設定 ====
+    fig.basemap(region=[-1, 23, 0, 7], projection='X15c/10c', frame=['WSne+t"January 2016"', 'xaf+l"Temperature (@.C)"', 'ya2f+l"Wind Speed (m s@+-1@+)"'])
+
+    # ==== 繪點 ====
+    fig.plot(data=zzh,  **zzh_style)
+    fig.plot(data=suao, **suao_style)
+
+    # ==== 灰色垂直虛線 ====
+    fig.plot(x=[0, 0], y=[0, 7], pen='0.03c,100,--')
+
+    # ==== 圖例框與圖例內容 ====
+    fig.plot(x=[16, 22, 22, 16], y=[5, 5, 6.5, 6.5], pen='0.05c,black', color='#E6F4F2')
+    fig.plot(data=[[17, 6.05]],  **zzh_style)
+    fig.plot(data=[[17, 5.45]],  **suao_style)
+    fig.text(x=18, y=6.05, text='Zhuzihu', font='14p', justify='ML')
+    fig.text(x=18, y=5.45, text="Su'ao", font='14p', justify='ML')
+
+    fig.show()
+    fig.savefig('windspeed_vs_temperature_pygmt.png')
+
+
+你可以使用以下的 Binder 連結嘗試此程式碼：
+
+.. image:: https://mybinder.org/badge_logo.svg
+    :target: https://mybinder.org/v2/gh/whyjz/GMT-tutorials/HEAD?filepath=SOURCE_DOCS%2Fscatter_plot%2Fwindspeed_vs_temperature_pygmt.ipynb
+
+
 習題
 --------------------------------------
 1. 本章使用的資料事實上是依照時間排序的，每日只有一個測量數值。因此，請利用本章中提供的數據，畫出竹子湖與蘇澳測站在 2016 年 1 月份的氣溫每日變化的\ **折線圖**。
