@@ -2,9 +2,6 @@ _build/[dh]*
 _build/locale/.doctrees/*
 docs/_build
 *~
-todolist.txt
 *.mo
-.zanata-cache
-.zanata-cache/*
 .ipynb_checkpoints
 locales

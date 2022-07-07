@@ -4,7 +4,7 @@
 GMT 教學手冊
 ======================================
 
-.. image:: index_banner_text.png
+.. image:: images/index_banner_text.png
     :scale: 25
     :align: center
 
@@ -37,11 +37,11 @@ GMT 教學手冊
 
 |pic1| |pic2|
 
-.. |pic1| image:: mit.png
+.. |pic1| image:: images/mit.png
    :alt: MIT License
    :scale: 30
 
-.. |pic2| image:: by.png
+.. |pic2| image:: images/by.png
    :alt: CC BY 4.0 License
    :scale: 30
 
@@ -72,73 +72,3 @@ Copyright © 2016-21 鄭懷傑 (Whyjay Zheng). All rights reserved.
 贊助本教學
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 覺得本教學手冊的內容頗有幫助？隨時歡迎\ `請我喝杯手搖奶茶 <https://www.paypal.com/donate?hosted_button_id=68GZNRJ3MZDBE>`_，讓我有更多的能量繼續創作。行有餘力的話，也歡迎出資贊助本教學網站的營運和維護成本 :D
-
-目錄
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-..
-    如果你想快速瀏覽各章的目標與地圖，請前往\ :doc:`gallery`。
-
-    * 新手入門
-       - :doc:`intro_install`
-       - :doc:`software`
-       - :doc:`basic_concept`
-    * 繪圖的基本技巧
-       - :doc:`making_first_map`
-       - :doc:`coloring_topography`
-       - :doc:`pen_and_painting`
-       - :doc:`scatter_plot`
-    * 繪製與編修各種常見的地圖 (基礎)
-       - :doc:`cpt_colormap`
-       - :doc:`plot_vector_data`
-       - :doc:`layout_design`
-       - :doc:`hillshading`
-       - :doc:`contour_and_profile`
-       - :doc:`map_elements`
-    * 繪製與編修各種常見的地圖 (進階)
-       - :doc:`editing_cpt_colorbar`
-       - :doc:`view3d`
-       - :doc:`focal_mech`
-       - :doc:`draping`
-    * 網格資料處理
-       - :doc:`raster_calculator`
-       - :doc:`basic_img_processing`
-    * 數值資料處理
-       - :doc:`stat_histogram`
-       - :doc:`regression_basics`
-    * 附錄
-       - :doc:`data_credit`
-       - :doc:`command_index`
-       - :doc:`gallery`
-
-    .. toctree::
-       :maxdepth: 1
-       :numbered:
-       :hidden:
-
-       intro_install
-       software
-       basic_concept
-       making_first_map
-       coloring_topography
-       pen_and_painting
-       scatter_plot
-       cpt_colormap
-       plot_vector_data
-       layout_design
-       hillshading
-       contour_and_profile
-       map_elements
-       editing_cpt_colorbar
-       view3d
-       focal_mech
-       draping
-       raster_calculator
-       basic_img_processing
-       stat_histogram
-       regression_basics
-       data_credit
-       command_index
-       gallery
-
-
