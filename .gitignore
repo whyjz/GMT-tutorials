@@ -1,5 +1,6 @@
 _build/[dh]*
 _build/locale/.doctrees/*
+docs/_build
 *~
 todolist.txt
 *.mo
