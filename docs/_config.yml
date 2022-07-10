@@ -28,3 +28,11 @@ repository:
 #   execute_notebooks : 'off'
 #   timeout           : 30
 #   allow_errors      : false
+
+sphinx:
+  extra_extensions:
+  - sphinx_inline_tabs
+  config:
+    language: zh_TW
+    html_theme_options:
+      toc_title: 段落

@@ -1,0 +1,4 @@
+/* Disable right sidebar (TOC) */
+.bd-toc {
+  display: none;
+}
