@@ -1,4 +1,131 @@
 /* Disable right sidebar (TOC) */
 .bd-toc {
-  display: none;
+    display: none;
+}
+
+/* Set lower left sidebar background color */
+.bd-sidebar__content {
+    background-color: #343131;
+}
+    
+/* Set upper left sidebar background color */
+#site-navigation .bd-sidebar__top {
+    padding: 0;
+}
+
+div.navbar-brand-box {
+    background-color: #059B7D;
+    background-clip: border-box;
+}
+
+.bd-search {
+    background-color: #059B7D;
+    padding-left: 1rem;
+    padding-right: 2rem;
+}
+
+/* Relevant adjustments for the search box icon */
+.bd-search .icon {
+    position: relative
+}
+
+/* edge roundness and shoadow for the search box */
+.bd-search input {
+    border-radius: 2rem;
+    box-shadow: inset 0 0 4px 1px #888
+}
+
+/* Add the padding back for the left sidebar TOC */
+
+.bd-toc-item.active {
+    padding-left: 1.5rem;
+    padding-right: 1rem;
+}
+
+
+/* 左側已點選的章節與滑鼠懸停時的章節 (淺藍) */
+#site-navigation nav ul.nav a:hover, #site-navigation nav ul.nav li.active>a, #site-navigation nav ul.nav li.active>a:hover {
+    color: #66b3ff;
+}
+
+/* 左側章節標題 (75% 白) */
+#site-navigation nav ul.nav li a, #site-navigation nav ul.nav ul li a {
+    color: #bfbfbf;
+}
+
+/* 左側站名標題 (95% 白) */
+#site-navigation h1.site-logo {
+    color: #f2f2f2;
+}
+
+:root {
+    --pst-color-sidebar-caption: 242, 242, 242;  /* 左側章節群組標題 #f2f2f2 (95% 白) */
+}
+
+
+
+
+
+
+
+
+
+
+
+/* #site-navigation .bd-sidebar__content::-webkit-scrollbar {
+    width: 2rem;
+} */
+
+
+
+/*  For screens with a width of less than 768 px (e.g. smartphone): */
+@media (max-width: 768px) {
+/*   .bd-search {
+    display: none !important;
+  } */
+
+/*   .bd-sidebar__content {
+      background-color: #343131;
+  }
+    
+  div.navbar-brand-box {
+    background-color: #059B7D;
+    background-clip: border-box;
+  } */
+
+
+    
+/*   #site-navigation {
+    padding-top: 0px !important;
+    margin-top: 0px !important;
+  }
+    
+  #site-navigation .bd-sidebar__bottom, #site-navigation .bd-sidebar__top {
+    padding: 0
+  } */
+    
+/*   #site-navigation .bd-sidebar__top {
+    padding: 0
+  } */
+    
+/*   .bd-sidebar__top {
+    padding: 0
+  }
+ */
+/*   .bd-sidenav:first-child {
+    font-size: 1.4rem;
+    font-weight: bold;
+  } */
+
+/*   .topbar {
+    display: none;
+  }
+
+  #main-content {
+    padding-top: 1em !important;
+  }
+
+  main.bd-content {
+    padding-top: 0px !important;
+  } */
 }

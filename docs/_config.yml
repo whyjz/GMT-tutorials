@@ -1,7 +1,7 @@
 title          : GMT 教學手冊
 author         : 鄭懷傑 (Whyjay Zheng)
 copyright      : "2016-2022"  
-logo           : images/index_banner_logo.png
+# logo           : images/index_banner_logo.png
 
 html:
   use_edit_page_button: false
