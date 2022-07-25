@@ -4,6 +4,7 @@ copyright      : "2016-2022"
 # logo           : images/index_banner_logo.png
 
 html:
+  favicon: images/favicon.ico
   use_edit_page_button: false
   use_repository_button: false
   use_issues_button: false
@@ -34,5 +35,5 @@ sphinx:
   - sphinx_inline_tabs
   config:
     language: zh_TW
-    html_theme_options:
-      toc_title: 段落
+    # html_theme_options:
+      # toc_title: 段落

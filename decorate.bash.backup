@@ -3,6 +3,7 @@
 # 1. a justfont javascript after the </head> tag
 # 2. a disqus javascript before the <div role="contentinfo"> tag
 # 3. a github ribbon image, replacing "View page source" (at the upper-right corner)
+# 4. a favicon before the </head> tag (only in index.html)
 # by Whyjay Zheng, first edition on 2016/1/12, last edited on 2017/10/22 (added google fonts for english)
 
 html_files=$(ls _build/html/*.html _build/html/en/*.html)
@@ -11,6 +12,7 @@ google_fonts=$(cat SOURCE_DOCS/_static/google_fonts.txt)
 jf_string=$(cat SOURCE_DOCS/_static/jf_code.txt)
 disqus_string=$(cat SOURCE_DOCS/_static/disqus_code.txt)
 github_ribbon=$(cat SOURCE_DOCS/_static/github_ribbon.txt)
+favicon_string=$(cat SOURCE_DOCS/_static/favicon.txt)
 localemenu=$(cat SOURCE_DOCS/_static/localemenu.txt)
 paypal_button=$(cat SOURCE_DOCS/_static/paypal.txt)
 support_string=$(cat SOURCE_DOCS/_static/support.txt)
@@ -56,6 +58,16 @@ github_ribbon=${github_ribbon//\*/\\\*}     # changes all "*" to "\*"
 github_ribbon=${github_ribbon//\^/\\\^}     # changes all "^" to "\^"
 github_ribbon=${github_ribbon//\//\\\/}     # changes all "/" to "\/"
 github_ribbon=${github_ribbon//\"/\\\"}     # changes all '"' to '\"'
+
+favicon_string=${favicon_string//\\/\\\\}     # changes all "\" to "\\"
+favicon_string=${favicon_string//\[/\\\[}     # changes all "[" to "\["
+favicon_string=${favicon_string//\]/\\\]}     # changes all "]" to "\]"
+favicon_string=${favicon_string//\$/\\\$}     # changes all "$" to "\$"
+favicon_string=${favicon_string//\./\\\.}     # changes all "." to "\."
+favicon_string=${favicon_string//\*/\\\*}     # changes all "*" to "\*"
+favicon_string=${favicon_string//\^/\\\^}     # changes all "^" to "\^"
+favicon_string=${favicon_string//\//\\\/}     # changes all "/" to "\/"
+favicon_string=${favicon_string//\"/\\\"}     # changes all '"' to '\"'
 
 localemenu=${localemenu//\\/\\\\}     # changes all "\" to "\\"
 localemenu=${localemenu//\[/\\\[}     # changes all "[" to "\["
@@ -141,6 +153,18 @@ done
 
 # or     $ find . -type f -exec sed -e 's/cpu/memory/ig' '{}' \;
 # see http://blog.miniasp.com/post/2010/12/24/Useful-tool-Find-and-Replace-with-sed-command.aspx
+
+# ==== Add favicon in index.html ====
+
+indpage="_build/html/index.html"
+
+if grep -q 'shortcut icon' $indpage; then
+    echo skip favicon - already replaced
+else
+    echo ----- Replacing favicon to ${indpage##*/} ...
+    # insert a new line before </head> tag
+    sed -i "/<\/head>/i\ $favicon_string" $indpage
+fi
 
 # ==== Add donate button in index.html ====
 
