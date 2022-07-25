@@ -10,7 +10,6 @@ google_fonts=$(cat SOURCE_DOCS/_static/google_fonts.txt)
 jf_string=$(cat SOURCE_DOCS/_static/jf_code.txt)
 disqus_string=$(cat SOURCE_DOCS/_static/disqus_code.txt)
 localemenu=$(cat SOURCE_DOCS/_static/localemenu.txt)
-paypal_button=$(cat SOURCE_DOCS/_static/paypal.txt)
 
 # refer to the escape characters...
 # http://unix.stackexchange.com/questions/32907/what-characters-do-i-need-to-escape-when-using-sed-in-a-sh-script
@@ -54,16 +53,6 @@ localemenu=${localemenu//\^/\\\^}     # changes all "^" to "\^"
 localemenu=${localemenu//\//\\\/}     # changes all "/" to "\/"
 localemenu=${localemenu//\"/\\\"}     # changes all '"' to '\"'
 
-paypal_button=${paypal_button//\\/\\\\}     # changes all "\" to "\\"
-paypal_button=${paypal_button//\[/\\\[}     # changes all "[" to "\["
-paypal_button=${paypal_button//\]/\\\]}     # changes all "]" to "\]"
-paypal_button=${paypal_button//\$/\\\$}     # changes all "$" to "\$"
-paypal_button=${paypal_button//\./\\\.}     # changes all "." to "\."
-paypal_button=${paypal_button//\*/\\\*}     # changes all "*" to "\*"
-paypal_button=${paypal_button//\^/\\\^}     # changes all "^" to "\^"
-paypal_button=${paypal_button//\//\\\/}     # changes all "/" to "\/"
-paypal_button=${paypal_button//\"/\\\"}     # changes all '"' to '\"'
-
 # start to insert
 
 for html_f in $html_files
@@ -98,19 +87,6 @@ done
 
 # or     $ find . -type f -exec sed -e 's/cpu/memory/ig' '{}' \;
 # see http://blog.miniasp.com/post/2010/12/24/Useful-tool-Find-and-Replace-with-sed-command.aspx
-
-# ==== Add donate button in index.html ====
-
-indpages="_build/html/index.html _build/html/en/index.html"
-
-if grep -q 'PayPal button' $indpages; then
-    echo skip paypal button - already added
-else
-    echo ----- Adding paypal button to ${indpages##*/} ...
-    # insert a new line after ":D" tag
-    sed -i "/:D/a\ $paypal_button" $indpages 
-fi
-
 
 # ==== Add locate menu ====
 
