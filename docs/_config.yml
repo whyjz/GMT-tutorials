@@ -6,9 +6,11 @@ copyright      : "2016-2022"
 html:
   favicon: images/favicon.ico
   use_edit_page_button: false
-  use_repository_button: false
+  use_repository_button: true
   use_issues_button: false
   baseurl: https://gmt-tutorials.org
+  extra_footer: |
+    Found this tutorial helpful? <a href="https://www.paypal.com/donate?hosted_button_id=68GZNRJ3MZDBE">Buy me a milktea!</a>
 
 # bibtex_bibfiles:
 #  - refs.bib
