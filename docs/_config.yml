@@ -1,6 +1,6 @@
 title           : GMT 教學手冊
 author          : <a href="https://whyjz.github.io/">鄭懷傑 (Whyjay Zheng)</a> | <a href="https://twitter.com/WhyjayZ"><i class="fa-brands fa-twitter"></i></a>
-copyright       : "2016-2022"  
+# copyright       : " "      # See html --> extra_footer
 # logo           : images/index_banner_logo.png
 # exclude_patterns: [_build, "**.ipynb_checkpoints", "**pygmt.ipynb", "**making_first_map_working.ipynb"]
 only_build_toc_files: true
@@ -49,9 +49,9 @@ sphinx:
         # see https://sphinx-design.readthedocs.io/en/latest/badges_buttons.html
     # html_theme_options:
       # toc_title: 段落
+    # i18n
     nb_render_priority:
       gettext: {}
-    # i18n
     locale_dirs: ['docs/locale/']
     gettext_compact: false
     gettext_additional_targets: ['literal-block']
