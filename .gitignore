@@ -5,3 +5,4 @@ docs/_build
 *.mo
 .ipynb_checkpoints
 locales
+docs/conf.py

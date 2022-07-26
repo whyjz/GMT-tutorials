@@ -6,7 +6,7 @@ copyright       : "2016-2022"
 only_build_toc_files: true
 
 html:
-  favicon: images/favicon.ico
+  favicon: favicon.ico
   home_page_in_navbar: false
   use_edit_page_button: false
   use_repository_button: true
@@ -49,3 +49,10 @@ sphinx:
         # see https://sphinx-design.readthedocs.io/en/latest/badges_buttons.html
     # html_theme_options:
       # toc_title: 段落
+    nb_render_priority:
+      gettext: {}
+    # i18n
+    locale_dirs: ['docs/locale/']
+    gettext_compact: false
+    gettext_additional_targets: ['literal-block']
+    gettext_location: false

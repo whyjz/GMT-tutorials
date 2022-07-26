@@ -1,6 +1,6 @@
 # GMT 教學手冊
 
-```{image} images/index_banner_text.png
+```{image} main/index/index_banner_text.png
     :alt: GMT tutorials
     :scale: 25
     :align: center
@@ -22,12 +22,12 @@
 
 - [創用 CC 姓名標示 4.0 國際 授權條款](http://creativecommons.org/licenses/by/4.0/)：適用於文本部份。在此授權條款下，您可以在任何目的下自由分享或修改本作品，並包含商業性質之使用。您只需給予原作者適當表彰（姓名標示）。
 
-```{image} images/mit.png
+```{image} main/index/mit.png
     :alt: MIT License
     :scale: 30
 ```
 
-```{image} images/by.png
+```{image} main/index/by.png
     :alt: CC BY 4.0 License
     :scale: 30
 ```
