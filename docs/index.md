@@ -32,7 +32,7 @@
     :scale: 30
 ```
 
-Copyright © 2016-22 鄭懷傑 (Whyjay Zheng). All rights reserved.
+Copyright © 2016-22 鄭懷傑 (Whyjay Zheng).
 
 教學內文與圖片的原始碼公開在 [Github](https://github.com/whyjz/GMT-tutorials) 上，歡迎隨時動叉！
 

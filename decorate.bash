@@ -4,7 +4,7 @@
 # 2. a disqus javascript before the <div role="contentinfo"> tag
 # by Whyjay Zheng, first edition on 2016/1/12, last edited on 2017/10/22 (added google fonts for english)
 
-html_files=$(ls _build/html/*.html _build/html/en/*.html)
+html_files=$(ls docs/_build/html/*.html docs/_build/html/en/*.html)
 
 google_fonts=$(cat SOURCE_DOCS/_static/google_fonts.txt)
 jf_string=$(cat SOURCE_DOCS/_static/jf_code.txt)

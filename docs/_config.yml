@@ -1,15 +1,20 @@
-title          : GMT 教學手冊
-author         : 鄭懷傑 (Whyjay Zheng)
-copyright      : "2016-2022"  
+title           : GMT 教學手冊
+author          : 鄭懷傑 (Whyjay Zheng)
+copyright       : "2016-2022"  
 # logo           : images/index_banner_logo.png
+# exclude_patterns: [_build, "**.ipynb_checkpoints", "**pygmt.ipynb", "**making_first_map_working.ipynb"]
+only_build_toc_files: true
 
 html:
   favicon: images/favicon.ico
+  home_page_in_navbar: false
   use_edit_page_button: false
   use_repository_button: true
   use_issues_button: false
   baseurl: https://gmt-tutorials.org
   extra_footer: |
+    &copy; 2016-2022. <a href="https://github.com/whyjz/GMT-tutorials/blob/master/LICENSE.md">MIT</a> 
+    and <a href="http://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</a> dual licensed. <br>
     Found this tutorial helpful? <a href="https://www.paypal.com/donate?hosted_button_id=68GZNRJ3MZDBE">Buy me a milktea!</a>
 
 # bibtex_bibfiles:
@@ -37,5 +42,7 @@ sphinx:
   - sphinx_inline_tabs
   config:
     language: zh_TW
+    html_last_updated_fmt: '%b %d, %Y'
+    html_show_copyright: false
     # html_theme_options:
       # toc_title: 段落
