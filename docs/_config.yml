@@ -52,7 +52,7 @@ sphinx:
     # i18n
     nb_render_priority:
       gettext: {}
-    locale_dirs: ['docs/locale/']
+    locale_dirs: ['locale/']
     gettext_compact: false
     gettext_additional_targets: ['literal-block']
     gettext_location: false
