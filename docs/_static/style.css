@@ -3,9 +3,10 @@
     display: none;
 } */
 
-/* Set lower left sidebar background color */
+/* Set lower left sidebar background color and make x-axis not scrollable*/
 .bd-sidebar__content {
     background-color: #343131;
+    overflow-x: hidden;
 }
     
 /* Set upper left sidebar background color */
@@ -129,3 +130,125 @@ div.navbar-brand-box {
     padding-top: 0px !important;
   } */
 }
+
+
+/*--------------------------------*/
+/*--------------------------------*/
+/*--------I18n (Languages)--------*/
+/*--------------------------------*/
+/*--------------------------------*/
+
+
+/* .clearfix:after {
+    display:block;
+    clear:both;
+} */
+ 
+/*----- Menu Outline -----*/
+/* .menu { */
+/*     width:100%; */
+/*     margin:0px auto; */
+/* } */
+ 
+/* 所有列表都沒有 bullet point */
+.menu li {
+/*     margin:0px; */
+    list-style:none;
+}
+ 
+/* .menu a { */
+/*     transition:all linear 0.15s; */
+/*     color:#b3b3b3; */
+/*     color:#bfbfbf; */
+/* } */
+ 
+/* 列表文字顯示顏色 (與 Navbar H1 一樣) 與樣式 (懸停時與非懸停時 - 語言選單中列表的字顏色會被再次覆蓋) */
+.menu li:hover > a, .menu .current-item > a {
+    text-decoration:none;
+    color:#f2f2f2;
+}
+ 
+/* 向下箭頭的外觀 */
+.menu .arrow {
+    font-size:1em;
+/*     line-height:0%; */
+}
+ 
+/*----- Top Level -----*/
+/* .menu > ul > li { */
+/*     float:center; */
+/*     display:inline-block; */
+/*     position:relative; */
+/*     font-size:1em; */
+/*     left:0%; */
+/* } */
+ 
+/* 主語言列表的外觀 */
+.menu > ul > li > a {
+/*     padding:1em 2em 0.5em 2em; */
+    padding:0em 2em 1em 0em;
+    display:inline-block;
+/*     left:0%; */
+}
+
+/* 主語言區塊的外觀 */
+.langcenter {
+/*     width: 100%; */
+    text-align: center;
+    background-color: #059B7D;
+}
+
+/*----- Bottom Level -----*/
+/* 在主語言懸停時出現語言選單 */
+.menu li:hover .sub-menu {
+    z-index:1;
+/*     opacity:1; */
+}
+
+/* 語言選單的外觀 */
+.sub-menu {
+    width:80%;
+    padding:0.2em 0em;
+    position: absolute;
+    top:80%;
+/*     left:0%; */
+/*     right:-20%; */
+    z-index:-1;
+/*     opacity:0; */
+    transition:opacity linear 0.15s;
+    box-shadow:0px 2px 3px rgba(0,0,0,0.2);
+    background:#343131;
+}
+ 
+/* .sub-menu li { */
+/*     display:block; */
+/*     font-size:0.95em; */
+/* } */
+ 
+/* 語言選單中列表的外觀 (顏色 75% 白) */
+.sub-menu li a {
+    padding:0.5em;
+    display:block;
+    color: #bfbfbf;
+}
+
+/* 語言選單中列表懸停時 (背景變淺, 字色變淺藍) */
+.sub-menu li a:hover, .sub-menu .current-item a {
+/*     background:#404040; */
+    color: #66b3ff;
+/*     color: #f2f2f2; */
+}
+
+/* .toggle .header { */
+/*     display: block; */
+/*     clear: both; */
+/*     padding:0.5em 0em 0.5em 0em; */
+/* } */
+
+/* .toggle .header:after {
+    content: " ▼";
+}
+
+.toggle .header.open:after {
+    content: " ▲";
+} */
