@@ -95,7 +95,17 @@ div.navbar-brand-box {
 
 :root {
     --pst-color-sidebar-caption: 242, 242, 242;  /* 左側章節群組標題 #f2f2f2 (95% 白) */
+    --pst-sidebar-font-size: 1em;     /* 左側章節字體大小 */
+    --pst-sidebar-caption-font-size: 1.1em;    /* 左側章節群組標題字體大小 */
+    /* 加入 Varela Round (from Google Fonts) */
+    --pst-font-family-base-system: Varela Round, -apple-system, Segoe UI, "Helvetica Neue", Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
 }
+
+/* Left schollbar width is set to 0 so that green and gray area have the same width on Google Chrome */
+#site-navigation .bd-sidebar__content::-webkit-scrollbar {
+    width: 0rem;
+}
+
 
 /*========================================================*/
 /* I18n -- langugae manu settings */
@@ -162,6 +172,22 @@ div.navbar-brand-box {
     color: #66b3ff;
 }
 
+
+/*========================================================*/
+/* For screens with a width of more than 1400 px */
+/*========================================================*/
+
+/* 取消頁面最大寬度為 1400px 的設定 */
+@media (min-width: 1400px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl {
+        max-width: none;
+    }
+
+/* 固定右側內容欄位在 278 px (約是在頁面為 1400px 寬時的欄位寬度)     */
+    .col-md-3 {
+        max-width: 278px;
+    }
+}
 
 /*========================================================*/
 /* For screens with a width of less than 768 px (e.g. smartphone): DISABLED NOW */
