@@ -433,7 +433,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   翻譯協作
+   Contribute to translation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -472,7 +472,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   翻譯協作
+   Contribute to translation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -496,31 +496,31 @@ title="Print to PDF"
 <p><strong>Generic Mapping Tools</strong> (<strong>GMT</strong>) is a set of open-source software for mapping and plotting geographic data. It features a command-line interface, which makes it completely different from the common GIS software like QGIS or ArcGIS. The PyGMT software, which is the latest derivative of GMT, even allows all Python users to use the collection of GMT tools more conveniently. For those who need to deal with a lot of plotting tasks or want to write a script for handling all these jobs, GMT is extremely worth learning. However, The command-line style of GMT syntax would be very challenging and makes the learning curve very steep, especially for beginners who are not familiar with manipulating geographic data and mapping.</p>
 <p>In these tutorials, we will explore basic knowledge of GMT and useful plotting skills from numerous examples. The goal of each chapter is to produce a high-quality map from scratch and I will show you how to do that step by step. You will be learning many GMT commands and how to organize them in a command-line interface or Shell script (or Python script if using PyGMT). The tutorials will also explain things related to GMT when needed, such as the shapefile data format and the GDAL geospatial software, which would improve the efficiency of your mapping tasks.</p>
 <p>In November 2019, GMT released its version 6. This version is a major rehaul from the previous GMT 4 and GMT 5, especially for the more concise and easier syntax. In each chapter of this tutorial, we will use the modern syntax introduced by <strong>GMT 6</strong> while providing a link to scripts written in <strong>GMT 4-5</strong> syntax for your reference. In addition, the PyGMT software was released its beta version last year (2020). Since it is under active development, this tutorial does not provide a detailed explanation of its syntax, but instead, you can find a Python script in Jupyter Notebook format at the end of each chapter showing how to make the target chapter figure using PyGMT.</p>
-<p>本教學基本上採循序漸進的模式撰寫，但各篇章使用的材料是互相獨立的。初學者不妨從頭開始閱讀，但如果你已對 GMT 有相當程度的了解，更請隨時跳至你想查閱的部份以節省時間。如果有什麼想分享的評論或使用秘訣，非常歡迎在各章節中留言或直接與<a class="reference external" href="mailto:whyjayzheng&#37;&#52;&#48;gmail&#46;com">我</a>聯繫。祝各位都能在閱讀的過程中，享受到使用 GMT 畫地圖的樂趣！</p>
+<p>The tutorials are designed and written from beginner level to more advanced tricks, but the content in each chapter is actually independent. You can read all the chapters in order if you are a GMT rookie, or you can jump to whichever section you are interested in to save your time if you have been using GMT for a while. Please feel free to leave any messages below any chapters or contact <a class="reference external" href="mailto:whyjayzheng&#37;&#52;&#48;gmail&#46;com">me</a> at any time for any questions, comments, and ideas/tips to be shared. I hope you enjoy the fun of mapping from reading these tutorials!</p>
 <section id="id1">
 <h2>License<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <p>This work is dual-licensed under the MIT and the Creative Commons Attribution 4.0 International licenses. Users can choose either or both licenses according to which part of the work they seek permission:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/whyjz/GMT-tutorials/blob/master/LICENSE.md">MIT 授權</a>：適用程式碼的部份以及所有的 Jupyter Notebooks。被授權人有權利使用、複製、修改、合併、出版發行、散布、再授權和/或販售軟體及軟體的副本。</p></li>
-<li><p><a class="reference external" href="http://creativecommons.org/licenses/by/4.0/">創用 CC 姓名標示 4.0 國際 授權條款</a>：適用於文本部份。在此授權條款下，您可以在任何目的下自由分享或修改本作品，並包含商業性質之使用。您只需給予原作者適當表彰（姓名標示）。</p></li>
+<li><p><a class="reference external" href="https://github.com/whyjz/GMT-tutorials/blob/master/LICENSE.md">MIT License</a>: For the code and all of the Jupyter Notebooks. Permission is hereby granted, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software.</p></li>
+<li><p><a class="reference external" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>: For the content. You may use, share, or adapt the document in any medium or format for any purpose, even commercially. You must give appropriate credit to the author, provide a link to the license, and indicate if changes were made.</p></li>
 </ul>
 <a class="reference internal image-reference" href="_images/mit.png"><img alt="MIT License" src="_images/mit.png" style="width: 60.0px; height: 60.0px;" /></a>
 <a class="reference internal image-reference" href="_images/by.png"><img alt="CC BY 4.0 License" src="_images/by.png" style="width: 120.89999999999999px; height: 42.3px;" /></a>
-<p>Copyright © 2016-22 鄭懷傑 (Whyjay Zheng).</p>
-<p>教學內文與圖片的原始碼公開在 <a class="reference external" href="https://github.com/whyjz/GMT-tutorials">Github</a> 上，歡迎隨時動叉！</p>
+<p>Copyright © 2016-22 Whyjay Zheng (鄭懷傑).</p>
+<p>The source codes of all the text and pictures are accessible on <a class="reference external" href="https://github.com/whyjz/GMT-tutorials">Github</a>. Feel free to fork me at any time!</p>
 </section>
 <section id="id2">
 <h2>Acknowledgments<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <p>I want to thank William Durkin, Patricia MacQueen, Minlong Lee, and Timothy Ting-Yu Lee for their insightful comments and conversations which have complemented the tutorials. I would also like to thank all the Github contributors, including Er Tan (tan2), KMO Li (likueimo), and Liang Wang (wangliang1989), for their constructive edits to the documentation. Here I give my deep thank-you to all the people who helped translate this work. The translation is a huge amount of work and thus could not have been done without your active support. If you would like to contribute to translating this tutorial, see the next section for more details.</p>
 </section>
 <section id="id3">
-<h2>翻譯協作<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<h2>Contribute to translation<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
 <a class="reference external image-reference" href="https://hosted.weblate.org/engage/gmt-tutorials/"><img alt="Translation status" class="align-right" src="https://hosted.weblate.org/widgets/gmt-tutorials/-/88x31-black.png" /></a>
-<p>如您對翻譯此網站有興趣，歡迎前往在 <a class="reference external" href="https://hosted.weblate.org/engage/gmt-tutorials/">Weblate 上公開的專案</a>並隨時開始翻譯。感謝您的貢獻！</p>
+<p>If you are interested in translating this website, please come to the <a class="reference external" href="https://hosted.weblate.org/engage/gmt-tutorials/">open project on Weblate</a> and start translating at any time. Thank you for contributing to this project!</p>
 </section>
 <section id="id4">
 <h2>Support this work<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
-<p>覺得本教學手冊的內容頗有幫助？隨時歡迎<a class="reference external" href="https://www.paypal.com/donate?hosted_button_id=68GZNRJ3MZDBE">請我喝杯手搖奶茶</a>，讓我有更多的能量繼續創作。行有餘力的話，也歡迎出資贊助本教學網站的營運和維護成本 :D</p>
+<p>Found the content in this tutorial helpful? I’d be grateful if you could <a class="reference external" href="https://www.paypal.com/donate?hosted_button_id=68GZNRJ3MZDBE">buy me a cup of bubble tea</a> to fuel me up. If you are in a position to help the tutorial thrive, you are welcome to support it for the cost of hosting service :D</p>
 <p> <form action="https://www.paypal.com/donate" method="post" target="_top"> <input type="hidden" name="hosted_button_id" value="68GZNRJ3MZDBE" /> <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" /> <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" /> </form> </p></section>
 <div class="toctree-wrapper compound">
 </div>
