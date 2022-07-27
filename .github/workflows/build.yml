@@ -1,0 +1,43 @@
+name: build-docs
+
+on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+  # Trigger the workflow on push to main branch
+  push:
+    branches:
+    - jb
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  build-docs:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: s-weigand/setup-conda@v1
+      with:
+        update-conda: true
+        conda-channels: conda-forge
+        python-version: 3.8
+
+    - name: Install dependencies
+      run: |
+        python --version
+        conda env create -f environment_for-building-jb.yml
+    - name: Build book
+      run: |
+        conda activate gmtjb
+        bash generate_html.bash
+    - name: Deploy to gh-pages
+      # if: github.ref == 'refs/heads/main'
+      uses: peaceiris/actions-gh-pages@v3.8.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./docs/_build/html

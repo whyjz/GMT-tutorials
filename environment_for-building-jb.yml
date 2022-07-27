@@ -5,6 +5,6 @@ channels:
   - defaults
 dependencies:
   - pip
-  - jupyterbook
+  - jupyter-book
   - pip:
     - sphinx-inline-tabs
