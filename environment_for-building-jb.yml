@@ -1,16 +1,10 @@
-# have to check the format
-name: pygmt
+name: gmtjb
 
 channels:
   - conda-forge
   - defaults
 dependencies:
-  - gmt
-  - dcw-gmt
-  - gshhg-gmt
-  - pygmt
-  
   - pip
-    - sphinx-inline-tabs
-    
   - jupyterbook
+  - pip:
+    - sphinx-inline-tabs

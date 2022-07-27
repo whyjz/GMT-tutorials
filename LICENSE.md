@@ -3,7 +3,7 @@ Commons Attribution 4.0 International (for other content) Licenses. Users can
 choose either or both licenses according to which part of the work they seek 
 permission.
 
-Copyright (c) 2016-2021 Whyjay Zheng. All rights reserved.
+Copyright (c) 2016-2022 Whyjay Zheng. All rights reserved.
 
 ## MIT License
 

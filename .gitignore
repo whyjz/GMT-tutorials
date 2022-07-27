@@ -1,8 +1,4 @@
-_build/[dh]*
-_build/locale/.doctrees/*
 docs/_build
-*~
 *.mo
 .ipynb_checkpoints
-locales
 docs/conf.py
