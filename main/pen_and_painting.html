@@ -1,0 +1,941 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_TW">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>6. 畫筆與調色技巧 &#8212; GMT 教學手冊</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+ <link href='https://fonts.googleapis.com/css?family=Varela Round' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://gmt-tutorials.org/main/pen_and_painting.html" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜尋" href="../search.html" />
+    <link rel="next" title="7. XY 點散佈圖" href="scatter_plot.html" />
+    <link rel="prev" title="5. 為地形圖上色" href="coloring_topography.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="zh_TW">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+ <script type="text/javascript">var _jf = _jf || [];_jf.push(['p','39630']);_jf.push(['_setFont','sourcehansans-tc-light','css','.sourcehansans-tc-light']);_jf.push(['_setFont','sourcehansans-tc-light','alias','sourcehansans-tc']);_jf.push(['_setFont','sourcehansans-tc-light','weight',200]);_jf.push(['_setFont','sourcehansans-tc-regular','css','.sourcehansans-tc-regular']);_jf.push(['_setFont','sourcehansans-tc-regular','alias','sourcehansans-tc']);_jf.push(['_setFont','sourcehansans-tc-regular','weight',400]);_jf.push(['_setFont','cwtexqyuan','css','.cwtexqyuan']);_jf.push(['_setFont','cwtexqyuan','alias','cwtexqyuan']);_jf.push(['_setFont','cwtexqyuan','weight',500]);_jf.push(['_setFont','xingothic-tc-w7','css','.xingothic-tc-w7']);_jf.push(['_setFont','xingothic-tc-w7','alias','xingothic-tc']);_jf.push(['_setFont','xingothic-tc-w7','weight',700]);_jf.push(['_setFont','jf-jinxuan-medium','css','.jf-jinxuan-medium']);_jf.push(['_setFont','jf-jinxuan-medium','alias','jf-jinxuan']);_jf.push(['_setFont','jf-jinxuan-medium','weight',600]);(function(f,q,c,h,e,i,r,d){var k=f._jf;if(k.constructor===Object){return}var l,t=q.getElementsByTagName("html")[0],a=function(u){for(var v in k){if(k[v][0]==u){if(false===k[v][1].call(k)){break}}}},j=/\S+/g,o=/[\t\r\n\f]/g,b=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,g="".trim,s=g&&!g.call("\uFEFF\xA0")?function(u){return u==null?"":g.call(u)}:function(u){return u==null?"":(u+"").replace(b,"")},m=function(y){var w,z,v,u,x=typeof y==="string"&&y;if(x){w=(y||"").match(j)||[];z=t[c]?(" "+t[c]+" ").replace(o," "):" ";if(z){u=0;while((v=w[u++])){if(z.indexOf(" "+v+" ")<0){z+=v+" "}}t[c]=s(z)}}},p=function(y){var w,z,v,u,x=arguments.length===0||typeof y==="string"&&y;if(x){w=(y||"").match(j)||[];z=t[c]?(" "+t[c]+" ").replace(o," "):"";if(z){u=0;while((v=w[u++])){while(z.indexOf(" "+v+" ")>=0){z=z.replace(" "+v+" "," ")}}t[c]=y?s(z):""}}},n;k.push(["_eventActived",function(){p(h);m(e)}]);k.push(["_eventInactived",function(){p(h);m(i)}]);k.addScript=n=function(u,A,w,C,E,B){E=E||function(){};B=B||function(){};var x=q.createElement("script"),z=q.getElementsByTagName("script")[0],v,y=false,D=function(){x.src="";x.onerror=x.onload=x.onreadystatechange=null;x.parentNode.removeChild(x);x=null;a("_eventInactived");B()};if(C){v=setTimeout(function(){D()},C)}x.type=A||"text/javascript";x.async=w;x.onload=x.onreadystatechange=function(G,F){if(!y&&(!x.readyState||/loaded|complete/.test(x.readyState))){y=true;if(C){clearTimeout(v)}x.src="";x.onerror=x.onload=x.onreadystatechange=null;x.parentNode.removeChild(x);x=null;if(!F){setTimeout(function(){E()},200)}}};x.onerror=function(H,G,F){if(C){clearTimeout(v)}D();return true};x.src=u;z.parentNode.insertBefore(x,z)};a("_eventPreload");m(h);n(r,"text/javascript",false,3000)})(this,this.document,"className","jf-loading","jf-active","jf-inactive","//ds.justfont.com/js/stable/v/5.0.2/id/166657211014");</script>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">GMT 教學手冊</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form> <div class="langcenter"> <nav class="menu"> <ul class="clearfix"> <li class="current-item"> <a href="#" class="clicker">中文 (台灣) <span class="arrow">&#9660;</span></a> <ul class="sub-menu"> <li><a href="pen_and_painting.html">中文 (台灣)</a></li> <li><a href="../en/main/pen_and_painting.html">English</a></li> </ul> </li> </ul> </nav> </div> 
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  入門與概述
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro_install.html">
+   1. GMT / PyGMT 簡介與安裝
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="software.html">
+   2. 推薦搭配的軟體或套件
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="basic_concept.html">
+   3. 基本概念與名詞
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  基本繪圖技巧
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="making_first_map.html">
+   4. 製作第一張地圖
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="coloring_topography.html">
+   5. 為地形圖上色
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   6. 畫筆與調色技巧
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="scatter_plot.html">
+   7. XY 點散佈圖
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  製作各種常見的地圖（基礎）
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="cpt_colormap.html">
+   8. 使用色階表為網格資料著色
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plot_vector_data.html">
+   9. 繪製向量式資料
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="layout_design.html">
+   10. 版面設計與地圖的幾何布局
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hillshading.html">
+   11. 暈渲地圖
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="contour_and_profile.html">
+   12. 等高線地圖及地形剖面
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="map_elements.html">
+   13. 加入地圖元素
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  製作各種常見的地圖（進階）
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="editing_cpt_colorbar.html">
+   14. 色階檔的編修與呈現
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="view3d.html">
+   15. 3D 視圖
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="focal_mech.html">
+   16. 繪製震源機制解
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="draping.html">
+   17. 在 3D 地形上覆蓋地圖
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  網格資料處理
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="raster_calculator.html">
+   18. 網格計算機
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="basic_img_processing.html">
+   19. 基本影像處理
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  數值資料處理
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="stat_histogram.html">
+   20. 輸出統計資訊與直方圖
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="regression_basics.html">
+   21. 進行迴歸分析
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  附錄與學習資源
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_credit.html">
+   22. 資料來源與參考文獻
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="command_index.html">
+   23. 指令索引
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gallery.html">
+   24. 章節地圖索引
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/whyjz/GMT-tutorials"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/main/pen_and_painting.rst"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   6.1. 目標
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   6.2. 使用的指令與概念
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   6.3. 前置作業
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id9">
+   6.4. 操作流程
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id13">
+   6.5. 指令稿
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pygmt">
+   6.6. PyGMT 指令稿
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id14">
+   6.7. 習題
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>畫筆與調色技巧</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   6.1. 目標
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   6.2. 使用的指令與概念
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   6.3. 前置作業
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id9">
+   6.4. 操作流程
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id13">
+   6.5. 指令稿
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pygmt">
+   6.6. PyGMT 指令稿
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id14">
+   6.7. 習題
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="id1">
+<h1><span class="section-number">6. </span>畫筆與調色技巧<a class="headerlink" href="#id1" title="本標題的永久連結">#</a></h1>
+<div class="admonition attention">
+<p class="admonition-title">注意</p>
+<p>本教學適用於 GMT 6 的現代模式。如須參閱 GMT 6 (傳統模式) 與 GMT 4-5 繪製相似地圖的教程，<a class="reference external" href="pen_and_painting_gmt5.html">請至這裡</a>。</p>
+</div>
+<p>為了有效的在地圖上呈現資料，顏色與線條樣式應要謹慎選擇。為地圖挑選合適的配色是門藝術，地圖製作者通常都會花上許多時間，把地圖調整成看起來最調和、最舒服的外觀。這裡我們要介紹如何在 GMT 中操作相關設定，讓你能夠更快的找到心目中的完美配色。本章也會說明如何繪製簡單的色階圖例。</p>
+<section id="id3">
+<h2><span class="section-number">6.1. </span>目標<a class="headerlink" href="#id3" title="本標題的永久連結">#</a></h2>
+<p>製作一張中美洲的地圖，海域部份為分層設色地形圖，陸域部份則依國家來著色，如下圖所示。被中美地峽與島嶼群圍起來的區域為<a class="reference external" href="https://zh.wikipedia.org/wiki/%E5%8A%A0%E5%8B%92%E6%AF%94%E6%B5%B7">加勒比海</a>，而左上方的海灣則為<a class="reference external" href="https://zh.wikipedia.org/wiki/%E5%A2%A8%E8%A5%BF%E5%93%A5%E6%B9%BE">墨西哥灣</a>。圖中可以找到此區域的十幾個比較大的國家，也可以發現加勒比海和墨西哥灣，都比東北方的大西洋要淺得多。根據地圖上的海床色階圖例，也可以發現最深的地方位於波多黎各北方的海溝，有大概 8000 多公尺深。</p>
+<a class="reference external image-reference" href="_images/central_america_gmt6.png" id="id6"><img alt="../_images/central_america_gmt6_s.png" src="../_images/central_america_gmt6_s.png" /></a>
+<p>直接觀看<a class="reference internal" href="#id13">指令稿</a></p>
+</section>
+<section id="id7">
+<h2><span class="section-number">6.2. </span>使用的指令與概念<a class="headerlink" href="#id7" title="本標題的永久連結">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">coast</span></code> - <strong>為國家上色</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">grdimage</span></code> - 繪製著色影像</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">colorbar</span></code> - <strong>繪製色階條</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">grdinfo</span></code> - 查閱網格檔的基本資訊</p></li>
+<li><p>外部指令 <code class="docutils literal notranslate"><span class="pre">grep</span></code> - <strong>在 GMT 的輸出中搜尋字串</strong> (Windows 為 <code class="docutils literal notranslate"><span class="pre">findstr</span></code>) (非必要)</p></li>
+<li><p>如何指定作圖顏色</p></li>
+<li><p>畫筆的屬性設定</p></li>
+<li><p>疊加多個圖層</p></li>
+<li><p>在腳本中使用變數以美化排版</p></li>
+<li><p>使用錨點指定色階條的繪製位置</p></li>
+</ul>
+</section>
+<section id="id8">
+<h2><span class="section-number">6.3. </span>前置作業<a class="headerlink" href="#id8" title="本標題的永久連結">#</a></h2>
+<p>在本章中，我們一樣會使用 GMT 伺服器提供的 <code class="docutils literal notranslate"><span class="pre">&#64;earth_relief_01m</span></code> 資料庫。相關的介紹請看「<a class="reference internal" href="coloring_topography.html"><span class="doc">為地形圖上色</span></a>」。本次的作圖區域，是 <code class="docutils literal notranslate"><span class="pre">-R-100/1/-50/34r</span></code>，如以下 <em>Google Map</em> 截圖所示。有關 <code class="docutils literal notranslate"><span class="pre">-R</span></code> 的詳細說明，請參閱「<a class="reference internal" href="making_first_map.html"><span class="doc">製作第一張地圖</span></a>」。</p>
+<img alt="../_images/pen_and_painting_fig1.png" src="../_images/pen_and_painting_fig1.png" />
+</section>
+<section id="id9">
+<h2><span class="section-number">6.4. </span>操作流程<a class="headerlink" href="#id9" title="本標題的永久連結">#</a></h2>
+<p>我們先來分析一下目標的地圖。在此地圖中有很多不同的元素，依照固定的順序疊加。如果認真檢查，這些元素可以分成四群，由底層到頂層分別為</p>
+<ul class="simple">
+<li><p>地形圖</p></li>
+<li><p>國家的著色</p></li>
+<li><p>海岸線、國家邊界與地圖格線</p></li>
+<li><p>色階圖例的區塊</p></li>
+</ul>
+<p>因此，我們的 GMT 繪圖腳本，應該也要照如上的順序進行繪圖，也就是說程式碼看起來會長這樣</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>第一段：海底地形圖 <span class="o">(</span>grdimage<span class="o">)</span>
+第二段：國家的著色 <span class="o">(</span>coast<span class="o">)</span>
+第三段：所有的線段 <span class="o">(</span>coast<span class="o">)</span>
+第四段：色階條 <span class="o">(</span>colorbar<span class="o">)</span>
+</pre></div>
+</div>
+<p>海底地形圖和國家著色，都必需要指定繪圖的顏色或色階，所以這裡我們先來看看單一的顏色要怎麼指定。最簡單，並也在之前的章節使用的一種方法，就是指定顏色的名稱。GMT 支援了超過百種顏色的名稱，可以在<a class="reference external" href="https://docs.generic-mapping-tools.org/latest/gmtcolors.html?highlight=gmtcolor#list-of-colors">這邊</a>查看並使用。例如說以下指令</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt coast -Ggreen    <span class="c1"># ...後續省略</span>
+</pre></div>
+</div>
+<p>可以把陸域染成綠色。由於這裡我們要著色的是個別的國家，所以得先介紹另外一個 <code class="docutils literal notranslate"><span class="pre">coast</span></code> 的選項 <code class="docutils literal notranslate"><span class="pre">-E</span></code> 才行。<code class="docutils literal notranslate"><span class="pre">-E</span></code> 會讀取一個稱為 <a class="reference external" href="https://www.soest.hawaii.edu/pwessel/dcw/">DCW</a> 的資料庫，使用內含的國家邊界資料進行著色。<code class="docutils literal notranslate"><span class="pre">-E</span></code> 的語法大致為</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-E代碼1,代碼2,...+g填色+p畫筆
+</pre></div>
+</div>
+<p>其中的<code class="docutils literal notranslate"><span class="pre">代碼</span></code>指的是 <a class="reference external" href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a>
+國家名稱的二位字母代碼，例如 <code class="docutils literal notranslate"><span class="pre">TW</span></code> 代表台灣，<code class="docutils literal notranslate"><span class="pre">US</span></code> 代表美國等等。除了可以從維基百科查詢這些代碼以外，也可以輸入以下指令，直接在 GMT 中查詢：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt coast -E+l    <span class="c1"># 在螢幕中列出二位字母國碼</span>
+<span class="c1"># 或</span>
+$ gmt coast -E+L    <span class="c1"># 在螢幕中列出二位字母國碼與幾個大國家的省份碼</span>
+</pre></div>
+</div>
+<p>這邊順便舉個方便的技巧：如果你想查詢特定國家 (已經知道英文國名) 的代碼，可以使用 <code class="docutils literal notranslate"><span class="pre">sh</span></code> 內建的 <code class="docutils literal notranslate"><span class="pre">grep</span></code> 指令來輔助查詢。如下這樣：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt coast -E+l <span class="p">|</span> grep -i japan
+  JP    Japan
+</pre></div>
+</div>
+<p>這邊的 <code class="docutils literal notranslate"><span class="pre">-i</span></code> 選項是「大小寫視為相同」之意。在下方的搜尋結果中，就出現了日本的代碼 <code class="docutils literal notranslate"><span class="pre">JP</span></code>。</p>
+<div class="admonition tip">
+<p class="admonition-title">小訣竅</p>
+<ol class="arabic">
+<li><p>如果你的作業系統是 <strong>Windows</strong>，內建會沒有 <code class="docutils literal notranslate"><span class="pre">grep</span></code>，但你可以使用替代的指令 <code class="docutils literal notranslate"><span class="pre">findstr</span></code> 來操作，如下：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt coast -E+l <span class="p">|</span> findstr /i japan
+</pre></div>
+</div>
+</li>
+<li><p>如果你想要使用 <code class="docutils literal notranslate"><span class="pre">grep</span></code> 一次查詢多個國家，可以使用如下語法：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt coast -E+l <span class="p">|</span> grep -i <span class="s1">&#39;japan\|singapore\|zealand&#39;</span>
+</pre></div>
+</div>
+<p>這樣程式會一次把日本、新加坡跟紐西蘭的代碼找出來。</p>
+</li>
+</ol>
+</div>
+<p>接下來就是<strong>填色</strong>。GMT 實際上支援了六種顏色表達方式，分別為</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>「green」         <span class="c1"># 1. 使用顏色名稱</span>
+「255/99/71」     <span class="c1"># 2. 使用 R/G/B 值 (從 0 到 255)，左邊這是蕃茄色</span>
+「#87CEEE」       <span class="c1"># 3. 使用 HTML 標記的顏色表示法 (#RRGGBB，十六進位)，左邊這是天藍色</span>
+「25-0.86-0.82」  <span class="c1"># 4. 使用 H-S-V 值 (前者從 0 到 255，後兩者從 0 到 1)，左邊這是巧克力色</span>
+「8/8/0/2」       <span class="c1"># 5. 使用 C/M/Y/K 值 (百分比表示)，左邊這是薰衣草色</span>
+「169」           <span class="c1"># 6. 灰階號碼，此例相當於 R/G/B 的 169/169/169</span>
+</pre></div>
+</div>
+<p>你可以使用你喜歡的表達方式給定顏色。這邊我們要試著幫墨西哥 (代碼 <code class="docutils literal notranslate"><span class="pre">MX</span></code>) 塗上磚紅色，使用 HTML 標記的代碼 <code class="docutils literal notranslate"><span class="pre">#CD5C5C</span></code>，語法如下：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt coast -R-100/1/-50/34r -JM15c -EMX+g#CD5C5C -png central_america    <span class="c1"># 地圖 15 公分寬</span>
+</pre></div>
+</div>
+<p>成品就會看到有個磚紅色的區塊，這就是墨西哥的國土。</p>
+<img alt="../_images/pen_and_painting_gmt6_fig2.png" src="../_images/pen_and_painting_gmt6_fig2.png" />
+<p>因為我們等一下會為不同的國家塗上不同的顏色，為了程式碼的美觀，可以把顏色和對應的國家先以變數的方式存放，之後執行 <code class="docutils literal notranslate"><span class="pre">coast</span></code> 再使用這些變數。這種方式除了可以整齊排版，更利於之後的編輯修改。每個 shell 指定變數的方式略有不同，這裡以 <code class="docutils literal notranslate"><span class="pre">bash</span></code> 為示範，變數的指定與取方式為：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">變數名稱</span><span class="o">=</span><span class="s1">&#39;變數內容&#39;</span>     <span class="c1"># 指定變數</span>
+<span class="si">${</span><span class="nv">變數名稱</span><span class="si">}</span>            <span class="c1"># 存取變數 (這串文字會被&#39;變數內容&#39;取代掉)</span>
+</pre></div>
+</div>
+<p>把上述語法套用到我們的例子中，就像是這樣：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">color1</span><span class="o">=</span><span class="s1">&#39;#CD5C5C&#39;</span>
+<span class="nv">colorgroup1</span><span class="o">=</span><span class="s1">&#39;MX,BR,PA,DO&#39;</span>
+gmt coast -R-100/1/-50/34r -JM15c -E<span class="si">${</span><span class="nv">colorgroup1</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color1</span><span class="si">}</span> -png central_america
+</pre></div>
+</div>
+<p>以上腳本可以把墨西哥 (<code class="docutils literal notranslate"><span class="pre">MX</span></code>)、巴西 (<code class="docutils literal notranslate"><span class="pre">BR</span></code>)、巴拿馬 (<code class="docutils literal notranslate"><span class="pre">PA</span></code>) 和多明尼加 (<code class="docutils literal notranslate"><span class="pre">DO</span></code>) 一次塗上磚紅色。如果你想要更改顏色或國家，只要修改變數 <code class="docutils literal notranslate"><span class="pre">colorgroup1</span></code> 或 <code class="docutils literal notranslate"><span class="pre">color1</span></code> 的內容即可，不需要動到 <code class="docutils literal notranslate"><span class="pre">coast</span></code> 的指令。</p>
+<div class="admonition tip">
+<p class="admonition-title">小訣竅</p>
+<ol class="arabic simple">
+<li><p>由於不同的指令列環境有不同的變數設定方式，而且是值得另闢章節討論的話題，在此我們先略過這些內容以集中精神在 GMT 指令上。有關於變數指定的細節，請參考你所使用的 shell 如 cmd、bash 或 csh 等的技術專書或網頁。</p></li>
+<li><p>有許多不錯的網頁調色盤，如 <a class="reference external" href="http://html-color-codes.info/">HTML color codes</a>，可以幫助你用視覺化的方式挑選你想要的顏色，然後再把色碼貼到腳本變數中就行了。好好尋找你想要的顏色吧！</p></li>
+</ol>
+</div>
+<p>接下來，只要依樣畫葫蘆，把所有的鄰近國家都填上顏色就可以了。依照<a class="reference external" href="coloring_topography.html">上一章</a>所示，我們先使用 <code class="docutils literal notranslate"><span class="pre">grdimage</span></code> 畫地形底圖，再使用 <code class="docutils literal notranslate"><span class="pre">coast</span></code> 把剛剛提的所有東西填上去：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ==== 設定顏色與對應的國家 ====</span>
+<span class="c1"># mexico, brazil, costa rica, dominican</span>
+<span class="nv">color1</span><span class="o">=</span><span class="s1">&#39;#CD5C5C&#39;</span>
+<span class="nv">colorgroup1</span><span class="o">=</span><span class="s1">&#39;MX,BR,CR,DO&#39;</span>
+<span class="c1"># guatemala, venezuela, jamaica, french guiana, bahamas</span>
+<span class="nv">color2</span><span class="o">=</span><span class="s1">&#39;pink&#39;</span>
+<span class="nv">colorgroup2</span><span class="o">=</span><span class="s1">&#39;GT,JM,VE,GF,BS&#39;</span>
+<span class="c1"># united states, puerto rico, nicaragua, guyana</span>
+<span class="nv">color3</span><span class="o">=</span><span class="s1">&#39;240/230/140&#39;</span>
+<span class="nv">colorgroup3</span><span class="o">=</span><span class="s1">&#39;US,PR,NI,GY&#39;</span>
+<span class="c1"># belize, haiti, trinidad and tobago, panama, salvador</span>
+<span class="nv">color4</span><span class="o">=</span><span class="s1">&#39;0/36/74/4&#39;</span>
+<span class="nv">colorgroup4</span><span class="o">=</span><span class="s1">&#39;BZ,HT,TT,PA,SV&#39;</span>
+<span class="c1"># colombia, cuba, honduras, suriname</span>
+<span class="nv">color5</span><span class="o">=</span><span class="s1">&#39;97-0.52-0.94&#39;</span>
+<span class="nv">colorgroup5</span><span class="o">=</span><span class="s1">&#39;CO,CU,HN,SR&#39;</span>
+<span class="c1"># 其他國家</span>
+<span class="nv">color0</span><span class="o">=</span><span class="s1">&#39;169&#39;</span>
+
+<span class="c1"># ==== 主要指令 ====</span>
+gmt begin central_america png
+    gmt grdimage @earth_relief_01m -JB-80.27/8.58/-8/24/15c -R-100/1/-50/34r -Cgeo
+    gmt coast -G<span class="si">${</span><span class="nv">color0</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup1</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color1</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup2</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color2</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup3</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color3</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup4</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color4</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup5</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color5</span><span class="si">}</span>
+gmt end
+</pre></div>
+</div>
+<p>注意在 <code class="docutils literal notranslate"><span class="pre">grdimage</span></code> 中，<code class="docutils literal notranslate"><span class="pre">-J</span></code> 選項使用了 <code class="docutils literal notranslate"><span class="pre">B</span></code>，這是另一種稱為 <a class="reference external" href="https://zh.wikipedia.org/wiki/%E4%BA%9A%E5%B0%94%E5%8B%83%E6%96%AF%E6%8A%95%E5%BD%B1">Albers 投影</a>的地圖投影法，是一種圓錐型投影，可使地圖上的每個區域面積保持一致。它的語法為</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-JB投影中心經線/投影中心緯線/圓錐上端緯線/圓錐下端緯線/地圖尺寸
+</pre></div>
+</div>
+<p>另外，在「<a class="reference internal" href="coloring_topography.html"><span class="doc">為地形圖上色</span></a>」中也提過，地形資料的 <code class="docutils literal notranslate"><span class="pre">-C</span></code> 選項 (色階) 預設值是 <code class="docutils literal notranslate"><span class="pre">geo</span></code>。這邊我們為了使讀者了解我們使用的設定，因此特地加上 <code class="docutils literal notranslate"><span class="pre">-Cgeo</span></code>。實際上，就算不加上色階檔檔名 (<code class="docutils literal notranslate"><span class="pre">-C</span></code> 或乾脆省略)，GMT 也會使用相同的色階畫圖。在<code class="docutils literal notranslate"><span class="pre">設定顏色與對應的國家</span></code>的部份，我們總共指定了 6 種顏色與 22 個國家。<code class="docutils literal notranslate"><span class="pre">color0</span></code> 是灰色，用於中美洲其餘的國家。而在<code class="docutils literal notranslate"><span class="pre">主要指令</span></code>中，我們先使用 <code class="docutils literal notranslate"><span class="pre">-G</span></code> 把所有陸域塗上灰色，然後再使用 <code class="docutils literal notranslate"><span class="pre">-E</span></code> 為各個國家填色。你會發現所有的 <code class="docutils literal notranslate"><span class="pre">-E</span></code> 選項都可以被加在同一個 <code class="docutils literal notranslate"><span class="pre">coast</span></code> 指令內，省去重複輸入的麻煩！整個腳本執行的結果如下所示 (中文註解可能要改成英文才可順利執行)。</p>
+<a class="reference external image-reference" href="_images/pen_and_painting_gmt6_fig3.png"><img alt="../_images/pen_and_painting_gmt6_fig3_s.png" src="../_images/pen_and_painting_gmt6_fig3_s.png" /></a>
+<p>接下來，我們再為國界和海岸線畫點線，國家就會更突顯出來。在<a class="reference internal" href="making_first_map.html"><span class="doc">製作第一張地圖</span></a>中，我們曾經提及線條的「畫筆樣式」由三個部份組成：<code class="docutils literal notranslate"><span class="pre">粗細,顏色,樣式</span></code>。<code class="docutils literal notranslate"><span class="pre">粗細</span></code> 可以為預先定義好的名稱，像是 <code class="docutils literal notranslate"><span class="pre">thinner</span></code>、<code class="docutils literal notranslate"><span class="pre">thickest</span></code>，<code class="docutils literal notranslate"><span class="pre">fat</span></code>等等，總共有 12 個，所有的名稱可以在<a class="reference external" href="https://docs.generic-mapping-tools.org/latest/cookbook/features.html?highlight=pen%20attributes#specifying-pen-attributes">此連結</a>查詢。如果你想要自訂粗細，也可以使用 <code class="docutils literal notranslate"><span class="pre">c</span></code> (公分)、<code class="docutils literal notranslate"><span class="pre">i</span></code> (英吋)、<code class="docutils literal notranslate"><span class="pre">p</span></code> (點) 等長度單位，如 <code class="docutils literal notranslate"><span class="pre">0.1c</span></code> 就是 0.1 公分。畫筆的<code class="docutils literal notranslate"><span class="pre">顏色</span></code>與上述的色碼通用，選你喜歡的表達方式即可。畫筆的<code class="docutils literal notranslate"><span class="pre">樣式</span></code>預設是連續線條，你可以使用 <code class="docutils literal notranslate"><span class="pre">-</span></code> (折線) 與 <code class="docutils literal notranslate"><span class="pre">.</span></code> (點) 自由的混搭樣式，如 <code class="docutils literal notranslate"><span class="pre">-..</span></code> 會畫出折線中間間隔兩個點的線條。以下是一些示範：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>thinner,green,-     <span class="c1"># 綠色的細折線 (0.5 點)</span>
+3p,100/0/100,.      <span class="c1"># 3 點寬，深紫色的點線</span>
+1c,#555555,--..     <span class="c1"># 1 公分寬，灰色的 &quot;--..&quot; 樣式線條</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">coast</span></code> 有三個跟畫線有關的指令，分別為</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-I編號/畫筆          <span class="c1"># 畫上河流</span>
+-N編號/畫筆          <span class="c1"># 畫上政治邊界</span>
+-W編號/畫筆          <span class="c1"># 畫上水域邊界</span>
+</pre></div>
+</div>
+<p>其中 <code class="docutils literal notranslate"><span class="pre">-I</span></code> 和 <code class="docutils literal notranslate"><span class="pre">-N</span></code> 的編號已在<a class="reference internal" href="coloring_topography.html"><span class="doc">為地形圖上色</span></a>中介紹過，而 <code class="docutils literal notranslate"><span class="pre">-W</span></code> 的編號可以為 <code class="docutils literal notranslate"><span class="pre">1</span></code>、<code class="docutils literal notranslate"><span class="pre">2</span></code>、<code class="docutils literal notranslate"><span class="pre">3</span></code> 及 <code class="docutils literal notranslate"><span class="pre">4</span></code>，分別代表海岸線、湖岸線、湖中島岸線、湖中島中湖岸線。這裡我們就再使用一次 <code class="docutils literal notranslate"><span class="pre">coast</span></code> 把海岸線和國界線用 <code class="docutils literal notranslate"><span class="pre">thinner</span></code> 等級的線條來畫畫看，順便再使用 <code class="docutils literal notranslate"><span class="pre">-Bafg</span></code> 畫上地圖邊框及格線：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># (前略)</span>
+<span class="c1"># ==== 主要指令 ====</span>
+gmt begin central_america png
+    gmt grdimage @earth_relief_01m -JB-80.27/8.58/-8/24/15c -R-100/1/-50/34r -Cgeo
+    gmt coast -G<span class="si">${</span><span class="nv">color0</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup1</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color1</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup2</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color2</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup3</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color3</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup4</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color4</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup5</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color5</span><span class="si">}</span>
+    gmt coast -W1/thinner -N1/thinner -Di -Bafg
+gmt end
+</pre></div>
+</div>
+<p>這次的成品看起來就像這樣：</p>
+<a class="reference external image-reference" href="_images/pen_and_painting_gmt6_fig4.png"><img alt="../_images/pen_and_painting_gmt6_fig4_s.png" src="../_images/pen_and_painting_gmt6_fig4_s.png" /></a>
+<div class="admonition note">
+<p class="admonition-title">備註</p>
+<p>不知道你有沒有發現換了投影方法的同時，邊框的形式也會跟著變化？有關邊框進一步的設定，請參閱<a class="reference internal" href="layout_design.html"><span class="doc">版面設計與地圖的幾何布局</span></a>。</p>
+</div>
+<p>為了清楚的表示海床的深度，最後我們要來加上色階圖例，顯示不同深度對應的顏色。在 GMT 6 中用來畫色階條與色階圖例的指令是 <code class="docutils literal notranslate"><span class="pre">colorbar</span></code> (在之前的版本中稱為 <code class="docutils literal notranslate"><span class="pre">psscale</span></code>)。<code class="docutils literal notranslate"><span class="pre">colorbar</span></code> 的基本語法為：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt colorbar -D<span class="o">[</span>位置與尺寸<span class="o">]</span> -B<span class="o">[</span>格線、座標間距、標題等資訊<span class="o">]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">colorbar</span></code> 提供了設定 <code class="docutils literal notranslate"><span class="pre">-D</span></code> 的許多不同方法，這裡我們要使用最簡單的一種：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-Dj<span class="o">[</span>錨點位置<span class="o">]</span>+w<span class="o">[</span>色階條長度<span class="o">]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">-Dj</span></code> 會使色階圖例被畫在地圖內部的<strong>九宮格錨點</strong>中的任一個位置。GMT 使用 6 個字母來指定錨點的相對位置，分別是 <code class="docutils literal notranslate"><span class="pre">L</span></code> (左側)、<code class="docutils literal notranslate"><span class="pre">C</span></code> (水平中央)、<code class="docutils literal notranslate"><span class="pre">R</span></code> (右側)、<code class="docutils literal notranslate"><span class="pre">T</span></code> (上方)、<code class="docutils literal notranslate"><span class="pre">M</span></code> (垂直中央)、<code class="docutils literal notranslate"><span class="pre">B</span></code> (下方)。前三個字母中挑一個加上後三個字母中挑一個，就能得到錨點的位置與相對應的組合：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>LT   CT   RT
+
+LM   CM   RM
+
+LB   CB   RB
+</pre></div>
+</div>
+<p>如果我們想要在圖的中央右側畫上長度為 <code class="docutils literal notranslate"><span class="pre">3</span></code> 公分的色階圖例，只要這麼寫就行了：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-DjRM+w3c
+</pre></div>
+</div>
+<p>下一個 <code class="docutils literal notranslate"><span class="pre">-B</span></code> 選項基本上和 <code class="docutils literal notranslate"><span class="pre">coast</span></code> 的 <code class="docutils literal notranslate"><span class="pre">-B</span></code> 選項方法相同。不過因為色階條的顏色只沿著一維方向變化，我們必須要分開調整 x 軸和 y 軸的設定：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-Bx<span class="o">[</span>格線與刻度 <span class="o">(</span>afg 設定<span class="o">)]</span>+l<span class="o">[</span>擺在刻度一側的標籤<span class="o">]</span> -By+l<span class="o">[</span>擺在色階條一端的標籤<span class="o">]</span>
+</pre></div>
+</div>
+<p>這裡我們試著使用 <code class="docutils literal notranslate"><span class="pre">-Bx3000</span></code> (<code class="docutils literal notranslate"><span class="pre">afg</span></code> 三種設定都是每隔 <code class="docutils literal notranslate"><span class="pre">3000</span></code> 單位繪製一次) 以及 <code class="docutils literal notranslate"><span class="pre">-By+lm</span></code> (在色階條一端寫上 <code class="docutils literal notranslate"><span class="pre">m</span></code> 這個字)。我們沒有要在有刻度的一側擺上任何標籤，所以在 <code class="docutils literal notranslate"><span class="pre">-Bx</span></code> 中的 <code class="docutils literal notranslate"><span class="pre">+l</span></code> 可以省略。把 <code class="docutils literal notranslate"><span class="pre">colorbar</span></code> 指令擺在 <code class="docutils literal notranslate"><span class="pre">coast</span></code> 後面，就能確保它被畫在地圖的頂層：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># (前略)</span>
+<span class="c1"># ==== 主要指令 ====</span>
+gmt begin central_america png
+    gmt grdimage @earth_relief_01m -JB-80.27/8.58/-8/24/15c -R-100/1/-50/34r -Cgeo
+    gmt coast -G<span class="si">${</span><span class="nv">color0</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup1</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color1</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup2</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color2</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup3</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color3</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup4</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color4</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup5</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color5</span><span class="si">}</span>
+    gmt coast -W1/thinner -N1/thinner -Di -Bafg
+    gmt colorbar -DjRM+w3c -Bx3000 -By+lm
+gmt end
+</pre></div>
+</div>
+<a class="reference external image-reference" href="_images/pen_and_painting_gmt6_fig5.png"><img alt="../_images/pen_and_painting_gmt6_fig5_s.png" src="../_images/pen_and_painting_gmt6_fig5_s.png" /></a>
+<p>到目前為止，我們的地圖幾乎已經完成了。剩下的工作，就是讓色階圖例更顯眼，更易判讀。由於色階圖例直接畫在深色的海床上會看不清楚，我們可以在圖例下方填上一層帶有透明度的白色，讓黑色的數字和線條浮現出來。<code class="docutils literal notranslate"><span class="pre">colorbar</span></code> 的填色指令為：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-F+g<span class="o">[</span>顏色<span class="o">]</span>
+</pre></div>
+</div>
+<p>如要指定<strong>透明度</strong>，只要在顏色後方加上 <code class="docutils literal notranslate"><span class="pre">&#64;[透明度%]</span></code> 就行了。<code class="docutils literal notranslate"><span class="pre">&#64;100</span></code> 是完全透明 (等於沒有畫)，而 <code class="docutils literal notranslate"><span class="pre">&#64;0</span></code> 是完全不透明 (等於不加透明度時的填色)。這邊我們使用 <code class="docutils literal notranslate"><span class="pre">-F+gwhite&#64;50</span></code> 來達成我們的目標。另外，由於陸域的地形被國家填色給蓋掉了，導致色階圖例的上半部 (0 至 5000 公尺) 是無用的資訊。為了省略此段的內容，我們可以使用 <code class="docutils literal notranslate"><span class="pre">-G</span></code> 選項來指定繪製圖例時使用的色階範圍。語法為</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-G<span class="o">[</span>最小值<span class="o">]</span>/<span class="o">[</span>最大值<span class="o">]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">最大值</span></code> 可以設定為海平面 (<code class="docutils literal notranslate"><span class="pre">0</span></code>)，那最小值呢？別忘了我們可以使用 <code class="docutils literal notranslate"><span class="pre">grdinfo</span></code> 來查閱網格檔的基本資訊，只是這次要加上查詢的地理範圍 (<code class="docutils literal notranslate"><span class="pre">-R</span></code>)：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt grdinfo @earth_relief_01m -R-100/1/-50/34r
+<span class="c1"># (前略)</span>
+/home/whyj/.gmt/server/earth_relief_01m.grd: x_min: -100 x_max: -50 x_inc: <span class="m">0</span>.0166666666667 <span class="o">(</span><span class="m">1</span> min<span class="o">)</span> name: longitude n_columns: <span class="m">3001</span>
+/home/whyj/.gmt/server/earth_relief_01m.grd: y_min: <span class="m">1</span> y_max: <span class="m">34</span> y_inc: <span class="m">0</span>.0166666666667 <span class="o">(</span><span class="m">1</span> min<span class="o">)</span> name: latitude n_rows: <span class="m">1981</span>
+/home/whyj/.gmt/server/earth_relief_01m.grd: z_min: -8434 z_max: <span class="m">5310</span> name: elevation <span class="o">(</span>m<span class="o">)</span>
+<span class="c1"># (後略)</span>
+</pre></div>
+</div>
+<p>注意 <code class="docutils literal notranslate"><span class="pre">z_min</span></code> 的值，就是在搜尋區域中最低的像素值。因此，<code class="docutils literal notranslate"><span class="pre">最小值</span></code> 使用 <code class="docutils literal notranslate"><span class="pre">-8434</span></code> 就可以了。完整的選項設定為 <code class="docutils literal notranslate"><span class="pre">-G-8434/0</span></code>。把 <code class="docutils literal notranslate"><span class="pre">-G</span></code> 和 <code class="docutils literal notranslate"><span class="pre">-F</span></code> 的設定都加進 <code class="docutils literal notranslate"><span class="pre">colorbar</span></code> 指令內，就完成了本章地圖所有的要求。</p>
+<div class="admonition note">
+<p class="admonition-title">備註</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">colorbar</span></code> 預設繪製在腳本中最後一次使用的色階，在本例中為 <code class="docutils literal notranslate"><span class="pre">geo</span></code>。如果你要使用 <code class="docutils literal notranslate"><span class="pre">colorbar</span></code> 繪製不同的色階條，必須使用 <code class="docutils literal notranslate"><span class="pre">-C[色階名]</span></code> 來指定色階進行繪圖。</p></li>
+<li><p>本章示範的是最基本的色階條繪製方法，如須查閱更多進階的技巧，請參閱<a class="reference internal" href="editing_cpt_colorbar.html"><span class="doc">色階檔的編修與呈現</span></a>。</p></li>
+</ol>
+</div>
+</section>
+<section id="id13">
+<h2><span class="section-number">6.5. </span>指令稿<a class="headerlink" href="#id13" title="本標題的永久連結">#</a></h2>
+<p>本地圖的最終指令稿如下：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ==== 設定顏色與對應的國家 ====</span>
+<span class="c1"># mexico, brazil, costa rica, dominican</span>
+<span class="nv">color1</span><span class="o">=</span><span class="s1">&#39;#CD5C5C&#39;</span>
+<span class="nv">colorgroup1</span><span class="o">=</span><span class="s1">&#39;MX,BR,CR,DO&#39;</span>
+<span class="c1"># guatemala, venezuela, jamaica, french guiana, bahamas</span>
+<span class="nv">color2</span><span class="o">=</span><span class="s1">&#39;pink&#39;</span>
+<span class="nv">colorgroup2</span><span class="o">=</span><span class="s1">&#39;GT,JM,VE,GF,BS&#39;</span>
+<span class="c1"># united states, puerto rico, nicaragua, guyana</span>
+<span class="nv">color3</span><span class="o">=</span><span class="s1">&#39;240/230/140&#39;</span>
+<span class="nv">colorgroup3</span><span class="o">=</span><span class="s1">&#39;US,PR,NI,GY&#39;</span>
+<span class="c1"># belize, haiti, trinidad and tobago, panama, salvador</span>
+<span class="nv">color4</span><span class="o">=</span><span class="s1">&#39;0/36/74/4&#39;</span>
+<span class="nv">colorgroup4</span><span class="o">=</span><span class="s1">&#39;BZ,HT,TT,PA,SV&#39;</span>
+<span class="c1"># colombia, cuba, honduras, suriname</span>
+<span class="nv">color5</span><span class="o">=</span><span class="s1">&#39;97-0.52-0.94&#39;</span>
+<span class="nv">colorgroup5</span><span class="o">=</span><span class="s1">&#39;CO,CU,HN,SR&#39;</span>
+<span class="c1"># 其他國家</span>
+<span class="nv">color0</span><span class="o">=</span><span class="s1">&#39;169&#39;</span>
+
+<span class="c1"># ==== 主要指令 ====</span>
+gmt begin central_america_gmt6 png
+    gmt grdimage @earth_relief_01m -JB-80.27/8.58/-8/24/15c -R-100/1/-50/34r -Cgeo    <span class="c1"># 底圖</span>
+    gmt coast -G<span class="si">${</span><span class="nv">color0</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup1</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color1</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup2</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color2</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup3</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color3</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup4</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color4</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup5</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color5</span><span class="si">}</span>    <span class="c1"># 國家上色</span>
+    gmt coast -W1/thinner -N1/thinner -Di -Bafg    <span class="c1"># 國界與海岸線</span>
+    gmt colorbar -DjRM+w3c -G-8434/0 -Bx3000 -By+lm -F+gwhite@50    <span class="c1"># 色階條</span>
+gmt end
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">備註</p>
+<p>「繪製國界與海床地形圖：以 <strong>100W - 50W，1N - 34N</strong> 為邊界，Albers 圓錐投影，地圖橫向寬 <strong>15</strong> 公分。國家使用 6 種不同的顏色著色，為國界和海岸線加上黑色細線條，海底地形使用 <code class="docutils literal notranslate"><span class="pre">&#64;earth_relief_01m</span></code> 資料並以 <code class="docutils literal notranslate"><span class="pre">geo</span></code> 為色階。最後在地圖的<strong>右側</strong>畫上 <strong>3</strong> 公分長的色階圖例，每隔 3000 公尺標示海床的深度，色階圖例背景使用透明白來填色。」</p>
+</div>
+<p>觀看<a class="reference internal" href="#id6">最終版地圖</a></p>
+</section>
+<section id="pygmt">
+<h2><span class="section-number">6.6. </span>PyGMT 指令稿<a class="headerlink" href="#pygmt" title="本標題的永久連結">#</a></h2>
+<p>使用 PyGMT，可以如下腳本繪製本地圖：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pygmt</span>
+
+<span class="c1"># ==== 設定顏色與對應的國家 ====</span>
+<span class="c1"># 這裡我們利用了 Python 的 Dictionary 資料結構來縮短程式碼！</span>
+<span class="n">color_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;MX,BR,CR,DO&#39;</span><span class="p">:</span>    <span class="s1">&#39;#CD5C5C&#39;</span><span class="p">,</span>        <span class="c1"># mexico, brazil, costa rica, dominican</span>
+              <span class="s1">&#39;GT,JM,VE,GF,BS&#39;</span><span class="p">:</span> <span class="s1">&#39;pink&#39;</span><span class="p">,</span>           <span class="c1"># guatemala, venezuela, jamaica, french guiana, bahamas</span>
+              <span class="s1">&#39;US,PR,NI,GY&#39;</span><span class="p">:</span>    <span class="s1">&#39;240/230/140&#39;</span><span class="p">,</span>    <span class="c1"># united states, puerto rico, nicaragua, guyana</span>
+              <span class="s1">&#39;BZ,HT,TT,PA,SV&#39;</span><span class="p">:</span> <span class="s1">&#39;0/36/74/4&#39;</span><span class="p">,</span>      <span class="c1"># belize, haiti, trinidad and tobago, panama, salvador</span>
+              <span class="s1">&#39;CO,CU,HN,SR&#39;</span><span class="p">:</span>    <span class="s1">&#39;97-0.52-0.94&#39;</span><span class="p">}</span>   <span class="c1"># colombia, cuba, honduras, suriname</span>
+
+<span class="n">color0</span> <span class="o">=</span> <span class="s1">&#39;169&#39;</span>  <span class="c1"># 其他國家</span>
+<span class="n">dcw_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">key</span> <span class="o">+</span> <span class="s1">&#39;+g&#39;</span> <span class="o">+</span> <span class="n">value</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">color_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+
+<span class="c1"># ==== 取得地形資料 ====</span>
+<span class="n">region</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">50</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="mi">34</span><span class="p">]</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">pygmt</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">load_earth_relief</span><span class="p">(</span><span class="n">resolution</span><span class="o">=</span><span class="s1">&#39;05m&#39;</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">)</span>
+
+<span class="c1"># ==== 繪圖 ====</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">pygmt</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">grdimage</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;B-80.27/8.58/-8/24/15c&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;geo&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">coast</span><span class="p">(</span><span class="n">land</span><span class="o">=</span><span class="n">color0</span><span class="p">,</span> <span class="n">dcw</span><span class="o">=</span><span class="n">dcw_list</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">coast</span><span class="p">(</span><span class="n">shorelines</span><span class="o">=</span><span class="s1">&#39;1/thinner&#39;</span><span class="p">,</span> <span class="n">borders</span><span class="o">=</span><span class="s1">&#39;1/thinner&#39;</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="s1">&#39;afg&#39;</span><span class="p">)</span>
+<span class="c1"># 注意這裡我們在色階條的位置字串中加上了 +o1c/0，稍微偏移其位置。</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="s1">&#39;jRM+w3c+o1c/0&#39;</span><span class="p">,</span> <span class="n">truncate</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">8000</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">frame</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x3000&#39;</span><span class="p">,</span> <span class="s1">&#39;y+lm&#39;</span><span class="p">],</span> <span class="n">box</span><span class="o">=</span><span class="s1">&#39;+gwhite@50&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;central_america_pygmt.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>你可以使用以下的 Binder 連結嘗試此程式碼：</p>
+<a class="reference external image-reference" href="https://mybinder.org/v2/gh/whyjz/GMT-tutorials/HEAD?filepath=SOURCE_DOCS%2Fpen_and_painting%2Fcentral_america_pygmt.ipynb"><img alt="https://mybinder.org/badge_logo.svg" src="https://mybinder.org/badge_logo.svg" /></a>
+</section>
+<section id="id14">
+<h2><span class="section-number">6.7. </span>習題<a class="headerlink" href="#id14" title="本標題的永久連結">#</a></h2>
+<ol class="arabic simple">
+<li><p>仿造此章節的地圖，畫出南海 (<em>South China Sea</em>) 的海底地形與週邊國家圖。座標可使用 <code class="docutils literal notranslate"><span class="pre">95E</span> <span class="pre">至</span> <span class="pre">123E</span></code>，以及 <code class="docutils literal notranslate"><span class="pre">0N</span> <span class="pre">至</span> <span class="pre">26N</span></code>。可使用本章節的顏色或自行調整你愛的搭配。</p></li>
+<li><p>有沒有辦法把香港與海南島塗上與中國不同的顏色？</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./main"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="coloring_topography.html" title="上一頁 頁">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">上一頁</p>
+            <p class="prev-next-title"><span class="section-number">5. </span>為地形圖上色</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="scatter_plot.html" title="下一頁 頁">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一頁</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>XY 點散佈圖</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+ <div id="disqus_thread"></div> <script> var disqus_config = function () {this.page.url = 'http://gmt-tutorial.org/pen_and_painting.html'; this.page.identifier = 'pen_and_painting'; }; (function() { var d = document, s = d.createElement('script'); s.src = '//gmt-tutorials.disqus.com/embed.js'; s.setAttribute('data-timestamp', +new Date()); (d.head || d.body).appendChild(s); })(); </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By <a href="https://whyjz.github.io/">鄭懷傑 (Whyjay Zheng)</a> | <a href="https://twitter.com/WhyjayZ"><i class="fa-brands fa-twitter"></i></a><br/>
+  
+    Last updated on 7月 27, 2022.<br/>
+    <div class="extra_footer">
+      &copy; 2016-2022. <a href="https://github.com/whyjz/GMT-tutorials/blob/master/LICENSE.md">MIT</a> 
+and <a href="http://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</a> dual licensed. <br>
+Found this tutorial helpful? <a href="https://www.paypal.com/donate?hosted_button_id=68GZNRJ3MZDBE">Buy me a milktea!</a>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

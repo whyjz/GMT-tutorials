@@ -1,0 +1,915 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>4. Hillshade Map &#8212; GMT Tutorials </title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+ <link href='https://fonts.googleapis.com/css?family=Varela Round' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://gmt-tutorials.org/main/hillshading.html" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5. Contours and Profiles" href="contour_and_profile.html" />
+    <link rel="prev" title="3. Design Map Layout" href="layout_design.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+ <script type="text/javascript">var _jf = _jf || [];_jf.push(['p','39630']);_jf.push(['_setFont','sourcehansans-tc-light','css','.sourcehansans-tc-light']);_jf.push(['_setFont','sourcehansans-tc-light','alias','sourcehansans-tc']);_jf.push(['_setFont','sourcehansans-tc-light','weight',200]);_jf.push(['_setFont','sourcehansans-tc-regular','css','.sourcehansans-tc-regular']);_jf.push(['_setFont','sourcehansans-tc-regular','alias','sourcehansans-tc']);_jf.push(['_setFont','sourcehansans-tc-regular','weight',400]);_jf.push(['_setFont','cwtexqyuan','css','.cwtexqyuan']);_jf.push(['_setFont','cwtexqyuan','alias','cwtexqyuan']);_jf.push(['_setFont','cwtexqyuan','weight',500]);_jf.push(['_setFont','xingothic-tc-w7','css','.xingothic-tc-w7']);_jf.push(['_setFont','xingothic-tc-w7','alias','xingothic-tc']);_jf.push(['_setFont','xingothic-tc-w7','weight',700]);_jf.push(['_setFont','jf-jinxuan-medium','css','.jf-jinxuan-medium']);_jf.push(['_setFont','jf-jinxuan-medium','alias','jf-jinxuan']);_jf.push(['_setFont','jf-jinxuan-medium','weight',600]);(function(f,q,c,h,e,i,r,d){var k=f._jf;if(k.constructor===Object){return}var l,t=q.getElementsByTagName("html")[0],a=function(u){for(var v in k){if(k[v][0]==u){if(false===k[v][1].call(k)){break}}}},j=/\S+/g,o=/[\t\r\n\f]/g,b=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,g="".trim,s=g&&!g.call("\uFEFF\xA0")?function(u){return u==null?"":g.call(u)}:function(u){return u==null?"":(u+"").replace(b,"")},m=function(y){var w,z,v,u,x=typeof y==="string"&&y;if(x){w=(y||"").match(j)||[];z=t[c]?(" "+t[c]+" ").replace(o," "):" ";if(z){u=0;while((v=w[u++])){if(z.indexOf(" "+v+" ")<0){z+=v+" "}}t[c]=s(z)}}},p=function(y){var w,z,v,u,x=arguments.length===0||typeof y==="string"&&y;if(x){w=(y||"").match(j)||[];z=t[c]?(" "+t[c]+" ").replace(o," "):"";if(z){u=0;while((v=w[u++])){while(z.indexOf(" "+v+" ")>=0){z=z.replace(" "+v+" "," ")}}t[c]=y?s(z):""}}},n;k.push(["_eventActived",function(){p(h);m(e)}]);k.push(["_eventInactived",function(){p(h);m(i)}]);k.addScript=n=function(u,A,w,C,E,B){E=E||function(){};B=B||function(){};var x=q.createElement("script"),z=q.getElementsByTagName("script")[0],v,y=false,D=function(){x.src="";x.onerror=x.onload=x.onreadystatechange=null;x.parentNode.removeChild(x);x=null;a("_eventInactived");B()};if(C){v=setTimeout(function(){D()},C)}x.type=A||"text/javascript";x.async=w;x.onload=x.onreadystatechange=function(G,F){if(!y&&(!x.readyState||/loaded|complete/.test(x.readyState))){y=true;if(C){clearTimeout(v)}x.src="";x.onerror=x.onload=x.onreadystatechange=null;x.parentNode.removeChild(x);x=null;if(!F){setTimeout(function(){E()},200)}}};x.onerror=function(H,G,F){if(C){clearTimeout(v)}D();return true};x.src=u;z.parentNode.insertBefore(x,z)};a("_eventPreload");m(h);n(r,"text/javascript",false,3000)})(this,this.document,"className","jf-loading","jf-active","jf-inactive","//ds.justfont.com/js/stable/v/5.0.2/id/166657211014");</script>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">GMT Tutorials </h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form> <div class="langcenter"> <nav class="menu"> <ul class="clearfix"> <li class="current-item"> <a href="#" class="clicker">English <span class="arrow">&#9660;</span></a> <ul class="sub-menu"> <li><a href="../../main/hillshading.html">中文 (台灣)</a></li> <li><a href="hillshading.html">English</a></li> </ul> </li> </ul> </nav> </div> 
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  入門與概述
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro_install.html">
+   1. GMT / PyGMT Introduction and Installation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="software.html">
+   2. Software and Packages
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="basic_concept.html">
+   3. Basic Concepts and Terms
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  基本繪圖技巧
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="making_first_map.html">
+   1. Make Your First Map
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="coloring_topography.html">
+   2. Color the Topography
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pen_and_painting.html">
+   3. Pen and Painting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="scatter_plot.html">
+   4. Scatter Plot
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  製作各種常見的地圖（基礎）
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="cpt_colormap.html">
+   1. Visualize Raster Data Using a Colormap
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plot_vector_data.html">
+   2. Plot Vector Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="layout_design.html">
+   3. Design Map Layout
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   4. Hillshade Map
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="contour_and_profile.html">
+   5. Contours and Profiles
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="map_elements.html">
+   6. Add Map Elements
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  製作各種常見的地圖（進階）
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="editing_cpt_colorbar.html">
+   1. Edit CPT and Colorbar
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="view3d.html">
+   2. 3D Map
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="focal_mech.html">
+   3. Plot Focal Mechanisms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="draping.html">
+   4. Drape an Image over Topography
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  網格資料處理
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="raster_calculator.html">
+   1. Raster Calculator
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="basic_img_processing.html">
+   2. Basic Image Processing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  數值資料處理
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="stat_histogram.html">
+   1. Statistics and Histogram
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="regression_basics.html">
+   2. Perform Regression Analysis
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  附錄與學習資源
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_credit.html">
+   1. Data credits and References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="command_index.html">
+   2. Command Index
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gallery.html">
+   3. Gallery (Chapter Index)
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/whyjz/GMT-tutorials"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/main/hillshading.rst"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   4.1. Goal
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   4.2. Commands and Techniques
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id9">
+   4.3. Tasks before plotting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id15">
+   4.4. Procedure
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id17">
+   4.5. Script
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id18">
+   4.6. Exercise
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Hillshade Map</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   4.1. Goal
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   4.2. Commands and Techniques
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id9">
+   4.3. Tasks before plotting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id15">
+   4.4. Procedure
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id17">
+   4.5. Script
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id18">
+   4.6. Exercise
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="id1">
+<h1><span class="section-number">4. </span>Hillshade Map<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<p>暈渲 (Hillshading) 是一種視覺化呈現地理數值資料的高低起伏的方式。其概念為把資料想成類似地形的起伏狀態，再假設有某個光源投射在此起伏的平面上，有些地方會被照亮，而有些地方則會有陰影出現。把光照與陰影區域一同描繪在地圖上，就是所謂的暈渲地圖。GMT 當然也支援如此重要的地圖繪製技術，其細節將在以下內容中一一描述。</p>
+<section id="id2">
+<h2><span class="section-number">4.1. </span>Goal<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<p>我們要使用全球海洋的<a class="reference external" href="https://zh.wikipedia.org/wiki/%E9%87%8D%E5%8A%9B%E5%BC%82%E5%B8%B8">重力異常</a>
+(gravity anomaly) 資料，繪製<a class="reference external" href="https://zh.wikipedia.org/wiki/%E5%A4%8F%E5%A8%81%E5%A4%B7-%E5%A4%A9%E7%9A%87%E6%B5%B7%E5%B1%B1%E9%93%BE">夏威夷-天皇海山鏈</a>
+(Hawaiian–Emperor seamount chain) 週邊區域的<a class="reference external" href="https://en.wikipedia.org/wiki/Free-air_gravity_anomaly">自由空間重力異常</a>
+(free-air gravity anomaly) 地圖。圖中標示了幾個重要的地點，包括夏威夷島鏈 (Hawaiian Chain)、天皇島鏈 (Emperor Chain)、夏威夷 (Hawaii)、堪察加 (Kamchatka) 以及阿留申群島 (Aleutian Islands)。在阿留申群島與堪察加半島附近的低重力異常 (藍紫色) 區域，直接與板塊隱沒帶海溝的地形相關；但有趣的是，夏威夷-天皇海山鏈的島嶼兩側，竟然也出現了與島嶼平行的低重力異常條帶。這條島鏈目前認為是由太平洋板塊上的熱點持續的噴發岩漿所形成，所以島鏈兩側不應該會有任何像是海溝般的地形起伏才對。此處的低重力異常，較有可能的解釋是火山島的巨大質量，把此處的地殼壓成凹陷的表面，就像拿一個很重的砝碼壓在軟墊上，軟墊也會向下凹陷一樣。這裡的低重力異常條帶，能夠讓我們藉由壓彎量 (負重力異常值) 的計算，推知地殼與部份岩石圈的物理特性<a class="footnote-reference brackets" href="#id20" id="id6">1</a>。</p>
+<a class="reference external image-reference" href="_images/hawaiian-emperor.png" id="id7"><img alt="../_images/hawaiian-emperor_s.png" src="../_images/hawaiian-emperor_s.png" /></a>
+<p>Go to the final <a class="reference internal" href="#id17">Script</a></p>
+</section>
+<section id="id8">
+<h2><span class="section-number">4.2. </span>Commands and Techniques<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">img2grd</span></code> - <strong>把 Sandwell/Smith 麥卡托 .img 檔轉成 NetCDF 格式</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">grdgradient</span></code> - <strong>計算網格檔的梯度與照明值</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">grd2cpt</span></code> - <strong>使用網格檔的資訊建立離散色階檔</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gmtset</span></code> - <strong>更改 GMT 的預設作圖參數</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">psxy</span></code> - 輸出檔頭與檔尾</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">grdimage</span></code> - <strong>繪製暈渲圖</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pscoast</span></code> - 繪製海岸線與陸域填色</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">psbasemap</span></code> - 設定繪圖區、座標軸與邊框</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pstext</span></code> - <strong>在圖上標記不同類型的文字</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">psscale</span></code> - 繪製色階條</p></li>
+<li><p>外部指令 <code class="docutils literal notranslate"><span class="pre">rm</span></code> - 刪除檔案 (Windows 為 <code class="docutils literal notranslate"><span class="pre">del</span></code>)</p></li>
+<li><p>如何混用海岸線的經緯度資料與 Web Mercator 投影的網格檔</p></li>
+<li><p>進階文字風格設定</p></li>
+<li><p>移動繪圖區起始點的影響</p></li>
+</ul>
+</section>
+<section id="id9">
+<h2><span class="section-number">4.3. </span>Tasks before plotting<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h2>
+<p>本次所使用的資料，是從衛星數據中分析製作而成的全球海洋重力地圖<a class="footnote-reference brackets" href="#id21" id="id10">2</a>。資料的下載和預覽可以從<a class="reference external" href="http://topex.ucsd.edu/grav_outreach/">這個網站</a>取得。網站中的「Gridded Data for Research Use」一欄提供了三種不同資料，在本教學中，我們需要的是「Free-Air Marine Gravity Anomaly」(自由空間重力異常)。檔案除了從網站上下載之外，也可以從<a class="reference external" href="ftp://topex.ucsd.edu/pub/global_grav_1min/grav.img.23.1">此 ftp 網址</a>直接下載。</p>
+<p>這個檔案與我們之前使用的 <a class="reference external" href="https://www.ngdc.noaa.gov/mgg/global/global.html">ETOPO</a> 不太一樣：首先，它不是以 NetCDF 格式編碼的檔案，因此副檔名也就不是 <code class="docutils literal notranslate"><span class="pre">.grd</span></code> 或
+<code class="docutils literal notranslate"><span class="pre">.nc</span></code>。事實上，這是一種特殊的格式，專為海床地形與重力的資料量身打造。在 GMT 的官方範例中，稱為「Sandwell/Smith Mercator img grids」<a class="footnote-reference brackets" href="#id22" id="id12">3</a>。此外，數值資料的地理座標也不是經緯度，而是
+<a class="reference external" href="https://en.wikipedia.org/wiki/Web_Mercator">Web Mercator 投影</a><a class="footnote-reference brackets" href="#id23" id="id13">4</a>。這種投影基本上是麥卡托投影法，只是投影模型中地球的形狀從一般麥卡托投影的「橢球形」變成了「正球形」。不管如何，GMT 很貼心的為這種檔案格式提供了轉檔的指令
+<code class="docutils literal notranslate"><span class="pre">img2grd</span></code>，用法大致如下：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ img2grd 輸入img檔名 -G輸出grd檔名 -R欲轉換的區域 <span class="o">[</span>-M<span class="o">]</span>
+</pre></div>
+</div>
+<p>如果不加 <code class="docutils literal notranslate"><span class="pre">-M</span></code> 選項，程式會進行座標轉換，使輸出檔以經緯度表示；如果加上 <code class="docutils literal notranslate"><span class="pre">-M</span></code> 選項，程式不會進行座標轉換，輸出檔仍然是 Web Mercator 投影座標。由於 Web Mercator 投影和一般的麥卡托投影只差在地球的形狀不同，如果我們<strong>最終的地圖要採用任何一種麥卡托投影法的話，可以加上</strong> <code class="docutils literal notranslate"><span class="pre">-M</span></code> <strong>以節省運算時間和避免網格重新取樣產生的誤差</strong>。考慮我們要用的投影是 <code class="docutils literal notranslate"><span class="pre">-Jm</span></code> (麥卡托投影)，這裡我們選擇加上 <code class="docutils literal notranslate"><span class="pre">-M</span></code>。完整的轉檔及簡略的繪圖指令大概就如下所示：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ==== 設定變數 ====</span>
+<span class="nv">out_ps</span><span class="o">=</span><span class="s2">&quot;hawaiian-emperor.ps&quot;</span>
+<span class="nv">in_img</span><span class="o">=</span><span class="s2">&quot;grav.img.23.1&quot;</span>              <span class="c1"># 重力資料的來源</span>
+<span class="nv">in_grd</span><span class="o">=</span><span class="s2">&quot;grav_hawaiian.grd&quot;</span>          <span class="c1"># 重力資料的 grd 轉檔</span>
+
+<span class="c1"># ==== 轉檔 ====</span>
+img2grd <span class="nv">$in_img</span> -M -G<span class="nv">$in_grd</span> -R150/210/15/60
+    <span class="c1"># 150/210/15/60 為本次的製圖區域，我們只需要此區域的 grd 檔即可</span>
+
+<span class="c1"># ==== 繪圖 ====</span>
+grdimage <span class="nv">$in_grd</span> -Jx0.25c -P &gt; <span class="nv">$out_ps</span>
+    <span class="c1"># 注意：1. 因為已經是麥卡托投影的網格了，不用再投影一次，所以使用 -Jx (直角座標) 即可。</span>
+    <span class="c1">#      2. 注意這裡我們沒有加上 -R 指令，這樣會以網格檔本身的四邊區域進行繪圖</span>
+    <span class="c1">#         (也就是繪製整個網格)。</span>
+    <span class="c1">#      3. 這裡我們使用小寫的 -Jx，意味著每度距離是 0.25 公分。由於地圖水平橫跨 60 度，</span>
+    <span class="c1">#         橫向的寬度就會是 15 公分。</span>
+</pre></div>
+</div>
+<a class="reference external image-reference" href="_images/hillshading_fig1.png"><img alt="../_images/hillshading_fig1_s.png" src="../_images/hillshading_fig1_s.png" /></a>
+<p><code class="docutils literal notranslate"><span class="pre">grdimage</span></code> 預設的色階是 <code class="docutils literal notranslate"><span class="pre">rainbow</span></code>，地圖會一片藍的原因是網格檔中有幾個地方的數值特別高。因此，我們要換上從 <a class="reference external" href="http://soliton.vm.bytemark.co.uk/pub/cpt-city">cpt-city</a> 找來的色階檔 <code class="docutils literal notranslate"><span class="pre">Spectral</span></code>，並且調整色階讓地圖能夠傳達更多資訊。<code class="docutils literal notranslate"><span class="pre">Spectral</span></code> 色階檔可以<a class="reference external" href="http://soliton.vm.bytemark.co.uk/pub/cpt-city/jjg/polarity/tn/Spectral.png.index.html">由此</a>或是以下連結下載：</p>
+<p><a class="reference download internal" download="" href="../_downloads/6bb0fe9429e716062dd5282d06762fa8/Spectral.cpt"><code class="xref download docutils literal notranslate"><span class="pre">Spectral.cpt</span></code></a></p>
+<img alt="../_images/hillshading_fig2.png" class="align-center" src="../_images/hillshading_fig2.png" />
+</section>
+<section id="id15">
+<h2><span class="section-number">4.4. </span>Procedure<a class="headerlink" href="#id15" title="Permalink to this headline">#</a></h2>
+<p>我們先使用 <code class="docutils literal notranslate"><span class="pre">grd2cpt</span></code> 製作合適的色階檔，再重畫一次剛才的網格：(如果你對 <code class="docutils literal notranslate"><span class="pre">grd2cpt</span></code> 不熟悉，在「<a class="reference internal" href="editing_cpt_colorbar.html"><span class="doc">Edit CPT and Colorbar</span></a>」可以找到更多介紹。)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ==== 設定變數 ====</span>
+<span class="nv">out_ps</span><span class="o">=</span><span class="s2">&quot;hawaiian-emperor.ps&quot;</span>
+<span class="nv">in_grd</span><span class="o">=</span><span class="s2">&quot;grav_hawaiian.grd&quot;</span>
+<span class="nv">master_cpt</span><span class="o">=</span><span class="s2">&quot;Spectral.cpt&quot;</span>           <span class="c1"># cpt 的來源</span>
+<span class="nv">in_cpt</span><span class="o">=</span><span class="s2">&quot;hawaiian-emperor.cpt&quot;</span>       <span class="c1"># cpt 輸入檔</span>
+
+<span class="c1"># ==== 製作 cpt 檔 ====</span>
+grd2cpt <span class="nv">$in_grd</span> -C<span class="nv">$master_cpt</span> -S44 -I &gt; <span class="nv">$in_cpt</span>
+    <span class="c1"># -S: 依照網格檔的像素分佈，對應累積常態分佈 (CDF of Normal Distribution) 的機率值，</span>
+    <span class="c1">#     把色階分成 n 種顏色。色階中段的顏色在地圖上所佔的比例，會比色階兩端的顏色來得多一點。</span>
+    <span class="c1"># -I: 反轉色階。原本的色階紅色對應低值，藍色對應高值，但這與地形圖常見的慣例相反。</span>
+    <span class="c1">#     加上 -I 之後，藍色會被用於較低的值，紅色會被用於較高的值。</span>
+
+<span class="c1"># ==== 繪圖 ====</span>
+grdimage <span class="nv">$in_grd</span> -Jx0.25c -P -C<span class="nv">$in_cpt</span> &gt; <span class="nv">$out_ps</span>
+</pre></div>
+</div>
+<a class="reference external image-reference" href="_images/hillshading_fig3.png"><img alt="../_images/hillshading_fig3_s.png" src="../_images/hillshading_fig3_s.png" /></a>
+<p>這次的輸出看起來好多了，更多細節透過不同的顏色呈現在圖中。這張地圖或許已經可以滿足某些目的，例如找出重力異常值特別高或特別低的地區；但對於相同顏色區塊中數值的變化情形就較無法掌握，例如我們很難判斷在深藍色或深紅色的區塊中，哪裡是數值變化特別劇烈的地區？重力異常的「脊線」與「谷線」的精確所在位置又在哪裡？</p>
+<p>為了在地圖上表示更多資訊，我們可以把這張網格檔假想成「地形面」，當陽光在凹凸不平的「地形」上投射時，有的地方會變得更明亮，而有的地方會產生陰影。也就是說，<strong>我們只要為地圖加上「明暗程度」，就能適當的在地圖上表達數值的起伏情況</strong>，這種技術稱之為「暈渲」(Hillshading)。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果要表示的網格就是地形資料，這類型的地圖又可稱之為「陰影地形圖」(shaded relief map)。</p>
+</div>
+<p>GMT 的暈渲技術要透過 <code class="docutils literal notranslate"><span class="pre">grdgradient</span></code> 來完成。顧名思義，<code class="docutils literal notranslate"><span class="pre">grdgradient</span></code> 原始的功能其實是計算網格檔的「梯度」，但由於「明暗程度」也是梯度的函數，因此現在 <code class="docutils literal notranslate"><span class="pre">grdgradient</span></code> 更常用於製造陰影圖。它的基本語法非常簡單：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ grdgradient 輸入grd檔名 -G輸出陰影檔名 -A光源的方位角 -N常態化參數
+</pre></div>
+</div>
+<p>注意 <code class="docutils literal notranslate"><span class="pre">-A</span></code> 的單位是<a class="reference external" href="https://zh.wikipedia.org/wiki/%E6%96%B9%E4%BD%8D%E8%A7%92">方位角</a>。<code class="docutils literal notranslate"><span class="pre">-N</span></code> 是把梯度值常態化，也就是透過函數把數值規範在某個範圍，好讓輸出檔的數值能夠被 GMT 理解成「陰影的濃淡程度」。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>其實 <code class="docutils literal notranslate"><span class="pre">-A</span></code> 參數的原本意義是計算特定方位角的梯度值，光源在此方向投射的陰影量值就是透過此梯度值換算 (常態化) 而來。</p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">-N</span></code> 的常態化函數有三種選擇，分別是 <code class="docutils literal notranslate"><span class="pre">-N</span></code>、<code class="docutils literal notranslate"><span class="pre">-Ne</span></code> 與 <code class="docutils literal notranslate"><span class="pre">-Nt</span></code>。<code class="docutils literal notranslate"><span class="pre">-N</span></code> 的調整函數是</p>
+<div class="math notranslate nohighlight">
+\[f(x) = a \frac{x - \bar{x}}{\max{| x - \bar{x} |}}\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(x\)</span> 是原本的梯度數值，<span class="math notranslate nohighlight">\(\bar{x}\)</span> 是原本數值的平均值，<span class="math notranslate nohighlight">\(a\)</span> 是給定的振幅，也就是 <code class="docutils literal notranslate"><span class="pre">-N</span></code> 之後接續的常態化參數的數值。<code class="docutils literal notranslate"><span class="pre">-Ne</span></code> 與 <code class="docutils literal notranslate"><span class="pre">-Nt</span></code> 的調整函數則為</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}Ne \Rightarrow f(x) = a (1 - e^{\sqrt{2} \frac{x - \bar{x}}{\sigma_{1}}})\\Nt \Rightarrow f(x) = \frac{2a}{\pi} \arctan{\frac{x - \bar{x}}{\sigma_{2}}}\end{aligned}\end{align} \]</div>
+<p>其中 <span class="math notranslate nohighlight">\(\sigma_{1}\)</span> 和 <span class="math notranslate nohighlight">\(\sigma_{2}\)</span> 分別是 <span class="math notranslate nohighlight">\((x - \bar{x})\)</span> 的 L-1 範數 (Norm) 與 L-2 範數。在這裡，我們要使用 <code class="docutils literal notranslate"><span class="pre">-N10</span></code> 來調整梯度數值，你也可以嘗試使用較大或較小的數值，或是別種調整法來試試看。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>你也可以自訂 <span class="math notranslate nohighlight">\(\bar{x}\)</span> 和 <span class="math notranslate nohighlight">\(\sigma\)</span> 的數值。因此，完整的 <code class="docutils literal notranslate"><span class="pre">-N</span></code> 語法為</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-N<span class="o">[</span>e或t<span class="o">]</span>常態化參數<span class="o">(</span>a<span class="o">)[</span>/sigma<span class="o">[</span>/xbar<span class="o">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>一般來說，<span class="math notranslate nohighlight">\(a\)</span> 值越大，渲染的效果會越明顯。而在相同的 <span class="math notranslate nohighlight">\(a\)</span> 值之下，<code class="docutils literal notranslate"><span class="pre">-N</span></code> 要比 <code class="docutils literal notranslate"><span class="pre">-Nt</span></code> 或 <code class="docutils literal notranslate"><span class="pre">-Ne</span></code> 來的柔和許多，而 <code class="docutils literal notranslate"><span class="pre">-Ne</span></code> 會比 <code class="docutils literal notranslate"><span class="pre">-Nt</span></code>
+更加強化網格數值非常陡峭的區域。在粗略的觀察下，<code class="docutils literal notranslate"><span class="pre">-N10</span></code> 大概與 <code class="docutils literal notranslate"><span class="pre">-Ne1</span></code>
+或 <code class="docutils literal notranslate"><span class="pre">-Nt1</span></code> 的效果相同。</p>
+</div>
+<p>讓我們來製作陰影檔，並且透過 <code class="docutils literal notranslate"><span class="pre">grdimage</span></code> 呈現看看陰影檔的內容，色階檔就使用 <code class="docutils literal notranslate"><span class="pre">gray</span></code> (灰階)：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">in_grd</span><span class="o">=</span><span class="s2">&quot;grav_hawaiian.grd&quot;</span>
+<span class="nv">in_shadow</span><span class="o">=</span><span class="s2">&quot;grav_hawaiian_shade.grd&quot;</span>         <span class="c1"># 陰影檔檔名</span>
+grdgradient <span class="nv">$in_grd</span> -G<span class="nv">$in_shadow</span> -A45 -N10
+grdimage <span class="nv">$in_shadow</span> -Jx0.25c -P -Cgray &gt; shadow.ps
+</pre></div>
+</div>
+<a class="reference external image-reference" href="_images/hillshading_fig4.png"><img alt="../_images/hillshading_fig4_s.png" src="../_images/hillshading_fig4_s.png" /></a>
+<p>這就是陰影檔本身的樣子，透過顏色深淺的不同，清楚的呈現了地形的起伏，像是在海洋地殼上面的火山島，或是海溝的延伸方向等等。暈渲的技術，大致上就是把這層陰影檔圖層，以半透明的方式套疊在原本的網格上，使原本的網格輸出不只可以靠顏色色調判別數值的高低，更可以用顏色深淺來表現細節及鄰近像素的變化。在 GMT 中要繪製暈渲地圖非常的容易，只要透過 <code class="docutils literal notranslate"><span class="pre">grdimage</span></code> 的 <code class="docutils literal notranslate"><span class="pre">-I</span></code> 指令，指定陰影檔即可：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ grdimage 輸入網格 -I輸入網格的陰影檔 -C色階檔 -<span class="o">(</span>其他指令...<span class="o">)</span>
+</pre></div>
+</div>
+<p>現在，就讓我們來畫畫看暈渲地圖，並且使用 <code class="docutils literal notranslate"><span class="pre">pstext</span></code> 在地圖上加入標籤，以及 <code class="docutils literal notranslate"><span class="pre">psscale</span></code> 在地圖上加入色階條：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ==== 設定變數 ====</span>
+<span class="nv">out_ps</span><span class="o">=</span><span class="s2">&quot;hawaiian-emperor.ps&quot;</span>
+<span class="nv">in_grd</span><span class="o">=</span><span class="s2">&quot;grav_hawaiian.grd&quot;</span>          <span class="c1"># 重力資料輸入檔 (由 img2grd 製作)</span>
+<span class="nv">in_shadow</span><span class="o">=</span><span class="s2">&quot;grav_hawaiian_shade.grd&quot;</span> <span class="c1"># 陰影的輸入檔 (由 grdgradient 製作)</span>
+<span class="nv">in_cpt</span><span class="o">=</span><span class="s2">&quot;hawaiian-emperor.cpt&quot;</span>       <span class="c1"># cpt 輸入檔 (由 grd2cpt 製作)</span>
+<span class="nv">pen</span><span class="o">=</span><span class="s2">&quot;thin,black&quot;</span>                    <span class="c1"># 格線的畫筆</span>
+<span class="nv">font</span><span class="o">=</span><span class="s2">&quot;14p,13,black&quot;</span>                 <span class="c1"># 座標刻度的字型</span>
+
+<span class="c1"># ==== 調整 GMT 預設參數 ====</span>
+gmtset <span class="nv">MAP_FRAME_TYPE</span><span class="o">=</span>plain <span class="se">\</span>
+       <span class="nv">MAP_GRID_PEN_PRIMARY</span><span class="o">=</span><span class="nv">$pen</span> <span class="se">\</span>
+       <span class="nv">MAP_TICK_PEN_PRIMARY</span><span class="o">=</span><span class="nv">$pen</span> <span class="se">\</span>
+       <span class="nv">FONT_ANNOT_PRIMARY</span><span class="o">=</span><span class="nv">$font</span> <span class="se">\</span>
+       <span class="nv">FONT_LABEL</span><span class="o">=</span><span class="nv">$font</span> <span class="se">\</span>
+       <span class="nv">FORMAT_GEO_MAP</span><span class="o">=</span>dddF
+<span class="c1"># FONT_LABEL: 地圖上文字標籤的字型設定</span>
+<span class="c1"># 其他參數請參考「版面設計與地圖的幾何布局」</span>
+
+<span class="c1"># ==== 開門 (寫入 PS 檔頭) ====</span>
+psxy -R0/1/0/1 -JX1c -T -K -P &gt; <span class="nv">$out_ps</span>
+
+<span class="c1"># ==== 暈渲地圖 ====</span>
+grdimage <span class="nv">$in_grd</span> -Jx0.25c -O -K -C<span class="nv">$in_cpt</span> -I<span class="nv">$in_shadow</span> -Y3c &gt;&gt; <span class="nv">$out_ps</span>
+    <span class="c1"># 因為在 grdimage 中我們沒指定 -R，因此在畫外框的 psbasemap 中，就必須要指定。</span>
+psbasemap -R150/210/15/60 -J -O -K -Bxa20g180 -Bya20g40 &gt;&gt; <span class="nv">$out_ps</span>
+
+    <span class="c1"># 接下來，我們要標示島鏈的名字。</span>
+    <span class="c1"># 可以使用描邊字以清楚呈現字的內容，語法為</span>
+    <span class="c1"># -F+f(字本體的字型)=(描邊的設定，只有「寬度,顏色」)</span>
+pstext -R -J -O -K -F+a+jCM+f20p,15,black<span class="o">=</span><span class="m">0</span>.5p,white &gt;&gt; <span class="nv">$out_ps</span> <span class="s">&lt;&lt; TEXT1END</span>
+<span class="s">166 40 -81 Emperor Chain</span>
+<span class="s">184 23 -21 Hawaiian Chain</span>
+<span class="s">TEXT1END</span>
+
+    <span class="c1"># 接下來，我們要標示特殊的地點，為了使這些地點醒目，</span>
+    <span class="c1"># 可以使用矩形框把背景蓋住。</span>
+pstext -R -J -O -K -F+a+jCM+f<span class="nv">$font</span> -Givory -Wthin -N -TO &gt;&gt; <span class="nv">$out_ps</span> <span class="s">&lt;&lt; TEXT2END</span>
+<span class="s">209 17 0  Hawaii</span>
+<span class="s">159 56 70 Kamchatka</span>
+<span class="s">190 55 22 Aleutian Islands</span>
+<span class="s">TEXT2END</span>
+    <span class="c1"># -G: 繪製文字標籤的矩形框，並以指定的顏色填色。</span>
+    <span class="c1"># -W: 指定矩形框邊線的畫筆屬性。</span>
+    <span class="c1"># -N: 當矩形框或文字超出地圖邊界時，保持顯示 (不加的話，會切掉所有超出地圖邊界的內容)。</span>
+    <span class="c1"># -T: 指定矩形框的角落樣式，-TO 是圓角框。</span>
+
+    <span class="c1"># 最後在底部畫上色階條，細節請參閱「色階檔的編修與呈現」，</span>
+    <span class="c1"># 標籤文字的上下標格式說明請參閱「XY 點散佈圖」。</span>
+    <span class="c1"># 數值的單位請參考資料來源網站。</span>
+psscale -O -K -C<span class="nv">$in_cpt</span> -D3i/-1.5c/6i/0.5ch -G-1000/1000 <span class="se">\</span>
+        -Bxa500f250+l<span class="s2">&quot;Gravity Anomaly (10@+-4@+ Gal)&quot;</span> &gt;&gt; <span class="nv">$out_ps</span>
+    <span class="c1"># 注意這裡的 -D 選項，作圖點移至 3i/-1.5c 的位置。</span>
+    <span class="c1"># 這意味著色階條的繪圖原點會在上一個繪圖原點 (也就是地圖左下角)</span>
+    <span class="c1"># 的右方 3 英吋、下方 1.5 公分處，因此色階條就會在地圖下方呈現。</span>
+
+<span class="c1"># ==== 關門 (寫入 EOF) ====</span>
+psxy -R -J -O -T &gt;&gt; <span class="nv">$out_ps</span>
+</pre></div>
+</div>
+<a class="reference external image-reference" href="_images/hillshading_fig5.png"><img alt="../_images/hillshading_fig5_s.png" src="../_images/hillshading_fig5_s.png" /></a>
+<p>加上了渲染效果、邊框、文字標籤以及色階條後，地圖看起來變得專業許多。不過你或許會發現還有兩點值得改進：</p>
+<ol class="arabic simple">
+<li><p>地圖北側邊框跑錯位置，看起來像是緯度被壓扁了，而且也不是經緯度格式。</p></li>
+<li><p>如果能加上海岸線，就更能知道此地圖的地理位置與區域背景。</p></li>
+</ol>
+<p>造成第一點問題的原因，是 <code class="docutils literal notranslate"><span class="pre">psbasemap</span></code> 在繪製地圖邊框時，仍然採用 <code class="docutils literal notranslate"><span class="pre">grdimage</span></code> 中的 <code class="docutils literal notranslate"><span class="pre">-Jx</span></code> 舊設定。因此，我們勢必要使用另一種地理投影方法，而且這種方法還能讓 <code class="docutils literal notranslate"><span class="pre">psbasemap</span></code> 繪製的經緯度座標能夠與目前使用 <code class="docutils literal notranslate"><span class="pre">-Jx</span></code> 繪製的座標重合才行。同樣的，如果我們要加上海岸線，就要使用 <code class="docutils literal notranslate"><span class="pre">pscoast</span></code> 指令，但是 <code class="docutils literal notranslate"><span class="pre">pscoast</span></code> 的輸入資料是以經緯度編排的，我們也要提供正確的投影座標系統，才能夠讓海岸線疊在圖上正確的位置。要怎麼設定投影座標系統？我們回想一下重力異常的網格檔是怎麼製造的：</p>
+<ul class="simple">
+<li><p>原始資料是以 Web Mercator 投影座標系統儲存。</p></li>
+<li><p>轉成 <code class="docutils literal notranslate"><span class="pre">.grd</span></code> 檔時。我們設定為不轉換投影法，所以這時資料的投影法不變，不過座標換成以經緯度進行編排。</p></li>
+</ul>
+<p>因此，我們繪製海岸線資料或邊框的經緯度標示時，必須也要使用 Web Mercator 投影法。猶記這種方法與一般的麥卡托投影法基本相等，只差在參考橢球的設定不同。Web Mercator 投影法使用的是正球體，因此，我們只需要使用 <code class="docutils literal notranslate"><span class="pre">gmtset</span></code> 把以下的參數修改為</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">PROJ_ELLIPSOID</span><span class="o">=</span>Sphere
+</pre></div>
+</div>
+<p>即可。使用此設定搭配 <code class="docutils literal notranslate"><span class="pre">-Jm</span></code> 投影，並指定相同的比例尺大小 (<code class="docutils literal notranslate"><span class="pre">0.25c</span></code>)，就可以正確的把外框，或是使用 <code class="docutils literal notranslate"><span class="pre">pscoast</span></code> 畫的海岸線疊合。因此，「暈渲地圖」部份的腳本可以改為</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># (前略)</span>
+gmtset <span class="nv">PROJ_ELLIPSOID</span><span class="o">=</span>Sphere
+
+<span class="c1"># ==== 開門 (寫入 PS 檔頭) ====</span>
+<span class="c1"># (略)</span>
+
+<span class="c1"># ==== 暈渲地圖 ====</span>
+grdimage <span class="nv">$in_grd</span> -Jx0.25c -O -K -C<span class="nv">$in_cpt</span> -I<span class="nv">$in_shadow</span> -Y3c &gt;&gt; <span class="nv">$out_ps</span>
+pscoast -R150/210/15/60 -Dh -A50 -Jm0.25c -O -K -G100 -Wthin <span class="se">\</span>
+        &gt;&gt; <span class="nv">$out_ps</span>
+psbasemap -R -J -O -K -Bxa20g180 -Bya20g40 &gt;&gt; <span class="nv">$out_ps</span>
+<span class="c1"># (後略)</span>
+</pre></div>
+</div>
+<p>就可以正確的把海岸線和邊框疊加到使用 Web Mercator 投影的重力異常地圖上。</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>由於 <code class="docutils literal notranslate"><span class="pre">img2grd</span></code> 在轉檔的時候，緯度方向會出現一點誤差，因此當你使用 <code class="docutils literal notranslate"><span class="pre">grdinfo</span></code>
+查看 <code class="docutils literal notranslate"><span class="pre">grav_hawaiian.grd</span></code> 的時候應該會看到一行說明：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>grav_hawaiian.grd: Remark: Spherical Mercator Projected with -Jm1 -R0/60/14.9925850705/60.0052682687
+</pre></div>
+</div>
+<p>在 <code class="docutils literal notranslate"><span class="pre">-R</span></code> 的後兩個數字就是實際上 <code class="docutils literal notranslate"><span class="pre">grav_hawaiian.grd</span></code> 的緯度實際範圍，我們在使用 <code class="docutils literal notranslate"><span class="pre">pscoast</span></code> 畫海岸線的時候，如要求精確，應使用 <code class="docutils literal notranslate"><span class="pre">-R150/210/14.9925850705/60.0052682687</span></code>，而不是 <code class="docutils literal notranslate"><span class="pre">-R150/210/15/60</span></code>，不過這兩個設定看起來會非常接近就是了。</p>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>本章我們在 <code class="docutils literal notranslate"><span class="pre">-J</span></code> 後一律使用小寫的英文字母 (例如 <code class="docutils literal notranslate"><span class="pre">-Jm</span></code>) 來指定比例尺，也就是每一個網格單位在地圖上的長度。<strong>當資料來源包含不同的投影方式時，應避免使用大寫英文字母</strong> (例如 <code class="docutils literal notranslate"><span class="pre">-JM</span></code>)。這是因為大寫字母指定的是地圖的全寬，而目前 GMT 似乎還沒有辦法很精準的使用地圖全寬來對齊使用不同投影法編排的資料。</p>
+</div>
+</section>
+<section id="id17">
+<h2><span class="section-number">4.5. </span>Script<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h2>
+<p>The final script for our map is:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ==== 設定變數 ====</span>
+<span class="nv">out_ps</span><span class="o">=</span><span class="s2">&quot;hawaiian-emperor.ps&quot;</span>
+<span class="nv">in_img</span><span class="o">=</span><span class="s2">&quot;grav.img.23.1&quot;</span>              <span class="c1"># 重力資料的來源</span>
+<span class="nv">in_grd</span><span class="o">=</span><span class="s2">&quot;grav_hawaiian.grd&quot;</span>          <span class="c1"># 重力資料輸入檔</span>
+<span class="nv">in_shadow</span><span class="o">=</span><span class="s2">&quot;grav_hawaiian_shade.grd&quot;</span> <span class="c1"># 陰影的輸入檔</span>
+<span class="nv">master_cpt</span><span class="o">=</span><span class="s2">&quot;Spectral.cpt&quot;</span>           <span class="c1"># cpt 的來源</span>
+<span class="nv">in_cpt</span><span class="o">=</span><span class="s2">&quot;hawaiian-emperor.cpt&quot;</span>       <span class="c1"># cpt 輸入檔</span>
+<span class="nv">pen</span><span class="o">=</span><span class="s2">&quot;thin,black&quot;</span>                    <span class="c1"># 格線的畫筆</span>
+<span class="nv">font</span><span class="o">=</span><span class="s2">&quot;14p,13,black&quot;</span>                 <span class="c1"># 座標刻度的字型</span>
+
+<span class="c1"># ==== 製作輸入檔 ====</span>
+img2grd <span class="nv">$in_img</span> -M -G<span class="nv">$in_grd</span> -R150/210/15/60
+grdgradient <span class="nv">$in_grd</span> -G<span class="nv">$in_shadow</span> -A45 -N10
+grd2cpt <span class="nv">$in_grd</span> -C<span class="nv">$master_cpt</span> -S44 -I &gt; <span class="nv">$in_cpt</span>
+
+<span class="c1"># ==== 調整 GMT 預設參數 ====</span>
+gmtset <span class="nv">MAP_FRAME_TYPE</span><span class="o">=</span>plain <span class="se">\</span>
+       <span class="nv">MAP_GRID_PEN_PRIMARY</span><span class="o">=</span><span class="nv">$pen</span> <span class="se">\</span>
+       <span class="nv">MAP_TICK_PEN_PRIMARY</span><span class="o">=</span><span class="nv">$pen</span> <span class="se">\</span>
+       <span class="nv">FONT_ANNOT_PRIMARY</span><span class="o">=</span><span class="nv">$font</span> <span class="se">\</span>
+       <span class="nv">FONT_LABEL</span><span class="o">=</span><span class="nv">$font</span> <span class="se">\</span>
+       <span class="nv">FORMAT_GEO_MAP</span><span class="o">=</span>dddF <span class="se">\</span>
+       <span class="nv">PROJ_ELLIPSOID</span><span class="o">=</span>Sphere    <span class="c1"># 對應重力資料輸入檔的投影方式</span>
+
+<span class="c1"># ==== 開門 (寫入 PS 檔頭) ====</span>
+psxy -R0/1/0/1 -JX1c -T -K -P &gt; <span class="nv">$out_ps</span>
+
+<span class="c1"># ==== 暈渲地圖 ====</span>
+grdimage <span class="nv">$in_grd</span> -Jx0.25c -O -K -C<span class="nv">$in_cpt</span> -I<span class="nv">$in_shadow</span> -Y3c &gt;&gt; <span class="nv">$out_ps</span>
+    <span class="c1"># -R 選項是為了與前面的 grdimage 作圖精準重合</span>
+pscoast -R150/210/14.9925850705/60.0052682687 -Dh -A50 -Jm0.25c -O -K -G100 -Wthin <span class="se">\</span>
+        &gt;&gt; <span class="nv">$out_ps</span>
+psbasemap -R -J -O -K -Bxa20g180 -Bya20g40 &gt;&gt; <span class="nv">$out_ps</span>
+    <span class="c1"># 使用描邊字以清楚呈現字的內容</span>
+pstext -R -J -O -K -F+a+jCM+f20p,15,black<span class="o">=</span><span class="m">0</span>.5p,white &gt;&gt; <span class="nv">$out_ps</span> <span class="s">&lt;&lt; TEXT1END</span>
+<span class="s">166 40 -81 Emperor Chain</span>
+<span class="s">184 23 -21 Hawaiian Chain</span>
+<span class="s">TEXT1END</span>
+    <span class="c1"># 比較不重要的區域，可以直接使用矩形框把背景蓋住</span>
+pstext -R -J -O -K -F+a+jCM+f<span class="nv">$font</span> -Givory -Wthin -N -TO &gt;&gt; <span class="nv">$out_ps</span> <span class="s">&lt;&lt; TEXT2END</span>
+<span class="s">209 17 0  Hawaii</span>
+<span class="s">159 56 70 Kamchatka</span>
+<span class="s">190 55 22 Aleutian Islands</span>
+<span class="s">TEXT2END</span>
+psscale -O -K -C<span class="nv">$in_cpt</span> -D3i/-1.5c/6i/0.5ch -G-1000/1000 <span class="se">\</span>
+        -Bxa500f250+l<span class="s2">&quot;Gravity Anomaly (10@+-4@+ Gal)&quot;</span> &gt;&gt; <span class="nv">$out_ps</span>
+
+<span class="c1"># ==== 關門 (寫入 EOF) ====</span>
+psxy -R -J -O -T &gt;&gt; <span class="nv">$out_ps</span>
+<span class="c1"># rm -rf gmt.conf    # &lt;---- 此行可用於消除舊的組態設定檔</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>「繪製暈渲地圖。使用以特殊格式編排的重力異常資料，先經由 <code class="docutils literal notranslate"><span class="pre">img2grd</span></code> 轉成 NetCDF 格式檔案，再藉由 <code class="docutils literal notranslate"><span class="pre">grdgradient</span></code> 產生對應的陰影檔，最後把陰影檔套疊至重力異常地圖上即完成暈渲地圖。為了疊加海岸線與地圖邊框，須調整 GMT 參考橢球體的參數，改成正球體之後，利用一般的麥卡托投影，指定相同的比例尺，就可以正確的疊加新圖層。最後，地圖上也展示了一些文字標籤常使用的技巧。」</p>
+</div>
+<p>Check the <a class="reference internal" href="#id7">final map</a></p>
+</section>
+<section id="id18">
+<h2><span class="section-number">4.6. </span>Exercise<a class="headerlink" href="#id18" title="Permalink to this headline">#</a></h2>
+<ol class="arabic simple">
+<li><p>使用 <a class="reference external" href="https://www.ngdc.noaa.gov/mgg/global/global.html">ETOPO</a> Bedrock 或其他類似的地形高程資料，繪製義大利全區的陰影地形圖。座標可嘗試
+<code class="docutils literal notranslate"><span class="pre">-R6/19/36/47</span></code>。你可以透過陰影地形圖找到幾座火山？</p></li>
+</ol>
+<dl class="footnote brackets">
+<dt class="label" id="id20"><span class="brackets"><a class="fn-backref" href="#id6">1</a></span></dt>
+<dd><p>進一步的解釋與說明，可參閱 A. B. Watts (2001) 所著之 <em>Isostasy and Flexure of the Lithosphere</em>
+的第 4.3 節 (pp. 125-150)。</p>
+</dd>
+<dt class="label" id="id21"><span class="brackets"><a class="fn-backref" href="#id10">2</a></span></dt>
+<dd><p>Sandwell, D. T., R. D. Müller, W. H. F. Smith, E. Garcia, R. Francis,
+<a class="reference external" href="http://www.sciencemag.org/content/346/6205/65">New global marine gravity model from CryoSat-2 and Jason-1 reveals buried tectonic structure</a>,
+Science, Vol. 346, no. 6205, pp. 65-67,
+<a class="reference external" href="http://dx.doi.org/10.1126/science.1258213">doi: 10.1126/science.1258213</a>, 2014.</p>
+</dd>
+<dt class="label" id="id22"><span class="brackets"><a class="fn-backref" href="#id12">3</a></span></dt>
+<dd><p><a class="reference external" href="http://gmtrac.soest.hawaii.edu/doc/5.1.0/gallery/ex27.html">GMT 官方範例 #27</a></p>
+</dd>
+<dt class="label" id="id23"><span class="brackets"><a class="fn-backref" href="#id13">4</a></span></dt>
+<dd><p>事實上這個投影很常見，由於計算速度較快，它是許多線上地圖如 Google Maps 或開放街圖 (OSM) 採用的投影座標。</p>
+</dd>
+</dl>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./main"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="layout_design.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">3. </span>Design Map Layout</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="contour_and_profile.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Contours and Profiles</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+ <div id="disqus_thread"></div> <script> var disqus_config = function () {this.page.url = 'http://gmt-tutorial.org/hillshading.html'; this.page.identifier = 'hillshading'; }; (function() { var d = document, s = d.createElement('script'); s.src = '//gmt-tutorials.disqus.com/embed.js'; s.setAttribute('data-timestamp', +new Date()); (d.head || d.body).appendChild(s); })(); </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By <a href="https://whyjz.github.io/">鄭懷傑 (Whyjay Zheng)</a> | <a href="https://twitter.com/WhyjayZ"><i class="fa-brands fa-twitter"></i></a><br/>
+  
+    Last updated on Jul 27, 2022.<br/>
+    <div class="extra_footer">
+      &copy; 2016-2022. <a href="https://github.com/whyjz/GMT-tutorials/blob/master/LICENSE.md">MIT</a> 
+and <a href="http://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</a> dual licensed. <br>
+Found this tutorial helpful? <a href="https://www.paypal.com/donate?hosted_button_id=68GZNRJ3MZDBE">Buy me a milktea!</a>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

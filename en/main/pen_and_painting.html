@@ -1,0 +1,939 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>3. Pen and Painting &#8212; GMT Tutorials </title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+ <link href='https://fonts.googleapis.com/css?family=Varela Round' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://gmt-tutorials.org/main/pen_and_painting.html" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4. Scatter Plot" href="scatter_plot.html" />
+    <link rel="prev" title="2. Color the Topography" href="coloring_topography.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+ <script type="text/javascript">var _jf = _jf || [];_jf.push(['p','39630']);_jf.push(['_setFont','sourcehansans-tc-light','css','.sourcehansans-tc-light']);_jf.push(['_setFont','sourcehansans-tc-light','alias','sourcehansans-tc']);_jf.push(['_setFont','sourcehansans-tc-light','weight',200]);_jf.push(['_setFont','sourcehansans-tc-regular','css','.sourcehansans-tc-regular']);_jf.push(['_setFont','sourcehansans-tc-regular','alias','sourcehansans-tc']);_jf.push(['_setFont','sourcehansans-tc-regular','weight',400]);_jf.push(['_setFont','cwtexqyuan','css','.cwtexqyuan']);_jf.push(['_setFont','cwtexqyuan','alias','cwtexqyuan']);_jf.push(['_setFont','cwtexqyuan','weight',500]);_jf.push(['_setFont','xingothic-tc-w7','css','.xingothic-tc-w7']);_jf.push(['_setFont','xingothic-tc-w7','alias','xingothic-tc']);_jf.push(['_setFont','xingothic-tc-w7','weight',700]);_jf.push(['_setFont','jf-jinxuan-medium','css','.jf-jinxuan-medium']);_jf.push(['_setFont','jf-jinxuan-medium','alias','jf-jinxuan']);_jf.push(['_setFont','jf-jinxuan-medium','weight',600]);(function(f,q,c,h,e,i,r,d){var k=f._jf;if(k.constructor===Object){return}var l,t=q.getElementsByTagName("html")[0],a=function(u){for(var v in k){if(k[v][0]==u){if(false===k[v][1].call(k)){break}}}},j=/\S+/g,o=/[\t\r\n\f]/g,b=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,g="".trim,s=g&&!g.call("\uFEFF\xA0")?function(u){return u==null?"":g.call(u)}:function(u){return u==null?"":(u+"").replace(b,"")},m=function(y){var w,z,v,u,x=typeof y==="string"&&y;if(x){w=(y||"").match(j)||[];z=t[c]?(" "+t[c]+" ").replace(o," "):" ";if(z){u=0;while((v=w[u++])){if(z.indexOf(" "+v+" ")<0){z+=v+" "}}t[c]=s(z)}}},p=function(y){var w,z,v,u,x=arguments.length===0||typeof y==="string"&&y;if(x){w=(y||"").match(j)||[];z=t[c]?(" "+t[c]+" ").replace(o," "):"";if(z){u=0;while((v=w[u++])){while(z.indexOf(" "+v+" ")>=0){z=z.replace(" "+v+" "," ")}}t[c]=y?s(z):""}}},n;k.push(["_eventActived",function(){p(h);m(e)}]);k.push(["_eventInactived",function(){p(h);m(i)}]);k.addScript=n=function(u,A,w,C,E,B){E=E||function(){};B=B||function(){};var x=q.createElement("script"),z=q.getElementsByTagName("script")[0],v,y=false,D=function(){x.src="";x.onerror=x.onload=x.onreadystatechange=null;x.parentNode.removeChild(x);x=null;a("_eventInactived");B()};if(C){v=setTimeout(function(){D()},C)}x.type=A||"text/javascript";x.async=w;x.onload=x.onreadystatechange=function(G,F){if(!y&&(!x.readyState||/loaded|complete/.test(x.readyState))){y=true;if(C){clearTimeout(v)}x.src="";x.onerror=x.onload=x.onreadystatechange=null;x.parentNode.removeChild(x);x=null;if(!F){setTimeout(function(){E()},200)}}};x.onerror=function(H,G,F){if(C){clearTimeout(v)}D();return true};x.src=u;z.parentNode.insertBefore(x,z)};a("_eventPreload");m(h);n(r,"text/javascript",false,3000)})(this,this.document,"className","jf-loading","jf-active","jf-inactive","//ds.justfont.com/js/stable/v/5.0.2/id/166657211014");</script>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">GMT Tutorials </h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form> <div class="langcenter"> <nav class="menu"> <ul class="clearfix"> <li class="current-item"> <a href="#" class="clicker">English <span class="arrow">&#9660;</span></a> <ul class="sub-menu"> <li><a href="../../main/pen_and_painting.html">中文 (台灣)</a></li> <li><a href="pen_and_painting.html">English</a></li> </ul> </li> </ul> </nav> </div> 
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  入門與概述
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro_install.html">
+   1. GMT / PyGMT Introduction and Installation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="software.html">
+   2. Software and Packages
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="basic_concept.html">
+   3. Basic Concepts and Terms
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  基本繪圖技巧
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="making_first_map.html">
+   1. Make Your First Map
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="coloring_topography.html">
+   2. Color the Topography
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   3. Pen and Painting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="scatter_plot.html">
+   4. Scatter Plot
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  製作各種常見的地圖（基礎）
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="cpt_colormap.html">
+   1. Visualize Raster Data Using a Colormap
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plot_vector_data.html">
+   2. Plot Vector Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="layout_design.html">
+   3. Design Map Layout
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hillshading.html">
+   4. Hillshade Map
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="contour_and_profile.html">
+   5. Contours and Profiles
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="map_elements.html">
+   6. Add Map Elements
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  製作各種常見的地圖（進階）
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="editing_cpt_colorbar.html">
+   1. Edit CPT and Colorbar
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="view3d.html">
+   2. 3D Map
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="focal_mech.html">
+   3. Plot Focal Mechanisms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="draping.html">
+   4. Drape an Image over Topography
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  網格資料處理
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="raster_calculator.html">
+   1. Raster Calculator
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="basic_img_processing.html">
+   2. Basic Image Processing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  數值資料處理
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="stat_histogram.html">
+   1. Statistics and Histogram
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="regression_basics.html">
+   2. Perform Regression Analysis
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  附錄與學習資源
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_credit.html">
+   1. Data credits and References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="command_index.html">
+   2. Command Index
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gallery.html">
+   3. Gallery (Chapter Index)
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/whyjz/GMT-tutorials"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/main/pen_and_painting.rst"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   3.1. Goal
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   3.2. Commands and Techniques
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   3.3. Tasks before plotting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id9">
+   3.4. Procedure
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id13">
+   3.5. Script
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pygmt">
+   3.6. PyGMT script
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id14">
+   3.7. Exercise
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Pen and Painting</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   3.1. Goal
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   3.2. Commands and Techniques
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   3.3. Tasks before plotting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id9">
+   3.4. Procedure
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id13">
+   3.5. Script
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pygmt">
+   3.6. PyGMT script
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id14">
+   3.7. Exercise
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="id1">
+<h1><span class="section-number">3. </span>Pen and Painting<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>This instruction is for the Modern Mode in GMT 6. For making the same map using the GMT 6 Classic Mode or GMT 4-5, <a class="reference external" href="pen_and_painting_gmt5.html">Please go to this page</a> (only final script and partial instruction).</p>
+</div>
+<p>In order to show the data on a map effectively, we should select all the colors and line styles with discretion. Picking the right color and line combination for a map is truly an art - a map maker usually spends much time tweaking their map, and hopes that their map will look pleasing and comfortable. Here we are going to introduce how to manipulate the related settings in GMT, which will make you find your best combination for your map must faster. We will also show how to make a simple colorbar legend on the map in this chapter.</p>
+<section id="id3">
+<h2><span class="section-number">3.1. </span>Goal<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<p>Make a map of Central America. Ocean area is colored based on topography, and the Land area is colored based on countries, as the following map shows. The water area encircled by central America and many islands is <a class="reference external" href="https://en.wikipedia.org/wiki/Caribbean_Sea">Caribbean Sea</a>, and the bay area at the upper left corner is called the <a class="reference external" href="https://en.wikipedia.org/wiki/Gulf_of_Mexico">Gulf of Mexico</a>. On this map, you can quickly locate more than a dozen big countries (in terms of area) and realize that both the Caribbean Sea and the Gulf of Mexico are much shallower than the Atlantic Ocean in the northeast. According to the bathymetry depth colorbar legend, we can also find that the deepest place is in the north of Puerto Rico, at more than 8000 m deep.</p>
+<a class="reference external image-reference" href="_images/central_america_gmt6.png" id="id6"><img alt="../_images/central_america_gmt6_s.png" src="../_images/central_america_gmt6_s.png" /></a>
+<p>Go to the final <a class="reference internal" href="#id13">Script</a></p>
+</section>
+<section id="id7">
+<h2><span class="section-number">3.2. </span>Commands and Techniques<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">coast</span></code> - <strong>fill countries with colors</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">grdimage</span></code> - plot colored image</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">colorbar</span></code> - <strong>plot color bar</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">grdinfo</span></code> - display basic information from a grid file</p></li>
+<li><p>External command <code class="docutils literal notranslate"><span class="pre">grep</span></code> - <strong>find strings in GMT output text</strong> (<code class="docutils literal notranslate"><span class="pre">findstr</span></code> in Windows) (optional)</p></li>
+<li><p>How to specify colors on a map</p></li>
+<li><p>Setting up pen attributes</p></li>
+<li><p>Overlay multiple map layers</p></li>
+<li><p>Use variables in a script to make your script look pretty</p></li>
+<li><p>Use anchor points to specify location to plot the colorbar</p></li>
+</ul>
+</section>
+<section id="id8">
+<h2><span class="section-number">3.3. </span>Tasks before plotting<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h2>
+<p>In this chapter, we will again use the <code class="docutils literal notranslate"><span class="pre">&#64;earth_relief_01m</span></code> dataset from the GMT server. For more details, please see <a class="reference internal" href="coloring_topography.html"><span class="doc">Color the Topography</span></a>. The extent of the desired map is <code class="docutils literal notranslate"><span class="pre">-R-100/1/-50/34r</span></code>, as the following <em>Google Maps</em> screenshot shows. Please see <a class="reference internal" href="making_first_map.html"><span class="doc">Make Your First Map</span></a> for more details about <code class="docutils literal notranslate"><span class="pre">-R</span></code>.</p>
+<img alt="../_images/pen_and_painting_fig1.png" src="../_images/pen_and_painting_fig1.png" />
+</section>
+<section id="id9">
+<h2><span class="section-number">3.4. </span>Procedure<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h2>
+<p>Firstly let’s take a look at our desired map. There are many different elements overlaid with a fixed order in the map. We can generally classify them into four groups, which are (from the bottom to the top)</p>
+<ul class="simple">
+<li><p>Topography map</p></li>
+<li><p>Country blocks</p></li>
+<li><p>Coastline, borders, and grid lines</p></li>
+<li><p>The block for the colorbar legend</p></li>
+</ul>
+<p>Therefore, the commands in our GMT script should follow this order; i.e. your code will look like this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Section <span class="m">1</span>: bathymetry <span class="o">(</span>grdimage<span class="o">)</span>
+Section <span class="m">2</span>: filling of the countries <span class="o">(</span>coast<span class="o">)</span>
+Section <span class="m">3</span>: all lines <span class="o">(</span>coast<span class="o">)</span>
+Section <span class="m">4</span>: color bar <span class="o">(</span>colorbar<span class="o">)</span>
+</pre></div>
+</div>
+<p>You will need to assign a color or a series of colors (color ramp) for both bathymetry and countries. First off, let’s see how to specify a single color. The simplest way, which has been used in the previous chapter, is providing the name of the desired color. GMT supports more than a hundred names of colors, and you can check them out at <a class="reference external" href="https://docs.generic-mapping-tools.org/latest/gmtcolors.html?highlight=gmtcolor#list-of-colors">here</a> and use them directly. For example, the following command</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt coast -Ggreen    <span class="c1"># ... the later part is skipped</span>
+</pre></div>
+</div>
+<p>will fill the land with green. Since we are going to fill the country blocks, we have to use another <code class="docutils literal notranslate"><span class="pre">coast</span></code> option <code class="docutils literal notranslate"><span class="pre">-E</span></code>. The <code class="docutils literal notranslate"><span class="pre">-E</span></code> option reads a database called <a class="reference external" href="https://www.soest.hawaii.edu/pwessel/dcw/">DCW</a> and fills the blocks using the political boundaries data found from the database. Its syntax is</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-E<span class="o">(</span>code1<span class="o">)</span>,<span class="o">(</span>code2<span class="o">)</span>,...+g<span class="o">(</span>fill<span class="o">)</span>+p<span class="o">(</span>pen<span class="o">)</span>
+</pre></div>
+</div>
+<p>Here <code class="docutils literal notranslate"><span class="pre">code</span></code> represents the 2-letter code of country name from <a class="reference external" href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a>. For example, <code class="docutils literal notranslate"><span class="pre">TW</span></code> is Taiwan, and <code class="docutils literal notranslate"><span class="pre">US</span></code> represents the United States. Besides from checking the code table from the Wikipedia, you can also enter the following command and search them in GMT:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt coast -E+l    <span class="c1"># show the 2-letter national code on the screen</span>
+<span class="c1"># or</span>
+$ gmt coast -E+L    <span class="c1"># show the 2-letter national and province code on the screen (only for big countries)</span>
+</pre></div>
+</div>
+<p>There is a useful trick: if you want to search for a specific country (the name is know), you can use <code class="docutils literal notranslate"><span class="pre">grep</span></code>, a built-in command in <code class="docutils literal notranslate"><span class="pre">sh</span></code> to assist the search, like this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt coast -E+l <span class="p">|</span> grep -i japan
+  JP    Japan
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">-i</span></code> option here is to treat upper-case letters the same as lower-case letters. You can see that Japan’s code <code class="docutils literal notranslate"><span class="pre">JP</span></code> appears in the last line.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<ol class="arabic">
+<li><p>If your system is <strong>Windows</strong>, <code class="docutils literal notranslate"><span class="pre">grep</span></code> is not available, but you can use an alternative command <code class="docutils literal notranslate"><span class="pre">findstr</span></code> for the same query. To use it:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt coast -E+l <span class="p">|</span> findstr /i japan
+</pre></div>
+</div>
+</li>
+<li><p>If you want to use <code class="docutils literal notranslate"><span class="pre">grep</span></code> for querying more than one country at once, use the following syntax:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt coast -E+l <span class="p">|</span> grep -i <span class="s1">&#39;japan\|singapore\|zealand&#39;</span>
+</pre></div>
+</div>
+<p>And the command will find the code for Japan, Singapore, and New Zealand, all at once.</p>
+</li>
+</ol>
+</div>
+<p>And the next task is to fill <strong>colors</strong>. GMT supports six ways to represent colors:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;green&quot;</span>         <span class="c1"># 1. Color name</span>
+<span class="s2">&quot;255/99/71&quot;</span>     <span class="c1"># 2. R/G/B value (from 0 to 255). This is tomato color</span>
+<span class="s2">&quot;#87CEEE&quot;</span>       <span class="c1"># 3. HTML color representation (#RRGGBB，hexadecimal). This is sky blue</span>
+<span class="s2">&quot;25-0.86-0.82&quot;</span>  <span class="c1"># 4. H-S-V value (H from 0 to 255; S and V from 0 to 1). This is chocolate color</span>
+<span class="s2">&quot;8/8/0/2&quot;</span>       <span class="c1"># 5. C/M/Y/K value (in percentage). This is lavender</span>
+<span class="s2">&quot;169&quot;</span>           <span class="c1"># 6. Grayscale number. This one is equivalent to 169/169/169 in R/G/B</span>
+</pre></div>
+</div>
+<p>You can use whichever way you like to specify colors. Here we try to fill Mexico (code <code class="docutils literal notranslate"><span class="pre">MX</span></code>) with brick red using HTML code <code class="docutils literal notranslate"><span class="pre">#CD5C5C</span></code> as following:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt coast -R-100/1/-50/34r -JM15c -EMX+g#CD5C5C -png central_america    <span class="c1"># the map is 15 cm wide</span>
+</pre></div>
+</div>
+<p>In the output PNG, you can see that the land area of Mexico has turned into brick red.</p>
+<img alt="../_images/pen_and_painting_gmt6_fig2.png" src="../_images/pen_and_painting_gmt6_fig2.png" />
+<p>Since we are going to use many different colors for different countries, we can specify those colors and the corresponding countries in variables and use them later when running <code class="docutils literal notranslate"><span class="pre">coast</span></code>. This not only makes your code look clean and pretty, but also more convenient for later editing. The ways to assign variables are slightly different from shell to shell, and here we will use <code class="docutils literal notranslate"><span class="pre">bash</span></code> as an example. You can use the following expression to assign and access your variable:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">variable_name</span><span class="o">=</span><span class="s1">&#39;variable_content&#39;</span>     <span class="c1"># assigning a variable</span>
+<span class="si">${</span><span class="nv">variable_name</span><span class="si">}</span>            <span class="c1"># accessing a variable (&quot;variable_name&quot; will be substituted by &quot;variable_content&quot;)</span>
+</pre></div>
+</div>
+<p>Use the syntax to our example and the code will look like:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">color1</span><span class="o">=</span><span class="s1">&#39;#CD5C5C&#39;</span>
+<span class="nv">colorgroup1</span><span class="o">=</span><span class="s1">&#39;MX,BR,PA,DO&#39;</span>
+gmt coast -R-100/1/-50/34r -JM15c -E<span class="si">${</span><span class="nv">colorgroup1</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color1</span><span class="si">}</span> -png central_america
+</pre></div>
+</div>
+<p>This code snippet can paint Mexico (<code class="docutils literal notranslate"><span class="pre">MX</span></code>), Brazil (<code class="docutils literal notranslate"><span class="pre">BR</span></code>), Panama (<code class="docutils literal notranslate"><span class="pre">PA</span></code>), and Dominican (<code class="docutils literal notranslate"><span class="pre">DO</span></code>) with brick red at once. If you want to change the color or the country list, you only need to change the content of <code class="docutils literal notranslate"><span class="pre">colorgroup1</span></code> or <code class="docutils literal notranslate"><span class="pre">color1</span></code> and leave the <code class="docutils literal notranslate"><span class="pre">coast</span></code> command the same.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<ol class="arabic simple">
+<li><p>A different command-line environment has a different way to set up variables, and this is not an easy topic regarding which one you are using. Here we will only focus on the GMT commands. For the details of using variables, please refer to some websites or books designed for your shell, e.g., cmd, bash or csh.</p></li>
+<li><p>There are many online palettes, such as <a class="reference external" href="http://html-color-codes.info/">HTML color codes</a>, which helps you pick the color you want. After you decide the color from the website, you can simply copy the color code and paste it to the variables in the script. Have fun hunting for colors!</p></li>
+</ol>
+</div>
+<p>Next, we are going to use the same way to fill all the neighboring countries with color. As the <a class="reference external" href="coloring_topography.html">previous chapter</a> shows, we firstly use <code class="docutils literal notranslate"><span class="pre">grdimage</span></code> to plot bathymetry, and then use <code class="docutils literal notranslate"><span class="pre">coast</span></code> to fill everything on the map:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ==== Setting up colors and corresponding countries ====</span>
+<span class="c1"># mexico, brazil, costa rica, dominican</span>
+<span class="nv">color1</span><span class="o">=</span><span class="s1">&#39;#CD5C5C&#39;</span>
+<span class="nv">colorgroup1</span><span class="o">=</span><span class="s1">&#39;MX,BR,CR,DO&#39;</span>
+<span class="c1"># guatemala, venezuela, jamaica, french guiana, bahamas</span>
+<span class="nv">color2</span><span class="o">=</span><span class="s1">&#39;pink&#39;</span>
+<span class="nv">colorgroup2</span><span class="o">=</span><span class="s1">&#39;GT,JM,VE,GF,BS&#39;</span>
+<span class="c1"># united states, puerto rico, nicaragua, guyana</span>
+<span class="nv">color3</span><span class="o">=</span><span class="s1">&#39;240/230/140&#39;</span>
+<span class="nv">colorgroup3</span><span class="o">=</span><span class="s1">&#39;US,PR,NI,GY&#39;</span>
+<span class="c1"># belize, haiti, trinidad and tobago, panama, salvador</span>
+<span class="nv">color4</span><span class="o">=</span><span class="s1">&#39;0/36/74/4&#39;</span>
+<span class="nv">colorgroup4</span><span class="o">=</span><span class="s1">&#39;BZ,HT,TT,PA,SV&#39;</span>
+<span class="c1"># colombia, cuba, honduras, suriname</span>
+<span class="nv">color5</span><span class="o">=</span><span class="s1">&#39;97-0.52-0.94&#39;</span>
+<span class="nv">colorgroup5</span><span class="o">=</span><span class="s1">&#39;CO,CU,HN,SR&#39;</span>
+<span class="c1"># 其他國家</span>
+<span class="nv">color0</span><span class="o">=</span><span class="s1">&#39;169&#39;</span>
+
+<span class="c1"># ==== Main commands ====</span>
+gmt begin central_america png
+    gmt grdimage @earth_relief_01m -JB-80.27/8.58/-8/24/15c -R-100/1/-50/34r -Cgeo
+    gmt coast -G<span class="si">${</span><span class="nv">color0</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup1</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color1</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup2</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color2</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup3</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color3</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup4</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color4</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup5</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color5</span><span class="si">}</span>
+gmt end
+</pre></div>
+</div>
+<p>Note that in <code class="docutils literal notranslate"><span class="pre">grdimage</span></code>, we choose <code class="docutils literal notranslate"><span class="pre">B</span></code> for the <code class="docutils literal notranslate"><span class="pre">-J</span></code> option. This is a different map projection called <a class="reference external" href="https://en.wikipedia.org/wiki/Albers_projection">Albers Projection</a>. Albers projection is a conic projection that keeps everywhere on the map staying in their original size. Its syntax goes like this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-JB<span class="o">[</span>center_lon<span class="o">]</span>/<span class="o">[</span>center_lat<span class="o">]</span>/<span class="o">[</span>upper_bond_lat<span class="o">]</span>/<span class="o">[</span>lower_bond_lat<span class="o">]</span>/<span class="o">[</span>map_width<span class="o">]</span>
+</pre></div>
+</div>
+<p>As we mentioned in <a class="reference internal" href="coloring_topography.html"><span class="doc">Color the Topography</span></a>, the default <code class="docutils literal notranslate"><span class="pre">-C</span></code> setting (colormap) for topographic data is <code class="docutils literal notranslate"><span class="pre">geo</span></code>. To help readers understand the settings used in the map, we use <code class="docutils literal notranslate"><span class="pre">-Cgeo</span></code> explicitly. In fact, GMT still uses the same colormap without adding <code class="docutils literal notranslate"><span class="pre">geo</span></code>, or even without <code class="docutils literal notranslate"><span class="pre">-C</span></code>. In the <code class="docutils literal notranslate"><span class="pre">Setting</span> <span class="pre">up</span> <span class="pre">colors</span> <span class="pre">and</span> <span class="pre">corresponding</span> <span class="pre">countries</span></code> section, we specify 6 colors and 22 countries. The gray <code class="docutils literal notranslate"><span class="pre">color0</span></code> is used for other countries in the map area. In the <code class="docutils literal notranslate"><span class="pre">Main</span> <span class="pre">commands</span></code> section, we firstly use <code class="docutils literal notranslate"><span class="pre">-G</span></code> to paint all land areas in gray, and then use <code class="docutils literal notranslate"><span class="pre">-E</span></code> for coloring each country. You may notice that all the <code class="docutils literal notranslate"><span class="pre">-E</span></code> options can be assigned in a single <code class="docutils literal notranslate"><span class="pre">coast</span></code> command, which saves your time from entering the <code class="docutils literal notranslate"><span class="pre">coast</span></code> command multiple times. Run the script, and you should get the output map like this:</p>
+<a class="reference external image-reference" href="_images/pen_and_painting_gmt6_fig3.png"><img alt="../_images/pen_and_painting_gmt6_fig3_s.png" src="../_images/pen_and_painting_gmt6_fig3_s.png" /></a>
+<p>The next thing is to draw coastlines and country borderlines so that these countries will jump out. In <a class="reference internal" href="making_first_map.html"><span class="doc">Make Your First Map</span></a>, we mentioned that the “pen attributes” of a line consist of three parts: <code class="docutils literal notranslate"><span class="pre">thickness,color,style</span></code>. <code class="docutils literal notranslate"><span class="pre">thickness</span></code> can be predefined names, such as <code class="docutils literal notranslate"><span class="pre">thinner</span></code>, <code class="docutils literal notranslate"><span class="pre">thickest</span></code>, or <code class="docutils literal notranslate"><span class="pre">fat</span></code>. There are 12 names for thickness, and <a class="reference external" href="https://docs.generic-mapping-tools.org/latest/cookbook/features.html?highlight=pen%20attributes#specifying-pen-attributes">you can check them up here</a>. If you would like to specify thickness manually, you can use units like <code class="docutils literal notranslate"><span class="pre">c</span></code> (cm), <code class="docutils literal notranslate"><span class="pre">i</span></code> (inch), <code class="docutils literal notranslate"><span class="pre">p</span></code> (pt). For example, <code class="docutils literal notranslate"><span class="pre">0.1c</span></code> stands for 0.1 cm. The <code class="docutils literal notranslate"><span class="pre">color</span></code> of the pen uses the same color code system we said earlier in this chapter, so just use any expression you like. The <code class="docutils literal notranslate"><span class="pre">style</span></code> of the pen is a solid, continuous line, and you can freely combine <code class="docutils literal notranslate"><span class="pre">-</span></code> (dash) and <code class="docutils literal notranslate"><span class="pre">.</span></code> (dot) to generate the line style you want. For example, <code class="docutils literal notranslate"><span class="pre">-..</span></code> means a line with two dots lying in between two dashes. Here are more examples:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>thinner,green,-     <span class="c1"># green, thin solid line (0.5 pt)</span>
+3p,100/0/100,.      <span class="c1"># deep purple dotted line in 3 pt wide</span>
+1c,#555555,--..     <span class="c1"># gray, &quot;--..&quot; styled line in 1 cm wide</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">coast</span></code> has three options that plot lines. They are:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-I<span class="o">[</span>number<span class="o">]</span>/<span class="o">[</span>pen<span class="o">]</span>          <span class="c1"># Draw rivers</span>
+-N<span class="o">[</span>number<span class="o">]</span>/<span class="o">[</span>pen<span class="o">]</span>          <span class="c1"># Draw political borders</span>
+-W<span class="o">[</span>number<span class="o">]</span>/<span class="o">[</span>pen<span class="o">]</span>          <span class="c1"># Draw shorelines</span>
+</pre></div>
+</div>
+<p>We have already introduced <code class="docutils literal notranslate"><span class="pre">-I</span></code> and <code class="docutils literal notranslate"><span class="pre">-N</span></code> in <a class="reference internal" href="coloring_topography.html"><span class="doc">Color the Topography</span></a>. The number in <code class="docutils literal notranslate"><span class="pre">-W</span></code> can be <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">2</span></code>, <code class="docutils literal notranslate"><span class="pre">3</span></code>, or <code class="docutils literal notranslate"><span class="pre">4</span></code>, representing coastline, lake shoreline, shoreline of island-in-a-lake, and shoreline of lake-on-an-island-in-a-lake, respectively. Here we can use <code class="docutils literal notranslate"><span class="pre">coast</span></code> again to draw coastlines and country borders using <code class="docutils literal notranslate"><span class="pre">thinner</span></code> thickness, and also place <code class="docutils literal notranslate"><span class="pre">-Bafg</span></code> to draw the map frame and gridlines:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># (skipped)</span>
+<span class="c1"># ==== Main commands ====</span>
+gmt begin central_america png
+    gmt grdimage @earth_relief_01m -JB-80.27/8.58/-8/24/15c -R-100/1/-50/34r -Cgeo
+    gmt coast -G<span class="si">${</span><span class="nv">color0</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup1</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color1</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup2</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color2</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup3</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color3</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup4</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color4</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup5</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color5</span><span class="si">}</span>
+    gmt coast -W1/thinner -N1/thinner -Di -Bafg
+gmt end
+</pre></div>
+</div>
+<p>The output map this time looks like this:</p>
+<a class="reference external image-reference" href="_images/pen_and_painting_gmt6_fig4.png"><img alt="../_images/pen_and_painting_gmt6_fig4_s.png" src="../_images/pen_and_painting_gmt6_fig4_s.png" /></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Did you notice that the style of the map frame changed after we used a different map projection? To further set up the map frames, please see <a class="reference internal" href="layout_design.html"><span class="doc">Design Map Layout</span></a> for detailed instruction.</p>
+</div>
+<p>To show the depth of the seafloor, finally we are going add a colorbar legend showing which color corresponds to which depth. In GMT 6, we can use <code class="docutils literal notranslate"><span class="pre">colorbar</span></code> to plot color bars and colorbar legends. (It was called <code class="docutils literal notranslate"><span class="pre">psscale</span></code> in the previous GMT version.) The basic syntax of <code class="docutils literal notranslate"><span class="pre">colorbar</span></code> is:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt colorbar -D<span class="o">[</span>position_and_size<span class="o">]</span> -B<span class="o">[</span>gridline_ticks_labels_etc<span class="o">]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">colorbar</span></code> provides many ways to set up <code class="docutils literal notranslate"><span class="pre">-D</span></code>. Here we are going to use the simplest one:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-Dj<span class="o">[</span>Anchor_point_position<span class="o">]</span>+w<span class="o">[</span>colorbar_length<span class="o">]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">-Dj</span></code> places the color bar in one of the <strong>reference points</strong> inside the map. GMT uses six letters to specify the reference point position: <code class="docutils literal notranslate"><span class="pre">L</span></code> (left), <code class="docutils literal notranslate"><span class="pre">C</span></code> (horizontal central), <code class="docutils literal notranslate"><span class="pre">R</span></code> (right), <code class="docutils literal notranslate"><span class="pre">T</span></code> (top), <code class="docutils literal notranslate"><span class="pre">M</span></code> (vertical middle), and <code class="docutils literal notranslate"><span class="pre">B</span></code> (bottom). We pick one letter from <code class="docutils literal notranslate"><span class="pre">L,</span> <span class="pre">C,</span> <span class="pre">R</span></code> and another letter from <code class="docutils literal notranslate"><span class="pre">T,</span> <span class="pre">M,</span> <span class="pre">B</span></code> and combine them together to get the reference point position:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>LT   CT   RT
+
+LM   CM   RM
+
+LB   CB   RB
+</pre></div>
+</div>
+<p>If we want to place a <code class="docutils literal notranslate"><span class="pre">3</span></code> cm-long color bar in the inner right side of the map, set the <code class="docutils literal notranslate"><span class="pre">-Dj</span></code> option like this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-DjRM+w3c
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">-B</span></code> option in <code class="docutils literal notranslate"><span class="pre">colorbar</span></code> is basically the same from the <code class="docutils literal notranslate"><span class="pre">-B</span></code> option in <code class="docutils literal notranslate"><span class="pre">coast</span></code>. However, we have to adjust the settings of the x axis and y axis separately because a color bar only changes its color along one direction:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-Bx<span class="o">[</span>gridline and ticks <span class="o">(</span>afg settings<span class="o">)]</span>+l<span class="o">[</span>label at the tick side<span class="o">]</span> -By+l<span class="o">[</span>label at the end of the colorbar<span class="o">]</span>
+</pre></div>
+</div>
+<p>Here we try to use <code class="docutils literal notranslate"><span class="pre">-Bx3000</span></code> (this number will be applied to all the <code class="docutils literal notranslate"><span class="pre">afg</span></code> settings) and <code class="docutils literal notranslate"><span class="pre">-By+lm</span></code> (place <code class="docutils literal notranslate"><span class="pre">m</span></code> at one side of the color bar). We don’t plan to place anything at the side of map ticks so that we can omit <code class="docutils literal notranslate"><span class="pre">+l</span></code> in <code class="docutils literal notranslate"><span class="pre">-Bx</span></code>. Place the <code class="docutils literal notranslate"><span class="pre">colorbar</span></code> command after <code class="docutils literal notranslate"><span class="pre">coast</span></code> to ensure it is plotted at the top of the map:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># (skipped)</span>
+<span class="c1"># ==== Main commands ====</span>
+gmt begin central_america png
+    gmt grdimage @earth_relief_01m -JB-80.27/8.58/-8/24/15c -R-100/1/-50/34r -Cgeo
+    gmt coast -G<span class="si">${</span><span class="nv">color0</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup1</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color1</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup2</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color2</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup3</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color3</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup4</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color4</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup5</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color5</span><span class="si">}</span>
+    gmt coast -W1/thinner -N1/thinner -Di -Bafg
+    gmt colorbar -DjRM+w3c -Bx3000 -By+lm
+gmt end
+</pre></div>
+</div>
+<a class="reference external image-reference" href="_images/pen_and_painting_gmt6_fig5.png"><img alt="../_images/pen_and_painting_gmt6_fig5_s.png" src="../_images/pen_and_painting_gmt6_fig5_s.png" /></a>
+<p>So far, our map is nearly finished. The rest of the work is to make the colorbar legend more visible and more readable. Since it is not clear to see when the colorbar is plotted on the dark sea bed, we can fill the background of the colorbar with a transparent white color and add the contrast to black lines and words. <code class="docutils literal notranslate"><span class="pre">colorbar</span></code> uses the following option to fill background:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-F+g<span class="o">[</span>color<span class="o">]</span>
+</pre></div>
+</div>
+<p>To specify <strong>transparency</strong>, what you need is simply to add <code class="docutils literal notranslate"><span class="pre">&#64;[transparency%]</span></code>. <code class="docutils literal notranslate"><span class="pre">&#64;100</span></code> means completely transparent (which equals nothing), and <code class="docutils literal notranslate"><span class="pre">&#64;0</span></code> means completely non-transparent (which equals to the original fill color.) Here we use <code class="docutils literal notranslate"><span class="pre">-F+gwhite&#64;50</span></code> to achieve our goal. Besides, Our land topography is overlaid by the country color blocks so that the upper part of the colorbar (0 to 5000 m) is useless information. To skip drawing this part, we can use <code class="docutils literal notranslate"><span class="pre">-G</span></code> option for specifying the range of the color bar to be plotted, like this</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-G<span class="o">[</span>min_value<span class="o">]</span>/<span class="o">[</span>max_value<span class="o">]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">max_value</span></code> can be set to the sea level (<code class="docutils literal notranslate"><span class="pre">0</span></code>), but what about the minimum value? Don’t forget that we can use <code class="docutils literal notranslate"><span class="pre">grdinfo</span></code> to look at the information of the grid file, but we have to use the geographic area (<code class="docutils literal notranslate"><span class="pre">-R</span></code>) of interest this time:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt grdinfo @earth_relief_01m -R-100/1/-50/34r
+<span class="c1"># (skipped)</span>
+/home/whyj/.gmt/server/earth_relief_01m.grd: x_min: -100 x_max: -50 x_inc: <span class="m">0</span>.0166666666667 <span class="o">(</span><span class="m">1</span> min<span class="o">)</span> name: longitude n_columns: <span class="m">3001</span>
+/home/whyj/.gmt/server/earth_relief_01m.grd: y_min: <span class="m">1</span> y_max: <span class="m">34</span> y_inc: <span class="m">0</span>.0166666666667 <span class="o">(</span><span class="m">1</span> min<span class="o">)</span> name: latitude n_rows: <span class="m">1981</span>
+/home/whyj/.gmt/server/earth_relief_01m.grd: z_min: -8434 z_max: <span class="m">5310</span> name: elevation <span class="o">(</span>m<span class="o">)</span>
+<span class="c1"># (skipped)</span>
+</pre></div>
+</div>
+<p>The value for <code class="docutils literal notranslate"><span class="pre">z_min</span></code> is the minimum value in the search region. Therefore, we will use <code class="docutils literal notranslate"><span class="pre">-8434</span></code> as the <code class="docutils literal notranslate"><span class="pre">min_value</span></code>. The full option is <code class="docutils literal notranslate"><span class="pre">-G-8434/0</span></code>. Add <code class="docutils literal notranslate"><span class="pre">-G</span></code> and <code class="docutils literal notranslate"><span class="pre">-F</span></code> options into your <code class="docutils literal notranslate"><span class="pre">colorbar</span></code> command``, and voila! Your map is done.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>By default, <code class="docutils literal notranslate"><span class="pre">colorbar</span></code> draws the colormap that is most recently used in the script, which is <code class="docutils literal notranslate"><span class="pre">geo</span></code> in this example, If you want to use <code class="docutils literal notranslate"><span class="pre">colorbar</span></code> for plotting a different colorbar, you have to use <code class="docutils literal notranslate"><span class="pre">-C[colormap_name]</span></code> for specifying the colormap to plot.</p></li>
+<li><p>This chapter shows the most basic way to plot the color bar. For advances skills and tips, please see <a class="reference internal" href="editing_cpt_colorbar.html"><span class="doc">Edit CPT and Colorbar</span></a>.</p></li>
+</ol>
+</div>
+</section>
+<section id="id13">
+<h2><span class="section-number">3.5. </span>Script<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h2>
+<p>The final script for our map is:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ==== Setting up colors and corresponding countries ====</span>
+<span class="c1"># mexico, brazil, costa rica, dominican</span>
+<span class="nv">color1</span><span class="o">=</span><span class="s1">&#39;#CD5C5C&#39;</span>
+<span class="nv">colorgroup1</span><span class="o">=</span><span class="s1">&#39;MX,BR,CR,DO&#39;</span>
+<span class="c1"># guatemala, venezuela, jamaica, french guiana, bahamas</span>
+<span class="nv">color2</span><span class="o">=</span><span class="s1">&#39;pink&#39;</span>
+<span class="nv">colorgroup2</span><span class="o">=</span><span class="s1">&#39;GT,JM,VE,GF,BS&#39;</span>
+<span class="c1"># united states, puerto rico, nicaragua, guyana</span>
+<span class="nv">color3</span><span class="o">=</span><span class="s1">&#39;240/230/140&#39;</span>
+<span class="nv">colorgroup3</span><span class="o">=</span><span class="s1">&#39;US,PR,NI,GY&#39;</span>
+<span class="c1"># belize, haiti, trinidad and tobago, panama, salvador</span>
+<span class="nv">color4</span><span class="o">=</span><span class="s1">&#39;0/36/74/4&#39;</span>
+<span class="nv">colorgroup4</span><span class="o">=</span><span class="s1">&#39;BZ,HT,TT,PA,SV&#39;</span>
+<span class="c1"># colombia, cuba, honduras, suriname</span>
+<span class="nv">color5</span><span class="o">=</span><span class="s1">&#39;97-0.52-0.94&#39;</span>
+<span class="nv">colorgroup5</span><span class="o">=</span><span class="s1">&#39;CO,CU,HN,SR&#39;</span>
+<span class="c1"># other countries</span>
+<span class="nv">color0</span><span class="o">=</span><span class="s1">&#39;169&#39;</span>
+
+<span class="c1"># ==== Main commands ====</span>
+gmt begin central_america_gmt6 png
+    gmt grdimage @earth_relief_01m -JB-80.27/8.58/-8/24/15c -R-100/1/-50/34r -Cgeo    <span class="c1"># basemap</span>
+    gmt coast -G<span class="si">${</span><span class="nv">color0</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup1</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color1</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup2</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color2</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup3</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color3</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup4</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color4</span><span class="si">}</span> <span class="se">\</span>
+        -E<span class="si">${</span><span class="nv">colorgroup5</span><span class="si">}</span>+g<span class="si">${</span><span class="nv">color5</span><span class="si">}</span>    <span class="c1"># fill countries with colors</span>
+    gmt coast -W1/thinner -N1/thinner -Di -Bafg    <span class="c1"># boundaries and coastline</span>
+    gmt colorbar -DjRM+w3c -G-8434/0 -Bx3000 -By+lm -F+gwhite@50    <span class="c1"># colorbar legend</span>
+gmt end
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>“Plot the country and bathymetry map – map extent is set to <strong>(100W – 50W，1N – 34N)</strong> in Albers projection and <strong>15</strong> cm wide. We use 6 different colors to fill country blocks and draw borders and coastlines with a thin black line. The bathymetry data come from the <code class="docutils literal notranslate"><span class="pre">&#64;earth_relief_01m</span></code> dataset and are plotted with the <code class="docutils literal notranslate"><span class="pre">geo</span></code> color ramp. Finally, we place a <strong>3-cm-tall</strong> color bar on the right side of the map with tick tables at every 3000 m. The background of the legend is filled with transparent white.”</p>
+</div>
+<p>Check the <a class="reference internal" href="#id6">final map</a></p>
+</section>
+<section id="pygmt">
+<h2><span class="section-number">3.6. </span>PyGMT script<a class="headerlink" href="#pygmt" title="Permalink to this headline">#</a></h2>
+<p>You can make the same map using the following PyGMT script:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pygmt</span>
+
+<span class="c1"># ==== Setting up colors and corresponding countries ====</span>
+<span class="c1"># Here we take the advantage of Python&#39;s dictionary data structure!</span>
+<span class="n">color_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;MX,BR,CR,DO&#39;</span><span class="p">:</span>    <span class="s1">&#39;#CD5C5C&#39;</span><span class="p">,</span>        <span class="c1"># mexico, brazil, costa rica, dominican</span>
+              <span class="s1">&#39;GT,JM,VE,GF,BS&#39;</span><span class="p">:</span> <span class="s1">&#39;pink&#39;</span><span class="p">,</span>           <span class="c1"># guatemala, venezuela, jamaica, french guiana, bahamas</span>
+              <span class="s1">&#39;US,PR,NI,GY&#39;</span><span class="p">:</span>    <span class="s1">&#39;240/230/140&#39;</span><span class="p">,</span>    <span class="c1"># united states, puerto rico, nicaragua, guyana</span>
+              <span class="s1">&#39;BZ,HT,TT,PA,SV&#39;</span><span class="p">:</span> <span class="s1">&#39;0/36/74/4&#39;</span><span class="p">,</span>      <span class="c1"># belize, haiti, trinidad and tobago, panama, salvador</span>
+              <span class="s1">&#39;CO,CU,HN,SR&#39;</span><span class="p">:</span>    <span class="s1">&#39;97-0.52-0.94&#39;</span><span class="p">}</span>   <span class="c1"># colombia, cuba, honduras, suriname</span>
+
+<span class="n">color0</span> <span class="o">=</span> <span class="s1">&#39;169&#39;</span>  <span class="c1"># other countries</span>
+<span class="n">dcw_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">key</span> <span class="o">+</span> <span class="s1">&#39;+g&#39;</span> <span class="o">+</span> <span class="n">value</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">color_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+
+<span class="c1"># ==== Get the Earth relief data ====</span>
+<span class="n">region</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">50</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="mi">34</span><span class="p">]</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">pygmt</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">load_earth_relief</span><span class="p">(</span><span class="n">resolution</span><span class="o">=</span><span class="s1">&#39;05m&#39;</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">)</span>
+
+<span class="c1"># ==== Plotting ====</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">pygmt</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">grdimage</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;B-80.27/8.58/-8/24/15c&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;geo&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">coast</span><span class="p">(</span><span class="n">land</span><span class="o">=</span><span class="n">color0</span><span class="p">,</span> <span class="n">dcw</span><span class="o">=</span><span class="n">dcw_list</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">coast</span><span class="p">(</span><span class="n">shorelines</span><span class="o">=</span><span class="s1">&#39;1/thinner&#39;</span><span class="p">,</span> <span class="n">borders</span><span class="o">=</span><span class="s1">&#39;1/thinner&#39;</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="s1">&#39;afg&#39;</span><span class="p">)</span>
+<span class="c1"># Note that we added &#39;+o1c/0&#39; to the original position string to slightly shift the colorbar!</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="s1">&#39;jRM+w3c+o1c/0&#39;</span><span class="p">,</span> <span class="n">truncate</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">8000</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">frame</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x3000&#39;</span><span class="p">,</span> <span class="s1">&#39;y+lm&#39;</span><span class="p">],</span> <span class="n">box</span><span class="o">=</span><span class="s1">&#39;+gwhite@50&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;central_america_pygmt.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can use the following Binder link to try this code:</p>
+<a class="reference external image-reference" href="https://mybinder.org/v2/gh/whyjz/GMT-tutorials/HEAD?filepath=SOURCE_DOCS%2Fpen_and_painting%2Fcentral_america_pygmt.ipynb"><img alt="https://mybinder.org/badge_logo.svg" src="https://mybinder.org/badge_logo.svg" /></a>
+</section>
+<section id="id14">
+<h2><span class="section-number">3.7. </span>Exercise<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h2>
+<ol class="arabic simple">
+<li><p>Using a similar fashion from the map in this chapter, make a map of <em>South China Sea</em> showing topography and the nearby countries. Use the coordinate <code class="docutils literal notranslate"><span class="pre">95E</span> <span class="pre">to</span> <span class="pre">123E</span></code> and <code class="docutils literal notranslate"><span class="pre">0N</span> <span class="pre">to</span> <span class="pre">26N</span></code>. You can choose colors from this chapter or design your favorite color combination.</p></li>
+<li><p>Is there any way to fill Hong Kong and Hainan Island with a different color from China?</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./main"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="coloring_topography.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">2. </span>Color the Topography</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="scatter_plot.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Scatter Plot</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+ <div id="disqus_thread"></div> <script> var disqus_config = function () {this.page.url = 'http://gmt-tutorial.org/pen_and_painting.html'; this.page.identifier = 'pen_and_painting'; }; (function() { var d = document, s = d.createElement('script'); s.src = '//gmt-tutorials.disqus.com/embed.js'; s.setAttribute('data-timestamp', +new Date()); (d.head || d.body).appendChild(s); })(); </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By <a href="https://whyjz.github.io/">鄭懷傑 (Whyjay Zheng)</a> | <a href="https://twitter.com/WhyjayZ"><i class="fa-brands fa-twitter"></i></a><br/>
+  
+    Last updated on Jul 27, 2022.<br/>
+    <div class="extra_footer">
+      &copy; 2016-2022. <a href="https://github.com/whyjz/GMT-tutorials/blob/master/LICENSE.md">MIT</a> 
+and <a href="http://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</a> dual licensed. <br>
+Found this tutorial helpful? <a href="https://www.paypal.com/donate?hosted_button_id=68GZNRJ3MZDBE">Buy me a milktea!</a>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

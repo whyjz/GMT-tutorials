@@ -1,0 +1,881 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_TW">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>9. 繪製向量式資料 &#8212; GMT 教學手冊</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+ <link href='https://fonts.googleapis.com/css?family=Varela Round' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://gmt-tutorials.org/main/plot_vector_data.html" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜尋" href="../search.html" />
+    <link rel="next" title="10. 版面設計與地圖的幾何布局" href="layout_design.html" />
+    <link rel="prev" title="8. 使用色階表為網格資料著色" href="cpt_colormap.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="zh_TW">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+ <script type="text/javascript">var _jf = _jf || [];_jf.push(['p','39630']);_jf.push(['_setFont','sourcehansans-tc-light','css','.sourcehansans-tc-light']);_jf.push(['_setFont','sourcehansans-tc-light','alias','sourcehansans-tc']);_jf.push(['_setFont','sourcehansans-tc-light','weight',200]);_jf.push(['_setFont','sourcehansans-tc-regular','css','.sourcehansans-tc-regular']);_jf.push(['_setFont','sourcehansans-tc-regular','alias','sourcehansans-tc']);_jf.push(['_setFont','sourcehansans-tc-regular','weight',400]);_jf.push(['_setFont','cwtexqyuan','css','.cwtexqyuan']);_jf.push(['_setFont','cwtexqyuan','alias','cwtexqyuan']);_jf.push(['_setFont','cwtexqyuan','weight',500]);_jf.push(['_setFont','xingothic-tc-w7','css','.xingothic-tc-w7']);_jf.push(['_setFont','xingothic-tc-w7','alias','xingothic-tc']);_jf.push(['_setFont','xingothic-tc-w7','weight',700]);_jf.push(['_setFont','jf-jinxuan-medium','css','.jf-jinxuan-medium']);_jf.push(['_setFont','jf-jinxuan-medium','alias','jf-jinxuan']);_jf.push(['_setFont','jf-jinxuan-medium','weight',600]);(function(f,q,c,h,e,i,r,d){var k=f._jf;if(k.constructor===Object){return}var l,t=q.getElementsByTagName("html")[0],a=function(u){for(var v in k){if(k[v][0]==u){if(false===k[v][1].call(k)){break}}}},j=/\S+/g,o=/[\t\r\n\f]/g,b=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,g="".trim,s=g&&!g.call("\uFEFF\xA0")?function(u){return u==null?"":g.call(u)}:function(u){return u==null?"":(u+"").replace(b,"")},m=function(y){var w,z,v,u,x=typeof y==="string"&&y;if(x){w=(y||"").match(j)||[];z=t[c]?(" "+t[c]+" ").replace(o," "):" ";if(z){u=0;while((v=w[u++])){if(z.indexOf(" "+v+" ")<0){z+=v+" "}}t[c]=s(z)}}},p=function(y){var w,z,v,u,x=arguments.length===0||typeof y==="string"&&y;if(x){w=(y||"").match(j)||[];z=t[c]?(" "+t[c]+" ").replace(o," "):"";if(z){u=0;while((v=w[u++])){while(z.indexOf(" "+v+" ")>=0){z=z.replace(" "+v+" "," ")}}t[c]=y?s(z):""}}},n;k.push(["_eventActived",function(){p(h);m(e)}]);k.push(["_eventInactived",function(){p(h);m(i)}]);k.addScript=n=function(u,A,w,C,E,B){E=E||function(){};B=B||function(){};var x=q.createElement("script"),z=q.getElementsByTagName("script")[0],v,y=false,D=function(){x.src="";x.onerror=x.onload=x.onreadystatechange=null;x.parentNode.removeChild(x);x=null;a("_eventInactived");B()};if(C){v=setTimeout(function(){D()},C)}x.type=A||"text/javascript";x.async=w;x.onload=x.onreadystatechange=function(G,F){if(!y&&(!x.readyState||/loaded|complete/.test(x.readyState))){y=true;if(C){clearTimeout(v)}x.src="";x.onerror=x.onload=x.onreadystatechange=null;x.parentNode.removeChild(x);x=null;if(!F){setTimeout(function(){E()},200)}}};x.onerror=function(H,G,F){if(C){clearTimeout(v)}D();return true};x.src=u;z.parentNode.insertBefore(x,z)};a("_eventPreload");m(h);n(r,"text/javascript",false,3000)})(this,this.document,"className","jf-loading","jf-active","jf-inactive","//ds.justfont.com/js/stable/v/5.0.2/id/166657211014");</script>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">GMT 教學手冊</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form> <div class="langcenter"> <nav class="menu"> <ul class="clearfix"> <li class="current-item"> <a href="#" class="clicker">中文 (台灣) <span class="arrow">&#9660;</span></a> <ul class="sub-menu"> <li><a href="plot_vector_data.html">中文 (台灣)</a></li> <li><a href="../en/main/plot_vector_data.html">English</a></li> </ul> </li> </ul> </nav> </div> 
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  入門與概述
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro_install.html">
+   1. GMT / PyGMT 簡介與安裝
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="software.html">
+   2. 推薦搭配的軟體或套件
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="basic_concept.html">
+   3. 基本概念與名詞
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  基本繪圖技巧
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="making_first_map.html">
+   4. 製作第一張地圖
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="coloring_topography.html">
+   5. 為地形圖上色
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pen_and_painting.html">
+   6. 畫筆與調色技巧
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="scatter_plot.html">
+   7. XY 點散佈圖
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  製作各種常見的地圖（基礎）
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="cpt_colormap.html">
+   8. 使用色階表為網格資料著色
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   9. 繪製向量式資料
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="layout_design.html">
+   10. 版面設計與地圖的幾何布局
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hillshading.html">
+   11. 暈渲地圖
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="contour_and_profile.html">
+   12. 等高線地圖及地形剖面
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="map_elements.html">
+   13. 加入地圖元素
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  製作各種常見的地圖（進階）
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="editing_cpt_colorbar.html">
+   14. 色階檔的編修與呈現
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="view3d.html">
+   15. 3D 視圖
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="focal_mech.html">
+   16. 繪製震源機制解
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="draping.html">
+   17. 在 3D 地形上覆蓋地圖
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  網格資料處理
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="raster_calculator.html">
+   18. 網格計算機
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="basic_img_processing.html">
+   19. 基本影像處理
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  數值資料處理
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="stat_histogram.html">
+   20. 輸出統計資訊與直方圖
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="regression_basics.html">
+   21. 進行迴歸分析
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  附錄與學習資源
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_credit.html">
+   22. 資料來源與參考文獻
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="command_index.html">
+   23. 指令索引
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gallery.html">
+   24. 章節地圖索引
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/whyjz/GMT-tutorials"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/main/plot_vector_data.rst"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   9.1. 目標
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   9.2. 使用的指令與概念
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   9.3. 操作流程
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id11">
+   9.4. 指令稿
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id12">
+   9.5. 習題
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>繪製向量式資料</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   9.1. 目標
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   9.2. 使用的指令與概念
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   9.3. 操作流程
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id11">
+   9.4. 指令稿
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id12">
+   9.5. 習題
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="id1">
+<h1><span class="section-number">9. </span>繪製向量式資料<a class="headerlink" href="#id1" title="本標題的永久連結">#</a></h1>
+<div class="admonition attention">
+<p class="admonition-title">注意</p>
+<p>本教學適用於 GMT 6 的現代模式。如須參閱 GMT 6 (傳統模式) 與 GMT 4-5 繪製相似圖片的教程，<a class="reference external" href="plot_vector_data_gmt5.html">請至這裡</a>。</p>
+</div>
+<p>地理空間資料通常會以網格形式或向量形式儲存。所謂的向量式資料，其實就是描述「點、線、面」位置與形狀的資料。有關於如何繪製點資料的技巧，我們已經在「<a class="reference internal" href="scatter_plot.html"><span class="doc">XY 點散佈圖</span></a>」一章中提及，因此在本章中，將會說明如何利用 GMT 繪製線段以及多邊形、簡介與 GMT 相容的向量式資料檔案格式，以及透明度的設定–這種填色技巧非常適合用在常常需要疊在一起呈現的向量式資料上。</p>
+<section id="id3">
+<h2><span class="section-number">9.1. </span>目標<a class="headerlink" href="#id3" title="本標題的永久連結">#</a></h2>
+<p>繪製一張<a class="reference external" href="https://zh.wikipedia.org/wiki/%E4%B8%83%E5%B7%A7%E6%9D%BF">七巧板</a>的盤面，如下所示。七巧板是一種類似拼圖的玩具，遊玩目標通常是利用 7 個多邊形拼出指定的圖案。這邊拼出的是正方形，也是所有的圖案裡最基本的一種。</p>
+<p>在此圖中，七個多邊形顏色均不相同，但都有黑色邊緣，而且在盤面上還有淡色的棋盤式格子，可以幫助你計算每個多邊形的大小。要讓這些線條與多邊形的顏色同時呈現，我們必須要在色階檔中加上透明度的設定，並且使用不同的出圖指令。</p>
+<a class="reference internal image-reference" href="../_images/tangram_gmt6.png" id="id5"><img alt="../_images/tangram_gmt6.png" class="align-center" id="id5" src="../_images/tangram_gmt6.png" style="width: 1000px;" /></a>
+<p>直接觀看<a class="reference internal" href="#id11">指令稿</a></p>
+</section>
+<section id="id6">
+<h2><span class="section-number">9.2. </span>使用的指令與概念<a class="headerlink" href="#id6" title="本標題的永久連結">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">makecpt</span></code> - <strong>製作含有透明度設定的離散色階檔</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">basemap</span></code> - 設定作圖區的基本資訊</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plot</span></code> - <strong>繪製線段與多邊形</strong></p></li>
+</ul>
+</section>
+<section id="id7">
+<h2><span class="section-number">9.3. </span>操作流程<a class="headerlink" href="#id7" title="本標題的永久連結">#</a></h2>
+<p>在「<a class="reference internal" href="scatter_plot.html"><span class="doc">XY 點散佈圖</span></a>」中我們看到 <code class="docutils literal notranslate"><span class="pre">plot</span></code> 如何處理點資料。如要處理線段資料和多邊形資料，我們可以使用相同的 <code class="docutils literal notranslate"><span class="pre">plot</span></code> 語法：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt plot 輸入檔名稱 <span class="o">[</span>選項...<span class="o">]</span>
+</pre></div>
+</div>
+<p>線段顧名思義，就是很多個頂點連起來的線條。GMT 接受以純文字格式記載的線段資料，如下所示：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># (所有以 # 號開頭的行都會被解讀成註解)</span>
+&gt; <span class="o">[</span>線段 <span class="m">1</span> 的設定<span class="o">]</span>
+線段 <span class="m">1</span> 的頂點 <span class="m">1</span>
+線段 <span class="m">1</span> 的頂點 <span class="m">2</span>
+...
+&gt; <span class="o">[</span>線段 <span class="m">2</span> 的設定<span class="o">]</span>
+線段 <span class="m">2</span> 的頂點 <span class="m">1</span>
+線段 <span class="m">2</span> 的頂點 <span class="m">2</span>
+...
+&gt; <span class="o">[</span>線段 <span class="m">3</span> 的設定<span class="o">]</span>
+...
+</pre></div>
+</div>
+<p>如果是二維線段，頂點就是兩欄資料，分別為 X 座標和 Y 座標。因為是線段，所以每條線至少都要有 2 個頂點。不同線段之間預設以 <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> 符號隔開，符號後方可以接上 <code class="docutils literal notranslate"><span class="pre">-W</span></code> 或者 <code class="docutils literal notranslate"><span class="pre">-Z</span></code>，代表 <code class="docutils literal notranslate"><span class="pre">plot</span></code> 在畫圖時會對這條線使用的繪圖選項：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-W</span></code>：指定畫筆樣式</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-Z</span></code>：藉由給定色階檔的數值指定顏色</p></li>
+</ul>
+<p>詳細的說明請參考<a class="reference external" href="https://docs.generic-mapping-tools.org/6.0/plot.html#segment-header-parsing">這裡</a>。我們就來研究一下，如果要畫出七巧板的背景網格，需要怎麼樣的線段檔案：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; -W3p,black,.
+<span class="m">1</span> <span class="m">0</span>
+<span class="m">1</span> <span class="m">4</span>
+&gt;
+<span class="m">2</span> <span class="m">0</span>
+<span class="m">2</span> <span class="m">4</span>
+&gt;
+<span class="m">3</span> <span class="m">0</span>
+<span class="m">3</span> <span class="m">4</span>
+&gt;
+<span class="m">0</span> <span class="m">1</span>
+<span class="m">4</span> <span class="m">1</span>
+&gt;
+<span class="m">0</span> <span class="m">2</span>
+<span class="m">4</span> <span class="m">2</span>
+&gt;
+<span class="m">0</span> <span class="m">3</span>
+<span class="m">4</span> <span class="m">3</span>
+</pre></div>
+</div>
+<p>在此檔案中，總共有 6 條線段，前三條是直線，後三條是橫線。以第 1 條為例，它是從座標 (1, 0) 到 (1, 4) 的線段。第一條線段的 <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> 符號後面有 <code class="docutils literal notranslate"><span class="pre">-W</span></code> 設定，意味著這條線要使用黑色、點點樣式和 3p 寬度來繪製。之後所有的 <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> 符號後面都沒有任何設定，當 <code class="docutils literal notranslate"><span class="pre">plot</span></code> 在繪圖的時候，會<strong>自動沿用之前已經設定過的參數值</strong>，因此後五條線畫出來的外觀會與第一條相同。把檔案存為 <code class="docutils literal notranslate"><span class="pre">lines.txt</span></code>，然後使用如下指令，就可以畫出背景網格。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt plot lines.txt -R0/4/0/4 -JX15c -png lines
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/plot_vector_data_gmt6_fig1.png"><img alt="../_images/plot_vector_data_gmt6_fig1.png" class="align-center" src="../_images/plot_vector_data_gmt6_fig1.png" style="width: 1000px;" /></a>
+<p>看起來還不錯！接下來讓我們看一下要怎麼畫多邊形。其實多邊形資料與線段大同小異，就是把所有的頂點座標紀錄在檔案內而已；不過，多邊形的頂點數目最少要有 3 個。GMT 可接受的多邊形檔案格式，如下所示：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; <span class="o">[</span>多邊形 <span class="m">1</span> 的設定<span class="o">]</span>
+多邊形 <span class="m">1</span> 的頂點 <span class="m">1</span>
+多邊形 <span class="m">1</span> 的頂點 <span class="m">2</span>
+多邊形 <span class="m">1</span> 的頂點 <span class="m">3</span>
+...
+&gt; <span class="o">[</span>多邊形 <span class="m">2</span> 的設定<span class="o">]</span>
+...
+</pre></div>
+</div>
+<p>分隔符號後方可以接上 <code class="docutils literal notranslate"><span class="pre">-W</span></code>、<code class="docutils literal notranslate"><span class="pre">-Z</span></code> 或 <code class="docutils literal notranslate"><span class="pre">-G</span></code> (詳細的說明請參考<a class="reference external" href="https://docs.generic-mapping-tools.org/6.0/plot.html#segment-header-parsing">這裡</a>)：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-W</span></code>：指定多邊形的外框畫筆樣式</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-Z</span></code>：藉由給定色階檔的數值指定多邊形填色</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-G</span></code>：直接指定多邊形填色</p></li>
+</ul>
+<p>例如，要畫出七巧板上的圖形，我們可以使用如下的檔案內容：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; -Z0
+<span class="m">0</span> <span class="m">0</span>
+<span class="m">2</span> <span class="m">2</span>
+<span class="m">4</span> <span class="m">0</span>
+&gt; -Z3
+<span class="m">0</span> <span class="m">0</span>
+<span class="m">2</span> <span class="m">2</span>
+<span class="m">0</span> <span class="m">4</span>
+&gt; -Z6
+<span class="m">0</span> <span class="m">4</span>
+<span class="m">1</span> <span class="m">3</span>
+<span class="m">2</span> <span class="m">4</span>
+&gt; -Z9
+<span class="m">1</span> <span class="m">3</span>
+<span class="m">2</span> <span class="m">4</span>
+<span class="m">3</span> <span class="m">3</span>
+<span class="m">2</span> <span class="m">2</span>
+&gt; -Z12
+<span class="m">3</span> <span class="m">3</span>
+<span class="m">2</span> <span class="m">2</span>
+<span class="m">3</span> <span class="m">1</span>
+&gt; -Z15
+<span class="m">3</span> <span class="m">1</span>
+<span class="m">3</span> <span class="m">3</span>
+<span class="m">4</span> <span class="m">2</span>
+<span class="m">4</span> <span class="m">0</span>
+&gt; -Z18
+<span class="m">2</span> <span class="m">4</span>
+<span class="m">4</span> <span class="m">2</span>
+<span class="m">4</span> <span class="m">4</span>
+</pre></div>
+</div>
+<p>第一個多邊形是七巧板底部的大三角形，座標從 (0, 0)、(2, 2) 到 (4, 0)，各位可以試試看找出其他六個多邊形分別是什麼形狀。注意在每個多邊形的 <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> 後方都有 <code class="docutils literal notranslate"><span class="pre">-Z</span></code> 設定，代表著我們只要給定色階檔，GMT 就會自動的依照 Z 值與色階檔的對應，為每個多邊形填上不同的顏色。在 GMT 中，有一個稱為「<strong>wysiwyg</strong><a class="footnote-reference brackets" href="#id13" id="id10">1</a>」的色階檔，最適合用來當這種依照數值指定不同種類顏色的參考色階。它的顏色如下所示：</p>
+<img alt="../_images/plot_vector_data_gmt6_fig2.png" class="align-center" src="../_images/plot_vector_data_gmt6_fig2.png" />
+<p>把以上的文字檔案另存成 <code class="docutils literal notranslate"><span class="pre">pieces.txt</span></code>，然後使用如下的指令繪圖：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin pieces png
+    gmt makecpt -Cwysiwyg -T0/20/1    <span class="c1"># 色階數值範圍為 0 至 20，每隔 1 取樣</span>
+    gmt plot pieces.txt -R0/4/0/4 -JX15c -L -C
+gmt end
+</pre></div>
+</div>
+<p>注意這裡的 <code class="docutils literal notranslate"><span class="pre">-L</span></code>，這個參數會告訴 <code class="docutils literal notranslate"><span class="pre">plot</span></code> 我們畫的是多邊形，如此一來 <code class="docutils literal notranslate"><span class="pre">plot</span></code> 就會<strong>強制封閉線段</strong>。另外，在畫多邊形的時候，<code class="docutils literal notranslate"><span class="pre">plot</span></code> 指令的預設行為是畫邊而且不填色。因此，要加上 <code class="docutils literal notranslate"><span class="pre">-C</span></code> 告訴 GMT 我們要用新創造的色階檔對多邊形填色。</p>
+<a class="reference internal image-reference" href="../_images/plot_vector_data_gmt6_fig3.png"><img alt="../_images/plot_vector_data_gmt6_fig3.png" class="align-center" src="../_images/plot_vector_data_gmt6_fig3.png" style="width: 1000px;" /></a>
+<p>這下子七巧板也有模有樣了！我們順便來加上邊框：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin pieces png
+    gmt makecpt -Cwysiwyg -T0/20/1
+    gmt plot pieces.txt -R0/4/0/4 -JX15c -L -C -W2p,black
+gmt end
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/plot_vector_data_gmt6_fig4.png"><img alt="../_images/plot_vector_data_gmt6_fig4.png" class="align-center" src="../_images/plot_vector_data_gmt6_fig4.png" style="width: 1000px;" /></a>
+<p>看起來非常不錯，不過請注意到圖片邊框，線段的寬度似乎跟圖片內部多邊形邊緣線段寬度不一樣。這是因為 GMT 會沿著多邊形的邊緣 (而不是黑色線段的邊緣) 裁剪影像，因此邊框的線段寬度會變成原本的一半。如果你覺得這沒關係，那倒無妨；但如果你是個完美主義者，不想看到不一致的線段寬度，可以選擇的替代方案，就是把多邊形邊框挪到 <code class="docutils literal notranslate"><span class="pre">lines.txt</span></code> 裡面做成線段資料，與網格線條一起繪製。因此，我們的 <code class="docutils literal notranslate"><span class="pre">lines.txt</span></code> 要多增加幾行資訊：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; -W1p,grey,.
+<span class="c1"># 注意我改動了網格線段的樣式設定！</span>
+<span class="m">1</span> <span class="m">0</span>
+<span class="m">1</span> <span class="m">4</span>
+&gt;
+<span class="m">2</span> <span class="m">0</span>
+<span class="m">2</span> <span class="m">4</span>
+&gt;
+<span class="m">3</span> <span class="m">0</span>
+<span class="m">3</span> <span class="m">4</span>
+&gt;
+<span class="m">0</span> <span class="m">1</span>
+<span class="m">4</span> <span class="m">1</span>
+&gt;
+<span class="m">0</span> <span class="m">2</span>
+<span class="m">4</span> <span class="m">2</span>
+&gt;
+<span class="m">0</span> <span class="m">3</span>
+<span class="m">4</span> <span class="m">3</span>
+&gt; -W2p,black
+<span class="m">0</span> <span class="m">0</span>
+<span class="m">4</span> <span class="m">0</span>
+<span class="m">4</span> <span class="m">4</span>
+<span class="m">0</span> <span class="m">4</span>
+<span class="m">0</span> <span class="m">0</span>
+&gt;
+<span class="m">0</span> <span class="m">4</span>
+<span class="m">4</span> <span class="m">0</span>
+&gt;
+<span class="m">0</span> <span class="m">0</span>
+<span class="m">3</span> <span class="m">3</span>
+&gt;
+<span class="m">3</span> <span class="m">1</span>
+<span class="m">3</span> <span class="m">3</span>
+&gt;
+<span class="m">1</span> <span class="m">3</span>
+<span class="m">2</span> <span class="m">4</span>
+&gt;
+<span class="m">2</span> <span class="m">4</span>
+<span class="m">4</span> <span class="m">2</span>
+</pre></div>
+</div>
+<p>後半從 <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">-W2p,black</span></code> 開始的部份，就是七巧板邊框與拼圖的邊界線段。讓我們再試一次以下指令：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt plot lines.txt -R0/4/0/4 -JX15c -png lines
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/plot_vector_data_gmt6_fig5.png"><img alt="../_images/plot_vector_data_gmt6_fig5.png" class="align-center" src="../_images/plot_vector_data_gmt6_fig5.png" style="width: 1000px;" /></a>
+<p>看起來賞心悅目多了！最後的問題，就是把多邊形和線條疊加在一起而不擋到彼此。這個問題可以簡單的以具有<strong>透明度</strong>設定的色階解決。<code class="docutils literal notranslate"><span class="pre">makecpt</span></code> 的 <code class="docutils literal notranslate"><span class="pre">-A</span></code> 選項可以用來指定透明度，我們來試著在終端機中輸入：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt makecpt -Cwysiwyg -T0/20/1 -A70   <span class="c1"># -A: %70 透明</span>
+<span class="m">0</span>    <span class="m">64</span>/0/64@70    <span class="m">1</span>    <span class="m">64</span>/0/64@70
+<span class="m">1</span>    <span class="m">64</span>/0/192@70   <span class="m">2</span>    <span class="m">64</span>/0/192@70
+... <span class="o">(</span>以下略<span class="o">)</span>
+</pre></div>
+</div>
+<p>在色階資料中，<code class="docutils literal notranslate"><span class="pre">&#64;</span></code> 符號後面的就是透明度，因此整個顏色的格式為：<code class="docutils literal notranslate"><span class="pre">紅/綠/藍&#64;透明度</span></code>。使用此色階畫圖，所有的顏色就會被套上透明度設定。這下子你就能看到透明、粉嫩粉嫩的顏色了！</p>
+</section>
+<section id="id11">
+<h2><span class="section-number">9.4. </span>指令稿<a class="headerlink" href="#id11" title="本標題的永久連結">#</a></h2>
+<p>本圖片的最終指令稿如下：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin tangram_gmt6 png
+    gmt makecpt -Cwysiwyg -T0/20/1 -A70
+    gmt basemap -R0/4/0/4 -JX15c -Bnews    <span class="c1"># 設定座標軸範圍 (-R) 的同時，不畫出座標軸 (-Bnews)</span>
+    gmt plot pieces.txt -L -C
+    gmt plot lines.txt                     <span class="c1"># 先填色再畫邊框，確保邊框會疊在填色上面。你可以試試看把這一行移到更上方，確認透明度的效果設定。</span>
+gmt end
+</pre></div>
+</div>
+<p>線段資料 <code class="docutils literal notranslate"><span class="pre">lines.txt</span></code> 內容如下，並<a class="reference download internal" download="" href="../_downloads/571e274480420ea3182a42dce2e32a50/lines.txt"><code class="xref download docutils literal notranslate"><span class="pre">可在這裡下載</span></code></a>。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; -W1p,grey,.
+<span class="m">1</span> <span class="m">0</span>
+<span class="m">1</span> <span class="m">4</span>
+&gt;
+<span class="m">2</span> <span class="m">0</span>
+<span class="m">2</span> <span class="m">4</span>
+&gt;
+<span class="m">3</span> <span class="m">0</span>
+<span class="m">3</span> <span class="m">4</span>
+&gt;
+<span class="m">0</span> <span class="m">1</span>
+<span class="m">4</span> <span class="m">1</span>
+&gt;
+<span class="m">0</span> <span class="m">2</span>
+<span class="m">4</span> <span class="m">2</span>
+&gt;
+<span class="m">0</span> <span class="m">3</span>
+<span class="m">4</span> <span class="m">3</span>
+&gt; -W2p,black
+<span class="m">0</span> <span class="m">0</span>
+<span class="m">4</span> <span class="m">0</span>
+<span class="m">4</span> <span class="m">4</span>
+<span class="m">0</span> <span class="m">4</span>
+<span class="m">0</span> <span class="m">0</span>
+&gt;
+<span class="m">0</span> <span class="m">4</span>
+<span class="m">4</span> <span class="m">0</span>
+&gt;
+<span class="m">0</span> <span class="m">0</span>
+<span class="m">3</span> <span class="m">3</span>
+&gt;
+<span class="m">3</span> <span class="m">1</span>
+<span class="m">3</span> <span class="m">3</span>
+&gt;
+<span class="m">1</span> <span class="m">3</span>
+<span class="m">2</span> <span class="m">4</span>
+&gt;
+<span class="m">2</span> <span class="m">4</span>
+<span class="m">4</span> <span class="m">2</span>
+</pre></div>
+</div>
+<p>多邊形資料 <code class="docutils literal notranslate"><span class="pre">pieces.txt</span></code> 內容如下，並<a class="reference download internal" download="" href="../_downloads/a7a42f9fbfd121be4b815258fcb64270/pieces.txt"><code class="xref download docutils literal notranslate"><span class="pre">可在這裡下載</span></code></a>。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; -Z0
+<span class="m">0</span> <span class="m">0</span>
+<span class="m">2</span> <span class="m">2</span>
+<span class="m">4</span> <span class="m">0</span>
+&gt; -Z3
+<span class="m">0</span> <span class="m">0</span>
+<span class="m">2</span> <span class="m">2</span>
+<span class="m">0</span> <span class="m">4</span>
+&gt; -Z6
+<span class="m">0</span> <span class="m">4</span>
+<span class="m">1</span> <span class="m">3</span>
+<span class="m">2</span> <span class="m">4</span>
+&gt; -Z9
+<span class="m">1</span> <span class="m">3</span>
+<span class="m">2</span> <span class="m">4</span>
+<span class="m">3</span> <span class="m">3</span>
+<span class="m">2</span> <span class="m">2</span>
+&gt; -Z12
+<span class="m">3</span> <span class="m">3</span>
+<span class="m">2</span> <span class="m">2</span>
+<span class="m">3</span> <span class="m">1</span>
+&gt; -Z15
+<span class="m">3</span> <span class="m">1</span>
+<span class="m">3</span> <span class="m">3</span>
+<span class="m">4</span> <span class="m">2</span>
+<span class="m">4</span> <span class="m">0</span>
+&gt; -Z18
+<span class="m">2</span> <span class="m">4</span>
+<span class="m">4</span> <span class="m">2</span>
+<span class="m">4</span> <span class="m">4</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">備註</p>
+<p>「使用 <code class="docutils literal notranslate"><span class="pre">wysiwyg</span></code> 作為母色階並加上透明度設定，接下來繪製七巧板填色、座標格線與七巧板邊線。」</p>
+</div>
+<p>觀看<a class="reference internal" href="#id5">最終版圖片</a></p>
+</section>
+<section id="id12">
+<h2><span class="section-number">9.5. </span>習題<a class="headerlink" href="#id12" title="本標題的永久連結">#</a></h2>
+<ol class="arabic simple">
+<li><p>畫出六面體骰子的任一種展開圖，使用 <code class="docutils literal notranslate"><span class="pre">wysiwyg</span></code> 作為母色階為每面塗上不同的顏色。</p></li>
+</ol>
+<dl class="footnote brackets">
+<dt class="label" id="id13"><span class="brackets"><a class="fn-backref" href="#id10">1</a></span></dt>
+<dd><p>What You See Is What You Get, 即「所見即所得」。</p>
+</dd>
+</dl>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./main"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="cpt_colormap.html" title="上一頁 頁">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">上一頁</p>
+            <p class="prev-next-title"><span class="section-number">8. </span>使用色階表為網格資料著色</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="layout_design.html" title="下一頁 頁">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一頁</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>版面設計與地圖的幾何布局</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+ <div id="disqus_thread"></div> <script> var disqus_config = function () {this.page.url = 'http://gmt-tutorial.org/plot_vector_data.html'; this.page.identifier = 'plot_vector_data'; }; (function() { var d = document, s = d.createElement('script'); s.src = '//gmt-tutorials.disqus.com/embed.js'; s.setAttribute('data-timestamp', +new Date()); (d.head || d.body).appendChild(s); })(); </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By <a href="https://whyjz.github.io/">鄭懷傑 (Whyjay Zheng)</a> | <a href="https://twitter.com/WhyjayZ"><i class="fa-brands fa-twitter"></i></a><br/>
+  
+    Last updated on 7月 27, 2022.<br/>
+    <div class="extra_footer">
+      &copy; 2016-2022. <a href="https://github.com/whyjz/GMT-tutorials/blob/master/LICENSE.md">MIT</a> 
+and <a href="http://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</a> dual licensed. <br>
+Found this tutorial helpful? <a href="https://www.paypal.com/donate?hosted_button_id=68GZNRJ3MZDBE">Buy me a milktea!</a>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

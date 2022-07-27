@@ -1,0 +1,833 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_TW">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>13. 加入地圖元素 &#8212; GMT 教學手冊</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+ <link href='https://fonts.googleapis.com/css?family=Varela Round' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://gmt-tutorials.org/main/map_elements.html" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜尋" href="../search.html" />
+    <link rel="next" title="14. 色階檔的編修與呈現" href="editing_cpt_colorbar.html" />
+    <link rel="prev" title="12. 等高線地圖及地形剖面" href="contour_and_profile.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="zh_TW">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+ <script type="text/javascript">var _jf = _jf || [];_jf.push(['p','39630']);_jf.push(['_setFont','sourcehansans-tc-light','css','.sourcehansans-tc-light']);_jf.push(['_setFont','sourcehansans-tc-light','alias','sourcehansans-tc']);_jf.push(['_setFont','sourcehansans-tc-light','weight',200]);_jf.push(['_setFont','sourcehansans-tc-regular','css','.sourcehansans-tc-regular']);_jf.push(['_setFont','sourcehansans-tc-regular','alias','sourcehansans-tc']);_jf.push(['_setFont','sourcehansans-tc-regular','weight',400]);_jf.push(['_setFont','cwtexqyuan','css','.cwtexqyuan']);_jf.push(['_setFont','cwtexqyuan','alias','cwtexqyuan']);_jf.push(['_setFont','cwtexqyuan','weight',500]);_jf.push(['_setFont','xingothic-tc-w7','css','.xingothic-tc-w7']);_jf.push(['_setFont','xingothic-tc-w7','alias','xingothic-tc']);_jf.push(['_setFont','xingothic-tc-w7','weight',700]);_jf.push(['_setFont','jf-jinxuan-medium','css','.jf-jinxuan-medium']);_jf.push(['_setFont','jf-jinxuan-medium','alias','jf-jinxuan']);_jf.push(['_setFont','jf-jinxuan-medium','weight',600]);(function(f,q,c,h,e,i,r,d){var k=f._jf;if(k.constructor===Object){return}var l,t=q.getElementsByTagName("html")[0],a=function(u){for(var v in k){if(k[v][0]==u){if(false===k[v][1].call(k)){break}}}},j=/\S+/g,o=/[\t\r\n\f]/g,b=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,g="".trim,s=g&&!g.call("\uFEFF\xA0")?function(u){return u==null?"":g.call(u)}:function(u){return u==null?"":(u+"").replace(b,"")},m=function(y){var w,z,v,u,x=typeof y==="string"&&y;if(x){w=(y||"").match(j)||[];z=t[c]?(" "+t[c]+" ").replace(o," "):" ";if(z){u=0;while((v=w[u++])){if(z.indexOf(" "+v+" ")<0){z+=v+" "}}t[c]=s(z)}}},p=function(y){var w,z,v,u,x=arguments.length===0||typeof y==="string"&&y;if(x){w=(y||"").match(j)||[];z=t[c]?(" "+t[c]+" ").replace(o," "):"";if(z){u=0;while((v=w[u++])){while(z.indexOf(" "+v+" ")>=0){z=z.replace(" "+v+" "," ")}}t[c]=y?s(z):""}}},n;k.push(["_eventActived",function(){p(h);m(e)}]);k.push(["_eventInactived",function(){p(h);m(i)}]);k.addScript=n=function(u,A,w,C,E,B){E=E||function(){};B=B||function(){};var x=q.createElement("script"),z=q.getElementsByTagName("script")[0],v,y=false,D=function(){x.src="";x.onerror=x.onload=x.onreadystatechange=null;x.parentNode.removeChild(x);x=null;a("_eventInactived");B()};if(C){v=setTimeout(function(){D()},C)}x.type=A||"text/javascript";x.async=w;x.onload=x.onreadystatechange=function(G,F){if(!y&&(!x.readyState||/loaded|complete/.test(x.readyState))){y=true;if(C){clearTimeout(v)}x.src="";x.onerror=x.onload=x.onreadystatechange=null;x.parentNode.removeChild(x);x=null;if(!F){setTimeout(function(){E()},200)}}};x.onerror=function(H,G,F){if(C){clearTimeout(v)}D();return true};x.src=u;z.parentNode.insertBefore(x,z)};a("_eventPreload");m(h);n(r,"text/javascript",false,3000)})(this,this.document,"className","jf-loading","jf-active","jf-inactive","//ds.justfont.com/js/stable/v/5.0.2/id/166657211014");</script>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">GMT 教學手冊</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form> <div class="langcenter"> <nav class="menu"> <ul class="clearfix"> <li class="current-item"> <a href="#" class="clicker">中文 (台灣) <span class="arrow">&#9660;</span></a> <ul class="sub-menu"> <li><a href="map_elements.html">中文 (台灣)</a></li> <li><a href="../en/main/map_elements.html">English</a></li> </ul> </li> </ul> </nav> </div> 
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  入門與概述
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro_install.html">
+   1. GMT / PyGMT 簡介與安裝
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="software.html">
+   2. 推薦搭配的軟體或套件
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="basic_concept.html">
+   3. 基本概念與名詞
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  基本繪圖技巧
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="making_first_map.html">
+   4. 製作第一張地圖
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="coloring_topography.html">
+   5. 為地形圖上色
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pen_and_painting.html">
+   6. 畫筆與調色技巧
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="scatter_plot.html">
+   7. XY 點散佈圖
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  製作各種常見的地圖（基礎）
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="cpt_colormap.html">
+   8. 使用色階表為網格資料著色
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plot_vector_data.html">
+   9. 繪製向量式資料
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="layout_design.html">
+   10. 版面設計與地圖的幾何布局
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hillshading.html">
+   11. 暈渲地圖
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="contour_and_profile.html">
+   12. 等高線地圖及地形剖面
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   13. 加入地圖元素
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  製作各種常見的地圖（進階）
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="editing_cpt_colorbar.html">
+   14. 色階檔的編修與呈現
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="view3d.html">
+   15. 3D 視圖
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="focal_mech.html">
+   16. 繪製震源機制解
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="draping.html">
+   17. 在 3D 地形上覆蓋地圖
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  網格資料處理
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="raster_calculator.html">
+   18. 網格計算機
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="basic_img_processing.html">
+   19. 基本影像處理
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  數值資料處理
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="stat_histogram.html">
+   20. 輸出統計資訊與直方圖
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="regression_basics.html">
+   21. 進行迴歸分析
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  附錄與學習資源
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_credit.html">
+   22. 資料來源與參考文獻
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="command_index.html">
+   23. 指令索引
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gallery.html">
+   24. 章節地圖索引
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/whyjz/GMT-tutorials"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/main/map_elements.rst"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   13.1. 目標
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   13.2. 使用的指令與概念
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id9">
+   13.3. 前置作業
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id11">
+   13.4. 操作流程
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id13">
+   13.5. 指令稿
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id14">
+   13.6. 習題
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>加入地圖元素</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   13.1. 目標
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   13.2. 使用的指令與概念
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id9">
+   13.3. 前置作業
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id11">
+   13.4. 操作流程
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id13">
+   13.5. 指令稿
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id14">
+   13.6. 習題
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="id1">
+<h1><span class="section-number">13. </span>加入地圖元素<a class="headerlink" href="#id1" title="本標題的永久連結">#</a></h1>
+<p>為了使呈現的資料更容易判讀，一張地圖上通常會含有其它的輔助性圖示。除了網格線和地圖四周的座標數字外，常見的圖示還有比例尺、指北記號以及分圖等等。在本章中，我們要來試著使用 GMT 標上這些地圖元素。</p>
+<section id="id2">
+<h2><span class="section-number">13.1. </span>目標<a class="headerlink" href="#id2" title="本標題的永久連結">#</a></h2>
+<p>繪製<a class="reference external" href="https://zh.wikipedia.org/wiki/%E9%B2%81%E5%8D%9C%E5%93%88%E5%88%A9%E6%B2%99%E6%BC%A0">魯卜哈利沙漠</a>
+(Rub』 al Khali 或 الربع الخالي) 其中一個小區域的 <a class="reference external" href="https://zh.wikipedia.org/wiki/%E9%99%B8%E5%9C%B0%E8%A1%9B%E6%98%9F%E8%A8%88%E7%95%AB">Landsat</a>
+衛星影像，並標上指北針、比例尺及在阿拉伯半島的大略位置。魯卜哈利沙漠具有全世界最大的連續沙丘區域<a class="footnote-reference brackets" href="#id15" id="id4">1</a>，也是全世界最杳無人煙的地方之一。如同其阿拉伯語的意思「空曠的四分之一」，在這片區域除了沙丘以外幾乎什麼也沒有；然而，魯卜哈利沙漠的衛星影像卻讓我們發現了大地之母的藝術實驗室。無數的<a class="reference external" href="https://en.wikipedia.org/wiki/Barchan">新月丘</a>連綿不絕，日以繼夜的移動、合併與分離，奇幻的畫面甚至會讓你懷疑這是否是真的自然景觀。由於以上特殊的地理、氣候條件，魯卜哈利沙漠也是研究由風力所形塑的地表作用的絕佳地點。在本衛星影像中，所有的新月形沙丘似乎都朝向相同的方向。這個事實告訴了我們在這個區域，盛行風是從西北偏北的方向吹來。為什麼？請看<a class="reference external" href="http://nadm.gl.ntu.edu.tw/nadm/cht/class_detail.php?serial=122&amp;serial_type_1=8&amp;serial_type_2=4&amp;serial_type_3=16">這裡有地形學上的解釋</a>。</p>
+<a class="reference external image-reference" href="_images/Rub_al_Khali.png" id="id7"><img alt="../_images/Rub_al_Khali_s.png" src="../_images/Rub_al_Khali_s.png" /></a>
+<p>直接觀看<a class="reference internal" href="#id13">指令稿</a></p>
+</section>
+<section id="id8">
+<h2><span class="section-number">13.2. </span>使用的指令與概念<a class="headerlink" href="#id8" title="本標題的永久連結">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">gmtset</span></code> - 更改 GMT 的預設作圖參數</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">grdhisteq</span></code> - <strong>查看網格檔的數值分佈</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">grdinfo</span></code> - <strong>由網格資料建立</strong> <code class="docutils literal notranslate"><span class="pre">-R</span></code> <strong>設定</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">grdimage</span></code> - <strong>以 RGB 資料進行繪圖</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">psbasemap</span></code> - <strong>添加不同的地圖元素</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pscoast</span></code> - 繪製海岸線、國界與海域填色</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pstext</span></code> - 在地圖上加入文字</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">psxy</span></code> - 輸出檔尾</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">psconvert</span></code> - 把 ps 檔轉成 png 檔並保留透明度設定</p></li>
+<li><p>外部指令 <code class="docutils literal notranslate"><span class="pre">echo</span></code> - 把資料輸入到管線命令中</p></li>
+<li><p>如何使用正確的 <code class="docutils literal notranslate"><span class="pre">-J</span></code> 投影選項套疊衛星影像與其他地理空間資料</p></li>
+<li><p>如何繪製分圖 (Map Inset)</p></li>
+</ul>
+</section>
+<section id="id9">
+<h2><span class="section-number">13.3. </span>前置作業<a class="headerlink" href="#id9" title="本標題的永久連結">#</a></h2>
+<p>Landsat 衛星影像可以從美國地質調查局 (USGS) 管理的網站 <a class="reference external" href="https://earthexplorer.usgs.gov/">EarthExplorer</a> 取得。前往 EarthExplorer，然後在「Address/Place」搜尋的地方輸入 <em>Rub’ al Khali</em>，然後按下 <cite>show</cite>，選擇下方出現的 <em>魯卜哈利沙漠</em> 一欄。由於沙漠範圍很大，你可以拖曳地圖上的紅色定位點到較為靠近範例地圖的地方。接著，按下下方的 <cite>Data Sets &gt;&gt;</cite>。你可以使用搜尋框或下方的分類目錄，找到並勾選 <em>Landsat 8 OLI/TIRS C1 Level-1</em> 的資料集，然後按下 <cite>Results &gt;&gt;</cite>。</p>
+<img alt="../_images/map_elements_fig1.png" src="../_images/map_elements_fig1.png" />
+<p>接下來，應該會有許多資料呈現在左側搜尋結果欄中。找到名為 <em>LC08_L1TP_160045_20170408_20170414_01_T1</em> 的資料，按下「Download Options」的圖示。本資料需要登入才能下載，如果你尚未有 USGS 帳號，可以花幾分鐘註冊，只需要一組電子信箱即可。登入之後，選擇 <cite>Level-1 GeoTIFF Data Product (886.0 MB)</cite> 的資料格式。</p>
+<img alt="../_images/map_elements_fig2.png" src="../_images/map_elements_fig2.png" />
+<p>下載之後解壓縮，你會發現其中有許多 GeoTIFF 檔案，每個檔案代表一個特定的影像波段。<a class="reference external" href="https://landsat.usgs.gov/what-are-band-designations-landsat-satellites">Landsat 網站上</a>說明了每個編號各自代表的波段。在本教學中，我們要使用可見光的紅、綠、藍三個波段 (RGB)，編號分別是 B4、B3 和 B2。為了方便分享輸入檔以及增強影像的對比，我對這三個影像進行了如下操作：</p>
+<ol class="arabic simple">
+<li><p>裁切影像，影像的邊緣座標定在 x = [190000 250000] 以及 y = [2410000 2460000] (UTM 座標)。</p></li>
+<li><p>使用直方圖增強影像對比 (Histogram Stretching)。</p></li>
+<li><p>轉檔成 NetCDF 格式。</p></li>
+</ol>
+<p>使用的腳本如下所示，其中運用了 GDAL 函式庫中的 <code class="docutils literal notranslate"><span class="pre">gdal_translate</span></code> 跟 GMT 中的 <code class="docutils literal notranslate"><span class="pre">grdhisteq</span></code> 指令。相關的操作將在<strong>之後的章節</strong>中介紹，這裡就不多加贅述，把重心放在地圖元素的繪製上。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ==== 設定輸入檔 ====</span>
+<span class="nv">in_tif_r</span><span class="o">=</span><span class="s2">&quot;LC08_L1TP_160045_20170408_20170414_01_T1_B4.TIF&quot;</span>
+<span class="nv">in_tif_g</span><span class="o">=</span><span class="s2">&quot;LC08_L1TP_160045_20170408_20170414_01_T1_B3.TIF&quot;</span>
+<span class="nv">in_tif_b</span><span class="o">=</span><span class="s2">&quot;LC08_L1TP_160045_20170408_20170414_01_T1_B2.TIF&quot;</span>
+<span class="c1"># ==== 使用迴圈逐一處理輸入檔 ====</span>
+<span class="k">for</span> i <span class="k">in</span> <span class="nv">$in_tif_r</span> <span class="nv">$in_tif_g</span> <span class="nv">$in_tif_b</span><span class="p">;</span> <span class="k">do</span>
+    <span class="c1"># ==== 裁切 GeoTIFF 影像 ====</span>
+    gdal_translate -projwin <span class="m">190000</span> <span class="m">2460000</span> <span class="m">250000</span> <span class="m">2410000</span> <span class="nv">$i</span> <span class="si">${</span><span class="nv">i</span><span class="p">/.TIF/_s.TIF</span><span class="si">}</span>
+    <span class="c1"># ==== 計算影像的直方圖，設定影像飽和 (黑色或白色) 時的像素值 ====</span>
+    <span class="nv">vmin</span><span class="o">=</span><span class="k">$(</span>grdhisteq <span class="si">${</span><span class="nv">i</span><span class="p">/.TIF/_s.TIF</span><span class="si">}</span> -D -C50 <span class="p">|</span> head -n <span class="m">1</span> <span class="p">|</span> cut -f <span class="m">2</span><span class="k">)</span>
+    <span class="nv">vmax</span><span class="o">=</span><span class="k">$(</span>grdhisteq <span class="si">${</span><span class="nv">i</span><span class="p">/.TIF/_s.TIF</span><span class="si">}</span> -D -C50 <span class="p">|</span> tail -n <span class="m">1</span> <span class="p">|</span> cut -f <span class="m">1</span><span class="k">)</span>
+    <span class="c1"># ==== 使用剛剛設定的影像飽和值來轉檔 ====</span>
+    gdal_translate -of NetCDF -scale <span class="nv">$vmin</span> <span class="nv">$vmax</span> <span class="si">${</span><span class="nv">i</span><span class="p">/.TIF/_s.TIF</span><span class="si">}</span> <span class="si">${</span><span class="nv">i</span><span class="p">/.TIF/_s.grd</span><span class="si">}</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+<p>腳本的輸出是三個 <code class="docutils literal notranslate"><span class="pre">.grd</span></code> 檔。如果你的電腦沒有安裝 GDAL 或純粹為了方便起見，
+你也可以直接從以下連結取得本章節會使用的 Landsat 8 <code class="docutils literal notranslate"><span class="pre">.grd</span></code> 檔案：</p>
+<p><a class="reference download internal" download="" href="../_downloads/8b1a369dacb949c13ff49a436ec1ed7d/LC08_L1TP_160045_20170408_20170414_01_T1_B2_s.grd"><code class="xref download docutils literal notranslate"><span class="pre">LC08_L1TP_160045_20170408_20170414_01_T1_B2_s.grd</span></code></a>
+<a class="reference download internal" download="" href="../_downloads/86d627773e9a4738911a88b4194d92ef/LC08_L1TP_160045_20170408_20170414_01_T1_B3_s.grd"><code class="xref download docutils literal notranslate"><span class="pre">LC08_L1TP_160045_20170408_20170414_01_T1_B3_s.grd</span></code></a>
+<a class="reference download internal" download="" href="../_downloads/05b6c901ca5a1dd4d3441e2db87089b6/LC08_L1TP_160045_20170408_20170414_01_T1_B4_s.grd"><code class="xref download docutils literal notranslate"><span class="pre">LC08_L1TP_160045_20170408_20170414_01_T1_B4_s.grd</span></code></a></p>
+</section>
+<section id="id11">
+<h2><span class="section-number">13.4. </span>操作流程<a class="headerlink" href="#id11" title="本標題的永久連結">#</a></h2>
+<p>在繪圖之前，我們先來使用 <code class="docutils literal notranslate"><span class="pre">grdinfo</span></code> 確認一下要使用的資料。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ grdinfo LC08_L1TP_160045_20170408_20170414_01_T1_B2_s.grd
+..... <span class="c1">#(我這裡略過了一些段落)</span>
+LC08_L1TP_160045_20170408_20170414_01_T1_B2_s.grd: Title: GDAL Band Number <span class="m">1</span>
+LC08_L1TP_160045_20170408_20170414_01_T1_B2_s.grd: Grid file format: <span class="nv">nf</span> <span class="o">=</span> GMT netCDF format <span class="o">(</span><span class="m">32</span>-bit float<span class="o">)</span>, COARDS, CF-1.5
+LC08_L1TP_160045_20170408_20170414_01_T1_B2_s.grd: x_min: <span class="m">190015</span> x_max: <span class="m">249985</span> x_inc: <span class="m">30</span> name: x coordinate of projection <span class="o">[</span>m<span class="o">]</span> nx: <span class="m">2000</span>
+LC08_L1TP_160045_20170408_20170414_01_T1_B2_s.grd: y_min: <span class="m">2410014</span>.997 y_max: <span class="m">2459985</span>.003 y_inc: <span class="m">29</span>.9940011998 name: y coordinate of projection <span class="o">[</span>m<span class="o">]</span> ny: <span class="m">1667</span>
+LC08_L1TP_160045_20170408_20170414_01_T1_B2_s.grd: z_min: NaN z_max: NaN name: GDAL Band Number <span class="m">1</span>
+</pre></div>
+</div>
+<p>從這裡可以看出我們的資料並不是使用經緯度座標，而是某個投影座標，每個像素的尺寸是 30 公尺。如果使用 <code class="docutils literal notranslate"><span class="pre">gdalinfo</span></code> 確認原本的
+GeoTIFF 檔，可以進一步知道這個座標系統是 UTM Zone 40N。像素的最大與最小值在這裡錯誤的顯示成 NaN，我們需要使用 <code class="docutils literal notranslate"><span class="pre">grdhisteq</span></code> 來進一步的檢查。<code class="docutils literal notranslate"><span class="pre">grdhisteq</span></code> 是 GMT 中對網格檔進行數值統計的工具，我們要使用最基本的語法，在螢幕上輸出網格檔數值的分佈情形。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ grdhisteq -D LC08_L1TP_160045_20170408_20170414_01_T1_B2_s.grd
+<span class="c1"># -D: 輸出資訊到檔案或螢幕上</span>
+<span class="m">0</span>   <span class="m">14</span>      <span class="m">0</span>
+<span class="m">14</span>  <span class="m">25</span>      <span class="m">1</span>
+<span class="m">25</span>  <span class="m">35</span>      <span class="m">2</span>
+<span class="m">35</span>  <span class="m">42</span>      <span class="m">3</span>
+<span class="m">42</span>  <span class="m">49</span>      <span class="m">4</span>
+<span class="m">49</span>  <span class="m">56</span>      <span class="m">5</span>
+<span class="m">56</span>  <span class="m">63</span>      <span class="m">6</span>
+<span class="m">63</span>  <span class="m">71</span>      <span class="m">7</span>
+<span class="m">71</span>  <span class="m">79</span>      <span class="m">8</span>
+<span class="m">79</span>  <span class="m">91</span>      <span class="m">9</span>
+<span class="m">91</span>  <span class="m">111</span>     <span class="m">10</span>
+<span class="m">111</span> <span class="m">139</span>     <span class="m">11</span>
+<span class="m">139</span> <span class="m">167</span>     <span class="m">12</span>
+<span class="m">167</span> <span class="m">192</span>     <span class="m">13</span>
+<span class="m">192</span> <span class="m">221</span>     <span class="m">14</span>
+<span class="m">221</span> <span class="m">587</span>     <span class="m">15</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">grdhisteq</span></code> 預設的輸出，是把所有的像素值依照大小均分成 16 等分。從輸出資料中，我們可以知道像素值位在 0 到 14 之間的像素佔了十六分之一，而像素值在 221 到 587 之間的像素也佔了十六分之一。接下來，我們就試著使用 <code class="docutils literal notranslate"><span class="pre">grdimage</span></code> 來輸出影像看看。在之前的章節，我們使用 <code class="docutils literal notranslate"><span class="pre">grdimage</span></code> 時需要給定對應的色階檔，讓指令照著輸入檔像素值的大小來給定顏色。如果我們想要不經由色階檔直接指定每個像素的顏色，<code class="docutils literal notranslate"><span class="pre">grdimage</span></code> 也是可以作到，不過要遵循以下的輸入方法：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ grdimage 紅色網格檔<span class="o">(</span>R<span class="o">)</span> 綠色網格檔<span class="o">(</span>G<span class="o">)</span> 藍色網格檔<span class="o">(</span>B<span class="o">)</span>
+</pre></div>
+</div>
+<p>如果一次指定三個網格檔，<code class="docutils literal notranslate"><span class="pre">grdimage</span></code> 會使用指定 RGB 顏色值的方式繪圖，這時第一個網格檔會被當作紅色像素值，第二個網格檔會被當作綠色像素值，第三個網格檔會被當作藍色像素值。我們馬上就來試試看：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ==== 設定變數 ====</span>
+<span class="nv">out_ps</span><span class="o">=</span><span class="s2">&quot;Rub_al_Khali.ps&quot;</span>
+<span class="nv">in_grd_r</span><span class="o">=</span><span class="s2">&quot;LC08_L1TP_160045_20170408_20170414_01_T1_B4_s.grd&quot;</span>    <span class="c1"># 輸入檔，作為紅色 (R) 波段</span>
+<span class="nv">in_grd_g</span><span class="o">=</span><span class="s2">&quot;LC08_L1TP_160045_20170408_20170414_01_T1_B3_s.grd&quot;</span>    <span class="c1"># 輸入檔，作為綠色 (G) 波段</span>
+<span class="nv">in_grd_b</span><span class="o">=</span><span class="s2">&quot;LC08_L1TP_160045_20170408_20170414_01_T1_B2_s.grd&quot;</span>    <span class="c1"># 輸入檔，作為藍色 (B) 波段</span>
+
+<span class="c1"># ==== 繪製衛星影像 ====</span>
+grdimage <span class="nv">$in_grd_r</span> <span class="nv">$in_grd_g</span> <span class="nv">$in_grd_b</span> -JX15c/0 -P &gt; <span class="nv">$out_ps</span>
+</pre></div>
+</div>
+<p>在腳本中有幾件事情要注意。第一，投影法的選擇是 <code class="docutils literal notranslate"><span class="pre">-JX</span></code>，這是因為網格檔已經使用 UTM 座標，我們不需要在 GMT 內多加一次投影座標的轉換；第二，在 <code class="docutils literal notranslate"><span class="pre">-JX15c</span></code> 後面還有個 <code class="docutils literal notranslate"><span class="pre">/0</span></code>，意味著 Y 軸使用與 X 軸相同的比例尺 (不加的話，出圖會永遠保持正方形)；第三，在 0 至 255
+之間的像素值才會被準確解讀，超過 255 的值都會被解讀成 255。以下就是出圖的樣子：</p>
+<img alt="../_images/map_elements_fig3.png" src="../_images/map_elements_fig3.png" />
+<p>看來我們的底圖已經準確的呈現出來了！這就是一次給定 RGB 值的好處，我們不用費心選擇要用什麼樣的色階檔。唯一的問題是，如果我們要調整對比、明亮程度等等的設定，這種模式會比較麻煩。接下來，就讓我們加上各式各樣的地圖元素。首先當然是地圖的邊框，和之前一樣也可以使用 <code class="docutils literal notranslate"><span class="pre">psbasemap</span></code> 來達成。不過，如果超過一個指令要畫在同一個地圖上，我們還得先決定 <code class="docutils literal notranslate"><span class="pre">-R</span></code> 的參數才行。我們可以使用 <code class="docutils literal notranslate"><span class="pre">grdinfo</span></code> 手動查詢邊界然後再輸入到 <code class="docutils literal notranslate"><span class="pre">-R</span></code>
+指令內，不過這邊還有一個更快的方法：直接利用 <code class="docutils literal notranslate"><span class="pre">grdinfo</span></code> 提供的參數來查詢，如下：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ grdinfo LC08_L1TP_160045_20170408_20170414_01_T1_B2_s.grd -Ir
+<span class="c1"># -Ir: 取得地圖的 X/Y 邊界，並且回傳 -R 字串</span>
+-R190015/249985/2410000/2460000
+</pre></div>
+</div>
+<p>可以看到回傳的訊息中，已經按照 <code class="docutils literal notranslate"><span class="pre">-R</span></code> 的參數格式幫你整理好了。因此最快的方法，就是把指令的輸出轉存為變數，再放到其他的指令中就可以了。另外，這次我們沒有要在邊框上加上任何經緯度或 X/Y 座標，因此在 <code class="docutils literal notranslate"><span class="pre">psbasemap</span></code> 中，我們可以設定 <code class="docutils literal notranslate"><span class="pre">-B0</span></code> 來達成此要求。記得畫之前也要調整 GMT
+的變數 <code class="docutils literal notranslate"><span class="pre">MAP_FRAME_TYPE</span></code> 為 <code class="docutils literal notranslate"><span class="pre">plain</span></code>，這樣邊框才會是樸實的黑線條而不是華麗的斑馬紋。這一部份的腳本合起來如下：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmtset <span class="nv">MAP_FRAME_TYPE</span><span class="o">=</span>plain
+<span class="nv">R</span><span class="o">=</span><span class="k">$(</span>grdinfo <span class="nv">$in_grd_r</span> -Ir<span class="k">)</span>
+grdimage <span class="nv">$in_grd_r</span> <span class="nv">$in_grd_g</span> <span class="nv">$in_grd_b</span> <span class="nv">$R</span> -JX15c/0 -P -K &gt; <span class="nv">$out_ps</span>   <span class="c1"># -JX15c/0 中的 0 意指 Y 軸使用與 X 軸相同的比例尺</span>
+psbasemap -R -J -O -K -B0 &gt;&gt; <span class="nv">$out_ps</span>    <span class="c1"># 因為 -R 和 -J 都已經在 grdimage 裡給定，不用再給第二次</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">備註</p>
+<p><code class="docutils literal notranslate"><span class="pre">grdimage</span></code> 的 <code class="docutils literal notranslate"><span class="pre">-R</span></code> 選項也接受網格檔當輸入參數，在此狀況下，程式會使用網格檔的 X/Y 邊界當成 <code class="docutils literal notranslate"><span class="pre">-R</span></code> 的參數。因此，在上例中的 <code class="docutils literal notranslate"><span class="pre">grdimage</span></code> 一行也可以改成這樣：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>grdimage <span class="nv">$in_grd_r</span> <span class="nv">$in_grd_g</span> <span class="nv">$in_grd_b</span> -R<span class="nv">$in_grd_r</span> -JX15c/0 -P -K &gt; <span class="nv">$out_ps</span>
+</pre></div>
+</div>
+</div>
+<p>接下來，我們還有三個地圖元素需要繪製：(1) 指北符號；(2) 比例尺；(3) 插頁小圖。這些很多地圖中有的小配件，都可以使用 <code class="docutils literal notranslate"><span class="pre">psbasemap</span></code> 來畫。讓我們先從最簡單的指北符號開始，需要添加的選項是 <code class="docutils literal notranslate"><span class="pre">-Td</span></code>：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ psbasemap -Td座標+w寬度＋l西,東,南,北四個方位的字串+o水平偏移量/垂直偏移量
+</pre></div>
+</div>
+<p>這邊的「座標」有很多種給定方式，例如地圖座標或是版面的絕對座標。在這裡我們就不一一詳述，只說明我們要使用的 (也是個人覺得最方便的)
+系統，<code class="docutils literal notranslate"><span class="pre">j對齊選項</span></code>。這種系統與字體定位的 <code class="docutils literal notranslate"><span class="pre">+j</span></code> 選項相同 (請參閱<a class="reference internal" href="scatter_plot.html"><span class="doc">XY 點散佈圖</span></a>)，不過這次是把地圖分成九宮格，縱向有 3 列：L (左)，C (中)，R (右)，而橫向也有 3 列：B (底)，M (中)，T (頂)。從橫向與縱向中任選兩個字符，就可以把指北符號放在地圖上的相對位置。如果還是沒有位於你想要的位置，再用 <code class="docutils literal notranslate"><span class="pre">+o</span></code> 微調。另外，<code class="docutils literal notranslate"><span class="pre">+w</span></code> 調整的是指北針寬度 (也就是大小)，而 <code class="docutils literal notranslate"><span class="pre">+l</span></code>
+可以讓你指定在指北符號的四個方位要放些什麼文字。預設當然是 <code class="docutils literal notranslate"><span class="pre">W,E,S,N</span></code>，但是如果你只想顯示北方的文字，可以改成 <code class="docutils literal notranslate"><span class="pre">,,,N</span></code>。另外還有一點很重要，<strong>地圖指北符號不能搭配</strong> <code class="docutils literal notranslate"><span class="pre">-JX</span></code> <strong>使用！</strong>原因是 <code class="docutils literal notranslate"><span class="pre">-JX</span></code> 本身就是直角座標，沒有必要再使用指北針指出北方，畫蛇添足。在本例中使用的網格檔是 UTM 座標，我們需要此資訊放在 <code class="docutils literal notranslate"><span class="pre">-J</span></code> 選項中，才能正確顯示北方的位置。你可以利用 <code class="docutils literal notranslate"><span class="pre">gdalinfo</span></code>
+來查看網格檔的分區：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gdalinfo LC08_L1TP_160045_20170408_20170414_01_T1_B2_s.grd
+..... <span class="c1">#(前略)</span>
+transverse_mercator#spatial_ref<span class="o">=</span>PROJCS<span class="o">[</span><span class="s2">&quot;WGS 84 / UTM zone 40N&quot;</span>,GEOGCS<span class="o">[</span><span class="s2">&quot;WGS 84&quot;</span>,DATUM<span class="o">[</span><span class="s2">&quot;WGS_1984&quot;</span>.....
+..... <span class="c1">#(後略)</span>
+</pre></div>
+</div>
+<p>注意 <code class="docutils literal notranslate"><span class="pre">UTM</span> <span class="pre">zone</span> <span class="pre">40N</span></code> 的字樣，這就是 UTM 的分區號碼。另外，你還必須要指定以英文字母標記的緯度分區，好讓 GMT 知道指北箭頭到底該朝向哪裡。緯度分區可至<a class="reference external" href="http://www.dmap.co.uk/utmworld.htm">這裡</a>查詢。可以看到 <em>魯卜哈利沙漠</em> 大致上位於 Q 區。因此，我們這邊要使用的投影法是 <code class="docutils literal notranslate"><span class="pre">-JU40Q</span></code>。我們來看看完整的腳本和出圖結果：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ==== 設定變數 ====</span>
+<span class="nv">out_ps</span><span class="o">=</span><span class="s2">&quot;Rub_al_Khali.ps&quot;</span>
+<span class="nv">in_grd_r</span><span class="o">=</span><span class="s2">&quot;LC08_L1TP_160045_20170408_20170414_01_T1_B4_s.grd&quot;</span>    <span class="c1"># 輸入檔，作為紅色 (R) 波段</span>
+<span class="nv">in_grd_g</span><span class="o">=</span><span class="s2">&quot;LC08_L1TP_160045_20170408_20170414_01_T1_B3_s.grd&quot;</span>    <span class="c1"># 輸入檔，作為綠色 (G) 波段</span>
+<span class="nv">in_grd_b</span><span class="o">=</span><span class="s2">&quot;LC08_L1TP_160045_20170408_20170414_01_T1_B2_s.grd&quot;</span>    <span class="c1"># 輸入檔，作為藍色 (B) 波段</span>
+
+<span class="c1"># ==== 調整 GMT 預設參數 ====</span>
+gmtset <span class="nv">MAP_FRAME_TYPE</span><span class="o">=</span>plain
+
+<span class="c1"># ==== 繪製衛星影像 ====</span>
+    <span class="c1"># 取得 -R 資訊並畫圖 (注意 -J 的設定！)</span>
+<span class="nv">R</span><span class="o">=</span><span class="k">$(</span>grdinfo <span class="nv">$in_grd_r</span> -Ir<span class="k">)</span>
+grdimage <span class="nv">$in_grd_r</span> <span class="nv">$in_grd_g</span> <span class="nv">$in_grd_b</span> <span class="nv">$R</span> -JX15c/0 -P -K &gt; <span class="nv">$out_ps</span>
+    <span class="c1"># 繪製不含任何標記的邊框</span>
+psbasemap -R -J -O -K -B0 &gt;&gt; <span class="nv">$out_ps</span>
+
+<span class="c1"># ==== 繪製地圖元素 ====</span>
+    <span class="c1"># 繪製指北針 (注意 -J 的設定！)</span>
+psbasemap -R -JU40Q/15c -O -K -TdjRT+w2c+f+l,,,N+o1c/1.8c --FONT<span class="o">=</span>15p &gt;&gt; <span class="nv">$out_ps</span>
+    <span class="c1"># jRT: 擺放位置在地圖右上角</span>
+    <span class="c1"># +w2c: 圖示寬度 2 公分</span>
+    <span class="c1"># +f: 使用比較華麗的羅盤圖形代替指北符號</span>
+    <span class="c1"># +l,,,N: 如上段落所述</span>
+    <span class="c1"># +o1c/1.8c: 圖形從原本的錨點向左偏移 1 公分，向下偏移 1.8 公分</span>
+    <span class="c1"># --FONT=15p: 文字 &quot;N&quot; 的大小</span>
+
+<span class="c1"># ==== 關門 (寫入 EOF) 與轉檔 ====</span>
+psxy -R -J -O -T &gt;&gt; <span class="nv">$out_ps</span>
+psconvert <span class="nv">$out_ps</span> -A -P -Tg
+</pre></div>
+</div>
+<img alt="../_images/map_elements_fig4.png" src="../_images/map_elements_fig4.png" />
+<div class="admonition tip">
+<p class="admonition-title">小訣竅</p>
+<p>如果你發現腳本可以順利執行，但是指北針並沒有被畫出來，那麼很有可能是投影法出了問題，可以檢查一下 <code class="docutils literal notranslate"><span class="pre">-J</span></code> 選項是否如上所述的順利設定了。</p>
+</div>
+</section>
+<section id="id13">
+<h2><span class="section-number">13.5. </span>指令稿<a class="headerlink" href="#id13" title="本標題的永久連結">#</a></h2>
+<p>本地圖的最終指令稿如下：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ==== 設定變數 ====</span>
+<span class="nv">out_ps</span><span class="o">=</span><span class="s2">&quot;Rub_al_Khali.ps&quot;</span>
+<span class="nv">in_grd_r</span><span class="o">=</span><span class="s2">&quot;LC08_L1TP_160045_20170408_20170414_01_T1_B4_s.grd&quot;</span>    <span class="c1"># 輸入檔，作為紅色 (R) 波段</span>
+<span class="nv">in_grd_g</span><span class="o">=</span><span class="s2">&quot;LC08_L1TP_160045_20170408_20170414_01_T1_B3_s.grd&quot;</span>    <span class="c1"># 輸入檔，作為綠色 (G) 波段</span>
+<span class="nv">in_grd_b</span><span class="o">=</span><span class="s2">&quot;LC08_L1TP_160045_20170408_20170414_01_T1_B2_s.grd&quot;</span>    <span class="c1"># 輸入檔，作為藍色 (B) 波段</span>
+
+<span class="c1"># ==== 調整 GMT 預設參數 ====</span>
+gmtset <span class="nv">MAP_FRAME_TYPE</span><span class="o">=</span>plain
+
+<span class="c1"># ==== 繪製衛星影像 ====</span>
+    <span class="c1"># 取得 -R 資訊並畫圖 (注意 -J 的設定！)</span>
+<span class="nv">R</span><span class="o">=</span><span class="k">$(</span>grdinfo <span class="nv">$in_grd_r</span> -I1/1<span class="k">)</span>
+grdimage <span class="nv">$in_grd_r</span> <span class="nv">$in_grd_g</span> <span class="nv">$in_grd_b</span> <span class="nv">$R</span> -JX15c/0 -P -K &gt; <span class="nv">$out_ps</span>
+    <span class="c1"># 繪製不含任何標記的邊框</span>
+psbasemap -R -J -O -K -B0 &gt;&gt; <span class="nv">$out_ps</span>
+
+<span class="c1"># ==== 繪製地圖元素 ====</span>
+    <span class="c1"># 繪製指北針 (注意 -J 的設定！)</span>
+        <span class="c1"># GMT 5.2</span>
+<span class="c1"># psbasemap -R -JU40Q/15c -O -K -TdjRT+w2c+f+l\ ,\ ,\ ,N+o1c/1.8c -F+c0.2c/0.2c/0.2c/1c+gwhite@50+r0.5c --FONT=15p &gt;&gt; $out_ps</span>
+        <span class="c1"># GMT 5.4</span>
+psbasemap -R -JU40Q/15c -O -K -TdjRT+w2c+f+l,,,N+o1c/1.8c -F+c0.2c/0.2c/0.2c/1c+gwhite@50+r0.5c --FONT<span class="o">=</span>15p &gt;&gt; <span class="nv">$out_ps</span>
+    <span class="c1"># 繪製比例尺</span>
+psbasemap -R -J         -O -K -LjRB+c22+w10k+f+o2c/2c+u -F+gwhite@50  &gt;&gt; <span class="nv">$out_ps</span>
+    <span class="c1"># 繪製分圖，放上鄰近區域的海岸線和國界位置</span>
+pscoast -R-700000/1100000/1920000/3180000 -JU40Q/5c -O -K -Di -Wthinner -Gwhite -Sgray -B0 -N1/thinnest &gt;&gt; <span class="nv">$out_ps</span>
+    <span class="c1"># 標上主地圖在分圖中的位置 (注意 -J 的設定！) 與其他文字</span>
+psbasemap -R -JX5c/0 -O -K -D<span class="si">${</span><span class="nv">R</span><span class="p">#*-R</span><span class="si">}</span> -F &gt;&gt; <span class="nv">$out_ps</span>
+<span class="nb">echo</span> -300000 <span class="m">2300000</span> Saudi Arabia <span class="p">|</span> pstext -R -J -O -K -F+f8p+jMC &gt;&gt; <span class="nv">$out_ps</span>
+
+<span class="c1"># ==== 關門 (寫入 EOF) 與轉檔 ====</span>
+psxy -R -J -O -T &gt;&gt; <span class="nv">$out_ps</span>
+psconvert <span class="nv">$out_ps</span> -A -P -Tg
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">備註</p>
+<p>「」</p>
+</div>
+<p>觀看<a class="reference internal" href="#id7">最終版地圖</a></p>
+</section>
+<section id="id14">
+<h2><span class="section-number">13.6. </span>習題<a class="headerlink" href="#id14" title="本標題的永久連結">#</a></h2>
+<dl class="footnote brackets">
+<dt class="label" id="id15"><span class="brackets"><a class="fn-backref" href="#id4">1</a></span></dt>
+<dd><p>Peter Vincent (2008).
+<a class="reference external" href="https://books.google.com/books?id=Vacv2wy3yd8C&amp;pg=PA141">Saudi Arabia: an environmental overview</a>.
+Taylor &amp; Francis. p. 141. ISBN 978-0-415-41387-9.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./main"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="contour_and_profile.html" title="上一頁 頁">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">上一頁</p>
+            <p class="prev-next-title"><span class="section-number">12. </span>等高線地圖及地形剖面</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="editing_cpt_colorbar.html" title="下一頁 頁">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一頁</p>
+        <p class="prev-next-title"><span class="section-number">14. </span>色階檔的編修與呈現</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+ <div id="disqus_thread"></div> <script> var disqus_config = function () {this.page.url = 'http://gmt-tutorial.org/map_elements.html'; this.page.identifier = 'map_elements'; }; (function() { var d = document, s = d.createElement('script'); s.src = '//gmt-tutorials.disqus.com/embed.js'; s.setAttribute('data-timestamp', +new Date()); (d.head || d.body).appendChild(s); })(); </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By <a href="https://whyjz.github.io/">鄭懷傑 (Whyjay Zheng)</a> | <a href="https://twitter.com/WhyjayZ"><i class="fa-brands fa-twitter"></i></a><br/>
+  
+    Last updated on 7月 27, 2022.<br/>
+    <div class="extra_footer">
+      &copy; 2016-2022. <a href="https://github.com/whyjz/GMT-tutorials/blob/master/LICENSE.md">MIT</a> 
+and <a href="http://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</a> dual licensed. <br>
+Found this tutorial helpful? <a href="https://www.paypal.com/donate?hosted_button_id=68GZNRJ3MZDBE">Buy me a milktea!</a>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

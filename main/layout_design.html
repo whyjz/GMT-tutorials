@@ -1,0 +1,969 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_TW">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>10. 版面設計與地圖的幾何布局 &#8212; GMT 教學手冊</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+ <link href='https://fonts.googleapis.com/css?family=Varela Round' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://gmt-tutorials.org/main/layout_design.html" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜尋" href="../search.html" />
+    <link rel="next" title="11. 暈渲地圖" href="hillshading.html" />
+    <link rel="prev" title="9. 繪製向量式資料" href="plot_vector_data.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="zh_TW">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+ <script type="text/javascript">var _jf = _jf || [];_jf.push(['p','39630']);_jf.push(['_setFont','sourcehansans-tc-light','css','.sourcehansans-tc-light']);_jf.push(['_setFont','sourcehansans-tc-light','alias','sourcehansans-tc']);_jf.push(['_setFont','sourcehansans-tc-light','weight',200]);_jf.push(['_setFont','sourcehansans-tc-regular','css','.sourcehansans-tc-regular']);_jf.push(['_setFont','sourcehansans-tc-regular','alias','sourcehansans-tc']);_jf.push(['_setFont','sourcehansans-tc-regular','weight',400]);_jf.push(['_setFont','cwtexqyuan','css','.cwtexqyuan']);_jf.push(['_setFont','cwtexqyuan','alias','cwtexqyuan']);_jf.push(['_setFont','cwtexqyuan','weight',500]);_jf.push(['_setFont','xingothic-tc-w7','css','.xingothic-tc-w7']);_jf.push(['_setFont','xingothic-tc-w7','alias','xingothic-tc']);_jf.push(['_setFont','xingothic-tc-w7','weight',700]);_jf.push(['_setFont','jf-jinxuan-medium','css','.jf-jinxuan-medium']);_jf.push(['_setFont','jf-jinxuan-medium','alias','jf-jinxuan']);_jf.push(['_setFont','jf-jinxuan-medium','weight',600]);(function(f,q,c,h,e,i,r,d){var k=f._jf;if(k.constructor===Object){return}var l,t=q.getElementsByTagName("html")[0],a=function(u){for(var v in k){if(k[v][0]==u){if(false===k[v][1].call(k)){break}}}},j=/\S+/g,o=/[\t\r\n\f]/g,b=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,g="".trim,s=g&&!g.call("\uFEFF\xA0")?function(u){return u==null?"":g.call(u)}:function(u){return u==null?"":(u+"").replace(b,"")},m=function(y){var w,z,v,u,x=typeof y==="string"&&y;if(x){w=(y||"").match(j)||[];z=t[c]?(" "+t[c]+" ").replace(o," "):" ";if(z){u=0;while((v=w[u++])){if(z.indexOf(" "+v+" ")<0){z+=v+" "}}t[c]=s(z)}}},p=function(y){var w,z,v,u,x=arguments.length===0||typeof y==="string"&&y;if(x){w=(y||"").match(j)||[];z=t[c]?(" "+t[c]+" ").replace(o," "):"";if(z){u=0;while((v=w[u++])){while(z.indexOf(" "+v+" ")>=0){z=z.replace(" "+v+" "," ")}}t[c]=y?s(z):""}}},n;k.push(["_eventActived",function(){p(h);m(e)}]);k.push(["_eventInactived",function(){p(h);m(i)}]);k.addScript=n=function(u,A,w,C,E,B){E=E||function(){};B=B||function(){};var x=q.createElement("script"),z=q.getElementsByTagName("script")[0],v,y=false,D=function(){x.src="";x.onerror=x.onload=x.onreadystatechange=null;x.parentNode.removeChild(x);x=null;a("_eventInactived");B()};if(C){v=setTimeout(function(){D()},C)}x.type=A||"text/javascript";x.async=w;x.onload=x.onreadystatechange=function(G,F){if(!y&&(!x.readyState||/loaded|complete/.test(x.readyState))){y=true;if(C){clearTimeout(v)}x.src="";x.onerror=x.onload=x.onreadystatechange=null;x.parentNode.removeChild(x);x=null;if(!F){setTimeout(function(){E()},200)}}};x.onerror=function(H,G,F){if(C){clearTimeout(v)}D();return true};x.src=u;z.parentNode.insertBefore(x,z)};a("_eventPreload");m(h);n(r,"text/javascript",false,3000)})(this,this.document,"className","jf-loading","jf-active","jf-inactive","//ds.justfont.com/js/stable/v/5.0.2/id/166657211014");</script>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">GMT 教學手冊</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form> <div class="langcenter"> <nav class="menu"> <ul class="clearfix"> <li class="current-item"> <a href="#" class="clicker">中文 (台灣) <span class="arrow">&#9660;</span></a> <ul class="sub-menu"> <li><a href="layout_design.html">中文 (台灣)</a></li> <li><a href="../en/main/layout_design.html">English</a></li> </ul> </li> </ul> </nav> </div> 
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  入門與概述
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro_install.html">
+   1. GMT / PyGMT 簡介與安裝
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="software.html">
+   2. 推薦搭配的軟體或套件
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="basic_concept.html">
+   3. 基本概念與名詞
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  基本繪圖技巧
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="making_first_map.html">
+   4. 製作第一張地圖
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="coloring_topography.html">
+   5. 為地形圖上色
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pen_and_painting.html">
+   6. 畫筆與調色技巧
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="scatter_plot.html">
+   7. XY 點散佈圖
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  製作各種常見的地圖（基礎）
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="cpt_colormap.html">
+   8. 使用色階表為網格資料著色
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plot_vector_data.html">
+   9. 繪製向量式資料
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   10. 版面設計與地圖的幾何布局
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hillshading.html">
+   11. 暈渲地圖
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="contour_and_profile.html">
+   12. 等高線地圖及地形剖面
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="map_elements.html">
+   13. 加入地圖元素
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  製作各種常見的地圖（進階）
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="editing_cpt_colorbar.html">
+   14. 色階檔的編修與呈現
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="view3d.html">
+   15. 3D 視圖
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="focal_mech.html">
+   16. 繪製震源機制解
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="draping.html">
+   17. 在 3D 地形上覆蓋地圖
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  網格資料處理
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="raster_calculator.html">
+   18. 網格計算機
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="basic_img_processing.html">
+   19. 基本影像處理
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  數值資料處理
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="stat_histogram.html">
+   20. 輸出統計資訊與直方圖
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="regression_basics.html">
+   21. 進行迴歸分析
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  附錄與學習資源
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_credit.html">
+   22. 資料來源與參考文獻
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="command_index.html">
+   23. 指令索引
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gallery.html">
+   24. 章節地圖索引
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/whyjz/GMT-tutorials"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/main/layout_design.rst"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   10.1. 目標
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   10.2. 使用的指令與概念
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   10.3. 前置作業
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id9">
+   10.4. 操作流程
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id12">
+   10.5. 指令稿
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id13">
+   10.6. 習題
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>版面設計與地圖的幾何布局</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   10.1. 目標
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   10.2. 使用的指令與概念
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   10.3. 前置作業
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id9">
+   10.4. 操作流程
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id12">
+   10.5. 指令稿
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id13">
+   10.6. 習題
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="id1">
+<h1><span class="section-number">10. </span>版面設計與地圖的幾何布局<a class="headerlink" href="#id1" title="本標題的永久連結">#</a></h1>
+<div class="admonition attention">
+<p class="admonition-title">注意</p>
+<p>本教學適用於 GMT 6 的現代模式。如須參閱 GMT 6 (傳統模式) 與 GMT 4-5 繪製相似地圖的教程，<a class="reference external" href="layout_design_gmt5.html">請至這裡</a>。</p>
+</div>
+<p>接下來讓我們來探討一下 GMT 的版面設計功能。GMT 使用了許多預設選項，讓使用者不需做太多設定就能產生想要的地圖。如果我們想設計比較複雜的配置，例如版面分割、邊框樣式調整、字型與字體樣式，就需要調整 GMT 的「使用者組態設定」。另外，我們也會在這裡介紹地理空間資料常用的兩大類座標：平面與球面，以及 GMT 作圖時的相關設定。</p>
+<section id="id3">
+<h2><span class="section-number">10.1. </span>目標<a class="headerlink" href="#id3" title="本標題的永久連結">#</a></h2>
+<p>繪製從蒙古<em>烏蘭巴托</em> (Ulaanbaatar) 到美國<em>西雅圖</em> (Seattle) 的<a class="reference external" href="https://en.wikipedia.org/wiki/Great-circle_distance">大圓路徑</a> (<strong>Great Circle</strong> Route) 與<a class="reference external" href="https://en.wikipedia.org/wiki/Rhumb_line">恆向線</a> (<strong>Rhumb Line</strong>)。大圓路徑指的是沿著大圓 (半徑為地球半徑的的圓) 前進的路徑，恆向線則是對於所有的子午線，交角皆相等的路線。本章地圖使用了兩個不同的投影方法，上圖為「蘭伯特等積方位投影」 (<strong>Lambert</strong> azimuthal equal-area projection) ，下圖為「麥卡托投影」(<strong>Mercator</strong> Projection)。圖中說明了幾個特點：</p>
+<ul class="simple">
+<li><p>恆向線在麥卡托投影中會以直線呈現，而大圓路徑在相同的圖中則是曲線。不過，大圓路徑才是兩地之間實際較短的路徑。</p></li>
+<li><p>連接到蘭伯特等積方位投影中心點 (本例中為烏蘭巴托) 的大圓路徑會是直線，恆向線則變成曲線。這是比較能直觀連結它們的實際長度的一種方法，也是投影名稱的「方位」二字緣由 (大圓路徑保持在相同方位)。</p></li>
+</ul>
+<p>另外，本地圖也替換了 GMT 的預設字型、顏色與版面配置。這些細節將會在以下部份一一解說。</p>
+<a class="reference internal image-reference" href="../_images/ulaanbaatar_seattle_gmt6.png" id="id6"><img alt="../_images/ulaanbaatar_seattle_gmt6.png" class="align-center" id="id6" src="../_images/ulaanbaatar_seattle_gmt6.png" style="width: 800px;" /></a>
+<p>直接觀看<a class="reference internal" href="#id12">指令稿</a></p>
+</section>
+<section id="id7">
+<h2><span class="section-number">10.2. </span>使用的指令與概念<a class="headerlink" href="#id7" title="本標題的永久連結">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">defaults</span></code> - <strong>查看 GMT 的預設作圖參數</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">set</span></code> - <strong>更改 GMT 的預設作圖參數</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plot</span></code> - <strong>在地理座標系統上畫點和線</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">text</span></code> - <strong>詳細的設定標記在圖上的文字</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">basemap</span></code> - 設定繪圖區、座標軸與邊框</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">coast</span></code> - 繪製海岸線與國界</p></li>
+<li><p>外部指令 <code class="docutils literal notranslate"><span class="pre">rm</span></code> - <strong>刪除檔案</strong> (Windows 為 <code class="docutils literal notranslate"><span class="pre">del</span></code>)</p></li>
+<li><p>外部指令 <code class="docutils literal notranslate"><span class="pre">echo</span></code> - 把資料輸入到管線命令中</p></li>
+<li><p>GMT 共用選項：<code class="docutils literal notranslate"><span class="pre">-X</span></code> <code class="docutils literal notranslate"><span class="pre">-Y</span></code> <code class="docutils literal notranslate"><span class="pre">-:</span></code></p></li>
+<li><p>GMT 的預設參數與 <code class="docutils literal notranslate"><span class="pre">gmt.conf</span></code> 檔案</p></li>
+<li><p>地理座標的給定方式</p></li>
+<li><p>地圖版面的設定</p></li>
+<li><p>文字風格設定</p></li>
+<li><p>GMT 針對不同投影座標系統的不同處理方式</p></li>
+</ul>
+</section>
+<section id="id8">
+<h2><span class="section-number">10.3. </span>前置作業<a class="headerlink" href="#id8" title="本標題的永久連結">#</a></h2>
+<p>我們要先取得烏蘭巴托與西雅圖兩地的經緯度座標。從 <em>Wikipedia</em> 的條目頁面中，可以找到「經緯度」的資訊欄位，點選連結後，可以看到不同座標系統的位置資訊，如下所示 (以烏蘭巴托為例)。</p>
+<a class="reference internal image-reference" href="../_images/layout_design_fig1.png"><img alt="../_images/layout_design_fig1.png" class="align-center" src="../_images/layout_design_fig1.png" style="width: 1000px;" /></a>
+<p>注意在「<strong>WGS84</strong>」欄位中，有兩種座標的格式。你要使用哪種都可以，GMT 都有支援。另外也請注意這裡的座標是「緯度在前，經度在後」。在下表中，也蒐集了兩地的經緯座標 (十進位制四捨五入至小數點第二位)：</p>
+<table class="table">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 38%" />
+<col style="width: 44%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>城市</p></th>
+<th class="head"><p>烏蘭巴托</p></th>
+<th class="head"><p>西雅圖</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>經緯度 (度分秒)</p></td>
+<td><p>47° 55′ 0″ N, 106° 55′ 0″ E</p></td>
+<td><p>47° 36′ 35″ N, 122° 19′ 59″ W</p></td>
+</tr>
+<tr class="row-odd"><td><p>經緯度 (十進位)</p></td>
+<td><p>47.92, 106.92</p></td>
+<td><p>47.61, -122.33</p></td>
+</tr>
+</tbody>
+</table>
+<p>為了方便使用這些資料，我們可以建立一個純文字文件 <code class="docutils literal notranslate"><span class="pre">coord.txt</span></code>，再把兩地的座標資訊複製到文件中存檔，如此一來供 GMT 使用的資料表就建立完成。以下是使用十進位制座標的 <code class="docutils literal notranslate"><span class="pre">coord.txt</span></code> 內容：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">47</span>.92, <span class="m">106</span>.92
+<span class="m">47</span>.61, -122.33
+</pre></div>
+</div>
+<p>再次強調，資料中的第一欄現在是緯度 (y 值)，第二欄是經度 (x 值)。這與我們在「<a class="reference internal" href="scatter_plot.html"><span class="doc">XY 點散佈圖</span></a>」一章中所使用的 xy 順序相反，不過只要適當的指定欄位意義，GMT 仍然可以讀取。另外，兩個欄位中間使用了「逗號」分隔，在 GMT 中也是可以接受的。</p>
+<p>以下是使用度分秒制座標的 <code class="docutils literal notranslate"><span class="pre">coord.txt</span></code> 內容：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">47</span>:55:0N, <span class="m">106</span>:55:0E
+<span class="m">47</span>:36:35N, <span class="m">122</span>:19:59W
+</pre></div>
+</div>
+<p>注意我把所有的度分秒符號都統一成「冒號」，而且座標字串中間的空白都被移除了。這種格式是 GMT 接受的標準地理座標 (度分秒) 格式，如果你有一串地理座標資料是以度分秒格式儲存，記得在輸入 GMT 之前，把所有的度分秒符號都改為冒號，如上所示。</p>
+<p>你也可以從這裡下載資料檔：<a class="reference download internal" download="" href="../_downloads/31338934f89f139dec4887c60b516c71/coord.txt"><code class="xref download docutils literal notranslate"><span class="pre">coord.txt</span></code></a>，這個版本使用度分秒制座標。</p>
+<div class="admonition tip">
+<p class="admonition-title">小訣竅</p>
+<p>簡單小結 GMT 對於文字輸入檔與地理座標格式的要求：</p>
+<ol class="arabic simple">
+<li><p>欄位的分隔符號可以是<strong>空白</strong>、<strong>逗號</strong> (<code class="docutils literal notranslate"><span class="pre">.csv</span></code> 檔) 與 <strong>Tab</strong> (<code class="docutils literal notranslate"><span class="pre">.tsv</span></code> 檔) 三者之一，但不能在同一個檔案中使用超過一種的分隔符號來分隔欄位。欄位代表的意義預設是第一欄 x 值、第二欄 y 值，不過可以在下指令時逐一指定。</p></li>
+<li><p>地理座標可以採用<strong>十進位</strong>或<strong>度分秒</strong>：</p>
+<ul class="simple">
+<li><p>以十進位系統表示時，南緯要表示為負緯度，西經則表示為負經度或是東經 180 度之後持續累加，如經度 243 和 -63 都代表西經 63 度。</p></li>
+<li><p>以度分秒系統表示時，使用 <code class="docutils literal notranslate"><span class="pre">ddd:mm:ssF</span></code> 的方法，<code class="docutils literal notranslate"><span class="pre">ddd</span></code> 為度，<code class="docutils literal notranslate"><span class="pre">mm</span></code> 為分，<code class="docutils literal notranslate"><span class="pre">ss</span></code> 為秒，<code class="docutils literal notranslate"><span class="pre">F</span></code> 則是 NEWS 四個字母之一。</p></li>
+</ul>
+</li>
+</ol>
+</div>
+</section>
+<section id="id9">
+<h2><span class="section-number">10.4. </span>操作流程<a class="headerlink" href="#id9" title="本標題的永久連結">#</a></h2>
+<p>讓我們從目標地圖的下半部 (麥卡托投影的部份) 開始吧。先來畫出海岸線與國界：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">land_color</span><span class="o">=</span><span class="s2">&quot;#CEB9A0&quot;</span> <span class="c1"># 陸域填色</span>
+
+gmt begin ulaanbaatar_seattle png
+    gmt basemap -R70/270/30S/70N -JM13c -B+tMercator
+    gmt coast -Dl -A1000 -G<span class="nv">$land_color</span> -N1/thick,60 -Ba40f20g20
+    <span class="c1"># -D: 調整海岸線解析度。因為我們畫的是全球資料，用不著高解析度的海岸線，所以設定為 l (low) 即可。</span>
+gmt end
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/layout_design_gmt6_fig2.png"><img alt="../_images/layout_design_gmt6_fig2.png" class="align-center" src="../_images/layout_design_gmt6_fig2.png" style="width: 1000px;" /></a>
+<p>這張地圖的細節設定，例如字體大小、格線粗細等等，採用的是 GMT 的預設參數。你可以使用 <code class="docutils literal notranslate"><span class="pre">defaults</span></code> 指令在終端機中查看所有的參數值：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt defaults -D
+</pre></div>
+</div>
+<p>螢幕的輸出如下所示：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1"># GMT 6.0.0 Defaults file</span>
+<span class="c1">#</span>
+<span class="c1"># COLOR Parameters</span>
+<span class="c1">#</span>
+<span class="nv">COLOR_BACKGROUND</span>               <span class="o">=</span> black
+<span class="nv">COLOR_FOREGROUND</span>               <span class="o">=</span> white
+<span class="nv">COLOR_NAN</span>                      <span class="o">=</span> <span class="m">127</span>.5
+<span class="nv">COLOR_MODEL</span>                    <span class="o">=</span> none
+... <span class="c1">#(以下省略)</span>
+</pre></div>
+</div>
+<p>所有不以 <code class="docutils literal notranslate"><span class="pre">#</span></code> 號開頭的每一行都是一個 GMT 參數，參數的名稱就是在這裡出現的大寫字串。所有參數的意思，都可以在 <a class="reference external" href="https://docs.generic-mapping-tools.org/6.0/gmt.conf.html">GMT 的官方手冊</a>中找到。我們可以使用兩種方式更改預設的參數：</p>
+<ol class="arabic">
+<li><p>在下 GMT 指令時，使用 <code class="docutils literal notranslate"><span class="pre">--參數=設定值</span></code> (<strong>長指令</strong>語法)。在「<a class="reference internal" href="cpt_colormap.html"><span class="doc">使用色階表為網格資料著色</span></a>」中，我們就是使用此方法調整 <code class="docutils literal notranslate"><span class="pre">COLOR_NAN</span></code> 的設定，讓地圖無資料的區域顯示為灰色。<strong>使用此方法改變的參數只對這個指令有效</strong>，其他指令仍然會使用原先的預設值。</p></li>
+<li><p>使用 <code class="docutils literal notranslate"><span class="pre">set</span></code> 指令設定參數的預設值。它的語法如下：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt <span class="nb">set</span> 參數名1 參數值1 <span class="o">[</span>參數名2 參數值2 參數名3 參數值3...<span class="o">]</span>
+<span class="c1"># ---- 或是 ----</span>
+$ gmt <span class="nb">set</span> <span class="nv">參數名1</span><span class="o">=</span>參數值1 <span class="o">[</span><span class="nv">參數名2</span><span class="o">=</span>參數值2 <span class="nv">參數名3</span><span class="o">=</span>參數值3...<span class="o">]</span>
+</pre></div>
+</div>
+<p>在本教學中我會使用第一種語法以方便對齊參數值。這種方法與前一種方法的主要差異是，GMT 會紀錄改變的預設值，只要紀錄不被覆蓋或刪除，<strong>改變的參數對接下來的所有指令都有效</strong>。第一次下達 <code class="docutils literal notranslate"><span class="pre">set</span></code> 指令時，GMT 會在當前目錄下建立 <code class="docutils literal notranslate"><span class="pre">gmt.conf</span></code> 檔案，並把所有更動儲存在內。之後所有的 GMT 指令都會讀取此檔案，這就是為什麼使用 <code class="docutils literal notranslate"><span class="pre">set</span></code> 設定參數會有永久性效用的原因。</p>
+</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">小訣竅</p>
+<p>如果你的資料夾中已經有了上一次繪圖時產生的 <code class="docutils literal notranslate"><span class="pre">gmt.conf</span></code>，而你又不想讓上一次的設定選項「干擾」到你這一次要畫的地圖，則你可以簡單的把 <code class="docutils literal notranslate"><span class="pre">gmt.conf</span></code> 刪掉，這樣 GMT 會重新使用系統預設值，然後就可以從頭使用 <code class="docutils literal notranslate"><span class="pre">set</span></code> 來設定新的繪圖參數。</p>
+</div>
+<p>介紹完 <code class="docutils literal notranslate"><span class="pre">set</span></code> 後，讓我們馬上來做個測試。在剛剛目標地圖下半部的腳本中加入此指令：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">land_color</span><span class="o">=</span><span class="s2">&quot;#CEB9A0&quot;</span>
+gmt <span class="nb">set</span> MAP_FRAME_TYPE plain
+<span class="c1"># MAP_FRAME_TYPE：地圖邊框樣式。預設是 fancy，就是上圖的黑白相間邊框。改成 plain 的話，邊框會變成最基本的樣式。</span>
+
+gmt begin ulaanbaatar_seattle png
+    gmt basemap -R70/270/30S/70N -JM13c -B+tMercator
+    gmt coast -Dl -A1000 -G<span class="nv">$land_color</span> -N1/thick,60 -Ba40f20g20
+gmt end
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/layout_design_gmt6_fig3.png"><img alt="../_images/layout_design_gmt6_fig3.png" class="align-center" src="../_images/layout_design_gmt6_fig3.png" style="width: 1000px;" /></a>
+<p>可以看出地圖的邊緣從斑馬框變成一條線了。運用相同的方式，我們還要逐一修改以下預設參數：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FONT_TITLE</span></code>：標題字型。在 GMT 中，<strong>字型與畫筆類似，由三個部份組成</strong>：<code class="docutils literal notranslate"><span class="pre">尺寸,字型,顏色</span></code>。「尺寸」可為任意數值，預設單位為點 (points)；「樣式」則可參考 <a class="reference external" href="https://docs.generic-mapping-tools.org/6.0/cookbook/postscript_fonts.html">PostScript 的字型樣式表</a>，可以使用字型的代號或是字型的名稱來表示。「顏色」則是 GMT 通用的顏色格式。我們想要的設定是 <code class="docutils literal notranslate"><span class="pre">30,Bookman-Demi,#0D057A</span></code> (30 點字的 Bookman-Demi，顏色是 #0D057A)。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FONT_ANNOT_PRIMARY</span></code>：座標軸主格點標示的字型，使用 <code class="docutils literal notranslate"><span class="pre">12p,20,#0D057A</span></code> (12點字的 Bookman-LightItalic，顏色與標題一樣)。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FORMAT_GEO_MAP</span></code>：(地理作圖的) 座標刻度標示的格式，使用英文代號的搭配組合表示，<code class="docutils literal notranslate"><span class="pre">d</span></code> 代表度，<code class="docutils literal notranslate"><span class="pre">m</span></code> 代表分，<code class="docutils literal notranslate"><span class="pre">s</span></code> 代表秒，<code class="docutils literal notranslate"><span class="pre">F</span></code> 代表數值後面會加的「NEWS」後綴符號，詳細設定可<a class="reference external" href="https://docs.generic-mapping-tools.org/6.0/gmt.conf.html">在此查閱</a>。我們要使用的是 <code class="docutils literal notranslate"><span class="pre">dddF</span></code>，如此一來可令所有座標只以至多三位數的度來表示，並搭配後綴符號。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MAP_GRID_CROSS_SIZE_PRIMARY</span></code>：地圖格線的十字交叉符號大小。使用 <code class="docutils literal notranslate"><span class="pre">8p</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MAP_GRID_PEN_PRIMARY</span></code>：地圖格線的畫筆屬性。使用 <code class="docutils literal notranslate"><span class="pre">thinner,#ED99F0</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MAP_TICK_PEN_PRIMARY</span></code>：地圖座標刻度的畫筆屬性。使用 <code class="docutils literal notranslate"><span class="pre">thicker,black</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MAP_TITLE_OFFSET</span></code>：地圖標題與座標軸刻度的垂直距離。使用 <code class="docutils literal notranslate"><span class="pre">0.5c</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MAP_ANNOT_OBLIQUE</span></code>：座標軸刻度的「擺放模式」。在上圖中，經度和緯度的刻度都是水平顯示的，我們要使用的設定代號是 <code class="docutils literal notranslate"><span class="pre">32</span></code>，意謂著「經度保持原樣，緯度與地圖的邊框平行顯示」。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PS_PAGE_COLOR</span></code>：紙張的底色。使用 <code class="docutils literal notranslate"><span class="pre">ivory</span></code> (象牙色)。</p></li>
+</ul>
+<p>因此，在原腳本中 <code class="docutils literal notranslate"><span class="pre">set</span></code> 的設定可以擴展成：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># (前略)</span>
+gmt <span class="nb">set</span> FONT_ANNOT_PRIMARY          12p,20,#0D057A <span class="se">\</span>
+        FONT_TITLE                  <span class="m">30</span>,Bookman-Demi,#0D057A <span class="se">\</span>
+        FORMAT_GEO_MAP              dddF <span class="se">\</span>
+        MAP_ANNOT_OBLIQUE           <span class="m">32</span> <span class="se">\</span>
+        MAP_FRAME_TYPE              plain <span class="se">\</span>
+        MAP_GRID_CROSS_SIZE_PRIMARY 8p <span class="se">\</span>
+        MAP_GRID_PEN_PRIMARY        thinner,#ED99F0 <span class="se">\</span>
+        MAP_TICK_PEN_PRIMARY        thicker,black <span class="se">\</span>
+        MAP_TITLE_OFFSET            <span class="m">0</span>.5c <span class="se">\</span>
+        PS_PAGE_COLOR               ivory
+<span class="c1"># 注意我在每一行結尾使用了 &quot;\&quot; 符號，意味著下一行仍然是 gmt set 的內容。</span>
+<span class="c1"># (後略)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">備註</p>
+<p>有許多參數名稱都有 <code class="docutils literal notranslate"><span class="pre">PRIMARY</span></code>，這是由於 GMT 的某些邊框 (尤其是 <code class="docutils literal notranslate"><span class="pre">fancy</span></code> 類型的邊框) 會使用不同的設定來指定主格線 (刻度) 與副格線 (刻度)。在我們的例子中，只設定了主格線，副格線皆已省略。你也可以換成 <code class="docutils literal notranslate"><span class="pre">fancy</span></code> 類型的邊框，指定副格線的樣式 (帶有 <code class="docutils literal notranslate"><span class="pre">SECONDARY</span></code> 的參數名稱)，看看出圖會是什麼樣的感覺！</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">小訣竅</p>
+<p>如要使用不是 GMT 預先定義的 PostScript 字型，請參閱 <a class="reference external" href="https://docs.generic-mapping-tools.org/6.0/gallery/ex31.html">這個例子</a>。</p>
+</div>
+<p>以上腳本出圖如下：</p>
+<a class="reference internal image-reference" href="../_images/layout_design_gmt6_fig4.png"><img alt="../_images/layout_design_gmt6_fig4.png" class="align-center" src="../_images/layout_design_gmt6_fig4.png" style="width: 1000px;" /></a>
+<p>大部分的改動都如我們所預期：所有的字體樣式都換了、地圖邊框改了、顏色和格線也換成比較舒服的搭配。接下來讓我們補完這張地圖上的城市位置和兩條不同的路徑。由於在 <code class="docutils literal notranslate"><span class="pre">coord.txt</span></code> 中，座標欄位是「先緯度再經度」，因此在使用 <code class="docutils literal notranslate"><span class="pre">plot</span></code> 時，需要加上 <code class="docutils literal notranslate"><span class="pre">-:</span></code> 選項，「告訴」GMT 第一欄是 Y 值，第二欄是 X 值。<code class="docutils literal notranslate"><span class="pre">plot</span></code> 在地圖上畫線時的預設模式是「畫出大圓路徑」，如果加上 <code class="docutils literal notranslate"><span class="pre">-A</span></code> 選項，可以改成「畫出投影系統中的直線路徑」，在麥卡托投影中，這條路徑就是恆向線。因此，運用 <code class="docutils literal notranslate"><span class="pre">plot</span></code> 與 <code class="docutils literal notranslate"><span class="pre">text</span></code>，就可以畫出以上目標，並且標注兩條路徑的名稱：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ==== 設定變數 ====</span>
+<span class="nv">input_xy</span><span class="o">=</span><span class="s2">&quot;coord.txt&quot;</span>
+<span class="nv">land_color</span><span class="o">=</span><span class="s2">&quot;#CEB9A0&quot;</span> <span class="c1"># 陸域填色</span>
+<span class="nv">rl_color</span><span class="o">=</span><span class="s2">&quot;#FF0073&quot;</span>   <span class="c1"># 恆向線顏色</span>
+<span class="nv">gc_color</span><span class="o">=</span><span class="s2">&quot;#0044FF&quot;</span>   <span class="c1"># 大圓路徑顏色</span>
+
+<span class="c1"># ==== 設定作圖參數 ====</span>
+gmt <span class="nb">set</span> FONT_ANNOT_PRIMARY          12p,20,#0D057A <span class="se">\</span>
+        FONT_TITLE                  <span class="m">30</span>,Bookman-Demi,#0D057A <span class="se">\</span>
+        FORMAT_GEO_MAP              dddF <span class="se">\</span>
+        MAP_ANNOT_OBLIQUE           <span class="m">32</span> <span class="se">\</span>
+        MAP_FRAME_TYPE              plain <span class="se">\</span>
+        MAP_GRID_CROSS_SIZE_PRIMARY 8p <span class="se">\</span>
+        MAP_GRID_PEN_PRIMARY        thinner,#ED99F0 <span class="se">\</span>
+        MAP_TICK_PEN_PRIMARY        thicker,black <span class="se">\</span>
+        MAP_TITLE_OFFSET            <span class="m">0</span>.5c <span class="se">\</span>
+        PS_PAGE_COLOR               ivory
+
+<span class="c1"># ==== 開始繪圖 ====</span>
+gmt begin ulaanbaatar_seattle png
+    gmt basemap -R70/270/30S/70N -JM13c -B+tMercator
+    gmt coast -Dl -A1000 -G<span class="nv">$land_color</span> -N1/thick,60 -Ba40f20g20 --MAP_GRID_PEN_PRIMARY<span class="o">=</span>thicker
+    <span class="c1"># 調整 MAP_GRID_PEN_PRIMARY 讓十字符號粗一點</span>
+    gmt plot <span class="nv">$input_xy</span> -: -A -W1p,<span class="nv">$rl_color</span>    <span class="c1"># 恆向線</span>
+    gmt plot <span class="nv">$input_xy</span> -:    -W1p,<span class="nv">$gc_color</span>    <span class="c1"># 大圓路徑</span>
+    gmt plot <span class="nv">$input_xy</span> -:    -Sa0.4c -Gblack   <span class="c1"># 城市的位置，-Sa0.4c 是外接圓為 0.4 公分的星形符號。</span>
+    <span class="c1"># 以下是兩條線的說明文字</span>
+    <span class="nb">echo</span> <span class="s2">&quot;174 41 Rhumb Line&quot;</span>    <span class="p">|</span> gmt text -F+f,18,<span class="nv">$rl_color</span>
+    <span class="nb">echo</span> <span class="s2">&quot;174 61 Great Circle&quot;</span>  <span class="p">|</span> gmt text -F+f,18,<span class="nv">$gc_color</span>
+gmt end
+</pre></div>
+</div>
+<p>如此一來，目標地圖的下半部就完成了！</p>
+<a class="reference internal image-reference" href="../_images/layout_design_gmt6_fig5.png"><img alt="../_images/layout_design_gmt6_fig5.png" class="align-center" src="../_images/layout_design_gmt6_fig5.png" style="width: 1000px;" /></a>
+<p>接下來讓我們進入上半部，蘭伯特投影的地圖。為了不讓地圖彼此重疊，我們必須把第二個地圖呈現的位置往上移。GMT 的通用選項 <code class="docutils literal notranslate"><span class="pre">-X</span></code> 和 <code class="docutils literal notranslate"><span class="pre">-Y</span></code> 就是用來設定地圖的相對位置，它的用法為</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-X水平偏移量 <span class="o">(</span>向右為正<span class="o">)</span>
+-Y垂直偏移量 <span class="o">(</span>向上為正<span class="o">)</span>
+</pre></div>
+</div>
+<p>在這裡我們只需要垂直偏移，因此使用 <code class="docutils literal notranslate"><span class="pre">-Y</span></code> 即可。例如 <code class="docutils literal notranslate"><span class="pre">-Y12c</span></code> 就是向上偏移 12 公分。或是你也可以使用 <code class="docutils literal notranslate"><span class="pre">h</span></code> 以及 <code class="docutils literal notranslate"><span class="pre">w</span></code> 代表前一張地圖的作圖高度與寬度，例如 <code class="docutils literal notranslate"><span class="pre">-Yh+3c</span></code> 就是向上偏移上一張地圖的高度再加 3 公分。<code class="docutils literal notranslate"><span class="pre">-X</span></code> 和 <code class="docutils literal notranslate"><span class="pre">-Y</span></code> 會永久改變地圖在紙張上呈現的位置，因此只需要在<strong>下一張地圖的第一個繪圖指令</strong>附上這些選項就可以以了。</p>
+<p>接下來我們來看看蘭伯特等積方位投影使用的 <code class="docutils literal notranslate"><span class="pre">-R</span></code> 與 <code class="docutils literal notranslate"><span class="pre">-J</span></code> 選項。此投影法限定使用全球的作圖範圍，也就是 <code class="docutils literal notranslate"><span class="pre">-R-180/180/-90/90</span></code>。你也可以使用比較短的特殊代號 <code class="docutils literal notranslate"><span class="pre">-Rg</span></code>，它的效果與前者相同。<code class="docutils literal notranslate"><span class="pre">-J</span></code> 語法則為：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-JA中心點經度/中心點緯度/尺寸
+</pre></div>
+</div>
+<p>選擇烏蘭巴托的座標當作投影的中心點，就可以畫出地圖、海岸線、大圓路徑與城市位置：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># (前略)</span>
+<span class="c1"># ==== 開始繪圖 ====</span>
+gmt begin ulaanbaatar_seattle png
+    <span class="c1"># (上述麥卡托地圖的部份)</span>
+    <span class="c1"># ==== 繪圖 (蘭伯特) ====</span>
+    gmt basemap -Rg -JA106:55/47:55/13c -Yh+3c -B+tLambert --MAP_TITLE_OFFSET<span class="o">=</span>0c    <span class="c1"># 把標題與地圖邊框弄靠近一點</span>
+    gmt coast -Dl -A1000 -G<span class="nv">$land_color</span> -N1/thick,60 -Bxg60 -Byg30 --MAP_GRID_CROSS_SIZE_PRIMARY<span class="o">=</span>0p
+    <span class="c1"># 我們不要十字符號出現在此地圖中所以 MAP_GRID_CROSS_SIZE_PRIMARY 設為 0</span>
+    gmt plot <span class="nv">$input_xy</span> -:     -W1p,<span class="nv">$gc_color</span>    <span class="c1"># 大圓路徑</span>
+    gmt plot <span class="nv">$input_xy</span> -: -Sa0.4c -Gblack       <span class="c1"># 城市位置</span>
+
+gmt end
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/layout_design_gmt6_fig6.png"><img alt="../_images/layout_design_gmt6_fig6.png" class="align-center" src="../_images/layout_design_gmt6_fig6.png" style="width: 800px;" /></a>
+<p>注意 GMT 無法透過 <code class="docutils literal notranslate"><span class="pre">-B</span></code> 選項為蘭伯特地圖設定座標刻度，我們稍後得自行使用 <code class="docutils literal notranslate"><span class="pre">text</span></code> 額外標上去。現在烏蘭巴托已經被置於地圖正中間了，這時大圓路徑在地圖上就是一直線前往西雅圖，如果我們把 <code class="docutils literal notranslate"><span class="pre">-A</span></code> 選項打開，也只會得到相同的路徑。那麼，<strong>該如何畫出在這張地圖上的恆向線？</strong>由於西雅圖和烏蘭巴托的緯度非常相近，因此恆向線相當於沿著緯線前進的線段。對於這種狀況，我們可以使用 <code class="docutils literal notranslate"><span class="pre">-Ap</span></code> 選項，強制讓兩點之間沿著緯線和經線連接：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt plot <span class="nv">$input_xy</span> -: -Ap -W1p,<span class="nv">$rl_color</span>    <span class="c1"># (第二個地圖上的) 恆向線</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">小訣竅</p>
+<p>以上繪製恆向線的技巧在兩地處在不同的緯度下無法適用。更一般性的作法是呼叫 GMT 中一個多功能的指令：<code class="docutils literal notranslate"><span class="pre">project</span></code>。這個指令可以用來進行座標轉換或是產生在某個特定的座標系統下的兩點間移動路徑。使用 <code class="docutils literal notranslate"><span class="pre">project</span></code> 在平面直角座標下產生直線路徑，再送給 <code class="docutils literal notranslate"><span class="pre">plot</span></code> 繪圖，就可以畫出恆向線：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt project -C106.92/47.92 -E237.67/47.61 -G10 -N <span class="p">|</span> gmt plot -W1p,<span class="nv">$rl_color</span>    <span class="c1"># (第二個地圖上的) 恆向線</span>
+<span class="c1"># -C: 起點座標 (烏蘭巴托)</span>
+<span class="c1"># -E: 終點座標 (西雅圖, 經度要比烏蘭巴托大，因此加上 360)</span>
+<span class="c1"># -G: 每個取樣點的距離 (單位與起終點座標相同)</span>
+<span class="c1"># -N: 設定座標系為平面直角座標</span>
+</pre></div>
+</div>
+<p>歡迎自行使用此行取代腳本中畫恆向線的指令。有關 <code class="docutils literal notranslate"><span class="pre">project</span></code> 指令的詳細說明，請參閱「<a class="reference internal" href="contour_and_profile.html"><span class="doc">等高線地圖及地形剖面</span></a>」。</p>
+</div>
+<p>本地圖的最後一步，就是替兩條線與經緯格線加上文字標籤。換 <code class="docutils literal notranslate"><span class="pre">text</span></code> 上場了！這次要標的文字比較複雜，因為每個標籤的角度都不一樣，使用 <code class="docutils literal notranslate"><span class="pre">echo</span></code> 一一指定的話會變得有點麻煩。幸好，<code class="docutils literal notranslate"><span class="pre">text</span></code> 和 <code class="docutils literal notranslate"><span class="pre">plot</span></code> 一樣，都可以利用重導向符號 <code class="docutils literal notranslate"><span class="pre">&lt;&lt;</span></code> 一次輸入以上這些不同資訊。它的具體語法為：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt text -F+欄位a+欄位b+.... <span class="o">[</span>其他選項<span class="o">]</span> <span class="s">&lt;&lt; EOF</span>
+<span class="s">第一欄(固定為X) 第二欄(固定為Y) 第三欄(欄位a) 第四欄(欄位b) ... 最後一欄(固定為標籤文字)</span>
+<span class="s">...           ...           ...          ...          ... ...</span>
+<span class="s">...           ...           ...          ...          ... ...</span>
+<span class="s">EOF</span>
+</pre></div>
+</div>
+<p>也就是說，<code class="docutils literal notranslate"><span class="pre">text</span></code> 要求輸入最少為 3 欄 (X、Y、標籤文字)，而透過 <code class="docutils literal notranslate"><span class="pre">-F</span></code> 選項，可以指定更多的欄位。如果要加上經緯格線的文字標籤，我們可以使用 <code class="docutils literal notranslate"><span class="pre">-F+a</span></code>，如此一來第 3 欄就會是每個文字的角度 (從水平開始往逆時針旋轉)，標籤文字則會被擠到第 4 欄，如下所示：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt text -F+a <span class="s">&lt;&lt; ANNOTEND</span>
+<span class="s">106.92 -30 0   30@.S</span>
+<span class="s">106.92 30  0   30@.N</span>
+<span class="s">60     15  70  60@.E</span>
+<span class="s">180    15  305 180@.</span>
+<span class="s">ANNOTEND</span>
+<span class="c1"># 經度  緯度  角度  文字</span>
+<span class="c1"># &quot;@.&quot; 會被解讀成度數符號</span>
+</pre></div>
+</div>
+<p>如果要加上大圓路徑和恆向線的標籤，我們除了要指定旋轉角度外，也要指定不同的字型。在前面的麥卡托地圖中，指定字型的方式是 <code class="docutils literal notranslate"><span class="pre">-F+f字型樣式</span></code> ，如果不給 <code class="docutils literal notranslate"><span class="pre">字型樣式</span></code> 的話，就代表 <code class="docutils literal notranslate"><span class="pre">text</span></code> 必需要在輸入資料中尋找對應的欄位。因此，我們也可使用 <code class="docutils literal notranslate"><span class="pre">-F+a+f</span></code> 來指定第 3 欄為角度、第 4 欄為字型樣式，而標籤文字這次則被放到了第 5 欄：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt text -F+a+f <span class="s">&lt;&lt; LABELEND</span>
+<span class="s">180    40  58  ,Bookman-DemiItalic,$rl_color   Rhumb Line</span>
+<span class="s">180    80  58  ,Bookman-DemiItalic,$gc_color   Great Circle</span>
+<span class="s">LABELEND</span>
+<span class="c1"># 經度  緯度  角度  字型樣式  文字</span>
+</pre></div>
+</div>
+<p>把以上兩段指令加在腳本內 <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">====</span> <span class="pre">繪圖</span> <span class="pre">(蘭伯特)</span> <span class="pre">====</span></code> 的段落中，就能加上我們想要的標籤。</p>
+<p>恭喜！我們終於完成本章目標的地圖了。最後再次提醒：使用 <code class="docutils literal notranslate"><span class="pre">set</span></code> 修改的預設參數，都會被存在 <code class="docutils literal notranslate"><span class="pre">gmt.conf</span></code> 中。如果你下次要在同一個資料夾作圖，但是又不想使用這次的設定，那麼在地圖完成後，請自行刪除 <code class="docutils literal notranslate"><span class="pre">gmt.conf</span></code> 或是把刪除指令放在腳本中的最後一行：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># (前略)</span>
+gmt end
+rm -rf gmt.conf    <span class="c1"># &lt;---- 消除舊的組態設定檔</span>
+</pre></div>
+</div>
+</section>
+<section id="id12">
+<h2><span class="section-number">10.5. </span>指令稿<a class="headerlink" href="#id12" title="本標題的永久連結">#</a></h2>
+<p>本地圖的最終指令稿如下：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ==== 設定變數 ====</span>
+<span class="nv">input_xy</span><span class="o">=</span><span class="s2">&quot;coord.txt&quot;</span>
+<span class="nv">land_color</span><span class="o">=</span><span class="s2">&quot;#CEB9A0&quot;</span>
+<span class="nv">rl_color</span><span class="o">=</span><span class="s2">&quot;#FF0073&quot;</span>        <span class="c1"># 恆向線顏色</span>
+<span class="nv">gc_color</span><span class="o">=</span><span class="s2">&quot;#0044FF&quot;</span>        <span class="c1"># 大圓路徑顏色</span>
+<span class="c1"># 把兩個城市的 xy 座標寫入 $input_xy 檔案中</span>
+<span class="c1"># 如果你已經下載了 coord.txt，以下四行可以註解掉。</span>
+<span class="nv">xy_ulaanbaatar</span><span class="o">=</span><span class="s2">&quot;47:55:0N, 106:55:0E&quot;</span>       <span class="c1"># 烏蘭巴托的座標</span>
+<span class="nv">xy_seattle</span><span class="o">=</span><span class="s2">&quot;47:36:35N, 122:19:59W&quot;</span>         <span class="c1"># 西雅圖的座標</span>
+<span class="nb">echo</span> <span class="nv">$xy_ulaanbaatar</span> &gt; <span class="nv">$input_xy</span>
+<span class="nb">echo</span> <span class="nv">$xy_seattle</span>    &gt;&gt; <span class="nv">$input_xy</span>
+
+<span class="c1"># ==== 設定作圖參數 ====</span>
+gmt <span class="nb">set</span> FONT_ANNOT_PRIMARY          12p,20,#0D057A <span class="se">\</span>
+        FONT_TITLE                  <span class="m">30</span>,Bookman-Demi,#0D057A <span class="se">\</span>
+        FORMAT_GEO_MAP              dddF <span class="se">\</span>
+        MAP_ANNOT_OBLIQUE           <span class="m">32</span> <span class="se">\</span>
+        MAP_FRAME_TYPE              plain <span class="se">\</span>
+        MAP_GRID_CROSS_SIZE_PRIMARY 8p <span class="se">\</span>
+        MAP_GRID_PEN_PRIMARY        thinner,#ED99F0 <span class="se">\</span>
+        MAP_TICK_PEN_PRIMARY        thicker,black <span class="se">\</span>
+        MAP_TITLE_OFFSET            <span class="m">0</span>.5c <span class="se">\</span>
+        PS_PAGE_COLOR               ivory
+
+<span class="c1"># ==== 開始繪圖 ====</span>
+gmt begin ulaanbaatar_seattle_gmt6 png
+
+    <span class="c1"># ==== 下圖 (麥卡托) ====</span>
+    gmt basemap -R70/270/30S/70N -JM13c -B+tMercator
+    gmt coast -Dl -A1000 -G<span class="nv">$land_color</span> -N1/thick,60 -Ba40f20g20 --MAP_GRID_PEN_PRIMARY<span class="o">=</span>thicker
+    gmt plot <span class="nv">$input_xy</span> -: -A -W1p,<span class="nv">$rl_color</span>    <span class="c1"># 恆向線</span>
+    gmt plot <span class="nv">$input_xy</span> -:    -W1p,<span class="nv">$gc_color</span>    <span class="c1"># 大圓路徑</span>
+    gmt plot <span class="nv">$input_xy</span> -:    -Sa0.4c -Gblack
+    <span class="nb">echo</span> <span class="s2">&quot;174 41 Rhumb Line&quot;</span>    <span class="p">|</span> gmt text -F+f,18,<span class="nv">$rl_color</span>
+    <span class="nb">echo</span> <span class="s2">&quot;174 61 Great Circle&quot;</span>  <span class="p">|</span> gmt text -F+f,18,<span class="nv">$gc_color</span>
+
+    <span class="c1"># ==== 上圖 (蘭伯特) ====</span>
+    gmt basemap -Rg -JA106:55/47:55/13c -Yh+3c -B+tLambert --MAP_TITLE_OFFSET<span class="o">=</span>0c
+    gmt coast -Dl -A1000 -G<span class="nv">$land_color</span> -N1/thick,60 -Bxg60 -Byg30 --MAP_GRID_CROSS_SIZE_PRIMARY<span class="o">=</span>0p
+    gmt plot <span class="nv">$input_xy</span> -: -Ap -W1p,<span class="nv">$rl_color</span>    <span class="c1"># 恆向線</span>
+    gmt plot <span class="nv">$input_xy</span> -:     -W1p,<span class="nv">$gc_color</span>    <span class="c1"># 大圓路徑</span>
+    gmt plot <span class="nv">$input_xy</span> -: -Sa0.4c -Gblack
+
+    gmt text -F+a   <span class="s">&lt;&lt; ANNOTEND</span>
+<span class="s">106.92 -30 0   30@.S</span>
+<span class="s">106.92 30  0   30@.N</span>
+<span class="s">60     15  70  60@.E</span>
+<span class="s">180    15  305 180@.</span>
+<span class="s">ANNOTEND</span>
+
+    gmt text -F+a+f <span class="s">&lt;&lt; LABELEND</span>
+<span class="s">180    40  58  ,Bookman-DemiItalic,$rl_color   Rhumb Line</span>
+<span class="s">180    80  58  ,Bookman-DemiItalic,$gc_color   Great Circle</span>
+<span class="s">LABELEND</span>
+
+gmt end
+
+<span class="c1"># rm -rf gmt.conf   # 消除舊的 GMT 參數檔</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">備註</p>
+<p>「繪製大圓路徑與恆向線。版面與地圖框線、標示的外貌與位置皆經過微調，先畫下圖 (麥卡托投影) 再畫上圖 (蘭伯特投影)。在腳本中也額外標上了上圖的格線經緯度。」</p>
+</div>
+<p>觀看<a class="reference internal" href="#id6">最終版地圖</a></p>
+</section>
+<section id="id13">
+<h2><span class="section-number">10.6. </span>習題<a class="headerlink" href="#id13" title="本標題的永久連結">#</a></h2>
+<p>畫出跟下圖越相似越好的赤道幾內亞 (Equatorial Guinea) 地圖<a class="footnote-reference brackets" href="#id15" id="id14">1</a>，但不用標上道路、鄉鎮市名稱、地理名稱與比例尺，紅色圓圈與連接紅色圓圈的黑色虛線則須標明，喀麥隆 (Cameroon)、加彭 (Gabon) 與聖多美普林西比 (São Tomé e Príncipe) 的國名也必須標出，地圖中的五個大島嶼的名稱也要顯示在地圖上。地圖左上方的位置示意圖，可看待為第二張地圖，利用 <code class="docutils literal notranslate"><span class="pre">-X</span></code> 與 <code class="docutils literal notranslate"><span class="pre">-Y</span></code> 選擇位置並疊在第一張地圖上。</p>
+<a class="reference internal image-reference" href="../_images/gq_blu.gif"><img alt="../_images/gq_blu.gif" class="align-center" src="../_images/gq_blu.gif" style="width: 1000px;" /></a>
+<dl class="footnote brackets">
+<dt class="label" id="id15"><span class="brackets"><a class="fn-backref" href="#id14">1</a></span></dt>
+<dd><p><a class="reference external" href="http://ian.macky.net/pat/map/gq/gq.html">Public domain country maps</a>.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./main"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="plot_vector_data.html" title="上一頁 頁">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">上一頁</p>
+            <p class="prev-next-title"><span class="section-number">9. </span>繪製向量式資料</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="hillshading.html" title="下一頁 頁">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一頁</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>暈渲地圖</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+ <div id="disqus_thread"></div> <script> var disqus_config = function () {this.page.url = 'http://gmt-tutorial.org/layout_design.html'; this.page.identifier = 'layout_design'; }; (function() { var d = document, s = d.createElement('script'); s.src = '//gmt-tutorials.disqus.com/embed.js'; s.setAttribute('data-timestamp', +new Date()); (d.head || d.body).appendChild(s); })(); </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By <a href="https://whyjz.github.io/">鄭懷傑 (Whyjay Zheng)</a> | <a href="https://twitter.com/WhyjayZ"><i class="fa-brands fa-twitter"></i></a><br/>
+  
+    Last updated on 7月 27, 2022.<br/>
+    <div class="extra_footer">
+      &copy; 2016-2022. <a href="https://github.com/whyjz/GMT-tutorials/blob/master/LICENSE.md">MIT</a> 
+and <a href="http://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</a> dual licensed. <br>
+Found this tutorial helpful? <a href="https://www.paypal.com/donate?hosted_button_id=68GZNRJ3MZDBE">Buy me a milktea!</a>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

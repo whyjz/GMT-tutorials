@@ -1,0 +1,835 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>3. Basic Concepts and Terms &#8212; GMT Tutorials </title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+ <link href='https://fonts.googleapis.com/css?family=Varela Round' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://gmt-tutorials.org/main/basic_concept.html" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1. Make Your First Map" href="making_first_map.html" />
+    <link rel="prev" title="2. Software and Packages" href="software.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+ <script type="text/javascript">var _jf = _jf || [];_jf.push(['p','39630']);_jf.push(['_setFont','sourcehansans-tc-light','css','.sourcehansans-tc-light']);_jf.push(['_setFont','sourcehansans-tc-light','alias','sourcehansans-tc']);_jf.push(['_setFont','sourcehansans-tc-light','weight',200]);_jf.push(['_setFont','sourcehansans-tc-regular','css','.sourcehansans-tc-regular']);_jf.push(['_setFont','sourcehansans-tc-regular','alias','sourcehansans-tc']);_jf.push(['_setFont','sourcehansans-tc-regular','weight',400]);_jf.push(['_setFont','cwtexqyuan','css','.cwtexqyuan']);_jf.push(['_setFont','cwtexqyuan','alias','cwtexqyuan']);_jf.push(['_setFont','cwtexqyuan','weight',500]);_jf.push(['_setFont','xingothic-tc-w7','css','.xingothic-tc-w7']);_jf.push(['_setFont','xingothic-tc-w7','alias','xingothic-tc']);_jf.push(['_setFont','xingothic-tc-w7','weight',700]);_jf.push(['_setFont','jf-jinxuan-medium','css','.jf-jinxuan-medium']);_jf.push(['_setFont','jf-jinxuan-medium','alias','jf-jinxuan']);_jf.push(['_setFont','jf-jinxuan-medium','weight',600]);(function(f,q,c,h,e,i,r,d){var k=f._jf;if(k.constructor===Object){return}var l,t=q.getElementsByTagName("html")[0],a=function(u){for(var v in k){if(k[v][0]==u){if(false===k[v][1].call(k)){break}}}},j=/\S+/g,o=/[\t\r\n\f]/g,b=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,g="".trim,s=g&&!g.call("\uFEFF\xA0")?function(u){return u==null?"":g.call(u)}:function(u){return u==null?"":(u+"").replace(b,"")},m=function(y){var w,z,v,u,x=typeof y==="string"&&y;if(x){w=(y||"").match(j)||[];z=t[c]?(" "+t[c]+" ").replace(o," "):" ";if(z){u=0;while((v=w[u++])){if(z.indexOf(" "+v+" ")<0){z+=v+" "}}t[c]=s(z)}}},p=function(y){var w,z,v,u,x=arguments.length===0||typeof y==="string"&&y;if(x){w=(y||"").match(j)||[];z=t[c]?(" "+t[c]+" ").replace(o," "):"";if(z){u=0;while((v=w[u++])){while(z.indexOf(" "+v+" ")>=0){z=z.replace(" "+v+" "," ")}}t[c]=y?s(z):""}}},n;k.push(["_eventActived",function(){p(h);m(e)}]);k.push(["_eventInactived",function(){p(h);m(i)}]);k.addScript=n=function(u,A,w,C,E,B){E=E||function(){};B=B||function(){};var x=q.createElement("script"),z=q.getElementsByTagName("script")[0],v,y=false,D=function(){x.src="";x.onerror=x.onload=x.onreadystatechange=null;x.parentNode.removeChild(x);x=null;a("_eventInactived");B()};if(C){v=setTimeout(function(){D()},C)}x.type=A||"text/javascript";x.async=w;x.onload=x.onreadystatechange=function(G,F){if(!y&&(!x.readyState||/loaded|complete/.test(x.readyState))){y=true;if(C){clearTimeout(v)}x.src="";x.onerror=x.onload=x.onreadystatechange=null;x.parentNode.removeChild(x);x=null;if(!F){setTimeout(function(){E()},200)}}};x.onerror=function(H,G,F){if(C){clearTimeout(v)}D();return true};x.src=u;z.parentNode.insertBefore(x,z)};a("_eventPreload");m(h);n(r,"text/javascript",false,3000)})(this,this.document,"className","jf-loading","jf-active","jf-inactive","//ds.justfont.com/js/stable/v/5.0.2/id/166657211014");</script>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">GMT Tutorials </h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form> <div class="langcenter"> <nav class="menu"> <ul class="clearfix"> <li class="current-item"> <a href="#" class="clicker">English <span class="arrow">&#9660;</span></a> <ul class="sub-menu"> <li><a href="../../main/basic_concept.html">中文 (台灣)</a></li> <li><a href="basic_concept.html">English</a></li> </ul> </li> </ul> </nav> </div> 
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  入門與概述
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro_install.html">
+   1. GMT / PyGMT Introduction and Installation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="software.html">
+   2. Software and Packages
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   3. Basic Concepts and Terms
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  基本繪圖技巧
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="making_first_map.html">
+   1. Make Your First Map
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="coloring_topography.html">
+   2. Color the Topography
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pen_and_painting.html">
+   3. Pen and Painting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="scatter_plot.html">
+   4. Scatter Plot
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  製作各種常見的地圖（基礎）
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="cpt_colormap.html">
+   1. Visualize Raster Data Using a Colormap
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plot_vector_data.html">
+   2. Plot Vector Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="layout_design.html">
+   3. Design Map Layout
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hillshading.html">
+   4. Hillshade Map
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="contour_and_profile.html">
+   5. Contours and Profiles
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="map_elements.html">
+   6. Add Map Elements
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  製作各種常見的地圖（進階）
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="editing_cpt_colorbar.html">
+   1. Edit CPT and Colorbar
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="view3d.html">
+   2. 3D Map
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="focal_mech.html">
+   3. Plot Focal Mechanisms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="draping.html">
+   4. Drape an Image over Topography
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  網格資料處理
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="raster_calculator.html">
+   1. Raster Calculator
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="basic_img_processing.html">
+   2. Basic Image Processing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  數值資料處理
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="stat_histogram.html">
+   1. Statistics and Histogram
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="regression_basics.html">
+   2. Perform Regression Analysis
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  附錄與學習資源
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_credit.html">
+   1. Data credits and References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="command_index.html">
+   2. Command Index
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gallery.html">
+   3. Gallery (Chapter Index)
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/whyjz/GMT-tutorials"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/main/basic_concept.rst"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unix">
+   3.1. UNIX environment
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     3.1.1. Terminal
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#shell">
+     3.1.2. Shell
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     3.1.3. Scripts, aka Batch files
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   3.2. Geospatial data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#netcdf">
+     3.2.1. NetCDF
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datum">
+     3.2.2. Geodetic datum
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#projected-coordinate-system">
+     3.2.3. Projection and Projected Coordinate System
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gmt-6">
+   3.3. The new syntax mode in GMT 6
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pygmt">
+   3.4. The working environment of PyGMT
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#python-pygmt">
+     3.4.1. Python and PyGMT
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id17">
+     3.4.2. The PyGMT syntax
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jupyter-notebook-binder">
+     3.4.3. Jupyter Notebook and Binder
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Basic Concepts and Terms</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unix">
+   3.1. UNIX environment
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     3.1.1. Terminal
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#shell">
+     3.1.2. Shell
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     3.1.3. Scripts, aka Batch files
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   3.2. Geospatial data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#netcdf">
+     3.2.1. NetCDF
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datum">
+     3.2.2. Geodetic datum
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#projected-coordinate-system">
+     3.2.3. Projection and Projected Coordinate System
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gmt-6">
+   3.3. The new syntax mode in GMT 6
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pygmt">
+   3.4. The working environment of PyGMT
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#python-pygmt">
+     3.4.1. Python and PyGMT
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id17">
+     3.4.2. The PyGMT syntax
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jupyter-notebook-binder">
+     3.4.3. Jupyter Notebook and Binder
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="id1">
+<h1><span class="section-number">3. </span>Basic Concepts and Terms<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<p>GMT inherits the way of how the UNIX system manipulates data. For those who have some experience using Unix shell or cmd, GMT is easy to get started. If you never used anything like that, don’t worry about it. This section will introduce some essential concepts for using GMT, which makes you get into the swing of it.</p>
+<p>In addition, we will also introduce file formats that are associated with GMT. If it’s your first time using geospatial data, there should be some terms worth to look up at any time.</p>
+<section id="unix">
+<h2><span class="section-number">3.1. </span>UNIX environment<a class="headerlink" href="#unix" title="Permalink to this headline">#</a></h2>
+<section id="id2">
+<span id="terminal"></span><span id="id3"></span><h3><span class="section-number">3.1.1. </span>Terminal<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<p>Although all the system platforms adopt a graphic interface (desktop) as the default user interface, You still can use command-line tools to get control over your computer. The easiest way to do this is to open a built-in program on the desktop environment. The program is called <strong>cmd</strong> on Windows, or <strong>terminal</strong> on Mac or most Linux systems. In this tutorial, to “open the terminal (app)” means to control your computer using a command-line tool. On Windows XP or later versions, there are actually two terminals on a single platform: cmd and “PowerShell.” The latter enables the usage of Unix shell’s syntax. In this tutorial, we always put a prompt sign at every command you need to type on the terminal</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$
+</pre></div>
+</div>
+<p>The words after the <code class="docutils literal notranslate"><span class="pre">$</span></code> symbol are what users actually type. If you got any questions on how to open the terminal on your system platform, please check up related textbooks and webpages for the detailed step-by-step.</p>
+</section>
+<section id="shell">
+<h3><span class="section-number">3.1.2. </span>Shell<a class="headerlink" href="#shell" title="Permalink to this headline">#</a></h3>
+<p>Generally speaking, a shell refers to the interface between a user and a machine such as your PC. That means either the Desktop environment on Windows or the command console on other platforms counts. The way to interact with a computer varies from different shells. Let’s take the text-based shell for instance: a user needs to type a pre-defined command to make the computer work. GMT was initially designed and built on a famous command-line shell called <strong>sh</strong>, but now it has been developed and transplanted into other shells on other platforms, like the cmd on Windows. Nevertheless, GMT has remained its original style in terms of the syntax. It is recommended to learn the shell syntax together with the GMT commands. If you would like to learn more about the shell syntax, there are many textbooks or online sources that are comprehensive and well-written, like <a class="reference external" href="https://ryanstutorials.net/bash-scripting-tutorial/">Ryans Tutorials</a>. Getting some knowledge of shell would definitely make you more confident with GMT.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>There’s a syntax worth mentioning here: the comment mark <code class="docutils literal notranslate"><span class="pre">#</span></code>. For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt grdinfo yourfile.grd     <span class="c1"># view info of the file</span>
+</pre></div>
+</div>
+<p>The words following the <code class="docutils literal notranslate"><span class="pre">#</span></code> are the additional description of the command. In this tutorial, we will use the format to make our scripts easier for reading.</p>
+</div>
+</section>
+<section id="id4">
+<span id="script"></span><span id="id5"></span><h3><span class="section-number">3.1.3. </span>Scripts, aka Batch files<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+<p>Whenever you press <code class="docutils literal notranslate"><span class="pre">Enter</span></code> on a command console, the computer starts to run the command you just put immediately. A user, however, can also opt to write down all the commands in a single text file, and type the name of the text file into the command line, then the computer would read the content and runs over all commands in order. On Windows, these files are called “batch files,” but they are also usually called “scripts” on Bourne shell or other related shells. They have the same function no matter the names they bear. In this tutorial, we choose to call them “scripts” regardless of platforms for the best readiness. You usually have many ways to get your script run, and there is also some difference among platforms in terms of processing details. I recommend the following several ways to do this.</p>
+<ul>
+<li><p>Windows: change the file extension from <code class="docutils literal notranslate"><span class="pre">.txt</span></code> to <code class="docutils literal notranslate"><span class="pre">.bat</span></code>, and double-click the file. Windows will automatically open cmd and run it. You can also put the following line at the bottom of your file</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>...<span class="o">(</span>your commands<span class="o">)</span>
+pause
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">pause</span></code> command prevents cmd from closing the command window after running the script. It makes you be able to check the progress of all the commands in your script before manually closing the window.</p>
+</li>
+<li><p>Unix-based system (Linux, Mac, etc.): there’s no regulation of file extension, but I usually prefer using <code class="docutils literal notranslate"><span class="pre">.sh</span></code>, <code class="docutils literal notranslate"><span class="pre">.csh</span></code>, or <code class="docutils literal notranslate"><span class="pre">.bash</span></code>, depending on which shell you are going to use. Take bash as an example; it is convenient to put this at the first line of the script (it’s called <strong>sheband</strong>):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+...<span class="o">(</span>starting your commands<span class="o">)</span>
+</pre></div>
+</div>
+<p>And then change the file permission at the command prompt</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ chmod +x yourscript.bash
+</pre></div>
+</div>
+<p>And now you can run your script by typing this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ path_to_your_script/yourscript.bash
+</pre></div>
+</div>
+</li>
+</ul>
+<p>In this tutorial, <strong>all the GMT scripts are written in bash format</strong>. Although the GMT commands never change through platforms or shells, you still need to be aware of the syntax that varies with the shell. If you are using other shells than bash (like csh, tcsh, cmd, Power Shell…), you may have to modify the script a little bit so it adapts to another shell. This is especially true for operations like assigning variables, looping, reading and writing some files, and text-file processing.</p>
+<p>For the PyGMT scripts in the tutorial… of course, they are written in <a class="reference internal" href="#python">Python</a>!</p>
+</section>
+</section>
+<section id="id6">
+<h2><span class="section-number">3.2. </span>Geospatial data<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
+<section id="netcdf">
+<h3><span class="section-number">3.2.1. </span>NetCDF<a class="headerlink" href="#netcdf" title="Permalink to this headline">#</a></h3>
+<p>NetCDF, or “Network Common Data Form,” is a data type developed by UCAR (University Corporation for Atmospheric Research). First released in 1989, the initial goal of NetCDF is to provide a standard for scientific data storage, as it’s convenient in terms of data sharing. In addition to data format, UCAR has also released a set of modules and libraries that enable users to access data with different environments or programming languages. NetCDF is the main file format GMT supports, commonly seen as the <code class="docutils literal notranslate"><span class="pre">.nc</span></code> extension, but sometimes <code class="docutils literal notranslate"><span class="pre">.grd</span></code> is also used for clarifying its data structure. NetCDF data are saved in binary value, with a text-based header (also usually called as “metadata”) for describing associated data. The advantage of NetCDF format is that the data have nothing to do with your system’s byte order, and that’s great news since you don’t have to worry that people can’t read your data correctly when you are sharing files with them. For more details, please go to the <a class="reference external" href="http://www.unidata.ucar.edu/software/netcdf/">NetCDF website</a>.</p>
+</section>
+<section id="datum">
+<h3><span class="section-number">3.2.2. </span>Geodetic datum<a class="headerlink" href="#datum" title="Permalink to this headline">#</a></h3>
+<p>A geodetic datum is a set of parameters for describing the shape of the Earth. We need it to calculate the coordinates of any place on the Earth. The most common geodetic datum now is <strong>WGS84</strong> (aka <strong>EPSG:4326</strong>), which is also adopted by GPS satellites.</p>
+<p>In WGS84, the shape of the Earth is defined as an oblate spheroid with flattened poles. The center of the oblate spheroid is at Earth’s center of mass. This shape is often called the <strong>WGS84 reference ellipsoid</strong>. When calculating the surface coordinates, the latitude zero is set at the equator, and the longitude zero is a little bit away from the Royal Observatory in Greenwich.</p>
+<p>In a nutshell, we use geodetic datum to set up coordinates (<strong>Latitude, Longitude, Height</strong>) at any location on the Earth. The default datum of GMT is WGS84, and you can also check the current datum by this command:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt defaults -D    <span class="c1"># inside the block of Projection Parameters</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>WGS84 uses the difference between the surface and the <a class="reference external" href="https://en.wikipedia.org/wiki/Geoid">geoid</a> as the altitude of the surface. Currently, WGS84 adopts <strong>EGM96</strong>, a gravitational model, as the standard of geoid.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>A geodetic datum doesn’t define the basis of vertical elevation. It means users have to determine how to measure the altitude of topography. There are two commonly used standards:</p>
+<ol class="arabic simple">
+<li><p>Measure the vertical difference between topography and the reference ellipsoid. This is called <strong>Ellipsoidal Height</strong>.</p></li>
+<li><p>Measure the vertical difference between topography and sea surface (<a class="reference external" href="https://en.wikipedia.org/wiki/Geoid">geoid</a>). This is called <strong>Orthometric Height</strong> or <strong>Geoid Height</strong>. <strong>EGM96</strong> is the most commonly used gravitational model for deriving geoid location.</p></li>
+</ol>
+<p>Data based on WGS84 usually use <strong>Orthometric Height</strong> to represent elevation, but not all data follow this convention. If it is required to have a small uncertainty on elevation, like within 10 meters, it would be better to check which way the height was measured.</p>
+</div>
+</section>
+<section id="projected-coordinate-system">
+<h3><span class="section-number">3.2.3. </span>Projection and Projected Coordinate System<a class="headerlink" href="#projected-coordinate-system" title="Permalink to this headline">#</a></h3>
+<p>Unlike the curved surface of the Earth, most maps are flat. Moreover, it would be awkward to use Lat/Long for a regional map because 1 degree is usually around 110 km, which is way larger than the size of many cities and towns. Therefore, in many cases we would stretch and flatten the Earth’s surface using a specific projection (which is actually a set of geometric formulae). Any location on a map can thus be written as a 3-D coordinates <strong>(X, Y, Height)</strong>. This way to represent geographical locations is called Projected Coordinate System.</p>
+<p>We need both the shape of Earth (aka reference ellipsoid in the geodetic datum) and a projection to make a (projected) coordinate system. The most popular projection coordinate system is <strong>UTM</strong>, or Universal Transverse Mercator, which uses WGS84 ellipsoid. It cuts the Earth into 60 zones (except the polar region), and apply the <a class="reference external" href="https://en.wikipedia.org/wiki/Transverse_Mercator_projection">Transverse Mercator</a> projection to each zone with different coordinate origin.</p>
+<p>For more introductions on projections and projected coordinate systems, <a class="reference external" href="http://desktop.arcgis.com/en/arcmap/10.3/guide-books/map-projections/about-projected-coordinate-systems.htm">ArcGIS online webpages</a> provide good explanations over these topics.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In addition to WGS84, there are other two widely-used sets of geodetic datum called <strong>TWD67</strong> and <strong>TWD97</strong> for regional maps of Taiwan. The corresponding projected coordinate systems are TWD67-TM2 and TWD97-TM2, respectively. Both two sets adopt a different reference ellipsoid from WGS84, but TWD87 has a greater offset, which often results in a distance of 0.1-1 km from WGS84 Lat/Long. TWD97, on the other hand, is relatively close to WGS84, with only a range of several tens of centimeters. <a class="footnote-reference brackets" href="#id21" id="id14">1</a></p>
+</div>
+</section>
+</section>
+<section id="gmt-6">
+<h2><span class="section-number">3.3. </span>The new syntax mode in GMT 6<a class="headerlink" href="#gmt-6" title="Permalink to this headline">#</a></h2>
+<p>GMT 6 is released in 2019 and is the latest version of GMT. It is also the version this tutorial is based on. It introduces a brand new system of syntax, called the <strong>Modern Mode</strong>, to highlight the difference from the old syntax GMT 5 was using (called the <strong>Classic Mode</strong>). In the modern mode, GMT saves its PostScript-formated map into a temporary file, and directly generate a vector PDF or an image PNG/JPG to the user. This way greatly reduces the complexity of a GMT script. I have listed some major differences between the modern mode and the classic mode here: <a class="footnote-reference brackets" href="#id22" id="id15">2</a></p>
+<ul class="simple">
+<li><p>GMT commands no longer use UNIX’s redirecting symbol <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> to save a map to a <code class="docutils literal notranslate"><span class="pre">.ps</span></code> file.</p></li>
+<li><p>Users don’t need to use <code class="docutils literal notranslate"><span class="pre">-O</span></code> and <code class="docutils literal notranslate"><span class="pre">-K</span></code> to “connect” multiple GMT commands anymore.</p></li>
+<li><p>Because you can now directly specify many different map formats, it saves your time from converting your final maps.</p></li>
+<li><p>The map size is no longer fixed to the paper size. Instead, GMT now automatically crops the map to the plotting area. Thus, you don’t need the <code class="docutils literal notranslate"><span class="pre">-P</span></code> option anymore.</p></li>
+<li><p>Many commands starting with <code class="docutils literal notranslate"><span class="pre">ps</span></code> have changed their names. Most of them just have the <code class="docutils literal notranslate"><span class="pre">ps</span></code> removed, but few of them have a completely new name now. For example, <code class="docutils literal notranslate"><span class="pre">psxy</span></code> in GMT 4-5 is <code class="docutils literal notranslate"><span class="pre">plot</span></code> in GMT 6.</p></li>
+<li><p>In the modern mode, you <strong>have to</strong> use <code class="docutils literal notranslate"><span class="pre">gmt</span> <span class="pre">begin</span></code> and <code class="docutils literal notranslate"><span class="pre">gmt</span> <span class="pre">end</span></code> to wrap the other plotting commands. You cannot find these two commands in the classic mode.</p></li>
+<li><p>Now you don’t need to repeatedly list map extent <code class="docutils literal notranslate"><span class="pre">-R</span></code> and projection <code class="docutils literal notranslate"><span class="pre">-J</span></code> in each GMT command.</p></li>
+<li><p>There is a new command called <code class="docutils literal notranslate"><span class="pre">subplot</span></code> to expedite the task to make multi-frame maps.</p></li>
+</ul>
+<p>To make the backward compatibility, in GMT 6 you can use either modern mode or classic mode to write your script. Because there are many advantages of the new syntax, <strong>for this tutorial I use the modern mode syntax to create maps.</strong> However, I will also provide a link to the script using the classical mode and the associated instruction in some chapters for your reference.</p>
+<p>If you are already using GMT 5, then you might want to update to GMT 6 right now because the new version supports almost all GMT 5 syntax (as the classic mode).</p>
+<p>If you are already using GMT 4, the following cases show the difference between GMT 4 and GMT 6 (classic mode) in terms of commands:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pscoast options...       <span class="c1"># pscoast command in GMT 4</span>
+$ gmt coast options...     <span class="c1"># In GMT 6, it is replaced by the coast command, which is a module of the main gmt command.</span>
+$ gmtset options...        <span class="c1"># gmtset command in GMT 4</span>
+$ gmt <span class="nb">set</span> options...       <span class="c1"># In GMT 6, it is also replaced by the set command, which is a module of the main gmt command.</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>However, when installing GMT 6 the system would ask you if you want to generate shortcuts for all the <code class="docutils literal notranslate"><span class="pre">gmt</span></code> modules. If you choose Yes, then you can use the GMT 4 syntax in GMT 6 (i.e., GMT can make system understand the old GMT commands such as <code class="docutils literal notranslate"><span class="pre">pscoast</span></code>).</p>
+</section>
+<section id="pygmt">
+<h2><span class="section-number">3.4. </span>The working environment of PyGMT<a class="headerlink" href="#pygmt" title="Permalink to this headline">#</a></h2>
+<section id="python-pygmt">
+<span id="python"></span><h3><span class="section-number">3.4.1. </span>Python and PyGMT<a class="headerlink" href="#python-pygmt" title="Permalink to this headline">#</a></h3>
+<p>Python is the <a class="reference external" href="https://www.statista.com/chart/16567/popular-programming-languages/">most popular programming language at the present time</a>. If you are interested in learning Python, there is a lot of onboarding resources available online. Thanks to its popularity, there has been an idea in the GMT user community: it would be great if we could access GMT through Python. GMT is based on the <a class="reference external" href="https://en.wikipedia.org/wiki/C_(programming_language)">C programming language</a>, which means you have to use an API (Application Programming Interface) to access the GMT library in Python. The GMT’s API is essentially some code, and it is analogous to the adapter for different cables. In other words, the API makes the GMT library understand the control commands from Python. PyGMT uses such an API, sends tasks to GMT, and converts the return values (data, map, etc.) into some Python-compatible formats. We also call this kind of software package a wrapper library.</p>
+</section>
+<section id="id17">
+<h3><span class="section-number">3.4.2. </span>The PyGMT syntax<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h3>
+<p>PyGMT treats a map as an <a class="reference external" href="https://en.wikipedia.org/wiki/Object_(computer_science)">object</a> and executes all the plotting commands through the object’s <a class="reference external" href="https://en.wikipedia.org/wiki/Method_(computer_programming)">methods</a>. For example, you have to use this way to run the <code class="docutils literal notranslate"><span class="pre">coast</span></code> command in GMT 6:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pygmt</span>                <span class="c1"># First off, you have to import the PyGMT module!</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">pygmt</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>        <span class="c1"># Make a map object</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">coast</span><span class="p">(</span><span class="n">options</span><span class="o">...</span><span class="p">)</span>
+<span class="c1"># Finally, use fig.show() to show the map on the screen, or use fig.savefig(...) to save to disk</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>GMT uses the UNIX-style “flags” to assign various options of the <code class="docutils literal notranslate"><span class="pre">coast</span></code> command, for example, <code class="docutils literal notranslate"><span class="pre">-R</span></code> and <code class="docutils literal notranslate"><span class="pre">-J</span></code>. In PyGMT, These flags are all changed to a more meaningful name and are passed into the object method as an argument. For example, <code class="docutils literal notranslate"><span class="pre">-R</span></code> is renamed as <code class="docutils literal notranslate"><span class="pre">region</span></code>, and <code class="docutils literal notranslate"><span class="pre">-J</span></code> corresponds to <code class="docutils literal notranslate"><span class="pre">projection</span></code>. Here are some more translations from <a class="reference internal" href="making_first_map.html"><span class="doc">Make Your First Map</span></a>:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># When using GMT... (in a shell script)</span>
+<span class="n">gmt</span> <span class="n">coast</span> <span class="o">-</span><span class="n">R</span><span class="o">...</span> <span class="o">-</span><span class="n">J</span><span class="o">...</span> <span class="o">-</span><span class="n">W</span><span class="o">...</span> <span class="o">-</span><span class="n">G</span><span class="o">...</span> <span class="o">-</span><span class="n">B</span><span class="o">...</span>
+<span class="c1"># When using PyGMT... (in a python script)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">coast</span><span class="p">(</span><span class="n">region</span><span class="o">=...</span><span class="p">,</span> <span class="n">projection</span><span class="o">=...</span><span class="p">,</span> <span class="n">shorelines</span><span class="o">=...</span><span class="p">,</span> <span class="n">land</span><span class="o">=...</span><span class="p">,</span> <span class="n">frame</span><span class="o">=...</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>In the PyGMT user manual, you can check the more detailed <a class="reference external" href="https://www.pygmt.org/latest/api/generated/pygmt.Figure.coast.html">parameter list and their aliases</a>.</p>
+</section>
+<section id="jupyter-notebook-binder">
+<h3><span class="section-number">3.4.3. </span>Jupyter Notebook and Binder<a class="headerlink" href="#jupyter-notebook-binder" title="Permalink to this headline">#</a></h3>
+<p>This tutorial uses two different formats for PyGMT scripts. In addition to the traditional pain text rendered as HTML, I also provide them as <a class="reference external" href="https://jupyter.org/">Jupyter Notebooks</a> as well as their Binder links. The Binder link will lead you to a server that installs a PyGMT environment for you, and you can run, modify, and try these PyGMT scripts using your web browser. I currently use the service from <a class="reference external" href="https://mybinder.org/">MyBinder.org</a> which uses the cloud computing resources at Amazon Web Services so that everyone can try PyGMT without installing it. Feel free to give it a try!</p>
+<dl class="footnote brackets">
+<dt class="label" id="id21"><span class="brackets"><a class="fn-backref" href="#id14">1</a></span></dt>
+<dd><p><a class="reference external" href="https://wiki.osgeo.org/wiki/Taiwan_datums">Taiwan datums</a>, OSGeo Wiki.</p>
+</dd>
+<dt class="label" id="id22"><span class="brackets"><a class="fn-backref" href="#id15">2</a></span></dt>
+<dd><p>Wessel, P., Luis, J., Uieda, L., Scharroo, R., Wobbe, F., Smith, W. H. F.,
+and Tian, D. (2019). The Generic Mapping Tools Version 6. Geochemistry,
+Geophysics, Geosystems, 20.
+<a class="reference external" href="http://doi.org/10.1029/2019GC008515">doi.org/10.1029/2019GC008515</a>.</p>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./main"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="software.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">2. </span>Software and Packages</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="making_first_map.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Make Your First Map</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+ <div id="disqus_thread"></div> <script> var disqus_config = function () {this.page.url = 'http://gmt-tutorial.org/basic_concept.html'; this.page.identifier = 'basic_concept'; }; (function() { var d = document, s = d.createElement('script'); s.src = '//gmt-tutorials.disqus.com/embed.js'; s.setAttribute('data-timestamp', +new Date()); (d.head || d.body).appendChild(s); })(); </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By <a href="https://whyjz.github.io/">鄭懷傑 (Whyjay Zheng)</a> | <a href="https://twitter.com/WhyjayZ"><i class="fa-brands fa-twitter"></i></a><br/>
+  
+    Last updated on Jul 27, 2022.<br/>
+    <div class="extra_footer">
+      &copy; 2016-2022. <a href="https://github.com/whyjz/GMT-tutorials/blob/master/LICENSE.md">MIT</a> 
+and <a href="http://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</a> dual licensed. <br>
+Found this tutorial helpful? <a href="https://www.paypal.com/donate?hosted_button_id=68GZNRJ3MZDBE">Buy me a milktea!</a>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

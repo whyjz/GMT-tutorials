@@ -1,0 +1,842 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_TW">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>2. 推薦搭配的軟體或套件 &#8212; GMT 教學手冊</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+ <link href='https://fonts.googleapis.com/css?family=Varela Round' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://gmt-tutorials.org/main/software.html" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜尋" href="../search.html" />
+    <link rel="next" title="3. 基本概念與名詞" href="basic_concept.html" />
+    <link rel="prev" title="1. GMT / PyGMT 簡介與安裝" href="intro_install.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="zh_TW">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+ <script type="text/javascript">var _jf = _jf || [];_jf.push(['p','39630']);_jf.push(['_setFont','sourcehansans-tc-light','css','.sourcehansans-tc-light']);_jf.push(['_setFont','sourcehansans-tc-light','alias','sourcehansans-tc']);_jf.push(['_setFont','sourcehansans-tc-light','weight',200]);_jf.push(['_setFont','sourcehansans-tc-regular','css','.sourcehansans-tc-regular']);_jf.push(['_setFont','sourcehansans-tc-regular','alias','sourcehansans-tc']);_jf.push(['_setFont','sourcehansans-tc-regular','weight',400]);_jf.push(['_setFont','cwtexqyuan','css','.cwtexqyuan']);_jf.push(['_setFont','cwtexqyuan','alias','cwtexqyuan']);_jf.push(['_setFont','cwtexqyuan','weight',500]);_jf.push(['_setFont','xingothic-tc-w7','css','.xingothic-tc-w7']);_jf.push(['_setFont','xingothic-tc-w7','alias','xingothic-tc']);_jf.push(['_setFont','xingothic-tc-w7','weight',700]);_jf.push(['_setFont','jf-jinxuan-medium','css','.jf-jinxuan-medium']);_jf.push(['_setFont','jf-jinxuan-medium','alias','jf-jinxuan']);_jf.push(['_setFont','jf-jinxuan-medium','weight',600]);(function(f,q,c,h,e,i,r,d){var k=f._jf;if(k.constructor===Object){return}var l,t=q.getElementsByTagName("html")[0],a=function(u){for(var v in k){if(k[v][0]==u){if(false===k[v][1].call(k)){break}}}},j=/\S+/g,o=/[\t\r\n\f]/g,b=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,g="".trim,s=g&&!g.call("\uFEFF\xA0")?function(u){return u==null?"":g.call(u)}:function(u){return u==null?"":(u+"").replace(b,"")},m=function(y){var w,z,v,u,x=typeof y==="string"&&y;if(x){w=(y||"").match(j)||[];z=t[c]?(" "+t[c]+" ").replace(o," "):" ";if(z){u=0;while((v=w[u++])){if(z.indexOf(" "+v+" ")<0){z+=v+" "}}t[c]=s(z)}}},p=function(y){var w,z,v,u,x=arguments.length===0||typeof y==="string"&&y;if(x){w=(y||"").match(j)||[];z=t[c]?(" "+t[c]+" ").replace(o," "):"";if(z){u=0;while((v=w[u++])){while(z.indexOf(" "+v+" ")>=0){z=z.replace(" "+v+" "," ")}}t[c]=y?s(z):""}}},n;k.push(["_eventActived",function(){p(h);m(e)}]);k.push(["_eventInactived",function(){p(h);m(i)}]);k.addScript=n=function(u,A,w,C,E,B){E=E||function(){};B=B||function(){};var x=q.createElement("script"),z=q.getElementsByTagName("script")[0],v,y=false,D=function(){x.src="";x.onerror=x.onload=x.onreadystatechange=null;x.parentNode.removeChild(x);x=null;a("_eventInactived");B()};if(C){v=setTimeout(function(){D()},C)}x.type=A||"text/javascript";x.async=w;x.onload=x.onreadystatechange=function(G,F){if(!y&&(!x.readyState||/loaded|complete/.test(x.readyState))){y=true;if(C){clearTimeout(v)}x.src="";x.onerror=x.onload=x.onreadystatechange=null;x.parentNode.removeChild(x);x=null;if(!F){setTimeout(function(){E()},200)}}};x.onerror=function(H,G,F){if(C){clearTimeout(v)}D();return true};x.src=u;z.parentNode.insertBefore(x,z)};a("_eventPreload");m(h);n(r,"text/javascript",false,3000)})(this,this.document,"className","jf-loading","jf-active","jf-inactive","//ds.justfont.com/js/stable/v/5.0.2/id/166657211014");</script>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">GMT 教學手冊</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form> <div class="langcenter"> <nav class="menu"> <ul class="clearfix"> <li class="current-item"> <a href="#" class="clicker">中文 (台灣) <span class="arrow">&#9660;</span></a> <ul class="sub-menu"> <li><a href="software.html">中文 (台灣)</a></li> <li><a href="../en/main/software.html">English</a></li> </ul> </li> </ul> </nav> </div> 
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  入門與概述
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro_install.html">
+   1. GMT / PyGMT 簡介與安裝
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   2. 推薦搭配的軟體或套件
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="basic_concept.html">
+   3. 基本概念與名詞
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  基本繪圖技巧
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="making_first_map.html">
+   4. 製作第一張地圖
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="coloring_topography.html">
+   5. 為地形圖上色
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pen_and_painting.html">
+   6. 畫筆與調色技巧
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="scatter_plot.html">
+   7. XY 點散佈圖
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  製作各種常見的地圖（基礎）
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="cpt_colormap.html">
+   8. 使用色階表為網格資料著色
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plot_vector_data.html">
+   9. 繪製向量式資料
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="layout_design.html">
+   10. 版面設計與地圖的幾何布局
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hillshading.html">
+   11. 暈渲地圖
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="contour_and_profile.html">
+   12. 等高線地圖及地形剖面
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="map_elements.html">
+   13. 加入地圖元素
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  製作各種常見的地圖（進階）
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="editing_cpt_colorbar.html">
+   14. 色階檔的編修與呈現
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="view3d.html">
+   15. 3D 視圖
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="focal_mech.html">
+   16. 繪製震源機制解
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="draping.html">
+   17. 在 3D 地形上覆蓋地圖
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  網格資料處理
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="raster_calculator.html">
+   18. 網格計算機
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="basic_img_processing.html">
+   19. 基本影像處理
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  數值資料處理
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="stat_histogram.html">
+   20. 輸出統計資訊與直方圖
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="regression_basics.html">
+   21. 進行迴歸分析
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  附錄與學習資源
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_credit.html">
+   22. 資料來源與參考文獻
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="command_index.html">
+   23. 指令索引
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gallery.html">
+   24. 章節地圖索引
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/whyjz/GMT-tutorials"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/main/software.rst"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   2.1. 程式碼編輯器
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     2.1.1. Gedit
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     2.1.2. Sublime Text
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     2.1.3. Notepad++
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   2.2. Jupyter
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id10">
+   2.3. GDAL
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id11">
+   2.4. 地理空間資料處理圖形介面
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id12">
+     2.4.1. QGIS
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id13">
+     2.4.2. ArcGIS
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id14">
+     2.4.3. Google 地球
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id15">
+   2.5. 圖檔處理與編修軟體
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id16">
+     2.5.1. ImageMagick
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id17">
+     2.5.2. Adobe Illustrator
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id18">
+     2.5.3. CorelDRAW
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id19">
+     2.5.4. Inkscape
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#postscript">
+   2.6. PostScript 看圖軟體
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id22">
+     2.6.1. Google 文件
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ghostscript">
+     2.6.2. Ghostscript 家族
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id23">
+     2.6.3. Evince
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>推薦搭配的軟體或套件</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   2.1. 程式碼編輯器
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     2.1.1. Gedit
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     2.1.2. Sublime Text
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     2.1.3. Notepad++
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   2.2. Jupyter
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id10">
+   2.3. GDAL
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id11">
+   2.4. 地理空間資料處理圖形介面
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id12">
+     2.4.1. QGIS
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id13">
+     2.4.2. ArcGIS
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id14">
+     2.4.3. Google 地球
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id15">
+   2.5. 圖檔處理與編修軟體
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id16">
+     2.5.1. ImageMagick
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id17">
+     2.5.2. Adobe Illustrator
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id18">
+     2.5.3. CorelDRAW
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id19">
+     2.5.4. Inkscape
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#postscript">
+   2.6. PostScript 看圖軟體
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id22">
+     2.6.1. Google 文件
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ghostscript">
+     2.6.2. Ghostscript 家族
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id23">
+     2.6.3. Evince
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="id1">
+<h1><span class="section-number">2. </span>推薦搭配的軟體或套件<a class="headerlink" href="#id1" title="本標題的永久連結">#</a></h1>
+<p>GMT 是負責「畫圖」的軟體，只要丟給它適當的數據和選項，它就能為我們畫出漂亮的圖片。正因為它只負責繪圖，我們時常需要搭配其他軟體處理餵給 GMT 畫圖的資料或是編修輸出圖檔。以下就是筆者推薦搭配 GMT 一同安裝並使用的程式套件或是軟體。</p>
+<section id="id2">
+<h2><span class="section-number">2.1. </span>程式碼編輯器<a class="headerlink" href="#id2" title="本標題的永久連結">#</a></h2>
+<p>GMT 使用 UNIX 系統下的 Shell 指令介面的風格設計而成，也就是說它跟其他所有指令列語言一樣，可以先把所有要下的指令寫成<strong>腳本或批次檔</strong>，再一併執行。使用 PyGMT 的方法則與撰寫 Python 程式語言腳本相同。雖然作業軟體 (尤其是 Windows) 內附的純文字編輯器可以用來寫腳本，但筆者仍然推薦找個更好用的文字編輯器。專為程式設計打造的文字編輯器會有許多附加功能，例如語法標示模式、自動版面調整、簡易除錯等等。以下是幾個常見選擇：</p>
+<section id="id3">
+<h3><span class="section-number">2.1.1. </span><a class="reference external" href="https://wiki.gnome.org/Apps/Gedit">Gedit</a><a class="headerlink" href="#id3" title="本標題的永久連結">#</a></h3>
+<blockquote>
+<div><p>本來是為 GNOME 桌面環境 (如 Ubuntu) 製作的輕量級文字編輯器，特點為簡單、易用，並支援語法標示模式，目前更可安裝於所有的作業系統。</p>
+</div></blockquote>
+</section>
+<section id="id4">
+<h3><span class="section-number">2.1.2. </span><a class="reference external" href="http://www.sublimetext.com">Sublime Text</a><a class="headerlink" href="#id4" title="本標題的永久連結">#</a></h3>
+<blockquote>
+<div><p>一款很流行而且很強大的程式碼編輯器，各種功能應有盡有，你甚至可以使用愛好者提供的進階模組來增進此軟體，打造屬於你的編輯器。可安裝於所有的作業系統，網路上也有很完整的<a class="reference external" href="http://docs.sublimetext.tw/">中文教學</a>。它是付費軟體，但很佛心的提供終生免費試用。</p>
+</div></blockquote>
+</section>
+<section id="id6">
+<h3><span class="section-number">2.1.3. </span><a class="reference external" href="https://notepad-plus-plus.org">Notepad++</a><a class="headerlink" href="#id6" title="本標題的永久連結">#</a></h3>
+<blockquote>
+<div><p>由台灣人所開發的程式編輯器，輕巧實用，且支援不少程式設計的常見功能，更是有不少人直接拿來當作 Windows 記事本的替代品。不過，目前它只能安裝在 Windows 上。</p>
+</div></blockquote>
+<p>其他還有 Vim、Nano、Kate、Crimson Editor 等等，族繁不及備載，歡迎大家比較後，挑一個自己覺得比較順手的就行了。</p>
+</section>
+</section>
+<section id="id7">
+<h2><span class="section-number">2.2. </span><a class="reference external" href="https://jupyter.org/">Jupyter</a><a class="headerlink" href="#id7" title="本標題的永久連結">#</a></h2>
+<p>Jupyter 專案的核心宗旨是提供開源的軟體與技術標準，並設計互動性的運算界面，服務以不同程式語言進行工作的使用者們。Jupyter 有許多不同的軟體產品，如果你預計使用 PyGMT，那麼我推薦安裝 Jupyter Lab，讓你可以使用網頁瀏覽器作為撰寫腳本時的整合性開發介面。<a class="reference external" href="https://www.mdeditor.tw/pl/23Lf/zh-tw">這裡</a>有關於 Jupyter Lab 的進一步介紹。在後續章節中提供的 PyGMT 腳本，就是使用 Jupyter Notebook 格式儲存。(<em>聲明：</em><a class="reference external" href="http://www.geo.cornell.edu/eas/gstudent/wz278/">本人</a><em>現為 Jupyter 的一個子專案 Jupyter Meets the Earth 團隊的一員，本教學中所有關於 Jupyter 的描述皆是我個人意見，並且是我利用閒暇時間所寫成，不代表開發團隊的意見。</em>)</p>
+</section>
+<section id="id10">
+<h2><span class="section-number">2.3. </span><a class="reference external" href="https://gdal.org/">GDAL</a><a class="headerlink" href="#id10" title="本標題的永久連結">#</a></h2>
+<p>GMT 支援的地理空間資料格式主要是 <strong>NetCDF</strong> 和純文字檔。透過 GDAL 這個選裝套件的支援，更可以直接的讀取許多常見的地理空間資料格式，像是 <strong>GeoTIFF</strong> 或是 <strong>shapefile</strong> 等等。GDAL 的全名是「Geospatial Data Abstraction Library」，直譯為「地理空間資料存取函式庫」。它是一個開源且一直持續更新的函式庫，並且支援了 142 種影像格式和 84 種向量格式，可以說功能非常全面。GDAL 本身提供了一些常用指令，可以讓你藉由指令列快速的修改或瀏覽地理空間資料，但它也可以模組的方式在許多程式語言中執行，如 Python。GDAL 可以獨立安裝在各種作業系統中，或是透過 Anaconda 等套件管理軟體進行安裝。請記得如果你想讓 GMT 可以透過 GDAL 的支援讀取更多的資料格式，就要在安裝 GMT 時一併或預先安裝 GDAL。</p>
+</section>
+<section id="id11">
+<h2><span class="section-number">2.4. </span>地理空間資料處理圖形介面<a class="headerlink" href="#id11" title="本標題的永久連結">#</a></h2>
+<p>GMT 的強大之處是在於它對空間資料的數學操作，以及類 Unix 的設計理念，就算是很複雜的製圖需求，都可以只透過短短幾行指令達成；但有的時候，你只是想要快速的看一下你的資料，或是對它們進行一些簡單的處理。這種情況下，安裝一個具有圖形介面的地理資訊系統 (GIS) 處理軟體或許也是不錯的選擇。</p>
+<section id="id12">
+<h3><span class="section-number">2.4.1. </span><a class="reference external" href="http://qgis.org/">QGIS</a><a class="headerlink" href="#id12" title="本標題的永久連結">#</a></h3>
+<blockquote>
+<div><p>QGIS 是非常著名的 GIS 自由軟體，從 2009 年釋出第一版至今，已經累積了不少使用者和志願協助開發者。除了使用圖形化介面操作以外，它也以 Python 作為腳本語言，方便使用者編寫腳本增進工作效率，甚至自行設計外掛模組。QGIS 可以安裝在各種電腦作業系統，甚至還包括 Android！</p>
+</div></blockquote>
+</section>
+<section id="id13">
+<h3><span class="section-number">2.4.2. </span><a class="reference external" href="https://www.arcgis.com/">ArcGIS</a><a class="headerlink" href="#id13" title="本標題的永久連結">#</a></h3>
+<blockquote>
+<div><p>ArcGIS 是一個老牌的 GIS 商業軟體，由 Esri 這間公司一手打造。ArcGIS 其實是一群軟體的統稱：Esri 依照使用者不同的需求，把自家產品往許多方向微調，讓我們可以依照不同的目的選擇最適當的軟體來操作。同樣的，Python 也是 ArcGIS 主流支援的腳本語言，可惜的是目前 ArcGIS 只能安裝在 Windows 中。</p>
+</div></blockquote>
+</section>
+<section id="id14">
+<h3><span class="section-number">2.4.3. </span><a class="reference external" href="http://www.google.com/intl/zh-TW/earth/">Google 地球</a><a class="headerlink" href="#id14" title="本標題的永久連結">#</a></h3>
+<blockquote>
+<div><p>嚴格來講，Google 地球 (Google Earth) 算是「地球儀軟體」，也就是以提供瀏覽地理空間資料為主，而不強調操作或修改這些資料。在 Google 地球中，使用者僅能建立簡單的圖徵，或是瀏覽從別處取得的地理空間資料，不過這在許多狀況中已經很夠用了。目前 Google 地球可以安裝在各種作業系統，當然也有 Android，同時還有一般版與專業版可以選擇。</p>
+</div></blockquote>
+</section>
+</section>
+<section id="id15">
+<h2><span class="section-number">2.5. </span>圖檔處理與編修軟體<a class="headerlink" href="#id15" title="本標題的永久連結">#</a></h2>
+<p>從 GMT 6 開始，使用者可以自行選擇出圖的格式，例如向量格式的 PDF 或影像格式的 PNG。難免有些時候，你會覺得 GMT 的出圖還需要一點點額外的編修。除了重新跑一次 GMT 的所有指令外，你也可以使用以下幾種比較流行的的影像編輯軟體來幫你處理：</p>
+<section id="id16">
+<h3><span class="section-number">2.5.1. </span><a class="reference external" href="http://www.imagemagick.org/">ImageMagick</a><a class="headerlink" href="#id16" title="本標題的永久連結">#</a></h3>
+<blockquote>
+<div><p>一款開源的免費圖像處理軟體，由許多不同的指令構成，每個指令都有很多選項可使用，更支援許多不同的向量或影像格式。它使用命令列操作，你可以使用 <code class="docutils literal notranslate"><span class="pre">convert</span></code> 這個指令，輕鬆快速的微調輸出的影像 (如調整解析度與尺寸等等操作)。ImageMagick 目前可以在多種平台上安裝，同時它也是許多 Linux 發行版預裝的軟體之一。</p>
+</div></blockquote>
+</section>
+<section id="id17">
+<h3><span class="section-number">2.5.2. </span><a class="reference external" href="http://www.adobe.com/tw/products/illustrator.html">Adobe Illustrator</a><a class="headerlink" href="#id17" title="本標題的永久連結">#</a></h3>
+<blockquote>
+<div><p>一款著名且最被廣泛使用的向量檔處理軟體，由 Adobe 公司所研發並進行商業販售。目前有 Mac 及 Windows 版本。</p>
+</div></blockquote>
+</section>
+<section id="id18">
+<h3><span class="section-number">2.5.3. </span><a class="reference external" href="http://www.coreldraw.com/tw/">CorelDRAW</a><a class="headerlink" href="#id18" title="本標題的永久連結">#</a></h3>
+<blockquote>
+<div><p>另一個著名的向量檔處理軟體，由 Corel 公司所研發並進行商業販售，價錢也比 Illustrator 親民。目前只有 Windows 版本。</p>
+</div></blockquote>
+</section>
+<section id="id19">
+<h3><span class="section-number">2.5.4. </span><a class="reference external" href="https://inkscape.org/">Inkscape</a><a class="headerlink" href="#id19" title="本標題的永久連結">#</a></h3>
+<blockquote>
+<div><p>如果你想要使用自由軟體編修向量檔，或是你的作業系統是 Linux，那麼此套軟體是不錯的選擇。它也可在非 Linux 的多種平台上執行。</p>
+</div></blockquote>
+</section>
+</section>
+<section id="postscript">
+<span id="postscript-viewer"></span><span id="id20"></span><h2><span class="section-number">2.6. </span>PostScript 看圖軟體<a class="headerlink" href="#postscript" title="本標題的永久連結">#</a></h2>
+<p>GMT 6 的預設出圖格式是 PDF，所以正常情況下你的電腦應該有方法可以讀取它。但如果你是使用 GMT 5 或更以前的版本，出圖格式只有一種能選，也就是 PostScript (請參閱<a class="reference internal" href="basic_concept.html"><span class="doc">基本概念與名詞</span></a>)。以下列出能讀取 PostScript 格式 (PS 檔) 的軟體。</p>
+<section id="id22">
+<h3><span class="section-number">2.6.1. </span><a class="reference external" href="https://www.google.com/intl/zh-TW/docs/about/">Google 文件</a><a class="headerlink" href="#id22" title="本標題的永久連結">#</a></h3>
+<blockquote>
+<div><p>免安裝，而且是 Google 雲端硬碟和 Gmail 設定的看圖軟體。如果你不想安裝任何東西，可以把東西傳到雲端硬碟上，就可以用瀏覽器的檢視模式，開啟 PS 檔。</p>
+</div></blockquote>
+</section>
+<section id="ghostscript">
+<h3><span class="section-number">2.6.2. </span>Ghostscript 家族<a class="headerlink" href="#ghostscript" title="本標題的永久連結">#</a></h3>
+<blockquote>
+<div><p>Ghostscript 就是設計用來瀏覽或轉換 PS 檔或 PDF 檔的自由軟體。它有很多衍生的版本，各自有不同的使用介面，在不同的作業系統中運行。例如說 <a class="reference external" href="http://pages.cs.wisc.edu/~ghost/gsview/">GSview</a> 是在 Windows 中的 Ghostscript 圖像化軟體，而在 Unix 或相關的系統中，則有 <a class="reference external" href="http://pages.cs.wisc.edu/~ghost/">Ghostview 或 GV</a> 可以選擇。</p>
+</div></blockquote>
+</section>
+<section id="id23">
+<h3><span class="section-number">2.6.3. </span><a class="reference external" href="https://wiki.gnome.org/Apps/Evince">Evince</a><a class="headerlink" href="#id23" title="本標題的永久連結">#</a></h3>
+<blockquote>
+<div><p>許多 Linux 發行版預裝的文件瀏覽器，使用它就可以直接開啟 PS 檔，省去許多麻煩。目前已有移植到 Windows 上的安裝版本。</p>
+</div></blockquote>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./main"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="intro_install.html" title="上一頁 頁">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">上一頁</p>
+            <p class="prev-next-title"><span class="section-number">1. </span>GMT / PyGMT 簡介與安裝</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="basic_concept.html" title="下一頁 頁">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一頁</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>基本概念與名詞</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+ <div id="disqus_thread"></div> <script> var disqus_config = function () {this.page.url = 'http://gmt-tutorial.org/software.html'; this.page.identifier = 'software'; }; (function() { var d = document, s = d.createElement('script'); s.src = '//gmt-tutorials.disqus.com/embed.js'; s.setAttribute('data-timestamp', +new Date()); (d.head || d.body).appendChild(s); })(); </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By <a href="https://whyjz.github.io/">鄭懷傑 (Whyjay Zheng)</a> | <a href="https://twitter.com/WhyjayZ"><i class="fa-brands fa-twitter"></i></a><br/>
+  
+    Last updated on 7月 27, 2022.<br/>
+    <div class="extra_footer">
+      &copy; 2016-2022. <a href="https://github.com/whyjz/GMT-tutorials/blob/master/LICENSE.md">MIT</a> 
+and <a href="http://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</a> dual licensed. <br>
+Found this tutorial helpful? <a href="https://www.paypal.com/donate?hosted_button_id=68GZNRJ3MZDBE">Buy me a milktea!</a>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

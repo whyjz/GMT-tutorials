@@ -1,0 +1,677 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>1. GMT / PyGMT Introduction and Installation &#8212; GMT Tutorials </title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+ <link href='https://fonts.googleapis.com/css?family=Varela Round' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://gmt-tutorials.org/main/intro_install.html" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2. Software and Packages" href="software.html" />
+    <link rel="prev" title="GMT Tutorials" href="../index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+ <script type="text/javascript">var _jf = _jf || [];_jf.push(['p','39630']);_jf.push(['_setFont','sourcehansans-tc-light','css','.sourcehansans-tc-light']);_jf.push(['_setFont','sourcehansans-tc-light','alias','sourcehansans-tc']);_jf.push(['_setFont','sourcehansans-tc-light','weight',200]);_jf.push(['_setFont','sourcehansans-tc-regular','css','.sourcehansans-tc-regular']);_jf.push(['_setFont','sourcehansans-tc-regular','alias','sourcehansans-tc']);_jf.push(['_setFont','sourcehansans-tc-regular','weight',400]);_jf.push(['_setFont','cwtexqyuan','css','.cwtexqyuan']);_jf.push(['_setFont','cwtexqyuan','alias','cwtexqyuan']);_jf.push(['_setFont','cwtexqyuan','weight',500]);_jf.push(['_setFont','xingothic-tc-w7','css','.xingothic-tc-w7']);_jf.push(['_setFont','xingothic-tc-w7','alias','xingothic-tc']);_jf.push(['_setFont','xingothic-tc-w7','weight',700]);_jf.push(['_setFont','jf-jinxuan-medium','css','.jf-jinxuan-medium']);_jf.push(['_setFont','jf-jinxuan-medium','alias','jf-jinxuan']);_jf.push(['_setFont','jf-jinxuan-medium','weight',600]);(function(f,q,c,h,e,i,r,d){var k=f._jf;if(k.constructor===Object){return}var l,t=q.getElementsByTagName("html")[0],a=function(u){for(var v in k){if(k[v][0]==u){if(false===k[v][1].call(k)){break}}}},j=/\S+/g,o=/[\t\r\n\f]/g,b=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,g="".trim,s=g&&!g.call("\uFEFF\xA0")?function(u){return u==null?"":g.call(u)}:function(u){return u==null?"":(u+"").replace(b,"")},m=function(y){var w,z,v,u,x=typeof y==="string"&&y;if(x){w=(y||"").match(j)||[];z=t[c]?(" "+t[c]+" ").replace(o," "):" ";if(z){u=0;while((v=w[u++])){if(z.indexOf(" "+v+" ")<0){z+=v+" "}}t[c]=s(z)}}},p=function(y){var w,z,v,u,x=arguments.length===0||typeof y==="string"&&y;if(x){w=(y||"").match(j)||[];z=t[c]?(" "+t[c]+" ").replace(o," "):"";if(z){u=0;while((v=w[u++])){while(z.indexOf(" "+v+" ")>=0){z=z.replace(" "+v+" "," ")}}t[c]=y?s(z):""}}},n;k.push(["_eventActived",function(){p(h);m(e)}]);k.push(["_eventInactived",function(){p(h);m(i)}]);k.addScript=n=function(u,A,w,C,E,B){E=E||function(){};B=B||function(){};var x=q.createElement("script"),z=q.getElementsByTagName("script")[0],v,y=false,D=function(){x.src="";x.onerror=x.onload=x.onreadystatechange=null;x.parentNode.removeChild(x);x=null;a("_eventInactived");B()};if(C){v=setTimeout(function(){D()},C)}x.type=A||"text/javascript";x.async=w;x.onload=x.onreadystatechange=function(G,F){if(!y&&(!x.readyState||/loaded|complete/.test(x.readyState))){y=true;if(C){clearTimeout(v)}x.src="";x.onerror=x.onload=x.onreadystatechange=null;x.parentNode.removeChild(x);x=null;if(!F){setTimeout(function(){E()},200)}}};x.onerror=function(H,G,F){if(C){clearTimeout(v)}D();return true};x.src=u;z.parentNode.insertBefore(x,z)};a("_eventPreload");m(h);n(r,"text/javascript",false,3000)})(this,this.document,"className","jf-loading","jf-active","jf-inactive","//ds.justfont.com/js/stable/v/5.0.2/id/166657211014");</script>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">GMT Tutorials </h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form> <div class="langcenter"> <nav class="menu"> <ul class="clearfix"> <li class="current-item"> <a href="#" class="clicker">English <span class="arrow">&#9660;</span></a> <ul class="sub-menu"> <li><a href="../../main/intro_install.html">中文 (台灣)</a></li> <li><a href="intro_install.html">English</a></li> </ul> </li> </ul> </nav> </div> 
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  入門與概述
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   1. GMT / PyGMT Introduction and Installation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="software.html">
+   2. Software and Packages
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="basic_concept.html">
+   3. Basic Concepts and Terms
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  基本繪圖技巧
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="making_first_map.html">
+   1. Make Your First Map
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="coloring_topography.html">
+   2. Color the Topography
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pen_and_painting.html">
+   3. Pen and Painting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="scatter_plot.html">
+   4. Scatter Plot
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  製作各種常見的地圖（基礎）
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="cpt_colormap.html">
+   1. Visualize Raster Data Using a Colormap
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plot_vector_data.html">
+   2. Plot Vector Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="layout_design.html">
+   3. Design Map Layout
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hillshading.html">
+   4. Hillshade Map
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="contour_and_profile.html">
+   5. Contours and Profiles
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="map_elements.html">
+   6. Add Map Elements
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  製作各種常見的地圖（進階）
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="editing_cpt_colorbar.html">
+   1. Edit CPT and Colorbar
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="view3d.html">
+   2. 3D Map
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="focal_mech.html">
+   3. Plot Focal Mechanisms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="draping.html">
+   4. Drape an Image over Topography
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  網格資料處理
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="raster_calculator.html">
+   1. Raster Calculator
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="basic_img_processing.html">
+   2. Basic Image Processing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  數值資料處理
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="stat_histogram.html">
+   1. Statistics and Histogram
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="regression_basics.html">
+   2. Perform Regression Analysis
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  附錄與學習資源
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_credit.html">
+   1. Data credits and References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="command_index.html">
+   2. Command Index
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gallery.html">
+   3. Gallery (Chapter Index)
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/whyjz/GMT-tutorials"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/main/intro_install.rst"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gmt">
+   1.1. What is GMT?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pygmt">
+   1.2. And what is PyGMT?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   1.3. Should I use GMT?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   1.4. About the tutorials
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id9">
+   1.5. How to install GMT
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id10">
+   1.6. User Community
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>GMT / PyGMT Introduction and Installation</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gmt">
+   1.1. What is GMT?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pygmt">
+   1.2. And what is PyGMT?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   1.3. Should I use GMT?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   1.4. About the tutorials
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id9">
+   1.5. How to install GMT
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id10">
+   1.6. User Community
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="gmt-pygmt">
+<h1><span class="section-number">1. </span>GMT / PyGMT Introduction and Installation<a class="headerlink" href="#gmt-pygmt" title="Permalink to this headline">#</a></h1>
+<section id="gmt">
+<h2><span class="section-number">1.1. </span>What is <a class="reference internal" href="#id3">GMT</a>?<a class="headerlink" href="#gmt" title="Permalink to this headline">#</a></h2>
+<p>Generic Mapping Tools, or <a class="reference external" href="https://www.generic-mapping-tools.org/">GMT</a> for short, is a software package for geographical mapping and other related tasks. The development of the software initiated in 1988 by Pål (Paul) Wessel and Walter H. F. Smith, who were graduate students at Lamont-Doherty Earth Observatory. The first version of GMT was released in 1991 <a class="footnote-reference brackets" href="#id12" id="id1">1</a> and received a lot of positive feedback on how useful and powerful the package was could be, which has motivated two authors and the whole GMT development team for continuing the project. More than 30 years later, in November 2019, the development team released the sixth edition of GMT <a class="footnote-reference brackets" href="#id13" id="id2">2</a>, which would continue to take a major role in geographical mapping. For academic fields such as geophysics or oceanography, GMT has become the introductory toolbox for plotting scientific data.</p>
+<p>As a “generic” mapping toolbox, GMT is of course capable of making different types of scientific plots using its built-in commands. However, what really makes this package so powerful is that GMT is very good at processing geographical data and visualizing them in the right way. GMT includes a lot of GIS algorithms, and a user just needs to enter a few console commands for making some beautiful and high-resolution maps. These maps support multiple formats, including vectorized files such as EPS and PDF, allowing users to make further edits with ease.</p>
+</section>
+<section id="pygmt">
+<h2><span class="section-number">1.2. </span>And what is <a class="reference internal" href="#id5">PyGMT</a>?<a class="headerlink" href="#pygmt" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://www.pygmt.org/">PyGMT</a> is essentially a “Pythonized GMT package.” PyGMT rewraps the GMT so one can access all GMT tools as a Python module. In addition to attracting more potential users, the long-term of PyGMT is to build a Python ecosystem for scientific data analysis, together with other data science modules in Python. As of now, PyGMT already supports some data formats found in Numpy, Pandas, and Xarray, and can interactively draw your data using the Jupyter environment. <a class="footnote-reference brackets" href="#id14" id="id4">3</a></p>
+<p>PyGMT 是由科學社群發起的專案計畫，目前的最新版 (版本號 0.3.1) 已於 2021 年 3 月釋出。各位如有興趣貢獻一己之力開發軟體，非常歡迎前往 PyGMT 的官方網站一探究竟。</p>
+</section>
+<section id="id6">
+<h2><span class="section-number">1.3. </span>Should I use GMT?<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
+<p>If you need to make some sort of map, either a global topography or a street map around your home, GMT or PyGMT has got you covered. With that said, GMT suits better for scientific mapping because all the data and observations can be easily processed by various built-in commands. Also, you can show your results with other GIS data but with no pain. Here I highly recommend GMT for people who want to perform any tasks listed below:</p>
+<ol class="arabic simple">
+<li><p><strong>Show tons of data on a map</strong>, like precipitation, faults and seismicity map, bathymetry, global volcano distribution, etc.</p></li>
+<li><p><strong>Make maps pretty often or update them frequently. You probably would feel that the fancy and clumsy graphic interface of GIS software always slows down your working efficiency</strong>. Learning how to plot using command-line tools can improve your work and save lots of your time.</p></li>
+<li><p><strong>Need to show the results of geospatial data analysis interactively or in real time.</strong> You can get two jobs done at once – data analysis and visualization – by running a GMT or PyGMT script.</p></li>
+</ol>
+<p>The only issue to get a swing of GMT is, however, that you need to write a script consisting of some code (GMT commands) to get GMT to work. For those who never used a terminal console, a steep learning curve would be expected. Fortunately, the GMT built-in commands are not that hard compared to many other standard console commands, and in most cases we do not need the non-GMT commands for manipulating data. That means as long as we have learned the basics of the command-line interface, we would be ready to master the art of GMT. Please go to <a class="reference internal" href="basic_concept.html"><span class="doc">Basic Concepts and Terms</span></a> for more details. Besides, if you have used or are using Python programming language, you can just start with PyGMT for speeding up your learning efficiency.</p>
+</section>
+<section id="id7">
+<h2><span class="section-number">1.4. </span>About the tutorials<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="http://www.geo.cornell.edu/eas/gstudent/wz278/">I</a> am a research scientist in geophysics and planetary sciences, with about 10 years of GMT experience. I always try hard to find well-organized and clear GMT tutorials, which sometimes makes me frustrated and spend more time learning every tool. So I decided to write some of my scripts and thoughts down and maybe write such a tutorial myself. My goal is to help beginners learn step-by-step by following the content of each chapter. If you are already a GMT veteran, I hope that this tutorial can serve you as a reference book whenever you would like to look for answers to some specific questions.</p>
+<p>Each chapter here is arranged in order by its difficulty. The first few chapters introduce basic knowledge for people who have zero experience of command lines. Later, the content shifts to some advanced script workflows. I believe the best way to learn GMT is to do it yourself rather than any online resources and these tutorials. With this in mind, you can find everything you need for making the map in each chapter, including the data and scripts. Feel free to download them and make a map that even surpasses the one I made!</p>
+</section>
+<section id="id9">
+<h2><span class="section-number">1.5. </span>How to install GMT<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h2>
+<p>There are many ways to install GMT and PyGMT. Here lists my preferred method: installing <strong>GMT 6</strong> using <code class="docutils literal notranslate"><span class="pre">conda</span></code>. For other ways of installation, please go to the <a class="reference external" href="https://www.generic-mapping-tools.org/">GMT</a> or <a class="reference external" href="https://www.pygmt.org/">PyGMT</a> official websites.</p>
+<ol class="arabic">
+<li><p>Firstly you need to <a class="reference external" href="https://www.anaconda.com/products/individual">install Anaconda</a>. Anaconda is cross-platform package manager software for scientific data analysis. You can download the installation file based on your operating system and install Anaconda.</p></li>
+<li><p>Open terminal (Linux or Mac) or Anaconda command window (Windows) and create a GMT environment: (For more details and explanations please see <a class="reference internal" href="basic_concept.html"><span class="doc">Basic Concepts and Terms</span></a>. Note you can change the environment name <code class="docutils literal notranslate"><span class="pre">gmt6</span></code> to any letter combination you like.)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda create --name gmt6
+$ conda activate gmt6
+</pre></div>
+</div>
+</li>
+<li><p>To install GMT:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda config --prepend channels conda-forge
+$ conda install <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.9 gmt
+</pre></div>
+</div>
+<p>Or you can install PyGMT directly as GMT will be installed as a dependency:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda config --prepend channels conda-forge
+$ conda install <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.9 pygmt pip numpy pandas xarray netcdf4 packaging gmt pytest pytest-mpl
+</pre></div>
+</div>
+</li>
+<li><p>If you plan to use PyGMT, I recommend installing Jupyter as well for interactive data analysis.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda install jupyterlab
+</pre></div>
+</div>
+</li>
+<li><p>To start up GMT, switch to the GMT conda environment and you are all set.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda activate gmt6
+$ gmt <span class="nb">help</span>
+</pre></div>
+</div>
+<p>To start using PyGMT, just import the <code class="docutils literal notranslate"><span class="pre">pygmt</span></code> module in Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pygmt</span>
+<span class="n">pygmt</span><span class="o">.</span><span class="n">show_versions</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="id10">
+<h2><span class="section-number">1.6. </span>User Community<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h2>
+<p>There is a growing GMT and PyGMT community. <a class="reference external" href="https://forum.generic-mapping-tools.org/">The official GMT community forum</a> provides a space for users to interact, ask questions, and contribute to development. The forum also serves as the announcement board when there is a new software version released.</p>
+<dl class="footnote brackets">
+<dt class="label" id="id12"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Wessel, P., and Smith, W. H. F. (1991).
+Free software helps map and display data, EOS Trans. AGU, 72(41), 445–446.
+<a class="reference external" href="http://doi.org/10.1029/90EO00319">doi.org/10.1029/90EO00319</a>.</p>
+</dd>
+<dt class="label" id="id13"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>Wessel, P., Luis, J., Uieda, L., Scharroo, R., Wobbe, F., Smith, W. H. F., and Tian, D. (2019).
+The Generic Mapping Tools Version 6. Geochemistry, Geophysics, Geosystems, 20.
+<a class="reference external" href="http://doi.org/10.1029/2019GC008515">doi.org/10.1029/2019GC008515</a>.</p>
+</dd>
+<dt class="label" id="id14"><span class="brackets"><a class="fn-backref" href="#id4">3</a></span></dt>
+<dd><p>Uieda, L., Tian, D., Leong, W. J., Toney, L., Newton, T., and Wessel, P. (2020, November 14).
+PyGMT: A Python interface for the Generic Mapping Tools (Version v0.2.1). Zenodo.
+<a class="reference external" href="http://doi.org/10.5281/zenodo.4253459">doi.org/10.5281/zenodo.4253459</a>.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./main"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../index.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">GMT Tutorials</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="software.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Software and Packages</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+ <div id="disqus_thread"></div> <script> var disqus_config = function () {this.page.url = 'http://gmt-tutorial.org/intro_install.html'; this.page.identifier = 'intro_install'; }; (function() { var d = document, s = d.createElement('script'); s.src = '//gmt-tutorials.disqus.com/embed.js'; s.setAttribute('data-timestamp', +new Date()); (d.head || d.body).appendChild(s); })(); </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By <a href="https://whyjz.github.io/">鄭懷傑 (Whyjay Zheng)</a> | <a href="https://twitter.com/WhyjayZ"><i class="fa-brands fa-twitter"></i></a><br/>
+  
+    Last updated on Jul 27, 2022.<br/>
+    <div class="extra_footer">
+      &copy; 2016-2022. <a href="https://github.com/whyjz/GMT-tutorials/blob/master/LICENSE.md">MIT</a> 
+and <a href="http://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</a> dual licensed. <br>
+Found this tutorial helpful? <a href="https://www.paypal.com/donate?hosted_button_id=68GZNRJ3MZDBE">Buy me a milktea!</a>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

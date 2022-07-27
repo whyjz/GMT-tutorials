@@ -1,0 +1,838 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_TW">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>3. 基本概念與名詞 &#8212; GMT 教學手冊</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+ <link href='https://fonts.googleapis.com/css?family=Varela Round' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://gmt-tutorials.org/main/basic_concept.html" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜尋" href="../search.html" />
+    <link rel="next" title="4. 製作第一張地圖" href="making_first_map.html" />
+    <link rel="prev" title="2. 推薦搭配的軟體或套件" href="software.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="zh_TW">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+ <script type="text/javascript">var _jf = _jf || [];_jf.push(['p','39630']);_jf.push(['_setFont','sourcehansans-tc-light','css','.sourcehansans-tc-light']);_jf.push(['_setFont','sourcehansans-tc-light','alias','sourcehansans-tc']);_jf.push(['_setFont','sourcehansans-tc-light','weight',200]);_jf.push(['_setFont','sourcehansans-tc-regular','css','.sourcehansans-tc-regular']);_jf.push(['_setFont','sourcehansans-tc-regular','alias','sourcehansans-tc']);_jf.push(['_setFont','sourcehansans-tc-regular','weight',400]);_jf.push(['_setFont','cwtexqyuan','css','.cwtexqyuan']);_jf.push(['_setFont','cwtexqyuan','alias','cwtexqyuan']);_jf.push(['_setFont','cwtexqyuan','weight',500]);_jf.push(['_setFont','xingothic-tc-w7','css','.xingothic-tc-w7']);_jf.push(['_setFont','xingothic-tc-w7','alias','xingothic-tc']);_jf.push(['_setFont','xingothic-tc-w7','weight',700]);_jf.push(['_setFont','jf-jinxuan-medium','css','.jf-jinxuan-medium']);_jf.push(['_setFont','jf-jinxuan-medium','alias','jf-jinxuan']);_jf.push(['_setFont','jf-jinxuan-medium','weight',600]);(function(f,q,c,h,e,i,r,d){var k=f._jf;if(k.constructor===Object){return}var l,t=q.getElementsByTagName("html")[0],a=function(u){for(var v in k){if(k[v][0]==u){if(false===k[v][1].call(k)){break}}}},j=/\S+/g,o=/[\t\r\n\f]/g,b=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,g="".trim,s=g&&!g.call("\uFEFF\xA0")?function(u){return u==null?"":g.call(u)}:function(u){return u==null?"":(u+"").replace(b,"")},m=function(y){var w,z,v,u,x=typeof y==="string"&&y;if(x){w=(y||"").match(j)||[];z=t[c]?(" "+t[c]+" ").replace(o," "):" ";if(z){u=0;while((v=w[u++])){if(z.indexOf(" "+v+" ")<0){z+=v+" "}}t[c]=s(z)}}},p=function(y){var w,z,v,u,x=arguments.length===0||typeof y==="string"&&y;if(x){w=(y||"").match(j)||[];z=t[c]?(" "+t[c]+" ").replace(o," "):"";if(z){u=0;while((v=w[u++])){while(z.indexOf(" "+v+" ")>=0){z=z.replace(" "+v+" "," ")}}t[c]=y?s(z):""}}},n;k.push(["_eventActived",function(){p(h);m(e)}]);k.push(["_eventInactived",function(){p(h);m(i)}]);k.addScript=n=function(u,A,w,C,E,B){E=E||function(){};B=B||function(){};var x=q.createElement("script"),z=q.getElementsByTagName("script")[0],v,y=false,D=function(){x.src="";x.onerror=x.onload=x.onreadystatechange=null;x.parentNode.removeChild(x);x=null;a("_eventInactived");B()};if(C){v=setTimeout(function(){D()},C)}x.type=A||"text/javascript";x.async=w;x.onload=x.onreadystatechange=function(G,F){if(!y&&(!x.readyState||/loaded|complete/.test(x.readyState))){y=true;if(C){clearTimeout(v)}x.src="";x.onerror=x.onload=x.onreadystatechange=null;x.parentNode.removeChild(x);x=null;if(!F){setTimeout(function(){E()},200)}}};x.onerror=function(H,G,F){if(C){clearTimeout(v)}D();return true};x.src=u;z.parentNode.insertBefore(x,z)};a("_eventPreload");m(h);n(r,"text/javascript",false,3000)})(this,this.document,"className","jf-loading","jf-active","jf-inactive","//ds.justfont.com/js/stable/v/5.0.2/id/166657211014");</script>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">GMT 教學手冊</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form> <div class="langcenter"> <nav class="menu"> <ul class="clearfix"> <li class="current-item"> <a href="#" class="clicker">中文 (台灣) <span class="arrow">&#9660;</span></a> <ul class="sub-menu"> <li><a href="basic_concept.html">中文 (台灣)</a></li> <li><a href="../en/main/basic_concept.html">English</a></li> </ul> </li> </ul> </nav> </div> 
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  入門與概述
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro_install.html">
+   1. GMT / PyGMT 簡介與安裝
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="software.html">
+   2. 推薦搭配的軟體或套件
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   3. 基本概念與名詞
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  基本繪圖技巧
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="making_first_map.html">
+   4. 製作第一張地圖
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="coloring_topography.html">
+   5. 為地形圖上色
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pen_and_painting.html">
+   6. 畫筆與調色技巧
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="scatter_plot.html">
+   7. XY 點散佈圖
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  製作各種常見的地圖（基礎）
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="cpt_colormap.html">
+   8. 使用色階表為網格資料著色
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plot_vector_data.html">
+   9. 繪製向量式資料
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="layout_design.html">
+   10. 版面設計與地圖的幾何布局
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hillshading.html">
+   11. 暈渲地圖
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="contour_and_profile.html">
+   12. 等高線地圖及地形剖面
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="map_elements.html">
+   13. 加入地圖元素
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  製作各種常見的地圖（進階）
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="editing_cpt_colorbar.html">
+   14. 色階檔的編修與呈現
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="view3d.html">
+   15. 3D 視圖
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="focal_mech.html">
+   16. 繪製震源機制解
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="draping.html">
+   17. 在 3D 地形上覆蓋地圖
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  網格資料處理
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="raster_calculator.html">
+   18. 網格計算機
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="basic_img_processing.html">
+   19. 基本影像處理
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  數值資料處理
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="stat_histogram.html">
+   20. 輸出統計資訊與直方圖
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="regression_basics.html">
+   21. 進行迴歸分析
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  附錄與學習資源
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_credit.html">
+   22. 資料來源與參考文獻
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="command_index.html">
+   23. 指令索引
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gallery.html">
+   24. 章節地圖索引
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/whyjz/GMT-tutorials"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/main/basic_concept.rst"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unix">
+   3.1. UNIX 環境
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     3.1.1. 終端機
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#shell">
+     3.1.2. 殼層 (Shell)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     3.1.3. 批次檔或腳本
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   3.2. 地理空間資料
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#netcdf">
+     3.2.1. NetCDF
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datum">
+     3.2.2. 大地座標系統 (Datum)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#projected-coordinate-system">
+     3.2.3. 投影法與投影座標系統 (Projected Coordinate System)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gmt-6">
+   3.3. GMT 6 的新語法模式
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pygmt">
+   3.4. PyGMT 的工作環境
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#python-pygmt">
+     3.4.1. Python 與 PyGMT
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id17">
+     3.4.2. PyGMT 的語法簡介
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jupyter-notebook-binder">
+     3.4.3. Jupyter Notebook 與 Binder
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>基本概念與名詞</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unix">
+   3.1. UNIX 環境
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     3.1.1. 終端機
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#shell">
+     3.1.2. 殼層 (Shell)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     3.1.3. 批次檔或腳本
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   3.2. 地理空間資料
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#netcdf">
+     3.2.1. NetCDF
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datum">
+     3.2.2. 大地座標系統 (Datum)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#projected-coordinate-system">
+     3.2.3. 投影法與投影座標系統 (Projected Coordinate System)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gmt-6">
+   3.3. GMT 6 的新語法模式
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pygmt">
+   3.4. PyGMT 的工作環境
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#python-pygmt">
+     3.4.1. Python 與 PyGMT
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id17">
+     3.4.2. PyGMT 的語法簡介
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jupyter-notebook-binder">
+     3.4.3. Jupyter Notebook 與 Binder
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="id1">
+<h1><span class="section-number">3. </span>基本概念與名詞<a class="headerlink" href="#id1" title="本標題的永久連結">#</a></h1>
+<p>GMT 繼承了在 UNIX 環境之下處理資料的方法，對於曾經接觸過 shell 或 cmd 的人，它的操作方法應該不陌生。如果你之前完全沒有用過，也沒有關係，以下將提供一些必要的基本概念，稍微熟悉後，就可以快速上手。</p>
+<p>另外，這裡也會簡單介紹 GMT 相關的一些檔案格式與操作，如果你是第一次接觸地理空間的資料，也歡迎在此查閱相關的術語。</p>
+<section id="unix">
+<h2><span class="section-number">3.1. </span>UNIX 環境<a class="headerlink" href="#unix" title="本標題的永久連結">#</a></h2>
+<section id="id2">
+<span id="terminal"></span><span id="id3"></span><h3><span class="section-number">3.1.1. </span>終端機<a class="headerlink" href="#id2" title="本標題的永久連結">#</a></h3>
+<p>雖然目前主要的作業系統都是以圖形介面 (桌面) 當作預設的使用者介面，但是你仍然可以透過指令列來控制你的電腦。最簡單的方法就是透過作業系統在桌面環境下內建的指令列程式來執行。指令列程式在 Windows 下稱為 cmd，而 Mac 或大部分 Linux 系統則稱為終端機 (terminal)。在本教學中，「開啟終端機」就意味開啟指令列模式來操作你的電腦。在 Windows XP 之後的版本，有兩種「終端機」可以選擇，一個就是 cmd，另一個稱為「PowerShell」，簡單的說就是讓使用者可以在 Windows 的介面之下使用 UNIX 殼程式 (shell) 的一些語法。在本教學中，所有要在終端機下輸入的指令，最前方都會有個提示符號</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$
+</pre></div>
+</div>
+<p>接在 <code class="docutils literal notranslate"><span class="pre">$</span></code> 之後的文字，才是使用者真正要輸入的指令。有關如何開啟作業系統的指令模式，請參考相關的專書或網頁，於此不再贅述。</p>
+</section>
+<section id="shell">
+<h3><span class="section-number">3.1.2. </span>殼層 (Shell)<a class="headerlink" href="#shell" title="本標題的永久連結">#</a></h3>
+<p>簡單的說來，殼層指的是使用者和「電腦這台機器」進行互動的介面，像是 Windows 的桌面環境、或是某個作業系統的指令列程式，都稱之為殼層。不同的殼層有不同的與電腦互動的方法，例如在文字介面殼層中，使用者要下達預先定義的指令，才能命令電腦做事。最初的 GMT 使用者介面，就是建立在一個很有名的、指令列程式型的殼層之中，它叫做 <strong>sh</strong>。經過了長時間的發展，GMT 已經被移植到了不同作業系統下的指令列殼層，例如說 Windows 的 cmd，但是 GMT 的指令語法仍然維持著原本殼層的格式。基本上，你可以把這些格式直接視作 GMT 指令操作的一部分來學習。有關於殼層的基本語法，許多資訊科學的專書或網頁均有詳細介紹，例如<a class="reference external" href="http://linux.vbird.org/">鳥哥的Linux 私房菜</a>。會一點殼層的指令，絕對對操作 GMT 有莫大的助益。</p>
+<div class="admonition tip">
+<p class="admonition-title">小訣竅</p>
+<p>有一個語法倒是非常值得一記，那就是註解符號 <code class="docutils literal notranslate"><span class="pre">#</span></code>，例如以下指令：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt grdinfo 你的檔案.grd     <span class="c1"># 觀看檔案的資訊</span>
+</pre></div>
+</div>
+<p>在 <code class="docutils literal notranslate"><span class="pre">#</span></code> 後面的文字，是對指令的補充說明。本教學中，也會使用此格式，使腳本更易於閱讀。</p>
+</div>
+</section>
+<section id="id4">
+<span id="script"></span><span id="id5"></span><h3><span class="section-number">3.1.3. </span>批次檔或腳本<a class="headerlink" href="#id4" title="本標題的永久連結">#</a></h3>
+<p>在指令列程式中，每按下一次 <code class="docutils literal notranslate"><span class="pre">Enter</span></code> 鍵，就會立刻執行當下的指令。但使用者也可以選擇把所有想要執行的程式統一寫在一個純文字檔中，然後在指令列程式輸入檔名，電腦就會逐一讀取文字檔中的指令並執行。在 Windows 中，這種檔案叫做「批次檔 (batch file)」，而在 sh 或由它衍生的各種殼層中，通常會稱為「腳本 (script)」，但基本上他們指的是同一件東西，在本教學中，將統一稱之為「腳本」。不同系統在執行腳本的操作細節上，會有些許差異，而且通常也有許多種方式可以讀取腳本。以下是筆者推薦的操作方法。</p>
+<ul>
+<li><p>Windows: 把 <code class="docutils literal notranslate"><span class="pre">.txt</span></code> 腳本檔案的副檔名改成 <code class="docutils literal notranslate"><span class="pre">.bat</span></code>，然後點兩下此檔，Windows 就會自動開啟 cmd 來執行。一般來說，腳本的最後一行可以放上</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>...<span class="o">(</span>以上都是你的指令<span class="o">)</span>
+pause
+</pre></div>
+</div>
+<p>加上 <code class="docutils literal notranslate"><span class="pre">pause</span></code> 之後，腳本執行完不會直接關閉 cmd 視窗，你可以在手動關閉前，先看一下所有指令的執行情況。</p>
+</li>
+<li><p>Unix 為基礎的系統 (Linux 或 Mac 等等): 副檔名可以隨便命名，筆者通常偏好以 <code class="docutils literal notranslate"><span class="pre">.sh</span></code>、<code class="docutils literal notranslate"><span class="pre">.csh</span></code> 或 <code class="docutils literal notranslate"><span class="pre">.bash</span></code> 結尾，端看你想要用哪種殼程式進行操作。以 bash 為例，腳本的第一行可以放上</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+...<span class="o">(</span>以下都是你的指令<span class="o">)</span>
+</pre></div>
+</div>
+<p>然後在指令列中，改變檔案權限</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ chmod +x 你的腳本.bash
+</pre></div>
+</div>
+<p>這樣要執行時，就可以直接下達如下指令，非常方便：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ 你的腳本路徑/你的腳本.bash
+</pre></div>
+</div>
+</li>
+</ul>
+<p>在本教學中，<strong>所有的 GMT 腳本都是以 bash 語法編寫</strong>。雖然不管你使用的是哪種作業系統或殼程式，GMT 的指令都會相同，但是因為腳本中難免會出現隨著殼程式不同而變化的語法，因此如果你使用的是除了 bash 之外的其他殼 (csh、tcsh、cmd、Power Shell 等等)，本教學的腳本在執行之前，可能需要小幅的修改成符合你使用的殼的語法，尤其是像指定變數、迴圈、建立檔案、文字資料處理等等的操作。</p>
+<p>至於在本教學中出現的 PyGMT 腳本…當然就是以 <a class="reference internal" href="#python">Python</a> 語言撰寫的啦！</p>
+</section>
+</section>
+<section id="id6">
+<h2><span class="section-number">3.2. </span>地理空間資料<a class="headerlink" href="#id6" title="本標題的永久連結">#</a></h2>
+<section id="netcdf">
+<h3><span class="section-number">3.2.1. </span>NetCDF<a class="headerlink" href="#netcdf" title="本標題的永久連結">#</a></h3>
+<p>NetCDF 是 Network Common Data Form 的縮寫，直譯為「網路通用數據格式」。顧名思義，他是一種儲存資料的格式，由 UCAR (美國大氣研究大學聯盟) 在 1989 年開始設計、發展到現在。NetCDF 最初的目標，是要為科學資料提供一種統一的儲存格式，以方便研究人員互相傳遞資料。除了設計儲存格式外，UCAR 也為 netCDF 編寫了一系列的模組與函數庫，讓使用者可以簡單的在各種程式語言或環境中操作這些資料。NetCDF 是 GMT 主要支援的檔案格式，常見的附檔名為 <code class="docutils literal notranslate"><span class="pre">.nc</span></code>，不過有時也會用 <code class="docutils literal notranslate"><span class="pre">.grd</span></code> 副檔名，來表示它的資料結構。它以二進位模式儲存資料，而且除了資料數據本身外，也附有檔頭描述這些數據的基本資訊 (這些檔頭通常稱為「中繼資料」，英文是 Metadata)。NetCDF 還有一個特點，就是它的資料跟作業系統的<a class="reference external" href="https://zh.wikipedia.org/wiki/%E5%AD%97%E8%8A%82%E5%BA%8F">位元儲存序</a>無關，使用者不須擔心資料傳給別人後會讀取錯誤。其他詳細的說明，請參閱 <a class="reference external" href="http://www.unidata.ucar.edu/software/netcdf/">netCDF 網站</a>。</p>
+</section>
+<section id="datum">
+<h3><span class="section-number">3.2.2. </span>大地座標系統 (Datum)<a class="headerlink" href="#datum" title="本標題的永久連結">#</a></h3>
+<p>大地座標系統，就是一批用以描述地球形狀的參數，以及運用這些參數計算出來的地球表面的三維座標。目前全世界最通用的大地座標系統為 <strong>WGS84</strong> (又稱之為 <strong>EPSG:4326</strong>)，它也是 GPS 衛星所採用的大地座標系統。</p>
+<p>以 WGS84 為例，它把地球的形狀定義成兩極略扁的橢球，橢球的中心對準地球的質心。這個形狀通常稱為 <strong>WGS84 參考橢球</strong>。此外在地表的水平座標設定上，緯度原點是赤道大圓，經度子午線原點則稍稍偏離了格林威治天文台。</p>
+<p>簡而言之，大地座標系統就是一整套幫地表設定三維座標 <strong>(經度，緯度，高度)</strong> 的參數集合。GMT 預設的大地座標系統也是 WGS84，你也可以使用以下指令查看現在 GMT 的座標系統：</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt defaults -D   <span class="c1"># 在 Projection Parameters 的欄位</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>而關於地表的垂直高度，WGS84 表示的數值則是與<a class="reference external" href="https://zh.wikipedia.org/wiki/%E5%A4%A7%E5%9C%B0%E6%B0%B4%E5%87%86%E9%9D%A2">大地水準面</a>的差距。目前 WGS84 使用 <strong>EGM96</strong> 這個地球的重力模型來設定地球的大地水準面。</p>
+<div class="admonition attention">
+<p class="admonition-title">注意</p>
+<p>大地座標系統基本上是不會定義垂直高度的參考基準的，它必須要由使用者自己決定。目前常用的基準有兩個：</p>
+<ol class="arabic simple">
+<li><p>直接用參考橢球的表面當基準測量高度，稱之為<strong>橢球高</strong>。</p></li>
+<li><p>使用海水面
+(<a class="reference external" href="https://zh.wikipedia.org/wiki/%E5%A4%A7%E5%9C%B0%E6%B0%B4%E5%87%86%E9%9D%A2">大地水準面</a>)
+當基準測量高度，稱之為<strong>正高</strong>。目前常用的標準為 <strong>EGM96</strong> 這個地球的重力模型。</p></li>
+</ol>
+<p>慣例上，以 WGS84 做基準的資料都會採用<strong>正高</strong>來表示高度，但並非所有的資料都會遵循這條規則。如果你對高度有精細的要求，例如誤差須在數十公尺內，最好確認一下你的資料是使用哪種高度參考基準。</p>
+</div>
+</section>
+<section id="projected-coordinate-system">
+<h3><span class="section-number">3.2.3. </span>投影法與投影座標系統 (Projected Coordinate System)<a class="headerlink" href="#projected-coordinate-system" title="本標題的永久連結">#</a></h3>
+<p>由於大部分的地圖都是平面的，再加上我們畫區域性的地圖時，經緯度也沒那麼方便 (1 度是 100 多公里，如果地圖很小，常常都只會有幾弧分或幾弧秒的改變)，所以在許多時候，我們會使用特定的投影法，把地球的弧面依照某種幾何公式拓展成平面，這樣地圖上一個點的座標，就可以用 <strong>(二維 X 座標，二維 Y 座標，高度)</strong> 來表示。這種座標表示法，就稱作投影座標系統。</p>
+<p>要創造投影座標系統，必須要指定地球的形狀 (也就是大地座標系統中的參考橢球) 和投影法。目前全球最通用的投影座標系統稱為 <strong>UTM</strong>，是 Universal Transverse Mercator 的縮寫，中文為「全球橫麥卡托投影」。它使用 WGS84 的參考橢球，把地球切割成許多區域，每個區域個別使用<a class="reference external" href="https://en.wikipedia.org/wiki/Transverse_Mercator_projection">橫麥卡托投影法</a>來製作地圖的二維座標。</p>
+<p>如果想要知道更多有關投影法的細節與不同投影法和投影座標系統的介紹，可以參考<a class="reference external" href="http://hep.ccic.ntnu.edu.tw/browse2.php?s=237">臺師大的地圖投影解說</a>或<a class="reference external" href="http://www.sunriver.com.tw/grid_tm2.htm">上河文化的解說網頁</a>。</p>
+<div class="admonition note">
+<p class="admonition-title">備註</p>
+<p>除了 WGS84 外，台灣還有兩個常用的大地座標系統，稱為 <strong>TWD67</strong> 與 <strong>TWD97</strong>，與之對應的投影座標系統則是 TWD67-TM2 與 TWD97-TM2。這兩個大地座標系統設定的地球橢球體外型，都跟 WGS84 不一樣，其中 TWD67 的差距較大，導致算出來的座標會與 WGS84 有數百公尺至一公里的差距；而 TWD97 就非常的接近 WGS84，在台灣地區的座標差距大致上只有數十公分。<a class="footnote-reference brackets" href="#id21" id="id14">1</a></p>
+</div>
+</section>
+</section>
+<section id="gmt-6">
+<h2><span class="section-number">3.3. </span>GMT 6 的新語法模式<a class="headerlink" href="#gmt-6" title="本標題的永久連結">#</a></h2>
+<p>在 2019 年秋季釋出的 GMT 6 是目前最新的 GMT 版本，也是本手冊內文指令使用的版本。製作團隊在此版本中，引進了一個全新的語法系統，稱為現代模式 (Modern Mode)，以和 GMT 第五版與之前的傳統模式 (Classic Mode) 區別。在現代模式中，GMT 把 PostScript 的繪圖步驟轉移到暫存檔中，並直接產生向量形式的 PDF 或是影像形式的 PNG 與 JPG，因此大大簡化了腳本的繁雜程度。以下列出現代模式和傳統模式最主要的差別<a class="footnote-reference brackets" href="#id22" id="id15">2</a>：</p>
+<ul class="simple">
+<li><p>GMT 指令不再透過 UNIX 的輸出重導向 (<code class="docutils literal notranslate"><span class="pre">&gt;</span></code>) 把地圖存到 <code class="docutils literal notranslate"><span class="pre">.ps</span></code> 檔中。</p></li>
+<li><p>使用者不用再透過 <code class="docutils literal notranslate"><span class="pre">-O</span></code> 與 <code class="docutils literal notranslate"><span class="pre">-K</span></code> 選項「連接」不同的 GMT 指令。</p></li>
+<li><p>因為可以直接選擇多種出圖格式，使用者不用再花費時間轉檔。</p></li>
+<li><p>出圖的版面尺寸不再綁定紙張尺寸，而是會自動裁切到繪圖區域的大小。因此，<code class="docutils literal notranslate"><span class="pre">-P</span></code> 選項也不需要了。</p></li>
+<li><p>許多 <code class="docutils literal notranslate"><span class="pre">ps</span></code> 開頭的指令改了名字，多半是把 <code class="docutils literal notranslate"><span class="pre">ps</span></code> 刪掉，但也有完全改掉的例子，例如 <code class="docutils literal notranslate"><span class="pre">psxy</span></code> 變成了 <code class="docutils literal notranslate"><span class="pre">plot</span></code>。</p></li>
+<li><p>在現代模式中，使用者<strong>必須</strong>要透過 <code class="docutils literal notranslate"><span class="pre">gmt</span> <span class="pre">begin</span></code> 與 <code class="docutils literal notranslate"><span class="pre">gmt</span> <span class="pre">end</span></code> 來包住繪圖的指令。在傳統模式中無此語法。</p></li>
+<li><p>重複的繪圖區域 <code class="docutils literal notranslate"><span class="pre">-R</span></code> 和投影 <code class="docutils literal notranslate"><span class="pre">-J</span></code> 等設定，再也不用在每一個指令中都列出。</p></li>
+<li><p>增加了 <code class="docutils literal notranslate"><span class="pre">subplot</span></code> 指令，讓製作多合一地圖變得很容易。</p></li>
+</ul>
+<p>為了向下相容使用舊版語法的腳本，在 GMT 6 中你可以使用現代模式或是傳統模式的語法。因為新的語法具有許多優點，<strong>在本教學手冊中，我會使用現代模式的語法來撰寫腳本</strong>。然而，在部份繪製地圖的章節中，我也會一併放上傳統模式的教學連結以及使用傳統模式撰寫的腳本，供各位使用者參考。</p>
+<p>如果你已經是 GMT 5 的使用者，可以馬上無痛升級到 GMT 6，因為幾乎所有第五版的語法在第六版中都有支援 (傳統模式)。</p>
+<p>如果你已經是 GMT 4 的使用者，以下列出幾個例子顯示 GMT 6 (傳統模式) 與 GMT 4 指令上的不同：</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pscoast 各種選項...       <span class="c1"># GMT 4 的 pscoast 指令</span>
+$ gmt coast 各種選項...     <span class="c1"># 在 GMT 6 中，換成了 coast 指令，而且變成總指令 gmt 下屬的一個模組。</span>
+$ gmtset 各種選項...        <span class="c1"># GMT 4 的 gmtset 指令</span>
+$ gmt <span class="nb">set</span> 各種選項...       <span class="c1"># 在 GMT 6 中也換成了 set 指令，而且變成總指令 gmt 下屬的一個模組。</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>然而，在安裝 GMT 6 的時候，系統會問你要不要替所有 <code class="docutils literal notranslate"><span class="pre">gmt</span></code> 指令下屬的模組建立捷徑。如果你選了 Yes，那麼你就可以使用 GMT 4 的語法來讓 GMT 6 執行你的腳本 (意思就是，GMT 會讓系統理解 <code class="docutils literal notranslate"><span class="pre">pscoast</span></code> 等等 GMT 的舊指令名字)。</p>
+</section>
+<section id="pygmt">
+<h2><span class="section-number">3.4. </span>PyGMT 的工作環境<a class="headerlink" href="#pygmt" title="本標題的永久連結">#</a></h2>
+<section id="python-pygmt">
+<span id="python"></span><h3><span class="section-number">3.4.1. </span>Python 與 PyGMT<a class="headerlink" href="#python-pygmt" title="本標題的永久連結">#</a></h3>
+<p>Python 是<a class="reference external" href="https://www.statista.com/chart/16567/popular-programming-languages/">現在最流行的一種程式語言</a>。如果您對 Python 有興趣，網路上有非常多的學習資源。因為它非常流行，所以在 GMT 使用者社群中一直存在一股想法，就是希望能透過 Python 使用 GMT 的各項功能。GMT 是以 <a class="reference external" href="https://zh.wikipedia.org/wiki/C%E8%AF%AD%E8%A8%80">C 語言</a>開發的，如果要使用 Python 存取 GMT 的函式庫，就要透過 API (應用程式介面，Application Programming Interface) 才能順利達成。GMT 的 API 本質上是額外的程式碼，但你可以把它想像成是不同線材的轉接頭，讓本質上是 C 語言的 GMT 函式庫能夠理解 Python 傳來的指令。PyGMT 就是透過 API 來下達繪圖指令給 GMT，並且再把 GMT 的回傳值 (地圖、數據等等) 整理成與 Python 相容的數據結構。這種軟體也稱為包裝庫 (Wrapper library)。</p>
+</section>
+<section id="id17">
+<h3><span class="section-number">3.4.2. </span>PyGMT 的語法簡介<a class="headerlink" href="#id17" title="本標題的永久連結">#</a></h3>
+<p>PyGMT 把每張地圖視作一個<a class="reference external" href="https://zh.wikipedia.org/wiki/%E5%AF%B9%E8%B1%A1_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6)">物件</a>，然後透過物件的<a class="reference external" href="https://zh.wikipedia.org/wiki/%E6%96%B9%E6%B3%95_(%E9%9B%BB%E8%85%A6%E7%A7%91%E5%AD%B8)">方法</a>來執行所有的繪圖指令。以 GMT 6 的 <code class="docutils literal notranslate"><span class="pre">coast</span></code> 指令來說，在 PyGMT 下你要這樣執行：</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pygmt</span>                <span class="c1"># 首先必須匯入 PyGMT 模組！</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">pygmt</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>        <span class="c1"># 建立地圖物件</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">coast</span><span class="p">(</span><span class="n">各種選項</span><span class="o">...</span><span class="p">)</span>
+<span class="c1"># 最後再用 fig.show() 螢幕出圖，或是 fig.savefig(...) 儲存圖檔</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">coast</span></code> 指令的各種選項，在 GMT 中是以 UNIX 風格的「旗標」模式指定，例如 <code class="docutils literal notranslate"><span class="pre">-R</span></code>、<code class="docutils literal notranslate"><span class="pre">-J</span></code> 等等。而在 PyGMT 中，不同的旗標被賦予了全名，並以參數值的格式輸入到物件方法中，例如 <code class="docutils literal notranslate"><span class="pre">-R</span></code> 對應到 <code class="docutils literal notranslate"><span class="pre">region</span></code>，<code class="docutils literal notranslate"><span class="pre">-J</span></code> 對應到 <code class="docutils literal notranslate"><span class="pre">projection</span></code> 等等。以下是來自「<a class="reference internal" href="making_first_map.html"><span class="doc">製作第一張地圖</span></a>」的更詳細對照：</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 使用 GMT 時... (在 shell 腳本中)</span>
+<span class="n">gmt</span> <span class="n">coast</span> <span class="o">-</span><span class="n">R</span><span class="o">...</span> <span class="o">-</span><span class="n">J</span><span class="o">...</span> <span class="o">-</span><span class="n">W</span><span class="o">...</span> <span class="o">-</span><span class="n">G</span><span class="o">...</span> <span class="o">-</span><span class="n">B</span><span class="o">...</span>
+<span class="c1"># 使用 PyGMT 時... (在 python 腳本中)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">coast</span><span class="p">(</span><span class="n">region</span><span class="o">=...</span><span class="p">,</span> <span class="n">projection</span><span class="o">=...</span><span class="p">,</span> <span class="n">shorelines</span><span class="o">=...</span><span class="p">,</span> <span class="n">land</span><span class="o">=...</span><span class="p">,</span> <span class="n">frame</span><span class="o">=...</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>在 PyGMT 的使用手冊中，可以找到更詳細的<a class="reference external" href="https://www.pygmt.org/latest/api/generated/pygmt.Figure.coast.html">選項對照表格</a>。</p>
+</section>
+<section id="jupyter-notebook-binder">
+<h3><span class="section-number">3.4.3. </span>Jupyter Notebook 與 Binder<a class="headerlink" href="#jupyter-notebook-binder" title="本標題的永久連結">#</a></h3>
+<p>本教學手冊中使用兩種 PyGMT 腳本的格式。除了傳統的純文字 HTML 語法顯示外，也提供了 <a class="reference external" href="https://jupyter.org/">Jupyter Notebook</a> 的 Binder 連結。點開 Binder 連結後，伺服器端會安裝一個可以執行 PyGMT 的環境，然後你就可以透過你的網頁瀏覽器執行與修改教學手冊中的 PyGMT 程式碼。本功能目前使用 <a class="reference external" href="https://mybinder.org/">MyBinder.org</a> 提供、利用 Amazon Web Services 的雲端運算服務讓各位都能免安裝就體驗 PyGMT。歡迎各位多加嘗試！</p>
+<dl class="footnote brackets">
+<dt class="label" id="id21"><span class="brackets"><a class="fn-backref" href="#id14">1</a></span></dt>
+<dd><p><a class="reference external" href="https://wiki.osgeo.org/wiki/Taiwan_datums">Taiwan datums</a>, OSGeo Wiki.</p>
+</dd>
+<dt class="label" id="id22"><span class="brackets"><a class="fn-backref" href="#id15">2</a></span></dt>
+<dd><p>Wessel, P., Luis, J., Uieda, L., Scharroo, R., Wobbe, F., Smith, W. H. F.,
+and Tian, D. (2019). The Generic Mapping Tools Version 6. Geochemistry,
+Geophysics, Geosystems, 20.
+<a class="reference external" href="http://doi.org/10.1029/2019GC008515">doi.org/10.1029/2019GC008515</a>.</p>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./main"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="software.html" title="上一頁 頁">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">上一頁</p>
+            <p class="prev-next-title"><span class="section-number">2. </span>推薦搭配的軟體或套件</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="making_first_map.html" title="下一頁 頁">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一頁</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>製作第一張地圖</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+ <div id="disqus_thread"></div> <script> var disqus_config = function () {this.page.url = 'http://gmt-tutorial.org/basic_concept.html'; this.page.identifier = 'basic_concept'; }; (function() { var d = document, s = d.createElement('script'); s.src = '//gmt-tutorials.disqus.com/embed.js'; s.setAttribute('data-timestamp', +new Date()); (d.head || d.body).appendChild(s); })(); </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By <a href="https://whyjz.github.io/">鄭懷傑 (Whyjay Zheng)</a> | <a href="https://twitter.com/WhyjayZ"><i class="fa-brands fa-twitter"></i></a><br/>
+  
+    Last updated on 7月 27, 2022.<br/>
+    <div class="extra_footer">
+      &copy; 2016-2022. <a href="https://github.com/whyjz/GMT-tutorials/blob/master/LICENSE.md">MIT</a> 
+and <a href="http://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</a> dual licensed. <br>
+Found this tutorial helpful? <a href="https://www.paypal.com/donate?hosted_button_id=68GZNRJ3MZDBE">Buy me a milktea!</a>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

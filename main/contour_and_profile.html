@@ -1,0 +1,954 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_TW">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>12. 等高線地圖及地形剖面 &#8212; GMT 教學手冊</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+ <link href='https://fonts.googleapis.com/css?family=Varela Round' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://gmt-tutorials.org/main/contour_and_profile.html" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜尋" href="../search.html" />
+    <link rel="next" title="13. 加入地圖元素" href="map_elements.html" />
+    <link rel="prev" title="11. 暈渲地圖" href="hillshading.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="zh_TW">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+ <script type="text/javascript">var _jf = _jf || [];_jf.push(['p','39630']);_jf.push(['_setFont','sourcehansans-tc-light','css','.sourcehansans-tc-light']);_jf.push(['_setFont','sourcehansans-tc-light','alias','sourcehansans-tc']);_jf.push(['_setFont','sourcehansans-tc-light','weight',200]);_jf.push(['_setFont','sourcehansans-tc-regular','css','.sourcehansans-tc-regular']);_jf.push(['_setFont','sourcehansans-tc-regular','alias','sourcehansans-tc']);_jf.push(['_setFont','sourcehansans-tc-regular','weight',400]);_jf.push(['_setFont','cwtexqyuan','css','.cwtexqyuan']);_jf.push(['_setFont','cwtexqyuan','alias','cwtexqyuan']);_jf.push(['_setFont','cwtexqyuan','weight',500]);_jf.push(['_setFont','xingothic-tc-w7','css','.xingothic-tc-w7']);_jf.push(['_setFont','xingothic-tc-w7','alias','xingothic-tc']);_jf.push(['_setFont','xingothic-tc-w7','weight',700]);_jf.push(['_setFont','jf-jinxuan-medium','css','.jf-jinxuan-medium']);_jf.push(['_setFont','jf-jinxuan-medium','alias','jf-jinxuan']);_jf.push(['_setFont','jf-jinxuan-medium','weight',600]);(function(f,q,c,h,e,i,r,d){var k=f._jf;if(k.constructor===Object){return}var l,t=q.getElementsByTagName("html")[0],a=function(u){for(var v in k){if(k[v][0]==u){if(false===k[v][1].call(k)){break}}}},j=/\S+/g,o=/[\t\r\n\f]/g,b=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,g="".trim,s=g&&!g.call("\uFEFF\xA0")?function(u){return u==null?"":g.call(u)}:function(u){return u==null?"":(u+"").replace(b,"")},m=function(y){var w,z,v,u,x=typeof y==="string"&&y;if(x){w=(y||"").match(j)||[];z=t[c]?(" "+t[c]+" ").replace(o," "):" ";if(z){u=0;while((v=w[u++])){if(z.indexOf(" "+v+" ")<0){z+=v+" "}}t[c]=s(z)}}},p=function(y){var w,z,v,u,x=arguments.length===0||typeof y==="string"&&y;if(x){w=(y||"").match(j)||[];z=t[c]?(" "+t[c]+" ").replace(o," "):"";if(z){u=0;while((v=w[u++])){while(z.indexOf(" "+v+" ")>=0){z=z.replace(" "+v+" "," ")}}t[c]=y?s(z):""}}},n;k.push(["_eventActived",function(){p(h);m(e)}]);k.push(["_eventInactived",function(){p(h);m(i)}]);k.addScript=n=function(u,A,w,C,E,B){E=E||function(){};B=B||function(){};var x=q.createElement("script"),z=q.getElementsByTagName("script")[0],v,y=false,D=function(){x.src="";x.onerror=x.onload=x.onreadystatechange=null;x.parentNode.removeChild(x);x=null;a("_eventInactived");B()};if(C){v=setTimeout(function(){D()},C)}x.type=A||"text/javascript";x.async=w;x.onload=x.onreadystatechange=function(G,F){if(!y&&(!x.readyState||/loaded|complete/.test(x.readyState))){y=true;if(C){clearTimeout(v)}x.src="";x.onerror=x.onload=x.onreadystatechange=null;x.parentNode.removeChild(x);x=null;if(!F){setTimeout(function(){E()},200)}}};x.onerror=function(H,G,F){if(C){clearTimeout(v)}D();return true};x.src=u;z.parentNode.insertBefore(x,z)};a("_eventPreload");m(h);n(r,"text/javascript",false,3000)})(this,this.document,"className","jf-loading","jf-active","jf-inactive","//ds.justfont.com/js/stable/v/5.0.2/id/166657211014");</script>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">GMT 教學手冊</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form> <div class="langcenter"> <nav class="menu"> <ul class="clearfix"> <li class="current-item"> <a href="#" class="clicker">中文 (台灣) <span class="arrow">&#9660;</span></a> <ul class="sub-menu"> <li><a href="contour_and_profile.html">中文 (台灣)</a></li> <li><a href="../en/main/contour_and_profile.html">English</a></li> </ul> </li> </ul> </nav> </div> 
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  入門與概述
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro_install.html">
+   1. GMT / PyGMT 簡介與安裝
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="software.html">
+   2. 推薦搭配的軟體或套件
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="basic_concept.html">
+   3. 基本概念與名詞
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  基本繪圖技巧
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="making_first_map.html">
+   4. 製作第一張地圖
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="coloring_topography.html">
+   5. 為地形圖上色
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pen_and_painting.html">
+   6. 畫筆與調色技巧
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="scatter_plot.html">
+   7. XY 點散佈圖
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  製作各種常見的地圖（基礎）
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="cpt_colormap.html">
+   8. 使用色階表為網格資料著色
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plot_vector_data.html">
+   9. 繪製向量式資料
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="layout_design.html">
+   10. 版面設計與地圖的幾何布局
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hillshading.html">
+   11. 暈渲地圖
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   12. 等高線地圖及地形剖面
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="map_elements.html">
+   13. 加入地圖元素
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  製作各種常見的地圖（進階）
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="editing_cpt_colorbar.html">
+   14. 色階檔的編修與呈現
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="view3d.html">
+   15. 3D 視圖
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="focal_mech.html">
+   16. 繪製震源機制解
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="draping.html">
+   17. 在 3D 地形上覆蓋地圖
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  網格資料處理
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="raster_calculator.html">
+   18. 網格計算機
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="basic_img_processing.html">
+   19. 基本影像處理
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  數值資料處理
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="stat_histogram.html">
+   20. 輸出統計資訊與直方圖
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="regression_basics.html">
+   21. 進行迴歸分析
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  附錄與學習資源
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_credit.html">
+   22. 資料來源與參考文獻
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="command_index.html">
+   23. 指令索引
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gallery.html">
+   24. 章節地圖索引
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/whyjz/GMT-tutorials"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/main/contour_and_profile.rst"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   12.1. 目標
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   12.2. 使用的指令與概念
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   12.3. 前置作業
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id10">
+   12.4. 操作流程
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id12">
+   12.5. 指令稿
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id13">
+   12.6. 習題
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>等高線地圖及地形剖面</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   12.1. 目標
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   12.2. 使用的指令與概念
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   12.3. 前置作業
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id10">
+   12.4. 操作流程
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id12">
+   12.5. 指令稿
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id13">
+   12.6. 習題
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="id1">
+<h1><span class="section-number">12. </span>等高線地圖及地形剖面<a class="headerlink" href="#id1" title="本標題的永久連結">#</a></h1>
+<p>在本章中，我們要使用 GMT 繪製等高線圖與地形剖面圖，這兩種地圖非常適合用來表示地形的升降起伏，以及不同地點的陡峭程度。如果你是個登山客，想必它們會是你最愛用的地圖類型。</p>
+<section id="id2">
+<h2><span class="section-number">12.1. </span>目標<a class="headerlink" href="#id2" title="本標題的永久連結">#</a></h2>
+<p>使用 <a class="reference external" href="http://www2.jpl.nasa.gov/srtm/">SRTM</a> (Shuttle Radar Topography Mission，太空梭雷達地形任務)
+提供的地形資料，繪製<a class="reference external" href="https://zh.wikipedia.org/wiki/%E9%A6%AC%E6%A6%AE%E7%81%AB%E5%B1%B1">馬榮火山</a>
+(Mayon Volcano) 的地形等高線圖，以及一條穿過火山頂部的剖面高度圖。馬榮火山是一座位於菲律賓的火山，以近乎完美的錐體外型聞名。在以下的等高線圖和 A-B 點之間的剖面圖中，可以大致計算出火山高度是 2400 公尺，錐體半徑則大概是 9 公里左右 (注意剖面並沒有完整的切穿整個錐體，尤其是在 A 點附近)。研究指出此火山的外型主要受到岩漿成份控制，上半段近似於拋物線，而下半段則與對數曲線非常接近<a class="footnote-reference brackets" href="#id14" id="id4">1</a>。這意味著越接近山頂，地表越陡，如果你想去登頂的話，要先做好心理準備！</p>
+<p>馬榮火山也是一座非常活躍的火山，上次噴發是在 2009 年底，其餘因岩漿活動導致的噴氣、地表變形等等的現象也非常頻繁。在過去，火山噴發時常帶給周圍村莊毀滅性的災難，但拜科學研究發展所賜，近年來已經很少造成人員傷亡。</p>
+<a class="reference external image-reference" href="_images/mayon.png" id="id5"><img alt="../_images/mayon_s.png" src="../_images/mayon_s.png" /></a>
+<p>直接觀看<a class="reference internal" href="#id12">指令稿</a></p>
+<figure class="align-center" id="id15">
+<img alt="../_images/contour_and_profile_fig1.jpg" src="../_images/contour_and_profile_fig1.jpg" />
+<figcaption>
+<p><span class="caption-number">圖 12.1 </span><span class="caption-text">從鄰近區域觀看的馬榮火山，完美的外型令人震懾。Tomas Tam 的攝影作品。</span><a class="headerlink" href="#id15" title="本圖片的永久連結">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id6">
+<h2><span class="section-number">12.2. </span>使用的指令與概念<a class="headerlink" href="#id6" title="本標題的永久連結">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">grdgradient</span></code> - 計算網格檔的梯度與照明值</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">grd2cpt</span></code> - 使用網格檔的資訊建立色階檔</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gmtset</span></code> - 更改 GMT 的預設作圖參數</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">psxy</span></code> - 輸出檔頭與檔尾、繪製折線</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">grdimage</span></code> - 繪製暈渲圖</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pscoast</span></code> - 繪製海岸線與海域填色</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">grdcontour</span></code> - <strong>繪製等高線與其數值標籤</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">project</span></code> - <strong>產生以公里為單位的路徑座標</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">grdtrack</span></code> - <strong>給定座標，對網格檔取樣</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pstext</span></code> - 在地圖上加入文字</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">psbasemap</span></code> - 設定繪圖區、座標軸與邊框</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gmtinfo</span></code> - <strong>由數值資料的純文字檔建立</strong> <code class="docutils literal notranslate"><span class="pre">-R</span></code> <strong>設定</strong></p></li>
+<li><p>外部指令 <code class="docutils literal notranslate"><span class="pre">rm</span></code> - 刪除檔案 (Windows 為 <code class="docutils literal notranslate"><span class="pre">del</span></code>)</p></li>
+<li><p>外部指令 <code class="docutils literal notranslate"><span class="pre">cut</span></code> - <strong>擷取文字檔中的特定幾個欄位</strong> (非必要)</p></li>
+<li><p>GDAL 指令 <code class="docutils literal notranslate"><span class="pre">gdal_translate</span></code> - <strong>把 Geotiff 轉成 NetCDF 格式</strong> (非必要)</p></li>
+<li><p>GMT 共用選項：<code class="docutils literal notranslate"><span class="pre">-i</span></code></p></li>
+<li><p>在 <code class="docutils literal notranslate"><span class="pre">-R</span></code> 參數中使用度分秒格式座標</p></li>
+<li><p>設定座標軸標籤與刻度的一些技巧</p></li>
+</ul>
+</section>
+<section id="id7">
+<h2><span class="section-number">12.3. </span>前置作業<a class="headerlink" href="#id7" title="本標題的永久連結">#</a></h2>
+<p>首先我們要取得 <a class="reference external" href="http://www2.jpl.nasa.gov/srtm/">SRTM</a> 的地形資料。這些資料目前可以經由美國地質調查局 (USGS)
+管理的網站 <a class="reference external" href="https://earthexplorer.usgs.gov/">EarthExplorer</a> 取得。前往 EarthExplorer，然後在「Address/Place」搜尋的地方輸入 <em>Mayon</em>，然後按下 <cite>show</cite>，選擇下方出現的 <em>Mayon Volcano</em> 一欄。接著，按下下方的 <cite>Data Sets &gt;&gt;</cite>。</p>
+<img alt="../_images/contour_and_profile_fig2.png" src="../_images/contour_and_profile_fig2.png" />
+<p>你可以使用搜尋框或下方的分類目錄，找到並勾選 <em>SRTM 1 Arc-Second Global</em> 的資料集，然後按下 <cite>Results &gt;&gt;</cite>。</p>
+<img alt="../_images/contour_and_profile_fig3.png" src="../_images/contour_and_profile_fig3.png" />
+<p>接下來，應該會有一筆資料呈現在左側搜尋結果欄中。你可以按下圖示預覽此資料，如下圖所示。如要下載，請按下「下載」的圖示。本資料需要登入才能下載，如果你尚未有 USGS 帳號，可以花幾分鐘註冊，只需要一組電子信箱即可。登入之後，選擇
+<cite>GeoTIFF 1 Arc-second (24.8 MB)</cite> 的資料格式。</p>
+<img alt="../_images/contour_and_profile_fig4.png" src="../_images/contour_and_profile_fig4.png" />
+<div class="admonition note">
+<p class="admonition-title">備註</p>
+<p>1 弧秒 (arc second) 的角度在地球表面大概是 30 公尺的距離，這意味著我們下載的 SRTM 資料中的每個像素代表地球上的 30 x 30 平方公尺大小的區域。</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/GeoTIFF">GeoTIFF</a> 也是一種網格地理資料儲存的格式，與 GMT 支援的
+NetCDF 格式類似。不同的是，GeoTIFF 使用 <code class="docutils literal notranslate"><span class="pre">.tif</span></code> 作為標誌的副檔名，而且自身帶有網格的投影法與座標系統等資料。</p>
+</div>
+<p>下載的檔案預設的命名是 <code class="docutils literal notranslate"><span class="pre">n13_e123_1arc_v3.tif</span></code>。使用 <a class="reference external" href="software.html#id8">GDAL</a>
+函式庫中的 <code class="docutils literal notranslate"><span class="pre">gdal_translate</span></code> 指令，可以把檔案的格式轉成 GMT 支援的 NetCDF 檔案。語法如下：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gdal_translate 輸入檔.tif -of NetCDF 輸出檔.grd
+</pre></div>
+</div>
+<p>如果你的電腦沒有安裝 GDAL 或純粹為了方便起見，你也可以直接從以下連結取得本章節會使用的 SRTM <code class="docutils literal notranslate"><span class="pre">.grd</span></code> 檔案：</p>
+<p><a class="reference download internal" download="" href="../_downloads/53f38f4d81f6ab2b9edc61f76e1c636c/n13_e123_1arc_v3.grd"><code class="xref download docutils literal notranslate"><span class="pre">n13_e123_1arc_v3.grd</span></code></a></p>
+<div class="admonition tip">
+<p class="admonition-title">小訣竅</p>
+<p>如果你的電腦是先裝了 GDAL 然後再裝 GMT，那麼 GMT 就能使用 GDAL 直接處理 GeoTIFF 格式檔案。你可以使用以下語法進行測試：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ grdinfo n13_e123_1arc_v3.tif
+</pre></div>
+</div>
+<p>如果正確的資訊可以顯示出來，就表示你的 GMT 可以透過 GDAL 支援 GeoTIFF 檔案。因此，你也可以試著不轉檔，直接使用 <code class="docutils literal notranslate"><span class="pre">.tif</span></code> 的檔案進行底下的操作流程。有關如何設定 GDAL 與 GMT 的相互支援，以及其他的細節說明，請參閱<cite>之後的章節</cite>。</p>
+</div>
+<p>在本章中，我們要使用 <a class="reference external" href="http://soliton.vm.bytemark.co.uk/pub/cpt-city">cpt-city</a> 的色階檔 <code class="docutils literal notranslate"><span class="pre">neutral</span></code>。你可以<a class="reference external" href="http://soliton.vm.bytemark.co.uk/pub/cpt-city/fme/feet/tn/neutral.png.index.html">由此</a>或是以下連結下載：</p>
+<p><a class="reference download internal" download="" href="../_downloads/7775e23c207bd0d9ddcea407d4418c14/neutral.cpt"><code class="xref download docutils literal notranslate"><span class="pre">neutral.cpt</span></code></a></p>
+<img alt="../_images/contour_and_profile_fig5.png" class="align-center" src="../_images/contour_and_profile_fig5.png" />
+</section>
+<section id="id10">
+<h2><span class="section-number">12.4. </span>操作流程<a class="headerlink" href="#id10" title="本標題的永久連結">#</a></h2>
+<p>首先我們來試著繪製等高線圖。<code class="docutils literal notranslate"><span class="pre">grdcontour</span></code> 指令是這章地圖的主角，它可以讀取一個網格檔，然後在地圖上繪製等高線的線條與數值。基本語法為：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ grdcontour 輸入grd檔名 -C等高線參數 -A標注數值的等高線參數 <span class="o">[</span>-W畫筆<span class="o">]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">-C</span></code> 有幾種參數指定方式：</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-C數值</span></code> 指定等高線間距。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-C+數值</span></code> 繪製特定高度的等高線。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-C色階檔</span></code> 繪製色階檔中顏色邊界數值的等高線。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-C非色階檔</span></code> 使用檔案的第一欄當作要繪製等高線的高度，而由第二欄決定是一般等高線 (c) 或是標注數值的等高線 (a)</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">-A</span></code> 指定的是「標注數值的等高線」，你也可以把它想像成「主等高線」。使用 <code class="docutils literal notranslate"><span class="pre">-A</span></code> 的結果跟 <code class="docutils literal notranslate"><span class="pre">-C</span></code> 很像，差別只是在於用 <code class="docutils literal notranslate"><span class="pre">-A</span></code> 畫出的等高線會比較粗，而且會加上數值。它也有幾種參數指定方式：</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-A數值</span></code> 指定標注數值的等高線間距。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-A+數值</span></code> 在特定高度繪製標注數值的等高線。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-A[數值資訊][標籤資訊]</span></code> 設定數值標籤的字型、外框、角度等等參數 。</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">-W</span></code> 指定等高線的<a class="reference external" href="pen_and_painting.html">畫筆屬性</a>。如果地圖上同時有兩種等高線的話，可使用 <code class="docutils literal notranslate"><span class="pre">-Wc畫筆</span></code> 設定一般等高線，<code class="docutils literal notranslate"><span class="pre">-Wa畫筆</span></code>
+設定標注數值的等高線。</p>
+<p>現在讓我們來試試看以下指令：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ grdcontour n13_e123_1arc_v3.grd -C100 -A500+f8p,,darkred <span class="se">\</span>
+             -R123:30E/123:50E/13:10N/13:21N -JM15c -Ba10m -P &gt; mayon_contour.ps
+<span class="c1"># 等高線每 100 單位 (公尺) 畫一個，每 500 單位則是標注數值的等高線</span>
+<span class="c1"># -A+f 指定字型樣式</span>
+<span class="c1"># -R 格式使用「度:分 + 方位」</span>
+<span class="c1"># -Ba 格式使用 10m 表示每 10 弧分做一標注</span>
+</pre></div>
+</div>
+<p>出圖會如下所示：</p>
+<img alt="../_images/contour_and_profile_fig6.png" src="../_images/contour_and_profile_fig6.png" />
+<div class="admonition note">
+<p class="admonition-title">備註</p>
+<p>上圖使用 GMT 的預設版面設定，因此與最終的剖面圖外觀有些不同。本章中將不會說明如何調整字型、線條粗細或顏色等的細節，請自行參考<a class="reference internal" href="#id12">指令稿</a> 中的變數與 <code class="docutils literal notranslate"><span class="pre">gmtset</span></code> 的設定調整。有關 <code class="docutils literal notranslate"><span class="pre">gmtset</span></code> 詳細的說明，請參閱<a class="reference internal" href="layout_design.html"><span class="doc">版面設計與地圖的幾何布局</span></a>。</p>
+</div>
+<p>看起來效果相當不錯！值得注意的是，地圖上有些非常小的斑點，這些斑點在小比例尺的地圖上反而會減少地圖的辨識度。因此，我們可以使用 <code class="docutils literal notranslate"><span class="pre">-Q</span></code> 選項，使 <code class="docutils literal notranslate"><span class="pre">grdcontour</span></code> 略過非常小的等高線環。以下的範例會使用 <code class="docutils literal notranslate"><span class="pre">-Q100</span></code>，但你也可以自行增減數值，數值越大，表示被略過的等高線長度就越大，反之亦然。</p>
+<div class="admonition note">
+<p class="admonition-title">備註</p>
+<p>SRTM 的海拔資料是使用雷達波 (也就是特定頻率的微波) 測量出來的，而雷達波和可見光一樣，都無法有效穿越水體。因此，SRTM 的海拔並不包含水底高度，在海面上的高度不是 0 m 就是無資料。因此，在上圖中基本上是無法看到 0 m
+等高線的，就算有也是可以忽略的小環。這也就是為什麼我們在最終出圖中要使用 <code class="docutils literal notranslate"><span class="pre">pscoast</span></code> 把海面全塗上藍色的原因。</p>
+</div>
+<p>完成了本章的第一個重點後，接下來的問題是要怎麼製造出剖面線段、取得剖面的高度，最後把剖面的位置和剖面圖都加到地圖上。如果我們要預計要畫火山的剖面，最簡單的方式就是設定一條直線切穿山腳與山頂。如此一來，我們得先決定直線的起點與終點。以下是在本例中要採用的座標，但你也可以隨自己喜歡變更起點與終點的位置，製造出不同的地形剖面。</p>
+<ul class="simple">
+<li><p>起點：<code class="docutils literal notranslate"><span class="pre">123.613/13.2236</span></code></p></li>
+<li><p>終點：<code class="docutils literal notranslate"><span class="pre">123.756/13.2862</span></code></p></li>
+</ul>
+<p>接下來，我們要使用 <code class="docutils literal notranslate"><span class="pre">project</span></code> 這個指令來產生從起點到終點的路徑座標。在「<a class="reference internal" href="layout_design.html"><span class="doc">版面設計與地圖的幾何布局</span></a>」中，我們初次介紹了 <code class="docutils literal notranslate"><span class="pre">project</span></code> 的用法，不過那是平面直角座標的狀況。在本例中為求精確，我們要沿著<strong>大圓路徑</strong>規劃剖面。由於剖面上的每個點，就是等一下我們要計算高度的位置，因此密度也得足夠高才行。試試看在終端機中輸入以下指令，會看到隨後的輸出：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ project -C123.613/13.2236 -E123.756/13.2862 -G0.1 -Q
+<span class="m">123</span>.613        <span class="m">13</span>.2236        <span class="m">0</span>
+<span class="m">123</span>.613842421  <span class="m">13</span>.2239691076  <span class="m">0</span>.1
+<span class="m">123</span>.614684845  <span class="m">13</span>.2243382124  <span class="m">0</span>.2
+<span class="m">123</span>.615527271  <span class="m">13</span>.2247073145  <span class="m">0</span>.3
+<span class="m">123</span>.6163697    <span class="m">13</span>.2250764138  <span class="m">0</span>.4
+<span class="m">123</span>.617212132  <span class="m">13</span>.2254455104  <span class="m">0</span>.5
+.... <span class="c1"># (以下略)</span>
+<span class="c1"># -Q: 設定 -G 的間隔單位為公里 (地理座標專用，如果不設的話，-G 的單位會與起終點座標相同，也就是角度)</span>
+<span class="c1"># -G: 間隔 0.1 單位取樣</span>
+<span class="c1"># project 預設就是沿著大圓路徑取樣，不需要額外的參數。</span>
+</pre></div>
+</div>
+<p>輸出第一欄與第二欄是經緯度，第三欄是與起點的距離 (以公里為單位)。接下來，我們要介紹一個新的指令 <code class="docutils literal notranslate"><span class="pre">grdtrack</span></code>，這個指令會接受一連串的「取樣點」，然後對目標的網格檔取樣。因此，把 <code class="docutils literal notranslate"><span class="pre">project</span></code> 的輸出座標丟給這個指令後，它就會幫我們找出網格檔在這些地方的數值 (在本例中也就是高度)。<code class="docutils literal notranslate"><span class="pre">grdtrack</span></code> 的語法如下所示</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ grdtrack <span class="o">[</span>至少二欄的檔案或是標準輸入<span class="o">(</span>stdin<span class="o">)]</span> -G輸入網格檔
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">grdtrack</span></code> 預設會讀取輸入資料的前兩欄作為座標。利用管線指令，可以直接把 <code class="docutils literal notranslate"><span class="pre">project</span></code> 的輸出傳遞給 <code class="docutils literal notranslate"><span class="pre">grdtrack</span></code>：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ project -C123.613/13.2236 -E123.756/13.2862 -G0.1 -Q <span class="p">|</span> grdtrack -Gn13_e123_1arc_v3.grd
+<span class="m">123</span>.613        <span class="m">13</span>.2236        <span class="m">0</span>    <span class="m">181</span>.307738624
+<span class="m">123</span>.613842421  <span class="m">13</span>.2239691076  <span class="m">0</span>.1  <span class="m">188</span>.260577788
+<span class="m">123</span>.614684845  <span class="m">13</span>.2243382124  <span class="m">0</span>.2  <span class="m">191</span>.580201564
+<span class="m">123</span>.615527271  <span class="m">13</span>.2247073145  <span class="m">0</span>.3  <span class="m">195</span>.183921513
+<span class="m">123</span>.6163697    <span class="m">13</span>.2250764138  <span class="m">0</span>.4  <span class="m">197</span>.771070118
+<span class="m">123</span>.617212132  <span class="m">13</span>.2254455104  <span class="m">0</span>.5  <span class="m">208</span>.638871238
+.... <span class="c1"># (以下略)</span>
+</pre></div>
+</div>
+<p>輸出中新增的第四欄，就是網格檔在給定的座標點上之數值。我們只要把標準輸出利用 <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> 轉存到檔案中，就能使用其他的指令 (如 <code class="docutils literal notranslate"><span class="pre">psxy</span></code>) 繪製這些數值。我們現在就來在等高線圖上面畫上剖面：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">out_ps</span><span class="o">=</span><span class="s2">&quot;mayon.ps&quot;</span>
+<span class="nv">in_grd</span><span class="o">=</span><span class="s2">&quot;n13_e123_1arc_v3.grd&quot;</span>   <span class="c1"># 地形資料輸入檔，NetCDF 格式 (轉檔後)</span>
+<span class="nv">in_track</span><span class="o">=</span><span class="s2">&quot;mayon_track.xy&quot;</span>       <span class="c1"># 剖面座標的輸入檔</span>
+
+<span class="c1"># ==== 等高線圖 ====</span>
+psxy -R0/1/0/1 -JX1c -T -K -P &gt; <span class="nv">$out_ps</span>    <span class="c1"># 純寫入 PS 檔頭</span>
+    <span class="c1"># 繪製海岸線，然後把海面著色</span>
+pscoast -R123:30E/123:50E/13:10N/13:21N -JM15c -O -K -Df -Sgray -Wthin &gt;&gt; <span class="nv">$out_ps</span>
+    <span class="c1"># 主要等高線是 500 單位間隔，並加上數值標籤 (-A)；次要等高線則是 100 單位間隔 (-C)</span>
+    <span class="c1"># -A+o 數值標籤周圍留白的部份是圓角長方形 (不加 +o 的話是尖角長方形)</span>
+grdcontour <span class="nv">$in_grd</span> -R -J -O -K -C100 -Q100 -A500+f8p,25,darkred+o &gt;&gt; <span class="nv">$out_ps</span>
+
+<span class="c1"># ==== 製作剖面然後繪製在等高線圖上 ====</span>
+    <span class="c1"># 給定起終點的經緯度，以每 0.1 公里為距離，對輸入的網格取樣</span>
+project -C123.613/13.2236 -E123.756/13.2862 -G0.1 -Q <span class="p">|</span><span class="se">\</span>
+grdtrack -G<span class="nv">$in_grd</span> &gt; <span class="nv">$in_track</span>
+    <span class="c1"># 輸出的檔是四欄：經度、緯度、距離、輸入網格的 z 值</span>
+    <span class="c1"># psxy 預設使用前兩欄繪圖，所以儘管檔案有四欄資料，我們仍然不用加上任何指定欄位的參數</span>
+psxy <span class="nv">$in_track</span> -R -J -O -K -Wthick,darkred &gt;&gt; <span class="nv">$out_ps</span>
+    <span class="c1"># 擺上剖面兩端的編號文字，使用不同對齊方式</span>
+    <span class="c1"># RT：右側靠頂</span>
+    <span class="c1"># LT：左側靠頂</span>
+pstext -R -J -O -K -F+j+f14p,25,darkred &gt;&gt; <span class="nv">$out_ps</span> <span class="s">&lt;&lt; TEXTEND</span>
+<span class="s">123.613 13.2236 RT A</span>
+<span class="s">123.756 13.2862 LT B</span>
+<span class="s">TEXTEND</span>
+    <span class="c1"># 加上外框與座標軸標籤</span>
+psbasemap -R -J -O -K -Ba10m &gt;&gt; <span class="nv">$out_ps</span>
+psxy -R -J -O -T &gt;&gt; <span class="nv">$out_ps</span>    <span class="c1"># 純寫入 PS 檔尾</span>
+</pre></div>
+</div>
+<img alt="../_images/contour_and_profile_fig7.png" src="../_images/contour_and_profile_fig7.png" />
+<p>等高線圖就完成了！</p>
+<p>下一步是使用剛才 <code class="docutils literal notranslate"><span class="pre">grdtrack</span></code> 取樣的資料，繪製沿著 AB 線的剖面圖。這個相對簡單，只要使用
+<code class="docutils literal notranslate"><span class="pre">psxy</span></code>，指定直角座標 <code class="docutils literal notranslate"><span class="pre">-Jx</span></code> 或 <code class="docutils literal notranslate"><span class="pre">-JX</span></code> 即可。但我們可能會遇到 2 個問題需要克服：</p>
+<ol class="arabic simple">
+<li><p>如何指定 <code class="docutils literal notranslate"><span class="pre">psxy</span></code> 的 <code class="docutils literal notranslate"><span class="pre">-R</span></code>？要手動輸入資料的最大最小值嗎？</p></li>
+<li><p>我們要使用剛剛儲存的資料的第 3 與第 4 欄，但這不是 <code class="docutils literal notranslate"><span class="pre">psxy</span></code> 預設讀取的資料欄位。</p></li>
+</ol>
+<p>要解決第一個問題，需要用到一個好用的新指令 <code class="docutils literal notranslate"><span class="pre">gmtinfo</span></code>。它的功用很類似 <code class="docutils literal notranslate"><span class="pre">grdinfo</span></code>，只不過
+<code class="docutils literal notranslate"><span class="pre">grdinfo</span></code> 用來查看網格檔的資訊，而 <code class="docutils literal notranslate"><span class="pre">gmtinfo</span></code> 則用來查看文字檔的資訊。如果你已經把 <code class="docutils literal notranslate"><span class="pre">grdtrack</span></code>
+的輸出資訊存到了 <code class="docutils literal notranslate"><span class="pre">mayon_track.xy</span></code>，那麼請輸入以下指令</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmtinfo mayon_track.xy
+  mayon_track.xy: <span class="nv">N</span> <span class="o">=</span> <span class="m">171</span>    &lt;<span class="m">123</span>.613/123.756&gt;    &lt;<span class="m">13</span>.2236/13.2862&gt;
+  &lt;<span class="m">0</span>/16.9705410195&gt;    &lt;<span class="m">150</span>.632902656/2422.78332276&gt;
+</pre></div>
+</div>
+<p>它的預設輸出是「行數 (N)」以及各欄的最大與最小值。這裡我們需要的是第 3 與第 4 欄的最大最小值，你可以手動輸入到 <code class="docutils literal notranslate"><span class="pre">psxy</span></code> 的 <code class="docutils literal notranslate"><span class="pre">-R</span></code> 選項，或是使用下列指令取得：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmtinfo mayon_track.xy -i2,3 -I1/100
+  -R0/17/100/2500
+  <span class="c1"># -i: 選擇欄 2 與欄 3 (因為它從 0 開始編號，所以這也就是第 3 與第 4 欄)</span>
+  <span class="c1"># -I: 傳回與給定的級距最接近的數值。因此，欄 2 的回傳數值會被四捨五入至整數，</span>
+  <span class="c1">#     欄 3 的回傳數值則會是 100 的倍數。</span>
+</pre></div>
+</div>
+<p>注意當選項 <code class="docutils literal notranslate"><span class="pre">-I</span></code> 設定後，輸出值整個大改變了，符合 -R 的格式，方便之後的運用。因此，我們可以這樣寫腳本：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">R</span><span class="o">=</span><span class="k">$(</span>gmtinfo <span class="nv">$in_track</span> -i2,3 -I1/100<span class="k">)</span>
+psxy <span class="nv">$R</span> -J -O -K 其他設定...
+</pre></div>
+</div>
+<p>這樣一來就不用煩惱手動找尋 <code class="docutils literal notranslate"><span class="pre">-R</span></code> 選項的問題。</p>
+<div class="admonition attention">
+<p class="admonition-title">注意</p>
+<p>在舊的 GMT 腳本中，這個功能是由 <code class="docutils literal notranslate"><span class="pre">minmax</span></code> 指令負責執行，但在 GMT 5 中，<code class="docutils literal notranslate"><span class="pre">minmax</span></code> 預計會被 <code class="docutils literal notranslate"><span class="pre">gmtinfo</span></code>
+逐步取代。因此，如果你使用以下指令取得 <code class="docutils literal notranslate"><span class="pre">-R</span></code> 資訊，會出現警告訊息，提醒你要把 <code class="docutils literal notranslate"><span class="pre">minmax</span></code> 換成 <code class="docutils literal notranslate"><span class="pre">gmtinfo</span></code>。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>minmax mayon_track.xy -i2,3 -I1/100
+</pre></div>
+</div>
+</div>
+<p>另外，注意到 <code class="docutils literal notranslate"><span class="pre">-i</span></code> 選項是用來指定欄位的，這其實是個共通選項，意味著你也可以在 <code class="docutils literal notranslate"><span class="pre">psxy</span></code> 中使用 <code class="docutils literal notranslate"><span class="pre">-i</span></code> 來指定作圖時所需的欄位數值。如此一來，第二個問題也迎刃而解了！完整的腳本片段如下所示：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">out_ps</span><span class="o">=</span><span class="s2">&quot;mayon.ps&quot;</span>
+<span class="nv">in_grd</span><span class="o">=</span><span class="s2">&quot;n13_e123_1arc_v3.grd&quot;</span>   <span class="c1"># 地形資料輸入檔，NetCDF 格式 (轉檔後)</span>
+<span class="nv">in_track</span><span class="o">=</span><span class="s2">&quot;mayon_track.xy&quot;</span>       <span class="c1"># 剖面座標的輸入檔</span>
+
+<span class="c1"># ==== 剖面圖 ====</span>
+psxy -R0/1/0/1 -JX1c -T -K -P &gt; <span class="nv">$out_ps</span>    <span class="c1"># 純寫入 PS 檔頭</span>
+    <span class="c1"># 使用 gmtinfo 取得 -R 的適當設定</span>
+<span class="nv">R</span><span class="o">=</span><span class="k">$(</span>gmtinfo <span class="nv">$in_track</span> -i2,3 -I1/100<span class="k">)</span>
+psxy <span class="nv">$in_track</span> -i2,3 <span class="nv">$R</span> -JX15c/6c -O -K -Wthick,darkred &gt;&gt; <span class="nv">$out_ps</span>
+psbasemap -R -J -O -K -Bxa5f1+l<span class="s2">&quot;Distance of A-B profile (km)&quot;</span> -Bya1000+l<span class="s2">&quot;Height (m)&quot;</span> &gt;&gt; <span class="nv">$out_ps</span>
+psxy -R -J -O -T &gt;&gt; <span class="nv">$out_ps</span>    <span class="c1"># 純寫入 PS 檔尾</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">備註</p>
+<p>另一個可能 (但為 Linux 限定) 的辦法是使用 shell 的指令 <code class="docutils literal notranslate"><span class="pre">cut</span></code>，這個指令用來擷取文字檔中的指定欄位。在本例中，如果不用 <code class="docutils literal notranslate"><span class="pre">-i</span></code> 選項，也可以這樣寫：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cut -f3,4 <span class="nv">$in_track</span> <span class="p">|</span> psxy <span class="nv">$R</span> -JX15c/6c ...
+</pre></div>
+</div>
+<p>至於哪一種比較好，就請讀者依需要自行判斷。</p>
+</div>
+<img alt="../_images/contour_and_profile_fig8.png" src="../_images/contour_and_profile_fig8.png" />
+<p>看起來非常不錯！如果你覺得在剖面圖中，座標軸標籤在四側都有出現實在是非常多餘，想要依照慣例只把座標軸標籤放在左側與下側的話，必須要使用兩次的 <code class="docutils literal notranslate"><span class="pre">psbasemap</span></code> 才行：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># 先畫 NE 兩面 (沒有座標軸標籤) 的外框，再畫 WS 兩面的外框</span>
+psbasemap -R -J -O -K -BNE -Bxa5f1  &gt;&gt; <span class="nv">$out_ps</span>
+psbasemap -R -J -O -K -BWS -Bxa5f1+l<span class="s2">&quot;Distance of A-B profile (km)&quot;</span> -Bya1000+l<span class="s2">&quot;Height (m)&quot;</span> &gt;&gt; <span class="nv">$out_ps</span>
+</pre></div>
+</div>
+<p>掌握了如上技巧，就可以把兩個子地圖合起來，完成本章的目標地圖了。最後，為了要讓地理座標的顯示方式和目標地圖一樣，我們必須要在腳本中使用 <code class="docutils literal notranslate"><span class="pre">gmtset</span></code> 來指定地理座標在地圖上的格式：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmtset <span class="nv">FORMAT_GEO_MAP</span><span class="o">=</span>dddmmF
+</pre></div>
+</div>
+<p>這個設定會讓座標刻度以「度、分、方位標 (WNES)」的方式顯示。</p>
+</section>
+<section id="id12">
+<h2><span class="section-number">12.5. </span>指令稿<a class="headerlink" href="#id12" title="本標題的永久連結">#</a></h2>
+<p>本地圖的最終指令稿如下：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ==== 設定變數 ====</span>
+<span class="nv">out_ps</span><span class="o">=</span><span class="s2">&quot;mayon.ps&quot;</span>
+<span class="nv">in_tif</span><span class="o">=</span><span class="s2">&quot;n13_e123_1arc_v3.tif&quot;</span>   <span class="c1"># 地形資料輸入檔，Geotiff 格式 (轉檔前)</span>
+<span class="nv">in_grd</span><span class="o">=</span><span class="s2">&quot;n13_e123_1arc_v3.grd&quot;</span>   <span class="c1"># 地形資料輸入檔，NetCDF 格式 (轉檔後)</span>
+<span class="nv">master_cpt</span><span class="o">=</span><span class="s2">&quot;neutral.cpt&quot;</span>        <span class="c1"># cpt 來源</span>
+<span class="nv">in_cpt</span><span class="o">=</span><span class="s2">&quot;mayon.cpt&quot;</span>              <span class="c1"># cpt 輸入檔</span>
+<span class="nv">in_shadow</span><span class="o">=</span><span class="s2">&quot;mayon_shade.grd&quot;</span>     <span class="c1"># 陰影的輸入檔</span>
+<span class="nv">in_track</span><span class="o">=</span><span class="s2">&quot;mayon_track.xy&quot;</span>       <span class="c1"># 剖面座標的輸入檔</span>
+<span class="nv">pen</span><span class="o">=</span><span class="s2">&quot;thick,black&quot;</span>               <span class="c1"># 畫筆 - 一般</span>
+<span class="nv">pen_grid</span><span class="o">=</span><span class="s2">&quot;thick,black,--&quot;</span>       <span class="c1"># 畫筆 - 網格</span>
+<span class="nv">pen_track</span><span class="o">=</span><span class="s2">&quot;thick,darkred&quot;</span>       <span class="c1"># 畫筆 - 剖面</span>
+<span class="nv">font</span><span class="o">=</span><span class="s2">&quot;14p,25,black&quot;</span>             <span class="c1"># 字型 - 一般</span>
+<span class="nv">font_title</span><span class="o">=</span><span class="s2">&quot;24p,25,black&quot;</span>       <span class="c1"># 字型 - 標題</span>
+<span class="nv">font_text</span><span class="o">=</span><span class="s2">&quot;14p,25,darkred&quot;</span>      <span class="c1"># 字型 - 剖面</span>
+<span class="nv">font_contour</span><span class="o">=</span><span class="s2">&quot;8p,25,darkred&quot;</span>    <span class="c1"># 字型 - 等高線</span>
+
+<span class="c1"># ==== 使用 GDAL 轉檔 ====</span>
+<span class="c1">#     如果你的電腦有安裝 GDAL，可把底下指令的註解取消，如此一來就可從 Geotiff 檔直接轉檔繪圖</span>
+<span class="c1">#     如果沒有安裝 GDAL，請直接下載 NetCDF 格式 (.grd) 的輸入檔</span>
+<span class="c1"># gdal_translate $in_tif -of NetCDF $in_grd</span>
+
+<span class="c1"># ==== 製作輸入檔 ====</span>
+grdgradient <span class="nv">$in_grd</span> -G<span class="nv">$in_shadow</span> -A280 -Nt0.5
+grd2cpt <span class="nv">$in_grd</span> -C<span class="nv">$master_cpt</span> -Z &gt; <span class="nv">$in_cpt</span>
+
+<span class="c1"># ==== 調整 GMT 預設參數 ====</span>
+gmtset <span class="nv">MAP_FRAME_TYPE</span><span class="o">=</span>plain <span class="se">\</span>
+       <span class="nv">FONT_ANNOT_PRIMARY</span><span class="o">=</span><span class="nv">$font</span> <span class="se">\</span>
+       <span class="nv">FONT_LABEL</span><span class="o">=</span><span class="nv">$font</span> <span class="se">\</span>
+       <span class="nv">FONT_TITLE</span><span class="o">=</span><span class="nv">$font_title</span> <span class="se">\</span>
+       <span class="nv">MAP_GRID_PEN_PRIMARY</span><span class="o">=</span><span class="nv">$pen_grid</span> <span class="se">\</span>
+       <span class="nv">MAP_TICK_PEN_PRIMARY</span><span class="o">=</span><span class="nv">$pen</span> <span class="se">\</span>
+       <span class="nv">MAP_TICK_PEN_SECONDARY</span><span class="o">=</span><span class="nv">$pen</span> <span class="se">\</span>
+       <span class="nv">FORMAT_GEO_MAP</span><span class="o">=</span>dddmmF    <span class="c1"># 此設定會讓座標刻度以「度、分、WNES」的方式顯示</span>
+
+<span class="c1"># ==== 開門 (寫入 PS 檔頭) ====</span>
+psxy -R0/1/0/1 -JX1c -T -K -P &gt; <span class="nv">$out_ps</span>
+
+<span class="c1"># ==== 等高線圖 ====</span>
+    <span class="c1"># 繪製底圖，順便使用 -Y 把地圖上移 10 公分，預留空間給之後的剖面圖</span>
+grdimage <span class="nv">$in_grd</span> -R123:30E/123:50E/13:10N/13:21N -JM15c -O -K -C<span class="nv">$in_cpt</span> -I<span class="nv">$in_shadow</span> -Y10c &gt;&gt; <span class="nv">$out_ps</span>
+pscoast -R -J -O -K -Df -Sgray -Wthin &gt;&gt; <span class="nv">$out_ps</span>
+    <span class="c1"># 主要等高線是 500 單位間隔，並加上數值標籤 (-A) ；次要等高線則是 100 單位間隔 (-C)</span>
+grdcontour <span class="nv">$in_grd</span> -R -J -O -K -C100 -Q100 -A500+f<span class="nv">$font_contour</span>+o &gt;&gt; <span class="nv">$out_ps</span>
+
+<span class="c1"># ==== 製作剖面然後繪製在等高線圖上 ====</span>
+    <span class="c1"># 給定起終點的經緯度，以每 0.1 公里為距離，對輸入的網格取樣</span>
+project -C123.613/13.2236 -E123.756/13.2862 -G0.1 -Q <span class="p">|</span><span class="se">\</span>
+grdtrack -G<span class="nv">$in_grd</span> &gt; <span class="nv">$in_track</span>
+    <span class="c1"># 輸出的檔是四欄：經度、緯度、距離、輸入網格的 z 值</span>
+    <span class="c1"># psxy 預設使用前兩欄繪圖</span>
+psxy <span class="nv">$in_track</span> -R -J -O -K -W<span class="nv">$pen_track</span> &gt;&gt; <span class="nv">$out_ps</span>
+    <span class="c1"># 擺上剖面兩端的編號文字，使用不同對齊方式</span>
+pstext -R -J -O -K -F+j+f<span class="nv">$font_text</span> &gt;&gt; <span class="nv">$out_ps</span> <span class="s">&lt;&lt; TEXTEND</span>
+<span class="s">123.613 13.2236 RT A</span>
+<span class="s">123.756 13.2862 LT B</span>
+<span class="s">TEXTEND</span>
+psbasemap -R -J -O -K -Ba10m -B+t<span class="s2">&quot;Mayon Volcano&quot;</span> &gt;&gt; <span class="nv">$out_ps</span>
+
+<span class="c1"># ==== 剖面圖 ====</span>
+    <span class="c1"># 使用 gmtinfo 取得 -R 的適當設定</span>
+<span class="nv">R</span><span class="o">=</span><span class="k">$(</span>gmtinfo <span class="nv">$in_track</span> -i2,3 -I1/100<span class="k">)</span>
+    <span class="c1"># 使用 -Y 把剖面圖下移 8 公分</span>
+psxy <span class="nv">$in_track</span> -i2,3 <span class="nv">$R</span> -JX15c/6c -O -K -W<span class="nv">$pen_track</span> -Y-8c &gt;&gt; <span class="nv">$out_ps</span>
+    <span class="c1"># 先畫 NE 兩面 (沒有座標軸標籤) 的外框，再畫 WS 兩面的外框</span>
+psbasemap -R -J -O -K -BNE -Bxa5f1 -Bya1000f500g1000 &gt;&gt; <span class="nv">$out_ps</span>
+psbasemap -R -J -O -K -BWS -Bxa5f1+l<span class="s2">&quot;Distance of A-B profile (km)&quot;</span> -Bya1000+l<span class="s2">&quot;Height (m)&quot;</span> &gt;&gt; <span class="nv">$out_ps</span>
+
+<span class="c1"># ==== 關門 (寫入 EOF) ====</span>
+psxy -R -J -O -T &gt;&gt; <span class="nv">$out_ps</span>
+<span class="c1"># rm -rf gmt.conf    # &lt;---- 此行可用於消除舊的組態設定檔</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">備註</p>
+<p>「繪製等高線圖與地形剖面圖。使用 SRTM 從 Geotiff 格式轉檔為 NetCDF 的 1 弧秒解析度高程資料，先製作陰影檔和色階檔，再使用
+<code class="docutils literal notranslate"><span class="pre">grdimage</span></code> 製作底圖。接下來，使用 <code class="docutils literal notranslate"><span class="pre">grdcontour</span></code> 把等高線也疊加上去。只要設定剖面的起點和終點，就可以使用 <code class="docutils literal notranslate"><span class="pre">project</span></code>
+和 <code class="docutils literal notranslate"><span class="pre">grdtrack</span></code> 產生剖面路徑和剖面高度，最後再把剖面也一併畫到底圖上。至於剖面圖，使用 <code class="docutils literal notranslate"><span class="pre">psxy</span></code> 繪製即可，但使用一些小技巧，
+例如 <code class="docutils literal notranslate"><span class="pre">gmtinfo</span></code> 取得 xy 的範圍，可讓作圖更有效率。最後，地圖上也展示了一些繪製座標軸標籤時常使用的技巧。」</p>
+</div>
+<p>觀看<a class="reference internal" href="#id5">最終版地圖</a></p>
+</section>
+<section id="id13">
+<h2><span class="section-number">12.6. </span>習題<a class="headerlink" href="#id13" title="本標題的永久連結">#</a></h2>
+<ol class="arabic simple">
+<li><p>請自行下載 SRTM 地形資料，繪製美國大理石峽谷 (Marble Canyon: <strong>36.816 N, 111.638 W</strong>) 週邊的等高線地形暈渲圖。
+這個地方是科羅拉多大峽谷的起點，河川下切作用強烈，但側向發育的狀況才剛起步。選擇一條切穿峽谷的剖面，繪製剖面地圖並找出原本的地形面 (河川兩側平坦的地形) 海拔。注意地形面可能會有好幾組！最後，找出目前科羅拉多河的河床高度，估計河川至少把原本的地形面下切了多少公尺。</p></li>
+</ol>
+<figure class="align-center" id="id16">
+<img alt="../_images/MarbleCanyon.png" src="../_images/MarbleCanyon.png" />
+<figcaption>
+<p><span class="caption-number">圖 12.2 </span><span class="caption-text">大理石峽谷的 Google Maps 衛星影像。注意那條深色的「東西」，這是峽谷的斜坡，科羅拉多河從中央流過，但細得你看不到。如果繪製等高線，
+在深色區域裡線的密度將會極高。好好享受這大自然的藝術作品！</span><a class="headerlink" href="#id16" title="本圖片的永久連結">#</a></p>
+</figcaption>
+</figure>
+<dl class="footnote brackets">
+<dt class="label" id="id14"><span class="brackets"><a class="fn-backref" href="#id4">1</a></span></dt>
+<dd><p>Karátson, D., Favalli, M., Tarquini, S., Fornaciai, A., Wörner, G.,
+<a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0377027310001058?np=y">The regular shape of stratovolcanoes: A DEM-based morphometrical approach</a>,
+Journal of Volcanology and Geothermal Research, Vol. 193, Issues 3–4, 20 June 2010, Pages 171-181, ISSN 0377-0273,
+<a class="reference external" href="http://dx.doi.org/10.1016/j.jvolgeores.2010.03.012">http://dx.doi.org/10.1016/j.jvolgeores.2010.03.012</a>.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./main"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="hillshading.html" title="上一頁 頁">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">上一頁</p>
+            <p class="prev-next-title"><span class="section-number">11. </span>暈渲地圖</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="map_elements.html" title="下一頁 頁">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一頁</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>加入地圖元素</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+ <div id="disqus_thread"></div> <script> var disqus_config = function () {this.page.url = 'http://gmt-tutorial.org/contour_and_profile.html'; this.page.identifier = 'contour_and_profile'; }; (function() { var d = document, s = d.createElement('script'); s.src = '//gmt-tutorials.disqus.com/embed.js'; s.setAttribute('data-timestamp', +new Date()); (d.head || d.body).appendChild(s); })(); </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By <a href="https://whyjz.github.io/">鄭懷傑 (Whyjay Zheng)</a> | <a href="https://twitter.com/WhyjayZ"><i class="fa-brands fa-twitter"></i></a><br/>
+  
+    Last updated on 7月 27, 2022.<br/>
+    <div class="extra_footer">
+      &copy; 2016-2022. <a href="https://github.com/whyjz/GMT-tutorials/blob/master/LICENSE.md">MIT</a> 
+and <a href="http://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</a> dual licensed. <br>
+Found this tutorial helpful? <a href="https://www.paypal.com/donate?hosted_button_id=68GZNRJ3MZDBE">Buy me a milktea!</a>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

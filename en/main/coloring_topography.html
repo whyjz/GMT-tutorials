@@ -1,0 +1,797 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>2. Color the Topography &#8212; GMT Tutorials </title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+ <link href='https://fonts.googleapis.com/css?family=Varela Round' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://gmt-tutorials.org/main/coloring_topography.html" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3. Pen and Painting" href="pen_and_painting.html" />
+    <link rel="prev" title="1. Make Your First Map" href="making_first_map.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+ <script type="text/javascript">var _jf = _jf || [];_jf.push(['p','39630']);_jf.push(['_setFont','sourcehansans-tc-light','css','.sourcehansans-tc-light']);_jf.push(['_setFont','sourcehansans-tc-light','alias','sourcehansans-tc']);_jf.push(['_setFont','sourcehansans-tc-light','weight',200]);_jf.push(['_setFont','sourcehansans-tc-regular','css','.sourcehansans-tc-regular']);_jf.push(['_setFont','sourcehansans-tc-regular','alias','sourcehansans-tc']);_jf.push(['_setFont','sourcehansans-tc-regular','weight',400]);_jf.push(['_setFont','cwtexqyuan','css','.cwtexqyuan']);_jf.push(['_setFont','cwtexqyuan','alias','cwtexqyuan']);_jf.push(['_setFont','cwtexqyuan','weight',500]);_jf.push(['_setFont','xingothic-tc-w7','css','.xingothic-tc-w7']);_jf.push(['_setFont','xingothic-tc-w7','alias','xingothic-tc']);_jf.push(['_setFont','xingothic-tc-w7','weight',700]);_jf.push(['_setFont','jf-jinxuan-medium','css','.jf-jinxuan-medium']);_jf.push(['_setFont','jf-jinxuan-medium','alias','jf-jinxuan']);_jf.push(['_setFont','jf-jinxuan-medium','weight',600]);(function(f,q,c,h,e,i,r,d){var k=f._jf;if(k.constructor===Object){return}var l,t=q.getElementsByTagName("html")[0],a=function(u){for(var v in k){if(k[v][0]==u){if(false===k[v][1].call(k)){break}}}},j=/\S+/g,o=/[\t\r\n\f]/g,b=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,g="".trim,s=g&&!g.call("\uFEFF\xA0")?function(u){return u==null?"":g.call(u)}:function(u){return u==null?"":(u+"").replace(b,"")},m=function(y){var w,z,v,u,x=typeof y==="string"&&y;if(x){w=(y||"").match(j)||[];z=t[c]?(" "+t[c]+" ").replace(o," "):" ";if(z){u=0;while((v=w[u++])){if(z.indexOf(" "+v+" ")<0){z+=v+" "}}t[c]=s(z)}}},p=function(y){var w,z,v,u,x=arguments.length===0||typeof y==="string"&&y;if(x){w=(y||"").match(j)||[];z=t[c]?(" "+t[c]+" ").replace(o," "):"";if(z){u=0;while((v=w[u++])){while(z.indexOf(" "+v+" ")>=0){z=z.replace(" "+v+" "," ")}}t[c]=y?s(z):""}}},n;k.push(["_eventActived",function(){p(h);m(e)}]);k.push(["_eventInactived",function(){p(h);m(i)}]);k.addScript=n=function(u,A,w,C,E,B){E=E||function(){};B=B||function(){};var x=q.createElement("script"),z=q.getElementsByTagName("script")[0],v,y=false,D=function(){x.src="";x.onerror=x.onload=x.onreadystatechange=null;x.parentNode.removeChild(x);x=null;a("_eventInactived");B()};if(C){v=setTimeout(function(){D()},C)}x.type=A||"text/javascript";x.async=w;x.onload=x.onreadystatechange=function(G,F){if(!y&&(!x.readyState||/loaded|complete/.test(x.readyState))){y=true;if(C){clearTimeout(v)}x.src="";x.onerror=x.onload=x.onreadystatechange=null;x.parentNode.removeChild(x);x=null;if(!F){setTimeout(function(){E()},200)}}};x.onerror=function(H,G,F){if(C){clearTimeout(v)}D();return true};x.src=u;z.parentNode.insertBefore(x,z)};a("_eventPreload");m(h);n(r,"text/javascript",false,3000)})(this,this.document,"className","jf-loading","jf-active","jf-inactive","//ds.justfont.com/js/stable/v/5.0.2/id/166657211014");</script>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">GMT Tutorials </h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form> <div class="langcenter"> <nav class="menu"> <ul class="clearfix"> <li class="current-item"> <a href="#" class="clicker">English <span class="arrow">&#9660;</span></a> <ul class="sub-menu"> <li><a href="../../main/coloring_topography.html">中文 (台灣)</a></li> <li><a href="coloring_topography.html">English</a></li> </ul> </li> </ul> </nav> </div> 
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  入門與概述
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro_install.html">
+   1. GMT / PyGMT Introduction and Installation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="software.html">
+   2. Software and Packages
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="basic_concept.html">
+   3. Basic Concepts and Terms
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  基本繪圖技巧
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="making_first_map.html">
+   1. Make Your First Map
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   2. Color the Topography
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pen_and_painting.html">
+   3. Pen and Painting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="scatter_plot.html">
+   4. Scatter Plot
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  製作各種常見的地圖（基礎）
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="cpt_colormap.html">
+   1. Visualize Raster Data Using a Colormap
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plot_vector_data.html">
+   2. Plot Vector Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="layout_design.html">
+   3. Design Map Layout
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hillshading.html">
+   4. Hillshade Map
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="contour_and_profile.html">
+   5. Contours and Profiles
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="map_elements.html">
+   6. Add Map Elements
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  製作各種常見的地圖（進階）
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="editing_cpt_colorbar.html">
+   1. Edit CPT and Colorbar
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="view3d.html">
+   2. 3D Map
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="focal_mech.html">
+   3. Plot Focal Mechanisms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="draping.html">
+   4. Drape an Image over Topography
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  網格資料處理
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="raster_calculator.html">
+   1. Raster Calculator
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="basic_img_processing.html">
+   2. Basic Image Processing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  數值資料處理
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="stat_histogram.html">
+   1. Statistics and Histogram
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="regression_basics.html">
+   2. Perform Regression Analysis
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  附錄與學習資源
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_credit.html">
+   1. Data credits and References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="command_index.html">
+   2. Command Index
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gallery.html">
+   3. Gallery (Chapter Index)
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/whyjz/GMT-tutorials"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/main/coloring_topography.rst"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   2.1. Goal
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   2.2. Commands and Techniques
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id9">
+   2.3. Getting Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id10">
+   2.4. Procedure
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id13">
+   2.5. Script
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pygmt">
+   2.6. PyGMT script
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id14">
+   2.7. Exercise
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Color the Topography</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   2.1. Goal
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   2.2. Commands and Techniques
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id9">
+   2.3. Getting Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id10">
+   2.4. Procedure
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id13">
+   2.5. Script
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pygmt">
+   2.6. PyGMT script
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id14">
+   2.7. Exercise
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="id1">
+<h1><span class="section-number">2. </span>Color the Topography<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>This instruction is for the Modern Mode in GMT 6. For making the same map using the GMT 6 Classic Mode or GMT 4-5, <a class="reference external" href="coloring_topography_gmt5.html">Please go to this page</a>.</p>
+</div>
+<p>To effectively visualize spatial data, one can use different colors on the map based on different values. One of the most frequently used datasets for coloring map is the surface elevation. For a classical topological map, a specific color corresponds to a particular altitude. In this chapter, we are going to see how to make a colored topological map using elevation data.</p>
+<section id="id3">
+<h2><span class="section-number">2.1. </span>Goal<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<p>Make a color-coded topographical map of <a class="reference external" href="https://en.wikipedia.org/wiki/Lake_Titicaca">Lake Titicaca</a> (Lago Titicaca), as the following figure shows. Lake Titicaca is a large lake between Peru and Bolivia with an area of 8372 km<sup>2</sup>. It’s generally recognized as the highest navigable lake in the world<a class="footnote-reference brackets" href="#id15" id="id4">1</a>, with a surface elevation of 3812 m. The blue lines in the figure represent rivers. Note that the river to the right is the upstream of the Amazon River, which does not connect to Lake Titicaca. A blue dashed line illustrates the political border between Peru and Bolivia. The height is color-coded from 0 to 5000 m (following the sequence: green -&gt; yellow -&gt; red -&gt; gray -&gt; white). All elevations above 2800 m are represented in grayish colors. It may give you the impression that the area around Lake Titicaca is the realm of snow since it is immersed in a white background, but in fact, the winter at Lake Titicaca is so dry that it rarely snows a lot<a class="footnote-reference brackets" href="#id16" id="id5">2</a>.</p>
+<a class="reference internal image-reference" href="../_images/titicaca_gmt6.png" id="id7"><img alt="../_images/titicaca_gmt6.png" class="align-center" id="id7" src="../_images/titicaca_gmt6.png" style="width: 1000px;" /></a>
+<p>Go to the final <a class="reference internal" href="#id13">Script</a></p>
+</section>
+<section id="id8">
+<h2><span class="section-number">2.2. </span>Commands and Techniques<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">grdinfo</span></code> - <strong>display basic information from a grid file</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">grdimage</span></code> - <strong>plot colored image</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">coast</span></code> - <strong>plot rivers, lakes, and borders</strong></p></li>
+<li><p>Using the topographic data from the GMT server</p></li>
+<li><p>Search on <a class="reference external" href="http://soliton.vm.bytemark.co.uk/pub/cpt-city">cpt-city</a> for a color ramp that fits your map</p></li>
+<li><p>How to overlay multiple layers</p></li>
+<li><p>Run all of plotting commands in a script at once using <code class="docutils literal notranslate"><span class="pre">gmt</span> <span class="pre">begin</span></code> and <code class="docutils literal notranslate"><span class="pre">gmt</span> <span class="pre">end</span></code></p></li>
+</ul>
+</section>
+<section id="id9">
+<h2><span class="section-number">2.3. </span>Getting Data<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h2>
+<p>Firstly we have to get the topographic data on our desired plotting region. GMT 6 provides the global topographic data itself stored in a remote server. Those data are only downloaded if needed. The name of the dataset is:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>@earth_relief_rru
+</pre></div>
+</div>
+<p>Here <code class="docutils literal notranslate"><span class="pre">rr</span></code> is the pixel spacing, and <code class="docutils literal notranslate"><span class="pre">u</span></code> is its unit (<code class="docutils literal notranslate"><span class="pre">d</span></code> for degree, <code class="docutils literal notranslate"><span class="pre">m</span></code> for are-minute, and <code class="docutils literal notranslate"><span class="pre">s</span></code> for arc-second). We are going to use the global topography in 1 arc-minute, and thus the corresponding dataset name is <code class="docutils literal notranslate"><span class="pre">&#64;earth_relief_01m</span></code>. <a class="reference external" href="https://docs.generic-mapping-tools.org/latest/datasets/earth_relief.html">The GMT official manual</a> also tells you how to access other available data. If you want to check your topo data for more information, you can enter <code class="docutils literal notranslate"><span class="pre">grdinfo</span></code> in your terminal like what the following panel shows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt grdinfo @earth_relief_01m
+earth_relief_01m: Download file from the GMT data server <span class="o">[</span>data <span class="nb">set</span> size is 214M<span class="o">]</span>.
+earth_relief_01m: Earth Relief at 1x1 arc minutes obtained by Gaussian Cartesian filtering <span class="o">(</span><span class="m">1</span>.9 km fullwidth<span class="o">)</span> of SRTM15+V2 <span class="o">[</span>Tozer et al., <span class="m">2019</span><span class="o">]</span>.
+
+/home/whyj/.gmt/server/earth_relief_01m.grd: Title: Earth Relief at <span class="m">01</span> arc minute
+/home/whyj/.gmt/server/earth_relief_01m.grd: Command: grdfilter SRTM15+V2.nc -Fg1.9 -D1 -I01m -rg -Gearth_relief_01m.grd<span class="o">=</span>ns --IO_NC4_DEFLATION_LEVEL<span class="o">=</span><span class="m">9</span> --PROJ_ELLIPSOID<span class="o">=</span>Sphere
+/home/whyj/.gmt/server/earth_relief_01m.grd: Remark: Obtained by Gaussian Cartesian filtering <span class="o">(</span><span class="m">1</span>.9 km fullwidth<span class="o">)</span> from SRTM15+V2.nc <span class="o">[</span>Tozer et al., <span class="m">2019</span><span class="p">;</span> http://dx.doi.org/10.1029/2019EA000658<span class="o">]</span>
+/home/whyj/.gmt/server/earth_relief_01m.grd: Gridline node registration used <span class="o">[</span>Geographic grid<span class="o">]</span>
+/home/whyj/.gmt/server/earth_relief_01m.grd: Grid file format: <span class="nv">ns</span> <span class="o">=</span> GMT netCDF format <span class="o">(</span><span class="m">16</span>-bit integer<span class="o">)</span>, CF-1.7
+/home/whyj/.gmt/server/earth_relief_01m.grd: x_min: -180 x_max: <span class="m">180</span> x_inc: <span class="m">0</span>.0166666666667 <span class="o">(</span><span class="m">1</span> min<span class="o">)</span> name: longitude n_columns: <span class="m">21601</span>
+/home/whyj/.gmt/server/earth_relief_01m.grd: y_min: -90 y_max: <span class="m">90</span> y_inc: <span class="m">0</span>.0166666666667 <span class="o">(</span><span class="m">1</span> min<span class="o">)</span> name: latitude n_rows: <span class="m">10801</span>
+/home/whyj/.gmt/server/earth_relief_01m.grd: z_min: -10907 z_max: <span class="m">8170</span> name: elevation <span class="o">(</span>m<span class="o">)</span>
+/home/whyj/.gmt/server/earth_relief_01m.grd: scale_factor: <span class="m">1</span> add_offset: <span class="m">0</span>
+/home/whyj/.gmt/server/earth_relief_01m.grd: format: netCDF-4 chunk_size: <span class="m">129</span>,129 shuffle: on deflation_level: <span class="m">9</span>
+</pre></div>
+</div>
+<p>The first two lines only appear when it needs to download the data from the server. The downloaded files are stored in <code class="docutils literal notranslate"><span class="pre">~/.gmt/server/</span></code> by default. The next time GMT will check if there are already the specified files in this folder and will only download them again if the program cannot find them. You can see that the downloaded file name is <code class="docutils literal notranslate"><span class="pre">earth_relief_01m.grd</span></code>. The file extension <code class="docutils literal notranslate"><span class="pre">.grd</span></code> suggests that it’s a “gridded” file. Imagine part of Earth’s surface is cut like a chessboard, and every cell on this chessboard has one value that represents the height of the surface. This is how a “gridded” surface would look like. (The concept of GeoTiff is similar to this; however, we call each chessboard value a “pixel,” not a “gridded point.”) The extension <code class="docutils literal notranslate"><span class="pre">.grd</span></code> is commonly used for netCDF format, which can be loaded and plotted by GMT. From the output text of <code class="docutils literal notranslate"><span class="pre">grdinfo</span></code> you can also see</p>
+<ul class="simple">
+<li><p>The gridded data are resampled from a topography database called <a class="reference external" href="https://topex.ucsd.edu/WWW_html/srtm15_plus.html">SRTM15+V2</a>.</p></li>
+<li><p>X is from -180 to 180 degrees, and Y is from -90 to 90 degrees. This means the file covers the entire Earth’s surface.</p></li>
+<li><p>The size of each grid is 0.0166666666667, equal to one sixtieth degrees (1 arc minute).</p></li>
+<li><p>There are in total of 21,601 x 10,801 = 233,312,401 grid points (that is, around one-fourth billion pixels!).</p></li>
+<li><p>Z value (height) is from -10907 to 8170 meters. The reason why the highest point is not 8848 m (the elevation of Mt. Everest) is that the resolution of this grid file is not high enough. A 1-arc-minute spacing means we only take one height measurement every 1-2 km.</p></li>
+</ul>
+</section>
+<section id="id10">
+<h2><span class="section-number">2.4. </span>Procedure<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h2>
+<p>Starting from this chapter, we will need more than one GMT command to make a map. <code class="docutils literal notranslate"><span class="pre">coast</span></code> (introduced in the previous chapter) is for plotting vector data (rivers, lakes, and country borders), and <code class="docutils literal notranslate"><span class="pre">grdimage</span></code> (introduced in this chapter) is for plotting topography. In the previous chapter, we introduced the <code class="docutils literal notranslate"><span class="pre">-png</span></code> option, but this way is only for single-command mapping. Thus, we will use a more general method to specify the output file in this chapter. It is the use of <code class="docutils literal notranslate"><span class="pre">gmt</span> <span class="pre">begin</span></code> and <code class="docutils literal notranslate"><span class="pre">gmt</span> <span class="pre">end</span></code> to wrap all the other plotting commands, like this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt begin <span class="o">[</span>map name without file extension<span class="o">]</span> <span class="o">[</span>format<span class="o">]</span>      <span class="c1"># when the command is entered, press enter</span>
+$ <span class="o">[</span>plotting <span class="nb">command</span> <span class="m">1</span><span class="o">]</span>    <span class="c1"># when the command is entered, press enter</span>
+$ <span class="o">[</span>plotting <span class="nb">command</span> <span class="m">2</span><span class="o">]</span>    <span class="c1"># when the command is entered, press enter</span>
+...
+$ gmt end
+</pre></div>
+</div>
+<p>You can enter these commands line by line and run them separately, but for the convenience of editing, we usually choose to write everything down in a text <a class="reference internal" href="basic_concept.html#script"><span class="std std-ref">Scripts, aka Batch files</span></a>. When you run this script, you send all commands to the computer at once. We will introduce this way by showing how to write a script in this chapter.</p>
+<p>Once we get the global topography data, the next step would be deciding where on the Earth we want to plot (that is, map extent). Like we said in the previous chapter <a class="reference internal" href="making_first_map.html"><span class="doc">Make Your First Map</span></a>, we can use tools like <em>Google Maps</em> to determine the region. Here we choose longitude from -70.8 to -66.56 (negative number means W) and latitude from -17.17 to -14.42 (negative number means S), based on the distribution of elevations.</p>
+<figure class="align-center" id="id17">
+<img alt="../_images/coloring_topography_fig1.png" src="../_images/coloring_topography_fig1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 2.1 </span><span class="caption-text">The map extent viewed on <cite>Google Maps</cite>.</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>To use <code class="docutils literal notranslate"><span class="pre">grdimage</span></code> to plot topography, we need at least two arguments, which are <code class="docutils literal notranslate"><span class="pre">input</span> <span class="pre">file</span></code> and <code class="docutils literal notranslate"><span class="pre">-J</span></code> (projection and map size). We also need <code class="docutils literal notranslate"><span class="pre">-R</span></code> (map extent) here since GMT would plot all the gridded data on the map without an <code class="docutils literal notranslate"><span class="pre">-R</span></code> setting. (This would be a global map in our case because we are using a global topography dataset.) Let’s make a map with the same size from the map in the <a class="reference external" href="making_first_map.html">previous chapter</a>. Please create a new text file, entitled <code class="docutils literal notranslate"><span class="pre">titicaca.bash</span></code> or whatever you like (it’s still better to fit your system format convention). Enter the following lines:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin titicaca png
+    gmt grdimage @earth_relief_01m -R-70.8/-17.17/-66.56/-14.42r -JM6i
+gmt end
+</pre></div>
+</div>
+<p>You may notice that we added four spaces before the <code class="docutils literal notranslate"><span class="pre">gmt</span> <span class="pre">grdimage</span></code> command. This makes an indentation and lets the readers know that this line is between <code class="docutils literal notranslate"><span class="pre">gmt</span> <span class="pre">begin</span></code> and <code class="docutils literal notranslate"><span class="pre">gmt</span> <span class="pre">end</span></code> for readability. The indentation does not affect the script at all. For more information about <code class="docutils literal notranslate"><span class="pre">-R</span></code> and <code class="docutils literal notranslate"><span class="pre">-J</span></code> options, please go to <a class="reference internal" href="making_first_map.html"><span class="doc">Make Your First Map</span></a>. Save you file, and in the <a class="reference internal" href="basic_concept.html#terminal"><span class="std std-ref">Terminal</span></a> mode, go to the folder where <code class="docutils literal notranslate"><span class="pre">titicaca.bash</span></code> is located and run the script. For example, type this in Linux:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ bash titicaca.bash
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are running scripts on a platform other than Linux, there will be some extra settings to make the script run more easily. Please see <a class="reference internal" href="basic_concept.html"><span class="doc">Basic Concepts and Terms</span></a> for more details.</p>
+</div>
+<p>Open the output file <code class="docutils literal notranslate"><span class="pre">titicaca.png</span></code> and you should see a map like this:</p>
+<a class="reference internal image-reference" href="../_images/coloring_topography_gmt6_fig2.png"><img alt="../_images/coloring_topography_gmt6_fig2.png" class="align-center" src="../_images/coloring_topography_gmt6_fig2.png" style="width: 1000px;" /></a>
+<p>Hard to comprehend? This is because the default GMT color ramp doesn’t fit this region quite well. If we don’t assign a color ramp for the <code class="docutils literal notranslate"><span class="pre">&#64;earth_relief</span></code> topo data, GMT will use one called <code class="docutils literal notranslate"><span class="pre">geo</span></code> for the output map. The color distribution of this color scheme is shown here:</p>
+<a class="reference internal image-reference" href="../_images/coloring_topography_gmt6_fig3.png"><img alt="../_images/coloring_topography_gmt6_fig3.png" class="align-center" src="../_images/coloring_topography_gmt6_fig3.png" style="width: 741.5px; height: 113.0px;" /></a>
+<p>The color of <code class="docutils literal notranslate"><span class="pre">0</span></code> and the color of <code class="docutils literal notranslate"><span class="pre">1</span></code> – that is, dark blue and white – would correspond to the lowest and the highest point on the map. Is there any way to replace it with a better color ramp? Of course, the answer is yes; GMT has several ways to create your color ramp or adjust an existing one, but here we are going to see the simplest method: downloading a ready-to-use color ramp from the Internet.</p>
+<p>The website <a class="reference external" href="http://soliton.vm.bytemark.co.uk/pub/cpt-city">cpt-city</a> has collected many popular color ramps, including those in the GMT format. GMT-formatted color ramps usually use the file extension <code class="docutils literal notranslate"><span class="pre">.cpt</span></code>, which represents “color palette table”. You can look for the color ramp you want on the website; for example, <a class="reference external" href="http://soliton.vm.bytemark.co.uk/pub/cpt-city/views/totp-cpt.html">this page</a> lists the most-downloaded <code class="docutils literal notranslate"><span class="pre">.cpt</span></code> files. Here we are going to use the one called <code class="docutils literal notranslate"><span class="pre">mby</span></code>. Click the <code class="docutils literal notranslate"><span class="pre">mby</span></code> color ramp, and you should see the following page:</p>
+<img alt="../_images/coloring_topography_fig4.png" class="align-center" src="../_images/coloring_topography_fig4.png" />
+<p>Note that the number <strong>-8000 … 5000</strong> means that this color ramp has been adjusted to illustrate elevations between -8000 and 5000 (meters). Click the link to <cite>cpt</cite> on the page to download this color ramp.</p>
+<p>For your convenience, We also provides the download link to <code class="docutils literal notranslate"><span class="pre">mby.cpt</span></code> at <a class="reference download internal" download="" href="../_downloads/007766d9b9a0d7b97261c74acddf85db/mby.cpt"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a>.</p>
+<p>We can use the <code class="docutils literal notranslate"><span class="pre">-C</span></code> option in <code class="docutils literal notranslate"><span class="pre">grdimage</span></code> to assign a color ramp in our map – simply put the name of the ramp file directly after the <code class="docutils literal notranslate"><span class="pre">-C</span></code> and you are done. Here’s our updated script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin titicaca png
+    gmt grdimage @earth_relief_01m -R-70.8/-17.17/-66.56/-14.42r -JM6i -Cmby.cpt
+gmt end
+</pre></div>
+</div>
+<p>Run the script again and your map would become this</p>
+<a class="reference internal image-reference" href="../_images/coloring_topography_gmt6_fig5.png"><img alt="../_images/coloring_topography_gmt6_fig5.png" class="align-center" src="../_images/coloring_topography_gmt6_fig5.png" style="width: 1000px;" /></a>
+<p>Looks much better.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you want to customize your color ramp and use whichever color you like on the map, please see “<a class="reference internal" href="pen_and_painting.html"><span class="doc">Pen and Painting</span></a>” and “<a class="reference internal" href="editing_cpt_colorbar.html"><span class="doc">Edit CPT and Colorbar</span></a>.”</p>
+</div>
+<p>There is still a big issue on our map. We already know that this whole area is mostly in high altitude (shown in gray-white), but we can’t see our primary target <a class="reference external" href="https://en.wikipedia.org/wiki/Lake_Titicaca">Lake Titicaca</a>. This is because the topographic data only contain the heights and don’t say anything about the types of land cover. If we only use <code class="docutils literal notranslate"><span class="pre">grdimage</span></code> to plot these data, we will not be able to know where the lakes or the seas are. So we have to call <code class="docutils literal notranslate"><span class="pre">coast</span></code> in order to mark the location of <a class="reference external" href="https://en.wikipedia.org/wiki/Lake_Titicaca">Lake Titicaca</a>, draw the water body, and put a map frame on it.</p>
+<p>When a map comes from two or more GMT plotting commands, <strong>what lies above should be plotted last</strong>. Since we want the lake from <code class="docutils literal notranslate"><span class="pre">coast</span></code> lied above the topo data from <code class="docutils literal notranslate"><span class="pre">grdimage</span></code>, we have to put the line of <code class="docutils literal notranslate"><span class="pre">coast</span></code> command below the <code class="docutils literal notranslate"><span class="pre">grdimage</span></code> command. Open the script again and change the content to:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin titicaca png
+    gmt grdimage @earth_relief_01m -R-70.8/-17.17/-66.56/-14.42r -JM6i -Cmby.cpt
+    gmt coast -Scornflowerblue -Baf -B+t<span class="s2">&quot;Lago Titicaca&quot;</span>
+gmt end
+</pre></div>
+</div>
+<p>Please go to <a class="reference internal" href="making_first_map.html"><span class="doc">Make Your First Map</span></a> for using the <code class="docutils literal notranslate"><span class="pre">coast</span></code> options. In addition, you may have noticed that there is no <code class="docutils literal notranslate"><span class="pre">-R</span></code> and <code class="docutils literal notranslate"><span class="pre">-J</span></code> options in <code class="docutils literal notranslate"><span class="pre">coast</span></code>. <strong>When these options are not specified, GMT automatically follows the settings from the last time</strong>. That is, the settings of <code class="docutils literal notranslate"><span class="pre">-R</span></code> and <code class="docutils literal notranslate"><span class="pre">-J</span></code> from <code class="docutils literal notranslate"><span class="pre">grdimage</span></code> will be used here to save time from entering the same content twice.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<ol class="arabic simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">-S</span></code> option in <code class="docutils literal notranslate"><span class="pre">coast</span></code> is for every water body. If there are seas and lakes in your map and you want to assign different colors for each of them, <code class="docutils literal notranslate"><span class="pre">-C</span></code> option can do the job for you. There is no ocean area on our map, so <code class="docutils literal notranslate"><span class="pre">-Scornflowerblue</span></code> and <code class="docutils literal notranslate"><span class="pre">-Cl/cornflowerblue</span></code> have the same effect, although the latter only fills the color into lake areas.</p></li>
+<li><p>Let us take a look at two <code class="docutils literal notranslate"><span class="pre">-B</span></code> options at <code class="docutils literal notranslate"><span class="pre">coast</span></code>. Actually, it is also ok to put them in <code class="docutils literal notranslate"><span class="pre">grdimage</span></code> because which layer the map frame is plotted on doesn’t really matter, and it would look the same.</p></li>
+</ol>
+</div>
+<p>Run the updated script in the terminal and open the output file again. You should see the following map:</p>
+<a class="reference internal image-reference" href="../_images/coloring_topography_gmt6_fig6.png"><img alt="../_images/coloring_topography_gmt6_fig6.png" class="align-center" src="../_images/coloring_topography_gmt6_fig6.png" style="width: 1000px;" /></a>
+<p>Now, this map is very close to what we want, and the final step is to use other options in <code class="docutils literal notranslate"><span class="pre">coast</span></code> to decorate it. First, <code class="docutils literal notranslate"><span class="pre">-I</span></code> marks rivers on the map, with the following syntax:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-Inumber/pen
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">number</span></code> is an alphanumerical letter corresponding to different levels of rivers in terms of size, and the <a class="reference internal" href="making_first_map.html#pen"><span class="std std-ref">pen</span></a> is used for giving the appearance of these rivers. Here we use the letter <code class="docutils literal notranslate"><span class="pre">r</span></code>, corresponding to <strong>all permanent rivers</strong>, and the pen style is <code class="docutils literal notranslate"><span class="pre">0.7p,cornflowerblue</span></code>.</p>
+<p>Another <code class="docutils literal notranslate"><span class="pre">coast</span></code> option we are going to use is <code class="docutils literal notranslate"><span class="pre">-N</span></code> for plotting political boundaries. Its syntax is similar:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-Nnumber/pen
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">number</span></code> here, just like the previous one, is an alphanumerical letter corresponding to different tiers of political boundaries (national, state, etc.). We are going to use <code class="docutils literal notranslate"><span class="pre">1</span></code>, which means <strong>national boundaries</strong>. We use <code class="docutils literal notranslate"><span class="pre">0.7,,--</span></code> for pen attributes; note that we omit the column of “color,” so GMT would use the default “black” to plot these lines. Also, we choose <code class="docutils literal notranslate"><span class="pre">--</span></code> for “line style” so that the boundaries will be plotted in dashed lines.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For the advanced and detailed settings of the pen attributes, like line styles or custom colors using RGB values, please go to <a class="reference internal" href="pen_and_painting.html"><span class="doc">Pen and Painting</span></a>.</p>
+</div>
+<p>Add <code class="docutils literal notranslate"><span class="pre">-N</span></code> and <code class="docutils literal notranslate"><span class="pre">-I</span></code> and their parameters to our <code class="docutils literal notranslate"><span class="pre">coast</span></code> command, and the map design is done.</p>
+</section>
+<section id="id13">
+<h2><span class="section-number">2.5. </span>Script<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h2>
+<p>The final script for our map is:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin titicaca png
+    gmt grdimage @earth_relief_01m -R-70.8/-17.17/-66.56/-14.42r -JM6i -Cmby.cpt
+    gmt coast -Ir/0.7p,cornflowerblue -N1/0.7p,,-- -Scornflowerblue -Baf -B+t<span class="s2">&quot;Lago Titicaca&quot;</span>
+gmt end
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>“Plot the topographical map – map extent is set to <strong>(70.8E - 66.56E，17.17S - 14.42S)</strong> in Mercator projection and <strong>6</strong> inches wide. We use the color ramp from <code class="docutils literal notranslate"><span class="pre">mby.cpt</span></code>, and plot the lake and rivers in <code class="docutils literal notranslate"><span class="pre">cornflowerblue</span></code>. We also draw national borders, a map frame, and annotation marks on the map, but the locations and the spacing of these marks are automatically determined. We do not plot grid lines this time. The map is entitled <em>Lago Titicaca</em> and saved as <code class="docutils literal notranslate"><span class="pre">titicaca.png</span></code>.”</p>
+</div>
+<p>Check the <a class="reference internal" href="#id7">final map</a></p>
+</section>
+<section id="pygmt">
+<h2><span class="section-number">2.6. </span>PyGMT script<a class="headerlink" href="#pygmt" title="Permalink to this headline">#</a></h2>
+<p>You can make the same map using the following PyGMT script:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pygmt</span>
+
+<span class="c1"># Get the Earth relief data</span>
+<span class="n">region</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">70.8</span><span class="p">,</span> <span class="o">-</span><span class="mf">66.56</span><span class="p">,</span> <span class="o">-</span><span class="mf">17.17</span><span class="p">,</span> <span class="o">-</span><span class="mf">14.42</span><span class="p">]</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">pygmt</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">load_earth_relief</span><span class="p">(</span><span class="n">resolution</span><span class="o">=</span><span class="s1">&#39;01m&#39;</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">)</span>
+
+<span class="c1"># Plotting</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">pygmt</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">grdimage</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;M6i&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;mby.cpt&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">coast</span><span class="p">(</span><span class="n">rivers</span><span class="o">=</span><span class="s1">&#39;r/0.7p,cornflowerblue&#39;</span><span class="p">,</span> <span class="n">borders</span><span class="o">=</span><span class="s1">&#39;1/0.7p,,--&#39;</span><span class="p">,</span> <span class="n">water</span><span class="o">=</span><span class="s1">&#39;cornflowerblue&#39;</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;af&#39;</span><span class="p">,</span> <span class="s1">&#39;+t&quot;Lago Titicaca&quot;&#39;</span><span class="p">])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;titicaca_pygmt.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can use the following Binder link to try this code:</p>
+<a class="reference external image-reference" href="https://mybinder.org/v2/gh/whyjz/GMT-tutorials/HEAD?filepath=SOURCE_DOCS%2Fcoloring_topography%2Ftiticaca_pygmt.ipynb"><img alt="https://mybinder.org/badge_logo.svg" src="https://mybinder.org/badge_logo.svg" /></a>
+</section>
+<section id="id14">
+<h2><span class="section-number">2.7. </span>Exercise<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h2>
+<ol class="arabic simple">
+<li><p>Make a colored topographical map of <em>Lake Baikal</em> (<em>Baygal nuur</em>) and its surrounding area. Lake Baikal is the deepest lake and the seventh-largest lake in the world. It is located in Russia, close to the boundary of Mongolia in the south.</p></li>
+<li><p>How many rivers are connected to Lake Baikal? Can you see that on the map?</p></li>
+<li><p>How high is the area around Lake Baikal? How high is the bottom of Lake Baikal? What colors are used to represent these two elevations on your map?</p></li>
+</ol>
+<dl class="footnote brackets">
+<dt class="label" id="id15"><span class="brackets"><a class="fn-backref" href="#id4">1</a></span></dt>
+<dd><p><a class="reference external" href="http://www.ilec.or.jp/database/sam/dsam04.html">Data Summary: Lago Titicaca (Lake Titicaca).</a>
+International Lake Environment Committee Foundation - ILEC. Retrieved 2009-01-03.</p>
+</dd>
+<dt class="label" id="id16"><span class="brackets"><a class="fn-backref" href="#id5">2</a></span></dt>
+<dd><p><a class="reference external" href="http://www.weather.gov.hk/wxinfo/climat/world/eng/s_america/ec_per/juliaca_e.htm">ClClimatological Information for Juliaca, Peru.</a>
+Hong Kong Observatory.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./main"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="making_first_map.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">1. </span>Make Your First Map</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="pen_and_painting.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Pen and Painting</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+ <div id="disqus_thread"></div> <script> var disqus_config = function () {this.page.url = 'http://gmt-tutorial.org/coloring_topography.html'; this.page.identifier = 'coloring_topography'; }; (function() { var d = document, s = d.createElement('script'); s.src = '//gmt-tutorials.disqus.com/embed.js'; s.setAttribute('data-timestamp', +new Date()); (d.head || d.body).appendChild(s); })(); </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By <a href="https://whyjz.github.io/">鄭懷傑 (Whyjay Zheng)</a> | <a href="https://twitter.com/WhyjayZ"><i class="fa-brands fa-twitter"></i></a><br/>
+  
+    Last updated on Jul 27, 2022.<br/>
+    <div class="extra_footer">
+      &copy; 2016-2022. <a href="https://github.com/whyjz/GMT-tutorials/blob/master/LICENSE.md">MIT</a> 
+and <a href="http://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</a> dual licensed. <br>
+Found this tutorial helpful? <a href="https://www.paypal.com/donate?hosted_button_id=68GZNRJ3MZDBE">Buy me a milktea!</a>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

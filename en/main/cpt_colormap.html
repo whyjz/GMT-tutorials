@@ -1,0 +1,832 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>1. Visualize Raster Data Using a Colormap &#8212; GMT Tutorials </title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+ <link href='https://fonts.googleapis.com/css?family=Varela Round' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://gmt-tutorials.org/main/cpt_colormap.html" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2. Plot Vector Data" href="plot_vector_data.html" />
+    <link rel="prev" title="4. Scatter Plot" href="scatter_plot.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+ <script type="text/javascript">var _jf = _jf || [];_jf.push(['p','39630']);_jf.push(['_setFont','sourcehansans-tc-light','css','.sourcehansans-tc-light']);_jf.push(['_setFont','sourcehansans-tc-light','alias','sourcehansans-tc']);_jf.push(['_setFont','sourcehansans-tc-light','weight',200]);_jf.push(['_setFont','sourcehansans-tc-regular','css','.sourcehansans-tc-regular']);_jf.push(['_setFont','sourcehansans-tc-regular','alias','sourcehansans-tc']);_jf.push(['_setFont','sourcehansans-tc-regular','weight',400]);_jf.push(['_setFont','cwtexqyuan','css','.cwtexqyuan']);_jf.push(['_setFont','cwtexqyuan','alias','cwtexqyuan']);_jf.push(['_setFont','cwtexqyuan','weight',500]);_jf.push(['_setFont','xingothic-tc-w7','css','.xingothic-tc-w7']);_jf.push(['_setFont','xingothic-tc-w7','alias','xingothic-tc']);_jf.push(['_setFont','xingothic-tc-w7','weight',700]);_jf.push(['_setFont','jf-jinxuan-medium','css','.jf-jinxuan-medium']);_jf.push(['_setFont','jf-jinxuan-medium','alias','jf-jinxuan']);_jf.push(['_setFont','jf-jinxuan-medium','weight',600]);(function(f,q,c,h,e,i,r,d){var k=f._jf;if(k.constructor===Object){return}var l,t=q.getElementsByTagName("html")[0],a=function(u){for(var v in k){if(k[v][0]==u){if(false===k[v][1].call(k)){break}}}},j=/\S+/g,o=/[\t\r\n\f]/g,b=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,g="".trim,s=g&&!g.call("\uFEFF\xA0")?function(u){return u==null?"":g.call(u)}:function(u){return u==null?"":(u+"").replace(b,"")},m=function(y){var w,z,v,u,x=typeof y==="string"&&y;if(x){w=(y||"").match(j)||[];z=t[c]?(" "+t[c]+" ").replace(o," "):" ";if(z){u=0;while((v=w[u++])){if(z.indexOf(" "+v+" ")<0){z+=v+" "}}t[c]=s(z)}}},p=function(y){var w,z,v,u,x=arguments.length===0||typeof y==="string"&&y;if(x){w=(y||"").match(j)||[];z=t[c]?(" "+t[c]+" ").replace(o," "):"";if(z){u=0;while((v=w[u++])){while(z.indexOf(" "+v+" ")>=0){z=z.replace(" "+v+" "," ")}}t[c]=y?s(z):""}}},n;k.push(["_eventActived",function(){p(h);m(e)}]);k.push(["_eventInactived",function(){p(h);m(i)}]);k.addScript=n=function(u,A,w,C,E,B){E=E||function(){};B=B||function(){};var x=q.createElement("script"),z=q.getElementsByTagName("script")[0],v,y=false,D=function(){x.src="";x.onerror=x.onload=x.onreadystatechange=null;x.parentNode.removeChild(x);x=null;a("_eventInactived");B()};if(C){v=setTimeout(function(){D()},C)}x.type=A||"text/javascript";x.async=w;x.onload=x.onreadystatechange=function(G,F){if(!y&&(!x.readyState||/loaded|complete/.test(x.readyState))){y=true;if(C){clearTimeout(v)}x.src="";x.onerror=x.onload=x.onreadystatechange=null;x.parentNode.removeChild(x);x=null;if(!F){setTimeout(function(){E()},200)}}};x.onerror=function(H,G,F){if(C){clearTimeout(v)}D();return true};x.src=u;z.parentNode.insertBefore(x,z)};a("_eventPreload");m(h);n(r,"text/javascript",false,3000)})(this,this.document,"className","jf-loading","jf-active","jf-inactive","//ds.justfont.com/js/stable/v/5.0.2/id/166657211014");</script>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">GMT Tutorials </h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form> <div class="langcenter"> <nav class="menu"> <ul class="clearfix"> <li class="current-item"> <a href="#" class="clicker">English <span class="arrow">&#9660;</span></a> <ul class="sub-menu"> <li><a href="../../main/cpt_colormap.html">中文 (台灣)</a></li> <li><a href="cpt_colormap.html">English</a></li> </ul> </li> </ul> </nav> </div> 
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  入門與概述
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro_install.html">
+   1. GMT / PyGMT Introduction and Installation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="software.html">
+   2. Software and Packages
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="basic_concept.html">
+   3. Basic Concepts and Terms
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  基本繪圖技巧
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="making_first_map.html">
+   1. Make Your First Map
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="coloring_topography.html">
+   2. Color the Topography
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pen_and_painting.html">
+   3. Pen and Painting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="scatter_plot.html">
+   4. Scatter Plot
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  製作各種常見的地圖（基礎）
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   1. Visualize Raster Data Using a Colormap
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plot_vector_data.html">
+   2. Plot Vector Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="layout_design.html">
+   3. Design Map Layout
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hillshading.html">
+   4. Hillshade Map
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="contour_and_profile.html">
+   5. Contours and Profiles
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="map_elements.html">
+   6. Add Map Elements
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  製作各種常見的地圖（進階）
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="editing_cpt_colorbar.html">
+   1. Edit CPT and Colorbar
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="view3d.html">
+   2. 3D Map
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="focal_mech.html">
+   3. Plot Focal Mechanisms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="draping.html">
+   4. Drape an Image over Topography
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  網格資料處理
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="raster_calculator.html">
+   1. Raster Calculator
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="basic_img_processing.html">
+   2. Basic Image Processing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  數值資料處理
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="stat_histogram.html">
+   1. Statistics and Histogram
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="regression_basics.html">
+   2. Perform Regression Analysis
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  附錄與學習資源
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_credit.html">
+   1. Data credits and References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="command_index.html">
+   2. Command Index
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gallery.html">
+   3. Gallery (Chapter Index)
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/whyjz/GMT-tutorials"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/main/cpt_colormap.rst"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   1.1. Goal
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   1.2. Commands and Techniques
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   1.3. Tasks before plotting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id12">
+   1.4. Procedure
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id15">
+   1.5. Script
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id16">
+   1.6. Exercise
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Visualize Raster Data Using a Colormap</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   1.1. Goal
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   1.2. Commands and Techniques
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   1.3. Tasks before plotting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id12">
+   1.4. Procedure
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id15">
+   1.5. Script
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id16">
+   1.6. Exercise
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="id1">
+<h1><span class="section-number">1. </span>Visualize Raster Data Using a Colormap<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>This instruction is for the Modern Mode in GMT 6.</p>
+</div>
+<p>We have introduced the basic skills to fill your map with colors in the previous chapters. Now we are going to continue this topic and show how to paint anywhere you like on a map using a colormap.</p>
+<section id="id2">
+<h2><span class="section-number">1.1. </span>Goal<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<p>Using the ITS_LIVE dataset <a class="footnote-reference brackets" href="#id17" id="id3">1</a> provided by the National Aeronautics and Space Administration (NASA) and the GLIMS glacier outline dataset <a class="footnote-reference brackets" href="#id18" id="id4">2</a> provided by the National Snow and Ice Data Center (NSIDC), plot the glacier speed of all the glaciers in Iceland. To easily read the glacier speed, we also need to add a colorbar in the bottom showing the relationship between different colors and speeds. The largest ice cap in the island, <a class="reference external" href="https://en.wikipedia.org/wiki/Vatnaj%C3%B6kull">Vatnajökull</a>, is also labeled on the map. The fastest glacier in Iceland flows from this ice cap with a speed of more than 400 meters per year. The glacierized areas without speed data are shown in gray on the map.</p>
+<a class="reference internal image-reference" href="../_images/iceland_glacier_speed.png" id="id6"><img alt="../_images/iceland_glacier_speed.png" class="align-center" id="id6" src="../_images/iceland_glacier_speed.png" style="width: 1000px;" /></a>
+<p>Go to the final <a class="reference internal" href="#id15">Script</a></p>
+</section>
+<section id="id7">
+<h2><span class="section-number">1.2. </span>Commands and Techniques<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">basemap</span></code> - set up mapping area, axes, and map frame</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">coast</span></code> - plot shorelines and fill land/sea area</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">clip</span></code> - <strong>only plot data within given polygon regions</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">makecpt</span></code> - <strong>Make and adjust a color palette table</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">grdimage</span></code> - plot colored image</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plot</span></code> - <strong>plot polygons</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">colorbar</span></code> - plot color bar</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">text</span></code> - Make text labels in a map</p></li>
+<li><p>GMT shared options: <code class="docutils literal notranslate"><span class="pre">--long</span> <span class="pre">command</span></code></p></li>
+<li><p>External command <code class="docutils literal notranslate"><span class="pre">gdalwarp</span></code> - <strong>reproject a raster file and convert it to NetCDF format</strong></p></li>
+<li><p>How to read the content in a color palette table (CPT)</p></li>
+</ul>
+</section>
+<section id="id8">
+<h2><span class="section-number">1.3. </span>Tasks before plotting<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h2>
+<p>We will use two different external datasets: the glacier speeds and the glacier outlines. Thanks to the development of technology, we can get both datasets free online.</p>
+<p>First, let’s take a loot at glacier speeds. NASA’s ITS_LIVE (Inter-mission Time Series of Land Ice Velocity and Elevation) project provides multi-year time series of glacier speeds worldwide <a class="footnote-reference brackets" href="#id19" id="id9">3</a>. Go to <a class="reference external" href="https://nsidc.org/apps/itslive/">ITS_LIVE data search page</a> and click on the region of Iceland, a small white sub-window will jump out like this:</p>
+<img alt="../_images/cpt_colormap_fig1.png" class="align-center" src="../_images/cpt_colormap_fig1.png" />
+<p>Click the blue button and select the dataset of “Composite: 240m” (Multi-year composite data, 240-m posting). Finally, click the link at “v” (velocity) and download <code class="docutils literal notranslate"><span class="pre">ICE_G0240_0000_v.tif</span></code>. This is a <a class="reference external" href="https://en.wikipedia.org/wiki/GeoTIFF">GeoTIFF</a> file, a format also used for storing gridded rasters, which is similar to the NetCDF format that GMT supports. However, GeoTIFF files use <code class="docutils literal notranslate"><span class="pre">.tif</span></code> as their file extension and have additional metadata such as the grid projection and the coordinate system information. This raster used the NSIDC polar stereographic projection. In order to let GMT read the file correctly, we need to use <code class="docutils literal notranslate"><span class="pre">gdalwarp</span></code>, a command of <a class="reference external" href="software.html#id8">GDAL</a> library, for converting Geotiff to NetCDF and reprojecting the file to lat/lon format (EPSG:4326):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gdalwarp -t_srs EPSG:4326 -dstnodata NaN -of NetCDF ICE_G0240_0000_v.tif ICE_G0240_0000_v_EPSG4326.nc
+<span class="c1"># Meaning of the options:</span>
+<span class="c1"># -t_srs: the projection of the output file (EPSG represents numbered code for projection. EPSG:4326 is exactly WGS84 lat/lon system.)</span>
+<span class="c1"># -dstnodata: the output file will use this value as no-data (NaN means to use the float-point number of &quot;NaN&quot; value)</span>
+<span class="c1"># -of: output file format</span>
+</pre></div>
+</div>
+<p>Note that we use a different file extension <code class="docutils literal notranslate"><span class="pre">.nc</span></code> indicating a NetCDF-format raster file.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can use anything you want for the file extension here. Still, for better identification, I only recommend using <code class="docutils literal notranslate"><span class="pre">.nc</span></code> or <code class="docutils literal notranslate"><span class="pre">.grd</span></code> (<a class="reference external" href="coloring_topography.html#id9">as we mentioned before</a>) for the file extension of a NetCDF file.</p>
+</div>
+<p>Now we are going to download another dataset, the glacier outlines. The GLIMS database (Global Land Ice Measurements from Space) of NSIDC provides global glacier data <a class="footnote-reference brackets" href="#id20" id="id11">4</a>, but here we only need the data of Iceland. Go to <a class="reference external" href="http://www.glims.org/maps/glims">GLIMS Glacier Viewer</a> and slide the view to Iceland. You should see something like this:</p>
+<a class="reference internal image-reference" href="../_images/cpt_colormap_fig2.png"><img alt="../_images/cpt_colormap_fig2.png" class="align-center" src="../_images/cpt_colormap_fig2.png" style="width: 1000px;" /></a>
+<p>Click “Download GLIMS Data in Current View.” In the newly opened window, locate the “File format” menu and select GMT format, and leave other options as default. Finally, click the “Download Data” button. Extract the downloaded file and locate the <code class="docutils literal notranslate"><span class="pre">glims_polygons.gmt</span></code>; this one is the polygon data of the glacier outlines, which we will use in this chapter. Rename it to <code class="docutils literal notranslate"><span class="pre">glims_iceland_glacier_outlines.gmt</span></code> for better identification.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This <code class="docutils literal notranslate"><span class="pre">.gmt</span></code> file is actually a text file, which can be opened by a text editor. We will explain this format in detail in <a class="reference internal" href="plot_vector_data.html"><span class="doc">Plot Vector Data</span></a>.</p>
+</div>
+<p>For your convenience, you can also download the files used in this chapter from the links below:</p>
+<p><a class="reference download internal" download="" href="../_downloads/4b7c399ef156983cfc5e9090be74a4be/ICE_G0240_0000_v_EPSG4326.nc"><code class="xref download docutils literal notranslate"><span class="pre">ICE_G0240_0000_v_EPSG4326.nc</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/6f281fbfa15d960ca4a36fe8884b3688/glims_iceland_glacier_outlines.gmt"><code class="xref download docutils literal notranslate"><span class="pre">glims_iceland_glacier_outlines.gmt</span></code></a></p>
+</section>
+<section id="id12">
+<h2><span class="section-number">1.4. </span>Procedure<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h2>
+<p>Firstly we use <code class="docutils literal notranslate"><span class="pre">basemap</span></code> for specifying map frame, map extent, size, etc. Here we are introducing a new way to assign map extent. In the previous chapter, <code class="docutils literal notranslate"><span class="pre">-R</span></code> option is usually given as <code class="docutils literal notranslate"><span class="pre">W/E/S/N</span></code> border coordinates. However, if the map fits a country, then we can simply use the 2-character code of that country (see <a class="reference internal" href="pen_and_painting.html"><span class="doc">Pen and Painting</span></a>), with <code class="docutils literal notranslate"><span class="pre">+R</span></code> for adjusting the distance between the map frame and the country border. Thus, our <code class="docutils literal notranslate"><span class="pre">basemap</span></code> command becomes:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt basemap -Baf -BWNEs -RIS+R0.2 -JM15c
+<span class="c1"># -RIS+R0.2: use Iceland (IS) as the map extent. The distance between the national border of Iceland and the map frame is 0.2 degrees</span>
+</pre></div>
+</div>
+<p>Now we can review the commands and options we learned from the previous chapters and plot the coastline of Iceland:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin iceland_glacier_speed png
+    gmt basemap -Baf -BWNEs -RIS+R0.2 -JM15c
+    gmt coast -Wthinnest,darkred -Gdarkseagreen1 -Slightblue -A1
+gmt end
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/cpt_colormap_fig3.png"><img alt="../_images/cpt_colormap_fig3.png" class="align-center" src="../_images/cpt_colormap_fig3.png" style="width: 1000px;" /></a>
+<p>The coordinates are not showing at the bottom of the map, which is reserved for the color bar.</p>
+<p>Our next step is to plot the glacier speeds, but before this we need to determine a good color map. In the previous examples, we used the built-in colormap designed for topographical data. Since no colormaps are intentionally designed for representing glacier speeds, we need to design it ourselves. The steps to do this using GMT are</p>
+<ol class="arabic simple">
+<li><p>Choose a master colormap (pre-defined combination of colors without the corresponding value range), or choose several colors and make your own master colormap</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">makecpt</span></code> or <code class="docutils literal notranslate"><span class="pre">grd2cpt</span></code> for specifying what color corresponds to what value, and also information like background color, foreground color, etc.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">grdimage</span></code> or other commands requiring a colormap to plot your data</p></li>
+</ol>
+<p>In this chapter, we will introduce the easiest way, which is picking up a master colomap and then using <code class="docutils literal notranslate"><span class="pre">makecpt</span></code> to make a colormap for your map. For advanced skills, please go to <a class="reference internal" href="editing_cpt_colorbar.html"><span class="doc">Edit CPT and Colorbar</span></a>.</p>
+<p>The complete list of master colormaps GMT supports can be found at the <a class="reference external" href="https://docs.generic-mapping-tools.org/latest/cookbook/cpts.html">official manual page</a>. Here I am using the “batlow” colormap, as shown in this figure. You can also choose other colormap you like to replace it.</p>
+<img alt="../_images/cpt_colormap_fig4.png" class="align-center" src="../_images/cpt_colormap_fig4.png" />
+<p>Now we are going to decide the value range. You can use GIS software to open <code class="docutils literal notranslate"><span class="pre">ICE_G0240_0000_v_EPSG4326.nc</span></code> and check the histogram of pixel values, or you can use <code class="docutils literal notranslate"><span class="pre">grdinfo</span></code> or GDAL’s <code class="docutils literal notranslate"><span class="pre">gdalinfo</span></code> and look up the maximum and minimum values in the terminal. For your convenience, I have provided a reasonable range here: <code class="docutils literal notranslate"><span class="pre">0</span></code> to <code class="docutils literal notranslate"><span class="pre">400</span></code>. The unit of this raster file is m/yr (meters per year). After deciding the master colormap and the value range, we can now use the <code class="docutils literal notranslate"><span class="pre">makecpt</span></code> command. Its basic syntax is</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt makecpt -Cparent_cpt <span class="o">[</span>-Tmin/max/spacing<span class="o">]</span> <span class="o">[</span>-Z<span class="o">]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">-C</span></code> is the only required option, but <code class="docutils literal notranslate"><span class="pre">-T</span></code> is also very important since it is used to specify the value range. You have to enter the minimum and the maximum number of your range (that will correspond to the colormap), and spacing means the interval to sample the color from the master colormap. Let us try to type the following command in the terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt makecpt -Cbatlow -T0/400/100
+<span class="m">0</span>   <span class="m">15</span>/58.875/95            <span class="m">100</span>     <span class="m">15</span>/58.875/95
+<span class="m">100</span> <span class="m">77</span>.625/114.62/76.375    <span class="m">200</span>     <span class="m">77</span>.625/114.62/76.375
+<span class="m">200</span> <span class="m">191</span>.75/144/56.375       <span class="m">300</span>     <span class="m">191</span>.75/144/56.375
+<span class="m">300</span> <span class="m">253</span>/180.12/181.25       <span class="m">400</span>     <span class="m">253</span>/180.12/181.25
+B   <span class="m">1</span>/25/89
+F   <span class="m">250</span>/204/250
+N   white
+</pre></div>
+</div>
+<p>Press enter and you will see the details of this new colormap:</p>
+<ul class="simple">
+<li><p>The main part of this colormap is composed of 4 columns of data. The first and the third column are the value range, and the second and the fourth column are the RGB color values for this range. Take the first line, for example, this colormap says it uses this color <code class="docutils literal notranslate"><span class="pre">15/58.875/95</span></code> for any value between <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">100</span></code>.</p></li>
+<li><p>When the spacing is set to <code class="docutils literal notranslate"><span class="pre">100</span></code>, this colormap would only have 4 color segments.</p></li>
+<li><p>The last three lines of the colormap (<code class="docutils literal notranslate"><span class="pre">B</span></code>, <code class="docutils literal notranslate"><span class="pre">F</span></code>, <code class="docutils literal notranslate"><span class="pre">N</span></code>) are for the following three special situations:</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">B</span></code> represents the color used for any value lower than the minimum value of the range.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">F</span></code> represents the color used for any value higher than the maximum value of the range.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">N</span></code> represents the color used for NaN (no-data value).</p></li>
+</ul>
+<p>If we add the <code class="docutils literal notranslate"><span class="pre">-Z</span></code> option, then we will be creating a continuous colormap (color varies between two sample points) instead of a discrete colormap (same color between two sample points):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt makecpt -Cbatlow -T0/400/100 -Z
+<span class="m">0</span>   <span class="m">1</span>/25/89                 <span class="m">100</span>     <span class="m">34</span>.75/91.75/96
+<span class="m">100</span> <span class="m">34</span>.75/91.75/96          <span class="m">200</span>     <span class="m">128</span>/129.5/51
+<span class="m">200</span> <span class="m">128</span>/129.5/51            <span class="m">300</span>     <span class="m">244</span>.25/158.25/113.75
+<span class="m">300</span> <span class="m">244</span>.25/158.25/113.75    <span class="m">400</span>     <span class="m">250</span>/204/250
+B   <span class="m">1</span>/25/89
+F   <span class="m">250</span>/204/250
+N   white
+</pre></div>
+</div>
+<p>You can notice that the color in columns 2 and 4 are now different from each other. Take the first line, for example: if the pixel value is between <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">100</span></code>, GMT would find the corresponding color by linear interpolation.</p>
+<p>In this script, we will set <code class="docutils literal notranslate"><span class="pre">makecpt</span></code> as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt makecpt -Cbatlow -T0/400/10 -D -Z -M --COLOR_NAN<span class="o">=</span>gray
+<span class="c1"># -C: master colormap name (batlow)</span>
+<span class="c1"># -T: corresponding range (0 to 400; sample a color from the master colormap using an interval of 10)</span>
+<span class="c1"># -D: using the end-member colors for background and foreground colors (This will change the settings of B and F; any number higher than 400 will have the same color as 400; any number lower than 0 will have the same color as 0.)</span>
+<span class="c1"># -Z: making a continuous colormap</span>
+<span class="c1"># -M: using the default NaN color in GMT as the NaN color for the colormap (This will change the setting of N.)</span>
+<span class="c1"># --COLOR_NAN: specifying the default NaN color in GMT (To be explained later)</span>
+</pre></div>
+</div>
+<p>Here we used the option <code class="docutils literal notranslate"><span class="pre">--COLOR_NAN</span></code>. This kind of option is called “<strong>long command</strong>, which is different from -R or -Z, etc. (short commands) in terms of syntax. We have to use the following syntax for a long command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt <span class="nb">command</span> --long_command_name<span class="o">=</span>long_coomand_value ... <span class="c1"># Like short commands, we can add as many long commands as we like in a single line</span>
+</pre></div>
+</div>
+<p>Combining <code class="docutils literal notranslate"><span class="pre">-M</span></code> and <code class="docutils literal notranslate"><span class="pre">--COLOR_NAN</span></code>, we can freely change the color for NaN values.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>All of the GMT default parameters can be reset using long commands. You can view the full list of these parameters by entering the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt defaults -D
+</pre></div>
+</div>
+<p>For details, please go to <a class="reference internal" href="layout_design.html"><span class="doc">Design Map Layout</span></a>.</p>
+</div>
+<p>In GMT 6 (Modern mode), the colormap information will be saved in a temporary file after you run <code class="docutils literal notranslate"><span class="pre">makecpt</span></code>. Thus, when you use <code class="docutils literal notranslate"><span class="pre">grdimage</span></code> later in your script to plot something, you don’t need to include <code class="docutils literal notranslate"><span class="pre">-C</span></code> option and any colormap map; GMT would automatically read this temporary file and apply the newly created colormap to the grid file.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In GMT 6 (Classic mode) and the older versions of GMT, you have to use the redirecting character <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> for saving the new colormap as a file, and then you can use the file for the following commands. <a class="reference external" href="pen_and_painting_gmt5.html">See this page for details</a>.</p>
+</div>
+<p>Now we can try to plot glacier speeds using <code class="docutils literal notranslate"><span class="pre">grdimage</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">speed_file</span><span class="o">=</span>ICE_G0240_0000_v_EPSG4326.nc
+
+gmt begin iceland_glacier_speed png
+    gmt basemap -Baf -BWNEs -RIS+R0.2 -JM15c
+    gmt coast -Wthinnest,darkred -Gdarkseagreen1 -Slightblue -A1
+    gmt makecpt -Cbatlow -T0/400/10 -D -Z -M --COLOR_NAN<span class="o">=</span>gray
+    gmt grdimage <span class="nv">$speed_file</span>
+gmt end
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/cpt_colormap_fig5.png"><img alt="../_images/cpt_colormap_fig5.png" class="align-center" src="../_images/cpt_colormap_fig5.png" style="width: 1000px;" /></a>
+<p>Wait a second… the outline of Iceland is gone! Take a look at the difference from the previous map, and you’ll know this is because <code class="docutils literal notranslate"><span class="pre">ICE_G0240_0000_v_EPSG4326.nc</span></code> has lots of NaN points, so a vast area on the map is covered by gray. We can try to just move the <code class="docutils literal notranslate"><span class="pre">coast</span></code> command to the next line of <code class="docutils literal notranslate"><span class="pre">grdimage</span></code> for plotting the coastline again, but this does not help the situation because the filling of <code class="docutils literal notranslate"><span class="pre">coast</span></code> command would cover all output from <code class="docutils literal notranslate"><span class="pre">grdimage</span></code>. How to keep the land filling from <code class="docutils literal notranslate"><span class="pre">coast</span></code> while plotting the glacier speeds on the map? Now we have to use the <code class="docutils literal notranslate"><span class="pre">clip</span></code> command. Here’s how to use the <code class="docutils literal notranslate"><span class="pre">clip</span></code> command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt clip extent_file
+gmt grdimage ...
+gmt clip -C
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">extent_file</span></code> has to be an ascii-fromat vector (shape)file containing polygons. We will describe more about this kind of file more in <a class="reference internal" href="plot_vector_data.html"><span class="doc">Plot Vector Data</span></a>. The <code class="docutils literal notranslate"><span class="pre">glims_iceland_glacier_outlines.gmt</span></code> that we downloaded earlier exactly follows this format. All commands in between two <code class="docutils literal notranslate"><span class="pre">clip</span></code> commands will only be effective within the polygons defined by the extent file. If we use the glacier outlines here, then GMT will only plot glacier speeds within these outlines. Thus, the gray areas of NaN will be largely reduced. Apply this command segment to our script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">speed_file</span><span class="o">=</span>ICE_G0240_0000_v_EPSG4326.nc
+<span class="nv">glacier_outline</span><span class="o">=</span>glims_iceland_glacier_outlines.gmt
+
+gmt begin iceland_glacier_speed png
+    gmt basemap -Baf -BWNEs -RIS+R0.2 -JM15c
+    gmt coast -Wthinnest,darkred -Gdarkseagreen1 -Slightblue -A1
+    <span class="c1"># path clipping begins</span>
+    gmt clip <span class="nv">$glacier_outline</span>
+    gmt makecpt -Cbatlow -T0/400/10 -D -Z -M --COLOR_NAN<span class="o">=</span>gray
+    gmt grdimage <span class="nv">$speed_file</span>
+    gmt clip -C
+    <span class="c1"># path clipping ends here</span>
+gmt end
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/cpt_colormap_fig6.png"><img alt="../_images/cpt_colormap_fig6.png" class="align-center" src="../_images/cpt_colormap_fig6.png" style="width: 1000px;" /></a>
+<p>Finally, our goal has achieved. Note that there are still some gray patches on the map, but this is completely normal since the data of glacier speeds do not cover 100% of the glacier extent. We can just keep them.</p>
+<p>For the last few steps of map making, we are going to review the commands and skills we picked up from the previous chapters. Here we will add the glacier outlines (<code class="docutils literal notranslate"><span class="pre">plot</span></code>), colorbar (<code class="docutils literal notranslate"><span class="pre">colorbar</span></code>), and the label showing the location of Vatnajökull (<code class="docutils literal notranslate"><span class="pre">text</span></code>). The following code simply lists some options used and their meanings. If you need a more detailed explanation, please go to <a class="reference internal" href="pen_and_painting.html"><span class="doc">Pen and Painting</span></a> and <a class="reference internal" href="scatter_plot.html"><span class="doc">Scatter Plot</span></a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt plot <span class="nv">$glacier_outline</span> -Wthinner,black
+<span class="c1"># -W: uses black thin lines</span>
+gmt colorbar -DJCB+w6c+ef -Bx100+l<span class="s2">&quot;Glacier Speed (m/yr)&quot;</span>
+<span class="c1"># -DJ: plot the colorbar at one of the 2-character positions (CB - bottom centered) OUTSIDE the map. 6 cm wide (+w6c),</span>
+<span class="c1">#      plot a triangle at the maximum value indicating that there are values higher than this (+ef)</span>
+<span class="c1"># -B: tick interval set to 100 (x100), the meaning and the unit of the colormap shown at the bottom (+l&quot;Glacier Speed (m/yr)&quot;)</span>
+<span class="nb">echo</span> -16.8 <span class="m">64</span>.95 Vatnajökull <span class="p">|</span> gmt text -F+f12p+jCM
+<span class="c1"># -F: font size set to 12 points (+f12p), vertically and horizontally center-aligned to the given coordinates (+jCM)</span>
+</pre></div>
+</div>
+</section>
+<section id="id15">
+<h2><span class="section-number">1.5. </span>Script<a class="headerlink" href="#id15" title="Permalink to this headline">#</a></h2>
+<p>The final script for our map is:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ==== Setting input files ====</span>
+<span class="nv">speed_file</span><span class="o">=</span>ICE_G0240_0000_v_EPSG4326.nc
+<span class="nv">glacier_outline</span><span class="o">=</span>glims_iceland_glacier_outlines.gmt
+
+<span class="c1"># ==== Main commands ====</span>
+gmt begin iceland_glacier_speed png
+    gmt basemap -Baf -BWNEs -RIS+R0.2 -JM15c                       <span class="c1"># basemap</span>
+    gmt coast -Wthinnest,darkred -Gdarkseagreen1 -Slightblue -A1   <span class="c1"># coastline and filling</span>
+    gmt clip <span class="nv">$glacier_outline</span>                                      <span class="c1"># polygon path clipping begins</span>
+    gmt makecpt -Cbatlow -T0/400/10 -D -Z -M --COLOR_NAN<span class="o">=</span>gray      <span class="c1"># making the colormap used in this map</span>
+    gmt grdimage <span class="nv">$speed_file</span>                                       <span class="c1"># plot glacier speed within the polygons</span>
+    gmt clip -C                                                    <span class="c1"># polygon path clippling ends</span>
+    gmt plot <span class="nv">$glacier_outline</span> -Wthinner,black                      <span class="c1"># glacier outlines</span>
+    gmt colorbar -DJCB+w6c+ef -Bx100+l<span class="s2">&quot;Glacier Speed (m/yr)&quot;</span>       <span class="c1"># colorbar</span>
+    <span class="nb">echo</span> -16.8 <span class="m">64</span>.95 Vatnajökull <span class="p">|</span> gmt text -F+f12p+jCM            <span class="c1"># text label</span>
+gmt end
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>“Make a map showing glacier speeds in Iceland. Use Iceland’s country border plus-minus 0.2 degree as the map extent. Use <code class="docutils literal notranslate"><span class="pre">batlow</span></code> as the <strong>master colormap</strong> of glacier speeds, and relate it to a range of <strong>0</strong> to <strong>400</strong>. We sample colors from the master colormap and make a <strong>continuous colormap</strong>. <strong>Gray</strong> represents areas with no data. Glacier speeds will be only plotted within the glacier outlines defined by <code class="docutils literal notranslate"><span class="pre">glims_iceland_glacier_outlines.gmt</span></code>. Lastly, we plot the glacier outlines, a colorbar, and a label showing the location of Vatnajökull.”</p>
+</div>
+<p>Check the <a class="reference internal" href="#id6">final map</a></p>
+</section>
+<section id="id16">
+<h2><span class="section-number">1.6. </span>Exercise<a class="headerlink" href="#id16" title="Permalink to this headline">#</a></h2>
+<ol class="arabic simple">
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">dem4</span></code> as the master colormap, make a topographical map of Iceland. Attach the colorbar.</p></li>
+<li><p>Plot the topography of Iceland again using any colormap you like, but this time try to fill all glacier-covered area with blue.</p></li>
+</ol>
+<dl class="footnote brackets">
+<dt class="label" id="id17"><span class="brackets"><a class="fn-backref" href="#id3">1</a></span></dt>
+<dd><p>Gardner, A. S., M. A. Fahnestock, and T. A. Scambos, 2019 [updated 2020]: ITS_LIVE Regional Glacier and Ice Sheet Surface Velocities. Data archived at National Snow and Ice Data Center; doi:10.5067/6II6VW8LLWJ7.</p>
+</dd>
+<dt class="label" id="id18"><span class="brackets"><a class="fn-backref" href="#id4">2</a></span></dt>
+<dd><p>Raup, B.H.; A. Racoviteanu; S.J.S. Khalsa; C. Helm; R. Armstrong; Y. Arnaud (2007).  “The GLIMS Geospatial Glacier Database: a New Tool for Studying Glacier Change”.  Global and Planetary Change 56:101–110. (doi:10.1016/j.gloplacha.2006.07.018)</p>
+</dd>
+<dt class="label" id="id19"><span class="brackets"><a class="fn-backref" href="#id9">3</a></span></dt>
+<dd><p>Gardner, A. S., G. Moholdt, T. Scambos, M. Fahnstock, S. Ligtenberg, M. van den Broeke, and J. Nilsson, 2018: Increased West Antarctic and unchanged East Antarctic ice discharge over the last 7 years, Cryosphere, 12(2): 521–547, doi:10.5194/tc-12-521-2018.</p>
+</dd>
+<dt class="label" id="id20"><span class="brackets"><a class="fn-backref" href="#id11">4</a></span></dt>
+<dd><p>GLIMS and NSIDC (2005, updated 2019): Global Land Ice Measurements from Space glacier database. Compiled and made available by the international GLIMS community and the National Snow and Ice Data Center, Boulder CO, U.S.A.  DOI:10.7265/N5V98602</p>
+</dd>
+</dl>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./main"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="scatter_plot.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">4. </span>Scatter Plot</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="plot_vector_data.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Plot Vector Data</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+ <div id="disqus_thread"></div> <script> var disqus_config = function () {this.page.url = 'http://gmt-tutorial.org/cpt_colormap.html'; this.page.identifier = 'cpt_colormap'; }; (function() { var d = document, s = d.createElement('script'); s.src = '//gmt-tutorials.disqus.com/embed.js'; s.setAttribute('data-timestamp', +new Date()); (d.head || d.body).appendChild(s); })(); </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By <a href="https://whyjz.github.io/">鄭懷傑 (Whyjay Zheng)</a> | <a href="https://twitter.com/WhyjayZ"><i class="fa-brands fa-twitter"></i></a><br/>
+  
+    Last updated on Jul 27, 2022.<br/>
+    <div class="extra_footer">
+      &copy; 2016-2022. <a href="https://github.com/whyjz/GMT-tutorials/blob/master/LICENSE.md">MIT</a> 
+and <a href="http://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</a> dual licensed. <br>
+Found this tutorial helpful? <a href="https://www.paypal.com/donate?hosted_button_id=68GZNRJ3MZDBE">Buy me a milktea!</a>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

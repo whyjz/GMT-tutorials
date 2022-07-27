@@ -1,0 +1,968 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>3. Design Map Layout &#8212; GMT Tutorials </title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+ <link href='https://fonts.googleapis.com/css?family=Varela Round' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://gmt-tutorials.org/main/layout_design.html" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4. Hillshade Map" href="hillshading.html" />
+    <link rel="prev" title="2. Plot Vector Data" href="plot_vector_data.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+ <script type="text/javascript">var _jf = _jf || [];_jf.push(['p','39630']);_jf.push(['_setFont','sourcehansans-tc-light','css','.sourcehansans-tc-light']);_jf.push(['_setFont','sourcehansans-tc-light','alias','sourcehansans-tc']);_jf.push(['_setFont','sourcehansans-tc-light','weight',200]);_jf.push(['_setFont','sourcehansans-tc-regular','css','.sourcehansans-tc-regular']);_jf.push(['_setFont','sourcehansans-tc-regular','alias','sourcehansans-tc']);_jf.push(['_setFont','sourcehansans-tc-regular','weight',400]);_jf.push(['_setFont','cwtexqyuan','css','.cwtexqyuan']);_jf.push(['_setFont','cwtexqyuan','alias','cwtexqyuan']);_jf.push(['_setFont','cwtexqyuan','weight',500]);_jf.push(['_setFont','xingothic-tc-w7','css','.xingothic-tc-w7']);_jf.push(['_setFont','xingothic-tc-w7','alias','xingothic-tc']);_jf.push(['_setFont','xingothic-tc-w7','weight',700]);_jf.push(['_setFont','jf-jinxuan-medium','css','.jf-jinxuan-medium']);_jf.push(['_setFont','jf-jinxuan-medium','alias','jf-jinxuan']);_jf.push(['_setFont','jf-jinxuan-medium','weight',600]);(function(f,q,c,h,e,i,r,d){var k=f._jf;if(k.constructor===Object){return}var l,t=q.getElementsByTagName("html")[0],a=function(u){for(var v in k){if(k[v][0]==u){if(false===k[v][1].call(k)){break}}}},j=/\S+/g,o=/[\t\r\n\f]/g,b=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,g="".trim,s=g&&!g.call("\uFEFF\xA0")?function(u){return u==null?"":g.call(u)}:function(u){return u==null?"":(u+"").replace(b,"")},m=function(y){var w,z,v,u,x=typeof y==="string"&&y;if(x){w=(y||"").match(j)||[];z=t[c]?(" "+t[c]+" ").replace(o," "):" ";if(z){u=0;while((v=w[u++])){if(z.indexOf(" "+v+" ")<0){z+=v+" "}}t[c]=s(z)}}},p=function(y){var w,z,v,u,x=arguments.length===0||typeof y==="string"&&y;if(x){w=(y||"").match(j)||[];z=t[c]?(" "+t[c]+" ").replace(o," "):"";if(z){u=0;while((v=w[u++])){while(z.indexOf(" "+v+" ")>=0){z=z.replace(" "+v+" "," ")}}t[c]=y?s(z):""}}},n;k.push(["_eventActived",function(){p(h);m(e)}]);k.push(["_eventInactived",function(){p(h);m(i)}]);k.addScript=n=function(u,A,w,C,E,B){E=E||function(){};B=B||function(){};var x=q.createElement("script"),z=q.getElementsByTagName("script")[0],v,y=false,D=function(){x.src="";x.onerror=x.onload=x.onreadystatechange=null;x.parentNode.removeChild(x);x=null;a("_eventInactived");B()};if(C){v=setTimeout(function(){D()},C)}x.type=A||"text/javascript";x.async=w;x.onload=x.onreadystatechange=function(G,F){if(!y&&(!x.readyState||/loaded|complete/.test(x.readyState))){y=true;if(C){clearTimeout(v)}x.src="";x.onerror=x.onload=x.onreadystatechange=null;x.parentNode.removeChild(x);x=null;if(!F){setTimeout(function(){E()},200)}}};x.onerror=function(H,G,F){if(C){clearTimeout(v)}D();return true};x.src=u;z.parentNode.insertBefore(x,z)};a("_eventPreload");m(h);n(r,"text/javascript",false,3000)})(this,this.document,"className","jf-loading","jf-active","jf-inactive","//ds.justfont.com/js/stable/v/5.0.2/id/166657211014");</script>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">GMT Tutorials </h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form> <div class="langcenter"> <nav class="menu"> <ul class="clearfix"> <li class="current-item"> <a href="#" class="clicker">English <span class="arrow">&#9660;</span></a> <ul class="sub-menu"> <li><a href="../../main/layout_design.html">中文 (台灣)</a></li> <li><a href="layout_design.html">English</a></li> </ul> </li> </ul> </nav> </div> 
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  入門與概述
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro_install.html">
+   1. GMT / PyGMT Introduction and Installation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="software.html">
+   2. Software and Packages
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="basic_concept.html">
+   3. Basic Concepts and Terms
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  基本繪圖技巧
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="making_first_map.html">
+   1. Make Your First Map
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="coloring_topography.html">
+   2. Color the Topography
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pen_and_painting.html">
+   3. Pen and Painting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="scatter_plot.html">
+   4. Scatter Plot
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  製作各種常見的地圖（基礎）
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="cpt_colormap.html">
+   1. Visualize Raster Data Using a Colormap
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plot_vector_data.html">
+   2. Plot Vector Data
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   3. Design Map Layout
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hillshading.html">
+   4. Hillshade Map
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="contour_and_profile.html">
+   5. Contours and Profiles
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="map_elements.html">
+   6. Add Map Elements
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  製作各種常見的地圖（進階）
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="editing_cpt_colorbar.html">
+   1. Edit CPT and Colorbar
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="view3d.html">
+   2. 3D Map
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="focal_mech.html">
+   3. Plot Focal Mechanisms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="draping.html">
+   4. Drape an Image over Topography
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  網格資料處理
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="raster_calculator.html">
+   1. Raster Calculator
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="basic_img_processing.html">
+   2. Basic Image Processing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  數值資料處理
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="stat_histogram.html">
+   1. Statistics and Histogram
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="regression_basics.html">
+   2. Perform Regression Analysis
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  附錄與學習資源
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_credit.html">
+   1. Data credits and References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="command_index.html">
+   2. Command Index
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gallery.html">
+   3. Gallery (Chapter Index)
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/whyjz/GMT-tutorials"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/main/layout_design.rst"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   3.1. Goal
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   3.2. Commands and Techniques
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   3.3. Tasks before plotting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id9">
+   3.4. Procedure
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id12">
+   3.5. Script
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id13">
+   3.6. Exercise
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Design Map Layout</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   3.1. Goal
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   3.2. Commands and Techniques
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   3.3. Tasks before plotting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id9">
+   3.4. Procedure
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id12">
+   3.5. Script
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id13">
+   3.6. Exercise
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="id1">
+<h1><span class="section-number">3. </span>Design Map Layout<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>This instruction is for the Modern Mode in GMT 6. For making the same map using the GMT 6 Classic Mode or GMT 4-5, <a class="reference external" href="layout_design_gmt5.html">Please go to this page</a> (only final script available).</p>
+</div>
+<p>Now let us see how GMT deals with the map layout. GMT uses many pre-defined option values so that uses don’t need to set a lot of things up for making a map. However, if we want to have a more complex design such as multiple panels, different frame types, and tweaking font style, we have to adjust GMT’s “user configuration.” Also, in this chapter we will introduce the two major projection types used for geospatial data: cylindrical (Mercator) and planar (Lambert) and the associated settings in GMT.</p>
+<section id="id3">
+<h2><span class="section-number">3.1. </span>Goal<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<p>Draw the <a class="reference external" href="https://en.wikipedia.org/wiki/Great-circle_distance">Great Circle Route</a> and the <a class="reference external" href="https://en.wikipedia.org/wiki/Rhumb_line">Rhumb Line</a> between <em>Ulaanbaatar</em>, Mongolia, and <em>Seattle</em>, USA. A great circle route is the path along the great circle (the circle whose radius equals the radius of Earth), and a rhumb line is a path whose incident angle to any meridian is the same. The map of this chapter uses two different projections. The upper panel uses the <strong>Lambert</strong> azimuthal equal-area projection, and the lower panel uses the <strong>Mercator</strong> Projection. The map shows some interesting points:</p>
+<ul class="simple">
+<li><p>A rhumb line is a straight line when the map is drawing using the Mercator projection, while the great circle route is a curved line on the same map. However, the great circle route is actually the shortest path between any two locations.</p></li>
+<li><p>The great circle route connecting any point to the center of the Lambert map (Ulaanbaatar in this example) is a straight line. On the other hand, the thumb line becomes a curved line in this case. You can see that a Lambert map does a better job of keeping the relative length of different paths, as well as their actual direction (which is why this projection is referred to as an azimuthal projection).</p></li>
+</ul>
+<p>We will also change the GMT default settings including fonts, colors, and layout for this map. You will find more details in this chapter.</p>
+<a class="reference internal image-reference" href="../_images/ulaanbaatar_seattle_gmt6.png" id="id6"><img alt="../_images/ulaanbaatar_seattle_gmt6.png" class="align-center" id="id6" src="../_images/ulaanbaatar_seattle_gmt6.png" style="width: 800px;" /></a>
+<p>Go to the final <a class="reference internal" href="#id12">Script</a></p>
+</section>
+<section id="id7">
+<h2><span class="section-number">3.2. </span>Commands and Techniques<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">defaults</span></code> - <strong>check GMT’s default map parameters</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">set</span></code> - <strong>change GMT’s default map parameters</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plot</span></code> - <strong>plot points and lines using under a geographical coordinate system</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">text</span></code> - <strong>set text in detail on a map</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">basemap</span></code> - set up mapping area, axes, and map frame</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">coast</span></code> - plot shorelines and borders</p></li>
+<li><p>External command <code class="docutils literal notranslate"><span class="pre">rm</span></code> - <strong>delete a file</strong> (<code class="docutils literal notranslate"><span class="pre">del</span></code> for Windows)</p></li>
+<li><p>External command <code class="docutils literal notranslate"><span class="pre">echo</span></code> - pass input data through a pipe</p></li>
+<li><p>GMT shared options: <code class="docutils literal notranslate"><span class="pre">-X</span></code> <code class="docutils literal notranslate"><span class="pre">-Y</span></code> <code class="docutils literal notranslate"><span class="pre">-:</span></code></p></li>
+<li><p>GMT default settings and the <code class="docutils literal notranslate"><span class="pre">gmt.conf</span></code> file</p></li>
+<li><p>More ways to specify geographical coordinates</p></li>
+<li><p>How to set up a map layout</p></li>
+<li><p>How to change font style</p></li>
+<li><p>How GMT makes a map using a different projection system</p></li>
+</ul>
+</section>
+<section id="id8">
+<h2><span class="section-number">3.3. </span>Tasks before plotting<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h2>
+<p>First, we have to get the coordinates for Ulaanbaatar and Seattle. On their <em>Wikipedia</em> page we can find the latitude and longitude of both cities, which is a link to more information about coordinates under different projection systems. Here we have an example of Ulaanbaatar.</p>
+<a class="reference internal image-reference" href="../_images/layout_design_fig1.png"><img alt="../_images/layout_design_fig1.png" class="align-center" src="../_images/layout_design_fig1.png" style="width: 1000px;" /></a>
+<p>Note that there are two formats of coordinates in the <strong>WGS84</strong> field. Either of them works in this example as GMT supports both formats. The other thing worth paying attention to is the coordinates are represented by “latitude-longitude”. We have collected the coordinates of both places in the following table (rounded to the second decimal place):</p>
+<table class="table">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 38%" />
+<col style="width: 44%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>City</p></th>
+<th class="head"><p>Ulaanbaatar</p></th>
+<th class="head"><p>Seattle</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Latitude/Longitude (Deg, Min, Sec)</p></td>
+<td><p>47° 55′ 0″ N, 106° 55′ 0″ E</p></td>
+<td><p>47° 36′ 35″ N, 122° 19′ 59″ W</p></td>
+</tr>
+<tr class="row-odd"><td><p>Latitude/Longitude (Decimal)</p></td>
+<td><p>47.92, 106.92</p></td>
+<td><p>47.61, -122.33</p></td>
+</tr>
+</tbody>
+</table>
+<p>We can create a text file <code class="docutils literal notranslate"><span class="pre">coord.txt</span></code> and save the coordinate information to the file to easily access them later with GMT. Here’s the content of <code class="docutils literal notranslate"><span class="pre">coord.txt</span></code> with the decimal formatted coordinates:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">47</span>.92, <span class="m">106</span>.92
+<span class="m">47</span>.61, -122.33
+</pre></div>
+</div>
+<p>Let me emphasize that the first column is latitude (y) and the second column is longitude (x). This is opposite to the x-y order we used in the chapter <a class="reference internal" href="scatter_plot.html"><span class="doc">Scatter Plot</span></a>. However, you’ll see there is a way to specify the meaning of each column so that GMT can still recognize them correctly. In addition, we use commas to separate the columns here, which is acceptable for GMT too.</p>
+<p>Here’s the content of <code class="docutils literal notranslate"><span class="pre">coord.txt</span></code> with the d/m/s coordinates:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">47</span>:55:0N, <span class="m">106</span>:55:0E
+<span class="m">47</span>:36:35N, <span class="m">122</span>:19:59W
+</pre></div>
+</div>
+<p>Note that I have changed all the degree, minute, and second symbols to colons and removed the space between the numbers. This is one of the standard longitude and latitude formats for GMT. If your geographical coordinates adopt this format, remember to check whether all the special symbols have been converted into colons before feeding it to GMT, as this example shows.</p>
+<p>You can also download the data from here: <a class="reference download internal" download="" href="../_downloads/31338934f89f139dec4887c60b516c71/coord.txt"><code class="xref download docutils literal notranslate"><span class="pre">coord.txt</span></code></a>. This file uses degrees, minutes, and seconds coordinates.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To summarize the requirements of data files and longitude and latitude format for GMT:</p>
+<ol class="arabic simple">
+<li><p>The acceptable delimiters for separating columns include <strong>space</strong>, <strong>comma</strong> (as in <code class="docutils literal notranslate"><span class="pre">.csv</span></code> files), and <strong>Tab</strong> (as in <code class="docutils literal notranslate"><span class="pre">.tsv</span></code> files). However, you cannot use more than one kind of delimiter in a single file. By default, the first column is set to be the x value, and the second column is set to be the y value. You can override this setting when reading them using a GMT command.</p></li>
+<li><p>The acceptable formats for geographical coordinates are <strong>decimal</strong> and <strong>degrees, minutes, and seconds</strong>:</p>
+<ul class="simple">
+<li><p>For the decimal system, a negative latitude represents the southern hemisphere, and a negative longitude or a longitude over 180 degrees represents the western hemisphere. For example, both 243 and -63 are 63 degrees W.</p></li>
+<li><p>For the degrees, minutes, and seconds system, the format is <code class="docutils literal notranslate"><span class="pre">ddd:mm:ssF</span></code> where <code class="docutils literal notranslate"><span class="pre">ddd</span></code> are degrees, <code class="docutils literal notranslate"><span class="pre">mm</span></code> are minutes, <code class="docutils literal notranslate"><span class="pre">ss</span></code> are seconds, and <code class="docutils literal notranslate"><span class="pre">F</span></code> is a letter noting N, E, W, or S.</p></li>
+</ul>
+</li>
+</ol>
+</div>
+</section>
+<section id="id9">
+<h2><span class="section-number">3.4. </span>Procedure<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h2>
+<p>Let’s start from the lower part of the target map (the one using the Mercator projection). First of all, we draw the coastlines and country borders:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">land_color</span><span class="o">=</span><span class="s2">&quot;#CEB9A0&quot;</span> <span class="c1"># Color for land area</span>
+
+gmt begin ulaanbaatar_seattle png
+    gmt basemap -R70/270/30S/70N -JM13c -B+tMercator
+    gmt coast -Dl -A1000 -G<span class="nv">$land_color</span> -N1/thick,60 -Ba40f20g20
+    <span class="c1"># -D: Adjust the coastline resolution. We set it to l (low) because we are drawing the global coastlines and do not need high-resolution data.</span>
+gmt end
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/layout_design_gmt6_fig2.png"><img alt="../_images/layout_design_gmt6_fig2.png" class="align-center" src="../_images/layout_design_gmt6_fig2.png" style="width: 1000px;" /></a>
+<p>For detailed settings of the map such as font size and gridline width, we use the default GMT parameters. You can use <code class="docutils literal notranslate"><span class="pre">defaults</span></code> to take a look at these values on the terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt defaults -D
+</pre></div>
+</div>
+<p>And this is what you would see on the screen:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1"># GMT 6.0.0 Defaults file</span>
+<span class="c1">#</span>
+<span class="c1"># COLOR Parameters</span>
+<span class="c1">#</span>
+<span class="nv">COLOR_BACKGROUND</span>               <span class="o">=</span> black
+<span class="nv">COLOR_FOREGROUND</span>               <span class="o">=</span> white
+<span class="nv">COLOR_NAN</span>                      <span class="o">=</span> <span class="m">127</span>.5
+<span class="nv">COLOR_MODEL</span>                    <span class="o">=</span> none
+... <span class="c1">#(skipped)</span>
+</pre></div>
+</div>
+<p>A line that does not start with the <code class="docutils literal notranslate"><span class="pre">#</span></code> symbol represents a GMT parameter. The name of the parameter is that capitalized string. The meaning of each parameter can be found at the <a class="reference external" href="https://docs.generic-mapping-tools.org/6.0/gmt.conf.html">official GMT manual</a>. We have two ways to modify the default parameter settings:</p>
+<ol class="arabic">
+<li><p>When entering a GMT command, you can use <code class="docutils literal notranslate"><span class="pre">--parameter=value</span></code> (<strong>long option</strong> syntax). In <a class="reference internal" href="cpt_colormap.html"><span class="doc">Visualize Raster Data Using a Colormap</span></a>, we used this method to adjust the <code class="docutils literal notranslate"><span class="pre">COLOR_NAN</span></code> settings and make the no-data area rendered grey on the map. <strong>The change by this way only applies to this GMT command</strong> For the other commands, the default parameter values are still used.</p></li>
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">set</span></code> command to change the parameter value. it has the following syntax:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt <span class="nb">set</span> name1 value1 <span class="o">[</span>name2 value2 name3 value3...<span class="o">]</span>
+<span class="c1"># ---- or ----</span>
+$ gmt <span class="nb">set</span> <span class="nv">name1</span><span class="o">=</span>value1 <span class="o">[</span><span class="nv">name2</span><span class="o">=</span>value2 <span class="nv">name3</span><span class="o">=</span>value3...<span class="o">]</span>
+</pre></div>
+</div>
+<p>In this tutorial, I will use the first syntax for a better alignment of parameter values. The main difference between this method and the previous method is that GMT records the change. As long as the record is not overwritten or deleted, <strong>the modified parameter setting is valid for all subsequent commands</strong>. When the <code class="docutils literal notranslate"><span class="pre">set</span></code> command is issued for the first time, GMT will create a <code class="docutils literal notranslate"><span class="pre">gmt.conf</span></code> file in the current directory and store all changes in it. All subsequent GMT commands will read this file, which is why using <code class="docutils literal notranslate"><span class="pre">set</span></code> has a permanent effect.</p>
+</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>It is possible to have the <code class="docutils literal notranslate"><span class="pre">gmt.conf</span></code> file in your folder that comes from your previous mapping session. If you don’t want the previous parameter settings to “interfere” with the map you are drawing this time, you can simply delete <code class="docutils literal notranslate"><span class="pre">gmt.conf</span></code>, so that GMT will reuse the system default values, and then you can use <code class="docutils literal notranslate"><span class="pre">set</span></code> from the beginning to modify mapping parameters.</p>
+</div>
+<p>Now we know how <code class="docutils literal notranslate"><span class="pre">set</span></code> works, and let’s take a test right away. Add this command to the script we use to plot the lower half of the target map:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">land_color</span><span class="o">=</span><span class="s2">&quot;#CEB9A0&quot;</span>
+gmt <span class="nb">set</span> MAP_FRAME_TYPE plain
+<span class="c1"># MAP_FRAME_TYPE: border style of the map. The default is fancy, which is the black-and-white border as shown above. We change it to plain for rendering the most basic border style.</span>
+
+gmt begin ulaanbaatar_seattle png
+    gmt basemap -R70/270/30S/70N -JM13c -B+tMercator
+    gmt coast -Dl -A1000 -G<span class="nv">$land_color</span> -N1/thick,60 -Ba40f20g20
+gmt end
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/layout_design_gmt6_fig3.png"><img alt="../_images/layout_design_gmt6_fig3.png" class="align-center" src="../_images/layout_design_gmt6_fig3.png" style="width: 1000px;" /></a>
+<p>You can see that the map frame has turned from a zebra pattern into a simple line. Now we’ll modify the following default parameters one by one using the same way:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FONT_TITLE</span></code>: Title font. In GMT, the <strong>font string is similar to a pen string, which consists of three parts</strong>: <code class="docutils literal notranslate"><span class="pre">size,</span> <span class="pre">style,</span> <span class="pre">color</span></code>. “Size” can be any value with a default unit of points. “Style” refers to the <a class="reference external" href="https://docs.generic-mapping-tools.org/6.0/cookbook/postscript_fonts.html">PostScript font table</a>, which can be assigned by the font name or the font number. “Color” is a generic color format for GMT. The setting we want is <code class="docutils literal notranslate"><span class="pre">30,Bookman-Demi,#0D057A</span></code> (30-pt Bookman-Demi with the color of #0D057A).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FONT_ANNOT_PRIMARY</span></code>: The font for the primary grid tick labels. We use <code class="docutils literal notranslate"><span class="pre">12p,20,#0D057A</span></code> (12-pt Bookman-LightItalic; the color is the same as the title).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FORMAT_GEO_MAP</span></code>: format of (geographical) coordinates on the map. We use a combination code names here: <code class="docutils literal notranslate"><span class="pre">d</span></code> stands for degree, <code class="docutils literal notranslate"><span class="pre">m</span></code> stands for minutes, <code class="docutils literal notranslate"><span class="pre">s</span></code> stands for seconds, and <code class="docutils literal notranslate"><span class="pre">F</span></code> represents the “NEWS” suffix that will be added after the value. The detailed documentation is <a class="reference external" href="https://docs.generic-mapping-tools.org/6.0/gmt.conf.html">available here</a>. We use <code class="docutils literal notranslate"><span class="pre">dddF</span></code>, which means to only show degrees with up to three digits as well as the direction suffix.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MAP_GRID_CROSS_SIZE_PRIMARY</span></code>: The size of the grid cross on the map. We use <code class="docutils literal notranslate"><span class="pre">8p</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MAP_GRID_PEN_PRIMARY</span></code>: the pen attribute of the map grid. We use <code class="docutils literal notranslate"><span class="pre">thinner,#ED99F0</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MAP_TICK_PEN_PRIMARY</span></code>: The pen attribute of the map ticks. We use <code class="docutils literal notranslate"><span class="pre">thicker,</span> <span class="pre">black</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MAP_TITLE_OFFSET</span></code>: The vertical distance between the map title and the frame. We use <code class="docutils literal notranslate"><span class="pre">0.5c</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MAP_ANNOT_OBLIQUE</span></code>: the “placement mode” of the map tick labels. In the above figure, the labels for longitude and latitude are displayed horizontally. Here we want to use the code <code class="docutils literal notranslate"><span class="pre">32</span></code>, which means that “longitude remains the same format, and latitude is vertically displayed along with the map border”.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PS_PAGE_COLOR</span></code>: The background color of the paper. We <code class="docutils literal notranslate"><span class="pre">ivory</span></code>.</p></li>
+</ul>
+<p>Therefore, the <code class="docutils literal notranslate"><span class="pre">set</span></code> command in the original script can be expanded to:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ... (skipped)</span>
+gmt <span class="nb">set</span> FONT_ANNOT_PRIMARY          12p,20,#0D057A <span class="se">\</span>
+        FONT_TITLE                  <span class="m">30</span>,Bookman-Demi,#0D057A <span class="se">\</span>
+        FORMAT_GEO_MAP              dddF <span class="se">\</span>
+        MAP_ANNOT_OBLIQUE           <span class="m">32</span> <span class="se">\</span>
+        MAP_FRAME_TYPE              plain <span class="se">\</span>
+        MAP_GRID_CROSS_SIZE_PRIMARY 8p <span class="se">\</span>
+        MAP_GRID_PEN_PRIMARY        thinner,#ED99F0 <span class="se">\</span>
+        MAP_TICK_PEN_PRIMARY        thicker,black <span class="se">\</span>
+        MAP_TITLE_OFFSET            <span class="m">0</span>.5c <span class="se">\</span>
+        PS_PAGE_COLOR               ivory
+<span class="c1"># Note that I used &quot;\&quot; at the end of each line, which continues the gmt set command to the next line.</span>
+<span class="c1"># ... (skipped)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Many parameters have <code class="docutils literal notranslate"><span class="pre">PRIMARY</span></code> in their names because some GMT map frames (especially the <code class="docutils literal notranslate"><span class="pre">fancy</span></code> type frames) use different settings to render primary gridlines (and ticks) and secondary gridlines (and ticks). In our case, we only set the primary main gridlines and omit the secondary gridlines. You can also change to a <code class="docutils literal notranslate"><span class="pre">fancy</span></code> type map frame and specify the style of secondary gridlines (by setting the parameters with <code class="docutils literal notranslate"><span class="pre">SECONDARY</span></code> in their name) to see what the figure looks like!</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To use a PostScript font that is not predefined by GMT, see <a href="#id16"><span class="problematic" id="id17">`this example &lt; https://docs.generic-mapping-tools.org/6.0/gallery/ex31.html&gt;`_</span></a>.</p>
+</div>
+<p>Here’s the output figure:</p>
+<a class="reference internal image-reference" href="../_images/layout_design_gmt6_fig4.png"><img alt="../_images/layout_design_gmt6_fig4.png" class="align-center" src="../_images/layout_design_gmt6_fig4.png" style="width: 1000px;" /></a>
+<p>Most of the changes are as we expected: all font styles have been changed, the map frame has been replaced, colors and gridlines now look much better. Next, let us complete the city locations and two different paths on this map. In <code class="docutils literal notranslate"><span class="pre">coord.txt</span></code>, the coordinate field order is “latitude, longitude”. Hence, to use <code class="docutils literal notranslate"><span class="pre">plot</span></code> you need to add the <code class="docutils literal notranslate"><span class="pre">-:</span></code> option “telling” GMT that the first column is Y and the second column is X. The default mode of <code class="docutils literal notranslate"><span class="pre">plot</span></code> for drawing a line on the map is to “draw the great circle route.” If you add the <code class="docutils literal notranslate"><span class="pre">-A</span></code> option, you can override the rule and “draw the straight path in the projected map system”. For Mercato projection, this straight path is exactly the rhumb line. Therefore, we use <code class="docutils literal notranslate"><span class="pre">plot</span></code> and <code class="docutils literal notranslate"><span class="pre">text</span></code> to plot these items and make the names of the two lines:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ==== Set variables ====</span>
+<span class="nv">input_xy</span><span class="o">=</span><span class="s2">&quot;coord.txt&quot;</span>
+<span class="nv">land_color</span><span class="o">=</span><span class="s2">&quot;#CEB9A0&quot;</span> <span class="c1"># color for land area</span>
+<span class="nv">rl_color</span><span class="o">=</span><span class="s2">&quot;#FF0073&quot;</span>   <span class="c1"># color for rhumb line</span>
+<span class="nv">gc_color</span><span class="o">=</span><span class="s2">&quot;#0044FF&quot;</span>   <span class="c1"># color for great circle line</span>
+
+<span class="c1"># ==== Set map parameters ====</span>
+gmt <span class="nb">set</span> FONT_ANNOT_PRIMARY          12p,20,#0D057A <span class="se">\</span>
+        FONT_TITLE                  <span class="m">30</span>,Bookman-Demi,#0D057A <span class="se">\</span>
+        FORMAT_GEO_MAP              dddF <span class="se">\</span>
+        MAP_ANNOT_OBLIQUE           <span class="m">32</span> <span class="se">\</span>
+        MAP_FRAME_TYPE              plain <span class="se">\</span>
+        MAP_GRID_CROSS_SIZE_PRIMARY 8p <span class="se">\</span>
+        MAP_GRID_PEN_PRIMARY        thinner,#ED99F0 <span class="se">\</span>
+        MAP_TICK_PEN_PRIMARY        thicker,black <span class="se">\</span>
+        MAP_TITLE_OFFSET            <span class="m">0</span>.5c <span class="se">\</span>
+        PS_PAGE_COLOR               ivory
+
+<span class="c1"># ==== Begin to plot ====</span>
+gmt begin ulaanbaatar_seattle png
+    gmt basemap -R70/270/30S/70N -JM13c -B+tMercator
+    gmt coast -Dl -A1000 -G<span class="nv">$land_color</span> -N1/thick,60 -Ba40f20g20 --MAP_GRID_PEN_PRIMARY<span class="o">=</span>thicker
+    <span class="c1"># We adjust MAP_GRID_PEN_PRIMARY so the cross signs can be a bit thicker</span>
+    gmt plot <span class="nv">$input_xy</span> -: -A -W1p,<span class="nv">$rl_color</span>    <span class="c1"># Rhumb line</span>
+    gmt plot <span class="nv">$input_xy</span> -:    -W1p,<span class="nv">$gc_color</span>    <span class="c1"># Great circle path</span>
+    gmt plot <span class="nv">$input_xy</span> -:    -Sa0.4c -Gblack   <span class="c1"># location of the cities. -Sa0.4c is a star symbol which can be circumscribed by a 0.4 cm diameter circle.</span>
+    <span class="c1"># The following are the labels for the two lines</span>
+    <span class="nb">echo</span> <span class="s2">&quot;174 41 Rhumb Line&quot;</span>    <span class="p">|</span> gmt text -F+f,18,<span class="nv">$rl_color</span>
+    <span class="nb">echo</span> <span class="s2">&quot;174 61 Great Circle&quot;</span>  <span class="p">|</span> gmt text -F+f,18,<span class="nv">$gc_color</span>
+gmt end
+</pre></div>
+</div>
+<p>In this way, the lower half of the target map is complete!</p>
+<a class="reference internal image-reference" href="../_images/layout_design_gmt6_fig5.png"><img alt="../_images/layout_design_gmt6_fig5.png" class="align-center" src="../_images/layout_design_gmt6_fig5.png" style="width: 1000px;" /></a>
+<p>Next, let us switch to the upper panel with a Lambert projection map. In order to prevent the panels from overlapping each other, we must place this second map at a different position on the figure; in this case, it’s moving up. The GMT general options <code class="docutils literal notranslate"><span class="pre">-X</span></code> and <code class="docutils literal notranslate"><span class="pre">-Y</span></code> are used to set the relative position of the map panels. Its syntax is</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-Xhorizontal_offset <span class="o">(</span>positive to the right<span class="o">)</span>
+-Yvertical_offset <span class="o">(</span>positive to the north<span class="o">)</span>
+</pre></div>
+</div>
+<p>Here we only need the vertical offset and thus use <code class="docutils literal notranslate"><span class="pre">-Y</span></code>. For example, <code class="docutils literal notranslate"><span class="pre">-Y12c</span></code> is an offset of 12 cm upward. You can also use <code class="docutils literal notranslate"><span class="pre">h</span></code> and <code class="docutils literal notranslate"><span class="pre">w</span></code> to represent the height and width of the previous map. For example, <code class="docutils literal notranslate"><span class="pre">-Yh+3c</span></code> means to offset the height of the previous map plus 3 cm. <code class="docutils literal notranslate"><span class="pre">-X</span></code> and <code class="docutils literal notranslate"><span class="pre">-Y</span></code> permanently change the drawing position on the figure, so you only need to use these options once at <strong>the first plotting command for the next map</strong>.</p>
+<p>Now let’s take a look at the <code class="docutils literal notranslate"><span class="pre">-R</span></code> and <code class="docutils literal notranslate"><span class="pre">-J</span></code> options for the Lambert azimuthal equal-area projection. This projection needs to have a global mapping extent, which is <code class="docutils literal notranslate"><span class="pre">-R-180/180/-90/90</span></code>. You can also use the shorter code <code class="docutils literal notranslate"><span class="pre">-Rg</span></code> for the same setting. The <code class="docutils literal notranslate"><span class="pre">-J</span></code> syntax is:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-JAcenter_longitude/center_latitude/mapsize
+</pre></div>
+</div>
+<p>Specify the coordinates of Ulaanbaatar as the center of the projection, and you can draw the map, coastline, great circle route, and city locations:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ... (Skipped)</span>
+<span class="c1"># ==== Begin to plot ====</span>
+gmt begin ulaanbaatar_seattle png
+    <span class="c1"># ... (Here&#39;s the code for the Mercator map panel)</span>
+    <span class="c1"># ==== Plot (Lambert) ====</span>
+    gmt basemap -Rg -JA106:55/47:55/13c -Yh+3c -B+tLambert --MAP_TITLE_OFFSET<span class="o">=</span>0c    <span class="c1"># We put the map title a bit closer to the map frame</span>
+    gmt coast -Dl -A1000 -G<span class="nv">$land_color</span> -N1/thick,60 -Bxg60 -Byg30 --MAP_GRID_CROSS_SIZE_PRIMARY<span class="o">=</span>0p
+    <span class="c1"># We don&#39;t want crosshair marks on the map so MAP_GRID_CROSS_SIZE_PRIMARY is set to 0</span>
+    gmt plot <span class="nv">$input_xy</span> -:     -W1p,<span class="nv">$gc_color</span>    <span class="c1"># Great circle path</span>
+    gmt plot <span class="nv">$input_xy</span> -: -Sa0.4c -Gblack       <span class="c1"># City locations</span>
+
+gmt end
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/layout_design_gmt6_fig6.png"><img alt="../_images/layout_design_gmt6_fig6.png" class="align-center" src="../_images/layout_design_gmt6_fig6.png" style="width: 800px;" /></a>
+<p>Note that GMT cannot use the <code class="docutils literal notranslate"><span class="pre">-B</span></code> option to plot tick labels for a Lambert map. We will have to use <code class="docutils literal notranslate"><span class="pre">text</span></code> to add them later. Now Ulaanbaatar has been placed in the center of the map, and in this case, the great circle path is already a straight line to Seattle. If we turn on the <code class="docutils literal notranslate"><span class="pre">-A</span></code> option, we will just get the same path. <strong>How do you plot the rhumb line on this map?</strong> Since Seattle and Ulaanbaatar have very similar latitudes, the rhumb line is essentially a segment that goes along the latitude line. To tackle this situation, we can use the <code class="docutils literal notranslate"><span class="pre">-Ap</span></code> option to force connecting two points along the latitude and longitude lines:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt plot <span class="nv">$input_xy</span> -: -Ap -W1p,<span class="nv">$rl_color</span>    <span class="c1"># Rhumb line (for the second map)</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The above technique of drawing rhumb lines cannot apply to two places with different latitudes. A more general approach is to call a multifunctional command in GMT: <code class="docutils literal notranslate"><span class="pre">project</span></code>. This command can perform the coordinate transformation or generate a path connecting two points in a specific coordinate system. So we use <code class="docutils literal notranslate"><span class="pre">project</span></code> to generate a straight path in the Cartesian system, and then we <code class="docutils literal notranslate"><span class="pre">plot</span></code> this path for the rhumb line:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt project -C106.92/47.92 -E237.67/47.61 -G10 -N <span class="p">|</span> gmt plot -W1p,<span class="nv">$rl_color</span> <span class="c1"># Rhumb line (for the second map)</span>
+<span class="c1"># -C: Starting point coordinates (Ulaanbaatar)</span>
+<span class="c1"># -E: Ending point coordinates (Seattle. We add 360 to its longitude to force this line to go east from Ulaanbaatar)</span>
+<span class="c1"># -G: Distance of each sampling point along the line (the unit is the same as the coordinates)</span>
+<span class="c1"># -N: Set the coordinate system to Cartesian</span>
+</pre></div>
+</div>
+<p>You are welcome to replace the code for the rhumb line in the original script with this line. For more information about the <code class="docutils literal notranslate"><span class="pre">project</span></code> command, please go to <a class="reference internal" href="contour_and_profile.html"><span class="doc">Contours and Profiles</span></a>.</p>
+</div>
+<p>The last step for this map is to add text labels to the two lines and the latitude and longitude gridlines. It’s showtime for <code class="docutils literal notranslate"><span class="pre">text</span></code>! In this case, the text to be labeled is more complicated because each of them needs to have a different tilting angle. It would be a pain in the neck to specify this one at a time using <code class="docutils literal notranslate"><span class="pre">echo</span></code>. Fortunately, we can use the redirection operator <code class="docutils literal notranslate"><span class="pre">&lt;&lt;</span></code> for <code class="docutils literal notranslate"><span class="pre">text</span></code> and enter different information at once, which is similar to what we do with <code class="docutils literal notranslate"><span class="pre">plot</span></code>. Specifically, its syntax is:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt text -F+field_a+field_b+.... <span class="o">[</span>other options<span class="o">]</span> <span class="s">&lt;&lt; EOF</span>
+<span class="s">field_1(X) field_2(Y) field_3(field_a) field_4(field_b) ... last_field (label text)</span>
+<span class="s">...           ...           ...          ...          ... ...</span>
+<span class="s">...           ...           ...          ...          ... ...</span>
+<span class="s">EOF</span>
+</pre></div>
+</div>
+<p>In other words, <code class="docutils literal notranslate"><span class="pre">text</span></code> requires that the input has at least 3 fields (X, Y, label text). If there are more fields, you can use the <code class="docutils literal notranslate"><span class="pre">-F</span></code> option to specify what the extra fields mean. For the text labels of the latitudes and longitudes, we use <code class="docutils literal notranslate"><span class="pre">-F+a</span></code> so that the third column becomes the tilting angle of each text (0 is horizontal, rotating counterclockwise), and the label text is read from column 4, as shown below:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt text -F+a <span class="s">&lt;&lt; ANNOTEND</span>
+<span class="s">106.92 -30 0   30@.S</span>
+<span class="s">106.92 30  0   30@.N</span>
+<span class="s">60     15  70  60@.E</span>
+<span class="s">180    15  305 180@.</span>
+<span class="s">ANNOTEND</span>
+<span class="c1"># lon  lat  angle  text</span>
+<span class="c1"># &quot;@.&quot; would be rendered as a degree sign</span>
+</pre></div>
+</div>
+<p>To add labels for the great circle path and the rhumb line, we want to specify a different font in addition to the tilting angle. For the previous Mercator map, we specify a font by <code class="docutils literal notranslate"><span class="pre">-F+fstyle</span></code>. If <code class="docutils literal notranslate"><span class="pre">style</span></code> is omitted in the string, <code class="docutils literal notranslate"><span class="pre">text</span></code> will find a certain field from the input for the font style. Therefore, we can use <code class="docutils literal notranslate"><span class="pre">-F+a+f</span></code> to specify that the third column is tilting angle, the fourth column is the font style, and the label text is the fifth column this time:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt text -F+a+f <span class="s">&lt;&lt; LABELEND</span>
+<span class="s">180    40  58  ,Bookman-DemiItalic,$rl_color   Rhumb Line</span>
+<span class="s">180    80  58  ,Bookman-DemiItalic,$gc_color   Great Circle</span>
+<span class="s">LABELEND</span>
+<span class="c1"># lon  lat  angle  font  text</span>
+</pre></div>
+</div>
+<p>Add the above two code snippets to the <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">====</span> <span class="pre">Plot</span> <span class="pre">(Lambert)</span> <span class="pre">====</span></code> section in the script, and you can create the labels we want.</p>
+<p>Congratulations! The map we want for this chapter is finally done. Lastly, let me bring this up again: the map parameters modified using <code class="docutils literal notranslate"><span class="pre">set</span></code> will be stored in <code class="docutils literal notranslate"><span class="pre">gmt.conf</span></code>. If you want to make some maps in the same folder next time but do not want to use the same settings from this time, you can manually delete <code class="docutils literal notranslate"><span class="pre">gmt.conf</span></code> after you are done with this map or put the delete command in the last line of the script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ... (Skipped)</span>
+gmt end
+rm -rf gmt.conf    <span class="c1"># &lt;---- remove old map configuration file</span>
+</pre></div>
+</div>
+</section>
+<section id="id12">
+<h2><span class="section-number">3.5. </span>Script<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h2>
+<p>The final script for our map is:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ==== Set variables ====</span>
+<span class="nv">input_xy</span><span class="o">=</span><span class="s2">&quot;coord.txt&quot;</span>
+<span class="nv">land_color</span><span class="o">=</span><span class="s2">&quot;#CEB9A0&quot;</span>
+<span class="nv">rl_color</span><span class="o">=</span><span class="s2">&quot;#FF0073&quot;</span>        <span class="c1"># color for rhumb line</span>
+<span class="nv">gc_color</span><span class="o">=</span><span class="s2">&quot;#0044FF&quot;</span>        <span class="c1"># color for great circle line</span>
+<span class="c1"># Write the xy coordinates of the two cities into the $input_xy file</span>
+<span class="c1"># If you have downloaded coord.txt, then you can comment the following four lines.</span>
+<span class="nv">xy_ulaanbaatar</span><span class="o">=</span><span class="s2">&quot;47:55:0N, 106:55:0E&quot;</span>       <span class="c1"># Ulaanbaatar lat/lon</span>
+<span class="nv">xy_seattle</span><span class="o">=</span><span class="s2">&quot;47:36:35N, 122:19:59W&quot;</span>         <span class="c1"># Seattle lat/lon</span>
+<span class="nb">echo</span> <span class="nv">$xy_ulaanbaatar</span> &gt; <span class="nv">$input_xy</span>
+<span class="nb">echo</span> <span class="nv">$xy_seattle</span>    &gt;&gt; <span class="nv">$input_xy</span>
+
+<span class="c1"># ==== Set map parameters ====</span>
+gmt <span class="nb">set</span> FONT_ANNOT_PRIMARY          12p,20,#0D057A <span class="se">\</span>
+        FONT_TITLE                  <span class="m">30</span>,Bookman-Demi,#0D057A <span class="se">\</span>
+        FORMAT_GEO_MAP              dddF <span class="se">\</span>
+        MAP_ANNOT_OBLIQUE           <span class="m">32</span> <span class="se">\</span>
+        MAP_FRAME_TYPE              plain <span class="se">\</span>
+        MAP_GRID_CROSS_SIZE_PRIMARY 8p <span class="se">\</span>
+        MAP_GRID_PEN_PRIMARY        thinner,#ED99F0 <span class="se">\</span>
+        MAP_TICK_PEN_PRIMARY        thicker,black <span class="se">\</span>
+        MAP_TITLE_OFFSET            <span class="m">0</span>.5c <span class="se">\</span>
+        PS_PAGE_COLOR               ivory
+
+<span class="c1"># ==== Begin to plot ====</span>
+gmt begin ulaanbaatar_seattle_gmt6 png
+
+    <span class="c1"># ==== Bottom panel (Mercator) ====</span>
+    gmt basemap -R70/270/30S/70N -JM13c -B+tMercator
+    gmt coast -Dl -A1000 -G<span class="nv">$land_color</span> -N1/thick,60 -Ba40f20g20 --MAP_GRID_PEN_PRIMARY<span class="o">=</span>thicker
+    gmt plot <span class="nv">$input_xy</span> -: -A -W1p,<span class="nv">$rl_color</span>    <span class="c1"># Rhumb line</span>
+    gmt plot <span class="nv">$input_xy</span> -:    -W1p,<span class="nv">$gc_color</span>    <span class="c1"># Great circle path</span>
+    gmt plot <span class="nv">$input_xy</span> -:    -Sa0.4c -Gblack
+    <span class="nb">echo</span> <span class="s2">&quot;174 41 Rhumb Line&quot;</span>    <span class="p">|</span> gmt text -F+f,18,<span class="nv">$rl_color</span>
+    <span class="nb">echo</span> <span class="s2">&quot;174 61 Great Circle&quot;</span>  <span class="p">|</span> gmt text -F+f,18,<span class="nv">$gc_color</span>
+
+    <span class="c1"># ==== Top panel (Lambert) ====</span>
+    gmt basemap -Rg -JA106:55/47:55/13c -Yh+3c -B+tLambert --MAP_TITLE_OFFSET<span class="o">=</span>0c
+    gmt coast -Dl -A1000 -G<span class="nv">$land_color</span> -N1/thick,60 -Bxg60 -Byg30 --MAP_GRID_CROSS_SIZE_PRIMARY<span class="o">=</span>0p
+    gmt plot <span class="nv">$input_xy</span> -: -Ap -W1p,<span class="nv">$rl_color</span>    <span class="c1"># Rhumb line</span>
+    gmt plot <span class="nv">$input_xy</span> -:     -W1p,<span class="nv">$gc_color</span>    <span class="c1"># Great circle path</span>
+    gmt plot <span class="nv">$input_xy</span> -: -Sa0.4c -Gblack
+
+    gmt text -F+a   <span class="s">&lt;&lt; ANNOTEND</span>
+<span class="s">106.92 -30 0   30@.S</span>
+<span class="s">106.92 30  0   30@.N</span>
+<span class="s">60     15  70  60@.E</span>
+<span class="s">180    15  305 180@.</span>
+<span class="s">ANNOTEND</span>
+
+    gmt text -F+a+f <span class="s">&lt;&lt; LABELEND</span>
+<span class="s">180    40  58  ,Bookman-DemiItalic,$rl_color   Rhumb Line</span>
+<span class="s">180    80  58  ,Bookman-DemiItalic,$gc_color   Great Circle</span>
+<span class="s">LABELEND</span>
+
+gmt end
+
+<span class="c1"># rm -rf gmt.conf   # Remove existing GMT parameter settings</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>“Plot great circle routes and rhumb lines. The layout, map frame, mark type, and mark locations have been fine-tuned. Draw the bottom panel (Mercator projection) first and then draw the upper panel (Lambert projection). We also add several additional lines in the script to label the latitude and longitude lines in the upper panel.”</p>
+</div>
+<p>Check the <a class="reference internal" href="#id6">final map</a></p>
+</section>
+<section id="id13">
+<h2><span class="section-number">3.6. </span>Exercise<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h2>
+<p>Make a map of Equatorial Guinea as similar to the figure below <a class="footnote-reference brackets" href="#id15" id="id14">1</a> as possible. You do not need to place roads, cities, place names, and scales, but the red circles and the black dotted lines connecting them must be plotted. Country names (Cameroon, Gabon, and São Tomé e Príncipe) have to be placed on the map too. as well as the names of the five large islands. The map inset on the top left of the main map can be treated as the second map. Use <code class="docutils literal notranslate"><span class="pre">-X</span></code> and <code class="docutils literal notranslate"><span class="pre">-Y</span></code> to select the location and overlay it on the main map.</p>
+<a class="reference internal image-reference" href="../_images/gq_blu.gif"><img alt="../_images/gq_blu.gif" class="align-center" src="../_images/gq_blu.gif" style="width: 1000px;" /></a>
+<dl class="footnote brackets">
+<dt class="label" id="id15"><span class="brackets"><a class="fn-backref" href="#id14">1</a></span></dt>
+<dd><p><a class="reference external" href="http://ian.macky.net/pat/map/gq/gq.html">Public domain country maps</a>.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./main"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="plot_vector_data.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">2. </span>Plot Vector Data</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="hillshading.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Hillshade Map</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+ <div id="disqus_thread"></div> <script> var disqus_config = function () {this.page.url = 'http://gmt-tutorial.org/layout_design.html'; this.page.identifier = 'layout_design'; }; (function() { var d = document, s = d.createElement('script'); s.src = '//gmt-tutorials.disqus.com/embed.js'; s.setAttribute('data-timestamp', +new Date()); (d.head || d.body).appendChild(s); })(); </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By <a href="https://whyjz.github.io/">鄭懷傑 (Whyjay Zheng)</a> | <a href="https://twitter.com/WhyjayZ"><i class="fa-brands fa-twitter"></i></a><br/>
+  
+    Last updated on Jul 27, 2022.<br/>
+    <div class="extra_footer">
+      &copy; 2016-2022. <a href="https://github.com/whyjz/GMT-tutorials/blob/master/LICENSE.md">MIT</a> 
+and <a href="http://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</a> dual licensed. <br>
+Found this tutorial helpful? <a href="https://www.paypal.com/donate?hosted_button_id=68GZNRJ3MZDBE">Buy me a milktea!</a>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

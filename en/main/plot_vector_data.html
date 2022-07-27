@@ -1,0 +1,880 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>2. Plot Vector Data &#8212; GMT Tutorials </title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+ <link href='https://fonts.googleapis.com/css?family=Varela Round' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://gmt-tutorials.org/main/plot_vector_data.html" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3. Design Map Layout" href="layout_design.html" />
+    <link rel="prev" title="1. Visualize Raster Data Using a Colormap" href="cpt_colormap.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+ <script type="text/javascript">var _jf = _jf || [];_jf.push(['p','39630']);_jf.push(['_setFont','sourcehansans-tc-light','css','.sourcehansans-tc-light']);_jf.push(['_setFont','sourcehansans-tc-light','alias','sourcehansans-tc']);_jf.push(['_setFont','sourcehansans-tc-light','weight',200]);_jf.push(['_setFont','sourcehansans-tc-regular','css','.sourcehansans-tc-regular']);_jf.push(['_setFont','sourcehansans-tc-regular','alias','sourcehansans-tc']);_jf.push(['_setFont','sourcehansans-tc-regular','weight',400]);_jf.push(['_setFont','cwtexqyuan','css','.cwtexqyuan']);_jf.push(['_setFont','cwtexqyuan','alias','cwtexqyuan']);_jf.push(['_setFont','cwtexqyuan','weight',500]);_jf.push(['_setFont','xingothic-tc-w7','css','.xingothic-tc-w7']);_jf.push(['_setFont','xingothic-tc-w7','alias','xingothic-tc']);_jf.push(['_setFont','xingothic-tc-w7','weight',700]);_jf.push(['_setFont','jf-jinxuan-medium','css','.jf-jinxuan-medium']);_jf.push(['_setFont','jf-jinxuan-medium','alias','jf-jinxuan']);_jf.push(['_setFont','jf-jinxuan-medium','weight',600]);(function(f,q,c,h,e,i,r,d){var k=f._jf;if(k.constructor===Object){return}var l,t=q.getElementsByTagName("html")[0],a=function(u){for(var v in k){if(k[v][0]==u){if(false===k[v][1].call(k)){break}}}},j=/\S+/g,o=/[\t\r\n\f]/g,b=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,g="".trim,s=g&&!g.call("\uFEFF\xA0")?function(u){return u==null?"":g.call(u)}:function(u){return u==null?"":(u+"").replace(b,"")},m=function(y){var w,z,v,u,x=typeof y==="string"&&y;if(x){w=(y||"").match(j)||[];z=t[c]?(" "+t[c]+" ").replace(o," "):" ";if(z){u=0;while((v=w[u++])){if(z.indexOf(" "+v+" ")<0){z+=v+" "}}t[c]=s(z)}}},p=function(y){var w,z,v,u,x=arguments.length===0||typeof y==="string"&&y;if(x){w=(y||"").match(j)||[];z=t[c]?(" "+t[c]+" ").replace(o," "):"";if(z){u=0;while((v=w[u++])){while(z.indexOf(" "+v+" ")>=0){z=z.replace(" "+v+" "," ")}}t[c]=y?s(z):""}}},n;k.push(["_eventActived",function(){p(h);m(e)}]);k.push(["_eventInactived",function(){p(h);m(i)}]);k.addScript=n=function(u,A,w,C,E,B){E=E||function(){};B=B||function(){};var x=q.createElement("script"),z=q.getElementsByTagName("script")[0],v,y=false,D=function(){x.src="";x.onerror=x.onload=x.onreadystatechange=null;x.parentNode.removeChild(x);x=null;a("_eventInactived");B()};if(C){v=setTimeout(function(){D()},C)}x.type=A||"text/javascript";x.async=w;x.onload=x.onreadystatechange=function(G,F){if(!y&&(!x.readyState||/loaded|complete/.test(x.readyState))){y=true;if(C){clearTimeout(v)}x.src="";x.onerror=x.onload=x.onreadystatechange=null;x.parentNode.removeChild(x);x=null;if(!F){setTimeout(function(){E()},200)}}};x.onerror=function(H,G,F){if(C){clearTimeout(v)}D();return true};x.src=u;z.parentNode.insertBefore(x,z)};a("_eventPreload");m(h);n(r,"text/javascript",false,3000)})(this,this.document,"className","jf-loading","jf-active","jf-inactive","//ds.justfont.com/js/stable/v/5.0.2/id/166657211014");</script>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">GMT Tutorials </h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form> <div class="langcenter"> <nav class="menu"> <ul class="clearfix"> <li class="current-item"> <a href="#" class="clicker">English <span class="arrow">&#9660;</span></a> <ul class="sub-menu"> <li><a href="../../main/plot_vector_data.html">中文 (台灣)</a></li> <li><a href="plot_vector_data.html">English</a></li> </ul> </li> </ul> </nav> </div> 
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  入門與概述
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro_install.html">
+   1. GMT / PyGMT Introduction and Installation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="software.html">
+   2. Software and Packages
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="basic_concept.html">
+   3. Basic Concepts and Terms
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  基本繪圖技巧
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="making_first_map.html">
+   1. Make Your First Map
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="coloring_topography.html">
+   2. Color the Topography
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pen_and_painting.html">
+   3. Pen and Painting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="scatter_plot.html">
+   4. Scatter Plot
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  製作各種常見的地圖（基礎）
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="cpt_colormap.html">
+   1. Visualize Raster Data Using a Colormap
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   2. Plot Vector Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="layout_design.html">
+   3. Design Map Layout
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hillshading.html">
+   4. Hillshade Map
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="contour_and_profile.html">
+   5. Contours and Profiles
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="map_elements.html">
+   6. Add Map Elements
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  製作各種常見的地圖（進階）
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="editing_cpt_colorbar.html">
+   1. Edit CPT and Colorbar
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="view3d.html">
+   2. 3D Map
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="focal_mech.html">
+   3. Plot Focal Mechanisms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="draping.html">
+   4. Drape an Image over Topography
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  網格資料處理
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="raster_calculator.html">
+   1. Raster Calculator
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="basic_img_processing.html">
+   2. Basic Image Processing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  數值資料處理
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="stat_histogram.html">
+   1. Statistics and Histogram
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="regression_basics.html">
+   2. Perform Regression Analysis
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  附錄與學習資源
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_credit.html">
+   1. Data credits and References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="command_index.html">
+   2. Command Index
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gallery.html">
+   3. Gallery (Chapter Index)
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/whyjz/GMT-tutorials"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/main/plot_vector_data.rst"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   2.1. Goal
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   2.2. Commands and Techniques
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   2.3. Procedure
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id11">
+   2.4. Script
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id12">
+   2.5. Exercise
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Plot Vector Data</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   2.1. Goal
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   2.2. Commands and Techniques
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   2.3. Procedure
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id11">
+   2.4. Script
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id12">
+   2.5. Exercise
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="id1">
+<h1><span class="section-number">2. </span>Plot Vector Data<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>This instruction is for the Modern Mode in GMT 6. For making the same map using the GMT 6 Classic Mode or GMT 4-5, <a class="reference external" href="plot_vector_data_gmt5.html">Please go to this page</a>.</p>
+</div>
+<p>Geospatial data are often stored as a raster or a vector format. The so-called vector data describe the locations and the shapes of points, lines, and polygons. We have mentioned how to plot point data in the chapter <a class="reference internal" href="scatter_plot.html"><span class="doc">Scatter Plot</span></a>, and in this chapter we are going to show you how to plot line segments and polygons using GMT. In addition, we will also describe a bit about the GMT-compatible vector file format, and how to set up transparency – a useful way to illustrate a map with many layers of vector data.</p>
+<section id="id3">
+<h2><span class="section-number">2.1. </span>Goal<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<p>Draw a <a class="reference external" href="https://en.wikipedia.org/wiki/Tangram">tangram</a> like this one. The tangram is a dissection puzzle and your goal is usually to combine all 7 pieces to form the assigned figure. Here the figure is a square, the most basic one among all possible figures.</p>
+<p>In this figure, each polygon piece has a distinct color and a black edge. Also on the figure are pale-gray grid lines that can help to calculate the area of each polygon. To make all of them appear on a single figure, we have to add the transparency settings to the colormap using an additional option for <code class="docutils literal notranslate"><span class="pre">makecpt</span></code>.</p>
+<a class="reference internal image-reference" href="../_images/tangram_gmt6.png" id="id5"><img alt="../_images/tangram_gmt6.png" class="align-center" id="id5" src="../_images/tangram_gmt6.png" style="width: 1000px;" /></a>
+<p>Go to the final <a class="reference internal" href="#id11">Script</a></p>
+</section>
+<section id="id6">
+<h2><span class="section-number">2.2. </span>Commands and Techniques<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">makecpt</span></code> - <strong>make a colormap with transparency settings</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">basemap</span></code> - set up info of the mapping area</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plot</span></code> - <strong>plot segments and polygons</strong></p></li>
+</ul>
+</section>
+<section id="id7">
+<h2><span class="section-number">2.3. </span>Procedure<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h2>
+<p>In <a class="reference internal" href="scatter_plot.html"><span class="doc">Scatter Plot</span></a>, we have seen how <code class="docutils literal notranslate"><span class="pre">plot</span></code> deals with point data. For processing segments and polygons, we can use the same <code class="docutils literal notranslate"><span class="pre">plot</span></code> syntax:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt plot input_file <span class="o">[</span>-options<span class="o">]</span>
+</pre></div>
+</div>
+<p>As its name suggest, a segment is just a connection between two or more points (vertice). GMT accepts segment data in text (ascii) format as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># (all lines starting with \&quot;#\&quot; will be interpreted as comments)</span>
+&gt; <span class="o">[</span>settings of segment <span class="m">1</span><span class="o">]</span>
+segment <span class="m">1</span>, vertex <span class="m">1</span>
+segment <span class="m">1</span>, vertex <span class="m">2</span>
+...
+&gt; <span class="o">[</span>settings of segment <span class="m">2</span><span class="o">]</span>
+segment <span class="m">2</span>, vertex <span class="m">1</span>
+segment <span class="m">2</span>, vertex <span class="m">2</span>
+...
+&gt; <span class="o">[</span>settings of segment <span class="m">3</span><span class="o">]</span>
+...
+</pre></div>
+</div>
+<p>If you are plotting a 2-D segment, your vertices would take 2 columns, which are X and Y coordinates respectively. Every segment must have at least 2 vertices. The <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> symbol is used to separate each segment, and after that we can add <code class="docutils literal notranslate"><span class="pre">-W</span></code> or <code class="docutils literal notranslate"><span class="pre">-Z</span></code> settings in the same line. They indicate the drawing options for the corresponding segment:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-W</span></code>: specify pen style</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-Z</span></code>: specify color by giving a value (which will be later linked to a colormap)</p></li>
+</ul>
+<p>For detailed information, please go to <a class="reference external" href="https://docs.generic-mapping-tools.org/6.0/plot.html#segment-header-parsing">this page</a>. Now let’s take a look at how to design the segment data for the background grid lines on the tangram figure:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; -W3p,black,.
+<span class="m">1</span> <span class="m">0</span>
+<span class="m">1</span> <span class="m">4</span>
+&gt;
+<span class="m">2</span> <span class="m">0</span>
+<span class="m">2</span> <span class="m">4</span>
+&gt;
+<span class="m">3</span> <span class="m">0</span>
+<span class="m">3</span> <span class="m">4</span>
+&gt;
+<span class="m">0</span> <span class="m">1</span>
+<span class="m">4</span> <span class="m">1</span>
+&gt;
+<span class="m">0</span> <span class="m">2</span>
+<span class="m">4</span> <span class="m">2</span>
+&gt;
+<span class="m">0</span> <span class="m">3</span>
+<span class="m">4</span> <span class="m">3</span>
+</pre></div>
+</div>
+<p>There are 6 segments in this file; the first three are vertical, and the last three are horizontal. Take the first segment for example, it is a segment from coordinate (1, 0) to (1, 4). To the right of the <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> symbol of the first segment, we can see a <code class="docutils literal notranslate"><span class="pre">-W</span></code> option, which means this segment would be plotted as a black, dotted, 3-point wide line. There are no options associated with all the other <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> symbols. When <code class="docutils literal notranslate"><span class="pre">plot</span></code> is reading this file, it would <strong>automatically use the previous value for the next segment</strong>. Hence, all the other segments will use the same line style from this first segment. Save this file as <code class="docutils literal notranslate"><span class="pre">lines.txt</span></code>, and enter the following command to plot the background grid.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt plot lines.txt -R0/4/0/4 -JX15c -png lines
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/plot_vector_data_gmt6_fig1.png"><img alt="../_images/plot_vector_data_gmt6_fig1.png" class="align-center" src="../_images/plot_vector_data_gmt6_fig1.png" style="width: 1000px;" /></a>
+<p>Looks not bad! Now it’s time to deal with the polygons. In fact, the polygon data format is very similar to the segment data since it also records only the vertices in the file. However, you have to have at least three vertice to form a polygon. The GMT-acceptable polygon format is like this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; <span class="o">[</span>settings of polygon <span class="m">1</span><span class="o">]</span>
+polygon <span class="m">1</span> vertex <span class="m">1</span>
+polygon <span class="m">1</span> vertex <span class="m">2</span>
+polygon <span class="m">1</span> vertex <span class="m">3</span>
+...
+&gt; <span class="o">[</span>settings of polygon <span class="m">2</span><span class="o">]</span>
+...
+</pre></div>
+</div>
+<p>We can also add <code class="docutils literal notranslate"><span class="pre">-W</span></code>, <code class="docutils literal notranslate"><span class="pre">-Z</span></code>, and/or <code class="docutils literal notranslate"><span class="pre">-G</span></code> options after the <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> symbol (see <a class="reference external" href="https://docs.generic-mapping-tools.org/6.0/plot.html#segment-header-parsing">this page</a> for details):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-W</span></code>: specify pen style for polygon edges</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-Z</span></code>: specify a filling color by giving a value (which will be later linked to a colormap)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-G</span></code>: specify a polygon filling color directly</p></li>
+</ul>
+<p>For example, we can use the following content to draw all the polygons in a tangram:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; -Z0
+<span class="m">0</span> <span class="m">0</span>
+<span class="m">2</span> <span class="m">2</span>
+<span class="m">4</span> <span class="m">0</span>
+&gt; -Z3
+<span class="m">0</span> <span class="m">0</span>
+<span class="m">2</span> <span class="m">2</span>
+<span class="m">0</span> <span class="m">4</span>
+&gt; -Z6
+<span class="m">0</span> <span class="m">4</span>
+<span class="m">1</span> <span class="m">3</span>
+<span class="m">2</span> <span class="m">4</span>
+&gt; -Z9
+<span class="m">1</span> <span class="m">3</span>
+<span class="m">2</span> <span class="m">4</span>
+<span class="m">3</span> <span class="m">3</span>
+<span class="m">2</span> <span class="m">2</span>
+&gt; -Z12
+<span class="m">3</span> <span class="m">3</span>
+<span class="m">2</span> <span class="m">2</span>
+<span class="m">3</span> <span class="m">1</span>
+&gt; -Z15
+<span class="m">3</span> <span class="m">1</span>
+<span class="m">3</span> <span class="m">3</span>
+<span class="m">4</span> <span class="m">2</span>
+<span class="m">4</span> <span class="m">0</span>
+&gt; -Z18
+<span class="m">2</span> <span class="m">4</span>
+<span class="m">4</span> <span class="m">2</span>
+<span class="m">4</span> <span class="m">4</span>
+</pre></div>
+</div>
+<p>The first polygon is the triangle at the bottom of the tangram. Its vertices are (0, 0), (2, 2), and (4, 0). You can try to figure out what other polygons represent what shape! Note that for each polygon, there is a <code class="docutils literal notranslate"><span class="pre">-Z</span></code> setting after <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, which means GMT will automatically fill the polygon using this as the value to looking up the color from the colormap. There is a built-in colormap in GMT called <strong>wysiwyg</strong> <a class="footnote-reference brackets" href="#id13" id="id10">1</a>, very suitable for categorical filling like this case. Here’s its color combination:</p>
+<img alt="../_images/plot_vector_data_gmt6_fig2.png" class="align-center" src="../_images/plot_vector_data_gmt6_fig2.png" />
+<p>Save the text as <code class="docutils literal notranslate"><span class="pre">pieces.txt</span></code> and make the figure using these commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin pieces png
+    gmt makecpt -Cwysiwyg -T0/20/1    <span class="c1"># colormap range is 0 to 20, sampled with an interval of 1</span>
+    gmt plot pieces.txt -R0/4/0/4 -JX15c -L -C
+gmt end
+</pre></div>
+</div>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">-L</span></code> option would tell <code class="docutils literal notranslate"><span class="pre">plot</span></code> that we are drawing polygons, and then <code class="docutils literal notranslate"><span class="pre">plot</span></code> would <strong>close the segments to form polygons</strong>. Also, when plotting polygons the default behavior of <code class="docutils literal notranslate"><span class="pre">plot</span></code> command is to draw edges only instead of color filling. Therefore, we need to add <code class="docutils literal notranslate"><span class="pre">-C</span></code> telling GMT we are filling these polygons using the newly made colormap.</p>
+<a class="reference internal image-reference" href="../_images/plot_vector_data_gmt6_fig3.png"><img alt="../_images/plot_vector_data_gmt6_fig3.png" class="align-center" src="../_images/plot_vector_data_gmt6_fig3.png" style="width: 1000px;" /></a>
+<p>Now this tangram is really fleshing out! Here we are also adding the edges:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin pieces png
+    gmt makecpt -Cwysiwyg -T0/20/1
+    gmt plot pieces.txt -R0/4/0/4 -JX15c -L -C -W2p,black
+gmt end
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/plot_vector_data_gmt6_fig4.png"><img alt="../_images/plot_vector_data_gmt6_fig4.png" class="align-center" src="../_images/plot_vector_data_gmt6_fig4.png" style="width: 1000px;" /></a>
+<p>Almost perfect. There is only one little thing: the line at the edge of the figure seems thinner than the edges of the polygons inside the tangram. This is because GMT cuts the image by the edge of the polygons instead of the edge of the black lines; therefore, the edge width would be only half of the original width. If you think this is ok, great; but if you are a perfectionist and don’t want to see the lines not consistent in width, here’s another way for you: add the polygon edges to <code class="docutils literal notranslate"><span class="pre">lines.txt</span></code> as segment data so that they will be plotted with the grid lines. To do this, open <code class="docutils literal notranslate"><span class="pre">lines.txt</span></code> and add more lines at the bottom:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; -W1p,grey,.
+<span class="c1"># Note tht I changed the style of the grid lines!</span>
+<span class="m">1</span> <span class="m">0</span>
+<span class="m">1</span> <span class="m">4</span>
+&gt;
+<span class="m">2</span> <span class="m">0</span>
+<span class="m">2</span> <span class="m">4</span>
+&gt;
+<span class="m">3</span> <span class="m">0</span>
+<span class="m">3</span> <span class="m">4</span>
+&gt;
+<span class="m">0</span> <span class="m">1</span>
+<span class="m">4</span> <span class="m">1</span>
+&gt;
+<span class="m">0</span> <span class="m">2</span>
+<span class="m">4</span> <span class="m">2</span>
+&gt;
+<span class="m">0</span> <span class="m">3</span>
+<span class="m">4</span> <span class="m">3</span>
+&gt; -W2p,black
+<span class="m">0</span> <span class="m">0</span>
+<span class="m">4</span> <span class="m">0</span>
+<span class="m">4</span> <span class="m">4</span>
+<span class="m">0</span> <span class="m">4</span>
+<span class="m">0</span> <span class="m">0</span>
+&gt;
+<span class="m">0</span> <span class="m">4</span>
+<span class="m">4</span> <span class="m">0</span>
+&gt;
+<span class="m">0</span> <span class="m">0</span>
+<span class="m">3</span> <span class="m">3</span>
+&gt;
+<span class="m">3</span> <span class="m">1</span>
+<span class="m">3</span> <span class="m">3</span>
+&gt;
+<span class="m">1</span> <span class="m">3</span>
+<span class="m">2</span> <span class="m">4</span>
+&gt;
+<span class="m">2</span> <span class="m">4</span>
+<span class="m">4</span> <span class="m">2</span>
+</pre></div>
+</div>
+<p>The last half part (starting from <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">-W2p,black</span></code>) is the polygon edges in the tangram. Let us retry these commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt plot lines.txt -R0/4/0/4 -JX15c -png lines
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/plot_vector_data_gmt6_fig5.png"><img alt="../_images/plot_vector_data_gmt6_fig5.png" class="align-center" src="../_images/plot_vector_data_gmt6_fig5.png" style="width: 1000px;" /></a>
+<p>Ok now it looks much better. Our last problem is to add all lines and polygons together on this figure without blocking any of them. We can simply set up a colormap with <strong>transparency</strong> settings and solve this problem. The <code class="docutils literal notranslate"><span class="pre">-A</span></code> option of <code class="docutils literal notranslate"><span class="pre">makecpt</span></code> is used to specify transparency. Let’s enter this on the terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt makecpt -Cwysiwyg -T0/20/1 -A70   <span class="c1"># -A: %70 transparent</span>
+<span class="m">0</span>    <span class="m">64</span>/0/64@70    <span class="m">1</span>    <span class="m">64</span>/0/64@70
+<span class="m">1</span>    <span class="m">64</span>/0/192@70   <span class="m">2</span>    <span class="m">64</span>/0/192@70
+... <span class="o">(</span>skipping<span class="o">)</span>
+</pre></div>
+</div>
+<p>In the colormap information, the number after <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> is the transparency value. The full format of color thus becomes <code class="docutils literal notranslate"><span class="pre">R/G/B&#64;Transparency</span></code>. Use this colormap for drawing the figure and you will see all the colors being transparently painted. Seems cute, doesn’t it?</p>
+</section>
+<section id="id11">
+<h2><span class="section-number">2.4. </span>Script<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h2>
+<p>The final script for the image is:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin tangram_gmt6 png
+    gmt makecpt -Cwysiwyg -T0/20/1 -A70
+    gmt basemap -R0/4/0/4 -JX15c -Bnews    <span class="c1"># setting the axis ranges (-R) while not plotting the axes themselves (-Bnews)</span>
+    gmt plot pieces.txt -L -C
+    gmt plot lines.txt                     <span class="c1"># filling first and edges later. This makes sure the lines would be on the top, above the filling. You can try to move this line to an earlier place in the script and see what the transparency settings can do.</span>
+gmt end
+</pre></div>
+</div>
+<p>The segment data <code class="docutils literal notranslate"><span class="pre">lines.txt</span></code> are as follows, and are available for downloading <a class="reference download internal" download="" href="../_downloads/571e274480420ea3182a42dce2e32a50/lines.txt"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; -W1p,grey,.
+<span class="m">1</span> <span class="m">0</span>
+<span class="m">1</span> <span class="m">4</span>
+&gt;
+<span class="m">2</span> <span class="m">0</span>
+<span class="m">2</span> <span class="m">4</span>
+&gt;
+<span class="m">3</span> <span class="m">0</span>
+<span class="m">3</span> <span class="m">4</span>
+&gt;
+<span class="m">0</span> <span class="m">1</span>
+<span class="m">4</span> <span class="m">1</span>
+&gt;
+<span class="m">0</span> <span class="m">2</span>
+<span class="m">4</span> <span class="m">2</span>
+&gt;
+<span class="m">0</span> <span class="m">3</span>
+<span class="m">4</span> <span class="m">3</span>
+&gt; -W2p,black
+<span class="m">0</span> <span class="m">0</span>
+<span class="m">4</span> <span class="m">0</span>
+<span class="m">4</span> <span class="m">4</span>
+<span class="m">0</span> <span class="m">4</span>
+<span class="m">0</span> <span class="m">0</span>
+&gt;
+<span class="m">0</span> <span class="m">4</span>
+<span class="m">4</span> <span class="m">0</span>
+&gt;
+<span class="m">0</span> <span class="m">0</span>
+<span class="m">3</span> <span class="m">3</span>
+&gt;
+<span class="m">3</span> <span class="m">1</span>
+<span class="m">3</span> <span class="m">3</span>
+&gt;
+<span class="m">1</span> <span class="m">3</span>
+<span class="m">2</span> <span class="m">4</span>
+&gt;
+<span class="m">2</span> <span class="m">4</span>
+<span class="m">4</span> <span class="m">2</span>
+</pre></div>
+</div>
+<p>The polygon data <code class="docutils literal notranslate"><span class="pre">pieces.txt</span></code> are as follows, and are available at <a class="reference download internal" download="" href="../_downloads/a7a42f9fbfd121be4b815258fcb64270/pieces.txt"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; -Z0
+<span class="m">0</span> <span class="m">0</span>
+<span class="m">2</span> <span class="m">2</span>
+<span class="m">4</span> <span class="m">0</span>
+&gt; -Z3
+<span class="m">0</span> <span class="m">0</span>
+<span class="m">2</span> <span class="m">2</span>
+<span class="m">0</span> <span class="m">4</span>
+&gt; -Z6
+<span class="m">0</span> <span class="m">4</span>
+<span class="m">1</span> <span class="m">3</span>
+<span class="m">2</span> <span class="m">4</span>
+&gt; -Z9
+<span class="m">1</span> <span class="m">3</span>
+<span class="m">2</span> <span class="m">4</span>
+<span class="m">3</span> <span class="m">3</span>
+<span class="m">2</span> <span class="m">2</span>
+&gt; -Z12
+<span class="m">3</span> <span class="m">3</span>
+<span class="m">2</span> <span class="m">2</span>
+<span class="m">3</span> <span class="m">1</span>
+&gt; -Z15
+<span class="m">3</span> <span class="m">1</span>
+<span class="m">3</span> <span class="m">3</span>
+<span class="m">4</span> <span class="m">2</span>
+<span class="m">4</span> <span class="m">0</span>
+&gt; -Z18
+<span class="m">2</span> <span class="m">4</span>
+<span class="m">4</span> <span class="m">2</span>
+<span class="m">4</span> <span class="m">4</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>“Use <code class="docutils literal notranslate"><span class="pre">wysiwyg</span></code> as the master colormap and add transparency settings, and then draw tangram polygons with color filling, grid lines, and the edge of each polygon.”</p>
+</div>
+<p>Check the <a class="reference internal" href="#id5">final figure</a></p>
+</section>
+<section id="id12">
+<h2><span class="section-number">2.5. </span>Exercise<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h2>
+<ol class="arabic simple">
+<li><p>Draw a net of dice (6 faces). Use <code class="docutils literal notranslate"><span class="pre">wysiwyg</span></code> to fill each face with a different color.</p></li>
+</ol>
+<dl class="footnote brackets">
+<dt class="label" id="id13"><span class="brackets"><a class="fn-backref" href="#id10">1</a></span></dt>
+<dd><p>What You See Is What You Get.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./main"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="cpt_colormap.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">1. </span>Visualize Raster Data Using a Colormap</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="layout_design.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Design Map Layout</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+ <div id="disqus_thread"></div> <script> var disqus_config = function () {this.page.url = 'http://gmt-tutorial.org/plot_vector_data.html'; this.page.identifier = 'plot_vector_data'; }; (function() { var d = document, s = d.createElement('script'); s.src = '//gmt-tutorials.disqus.com/embed.js'; s.setAttribute('data-timestamp', +new Date()); (d.head || d.body).appendChild(s); })(); </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By <a href="https://whyjz.github.io/">鄭懷傑 (Whyjay Zheng)</a> | <a href="https://twitter.com/WhyjayZ"><i class="fa-brands fa-twitter"></i></a><br/>
+  
+    Last updated on Jul 27, 2022.<br/>
+    <div class="extra_footer">
+      &copy; 2016-2022. <a href="https://github.com/whyjz/GMT-tutorials/blob/master/LICENSE.md">MIT</a> 
+and <a href="http://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</a> dual licensed. <br>
+Found this tutorial helpful? <a href="https://www.paypal.com/donate?hosted_button_id=68GZNRJ3MZDBE">Buy me a milktea!</a>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
