@@ -1,0 +1,465 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-07-26 21:56+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "等高線地圖及地形剖面"
+msgstr ""
+
+msgid "在本章中，我們要使用 GMT 繪製等高線圖與地形剖面圖，這兩種地圖非常適合用來表示地形的\\ 升降起伏，以及不同地點的陡峭程度。如果你是個登山客，想必它們會是你最愛用的地圖類型。"
+msgstr ""
+
+msgid "目標"
+msgstr ""
+
+msgid "使用 `SRTM <http://www2.jpl.nasa.gov/srtm/>`_ (Shuttle Radar Topography Mission，太空梭雷達地形任務) 提供的地形資料，繪製\\ `馬榮火山 <https://zh.wikipedia.org/wiki/%E9%A6%AC%E6%A6%AE%E7%81%AB%E5%B1%B1>`_ (Mayon Volcano) 的地形等高線圖，以及一條穿過火山頂部的剖面高度圖。馬榮火山是一座位於菲律賓的火山，以近乎完美的錐\\ 體外型聞名。在以下的等高線圖和 A-B 點之間的剖面圖中，可以大致計算出火山高度是 2400 公尺，錐體半徑則大概是 9 公里\\ 左右 (注意剖面並沒有完整的切穿整個錐體，尤其是在 A 點附近)。研究指出此火山的外型主要受到岩漿成份控制，上半段近似於\\ 拋物線，而下半段則與對數曲線非常接近\\ [#]_\\ 。這意味著越接近山頂，地表越陡，如果你想去登頂的話，要先做好心理準備！"
+msgstr ""
+
+msgid "馬榮火山也是一座非常活躍的火山，上次噴發是在 2009 年底，其餘因岩漿活動導致的噴氣、地表變形等等的現象也非常頻繁。\\ 在過去，火山噴發時常帶給周圍村莊毀滅性的災難，但拜科學研究發展所賜，近年來已經很少造成人員傷亡。"
+msgstr ""
+
+msgid "直接觀看\\ `指令稿`_"
+msgstr ""
+
+msgid "從鄰近區域觀看的馬榮火山，完美的外型令人震懾。Tomas Tam 的攝影作品。"
+msgstr ""
+
+msgid "使用的指令與概念"
+msgstr ""
+
+msgid "``grdgradient`` - 計算網格檔的梯度與照明值"
+msgstr ""
+
+msgid "``grd2cpt`` - 使用網格檔的資訊建立色階檔"
+msgstr ""
+
+msgid "``gmtset`` - 更改 GMT 的預設作圖參數"
+msgstr ""
+
+msgid "``psxy`` - 輸出檔頭與檔尾、繪製折線"
+msgstr ""
+
+msgid "``grdimage`` - 繪製暈渲圖"
+msgstr ""
+
+msgid "``pscoast`` - 繪製海岸線與海域填色"
+msgstr ""
+
+msgid "``grdcontour`` - **繪製等高線與其數值標籤**"
+msgstr ""
+
+msgid "``project`` - **產生以公里為單位的路徑座標**"
+msgstr ""
+
+msgid "``grdtrack`` - **給定座標，對網格檔取樣**"
+msgstr ""
+
+msgid "``pstext`` - 在地圖上加入文字"
+msgstr ""
+
+msgid "``psbasemap`` - 設定繪圖區、座標軸與邊框"
+msgstr ""
+
+msgid "``gmtinfo`` - **由數值資料的純文字檔建立** ``-R`` **設定**"
+msgstr ""
+
+msgid "外部指令 ``rm`` - 刪除檔案 (Windows 為 ``del``)"
+msgstr ""
+
+msgid "外部指令 ``cut`` - **擷取文字檔中的特定幾個欄位** (非必要)"
+msgstr ""
+
+msgid "GDAL 指令 ``gdal_translate`` - **把 Geotiff 轉成 NetCDF 格式** (非必要)"
+msgstr ""
+
+msgid "GMT 共用選項：``-i``"
+msgstr ""
+
+msgid "在 ``-R`` 參數中使用度分秒格式座標"
+msgstr ""
+
+msgid "設定座標軸標籤與刻度的一些技巧"
+msgstr ""
+
+msgid "前置作業"
+msgstr ""
+
+msgid "首先我們要取得 `SRTM <http://www2.jpl.nasa.gov/srtm/>`_ 的地形資料。這些資料目前可以經由美國地質調查局 (USGS) 管理的網站 `EarthExplorer <https://earthexplorer.usgs.gov/>`_ 取得。前往 EarthExplorer，然後在「Address/Place」\\ 搜尋的地方輸入 *Mayon*，然後按下 `show`，選擇下方出現的 *Mayon Volcano* 一欄。接著，按下下方的 `Data Sets >>`。"
+msgstr ""
+
+msgid "你可以使用搜尋框或下方的分類目錄，找到並勾選 *SRTM 1 Arc-Second Global* 的資料集，然後按下 `Results >>`。"
+msgstr ""
+
+msgid "接下來，應該會有一筆資料呈現在左側搜尋結果欄中。你可以按下圖示預覽此資料，如下圖所示。如要下載，請按下「下載」的圖示。\\ 本資料需要登入才能下載，如果你尚未有 USGS 帳號，可以花幾分鐘註冊，只需要一組電子信箱即可。登入之後，選擇 `GeoTIFF 1 Arc-second (24.8 MB)` 的資料格式。"
+msgstr ""
+
+msgid "1 弧秒 (arc second) 的角度在地球表面大概是 30 公尺的距離，這意味著我們下載的 SRTM 資料中的每個像素代表\\ 地球上的 30 x 30 平方公尺大小的區域。"
+msgstr ""
+
+msgid "`GeoTIFF <https://en.wikipedia.org/wiki/GeoTIFF>`_ 也是一種網格地理資料儲存的格式，與 GMT 支援的 NetCDF 格式類似。不同的是，GeoTIFF 使用 ``.tif`` 作為標誌的副檔名，而且自身帶有網格的投影法與座標系統等資料。"
+msgstr ""
+
+msgid "下載的檔案預設的命名是 ``n13_e123_1arc_v3.tif``。使用 `GDAL <software.html#id8>`_ 函式庫中的 ``gdal_translate`` 指令，可以把檔案的格式轉成 GMT 支援的 NetCDF 檔案。語法如下："
+msgstr ""
+
+msgid "$ gdal_translate 輸入檔.tif -of NetCDF 輸出檔.grd"
+msgstr ""
+
+msgid "如果你的電腦沒有安裝 GDAL 或純粹為了方便起見，你也可以直接從以下連結取得本章節會使用的 SRTM ``.grd`` 檔案："
+msgstr ""
+
+msgid ":download:`n13_e123_1arc_v3.grd <contour_and_profile/n13_e123_1arc_v3.grd>`"
+msgstr ""
+
+msgid "如果你的電腦是先裝了 GDAL 然後再裝 GMT，那麼 GMT 就能使用 GDAL 直接處理 GeoTIFF 格式檔案。\\ 你可以使用以下語法進行測試："
+msgstr ""
+
+msgid "$ grdinfo n13_e123_1arc_v3.tif"
+msgstr ""
+
+msgid "如果正確的資訊可以顯示出來，就表示你的 GMT 可以透過 GDAL 支援 GeoTIFF 檔案。因此，你也可以試著不轉檔，\\ 直接使用 ``.tif`` 的檔案進行底下的操作流程。有關如何設定 GDAL 與 GMT 的相互支援，以及其他的細節說明，請參閱\\ `之後的章節`。"
+msgstr ""
+
+msgid "在本章中，我們要使用 `cpt-city`_ 的色階檔 ``neutral``。你可以\\ `由此 <http://soliton.vm.bytemark.co.uk/pub/cpt-city/fme/feet/tn/neutral.png.index.html>`_\\ 或是以下連結下載："
+msgstr ""
+
+msgid ":download:`neutral.cpt <contour_and_profile/neutral.cpt>`"
+msgstr ""
+
+msgid "操作流程"
+msgstr ""
+
+msgid "首先我們來試著繪製等高線圖。``grdcontour`` 指令是這章地圖的主角，它可以讀取一個網格檔，\\ 然後在地圖上繪製等高線的線條與數值。基本語法為："
+msgstr ""
+
+msgid "$ grdcontour 輸入grd檔名 -C等高線參數 -A標注數值的等高線參數 [-W畫筆]"
+msgstr ""
+
+msgid "``-C`` 有幾種參數指定方式："
+msgstr ""
+
+msgid "``-C數值`` 指定等高線間距。"
+msgstr ""
+
+msgid "``-C+數值`` 繪製特定高度的等高線。"
+msgstr ""
+
+msgid "``-C色階檔`` 繪製色階檔中顏色邊界數值的等高線。"
+msgstr ""
+
+msgid "``-C非色階檔`` 使用檔案的第一欄當作要繪製等高線的高度，而由第二欄決定是一般等高線 (c) 或是標注數值的等高線 (a)"
+msgstr ""
+
+msgid "``-A`` 指定的是「標注數值的等高線」，你也可以把它想像成「主等高線」。使用 ``-A`` 的結果跟 ``-C`` 很像，\\ 差別只是在於用 ``-A`` 畫出的等高線會比較粗，而且會加上數值。它也有幾種參數指定方式："
+msgstr ""
+
+msgid "``-A數值`` 指定標注數值的等高線間距。"
+msgstr ""
+
+msgid "``-A+數值`` 在特定高度繪製標注數值的等高線。"
+msgstr ""
+
+msgid "``-A[數值資訊][標籤資訊]`` 設定數值標籤的字型、外框、角度等等參數 。"
+msgstr ""
+
+msgid "``-W`` 指定等高線的\\ `畫筆屬性 <pen_and_painting.html>`_。如果地圖上同時有兩種等高線的話，可使用 ``-Wc畫筆`` 設定一般等高線，``-Wa畫筆`` 設定標注數值的等高線。"
+msgstr ""
+
+msgid "現在讓我們來試試看以下指令："
+msgstr ""
+
+msgid "$ grdcontour n13_e123_1arc_v3.grd -C100 -A500+f8p,,darkred \\\n"
+"             -R123:30E/123:50E/13:10N/13:21N -JM15c -Ba10m -P > mayon_contour.ps\n"
+"# 等高線每 100 單位 (公尺) 畫一個，每 500 單位則是標注數值的等高線\n"
+"# -A+f 指定字型樣式\n"
+"# -R 格式使用「度:分 + 方位」\n"
+"# -Ba 格式使用 10m 表示每 10 弧分做一標注"
+msgstr ""
+
+msgid "出圖會如下所示："
+msgstr ""
+
+msgid "上圖使用 GMT 的預設版面設定，因此與最終的剖面圖外觀有些不同。\\ 本章中將不會說明如何調整字型、線條粗細或顏色等的細節，\\ 請自行參考\\ `指令稿`_ 中的變數與 ``gmtset`` 的設定調整。有關 ``gmtset`` 詳細的說明，\\ 請參閱\\ :doc:`layout_design`。"
+msgstr ""
+
+msgid "看起來效果相當不錯！值得注意的是，地圖上有些非常小的斑點，這些斑點在小比例尺的地圖上反而會減少地圖的辨識度。\\ 因此，我們可以使用 ``-Q`` 選項，使 ``grdcontour`` 略過非常小的等高線環。以下的範例會使用 ``-Q100``，\\ 但你也可以自行增減數值，數值越大，表示被略過的等高線長度就越大，反之亦然。"
+msgstr ""
+
+msgid "SRTM 的海拔資料是使用雷達波 (也就是特定頻率的微波) 測量出來的，而雷達波和可見光一樣，都無法有效穿越水體。\\ 因此，SRTM 的海拔並不包含水底高度，在海面上的高度不是 0 m 就是無資料。因此，在上圖中基本上是無法看到 0 m 等高線的，就算有也是可以忽略的小環。這也就是為什麼我們在最終出圖中要使用 ``pscoast`` 把海面全塗上藍色的原因。"
+msgstr ""
+
+msgid "完成了本章的第一個重點後，接下來的問題是要怎麼製造出剖面線段、取得剖面的高度，最後把剖面的位置和剖面圖都\\ 加到地圖上。如果我們要預計要畫火山的剖面，最簡單的方式\\ 就是設定一條直線切穿山腳與山頂。如此一來，我們得先決定直線的起點與終點。以下是在本例中要採用的座標，但你也可以\\ 隨自己喜歡變更起點與終點的位置，製造出不同的地形剖面。"
+msgstr ""
+
+msgid "起點：``123.613/13.2236``"
+msgstr ""
+
+msgid "終點：``123.756/13.2862``"
+msgstr ""
+
+msgid "接下來，我們要使用 ``project`` 這個指令來產生從起點到終點的路徑座標。在「:doc:`layout_design`」中，\\ 我們初次介紹了 ``project`` 的用法，不過那是平面直角座標的狀況。在本例中為求精確，我們要沿著\\ **大圓路徑**\\ 規劃剖面。由於剖面上的每個點，就是等一下我們要計算高度的位置，因此密度也得足夠高才行。試試看在終端機中輸入以下指令，\\ 會看到隨後的輸出："
+msgstr ""
+
+msgid "$ project -C123.613/13.2236 -E123.756/13.2862 -G0.1 -Q\n"
+"123.613        13.2236        0\n"
+"123.613842421  13.2239691076  0.1\n"
+"123.614684845  13.2243382124  0.2\n"
+"123.615527271  13.2247073145  0.3\n"
+"123.6163697    13.2250764138  0.4\n"
+"123.617212132  13.2254455104  0.5\n"
+".... # (以下略)\n"
+"# -Q: 設定 -G 的間隔單位為公里 (地理座標專用，如果不設的話，-G 的單位會與起終點座標相同，也就是角度)\n"
+"# -G: 間隔 0.1 單位取樣\n"
+"# project 預設就是沿著大圓路徑取樣，不需要額外的參數。"
+msgstr ""
+
+msgid "輸出第一欄與第二欄是經緯度，第三欄是與起點的距離 (以公里為單位)。接下來，我們要介紹一個新的指令 ``grdtrack``，\\ 這個指令會接受一連串的「取樣點」，然後對目標的網格檔取樣。因此，把 ``project`` 的輸出座標丟給這個指令後，\\ 它就會幫我們找出網格檔在這些地方的數值 (在本例中也就是高度)。``grdtrack`` 的語法如下所示"
+msgstr ""
+
+msgid "$ grdtrack [至少二欄的檔案或是標準輸入(stdin)] -G輸入網格檔"
+msgstr ""
+
+msgid "``grdtrack`` 預設會讀取輸入資料的前兩欄作為座標。利用管線指令，可以直接把 ``project`` 的輸出傳遞給 ``grdtrack``："
+msgstr ""
+
+msgid "$ project -C123.613/13.2236 -E123.756/13.2862 -G0.1 -Q | grdtrack -Gn13_e123_1arc_v3.grd\n"
+"123.613        13.2236        0    181.307738624\n"
+"123.613842421  13.2239691076  0.1  188.260577788\n"
+"123.614684845  13.2243382124  0.2  191.580201564\n"
+"123.615527271  13.2247073145  0.3  195.183921513\n"
+"123.6163697    13.2250764138  0.4  197.771070118\n"
+"123.617212132  13.2254455104  0.5  208.638871238\n"
+".... # (以下略)"
+msgstr ""
+
+msgid "輸出中新增的第四欄，就是網格檔在給定的座標點上之數值。我們只要把標準輸出利用 ``>`` 轉存到檔案中，就能使用其他的\\ 指令 (如 ``psxy``) 繪製這些數值。我們現在就來在等高線圖上面畫上剖面："
+msgstr ""
+
+msgid "out_ps=\"mayon.ps\"\n"
+"in_grd=\"n13_e123_1arc_v3.grd\"   # 地形資料輸入檔，NetCDF 格式 (轉檔後)\n"
+"in_track=\"mayon_track.xy\"       # 剖面座標的輸入檔\n"
+"\n"
+"# ==== 等高線圖 ====\n"
+"psxy -R0/1/0/1 -JX1c -T -K -P > $out_ps    # 純寫入 PS 檔頭\n"
+"    # 繪製海岸線，然後把海面著色\n"
+"pscoast -R123:30E/123:50E/13:10N/13:21N -JM15c -O -K -Df -Sgray -Wthin >> $out_ps\n"
+"    # 主要等高線是 500 單位間隔，並加上數值標籤 (-A)；次要等高線則是 100 單位間隔 (-C)\n"
+"    # -A+o 數值標籤周圍留白的部份是圓角長方形 (不加 +o 的話是尖角長方形)\n"
+"grdcontour $in_grd -R -J -O -K -C100 -Q100 -A500+f8p,25,darkred+o >> $out_ps\n"
+"\n"
+"# ==== 製作剖面然後繪製在等高線圖上 ====\n"
+"    # 給定起終點的經緯度，以每 0.1 公里為距離，對輸入的網格取樣\n"
+"project -C123.613/13.2236 -E123.756/13.2862 -G0.1 -Q |\\\n"
+"grdtrack -G$in_grd > $in_track\n"
+"    # 輸出的檔是四欄：經度、緯度、距離、輸入網格的 z 值\n"
+"    # psxy 預設使用前兩欄繪圖，所以儘管檔案有四欄資料，我們仍然不用加上任何指定欄位的參數\n"
+"psxy $in_track -R -J -O -K -Wthick,darkred >> $out_ps\n"
+"    # 擺上剖面兩端的編號文字，使用不同對齊方式\n"
+"    # RT：右側靠頂\n"
+"    # LT：左側靠頂\n"
+"pstext -R -J -O -K -F+j+f14p,25,darkred >> $out_ps << TEXTEND\n"
+"123.613 13.2236 RT A\n"
+"123.756 13.2862 LT B\n"
+"TEXTEND\n"
+"    # 加上外框與座標軸標籤\n"
+"psbasemap -R -J -O -K -Ba10m >> $out_ps\n"
+"psxy -R -J -O -T >> $out_ps    # 純寫入 PS 檔尾"
+msgstr ""
+
+msgid "等高線圖就完成了！"
+msgstr ""
+
+msgid "下一步是使用剛才 ``grdtrack`` 取樣的資料，繪製沿著 AB 線的剖面圖。這個相對簡單，只要使用 ``psxy``，指定直角座標 ``-Jx`` 或 ``-JX`` 即可。但我們可能會遇到 2 個問題需要克服："
+msgstr ""
+
+msgid "如何指定 ``psxy`` 的 ``-R``？要手動輸入資料的最大最小值嗎？"
+msgstr ""
+
+msgid "我們要使用剛剛儲存的資料的第 3 與第 4 欄，但這不是 ``psxy`` 預設讀取的資料欄位。"
+msgstr ""
+
+msgid "要解決第一個問題，需要用到一個好用的新指令 ``gmtinfo``。它的功用很類似 ``grdinfo``，只不過 ``grdinfo`` 用來查看網格檔的資訊，而 ``gmtinfo`` 則用來查看文字檔的資訊。如果你已經把 ``grdtrack`` 的輸出資訊存到了 ``mayon_track.xy``，那麼請輸入以下指令"
+msgstr ""
+
+msgid "$ gmtinfo mayon_track.xy\n"
+"  mayon_track.xy: N = 171    <123.613/123.756>    <13.2236/13.2862>\n"
+"  <0/16.9705410195>    <150.632902656/2422.78332276>"
+msgstr ""
+
+msgid "它的預設輸出是「行數 (N)」以及各欄的最大與最小值。這裡我們需要的是第 3 與第 4 欄的最大最小值，\\ 你可以手動輸入到 ``psxy`` 的 ``-R`` 選項，或是使用下列指令取得："
+msgstr ""
+
+msgid "$ gmtinfo mayon_track.xy -i2,3 -I1/100\n"
+"  -R0/17/100/2500\n"
+"  # -i: 選擇欄 2 與欄 3 (因為它從 0 開始編號，所以這也就是第 3 與第 4 欄)\n"
+"  # -I: 傳回與給定的級距最接近的數值。因此，欄 2 的回傳數值會被四捨五入至整數，\n"
+"  #     欄 3 的回傳數值則會是 100 的倍數。"
+msgstr ""
+
+msgid "注意當選項 ``-I`` 設定後，輸出值整個大改變了，符合 -R 的格式，方便之後的運用。因此，我們可以這樣寫腳本："
+msgstr ""
+
+msgid "R=$(gmtinfo $in_track -i2,3 -I1/100)\n"
+"psxy $R -J -O -K 其他設定..."
+msgstr ""
+
+msgid "這樣一來就不用煩惱手動找尋 ``-R`` 選項的問題。"
+msgstr ""
+
+msgid "在舊的 GMT 腳本中，這個功能是由 ``minmax`` 指令負責執行，但在 GMT 5 中，``minmax`` 預計會被 ``gmtinfo`` 逐步取代。因此，如果你使用以下指令取得 ``-R`` 資訊，會出現警告訊息，提醒你要把 ``minmax`` 換成 ``gmtinfo``。"
+msgstr ""
+
+msgid "minmax mayon_track.xy -i2,3 -I1/100"
+msgstr ""
+
+msgid "另外，注意到 ``-i`` 選項是用來指定欄位的，這其實是個共通選項，\\ 意味著你也可以在 ``psxy`` 中使用 ``-i`` 來指定作圖時所需的欄位數值。如此一來，第二個問題也迎刃而解了！完整的\\ 腳本片段如下所示："
+msgstr ""
+
+msgid "out_ps=\"mayon.ps\"\n"
+"in_grd=\"n13_e123_1arc_v3.grd\"   # 地形資料輸入檔，NetCDF 格式 (轉檔後)\n"
+"in_track=\"mayon_track.xy\"       # 剖面座標的輸入檔\n"
+"\n"
+"# ==== 剖面圖 ====\n"
+"psxy -R0/1/0/1 -JX1c -T -K -P > $out_ps    # 純寫入 PS 檔頭\n"
+"    # 使用 gmtinfo 取得 -R 的適當設定\n"
+"R=$(gmtinfo $in_track -i2,3 -I1/100)\n"
+"psxy $in_track -i2,3 $R -JX15c/6c -O -K -Wthick,darkred >> $out_ps\n"
+"psbasemap -R -J -O -K -Bxa5f1+l\"Distance of A-B profile (km)\" -Bya1000+l\"Height (m)\" >> $out_ps\n"
+"psxy -R -J -O -T >> $out_ps    # 純寫入 PS 檔尾"
+msgstr ""
+
+msgid "另一個可能 (但為 Linux 限定) 的辦法是使用 shell 的指令 ``cut``，這個指令用來擷取文字檔中的指定欄位。\\ 在本例中，如果不用 ``-i`` 選項，也可以這樣寫："
+msgstr ""
+
+msgid "cut -f3,4 $in_track | psxy $R -JX15c/6c ..."
+msgstr ""
+
+msgid "至於哪一種比較好，就請讀者依需要自行判斷。"
+msgstr ""
+
+msgid "看起來非常不錯！如果你覺得在剖面圖中，座標軸標籤在四側都有出現實在是非常多餘，想要依照慣例只把座標軸標籤放在左側與下側的話，\\ 必須要使用兩次的 ``psbasemap`` 才行："
+msgstr ""
+
+msgid "    # 先畫 NE 兩面 (沒有座標軸標籤) 的外框，再畫 WS 兩面的外框\n"
+"psbasemap -R -J -O -K -BNE -Bxa5f1  >> $out_ps\n"
+"psbasemap -R -J -O -K -BWS -Bxa5f1+l\"Distance of A-B profile (km)\" -Bya1000+l\"Height (m)\" >> $out_ps"
+msgstr ""
+
+msgid "掌握了如上技巧，就可以把兩個子地圖合起來，完成本章的目標地圖了。最後，為了要讓地理座標的顯示方式和目標地圖一樣，\\ 我們必須要在腳本中使用 ``gmtset`` 來指定地理座標在地圖上的格式："
+msgstr ""
+
+msgid "gmtset FORMAT_GEO_MAP=dddmmF"
+msgstr ""
+
+msgid "這個設定會讓座標刻度以「度、分、方位標 (WNES)」的方式顯示。"
+msgstr ""
+
+msgid "指令稿"
+msgstr ""
+
+msgid "本地圖的最終指令稿如下："
+msgstr ""
+
+msgid "# ==== 設定變數 ====\n"
+"out_ps=\"mayon.ps\"\n"
+"in_tif=\"n13_e123_1arc_v3.tif\"   # 地形資料輸入檔，Geotiff 格式 (轉檔前)\n"
+"in_grd=\"n13_e123_1arc_v3.grd\"   # 地形資料輸入檔，NetCDF 格式 (轉檔後)\n"
+"master_cpt=\"neutral.cpt\"        # cpt 來源\n"
+"in_cpt=\"mayon.cpt\"              # cpt 輸入檔\n"
+"in_shadow=\"mayon_shade.grd\"     # 陰影的輸入檔\n"
+"in_track=\"mayon_track.xy\"       # 剖面座標的輸入檔\n"
+"pen=\"thick,black\"               # 畫筆 - 一般\n"
+"pen_grid=\"thick,black,--\"       # 畫筆 - 網格\n"
+"pen_track=\"thick,darkred\"       # 畫筆 - 剖面\n"
+"font=\"14p,25,black\"             # 字型 - 一般\n"
+"font_title=\"24p,25,black\"       # 字型 - 標題\n"
+"font_text=\"14p,25,darkred\"      # 字型 - 剖面\n"
+"font_contour=\"8p,25,darkred\"    # 字型 - 等高線\n"
+"\n"
+"# ==== 使用 GDAL 轉檔 ====\n"
+"#     如果你的電腦有安裝 GDAL，可把底下指令的註解取消，如此一來就可從 Geotiff 檔直接轉檔繪圖\n"
+"#     如果沒有安裝 GDAL，請直接下載 NetCDF 格式 (.grd) 的輸入檔\n"
+"# gdal_translate $in_tif -of NetCDF $in_grd\n"
+"\n"
+"# ==== 製作輸入檔 ====\n"
+"grdgradient $in_grd -G$in_shadow -A280 -Nt0.5\n"
+"grd2cpt $in_grd -C$master_cpt -Z > $in_cpt\n"
+"\n"
+"# ==== 調整 GMT 預設參數 ====\n"
+"gmtset MAP_FRAME_TYPE=plain \\\n"
+"       FONT_ANNOT_PRIMARY=$font \\\n"
+"       FONT_LABEL=$font \\\n"
+"       FONT_TITLE=$font_title \\\n"
+"       MAP_GRID_PEN_PRIMARY=$pen_grid \\\n"
+"       MAP_TICK_PEN_PRIMARY=$pen \\\n"
+"       MAP_TICK_PEN_SECONDARY=$pen \\\n"
+"       FORMAT_GEO_MAP=dddmmF    # 此設定會讓座標刻度以「度、分、WNES」的方式顯示\n"
+"\n"
+"# ==== 開門 (寫入 PS 檔頭) ====\n"
+"psxy -R0/1/0/1 -JX1c -T -K -P > $out_ps\n"
+"\n"
+"# ==== 等高線圖 ====\n"
+"    # 繪製底圖，順便使用 -Y 把地圖上移 10 公分，預留空間給之後的剖面圖\n"
+"grdimage $in_grd -R123:30E/123:50E/13:10N/13:21N -JM15c -O -K -C$in_cpt -I$in_shadow -Y10c >> $out_ps\n"
+"pscoast -R -J -O -K -Df -Sgray -Wthin >> $out_ps\n"
+"    # 主要等高線是 500 單位間隔，並加上數值標籤 (-A) ；次要等高線則是 100 單位間隔 (-C)\n"
+"grdcontour $in_grd -R -J -O -K -C100 -Q100 -A500+f$font_contour+o >> $out_ps\n"
+"\n"
+"# ==== 製作剖面然後繪製在等高線圖上 ====\n"
+"    # 給定起終點的經緯度，以每 0.1 公里為距離，對輸入的網格取樣\n"
+"project -C123.613/13.2236 -E123.756/13.2862 -G0.1 -Q |\\\n"
+"grdtrack -G$in_grd > $in_track\n"
+"    # 輸出的檔是四欄：經度、緯度、距離、輸入網格的 z 值\n"
+"    # psxy 預設使用前兩欄繪圖\n"
+"psxy $in_track -R -J -O -K -W$pen_track >> $out_ps\n"
+"    # 擺上剖面兩端的編號文字，使用不同對齊方式\n"
+"pstext -R -J -O -K -F+j+f$font_text >> $out_ps << TEXTEND\n"
+"123.613 13.2236 RT A\n"
+"123.756 13.2862 LT B\n"
+"TEXTEND\n"
+"psbasemap -R -J -O -K -Ba10m -B+t\"Mayon Volcano\" >> $out_ps\n"
+"\n"
+"# ==== 剖面圖 ====\n"
+"    # 使用 gmtinfo 取得 -R 的適當設定\n"
+"R=$(gmtinfo $in_track -i2,3 -I1/100)\n"
+"    # 使用 -Y 把剖面圖下移 8 公分\n"
+"psxy $in_track -i2,3 $R -JX15c/6c -O -K -W$pen_track -Y-8c >> $out_ps\n"
+"    # 先畫 NE 兩面 (沒有座標軸標籤) 的外框，再畫 WS 兩面的外框\n"
+"psbasemap -R -J -O -K -BNE -Bxa5f1 -Bya1000f500g1000 >> $out_ps\n"
+"psbasemap -R -J -O -K -BWS -Bxa5f1+l\"Distance of A-B profile (km)\" -Bya1000+l\"Height (m)\" >> $out_ps\n"
+"\n"
+"# ==== 關門 (寫入 EOF) ====\n"
+"psxy -R -J -O -T >> $out_ps\n"
+"# rm -rf gmt.conf    # <---- 此行可用於消除舊的組態設定檔"
+msgstr ""
+
+msgid "「繪製等高線圖與地形剖面圖。使用 SRTM 從 Geotiff 格式轉檔為 NetCDF 的 1 弧秒解析度高程資料，先製作陰影檔和色階檔，再使用 ``grdimage`` 製作底圖。接下來，使用 ``grdcontour`` 把等高線也疊加上去。只要設定剖面的起點和終點，就可以使用 ``project`` 和 ``grdtrack`` 產生剖面路徑和剖面高度，最後再把剖面也一併畫到底圖上。至於剖面圖，使用 ``psxy`` 繪製即可，但使用一些小技巧， 例如 ``gmtinfo`` 取得 xy 的範圍，可讓作圖更有效率。最後，地圖上也展示了一些繪製座標軸標籤時常使用的技巧。」"
+msgstr ""
+
+msgid "觀看\\ `最終版地圖`_"
+msgstr ""
+
+msgid "習題"
+msgstr ""
+
+msgid "請自行下載 SRTM 地形資料，繪製美國大理石峽谷 (Marble Canyon: **36.816 N, 111.638 W**) 週邊的等高線地形暈渲圖。 這個地方是科羅拉多大峽谷的起點，河川下切作用\\ 強烈，但側向發育的狀況才剛起步。選擇一條切穿峽谷的剖面，繪製剖面地圖並找出原本的地形面 (河川兩側平坦的地形) 海拔。注意地形面\\ 可能會有好幾組！最後，找出目前科羅拉多河的河床高度，估計河川至少把原本的地形面下切了多少公尺。"
+msgstr ""
+
+msgid "大理石峽谷的 Google Maps 衛星影像。注意那條深色的「東西」，這是峽谷的斜坡，科羅拉多河從中央流過，但細得你看不到。如果繪製等高線， 在深色區域裡線的密度將會極高。好好享受這大自然的藝術作品！"
+msgstr ""
+
+msgid "Karátson, D., Favalli, M., Tarquini, S., Fornaciai, A., Wörner, G., `The regular shape of stratovolcanoes: A DEM-based morphometrical approach <http://www.sciencedirect.com/science/article/pii/S0377027310001058?np=y>`_, Journal of Volcanology and Geothermal Research, Vol. 193, Issues 3–4, 20 June 2010, Pages 171-181, ISSN 0377-0273, http://dx.doi.org/10.1016/j.jvolgeores.2010.03.012."
+msgstr ""

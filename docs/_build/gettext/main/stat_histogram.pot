@@ -1,0 +1,38 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-07-26 21:56+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "輸出統計資訊與直方圖"
+msgstr ""
+
+msgid "目標"
+msgstr ""
+
+msgid "使用的指令與概念"
+msgstr ""
+
+msgid "前置作業"
+msgstr ""
+
+msgid "操作流程"
+msgstr ""
+
+msgid "指令稿"
+msgstr ""
+
+msgid "習題"
+msgstr ""

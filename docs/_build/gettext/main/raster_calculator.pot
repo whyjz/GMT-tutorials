@@ -1,0 +1,121 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-07-26 21:56+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "網格計算機"
+msgstr ""
+
+msgid "目標"
+msgstr ""
+
+msgid "直接觀看\\ `指令稿`_"
+msgstr ""
+
+msgid "使用的指令與概念"
+msgstr ""
+
+msgid "``psxy`` - 輸出檔頭與檔尾"
+msgstr ""
+
+msgid "``grdmath`` - **對網格檔進行數值運算**"
+msgstr ""
+
+msgid "``grdimage`` - 繪製著色影像"
+msgstr ""
+
+msgid "``psscale`` - 繪製色階條"
+msgstr ""
+
+msgid "``pstext`` - 在地圖上加入文字"
+msgstr ""
+
+msgid "``makecpt`` - 製作或調整色階檔"
+msgstr ""
+
+msgid "``psconvert`` - 把 ps 檔轉成 png 檔"
+msgstr ""
+
+msgid "外部指令 ``echo`` - 把資料輸入到管線命令中"
+msgstr ""
+
+msgid "前置作業"
+msgstr ""
+
+msgid "操作流程"
+msgstr ""
+
+msgid "指令稿"
+msgstr ""
+
+msgid "本地圖的最終指令稿如下："
+msgstr ""
+
+msgid "out_ps=\"rosenvalle.ps\"\n"
+"putlabel=\"pstext -R -J -O -K -F+jCM+f14p,15,black\"\n"
+"psxy -R0/1/0/1 -JX1c -T -K -P > $out_ps\n"
+"\n"
+"\n"
+"in_grd=\"rosenvalle.grd\"\n"
+"cpt=\"DEM_poster.cpt\"\n"
+"\n"
+"grdmath -R-2/2/-1/3 -I0.01 1 X SUB SQR 100 Y X SQR SUB SQR MUL ADD = $in_grd\n"
+"grdimage $in_grd -R-2/2/-1/3 -JX3i -Y4i -O -K -C$cpt -Ba1 -BWSne >> $out_ps\n"
+"psscale -O -K -C$cpt -D1.5i/-0.4i/2i/0.5ch -G0/3000 -Bxa1500 >> $out_ps\n"
+"echo 0 -0.7 Topo \\(Bathymetry\\) | $putlabel >> $out_ps\n"
+"\n"
+"\n"
+"in_grd2=\"rosenvalle_slope.grd\"\n"
+"cpt2=\"slope.cpt\"\n"
+"makecpt -Crainbow -T0/4000/500 -Z > $cpt2\n"
+"\n"
+"grdmath $in_grd DDX SQR $in_grd DDY SQR ADD SQRT = $in_grd2\n"
+"grdimage $in_grd2 -R -J -O -K -X4i -C$cpt2 -Ba1 -BWSne >> $out_ps\n"
+"echo 0 -0.7 Surface slope | $putlabel >> $out_ps\n"
+"\n"
+"\n"
+"in_grd3=\"rosenvalle_watersurface.grd\"\n"
+"cpt3=\"DEM_poster_waterlevel.cpt\"\n"
+"makecpt -C$cpt -G21/NaN -M --COLOR_BACKGROUND=cornflowerblue > $cpt3\n"
+"\n"
+"grdmath $in_grd $in_grd 20 GT MUL 20 $in_grd 20 LE MUL ADD  = $in_grd3\n"
+"grdimage $in_grd3 -R -J -O -K -X-4i -Y-4i -C$cpt3 -Ba1 -BWSne >> $out_ps\n"
+"echo 0 -0.7 Topo \\(Water surface\\) | $putlabel >> $out_ps\n"
+"\n"
+"\n"
+"in_grd4=\"rosenvalle_waterdepth.grd\"\n"
+"cpt4=\"DEM_poster_waterdepth.cpt\"\n"
+"makecpt -Cocean -I -T0/25/1 -Z > $cpt4\n"
+"\n"
+"grdmath $in_grd3 $in_grd SUB  = $in_grd4\n"
+"grdimage $in_grd4 -R -J -O -K -X4i -C$cpt4 -Ba1 -BWSne >> $out_ps\n"
+"psscale -O -K -C$cpt4 -D1.5i/3.6i/2i/0.5ch -G0/20 -Bxa10 >> $out_ps\n"
+"echo 0 -0.7 Water depth | $putlabel >> $out_ps\n"
+"\n"
+"\n"
+"psxy -R0/1/0/1 -JX1c -O -T >> $out_ps\n"
+"\n"
+"psconvert $out_ps -A -P -Tg"
+msgstr ""
+
+msgid "「」"
+msgstr ""
+
+msgid "觀看\\ `最終版地圖`_"
+msgstr ""
+
+msgid "習題"
+msgstr ""

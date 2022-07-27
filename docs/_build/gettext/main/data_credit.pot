@@ -1,0 +1,44 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-07-26 21:56+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "資料來源與參考文獻"
+msgstr ""
+
+msgid "(依照章節次序排列)"
+msgstr ""
+
+msgid "Wessel, P., and Smith, W. H. F. (1991). Free software helps map and display data, EOS Trans. AGU, 72(41), 445–446. `doi.org/10.1029/90EO00319 <http://doi.org/10.1029/90EO00319>`_."
+msgstr ""
+
+msgid "Wessel, P., Luis, J., Uieda, L., Scharroo, R., Wobbe, F., Smith, W. H. F., and Tian, D. (2019). The Generic Mapping Tools Version 6. Geochemistry, Geophysics, Geosystems, 20. `doi.org/10.1029/2019GC008515 <http://doi.org/10.1029/2019GC008515>`_."
+msgstr ""
+
+msgid "Tozer, B., Sandwell, D. T., Smith, W. H. F., Olson, C., Beale, J. R., Wessel., P. (2019). Global bathymetry and topography at 15 arc seconds: SRTM15+, Earth and Space Science 6(10), 1847--1864. `doi.org/10.1029/2019EA000658 <http://doi.org/10.1029/2019EA000658>`_. (GMT 的線上地形資料庫)"
+msgstr ""
+
+msgid "``mby`` 色階檔 (:doc:`coloring_topography`) 由 `Cpt-city <http://soliton.vm.bytemark.co.uk/pub/cpt-city/index.html>`_ 所提供。"
+msgstr ""
+
+msgid "竹子湖與蘇澳測站資料取自 `CODiS 觀測資料查詢系統 <http://e-service.cwb.gov.tw/HistoryDataQuery/index.jsp>`_。 由台灣中央氣象局建立及維護。取得日期：2016.04.02。 (:doc:`scatter_plot`)"
+msgstr ""
+
+msgid ":doc:`hillshading`: Sandwell, D. T., R. D. Müller, W. H. F. Smith, E. Garcia, R. Francis, `New global marine gravity model from CryoSat-2 and Jason-1 reveals buried tectonic structure <http://www.sciencemag.org/content/346/6205/65>`_, Science, Vol. 346, no. 6205, pp. 65-67, `doi: 10.1126/science.1258213 <http://dx.doi.org/10.1126/science.1258213>`, 2014. [`Website <http://topex.ucsd.edu/grav_outreach/>`_, accessed on 2016/5/16]."
+msgstr ""
+
+msgid ":doc:`editing_cpt_colorbar`: Amante, C. and B.W. Eakins, 2009. ETOPO1 1 Arc-Minute Global Relief Model: Procedures, Data Sources and Analysis. NOAA Technical Memorandum NESDIS NGDC-24. National Geophysical Data Center, NOAA. doi:10.7289/V5C8276M [accessed on 2016/1/21]."
+msgstr ""

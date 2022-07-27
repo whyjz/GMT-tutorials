@@ -1,0 +1,242 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-07-26 21:56+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "指令索引"
+msgstr ""
+
+msgid "``gmtdefaults``"
+msgstr ""
+
+msgid ":doc:`layout_design` - **查看 GMT 的預設作圖參數**"
+msgstr ""
+
+msgid "``gmtinfo``"
+msgstr ""
+
+msgid ":doc:`contour_and_profile` - **由數值資料的純文字檔建立** `-R` **設定**"
+msgstr ""
+
+msgid "``gmtset``"
+msgstr ""
+
+msgid ":doc:`layout_design` - **更改 GMT 的預設作圖參數**"
+msgstr ""
+
+msgid ":doc:`hillshading` - **更改 GMT 的預設作圖參數**"
+msgstr ""
+
+msgid ":doc:`contour_and_profile` - 更改 GMT 的預設作圖參數"
+msgstr ""
+
+msgid ":doc:`map_elements` - 更改 GMT 的預設作圖參數"
+msgstr ""
+
+msgid "``grd2cpt``"
+msgstr ""
+
+msgid ":doc:`editing_cpt_colorbar` - **使用網格檔的資訊建立色階檔**"
+msgstr ""
+
+msgid ":doc:`hillshading` - **使用網格檔的資訊建立離散色階檔**"
+msgstr ""
+
+msgid ":doc:`contour_and_profile` - 使用網格檔的資訊建立色階檔"
+msgstr ""
+
+msgid "``grdcontour``"
+msgstr ""
+
+msgid ":doc:`contour_and_profile` - **繪製等高線與其數值標籤**"
+msgstr ""
+
+msgid "``grdgradient``"
+msgstr ""
+
+msgid ":doc:`hillshading` - **計算網格檔的梯度與照明值**"
+msgstr ""
+
+msgid ":doc:`contour_and_profile` - 計算網格檔的梯度與照明值"
+msgstr ""
+
+msgid "``grdimage``"
+msgstr ""
+
+msgid ":doc:`coloring_topography` - **繪製著色影像**"
+msgstr ""
+
+msgid ":doc:`pen_and_painting` - **繪製著色影像**"
+msgstr ""
+
+msgid ":doc:`editing_cpt_colorbar` - **繪製著色影像**"
+msgstr ""
+
+msgid ":doc:`hillshading` - **繪製暈渲圖**"
+msgstr ""
+
+msgid ":doc:`contour_and_profile` - 繪製暈渲圖"
+msgstr ""
+
+msgid ":doc:`map_elements` - **以 RGB 資料進行繪圖**"
+msgstr ""
+
+msgid "``grdinfo``"
+msgstr ""
+
+msgid ":doc:`coloring_topography` - **查閱網格檔的基本資訊**"
+msgstr ""
+
+msgid ":doc:`editing_cpt_colorbar` - **查閱網格檔的基本資訊**"
+msgstr ""
+
+msgid ":doc:`map_elements` - **由網格資料建立** `-R` **設定**"
+msgstr ""
+
+msgid "``grdtrack``"
+msgstr ""
+
+msgid ":doc:`contour_and_profile` - **給定座標，對網格檔取樣**"
+msgstr ""
+
+msgid "``img2grd``"
+msgstr ""
+
+msgid ":doc:`hillshading` - **把 Sandwell/Smith 麥卡托 .img 檔轉成 NetCDF 格式**"
+msgstr ""
+
+msgid "``makecpt``"
+msgstr ""
+
+msgid ":doc:`pen_and_painting` - **製作或調整色階檔**"
+msgstr ""
+
+msgid ":doc:`editing_cpt_colorbar` - **編修色階檔**"
+msgstr ""
+
+msgid ":doc:`plot_vector_data` - **製作含有透明度設定的色階檔**"
+msgstr ""
+
+msgid "``project``"
+msgstr ""
+
+msgid ":doc:`layout_design` - **產生路徑座標**"
+msgstr ""
+
+msgid ":doc:`contour_and_profile` - **產生以公里為單位的路徑座標**"
+msgstr ""
+
+msgid "``basemap``"
+msgstr ""
+
+msgid ":doc:`scatter_plot` - **設定繪圖區、座標軸與邊框**"
+msgstr ""
+
+msgid ":doc:`layout_design` - 設定繪圖區、座標軸與邊框"
+msgstr ""
+
+msgid ":doc:`hillshading` - 設定繪圖區、座標軸與邊框"
+msgstr ""
+
+msgid ":doc:`contour_and_profile` - 設定繪圖區、座標軸與邊框"
+msgstr ""
+
+msgid ":doc:`map_elements` - **添加不同的地圖元素**"
+msgstr ""
+
+msgid "``coast``"
+msgstr ""
+
+msgid ":doc:`making_first_map` - **繪製海岸線**"
+msgstr ""
+
+msgid ":doc:`coloring_topography` - **繪製河流、湖泊與國界**"
+msgstr ""
+
+msgid ":doc:`pen_and_painting` - **為國家上色**"
+msgstr ""
+
+msgid ":doc:`editing_cpt_colorbar` - **沿著海岸線裁剪地圖**"
+msgstr ""
+
+msgid ":doc:`layout_design` - 繪製海岸線與國界"
+msgstr ""
+
+msgid ":doc:`hillshading` - 繪製海岸線與陸域填色"
+msgstr ""
+
+msgid ":doc:`contour_and_profile` - 繪製海岸線與海域填色"
+msgstr ""
+
+msgid ":doc:`map_elements` - 繪製海岸線、國界與海域填色"
+msgstr ""
+
+msgid "``psconvert``"
+msgstr ""
+
+msgid ":doc:`plot_vector_data` - **把 ps 檔轉成 png 檔並保留透明度設定**"
+msgstr ""
+
+msgid ":doc:`map_elements` - 把 ps 檔轉成 png 檔並保留透明度設定"
+msgstr ""
+
+msgid "``colorbar`` (GMT 5 及之前：``psscale``)"
+msgstr ""
+
+msgid ":doc:`editing_cpt_colorbar` - **繪製色階條**"
+msgstr ""
+
+msgid ":doc:`hillshading` - 繪製色階條"
+msgstr ""
+
+msgid "``text``"
+msgstr ""
+
+msgid ":doc:`scatter_plot` - **在圖上標記文字**"
+msgstr ""
+
+msgid ":doc:`layout_design` - **詳細的設定標記在圖上的文字**"
+msgstr ""
+
+msgid ":doc:`hillshading` - **在圖上標記不同類型的文字**"
+msgstr ""
+
+msgid ":doc:`contour_and_profile` - 在地圖上加入文字"
+msgstr ""
+
+msgid ":doc:`map_elements` - 在地圖上加入文字"
+msgstr ""
+
+msgid "``plot`` (GMT 5 及之前：``psxy``)"
+msgstr ""
+
+msgid ":doc:`scatter_plot` - **繪製點、線與多邊形；輸出檔頭與檔尾**"
+msgstr ""
+
+msgid ":doc:`layout_design` - **在地理座標系統上畫點和線**"
+msgstr ""
+
+msgid ":doc:`hillshading` - 輸出檔頭與檔尾"
+msgstr ""
+
+msgid ":doc:`contour_and_profile` - 輸出檔頭與檔尾、繪製折線"
+msgstr ""
+
+msgid ":doc:`plot_vector_data` - **繪製線段與多邊形**、輸出檔頭與檔尾"
+msgstr ""
+
+msgid ":doc:`map_elements` - 輸出檔尾"
+msgstr ""

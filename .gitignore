@@ -1,4 +1,6 @@
-docs/_build
+docs/_build/html
+docs/_build/gettext/_sphinx_design_static
 *.mo
+.doctrees
 .ipynb_checkpoints
 docs/conf.py
