@@ -23,6 +23,19 @@
     display: none;
 } */
 
+/*========================================================*/
+/* root settings for font size, color, and family */
+/*========================================================*/
+
+:root {
+    --pst-color-sidebar-caption: 242, 242, 242;  /* 左側章節群組標題 #f2f2f2 (95% 白) */
+    /* sidebar 字體的百分比由 --sbt-font-size-small-1 和 --sbt-font-size-small-1 定義  */
+    --pst-sidebar-font-size: 1em;     /* 左側章節字體大小 1 * 87.5 = 0.875 em (14px) */
+    --pst-sidebar-caption-font-size: 1.143em;    /* 左側章節群組標題字體大小 1.143 * 87.5% = 1 em (16px) */
+    /* 加入 Varela Round (from Google Fonts) */
+    --pst-font-family-base-system: Varela Round, -apple-system, Segoe UI, "Helvetica Neue", Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+    --sbt-prevnext-font-size: var(--sbt-font-size-regular);   /* make prevnext font bigger (14px) */
+}
 
 
 /*========================================================*/
@@ -31,7 +44,7 @@
 
 /* 顏色: ---------------------------------------------------
 上段區塊背景: #059B7D (薄荷綠)
-下段區塊背景: #343131 (深灰)
+下段區塊背景: #493b3b (灰巧克力)
 懸停時的文字: #66b3ff (淺藍)
 一般文字: #bfbfbf (75% 白)
 高亮文字: #f2f2f2 (95% 白) 
@@ -39,7 +52,7 @@
 
 /* Set lower left sidebar background color and make x-axis not scrollable*/
 .bd-sidebar__content {
-    background-color: #343131;
+    background-color: #493b3b;
     overflow-x: hidden;
 }
     
@@ -93,19 +106,57 @@ div.navbar-brand-box {
     color: #f2f2f2;
 }
 
-:root {
-    --pst-color-sidebar-caption: 242, 242, 242;  /* 左側章節群組標題 #f2f2f2 (95% 白) */
-    --pst-sidebar-font-size: 1em;     /* 左側章節字體大小 */
-    --pst-sidebar-caption-font-size: 1.1em;    /* 左側章節群組標題字體大小 */
-    /* 加入 Varela Round (from Google Fonts) */
-    --pst-font-family-base-system: Varela Round, -apple-system, Segoe UI, "Helvetica Neue", Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
-}
-
 /* Left schollbar width is set to 0 so that green and gray area have the same width on Google Chrome */
 #site-navigation .bd-sidebar__content::-webkit-scrollbar {
     width: 0rem;
 }
 
+/* navigation bar extra footer */
+#site-navigation div.navbar_extra_footer {
+    margin-bottom: 1.5em;
+    color: #bfbfbf;    /* 75% 白 */
+    font-size: 1em; /* 1 em * 87.5% = 0.875 em (14 px) */
+}
+
+/* link in navigation bar extra footer */
+#site-navigation div.navbar_extra_footer a {
+    color: #66b3ff;    /* 淺藍 */
+}
+
+/* link in navigation bar extra footer (when hovering) */
+#site-navigation div.navbar_extra_footer a:hover {
+    color: #66b3ff;    /* 淺藍 */
+}
+
+/*========================================================*/
+/* Right navigation bar settings */
+/*========================================================*/
+
+/* Increase font size a little bit */
+.toc-h2 {
+    font-size: 0.95 rem;
+}
+
+.toc-h3 {
+    font-size: 0.8 rem;
+}
+
+
+/*========================================================*/
+/* Preview-Next area settings */
+/*========================================================*/
+
+.prev-next-area a p.prev-next-title {
+    font-size: 1.143em;   /* *0.875 ~16px */
+}
+
+/*========================================================*/
+/* Main text area settings */
+/*========================================================*/
+
+p {
+    margin-top: 1.15rem;   /* give some space between a figure and a following paragraph */
+}
 
 /*========================================================*/
 /* I18n -- langugae manu settings */
@@ -144,7 +195,8 @@ div.navbar-brand-box {
 /*----- Bottom Level -----*/
 /* 在主語言懸停時出現語言選單 */
 .menu li:hover .sub-menu {
-    z-index:1;
+    z-index: 1;
+    opacity: 1;    /* for transition */
 }
 
 /* 語言選單的外觀 */
@@ -154,9 +206,10 @@ div.navbar-brand-box {
     position: absolute;
     top:80%;
     z-index:-1;
-    transition:opacity linear 0.15s;
+    opacity: 0;    /* for transition */
+    transition: opacity linear 0.2s;
     box-shadow:0px 2px 3px rgba(0,0,0,0.2);
-    background:#343131;
+    background:#4e4040; /* 比 493b3b 稍淺的灰巧克力色 */
 }
  
 /* 語言選單中列表的外觀 (顏色 75% 白) */
