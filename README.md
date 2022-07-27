@@ -9,20 +9,17 @@
 
 # 有關於此儲存庫 (About This Repository)
 
-這裡為「GMT 教學手冊」網站的文本檔 (包含文字、腳本、圖片)，除了 README.md 之外，文檔皆以 *re***Structured***Text* 格式撰寫而成，再以 [Sphinx](http://www.sphinx-doc.org/en/stable/index.html) 編譯。
+這裡為「GMT 教學手冊」網站的文本檔 (包含文字、腳本、圖片)，使用 *re***Structured***Text* 與 MyST 格式混合撰寫，以 [Jupyter Book](https://jupyterbook.org/) 編譯。
 
-- `SOURCE_DOCS/xxx.rst`: 各章節文檔
-- `SOURCE_DOCS/locale/en/`: 英文翻譯檔
-- `SOURCE_DOCS/xxx/`: 各章節所需的圖片、輸入檔以及最終的 bash 腳本
-- `_build/`: 編譯過的文檔
+- `docs/`: 文檔設定、首頁、HTML 外觀調整與插入元件
+- `docs/main/`: 文檔內容
+- `docs/locale/`: 供翻譯作業的檔案
 
-This repo hosts the source files (text, scripts, and images) of the website "GMT Tutorials". All the text (expect for the README.md itself) is in *re***Structured***Text* format and is built using [Sphinx](http://www.sphinx-doc.org/en/stable/index.html).
+This repo hosts the source files (text, scripts, and images) of the website "GMT Tutorials". The documents are in *re***Structured***Text* and MyST format and are built using [Jupyter Book](https://jupyterbook.org/).
 
-
-- `SOURCE_DOCS/xxx.rst`: text file for each chapter (webpage)
-- `SOURCE_DOCS/locale/en/`: English translation files
-- `SOURCE_DOCS/xxx/`: figures, sources for plotting, and the final bash script for each chapter
-- `_build/`: html documentation
+- `docs/`: documentation settings, index page, HTML appearances and plugins
+- `docs/main/`: main content
+- `docs/locale/`: files for translating into other languages
 
 # 簡介 (Introduction)
 
@@ -36,46 +33,26 @@ In these tutorials, we will explore basic knowledge of GMT and useful plotting s
 
 # 編譯文本 (How to build the files to html)
 
-首先需安裝 Sphinx。我推薦先安裝 [Anaconda](https://www.anaconda.com/products/individual)，再使用 ```conda``` 指令安裝。
+需安裝 Jupyter Book 以及 sphinx-inline-tabs。前者可使用 ```conda``` 或 ```pip``` 安裝，後者可透過 ```pip``` 安裝。
 
-Firstly you will need Sphinx. I recommend installing [Anaconda](https://www.anaconda.com/products/individual) first and then installing Sphinx using the ```conda``` command.
-
-```
-$ conda install sphinx
-```
-
-再來使用 ```pip``` 安裝剩下需要的模組：
-
-And then use ```pip``` to install the remaining necessary modules:
+The documentation needs Jupyter Book and sphinx-inline-tabs to build. The former is available through ```conda``` or ```pip```, and the latter can be installed using ```pip```..
 
 ```
-$ pip install sphinx_rtd_theme sphinx-intl
+$ pip install jupyter-book sphinx-inline-tabs
 ```
 
-開始編譯 HTML:
+開始編譯 HTML，在儲存庫根目錄下執行以下指令:
 
-Start building HTML:
+Start building HTML by running this command in the root path of this repository:
 
 
 ```
-# 前往 Makefile 所在資料夾，也就是根目錄 
-# (Go to where the Makefile is located, which should be the root of this repo)
-# 編譯中文文本 (build Chinese html)
-make html
-    # 文本會產生在 _build/html/ 底下 (html would be at _build/html/)
-
-# 編譯英文文本 (make English html)
-make gettext
-sphinx-intl update -p _build/locale -l en
-    # 前往 locale/en/ 翻譯文檔後... (Go to locate/en/ and translate them. After that...)
-make -e SPHINXOPTS="-D language='en'" BUILDSURFIX="/en" html
-    # 文本會產生在 _build/html/en/ 底下 (html would at _build/html/en/)
-
-# 修改 CSS 與添加額外的網頁設計 (Modify CSS and add more web design)
-bash decorate.bash
-
-# 完成！ (Finished!!)
+$ bash generate_html.bash
 ```
+
+編譯完成的 HTML 網頁會儲存在 `docs/_build/html/` 之中。
+
+The compiled HTML pages would be stored in `docs/_build/html/`.
 
 # 授權 (License)
 
