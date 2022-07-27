@@ -4,7 +4,19 @@ channels:
   - conda-forge
   - defaults
 dependencies:
+  - python>=3.9
+  - jupyterlab>=3.4.3
   - gmt
   - dcw-gmt
   - gshhg-gmt
   - pygmt
+  - pip
+  - sos
+  - sos-notebook 
+  - sos-python 
+  - sos-bash
+  - jupyterlab-sos
+  - pandas
+  - matplotlib
+  - pip:
+    - calysto_bash

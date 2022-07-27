@@ -1,0 +1,58 @@
+title           : GMT 教學手冊
+author          : <a href="https://whyjz.github.io/">鄭懷傑 (Whyjay Zheng)</a> | <a href="https://twitter.com/WhyjayZ"><i class="fa-brands fa-twitter"></i></a>
+# copyright       : " "      # See html --> extra_footer
+# logo           : images/index_banner_logo.png
+# exclude_patterns: [_build, "**.ipynb_checkpoints", "**pygmt.ipynb", "**making_first_map_working.ipynb"]
+only_build_toc_files: true
+
+html:
+  favicon: favicon.ico
+  home_page_in_navbar: false
+  use_edit_page_button: false
+  use_repository_button: true
+  use_issues_button: false
+  baseurl: https://gmt-tutorials.org
+  extra_footer: |
+    &copy; 2016-2022. <a href="https://github.com/whyjz/GMT-tutorials/blob/master/LICENSE.md">MIT</a> 
+    and <a href="http://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</a> dual licensed. <br>
+    Found this tutorial helpful? <a href="https://www.paypal.com/donate?hosted_button_id=68GZNRJ3MZDBE">Buy me a milktea!</a>
+
+# bibtex_bibfiles:
+#  - refs.bib
+
+# bibtex_reference_style: author_year
+
+repository:
+  url: https://github.com/whyjz/GMT-tutorials
+  branch: jb
+  path_to_book: docs
+
+# launch_buttons:
+#   notebook_interface: "jupyterlab" # The interface interactive links will activate ["classic", "jupyterlab"]
+#   binderhub_url: "https://mybinder.org"
+#   # thebe: true
+  
+# execute:
+#   execute_notebooks : 'off'
+#   timeout           : 30
+#   allow_errors      : false
+
+sphinx:
+  extra_extensions:
+  - sphinx_inline_tabs
+  config:
+    language: zh_TW
+    html_last_updated_fmt: '%b %d, %Y'
+    html_show_copyright: false
+    html_search_language: ja     # 才能正確 parse 詞語
+    html_css_files: ["https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"]    # for FontAwesome 6.1 icons (the defaults are version 5)
+        # see https://sphinx-design.readthedocs.io/en/latest/badges_buttons.html
+    # html_theme_options:
+      # toc_title: 段落
+    # i18n
+    nb_render_priority:
+      gettext: {}
+    locale_dirs: ['locale/']
+    gettext_compact: false
+    gettext_additional_targets: ['literal-block']
+    gettext_location: false

@@ -1,0 +1,54 @@
+format: jb-book
+root: index
+parts:
+- caption: 入門與概述
+  numbered: true
+  chapters:
+  - file: main/intro_install
+  - file: main/software
+  - file: main/basic_concept
+
+- caption: 基本繪圖技巧
+  numbered: true
+  chapters:
+  - file: main/making_first_map
+  - file: main/coloring_topography
+  - file: main/pen_and_painting
+  - file: main/scatter_plot
+
+- caption: 製作各種常見的地圖（基礎）
+  numbered: true
+  chapters:
+  - file: main/cpt_colormap
+  - file: main/plot_vector_data
+  - file: main/layout_design
+  - file: main/hillshading
+  - file: main/contour_and_profile
+  - file: main/map_elements
+
+- caption: 製作各種常見的地圖（進階）
+  numbered: true
+  chapters:
+  - file: main/editing_cpt_colorbar
+  - file: main/view3d
+  - file: main/focal_mech
+  - file: main/draping
+
+- caption: 網格資料處理
+  numbered: true
+  chapters:
+  - file: main/raster_calculator
+  - file: main/basic_img_processing
+
+- caption: 數值資料處理
+  numbered: true
+  chapters:
+  - file: main/stat_histogram
+  - file: main/regression_basics
+
+- caption: 附錄與學習資源
+  numbered: true
+  chapters:
+  - file: main/data_credit
+  - file: main/command_index
+  - file: main/gallery

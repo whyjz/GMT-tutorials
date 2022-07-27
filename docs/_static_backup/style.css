@@ -1,0 +1,53 @@
+/*.wy-side-scroll 左側的所有部份 不包含搜尋*/
+/*.rst-content 右側的所有部份 不包含大標題*/
+/*.section 右側內文與目錄*/
+/*h1 右側大標題*/
+/*form.wy-form input 左側的搜尋*/
+
+div.highlight pre {
+    font-family: Consolas,"Andale Mono WT","Andale Mono","Lucida Console","Lucida Sans Typewriter","DejaVu Sans Mono","Bitstream Vera Sans Mono","Liberation Mono","Nimbus Mono L",Monaco,"Courier New","cwtexqyuan";
+    font-weight: 500;
+    font-size: 0.85em;
+}
+
+.pre {
+    font-family: Consolas,"Andale Mono WT","Andale Mono","Lucida Console","Lucida Sans Typewriter","DejaVu Sans Mono","Bitstream Vera Sans Mono","Liberation Mono","Nimbus Mono L",Monaco,"Courier New","cwtexqyuan";
+    font-weight: 500;
+    font-size: 1.2em;
+}
+
+form.wy-form input {
+    font-family: "Varela Round", "cwtexqyuan";
+    font-weight: 500;
+}
+
+.wy-side-scroll {
+    font-family: "Varela Round", "cwtexqyuan";
+    font-weight: 500;
+}
+
+.rst-content {
+    font-family: "Varela Round", "sourcehansans-tc";
+    font-weight: 200;
+}
+
+li {
+    font-family: "Varela Round", "sourcehansans-tc";
+    font-weight: 200;
+    font-size: 1em;
+}
+
+h1 {
+    font-family: "Varela Round", "xingothic-tc";
+    font-weight: 700;
+}
+
+h2 {
+    font-family: "Varela Round", "xingothic-tc";
+    font-weight: 700;
+}
+
+h3 {
+    font-family: "Varela Round", "xingothic-tc";
+    font-weight: 700;
+}

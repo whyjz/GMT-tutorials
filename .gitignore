@@ -1,9 +1,4 @@
-_build/[dh]*
-_build/locale/.doctrees/*
-*~
-todolist.txt
+docs/_build
 *.mo
-.zanata-cache
-.zanata-cache/*
 .ipynb_checkpoints
-locales
+docs/conf.py

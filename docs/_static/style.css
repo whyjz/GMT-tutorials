@@ -1,0 +1,246 @@
+/*========================================================*/
+/* Justfont settings (webfont for Chinese characters) */
+/*========================================================*/
+.jf-loading body { /*載入中不顯示*/
+      opacity: 0;
+      visibility: hidden;
+}
+.jf-active body { /*如果處理成功，直接顯示*/
+      opacity: 1;
+      visibility: visible;
+}
+.jf-inactive body {/*如果處理失敗，直接顯示*/
+      opacity: 1;
+      visibility: visible;
+}
+
+
+
+/*========================================================*/
+/* Disable right sidebar (TOC) -- for now, let's keet ip */
+/*========================================================*/
+/* .bd-toc {
+    display: none;
+} */
+
+
+
+/*========================================================*/
+/* Left navigation bar settings */
+/*========================================================*/
+
+/* 顏色: ---------------------------------------------------
+上段區塊背景: #059B7D (薄荷綠)
+下段區塊背景: #343131 (深灰)
+懸停時的文字: #66b3ff (淺藍)
+一般文字: #bfbfbf (75% 白)
+高亮文字: #f2f2f2 (95% 白) 
+--------------------------------------------------------- */
+
+/* Set lower left sidebar background color and make x-axis not scrollable*/
+.bd-sidebar__content {
+    background-color: #343131;
+    overflow-x: hidden;
+}
+    
+/* Set upper left sidebar padding */
+#site-navigation .bd-sidebar__top {
+    padding: 0;
+}
+
+/* Set upper left sidebar (logo) color and clip */
+div.navbar-brand-box {
+    background-color: #059B7D;
+    background-clip: border-box;
+}
+
+/* Set upper left sidebar (search box) color and padding */
+.bd-search {
+    background-color: #059B7D;
+    padding-left: 1rem;
+    padding-right: 2rem;
+}
+
+/* Relevant adjustments for the search box icon */
+.bd-search .icon {
+    position: relative
+}
+
+/* edge roundness and shoadow for the search box */
+.bd-search input {
+    border-radius: 2rem;
+    box-shadow: inset 0 0 4px 1px #888
+}
+
+/* Add the padding back for the left sidebar TOC */
+.bd-toc-item.active {
+    padding-left: 1.5rem;
+    padding-right: 1rem;
+}
+
+/* 左側已點選的章節與滑鼠懸停時的章節 (淺藍) */
+#site-navigation nav ul.nav a:hover, #site-navigation nav ul.nav li.active>a, #site-navigation nav ul.nav li.active>a:hover {
+    color: #66b3ff;
+}
+
+/* 左側章節標題 (75% 白) */
+#site-navigation nav ul.nav li a, #site-navigation nav ul.nav ul li a {
+    color: #bfbfbf;
+}
+
+/* 左側站名標題 (95% 白) */
+#site-navigation h1.site-logo {
+    color: #f2f2f2;
+}
+
+:root {
+    --pst-color-sidebar-caption: 242, 242, 242;  /* 左側章節群組標題 #f2f2f2 (95% 白) */
+    --pst-sidebar-font-size: 1em;     /* 左側章節字體大小 */
+    --pst-sidebar-caption-font-size: 1.1em;    /* 左側章節群組標題字體大小 */
+    /* 加入 Varela Round (from Google Fonts) */
+    --pst-font-family-base-system: Varela Round, -apple-system, Segoe UI, "Helvetica Neue", Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+}
+
+/* Left schollbar width is set to 0 so that green and gray area have the same width on Google Chrome */
+#site-navigation .bd-sidebar__content::-webkit-scrollbar {
+    width: 0rem;
+}
+
+
+/*========================================================*/
+/* I18n -- langugae manu settings */
+/*========================================================*/
+
+/*----- Menu Outline -----*/
+/* 所有列表都沒有 bullet point */
+.menu li {
+    list-style:none;
+}
+ 
+/* 列表文字顯示顏色 (與 Navbar H1 一樣) 與樣式 (懸停時與非懸停時 - 語言選單中列表的字顏色會被再次覆蓋) */
+.menu li:hover > a, .menu .current-item > a {
+    text-decoration:none;
+    color:#f2f2f2;
+}
+ 
+/* 向下箭頭的外觀 */
+.menu .arrow {
+    font-size:1em;
+}
+ 
+/*----- Top Level -----*/
+/* 主語言列表的外觀 */
+.menu > ul > li > a {
+    padding:0em 2em 1em 0em;
+    display:inline-block;
+}
+
+/* 主語言區塊的外觀 */
+.langcenter {
+    text-align: center;
+    background-color: #059B7D;
+}
+
+/*----- Bottom Level -----*/
+/* 在主語言懸停時出現語言選單 */
+.menu li:hover .sub-menu {
+    z-index:1;
+}
+
+/* 語言選單的外觀 */
+.sub-menu {
+    width:80%;
+    padding:0.2em 0em;
+    position: absolute;
+    top:80%;
+    z-index:-1;
+    transition:opacity linear 0.15s;
+    box-shadow:0px 2px 3px rgba(0,0,0,0.2);
+    background:#343131;
+}
+ 
+/* 語言選單中列表的外觀 (顏色 75% 白) */
+.sub-menu li a {
+    padding:0.5em;
+    display:block;
+    color: #bfbfbf;
+}
+
+/* 語言選單中列表懸停時 (暫時取消背景變淺 #404040 的設定) */
+.sub-menu li a:hover, .sub-menu .current-item a {
+/*     background:#404040; */
+    color: #66b3ff;
+}
+
+
+/*========================================================*/
+/* For screens with a width of more than 1400 px */
+/*========================================================*/
+
+/* 取消頁面最大寬度為 1400px 的設定 */
+@media (min-width: 1400px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl {
+        max-width: none;
+    }
+
+/* 固定右側內容欄位在 278 px (約是在頁面為 1400px 寬時的欄位寬度)     */
+    .col-md-3 {
+        max-width: 278px;
+    }
+}
+
+/*========================================================*/
+/* For screens with a width of less than 768 px (e.g. smartphone): DISABLED NOW */
+/*========================================================*/
+
+@media (max-width: 768px) {
+/*   .bd-search {
+    display: none !important;
+  } */
+
+/*   .bd-sidebar__content {
+      background-color: #343131;
+  }
+    
+  div.navbar-brand-box {
+    background-color: #059B7D;
+    background-clip: border-box;
+  } */
+
+    
+/*   #site-navigation {
+    padding-top: 0px !important;
+    margin-top: 0px !important;
+  }
+    
+  #site-navigation .bd-sidebar__bottom, #site-navigation .bd-sidebar__top {
+    padding: 0
+  } */
+    
+/*   #site-navigation .bd-sidebar__top {
+    padding: 0
+  } */
+    
+/*   .bd-sidebar__top {
+    padding: 0
+  }
+ */
+/*   .bd-sidenav:first-child {
+    font-size: 1.4rem;
+    font-weight: bold;
+  } */
+
+/*   .topbar {
+    display: none;
+  }
+
+  #main-content {
+    padding-top: 1em !important;
+  }
+
+  main.bd-content {
+    padding-top: 0px !important;
+  } */
+}
+
+

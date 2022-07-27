@@ -1,0 +1,10 @@
+name: gmtjb
+
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - pip
+  - jupyter-book
+  - pip:
+    - sphinx-inline-tabs
