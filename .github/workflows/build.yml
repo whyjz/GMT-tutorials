@@ -1,14 +1,9 @@
 name: build-docs
 
 on:
-  # workflow_dispatch:
-  #   inputs:
-  #     logLevel:
-  #       description: 'Log level'
-  # Trigger the workflow on push to main & jb branch
   push:
     branches:
-    - jb
+    - dev-build
     - master
   pull_request:
     branches:
@@ -45,18 +40,3 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./docs/_build/html
-        
-        
-      # uses: s-weigand/setup-conda@v1
-      # with:
-      #   update-conda: true
-      #   conda-channels: conda-forge
-      #   python-version: 3.8
-    # - name: Install dependencies
-    #   run: |
-    #     python --version
-    #     conda env create -f environment_for-building-jb.yml
-    # - name: Build book
-    #   run: |
-    #     conda activate gmtjb
-    #     bash generate_html.bash
