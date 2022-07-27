@@ -1,14 +1,15 @@
 name: build-docs
 
 on:
-  workflow_dispatch:
-    inputs:
-      logLevel:
-        description: 'Log level'
-  # Trigger the workflow on push to main branch
+  # workflow_dispatch:
+  #   inputs:
+  #     logLevel:
+  #       description: 'Log level'
+  # Trigger the workflow on push to main & jb branch
   push:
     branches:
     - jb
+    - main
   pull_request:
     branches:
     - main
@@ -51,7 +52,6 @@ jobs:
       #   update-conda: true
       #   conda-channels: conda-forge
       #   python-version: 3.8
-
     # - name: Install dependencies
     #   run: |
     #     python --version
@@ -60,9 +60,3 @@ jobs:
     #   run: |
     #     conda activate gmtjb
     #     bash generate_html.bash
-    # - name: Deploy to gh-pages
-    #   # if: github.ref == 'refs/heads/main'
-    #   uses: peaceiris/actions-gh-pages@v3.8.0
-    #   with:
-    #     github_token: ${{ secrets.GITHUB_TOKEN }}
-    #     publish_dir: ./docs/_build/html
