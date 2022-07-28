@@ -173,6 +173,10 @@ p {
     margin-top: 1.15rem;   /* give some space between a figure and a following paragraph */
 }
 
+.content-container .footnote-reference, .content-container a.bibtex.internal {
+    font-size: small    /* make superscripted reference stay the same line height */
+}
+
 /*========================================================*/
 /* I18n -- langugae manu settings */
 /*========================================================*/
