@@ -1,20 +1,24 @@
 /*========================================================*/
 /* Justfont settings (webfont for Chinese characters) */
+/* Temporarily disabled. */
 /*========================================================*/
-.jf-loading body { /*載入中不顯示*/
+/*載入中不顯示*/
+/* .jf-loading body { 
       opacity: 0;
       visibility: hidden;
-}
-.jf-active body { /*如果處理成功，直接顯示*/
+} */
+
+/*如果處理成功，直接顯示*/
+/* .jf-active body { 
       opacity: 1;
       visibility: visible;
-}
-.jf-inactive body {/*如果處理失敗，直接顯示*/
+} */
+
+/*如果處理失敗，直接顯示*/
+/* .jf-inactive body {
       opacity: 1;
       visibility: visible;
-}
-
-
+} */
 
 /*========================================================*/
 /* Disable right sidebar (TOC) -- for now, let's keet ip */
@@ -32,11 +36,17 @@
     /* sidebar 字體的百分比由 --sbt-font-size-small-1 和 --sbt-font-size-small-1 定義  */
     --pst-sidebar-font-size: 1em;     /* 左側章節字體大小 1 * 87.5 = 0.875 em (14px) */
     --pst-sidebar-caption-font-size: 1.143em;    /* 左側章節群組標題字體大小 1.143 * 87.5% = 1 em (16px) */
-    /* 加入 Varela Round (from Google Fonts) */
-    --pst-font-family-base-system: Varela Round, -apple-system, Segoe UI, "Helvetica Neue", Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+    /* 加入 Quicksand & Noto Sans TC (from Google Fonts); skip Varela Round for now */
+    --pst-font-family-base-system: Quicksand, "Noto Sans TC", -apple-system, Segoe UI, "Helvetica Neue", Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+    /* 加入 Ubuntu Mono & Noto Sans TC (from Google Fonts); skip Anonymous Pro for now */
+    --pst-font-family-monospace-system: Ubuntu Mono, "SFMono-Regular", Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace, "Noto Sans TC";
     --sbt-prevnext-font-size: var(--sbt-font-size-regular);   /* make prevnext font bigger (14px) */
 }
 
+/* Set up generic font weight */
+body {
+    font-weight: 300
+}
 
 /*========================================================*/
 /* Left navigation bar settings */
