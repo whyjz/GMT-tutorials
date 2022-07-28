@@ -6,12 +6,13 @@
 #### 4. Insert Language menu in the left navigation bar, under the search box (matched with ^<\/form>). (for displaying and switching language options)
 #### 5. Replace the title of the book with different language, and replace `zzz_replace_token` (just a placeholder) with correct language name.  
 #### by Whyjay Zheng
-#### created on 2016/1/12, last updated on 2022/07/26
+#### created on 2016/1/12, last updated on 2022/07/28
+#### - Temporarily disabled Justfont settings; use Google Font (Noto Sans) instead
 
 html_files=$(ls docs/_build/html/*.html   docs/_build/html/main/*.html   docs/_build/html/en/*.html   docs/_build/html/en/main/*.html)
 
 google_fonts=$(cat docs/_addons/google_fonts.txt)
-jf_string=$(cat docs/_addons/jf_code.txt)
+# jf_string=$(cat docs/_addons/jf_code.txt)
 disqus_string=$(cat docs/_addons/disqus_code.txt)
 localemenu=$(cat docs/_addons/localemenu.txt)
 
@@ -27,15 +28,15 @@ google_fonts=${google_fonts//\^/\\\^}     # changes all "^" to "\^"
 google_fonts=${google_fonts//\//\\\/}     # changes all "/" to "\/"
 google_fonts=${google_fonts//\"/\\\"}     # changes all '"' to '\"'
 
-jf_string=${jf_string//\\/\\\\}     # changes all "\" to "\\"
-jf_string=${jf_string//\[/\\\[}     # changes all "[" to "\["
-jf_string=${jf_string//\]/\\\]}     # changes all "]" to "\]"
-jf_string=${jf_string//\$/\\\$}     # changes all "$" to "\$"
-jf_string=${jf_string//\./\\\.}     # changes all "." to "\."
-jf_string=${jf_string//\*/\\\*}     # changes all "*" to "\*"
-jf_string=${jf_string//\^/\\\^}     # changes all "^" to "\^"
-jf_string=${jf_string//\//\\\/}     # changes all "/" to "\/"
-jf_string=${jf_string//\"/\\\"}     # changes all '"' to '\"'
+# jf_string=${jf_string//\\/\\\\}     # changes all "\" to "\\"
+# jf_string=${jf_string//\[/\\\[}     # changes all "[" to "\["
+# jf_string=${jf_string//\]/\\\]}     # changes all "]" to "\]"
+# jf_string=${jf_string//\$/\\\$}     # changes all "$" to "\$"
+# jf_string=${jf_string//\./\\\.}     # changes all "." to "\."
+# jf_string=${jf_string//\*/\\\*}     # changes all "*" to "\*"
+# jf_string=${jf_string//\^/\\\^}     # changes all "^" to "\^"
+# jf_string=${jf_string//\//\\\/}     # changes all "/" to "\/"
+# jf_string=${jf_string//\"/\\\"}     # changes all '"' to '\"'
 
 disqus_string=${disqus_string//\\/\\\\}     # changes all "\" to "\\"
 disqus_string=${disqus_string//\[/\\\[}     # changes all "[" to "\["
@@ -70,14 +71,14 @@ do
         # insert a new line before the pygments.css line
         sed -i "/pygments.css/i\ $google_fonts" $html_f
     fi
-    # ==== Attaching jf code ====
-    if grep -q 'jf.push' $html_f; then
-        echo skip ${html_f##*/} - already attached the jf code
-    else
-        echo ----- Attaching jf code to ${html_f##*/} ...
-        # insert a new line after </head> tag
-        sed -i "/<\/head>/a\ $jf_string" $html_f
-    fi
+    # # ==== Attaching jf code ====
+    # if grep -q 'jf.push' $html_f; then
+    #     echo skip ${html_f##*/} - already attached the jf code
+    # else
+    #     echo ----- Attaching jf code to ${html_f##*/} ...
+    #     # insert a new line after </head> tag
+    #     sed -i "/<\/head>/a\ $jf_string" $html_f
+    # fi
     # ==== Attaching disqus code ====
     if grep -q 'disqus_thread' $html_f; then
         echo skip ${html_f##*/} - already attached the disqus code
