@@ -38,14 +38,19 @@
     --pst-sidebar-caption-font-size: 1.143em;    /* 左側章節群組標題字體大小 1.143 * 87.5% = 1 em (16px) */
     /* 加入 Quicksand & Noto Sans TC (from Google Fonts); skip Varela Round for now */
     --pst-font-family-base-system: Quicksand, "Noto Sans TC", -apple-system, Segoe UI, "Helvetica Neue", Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
-    /* 加入 Ubuntu Mono & Noto Sans TC (from Google Fonts); skip Anonymous Pro for now */
-    --pst-font-family-monospace-system: Ubuntu Mono, "SFMono-Regular", Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace, "Noto Sans TC";
+    /* 加入 Anonymous Pro (from Google Fonts); skip Ubuntu Mono & Noto Sans TC for now */
+    --pst-font-family-monospace-system: Anonymous Pro, "SFMono-Regular", Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
     --sbt-prevnext-font-size: var(--sbt-font-size-regular);   /* make prevnext font bigger (14px) */
 }
 
-/* Set up generic font weight */
-body {
+/* Set up generic font weight [skipped -- using default weight (400)] */
+/* body {
     font-weight: 300
+} */
+
+/* Set up headers font weight [default was 400] */
+.heading-style, h1, h2, h3, h4, h5, h6 {
+    font-weight: 500
 }
 
 /*========================================================*/
@@ -166,6 +171,10 @@ div.navbar-brand-box {
 
 p {
     margin-top: 1.15rem;   /* give some space between a figure and a following paragraph */
+}
+
+.content-container .footnote-reference, .content-container a.bibtex.internal {
+    font-size: small    /* make superscripted reference stay the same line height */
 }
 
 /*========================================================*/
