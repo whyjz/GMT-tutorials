@@ -423,12 +423,12 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#gmt">
-   1.1. GMT 是什麼？
+   1.1. What is [GMT][GMT-link]?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#pygmt">
-   1.2. PyGMT 呢？
+   1.2. And what is [PyGMT][PyGMT-link]?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -472,12 +472,12 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#gmt">
-   1.1. GMT 是什麼？
+   1.1. What is [GMT][GMT-link]?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#pygmt">
-   1.2. PyGMT 呢？
+   1.2. And what is [PyGMT][PyGMT-link]?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -513,43 +513,43 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="gmt-pygmt">
 <h1><span class="section-number">1. </span>GMT / PyGMT Introduction and Installation<a class="headerlink" href="#gmt-pygmt" title="Permalink to this headline">#</a></h1>
 <section id="gmt">
-<h2><span class="section-number">1.1. </span><a class="reference external" href="https://www.generic-mapping-tools.org/">GMT</a> 是什麼？<a class="headerlink" href="#gmt" title="Permalink to this headline">#</a></h2>
-<p><a class="reference external" href="https://www.generic-mapping-tools.org/">GMT</a> 的全名是 Generic Mapping Tools，為一套多功能的製圖工具。這套軟體始於 1988 年，由當時就讀於拉蒙特-杜赫第地球觀測站 (Lamont-Doherty Earth Observatory) 的 Pål (Paul) Wessel 和 Walter H. F. Smith 設計製作，並在 1991 年公開發表第一版。<a class="footnote-reference brackets" href="#id8" id="id1">1</a> 軟體釋出後即收到廣大迴響，這些稱讚與建議成了兩位作者 (與其後加入開發團隊的所有人員) 繼續更新的原動力。三十多年過去了，GMT 在 2019 年的 11 月已經更新到第 6 版 <a class="footnote-reference brackets" href="#id9" id="id2">2</a>，在地理繪圖領域享有一席之地，更是許多領域，如地球物理學、海洋科學等等，一定會接觸到的軟體之一。</p>
+<h2><span class="section-number">1.1. </span>What is [GMT][GMT-link]?<a class="headerlink" href="#gmt" title="Permalink to this headline">#</a></h2>
+<p>Generic Mapping Tools, or [GMT][GMT-link] for short, is a software package for geographical mapping and other related tasks. The software was initiated in 1988 by Pål (Paul) Wessel and Walter H. F. Smith, who were graduate students at Lamont-Doherty Earth Observatory. The first version of GMT was released in 1991 [^1] and received a lot of positive feedback on how useful and powerful the package could be, which has motivated two authors and the whole GMT development team to continue the project. More than 30 years later, in November 2019, the development team released the sixth edition of GMT [^2], which would continue to take a major role in geographical mapping. Now GMT is a popular toolbox for plotting scientific data for academic fields such as geophysics or oceanography.</p>
 <p>As a “generic” mapping toolbox, GMT is of course capable of making different types of scientific plots using its built-in commands. However, what really makes this package so powerful is that GMT is very good at processing geographical data and visualizing them in the right way. GMT includes a lot of GIS algorithms, and a user just needs to enter a few console commands for making some beautiful and high-resolution maps. These maps support multiple formats, including vectorized files such as EPS and PDF, allowing users to make further edits with ease.</p>
 </section>
 <section id="pygmt">
-<h2><span class="section-number">1.2. </span><a class="reference external" href="https://www.pygmt.org/">PyGMT</a> 呢？<a class="headerlink" href="#pygmt" title="Permalink to this headline">#</a></h2>
-<p><a class="reference external" href="https://www.pygmt.org/">PyGMT</a> 其實就是把 GMT 重新包裝，讓所有 GMT 內的工具都可以透過 Python 這個程式語言以模組的方式來使用。除了讓原本就熟悉 Python 的人快速上手 GMT 外，遠程目標是與 Python 的其他資料科學模組一同連動，構築以 Python 進行科學資料分析的豐富環境。目前 PyGMT 已經支援了 Numpy、Pandas 和 Xarray 專有的資料格式，並且也可透過 Jupyter 環境進行互動性資料繪圖。<a class="footnote-reference brackets" href="#id10" id="id3">3</a></p>
-<p>PyGMT 是由科學社群發起的專案計畫，目前的最新版 (版本號 0.7.0) 已於 2022 年 7 月釋出。各位如有興趣貢獻一己之力開發軟體，非常歡迎前往 PyGMT 的官方網站一探究竟。</p>
+<h2><span class="section-number">1.2. </span>And what is [PyGMT][PyGMT-link]?<a class="headerlink" href="#pygmt" title="Permalink to this headline">#</a></h2>
+<p>[PyGMT][PyGMT-link] is essentially a “Pythonized GMT package.” PyGMT rewraps the GMT so one can access all GMT tools as a Python module. In addition to attracting more potential users, the long-term of PyGMT is to build a Python ecosystem for scientific data analysis, together with other data science modules in Python. As of now, PyGMT already supports some data formats found in Numpy, Pandas, and Xarray, and can interactively draw your data using the Jupyter environment. [^3]</p>
+<p>PyGMT is entirely a community-based project. Its latest version (0.7.0) was released in July 2022. If you are interested in contributing to and developing the project, I encourage you to go to the official website and forum of PyGMT and get involved.</p>
 </section>
 <section id="id4">
 <h2><span class="section-number">1.3. </span>Should I use GMT?<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
 <p>If you need to make some sort of map, either a global topography or a street map around your home, GMT or PyGMT has got you covered. With that said, GMT suits better for scientific mapping because all the data and observations can be easily processed by various built-in commands. Also, you can show your results with other GIS data but with no pain. Here I highly recommend GMT for people who want to perform any tasks listed below:</p>
 <ol class="simple">
-<li><p><b>手邊有大量的地理數據需要呈現在地圖上。</b>例如：降雨量分佈、斷層與地震帶、海底地形圖、全世界火山分佈圖等等。</p></li>
-<li><p><b>時常繪製地圖，並且總是覺得使用 GIS 軟體效率太低。</b>學習指令列繪圖的技巧，一定能讓你的 GIS 繪圖效率大增。</p></li>
-<li><p><b>需要即時或互動性呈現地理資料分析的結果。</b>執行 GMT 或 PyGMT 的腳本，可以讓你把資料分析和繪圖輸出這兩件事一次完成。</p></li>
+<li><p><strong>Show tons of data on a map</strong>, like precipitation, faults and seismicity map, bathymetry, global volcano distribution, etc.</p></li>
+<li><p><strong>Make maps pretty often or update them frequently. You probably would feel that the fancy and clumsy graphic interface of GIS software always slows down your working efficiency</strong>. Learning how to plot using command-line tools can improve your work and save lots of your time.</p></li>
+<li><p><strong>Need to show the results of geospatial data analysis interactively or in real time.</strong> You can get two jobs done at once – data analysis and visualization – by running a GMT or PyGMT script.</p></li>
 </ol>
-<p>唯一的問題是，GMT 所有的功能都必須透過指令列操作，對於沒接觸過指令列程式的人而言，GMT 的上手曲線可能沒那麼平緩。幸好，GMT 自身的指令格式並不那麼困難，而且在大多數的情形下，我們也不需要使用 GMT 以外的指令操作資料，因此只要稍微熟稔一點操作介面的觀念，就可輕鬆上手。有關詳情可以參考「<a class="reference internal" href="basic_concept.html"><span class="doc">Basic Concepts and Terms</span></a>」。另外，如果你使用過或正在使用 Python 程式語言，那麼可以嘗試看看模組化的 PyGMT，加速學習的效率。</p>
+<p>The only issue with getting a swing of GMT is that you need to write a script consisting of some code (GMT commands) to get GMT to work. For those who never used a terminal console, a steep learning curve would be expected. Fortunately, the GMT built-in commands are not that hard compared to many other standard console commands, and in most cases, we do not need the non-GMT commands for manipulating data. That means as long as we have learned the basics of the command-line interface, we will be ready to master the art of GMT. Please go to <a class="reference internal" href="basic_concept.html"><span class="doc">Basic Concepts and Terms</span></a> for more details. Besides, if you have used or are using Python programming language, you can just start with PyGMT to speed up your learning efficiency.</p>
 </section>
 <section id="id5">
 <h2><span class="section-number">1.4. </span>About the tutorials<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
-<p><a class="reference external" href="https://whyjz.github.io/">筆者</a>目前為地球物理與行星科學領域的研究員，接觸 GMT 已超過 10 年。有感於網路上缺少 GMT 與 PyGMT 的簡明教學資料，導致包括筆者在內的許多人得花額外的時間熟悉各種工具的用法，因此決定試著紀錄一些使用心得與操作程序，並設計成教學手冊，讓新手們可以由淺入深學習 GMT，老鳥們也可以把本教學當成工具書一般的查看。</p>
+<p><a class="reference external" href="https://whyjz.github.io/">I</a> am a research scientist in geophysics and planetary sciences with more than 10 years of GMT experience. I always try hard to find well-organized and clear GMT tutorials, which sometimes makes me frustrated and spend more time learning every tool. So I decided to write down some of my scripts and thoughts and maybe write such a tutorial myself. My goal is to help beginners learn step-by-step by following the content of each chapter. If you are already a GMT veteran, I hope this tutorial can serve you as a reference book whenever you would like to look for answers to some specific questions.</p>
 <p>Each chapter here is arranged in order by its difficulty. The first few chapters introduce basic knowledge for people who have zero experience of command lines. Later, the content shifts to some advanced script workflows. I believe the best way to learn GMT is to do it yourself rather than any online resources and these tutorials. With this in mind, you can find everything you need for making the map in each chapter, including the data and scripts. Feel free to download them and make a map that even surpasses the one I made!</p>
 </section>
 <section id="id6">
 <h2><span class="section-number">1.5. </span>How to install GMT<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
-<p>GMT 和 PyGMT 有許多種安裝方式，我個人推薦利用 <code class="docutils literal notranslate"><span class="pre">conda</span></code> 套件管理器安裝。至於其他的方法，可前往 <a class="reference external" href="https://github.com/GenericMappingTools/gmt/blob/master/INSTALL.md">GMT</a> 或 <a class="reference external" href="https://www.pygmt.org/latest/install.html">PyGMT</a> 的網站查看。</p>
+<p>There are many ways to install GMT and PyGMT. I recommend using the <code class="docutils literal notranslate"><span class="pre">conda</span></code> package manager to install them. For other ways of installation, please go to the <a class="reference external" href="https://github.com/GenericMappingTools/gmt/blob/master/INSTALL.md">GMT</a> or <a class="reference external" href="https://www.pygmt.org/latest/install.html">PyGMT</a> official websites.</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Anaconda 會預裝很多常用的 Python 套件。如果只想要 Conda 而不想要其他的套件，也可以選擇安裝 <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/install/download.html">Miniconda</a>。</p>
+<p>Anaconda installs many highly-used Python packages. If you want to get Conda itself without having the other packages, you can choose to install <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/install/download.html">Miniconda</a>.</p>
 </div>
 </aside>
 <ol>
-<li><p>首先<a class="reference external" href="https://www.anaconda.com/products/individual">安裝 Anaconda</a>。Anaconda 是個跨平台的套件管理軟體，尤其適合資料科學分析使用。你可以根據你的作業系統下載不同的檔案安裝。安裝 Anaconda 時會一併安裝我們需要的 Conda 管理器。</p></li>
-<li><p>開啟終端機 (Linux 或 Mac) 或是 Anaconda 的指令列 (Windows)，使用具有第三方套件的 conda-forge 頻道做為安裝來源。更多關於終端機的詳細說明請看「<a class="reference internal" href="basic_concept.html"><span class="doc">Basic Concepts and Terms</span></a>」。</p>
+<li><p>Firstly you need to <a class="reference external" href="https://www.anaconda.com/products/individual">install Anaconda</a>. Anaconda is cross-platform package manager software for scientific data analysis. You can download the installation file based on your operating system and install Anaconda. The Conda package manager will be installed together with Anaconda.</p></li>
+<li><p>Open the terminal (Linux or Mac) or Anaconda command window (Windows) and use the conda-forge channel (which contains third-party packages) as the installation source. For more details and explanations, please see <a class="reference internal" href="basic_concept.html"><span class="doc">Basic Concepts and Terms</span></a>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda config --prepend channels conda-forge
 </pre></div>
 </div>
@@ -557,11 +557,11 @@ title="Print to PDF"
 <p class="sidebar-title"></p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>覺得 <code class="docutils literal notranslate"><span class="pre">conda</span></code> 太慢的話，可以裝 <code class="docutils literal notranslate"><span class="pre">mamba</span></code> 來加速安裝套件。請參閱 <a class="reference external" href="https://mamba.readthedocs.io/en/latest/user_guide/mamba.html">Mamba 的說明文檔</a>以及 <a class="reference external" href="https://www.pygmt.org/latest/install.html">PyGMT 的官方安裝示範</a>。</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">conda</span></code> is slow, you can install <code class="docutils literal notranslate"><span class="pre">mamba</span></code> to speed up the following package installation. Please see <a class="reference external" href="https://mamba.readthedocs.io/en/latest/user_guide/mamba.html">Mamba’s documentation</a> and <a class="reference external" href="https://www.pygmt.org/latest/install.html">the guide from the official PyGMT site</a>.</p>
 </div>
 </aside>
 </li>
-<li><p>建立 GMT 的安裝環境並安裝 GMT。這邊環境的名字 <code class="docutils literal notranslate"><span class="pre">mygmt</span></code> 可自由更改成您喜歡的字。)</p>
+<li><p>Create a GMT environment and install GMT. Note you can change the environment name <code class="docutils literal notranslate"><span class="pre">mygmt</span></code> to any letter combination you like.)</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda create --name mygmt <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.9 gmt
 </pre></div>
 </div>
@@ -570,18 +570,17 @@ title="Print to PDF"
 </pre></div>
 </div>
 </li>
-<li><p>切換至 <code class="docutils literal notranslate"><span class="pre">mygmt</span></code> 環境即可開始使用 GMT/PyGMT。GMT 是在命令列介面 (Command-line interface, CLI) 下執行的工具，因此你可以在終端機中透過 <code class="docutils literal notranslate"><span class="pre">gmt</span></code> 這個指令使用 GMT 的所有功能。</p>
+<li><p>Switch to the <code class="docutils literal notranslate"><span class="pre">mygmt</span></code> environment to start using GMT/PyGMT. GMT is a tool running in the command-line interface (CLI), and you can use the <code class="docutils literal notranslate"><span class="pre">gmt</span></code> command in the terminal to access GMT’s full functionality.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda activate mygmt
 $ gmt <span class="nb">help</span>
 </pre></div>
 </div>
-<p>如要使用 PyGMT，在 Python 互動介面或腳本內匯入同名模組即可：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pygmt</span> 
-<span class="n">pygmt</span><span class="o">.</span><span class="n">show_versions</span><span class="p">()</span>
+<p>To start using PyGMT, import the <code class="docutils literal notranslate"><span class="pre">pygmt</span></code> module in the Python interface or a Python script:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">::</span>
 </pre></div>
 </div>
 </li>
-<li><p>如果你計畫使用 PyGMT，推薦一併安裝 JupyterLab 以進行互動式資料分析。</p>
+<li><p>If you plan to use PyGMT, I recommend installing JupyterLab as well for interactive data analysis.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda install jupyterlab
 </pre></div>
 </div>
@@ -590,13 +589,11 @@ $ gmt <span class="nb">help</span>
 </section>
 <section id="id7">
 <h2><span class="section-number">1.6. </span>User Community<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h2>
-<p>GMT 與 PyGMT 有著日益茁壯的社群。<a class="reference external" href="https://forum.generic-mapping-tools.org/">官方的使用者論壇 (英文)</a> 提供了使用者們交流、發問、參與開發的園地，也是軟體發布新版本時的公佈欄。</p>
+<p>There is a growing GMT and PyGMT community. <a class="reference external" href="https://forum.generic-mapping-tools.org/">The official GMT community forum</a> provides a space for users to interact, ask questions, and contribute to development. The forum also serves as the announcement board when a new software version is released.</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id8"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Wessel, P., and Smith, W. H. F. (1991).
-Free software helps map and display data, EOS Trans. AGU, 72(41), 445–446.
-<a class="reference external" href="https://doi.org/10.1029/90EO00319">https://doi.org/10.1029/90EO00319</a></p>
+<dd><p>Wessel, P., and Smith, W. H. F. (1991). Free software helps map and display data, EOS Trans. AGU, 72(41), 445–446. <a class="reference external" href="https://doi.org/10.1029/90EO00319">https://doi.org/10.1029/90EO00319</a></p>
 </dd>
 <dt class="label" id="id9"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
 <dd><p>Wessel, P., Luis, J., Uieda, L., Scharroo, R., Wobbe, F., Smith, W. H. F., and Tian, D. (2019).
