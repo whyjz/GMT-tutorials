@@ -88,7 +88,7 @@ GMT 5 或之前的版本只能以 PostScript (PS) 格式出圖 (請參閱{doc}`b
 一款開源的免費圖像處理軟體，由許多不同的指令構成，每個指令都有很多選項可使用，更支援許多不同的向量或影像格式。它使用命令列操作，你可以使用 `convert` 這個指令，輕鬆快速的微調輸出的影像 (如調整解析度與尺寸等等操作)。ImageMagick 目前可以在多種平台上安裝，同時它也是許多 Linux 發行版預裝的軟體之一。
   
 ### [Inkscape](https://inkscape.org/)
-果你想要使用自由軟體編修向量檔，或是你的作業系統是 Linux，那麼此套軟體是不錯的選擇。它也可在非 Linux 的多種平台上執行。
+如果你想要使用自由軟體編修向量檔，或是你的作業系統是 Linux，那麼此套軟體是不錯的選擇。它也可在非 Linux 的多種平台上執行。
 
 如果想要使用商業軟體的話，[Adobe Illustrator](http://www.adobe.com/tw/products/illustrator.html) 或是 [CorelDRAW](http://www.coreldraw.com/tw/) 也是不錯的選擇。
 
