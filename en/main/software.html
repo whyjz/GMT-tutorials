@@ -482,14 +482,14 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#google">
-     2.4.3. Google 地球
+     2.4.3. Google Earth
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#psviewer">
-   2.5. 圖檔檢視、處理與編修軟體
+   2.5. Image viewing, processing, and editing software
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -584,14 +584,14 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#google">
-     2.4.3. Google 地球
+     2.4.3. Google Earth
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#psviewer">
-   2.5. 圖檔檢視、處理與編修軟體
+   2.5. Image viewing, processing, and editing software
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -621,36 +621,36 @@ title="Print to PDF"
 <p>GMT is a toolbox for plotting. We feed it with proper data and it draws beautiful pictures for us in return. Because GMT only does the plotting job, we usually need other tools in our workflow, such as preparing the data for GMT or editing the output files from GMT. This page lists some packages I recommend installing when using GMT.</p>
 <section id="id2">
 <h2><span class="section-number">2.1. </span>Text editor<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
-<p>GMT 使用 UNIX 系統下的 Shell 指令介面的風格設計而成，也就是說它跟其他所有指令列語言一樣，可以先把所有要下的指令寫成<b>腳本或批次檔</b>，再一併執行。使用 PyGMT 的方法則與撰寫 Python 程式語言腳本相同。雖然作業軟體 (尤其是 Windows) 內附的純文字編輯器可以用來寫腳本，但筆者仍然推薦找個更好用的文字編輯器。專為程式設計打造的文字編輯器會有許多附加功能，例如語法標示模式、自動版面調整、簡易除錯等等。以下是幾個常見選擇：</p>
+<p>We communicate with GMT using a command-line interface, such as the UNIX system’s Shell. That is, we can write all the commands down in a single <strong>script</strong> (or batch file, whatever you call) and have it run like a Python or bash script. For PyGMT, the way to use it is really similar to writing a Python script. Many operating systems have their built-in text editor for writing a script, like Notepad in Windows. However, I highly recommend finding a better text editor crafted for programming. These fancy editors come along with many handy features like syntax highlighting, auto-indentation, basic debugging, etc. The followings are some popular choices:</p>
 <section id="gedit">
 <h3><span class="section-number">2.1.1. </span><a class="reference external" href="https://wiki.gnome.org/Apps/Gedit">Gedit</a><a class="headerlink" href="#gedit" title="Permalink to this headline">#</a></h3>
 <p>Initially designed on GNOME’s desktop (like Ubuntu) as a light-weighted text editor. It’s simple, easy to use, and has syntax highlighting. It has even released on all PC platforms.</p>
 </section>
 <section id="sublime-text">
 <h3><span class="section-number">2.1.2. </span><a class="reference external" href="http://sublimetext.com">Sublime Text</a><a class="headerlink" href="#sublime-text" title="Permalink to this headline">#</a></h3>
-<p>一款很流行而且很強大的程式碼編輯器，各種功能應有盡有，你甚至可以使用愛好者提供的進階模組來增進此軟體，打造屬於你的編輯器。可安裝於所有的作業系統。它是付費軟體，但很佛心的提供終生免費試用。</p>
+<p>A popular and powerful code editor with lots of great functions. You can even download extra modules designed by its community, and personalize your own editor. It is available on all platforms and provides a “life-time” trial version, which means you only need to buy the license when you feel worth it.</p>
 </section>
 <section id="visual-studio-code-vs-code">
 <h3><span class="section-number">2.1.3. </span><a class="reference external" href="https://code.visualstudio.com/">Visual Studio Code</a> (VS Code)<a class="headerlink" href="#visual-studio-code-vs-code" title="Permalink to this headline">#</a></h3>
-<p>由微軟開發的跨平台免費程式碼編輯器，具有一切你想得到的、寫程式時的必備功能，還有不少佈景主題供使用者個人化。更重要的是，VS Code 還支援了 Git 的版本控制，讓使用者可以在同介面中瀏覽修改的檔案，甚至是提交新的更動。</p>
-<p>其他還有 Vim、Emacs、Micro、Nano、Kate、Notepad++ 等等，族繁不及備載，歡迎大家<a class="reference external" href="https://zh.wikipedia.org/wiki/%E6%96%87%E4%BB%B6%E7%BC%96%E8%BE%91%E5%99%A8%E6%AF%94%E8%BE%83">比較後</a>，挑一個自己覺得比較順手的就行了。</p>
+<p>VS Code is a free cross-platform programming editor developed by Microsoft. It has all functionality you can imagine for coding and provides various customized themes. More importantly, VS Code supports Git and version control and allows users to navigate or even commit file changes.</p>
+<p>Besides, there are other good editors like Vim, Emacs, Micro, Nano, Kate, and Notepad++. Feel free to <a class="reference external" href="https://en.wikipedia.org/wiki/Comparison_of_text_editors">compare</a> and pick whichever you feel the best.</p>
 </section>
 </section>
 <section id="jupyter">
 <h2><span class="section-number">2.2. </span><a class="reference external" href="https://jupyter.org/">Jupyter</a><a class="headerlink" href="#jupyter" title="Permalink to this headline">#</a></h2>
-<p>Jupyter 專案的核心宗旨是提供開源的軟體與技術標準，並設計互動性的運算界面，服務以不同程式語言進行工作的使用者們。Jupyter 有許多不同的軟體產品，如果你預計使用 PyGMT，那麼我推薦安裝 Jupyter Lab，讓你可以使用網頁瀏覽器作為撰寫腳本時的整合性開發介面。<a class="reference external" href="https://www.mdeditor.tw/pl/23Lf/zh-tw">這裡</a>有關於 Jupyter Lab 的進一步介紹。在後續章節中提供的 PyGMT 腳本，就是使用 Jupyter Notebook 格式儲存。(<em>聲明：<a class="reference external" href="https://whyjz.github.io/">本人</a>現為 Jupyter 的一個子專案 Jupyter Meets the Earth 團隊的一員，本教學中所有關於 Jupyter 的描述皆是我個人意見，並且是我利用閒暇時間所寫成，不代表開發團隊的意見。</em>)</p>
+<p>The Jupyter project’s core concept is to provide a standard for open-source software and develop interactive computing interfaces for users who work with different programming languages. Jupyter has many software products, and if you plan to use PyGMT, I recommend installing Jupyter Lab because it allows you to use your web browser as an integrated interface for developing your scripts. See <a class="reference external" href="https://www.mdeditor.tw/pl/23Lf/zh-tw">here</a> for more detailed descriptions about Jupyter Lab. The PyGMT scripts provided in the following chapters are written in the Jupyter Notebook format. (<em>Disclaimer: <a class="reference external" href="https://whyjz.github.io/">I am currently a team member of the Jupyter Meets the Earth project</a>. All descriptions about Jupyter in these tutorials are my personal opinions and do not represent the Jupyter dev team. I wrote these tutorials using my off-work time.</em>)</p>
 <section id="jupyter-notebook">
 <h3><span class="section-number">2.2.1. </span>Jupyter Notebook<a class="headerlink" href="#jupyter-notebook" title="Permalink to this headline">#</a></h3>
-<p>Jupyter Notebook 是一個透過瀏覽器 (即在伺服器端) 運作的應用程式，透過使用者指定的「核心」如 Python、R、Shell 等程式語言存取電腦的計算資源。使用者可在 Notebook 的圖形化介面中撰寫程式碼與文檔，並在同一份文件中顯示運算結果、插入連結、播放影片等等，使一份工作流程以高度結構化的方式呈現在讀者眼前。</p>
+<p>Jupyter Notebook is an app running on a web browser (i.e. on the server). It uses a user-defined “kernel” such as Python, R, or Shell programming language to access the computation resources. Thus, users can write code and documentation together in the Notebook GUI and display execution results in the same document along with external links and video embeds. Readers can see a highly structured and narrative workflow in a Notebook.</p>
 </section>
 <section id="jupyterlab">
 <h3><span class="section-number">2.2.2. </span>JupyterLab<a class="headerlink" href="#jupyterlab" title="Permalink to this headline">#</a></h3>
-<p>JupyterLab 是 Notebook 的進化版，以控制面板的設計，讓瀏覽不同類型的資料、管理不同的 Notebooks，不同工作流程之間的比較都變得更容易。JupyterLab 也是在本教學中雲端執行程式碼功能 (MyBinder) 的預設圖形化介面。</p>
+<p>JupyterLab is the next generation of the Notebook. It introduces the panels into the GUI to view different kinds of data, manage multiple Notebooks, and compare different workflows more easily. JupyterLab is also the default GUI in this tutorial for the interactive cloud environment (MyBinder).</p>
 </section>
 </section>
 <section id="gdal">
 <h2><span class="section-number">2.3. </span><a class="reference external" href="https://gdal.org/">GDAL</a><a class="headerlink" href="#gdal" title="Permalink to this headline">#</a></h2>
-<p>GMT 原生支援的地理空間資料格式是 <strong>NetCDF</strong> 和純文字檔，不過可透過 GDAL 這個選裝套件的支援直接讀取許多常見的地理空間資料格式，像是 <strong>GeoTIFF</strong> 或是 <strong>shapefile</strong> 等等。GDAL 的全名是「Geospatial Data Abstraction Library」，直譯為「地理空間資料存取函式庫」。它是一個開源且一直持續更新的函式庫，並且支援了 142 種影像格式和 84 種向量格式，可以說功能非常全面。GDAL 本身提供了一些常用指令，可以讓你藉由指令列快速的修改或瀏覽地理空間資料，但它也可以模組的方式在許多程式語言中執行，如 Python。GDAL 可以獨立安裝在各種作業系統中，或是透過 Anaconda 等套件管理軟體進行安裝。請記得如果你想讓 GMT 可以透過 GDAL 的支援讀取更多的資料格式，就要在安裝 GMT 時一併或預先安裝 GDAL。</p>
+<p>GMT natively supports some geospatial formats such as <strong>NetCDF</strong> and plain text files and has extended support to other common formats with GDAL, including <strong>GeoTIFF</strong> and <strong>shapefile</strong>. GDAL is short for “Geospatial Data Abstraction Library.” It is open-source software and is constantly updating. As of now, GDAL supports at least 142 raster formats and 84 vector formats. GDAL comes with handy console commands which let you browse or edit geospatial data without pain. Besides, GDAL also serves as a library that can be run as a module in many programming languages such as Python. GDAL can be installed on any platform independently or as a part of the QGIS standard installation since QGIS uses it for manipulating geospatial data. Note that if you want GMT to read more GDAL-supported file formats, you have to install GDAL before installing GMT.</p>
 </section>
 <section id="id3">
 <h2><span class="section-number">2.4. </span>Graphic interface for processing geospatial data<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
@@ -664,28 +664,28 @@ title="Print to PDF"
 <p>ArcGIS is a well-known business GIS software designed by Esri. This name ArcGIS actually refers to a bunch of packages as Esri fine-tunes their products based on various needs, and we can choose the best package to work for different goals. Python is also the scripting language supported by ArcGIS. Unfortunately, ArcGIS is only available on Windows.</p>
 </section>
 <section id="google">
-<h3><span class="section-number">2.4.3. </span><a class="reference external" href="https://earth.google.com/">Google 地球</a><a class="headerlink" href="#google" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.4.3. </span><a class="reference external" href="https://earth.google.com/">Google Earth</a><a class="headerlink" href="#google" title="Permalink to this headline">#</a></h3>
 <p>Strictly speaking, Google Earth is only “Globe software.” We are supposed to view geospatial data using this software instead of editing them. In Google Earth, we can only set up simple features or browse data from other sources. However, this software is still capable of many tasks. Google Earth now supports any platform, including Android, and both standard and professional versions are provided.</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>GMT 5 或之前的版本只能以 PostScript (PS) 格式出圖 (請參閱<a class="reference internal" href="basic_concept.html"><span class="doc">Basic Concepts and Terms</span></a>)，但可以使用 GMT 自帶指令或第三方軟體如 ImageMagick 轉檔。如要檢視 PS 檔又不想安裝專用軟體，可以把它傳到 Google 雲端硬碟上再用 <a class="reference external" href="https://www.google.com/intl/zh-TW/docs/about/">Google 文件</a> 開啟檔案。</p>
+<p>GMT 5 or earlier versions can only generate the PostScript files (see <a class="reference internal" href="basic_concept.html"><span class="doc">Basic Concepts and Terms</span></a>), but we can use the built-in commands or a third-party package such as ImageMagick to convert those files. If you want to view PostScript files without installing any software, you can upload them onto Google Drive and use <a class="reference external" href="https://docs.google.com/">Google Docs</a> to open the files.</p>
 </div>
 </aside>
 </section>
 </section>
 <section id="psviewer">
-<span id="id4"></span><h2><span class="section-number">2.5. </span>圖檔檢視、處理與編修軟體<a class="headerlink" href="#psviewer" title="Permalink to this headline">#</a></h2>
-<p>從 GMT 6 開始，使用者可以自行選擇出圖的格式，例如向量格式的 PDF 或影像格式的 PNG。難免有些時候，你會覺得 GMT 的出圖還需要一點點額外的編修。除了重新跑一次 GMT 的所有指令外，你也可以使用以下兩個在開放科學圈比較流行的的影像編輯軟體來幫你處理：</p>
+<span id="id4"></span><h2><span class="section-number">2.5. </span>Image viewing, processing, and editing software<a class="headerlink" href="#psviewer" title="Permalink to this headline">#</a></h2>
+<p>GMT 6 users can select the output map format, for example, vector-format PDF or image-format PNG. Nevertheless, to tweak the map just a little (e.g., adjusting resolution and image size), it is still easier to use an image processor as it saves your time from rerunning the GMT script. Here I list two popular open-science tools to help expedite your task:</p>
 <section id="imagemagick">
 <h3><span class="section-number">2.5.1. </span><a class="reference external" href="http://www.imagemagick.org/">ImageMagick</a><a class="headerlink" href="#imagemagick" title="Permalink to this headline">#</a></h3>
-<p>一款開源的免費圖像處理軟體，由許多不同的指令構成，每個指令都有很多選項可使用，更支援許多不同的向量或影像格式。它使用命令列操作，你可以使用 <code class="docutils literal notranslate"><span class="pre">convert</span></code> 這個指令，輕鬆快速的微調輸出的影像 (如調整解析度與尺寸等等操作)。ImageMagick 目前可以在多種平台上安裝，同時它也是許多 Linux 發行版預裝的軟體之一。</p>
+<p>An open-source and free package for image processing. It includes numerous commands; each of them has various options. It also supports many image or vector formats. You can run the command <code class="docutils literal notranslate"><span class="pre">convert</span></code> to easily adjust images. ImageMagick is available on several platforms and is pre-installed on Linux as one of the standard OS packages.</p>
 </section>
 <section id="inkscape">
 <h3><span class="section-number">2.5.2. </span><a class="reference external" href="https://inkscape.org/">Inkscape</a><a class="headerlink" href="#inkscape" title="Permalink to this headline">#</a></h3>
-<p>果你想要使用自由軟體編修向量檔，或是你的作業系統是 Linux，那麼此套軟體是不錯的選擇。它也可在非 Linux 的多種平台上執行。</p>
-<p>如果想要使用商業軟體的話，<a class="reference external" href="http://www.adobe.com/tw/products/illustrator.html">Adobe Illustrator</a> 或是 <a class="reference external" href="http://www.coreldraw.com/tw/">CorelDRAW</a> 也是不錯的選擇。</p>
+<p>If you are a fan of free software or you are using Linux, Inkscape would suit you the best for tackling vectorized images. It is also available on non-Linux platforms.</p>
+<p>If you would like to have the options from the proprietary software, <a class="reference external" href="https://www.adobe.com/products/illustrator.html">Adobe Illustrator</a> and <a class="reference external" href="http://www.coreldraw.com/">CorelDRAW</a> are two good ones.</p>
 </section>
 </section>
 </section>
@@ -741,7 +741,7 @@ title="Print to PDF"
   
     By <a href="https://whyjz.github.io/">鄭懷傑 (Whyjay Zheng)</a> | <a href="https://twitter.com/WhyjayZ"><i class="fa-brands fa-twitter"></i></a><br/>
   
-    Last updated on Aug 05, 2022.<br/>
+    Last updated on Aug 06, 2022.<br/>
     <div class="extra_footer">
       &copy; 2016-2022. <a href="https://github.com/whyjz/GMT-tutorials/blob/master/LICENSE.md">MIT</a> 
 and <a href="http://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</a> dual licensed. <br>
