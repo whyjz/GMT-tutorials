@@ -177,6 +177,10 @@ p {
     font-size: small    /* make superscripted reference stay the same line height */
 }
 
+.sd-tab-set .sd-tab-content {
+    box-shadow: 0 -0.0625rem var(--sd-color-tabs-overline),0 .0625rem transparent;          /* 隱藏 inline tab 的底橫線 */
+}
+
 /*========================================================*/
 /* I18n -- langugae manu settings */
 /*========================================================*/

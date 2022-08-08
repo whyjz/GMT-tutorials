@@ -37,15 +37,37 @@
 
 查看一番後，這裡我們選擇經度從 19.42 到 22.95，緯度從 59.71 到 60.56 的這塊區域來畫圖。你也可以自由選擇你喜歡的區域。接著打開{ref}`終端機`，輸入如下指令：
 
+`````{tab-set}
+````{tab-item} GMT
+:sync: GMT
 ```bash
 $ gmt coast
 ```
+````
+````{tab-item} GMT (classic)
+:sync: GMT-classic
+```bash
+$ pscoast
+```
+````
+`````
 
 會看到一連串的說明，`coast` 的全部語法和選項都會列在上面。如果你對選項的意思很熟，只是要確認一下的話，你也可以改成這樣輸入，如此一來，就只有選項用法的部份會顯示在螢幕上。
 
+`````{tab-set}
+````{tab-item} GMT
+:sync: GMT
 ```bash
 $ gmt coast -
 ```
+````
+````{tab-item} GMT (classic)
+:sync: GMT-classic
+```bash
+$ pscoast -
+```
+````
+`````
 
 幾乎所有 GMT 的指令，包含 `coast`，都是以類似如下的語法操作：
 
@@ -73,10 +95,23 @@ $ gmt 指令 (輸入檔) [選項1 選項2 選項3...]
 
 其他可選的格式還有 `-eps`, `-ps`, `-jpg` 等等，可參閱官方手冊的[格式列表](http://gmt.soest.hawaii.edu/doc/latest/begin.html#tbl-formats)。現在我們就來看看把 `-R` 和 `-png` 選項拼在一起會發生什麼事。在命令行輸入以下指令然後執行看看： 
 
+`````{tab-set}
+````{tab-item} GMT
+:sync: GMT
 ```bash
 $ gmt coast -R19.42/22.95/59.71/60.56 -png archi_sea
 coast [ERROR]: Syntax error: Must specify at least one of -C, -G, -S, -I, -N, -Q and -W
 ```
+````
+````{tab-item} GMt (classic)
+:sync: GMT-classic
+```bash
+$ pscoast -R19.42/22.95/59.71/60.56
+pscoast: Syntax error: Must specify a map projection with the -J option
+pscoast: Syntax error: Must specify at least one of -C, -G, -S, -I, -N, -Q and -W
+```
+````
+`````
 
 嗚唔，出現錯誤了！問題出在我們還有一些選項沒有給定。這是有關「繪圖樣式」的設定。GMT 要求我們至少給定一種繪圖樣式，我們先使用 `-W` 以指定海岸線的畫筆屬性。畫筆具有三種屬性：粗細、顏色跟樣式，給定的語法是
 
@@ -100,9 +135,21 @@ coast [ERROR]: Syntax error: Must specify at least one of -C, -G, -S, -I, -N, -Q
 
 目前已經設定了三個選項，`coast` 已經可以正常執行了。把所有的選項合併在一起輸入後，你應該就能得到輸出圖檔 `archi_sea.png`：
 
+`````{tab-set}
+````{tab-item} GMT
+:sync: GMT
 ```bash
-gmt coast -R19.42/22.95/59.71/60.56 -W0.1p,black -png archi_sea
+$ gmt coast -R19.42/22.95/59.71/60.56 -W0.1p,black -png archi_sea
 ```
+````
+````{tab-item} GMT (classic)
+:sync: GMT-classic
+```bash
+$ pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black > archi_sea.ps
+```
+````
+`````
+
 
 % .. 使用現代模式執行所有的 GMT 繪圖指令時，一定得使用 ``gmt begin`` 和 ``gmt end`` 這兩個關鍵字串把其他指令包起來。具體來說，你可以選擇下列兩種方式中的任一種輸入指令：
 
@@ -173,16 +220,39 @@ gmt coast -R19.42/22.95/59.71/60.56 -W0.1p,black -png archi_sea
 
 `darkseagreen2` 和 `cornflowerblue` 都跟 `black` 一樣，是 GMT 預先設定的顏色名字。把以上的選項全部都拼在一起，大概就像這樣：
 
+`````{tab-set}
+````{tab-item} GMT
+:sync: GMT
 ```bash
 $ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 -Scornflowerblue -png archi_sea
 ```
+````
+````{tab-item} GMT (classic)
+:sync: GMT-classic
+```bash
+$ pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 -Scornflowerblue > archi_sea.ps
+```
+````
+`````
 
 可以看得出來現在指令已經有點長了，這是 GMT 的常態，尤其會在你嘗試調整預設值、畫出更漂亮的地圖時發生。在命令列操作時，這不是什麼大問題，終端機都會自動幫你換行，不過之後如果有要寫 GMT 腳本的需求，為了排版美觀，可以使用 UNIX 常見的接續符號 `\`，換行繼續輸入指令。以下指令跟上面的指令效果一模一樣：
 
+`````{tab-set}
+````{tab-item} GMT
+:sync: GMT
 ```bash
 $ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \
             -Scornflowerblue -png archi_sea
 ```
+````
+````{tab-item} GMT (classic)
+:sync: GMT-classic
+```bash
+$ pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \
+          -Scornflowerblue > archi_sea.ps
+```
+````
+`````
 
 本文為了方便閱讀起見，也會使用 `\` 分隔過長的段落，但如果你想要在一行之內完成此道指令，則可以省略這個符號。
 
@@ -220,10 +290,23 @@ $ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \
 
 第一種組合可以給定地圖邊框的數值、刻度與格線設定，而且使用與 `-R` 相同的座標單位，例如 `-Ba1f1g1` 代表數值、刻度與格線都是每隔 1 度畫一條，而 `-Ba2f1` 是「每隔 2 度標示座標、每隔 1 度標示刻度，然後不加格線」。第二種組合可以調整地圖的四邊配置，使用 W、S、E、N 來表示東、南、西、北，大寫表示加上邊框也加上數值，小寫表示只加上邊框而不加數值，如果不加就是不畫邊框。例如 `-Bwsne` 就是單純畫上邊框，不加上數值顯示 (前面的 a 設定會無效)，而 `-BWSe` 則代表「在西方與南方畫邊框且標上數值、在東方單純畫邊框、在北方什麼都不做 (地圖上端會破一個洞)」。第二種組合可以透過 `+t` 來延伸，後方可以輸入此幅地圖的標題。兩種組合可以同時加在一個指令內，例如說我們的地圖如果這樣設計：
 
+`````{tab-set}
+````{tab-item} GMT
+:sync: GMT
 ```bash
 $ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \
             -Scornflowerblue -Ba2f0.5g1 -BWSne+t"Archipelago Sea" -png archi_sea
 ```
+````
+````{tab-item} GMT (classic)
+:sync: GMT-classic
+```bash
+$ pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \
+          -Scornflowerblue -Df -P -Ba2f0.5g1 -BWSne+t"Archipelago Sea" \
+          > archi_sea.ps
+```
+````
+`````
 
 那麼，地圖四邊都會加上邊框，但只有西側和南側會標上經緯度，經緯度會以每 2 度標示一次，刻度 (黑白線區間) 以每 0.5 度標示一次，格線每 1 度就有一條，而且還會加上 *Archipelago Sea* 這個標題。畫出來的樣子如下所示：
 
@@ -242,11 +325,24 @@ $ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \
 
 你會發現，群島海的島實在太多，如果我們還想在上面標上其他資訊的話，這些群島很容易讓看地圖的人分心。為了精簡地圖，讓讀者聚焦在關鍵資訊上，`coast` 提供了 `-A` 選項，這個選項可以讓我們輸入島嶼面積 (單位是平方公里)，然後 `coast` 會省略比這個面積還小的島嶼不畫。這裡我們要省略比 0.1 平方公里還小的島嶼：
 
+`````{tab-set}
+````{tab-item} GMT
+:sync: GMT
 ```bash
 $ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \
             -Scornflowerblue -Ba2f0.5g1 -BWSne+t"Archipelago Sea" -A0.1 \
             -png archi_sea
 ```
+````
+````{tab-item} GMT (classic)
+:sync: GMT-classic
+```bash
+$ pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \
+          -Scornflowerblue -Df -P -Ba2f0.5g1 -BWSne+t"Archipelago Sea" \
+          -A0.1 > archi_sea.ps
+```
+````
+`````
 
 島嶼比較少，看起來清爽多了，卻又不會喪失「群島海」名稱的霸氣。
 
@@ -280,6 +376,14 @@ fig.coast(region=[19.42, 22.95, 59.71, 60.56], projection="M6i", shorelines=['0.
           water='cornflowerblue', frame=['a2f0.5g1', 'WSne+t"Archipelago Sea"'], area_thresh=0.1, timestamp=True)
 fig.show()
 fig.savefig('archi_sea_pygmt.png')
+```
+````
+````{tab-item} GMT (classic)
+:sync: GMT-classic
+```bash
+$ pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \
+          -Scornflowerblue -Df -P -Ba2f0.5g1 -BWSne+t"Archipelago Sea" \
+          -A0.1 -U > archi_sea.ps
 ```
 ````
 `````
