@@ -9,13 +9,13 @@
 製作一張[群島海](https://zh.wikipedia.org/wiki/%E7%BE%A4%E5%B2%9B%E6%B5%B7) (Archipelago Sea) 的地圖，如下圖所示。群島海位於北歐，是波羅的海的一個附屬海，海如其名，被大小不等的眾多島嶼給佔據。事實上，群島海很有可能是擁有最多島嶼的海，雖然大部分的島都很小就是了。西邊的最大島嶼叫做奧蘭島 (Åland)，屬於芬蘭下轄的自治區。這麼多島嶼的地方，用來觀察 `coast` 的各種調整效果再適合不過了。
 
 ```{image} making_first_map/archi_sea_gmt6.png
-    :name: final-map
+    :name: final-map:archi-sea
     :alt: Archipelago Sea
     :width: 1000px
     :align: center
 ```
 
-直接觀看[指令稿](script)
+直接觀看[指令稿](script:archi-sea)
 
 ## 使用的指令與概念
 
@@ -86,11 +86,7 @@ coast [ERROR]: Syntax error: Must specify at least one of -C, -G, -S, -I, -N, -Q
 ```
 ````
 
-% .. _pen:
-% .. _畫筆:
-
 ```bash
-:name: pen
 -W粗細,顏色,樣式
 ```
 
@@ -261,27 +257,22 @@ $ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \
 
 我們的地圖目前已大致完成。最後，可以再使用 `-U` 選項在左下角加上 GMT 軟體的標誌。`-U` 選項可以直接加在指令內，不用給定任何值。
 
-(script)=
+(script:archi-sea)=
 ## 指令稿
 
 本地圖的最終指令稿如下：
 
+`````{tab-set}
+````{tab-item} GMT
+:sync: GMT
 ```bash
 $ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \
             -Scornflowerblue -Ba2f0.5g1 -BWSne+t"Archipelago Sea" -A0.1 -U \
             -png archi_sea
 ```
-
-```{note}
-「繪製海岸線圖 - 以 **19.42E - 22.95E，59.71N - 60.56N** 為邊界，麥卡托投影，地圖橫向寬 **6** 吋，海岸線的線條使用 **0.1** 點的黑色線，陸地使用 `darkseagreen2` 填色，海洋使用 `cornflowerblue` 填色，四邊繪製邊框並在左側和下側標上刻度數值，數值間隔 **2** 度，刻度間隔 **0.5** 度，格線間隔 **1** 度，標題為 *Archipelago Sea*，存檔為 `archi_sea.png`。」
-```
-
-觀看[最終版地圖](final-map)
-
-## PyGMT 指令稿
-
-使用 PyGMT，可以如下腳本繪製本地圖：
-
+````
+````{tab-item} PyGMT
+:sync: PyGMT
 ```python
 import pygmt
 fig = pygmt.Figure()
@@ -290,10 +281,22 @@ fig.coast(region=[19.42, 22.95, 59.71, 60.56], projection="M6i", shorelines=['0.
 fig.show()
 fig.savefig('archi_sea_pygmt.png')
 ```
+````
+`````
+
+```{note}
+「繪製海岸線圖 - 以 **19.42E - 22.95E，59.71N - 60.56N** 為邊界，麥卡托投影，地圖橫向寬 **6** 吋，海岸線的線條使用 **0.1** 點的黑色線，陸地使用 `darkseagreen2` 填色，海洋使用 `cornflowerblue` 填色，四邊繪製邊框並在左側和下側標上刻度數值，數值間隔 **2** 度，刻度間隔 **0.5** 度，格線間隔 **1** 度，標題為 *Archipelago Sea*，存檔為 `archi_sea.png`。」
+```
+
+觀看[最終版地圖](final-map:archi-sea)
+
+% ## PyGMT 指令稿
+
+% 使用 PyGMT，可以如下腳本繪製本地圖：
 
 你可以使用以下的 Binder 連結嘗試此程式碼：
 
-[![](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/whyjz/GMT-tutorials/HEAD?filepath=SOURCE_DOCS%2Fmaking_first_map%2Farchi_sea_pygmt.ipynb)
+[![](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/whyjz/GMT-tutorials/HEAD?filepath=docs%2Fmain%2Fmaking_first_map%2Farchi_sea_pygmt.ipynb)
 
 ## 習題
 

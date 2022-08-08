@@ -4,7 +4,7 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - pip
+  # - pip
   - jupyter-book
-  - pip:
-    - sphinx-inline-tabs
+  # - pip:
+  #   - sphinx-inline-tabs

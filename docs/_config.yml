@@ -38,8 +38,8 @@ repository:
 #   allow_errors      : false
 
 sphinx:
-  extra_extensions:
-  - sphinx_inline_tabs
+  # extra_extensions:
+  # - sphinx_inline_tabs
   config:
     language: zh_TW
     html_last_updated_fmt: '%b %d, %Y'
