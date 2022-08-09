@@ -1,7 +1,5 @@
 # 製作第一張地圖
 
-% attention 本教學適用於 GMT 6 的現代模式。如須參閱 GMT 6 (傳統模式) 與 GMT 4-5 繪製相同地圖的教程，\ `請至這裡 <making_first_map_gmt5.html>`_。
-
 說到 GMT 中最簡單的繪圖指令，那非 `coast` 莫屬。在本章中，我們要來解說如何用 `coast` 製作海岸線地圖、GMT 本身的參數輸入風格，以及如何調整這些參數。
 
 ## 目標
@@ -47,7 +45,7 @@ $ gmt coast
 ````{tab-item} GMT (classic)
 :sync: GMT-classic
 ```bash
-$ pscoast
+$ gmt pscoast
 ```
 ````
 `````
@@ -64,7 +62,7 @@ $ gmt coast -
 ````{tab-item} GMT (classic)
 :sync: GMT-classic
 ```bash
-$ pscoast -
+$ gmt pscoast -
 ```
 ````
 `````
@@ -106,7 +104,7 @@ coast [ERROR]: Syntax error: Must specify at least one of -C, -G, -S, -I, -N, -Q
 ````{tab-item} GMt (classic)
 :sync: GMT-classic
 ```bash
-$ pscoast -R19.42/22.95/59.71/60.56
+$ gmt pscoast -R19.42/22.95/59.71/60.56
 pscoast: Syntax error: Must specify a map projection with the -J option
 pscoast: Syntax error: Must specify at least one of -C, -G, -S, -I, -N, -Q and -W
 ```
@@ -145,7 +143,7 @@ $ gmt coast -R19.42/22.95/59.71/60.56 -W0.1p,black -png archi_sea
 ````{tab-item} GMT (classic)
 :sync: GMT-classic
 ```bash
-$ pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black > archi_sea.ps
+$ gmt pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black > archi_sea.ps
 ```
 ````
 `````
@@ -230,7 +228,7 @@ $ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 -Scornf
 ````{tab-item} GMT (classic)
 :sync: GMT-classic
 ```bash
-$ pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 -Scornflowerblue > archi_sea.ps
+$ gmt pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 -Scornflowerblue > archi_sea.ps
 ```
 ````
 `````
@@ -248,7 +246,7 @@ $ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \
 ````{tab-item} GMT (classic)
 :sync: GMT-classic
 ```bash
-$ pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \
+$ gmt pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \
           -Scornflowerblue > archi_sea.ps
 ```
 ````
@@ -301,9 +299,9 @@ $ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \
 ````{tab-item} GMT (classic)
 :sync: GMT-classic
 ```bash
-$ pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \
-          -Scornflowerblue -Df -P -Ba2f0.5g1 -BWSne+t"Archipelago Sea" \
-          > archi_sea.ps
+$ gmt pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \
+              -Scornflowerblue -Df -P -Ba2f0.5g1 -BWSne+t"Archipelago Sea" \
+              > archi_sea.ps
 ```
 ````
 `````
@@ -337,9 +335,9 @@ $ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \
 ````{tab-item} GMT (classic)
 :sync: GMT-classic
 ```bash
-$ pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \
-          -Scornflowerblue -Df -P -Ba2f0.5g1 -BWSne+t"Archipelago Sea" \
-          -A0.1 > archi_sea.ps
+$ gmt pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \
+              -Scornflowerblue -Df -P -Ba2f0.5g1 -BWSne+t"Archipelago Sea" \
+              -A0.1 > archi_sea.ps
 ```
 ````
 `````
@@ -381,9 +379,9 @@ fig.savefig('archi_sea_pygmt.png')
 ````{tab-item} GMT (classic)
 :sync: GMT-classic
 ```bash
-$ pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \
-          -Scornflowerblue -Df -P -Ba2f0.5g1 -BWSne+t"Archipelago Sea" \
-          -A0.1 -U > archi_sea.ps
+$ gmt pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \
+              -Scornflowerblue -Df -P -Ba2f0.5g1 -BWSne+t"Archipelago Sea" \
+              -A0.1 -U > archi_sea.ps
 ```
 ````
 `````
