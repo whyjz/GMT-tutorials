@@ -28,7 +28,7 @@
 } */
 
 /*========================================================*/
-/* root settings for font size, color, and family */
+/* root settings for font & other properties */
 /*========================================================*/
 
 :root {
@@ -41,6 +41,11 @@
     /* 加入 Anonymous Pro (from Google Fonts); skip Ubuntu Mono & Noto Sans TC for now */
     --pst-font-family-monospace-system: Anonymous Pro, "SFMono-Regular", Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
     --sbt-prevnext-font-size: var(--sbt-font-size-regular);   /* make prevnext font bigger (14px) */
+    --sd-color-tabs-underline-active: #059B7D  !important;    /* 調整目前顯示 tab 的顏色 (薄荷綠)  */
+    --sd-color-tabs-label-active: #059B7D  !important;       /* 調整目前顯示 tab 的顏色 (薄荷綠)  */
+    --sd-color-tabs-label-hover: #059B7D  !important;        /* 調整懸停 tab 的顏色 (薄荷綠)  */
+    --sd-color-tabs-underline-hover: rgba(5, 173, 140, 0.42)  !important;   /* 調整懸停 tab 下邊線的顏色 (帶透明度薄荷綠)  */
+    --sd-color-tabs-underline: transparent  !important;      /* 隱藏 inline tab 的底橫線 */
 }
 
 /* Set up generic font weight [skipped -- using default weight (400)] */
@@ -175,10 +180,6 @@ p {
 
 .content-container .footnote-reference, .content-container a.bibtex.internal {
     font-size: small    /* make superscripted reference stay the same line height */
-}
-
-.sd-tab-set .sd-tab-content {
-    box-shadow: 0 -0.0625rem var(--sd-color-tabs-overline),0 .0625rem transparent;          /* 隱藏 inline tab 的底橫線 */
 }
 
 /*========================================================*/
