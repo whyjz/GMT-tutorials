@@ -12,6 +12,7 @@ html:
   use_repository_button: true
   use_issues_button: false
   baseurl: https://gmt-tutorials.org
+  google_analytics_id: G-DKQ998Z8PD
   extra_footer: |
     &copy; 2016-2022. <a href="https://github.com/whyjz/GMT-tutorials/blob/master/LICENSE.md">MIT</a> 
     and <a href="http://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</a> dual licensed. <br>
