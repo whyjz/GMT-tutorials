@@ -4,7 +4,7 @@
 
 ## 目標
 
-製作一張[群島海](https://zh.wikipedia.org/wiki/%E7%BE%A4%E5%B2%9B%E6%B5%B7) (Archipelago Sea) 的地圖，如下圖所示。群島海位於北歐，是波羅的海的一個附屬海，海如其名，被大小不等的眾多島嶼給佔據。事實上，群島海很有可能是擁有最多島嶼的海，雖然大部分的島都很小就是了。西邊的最大島嶼叫做奧蘭島 (Åland)，屬於芬蘭下轄的自治區。這麼多島嶼的地方，用來觀察 `coast` 的各種調整效果再適合不過了。
+製作一張[群島海](https://zh.wikipedia.org/wiki/%E7%BE%A4%E5%B2%9B%E6%B5%B7) (Archipelago Sea) 的地圖，如下圖所示。群島海位於北歐，是波羅的海的一個附屬海，海如其名，被大小不等的眾多島嶼給佔據。事實上，群島海很有可能是擁有最多島嶼的海，雖然大部分的島都很小就是了。西邊的最大島嶼叫做奧蘭島 (Åland)，是芬蘭下轄的自治區，而南邊小島星羅棋布的地方則由群島海國家公園 (Saaristomeren kansallispuisto) 負責管理。這麼多島嶼的地方，用來觀察 `coast` 的各種調整效果再適合不過了。
 
 ```{image} making_first_map/archi_sea_gmt6.png
     :name: final-map:archi-sea
@@ -27,25 +27,33 @@
 
 繪製地圖的第一步，是決定我們繪製的地區。雖然我們已經知道要畫的是群島海了，但沒有詳細的經緯度是不行的。最方便取得經緯度的作法，就是去 [Google Maps](https://www.google.com/maps/) 網站，搜尋 *Archipelago Sea*，然後視窗就會移到這片海域的附近。以右鍵在你想要當作地圖邊界的區域底點一下，選「*這是哪裡？*」，底下就會出現點選區域的名稱和經緯度。
 
-![](making_first_map/making_first_map_fig1.png)
-
-% :align: center
+```{image} making_first_map/making_first_map_fig1.png
+    :align: center
+```
 
 注意一下經緯度的表示法，跳出來的視窗中有兩個數字，第一個 *59.865253* 是緯度，正值表示北緯，負值表示南緯。而第二個 *19.435697* 是經度，正值表示東經，負值表示西經。另外，這裡也不採用「度分秒」的角度格式，而是把所有零頭都歸到「度」後的小數點。這種格式比較容易進行數學運算，所以也是 GMT 預設採用的座標標示法。
 
 查看一番後，這裡我們選擇經度從 19.42 到 22.95，緯度從 59.71 到 60.56 的這塊區域來畫圖。你也可以自由選擇你喜歡的區域。接著打開{ref}`終端機`，輸入如下指令：
 
+% PyGMT 的 ? 選項
+
 `````{tab-set}
 ````{tab-item} GMT
 :sync: GMT
 ```bash
-$ gmt coast
+gmt coast
+```
+````
+````{tab-item} PyGMT
+:sync: PyGMT
+```python
+help(pygmt.Figure.coast)
 ```
 ````
 ````{tab-item} GMT (classic)
 :sync: GMT-classic
 ```bash
-$ gmt pscoast
+gmt pscoast
 ```
 ````
 `````
@@ -56,21 +64,23 @@ $ gmt pscoast
 ````{tab-item} GMT
 :sync: GMT
 ```bash
-$ gmt coast -
+gmt coast -
 ```
 ````
 ````{tab-item} GMT (classic)
 :sync: GMT-classic
 ```bash
-$ gmt pscoast -
+gmt pscoast -
 ```
 ````
 `````
 
 幾乎所有 GMT 的指令，包含 `coast`，都是以類似如下的語法操作：
 
+% PyGMT 語法?
+
 ```bash
-$ gmt 指令 (輸入檔) [選項1 選項2 選項3...]
+gmt 指令 (輸入檔) [選項1 選項2 選項3...]
 ```
 
 所有以負號 (-) 開頭的文字，程式都會解讀成選項，而不是負號開頭的東西，就會是輸入檔。通常每個指令都會有一兩個必填的選項，而其他的選項如果沒指定的話，就會使用預設值。輸入檔和選項的先後次序，對 GMT 而言是沒差的，你也可以打完所有選項後，再打上輸入檔的名字。
@@ -101,6 +111,14 @@ $ gmt coast -R19.42/22.95/59.71/60.56 -png archi_sea
 coast [ERROR]: Syntax error: Must specify at least one of -C, -G, -S, -I, -N, -Q and -W
 ```
 ````
+````{tab-item} PyGMT
+:sync: PyGMT
+```python
+fig = pygmt.Figure()
+fig.coast(region=[19.42, 22.95, 59.71, 60.56])
+
+```
+````
 ````{tab-item} GMt (classic)
 :sync: GMT-classic
 ```bash
@@ -110,6 +128,10 @@ pscoast: Syntax error: Must specify at least one of -C, -G, -S, -I, -N, -Q and -
 ```
 ````
 `````
+
+% GMTInvalidInput: At least one of the following parameters must be specified:
+%             lakes, land, water, rivers, borders, dcw, Q, or shorelines
+
 
 嗚唔，出現錯誤了！問題出在我們還有一些選項沒有給定。這是有關「繪圖樣式」的設定。GMT 要求我們至少給定一種繪圖樣式，我們先使用 `-W` 以指定海岸線的畫筆屬性。畫筆具有三種屬性：粗細、顏色跟樣式，給定的語法是
 
@@ -138,6 +160,14 @@ pscoast: Syntax error: Must specify at least one of -C, -G, -S, -I, -N, -Q and -
 :sync: GMT
 ```bash
 $ gmt coast -R19.42/22.95/59.71/60.56 -W0.1p,black -png archi_sea
+```
+````
+````{tab-item} PyGMT
+:sync: PyGMT
+```python
+fig = pygmt.Figure()
+fig.coast(region=[19.42, 22.95, 59.71, 60.56], shorelines=['0.1p', 'black'])
+fig.show()
 ```
 ````
 ````{tab-item} GMT (classic)
@@ -225,6 +255,14 @@ $ gmt pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black > archi_sea.ps
 $ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 -Scornflowerblue -png archi_sea
 ```
 ````
+````{tab-item} PyGMT
+:sync: PyGMT
+```python
+fig = pygmt.Figure()
+fig.coast(region=[19.42, 22.95, 59.71, 60.56], projection="M6i", shorelines=['0.1p', 'black'], land='darkseagreen2', water='cornflowerblue')
+fig.show()
+```
+````
 ````{tab-item} GMT (classic)
 :sync: GMT-classic
 ```bash
@@ -241,6 +279,15 @@ $ gmt pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 -Scor
 ```bash
 $ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \
             -Scornflowerblue -png archi_sea
+```
+````
+````{tab-item} PyGMT
+:sync: PyGMT
+```python
+fig = pygmt.Figure()
+fig.coast(region=[19.42, 22.95, 59.71, 60.56], projection="M6i", shorelines=['0.1p', 'black'], 
+          land='darkseagreen2', water='cornflowerblue')
+fig.show()
 ```
 ````
 ````{tab-item} GMT (classic)
@@ -296,6 +343,15 @@ $ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \
             -Scornflowerblue -Ba2f0.5g1 -BWSne+t"Archipelago Sea" -png archi_sea
 ```
 ````
+````{tab-item} PyGMT
+:sync: PyGMT
+```python
+fig = pygmt.Figure()
+fig.coast(region=[19.42, 22.95, 59.71, 60.56], projection="M6i", shorelines=['0.1p', 'black'], 
+          land='darkseagreen2', water='cornflowerblue', frame=['a2f0.5g1', 'WSne+t"Archipelago Sea"'])
+fig.show()
+```
+````
 ````{tab-item} GMT (classic)
 :sync: GMT-classic
 ```bash
@@ -330,6 +386,15 @@ $ gmt pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \
 $ gmt coast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \
             -Scornflowerblue -Ba2f0.5g1 -BWSne+t"Archipelago Sea" -A0.1 \
             -png archi_sea
+```
+````
+````{tab-item} PyGMT
+:sync: PyGMT
+```python
+fig = pygmt.Figure()
+fig.coast(region=[19.42, 22.95, 59.71, 60.56], projection="M6i", shorelines=['0.1p', 'black'], land='darkseagreen2', 
+          water='cornflowerblue', frame=['a2f0.5g1', 'WSne+t"Archipelago Sea"'], area_thresh=0.1)
+fig.show()
 ```
 ````
 ````{tab-item} GMT (classic)
