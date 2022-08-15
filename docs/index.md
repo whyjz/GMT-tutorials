@@ -38,6 +38,8 @@ Copyright © 2016-22 鄭懷傑 (Whyjay Zheng).
 
 % 以 `reStructuredText <https://en.wikipedia.org/wiki/ReStructuredText>`_ 格式編寫。
 
+% Cite GMT tutorials
+
 ## 致謝
 
 感謝 William Durkin，Patricia MacQueen，李明龍，李定宇等人提出的建議與討論，讓本教學手冊的內容更為豐富完整。另外，也感謝所有 Github 上的協作者：譚諤 (tan2)，李奎模 (likueimo)，王亮 (wangliang1989)，對文檔內容所作的建設性修改。在此深深謝謝參與翻譯此教學手冊的人員，翻譯是件龐大的工作，沒有你們的協助是不可能完成的。如您也想參與一起翻譯本教學，請參閱下方說明。
