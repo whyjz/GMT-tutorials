@@ -6,7 +6,7 @@
 
 製作一張[群島海](https://zh.wikipedia.org/wiki/%E7%BE%A4%E5%B2%9B%E6%B5%B7) (Archipelago Sea) 的地圖，如下圖所示。群島海位於北歐，是波羅的海的一個附屬海，海如其名，被大小不等的眾多島嶼給佔據。事實上，群島海很有可能是擁有最多島嶼的海，雖然大部分的島都很小就是了。西邊的最大島嶼叫做奧蘭島 (Åland)，是芬蘭下轄的自治區，而南邊小島星羅棋布的地方則由群島海國家公園 (Saaristomeren kansallispuisto) 負責管理。這麼多島嶼的地方，用來觀察 `coast` 的各種調整效果再適合不過了。
 
-```{image} making_first_map/archi_sea_gmt6.png
+```{image} making_first_map/archi_sea.png
     :name: final-map:archi-sea
     :alt: Archipelago Sea
     :width: 1000px
@@ -33,7 +33,7 @@
 
 注意一下經緯度的表示法，跳出來的視窗中有兩個數字，第一個 *59.865253* 是緯度，正值表示北緯，負值表示南緯。而第二個 *19.435697* 是經度，正值表示東經，負值表示西經。另外，這裡也不採用「度分秒」的角度格式，而是把所有零頭都歸到「度」後的小數點。這種格式比較容易進行數學運算，所以也是 GMT 預設採用的座標標示法。
 
-查看一番後，這裡我們選擇經度從 19.42 到 22.95，緯度從 59.71 到 60.56 的這塊區域來畫圖。你也可以自由選擇你喜歡的區域。接著打開{ref}`終端機`，輸入如下指令：
+查看一番後，這裡我們選擇經度從 19.42 到 22.95，緯度從 59.71 到 60.56 的這塊區域來畫圖。你也可以自由選擇你喜歡的區域。接著打開{ref}`終端機 <Terminal>`，輸入如下指令：
 
 % PyGMT 的 ? 選項
 
@@ -194,7 +194,7 @@ $ gmt pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black > archi_sea.ps
 % .. $ gmt begin archi_sea; gmt coast -R19.42/22.95/59.71/60.56; gmt end
 % .. coast [ERROR]: Syntax error: Must specify at least one of -C, -G, -S, -I, -N, -Q and -W
 
-![](making_first_map/making_first_map_gmt6_fig2.png)
+![](making_first_map/making_first_map_fig2.png)
 
 這張地圖基本上已經描繪出群島海的海岸線，但由於缺乏了顏色和經緯度座標等等資訊，使地圖資訊難以判讀。另外，因爲 GMT 預設的地圖座標是 WGS 84 經緯度，所以高緯度地區的地圖都會被拉得很扁平。我們可以換一個投影座標，讓海岸線沿緯度的變化能清楚地顯示。GMT 中以 `-J` 設定投影法，有五花八門的樣式可供選擇，這裡我們來選個在畫小範圍地圖時很常用的[麥卡托投影法](https://zh.wikipedia.org/wiki/%E9%BA%A5%E5%8D%A1%E6%89%98%E6%8A%95%E5%BD%B1%E6%B3%95)來看看。語法是：
 
@@ -311,7 +311,7 @@ $ gmt pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \
 
 以上指令畫出來的地圖如下所示
 
-```{image} making_first_map/making_first_map_gmt6_fig3.png
+```{image} making_first_map/making_first_map_fig3.png
     :width: 1000px
     :align: center
 ```
@@ -364,7 +364,7 @@ $ gmt pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \
 
 那麼，地圖四邊都會加上邊框，但只有西側和南側會標上經緯度，經緯度會以每 2 度標示一次，刻度 (黑白線區間) 以每 0.5 度標示一次，格線每 1 度就有一條，而且還會加上 *Archipelago Sea* 這個標題。畫出來的樣子如下所示：
 
-```{image} making_first_map/making_first_map_gmt6_fig4.png
+```{image} making_first_map/making_first_map_fig4.png
     :width: 1000px
     :align: center
 ```
@@ -409,7 +409,7 @@ $ gmt pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \
 
 島嶼比較少，看起來清爽多了，卻又不會喪失「群島海」名稱的霸氣。
 
-```{image} making_first_map/making_first_map_gmt6_fig5.png
+```{image} making_first_map/making_first_map_fig5.png
     :width: 1000px
     :align: center
 ```
@@ -463,7 +463,7 @@ $ gmt pscoast -R19.42/22.95/59.71/60.56 -JM6i -W0.1p,black -Gdarkseagreen2 \
 
 你可以使用以下的 Binder 連結嘗試此程式碼：
 
-[![](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/whyjz/GMT-tutorials/HEAD?filepath=docs%2Fmain%2Fmaking_first_map%2Farchi_sea_pygmt.ipynb)
+[![](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/whyjz/GMT-tutorials/HEAD?filepath=docs%2Fmain%2Fmaking_first_map%2Farchi_sea.ipynb)
 
 ## 習題
 
