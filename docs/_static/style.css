@@ -70,6 +70,11 @@
 高亮文字: #f2f2f2 (95% 白) 
 --------------------------------------------------------- */
 
+/* Adjust the maximum logo height (was 15vh) */
+div.navbar-brand-box a.navbar-brand img {
+    max-height: 18vh !important;
+}
+
 /* Set lower left sidebar background color and make x-axis not scrollable*/
 .bd-sidebar__content {
     background-color: #493b3b;

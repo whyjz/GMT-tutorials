@@ -1,0 +1,14 @@
+Quicksand-Light      0.900    0
+Quicksand-Regular    0.900    0
+Quicksand-Medium     0.900    0
+Quicksand-Bold       0.900    0
+LMMonoProp10         0.700    0
+P052-BoldItalic      0.700    0
+NimbusRoman-Bold     0.700    0
+Rationale-Regular    0.700    0
+Iceberg-Regular      0.700    0
+BigShouldersInlineDisplay-Medium    0.700    0
+BigShouldersInlineDisplay-Black    0.700    0
+PoiretOne-Regular    0.700    0
+KellySlab-Regular    0.700    0
+Flamenco-Regular     0.700    0

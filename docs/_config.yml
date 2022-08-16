@@ -1,7 +1,7 @@
 title           : GMT 教學手冊
 author          : <a href="https://whyjz.github.io/">鄭懷傑 (Whyjay Zheng)</a> | <a href="https://twitter.com/WhyjayZ"><i class="fa-brands fa-twitter"></i></a>
 # copyright       : " "      # See html --> extra_footer
-# logo           : images/index_banner_logo.png
+logo           : main/index/gmt_titleimage.png
 # exclude_patterns: [_build, "**.ipynb_checkpoints", "**pygmt.ipynb", "**making_first_map_working.ipynb"]
 only_build_toc_files: true
 

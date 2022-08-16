@@ -6,3 +6,6 @@ docs/_build/gettext/_sphinx_design_static
 docs/conf.py
 *.ps
 gmt.history
+gmt.conf
+docs/main/index/*.ttf
+docs/main/index/*.jpg
