@@ -1,10 +1,11 @@
 # GMT 教學手冊
 
-```{image} main/index/index_banner_text.png
+```{image} main/index/gmt_titleimage_banner_s.png
     :alt: GMT tutorials
-    :scale: 25
+    :width: 500
     :align: center
 ```
+% :target: main/index/gmt_titleimage.png
 
 **GMT** (**Generic Mapping Tools**, 通常譯成「**通用製圖工具**」) 是一套開放的地理繪圖軟體。與一般的地理繪圖軟體如 QGIS、ArcGIS 最大的不同是，GMT 完全可以在命令列介面底下運行。最新的 PyGMT 軟體更讓 Python 的使用者有更便捷的方式使用 GMT 提供的各種繪圖工具。對於有大量繪圖需求，想用程式語言或腳本批次檔處理這些繪圖工作的人而言，GMT 非常值得一學，但也正因為 GMT 的命令列風格令上手曲線顯得相當陡峭，使得許多想接觸地理繪圖的初學者望之卻步。
 
