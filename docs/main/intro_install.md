@@ -1,22 +1,18 @@
-# GMT / PyGMT 簡介與安裝
+# GMT 簡介與安裝
 
 ## [GMT][GMT-link] 是什麼？
 
-[GMT][GMT-link] 的全名是 Generic Mapping Tools，為一套多功能的製圖工具。這套軟體始於 1988 年，由當時就讀於拉蒙特-杜赫第地球觀測站 (Lamont-Doherty Earth Observatory) 的 Pål (Paul) Wessel 和 Walter H. F. Smith 設計製作，並在 1991 年公開發表第一版。[^1] 軟體釋出後即收到廣大迴響，這些稱讚與建議成了兩位作者 (與其後加入開發團隊的所有人員) 繼續更新的原動力。三十多年過去了，GMT 在 2019 年的 11 月已經更新到第 6 版 [^2]，在地理繪圖領域享有一席之地，更是許多領域，如地球物理學、海洋科學等等，一定會接觸到的軟體之一。
+[GMT][GMT-link] (Generic Mapping Tools) 始於 1987 年，由當時就讀於拉蒙特-杜赫第地球觀測站 (Lamont-Doherty Earth Observatory) 的 Pål (Paul) Wessel 和 Walter H. F. Smith 設計製作，在 1988 年完成第一版，加強後的第二版則隨著 1991 年的一篇文章開始大力對外宣傳。[^1] 軟體釋出後即收到廣大迴響，這些稱讚與建議成了兩位作者 (與其後加入開發團隊的所有人員) 繼續更新的原動力。目前 GMT 已經更新到第 6 版 [^2]，並持續受到地理繪圖、地球物理、海洋科學、行星科學等領域研究人員的歡迎。
 
-GMT 身為「通用」的製圖工具，當然可以進行一般性的科學繪圖，大部分你想得到的圖表種類，都可以利用 GMT 內附的指令來完成。但本軟體真正的強大之處，還是在於地理資料的處理與地圖的繪製。GMT 內建許多和地理資訊系統 (GIS) 有關的演算法，讓使用者可以輕鬆的藉由一個個指令，就完成精美且高解析度的地圖。輸出的圖檔支援多種格式，包括向量化的格式檔案如 EPS 或 PDF 等，非常容易進行更多的編修。
+
+
+既然 GMT 叫做「通用」製圖工具，大部分的科學圖表種類都可以利用 GMT 來完成，不過本軟體真正強大之處，在於地理空間資料的處理與地圖的繪製。GMT 內建許多地理空間演算法，讓使用者可以輕鬆的藉由一個個指令完成精美且高解析度的地圖。
 
 [GMT-link]: https://www.generic-mapping-tools.org/
 
 % GMT 近年發展，包括 GMT-Matlab, GMTSAR, GMT-Julia 等等
 
-## [PyGMT][PyGMT-link] 呢？
-
-[PyGMT][PyGMT-link] 其實就是把 GMT 重新包裝，讓所有 GMT 內的工具都可以透過 Python 這個程式語言以模組的方式來使用。除了讓原本就熟悉 Python 的人快速上手 GMT 外，遠程目標是與 Python 的其他資料科學模組一同連動，構築以 Python 進行科學資料分析的豐富環境。目前 PyGMT 已經支援了 Numpy、Pandas 和 Xarray 專有的資料格式，並且也可透過 Jupyter 環境進行互動性資料繪圖。[^3]
-
-PyGMT 是由科學社群發起的專案計畫，目前的最新版 (版本號 0.7.0) 已於 2022 年 7 月釋出。各位如有興趣貢獻一己之力開發軟體，非常歡迎前往 PyGMT 的官方網站一探究竟。
-
-[PyGMT-link]: https://www.pygmt.org/
+% PS 介紹 GMT 接受使用者的指令與參數輸入 透過一種叫做 PostScript 的文本語言 輸出的圖檔支援多種格式，包括向量化或影像化的格式檔案，非常容易進行更多的編修。
 
 ## 我該使用 GMT 嗎？
 
@@ -118,6 +114,4 @@ GMT 與 PyGMT 有著日益茁壯的社群。[官方的使用者論壇 (英文)](
 [^2]: Wessel, P., Luis, J., Uieda, L., Scharroo, R., Wobbe, F., Smith, W. H. F., and Tian, D. (2019). 
        The Generic Mapping Tools Version 6. Geochemistry, Geophysics, Geosystems, 20. 
        <http://doi.org/10.1029/2019GC008515>
-[^3]: Uieda, L., Tian, D., Leong, W. J., Jones, M., Schlitzer, W., Grund, M., Toney, L., Yao, J., 
-       Magen, Y., Materna, K., Fröhlich, Y., Belem, A., Newton, T., Anant, A., Ziebarth, M., Quinn, Ja., and Wessel, P. (2022). 
-       PyGMT: A Python interface for the Generic Mapping Tools (v0.7.0). Zenodo. <https://doi.org/10.5281/zenodo.6702566>
+
