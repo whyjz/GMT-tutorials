@@ -197,3 +197,11 @@ fig.coast(region=..., projection=..., shorelines=..., land=..., frame=...)
 % 介紹 GIS Raster vs Vector
 
 % 介紹畫筆
+
+
+% 舊內容
+% dcw 和 gshhg 的簡略內容如下，供各位參考：
+% `DCW <http://www.soest.hawaii.edu/wessel/dcw/>`_ (**Digital Chart of the World**)：提供一些基本的向量形式資料，像是國界、人口密集地、道路、水文資料、地標、植被等等。
+% `GSHHG <https://www.soest.hawaii.edu/pwessel/gshhg/>`_ (**Global Self-consistent, Hierarchical, High-resolution Geography**)： 提供數種解析度的向量形式資料，像是海岸線、河湖水系、國界與州界等等。
+
+% PS 介紹 GMT 接受使用者的指令與參數輸入 透過一種叫做 PostScript 的文本語言 輸出的圖檔支援多種格式，包括向量化或影像化的格式檔案，非常容易進行更多的編修。
